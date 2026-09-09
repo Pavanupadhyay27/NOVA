@@ -295,24 +295,6 @@ export default function QuickConnectMapSection() {
                   referrerPolicy="no-referrer-when-downgrade"
                   className={styles.mapIframe}
                 />
-
-                {/* Floating Skeuomorphic Overlay Badge inside Map */}
-                <div className={styles.mapFloatingBadge}>
-                  <div className={styles.floatingBadgeLeft}>
-                    <span className={styles.floatingPulseDot} />
-                    <span className={styles.floatingTitle}>Kharvela Nagar HQ</span>
-                    <span className={styles.floatingSep}>•</span>
-                    <span className={styles.floatingParking}>✓ Free Visitor Parking</span>
-                  </div>
-                  <a
-                    href={mapsSearchUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.floatingMapLink}
-                  >
-                    Open in Maps ↗
-                  </a>
-                </div>
               </div>
             </div>
           </ScrollReveal>
