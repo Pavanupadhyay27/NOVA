@@ -5,7 +5,6 @@ import ClientsSection from './_components/ClientsSection';
 import MetricsSection from './_components/MetricsSection';
 import ServicesSection from './_components/ServicesSection';
 import StrategySection from './_components/StrategySection';
-import FeaturedWork from './_components/FeaturedWork';
 import QuotesSection from './_components/QuotesSection';
 import TeamPreview from './_components/TeamPreview';
 import WhyChooseSection from './_components/WhyChooseSection';
@@ -27,7 +26,6 @@ export default function HomePage() {
       <MetricsSection />
       <ServicesSection />
       <StrategySection />
-      <FeaturedWork />
       <QuotesSection />
       <TeamPreview />
       <WhyChooseSection />

@@ -63,12 +63,13 @@ export default function QuotesSection() {
   const [isPaused, setIsPaused] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
+  // Smooth Auto-Slide every 5 seconds (pauses on mouse hover)
   useEffect(() => {
     if (isPaused) return;
 
     timerRef.current = setInterval(() => {
       setCurrent((prev) => (prev + 1) % testimonials.length);
-    }, 6000);
+    }, 5000);
 
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
@@ -110,7 +111,7 @@ export default function QuotesSection() {
         <div className={styles.carouselContainer}>
           <ScrollReveal delay={100}>
             <div className={styles.quoteCard}>
-              {/* Top Row: Stars + Tag */}
+              {/* Top Row: Stars + Category Tag */}
               <div className={styles.cardHeader}>
                 <div className={styles.starsRow}>
                   {[...Array(active.stars)].map((_, i) => (
@@ -123,39 +124,43 @@ export default function QuotesSection() {
                 </span>
               </div>
 
-              {/* Quote Body */}
-              <div className={styles.contentBody} key={active.id}>
-                <p className={styles.quoteText}>
-                  &ldquo;{active.quote}&rdquo;
-                </p>
-
-                {/* Author & Verified Metrics */}
-                <div className={styles.footerRow}>
-                  <div className={styles.authorInfo}>
-                    <div 
-                      className={styles.avatar} 
-                      style={{ background: `linear-gradient(135deg, ${active.color} 0%, #0F172A 100%)` }}
-                    >
-                      {active.avatarInitials}
-                    </div>
-                    <div>
-                      <h4 className={styles.authorName}>{active.author}</h4>
-                      <p className={styles.authorRole}>
-                        {active.role} • <span className={styles.companyName}>{active.company}</span>
-                      </p>
-                    </div>
+              {/* Fixed Height Quote Body (Zero CLS layout shift) */}
+              <div className={styles.quoteViewport}>
+                <div className={styles.contentBody} key={active.id}>
+                  <div className={styles.quoteTextWrap}>
+                    <p className={styles.quoteText}>
+                      &ldquo;{active.quote}&rdquo;
+                    </p>
                   </div>
 
-                  <div className={styles.metricsBadge}>
-                    <div className={styles.statPrimary} style={{ color: active.color }}>
-                      {active.stat}
+                  {/* Author & Verified Metrics */}
+                  <div className={styles.footerRow}>
+                    <div className={styles.authorInfo}>
+                      <div 
+                        className={styles.avatar} 
+                        style={{ background: `linear-gradient(135deg, ${active.color} 0%, #0F172A 100%)` }}
+                      >
+                        {active.avatarInitials}
+                      </div>
+                      <div>
+                        <h4 className={styles.authorName}>{active.author}</h4>
+                        <p className={styles.authorRole}>
+                          {active.role} • <span className={styles.companyName}>{active.company}</span>
+                        </p>
+                      </div>
                     </div>
-                    <div className={styles.statSecondary}>{active.subStat}</div>
+
+                    <div className={styles.metricsBadge}>
+                      <div className={styles.statPrimary} style={{ color: active.color }}>
+                        {active.stat}
+                      </div>
+                      <div className={styles.statSecondary}>{active.subStat}</div>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Bottom Pagination & Navigation */}
+              {/* Bottom Pagination & Auto-Slide Controls */}
               <div className={styles.controlsRow}>
                 <div className={styles.dots}>
                   {testimonials.map((t, idx) => (
