@@ -1,7 +1,9 @@
 .section {
-  background: #FFFFFF;
-  padding: 96px 0 108px;
   position: relative;
+  padding: 88px 0 100px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 50%, #FFFFFF 100%);
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
   overflow: hidden;
 }
 
@@ -10,356 +12,576 @@
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 900px;
+  width: 1000px;
   height: 600px;
-  background: radial-gradient(ellipse, rgba(2, 132, 199, 0.04) 0%, rgba(99, 102, 241, 0.02) 50%, transparent 75%);
+  background: radial-gradient(ellipse, rgba(2, 132, 199, 0.05) 0%, rgba(99, 102, 241, 0.03) 50%, transparent 75%);
   pointer-events: none;
   filter: blur(90px);
 }
 
-/* ═══════════════════════════════════════════════════════════
-   CARD-FREE VERTICAL STEPS STREAM (COMPACT & CLEAN)
-═══════════════════════════════════════════════════════════ */
-
-.verticalStepsStream {
-  max-width: 860px;
-  margin: 52px auto 0;
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
+/* ══════════════════════════════════════════════════
+   HEADER
+══════════════════════════════════════════════════ */
+.headerWrap {
+  margin-bottom: 48px;
 }
 
-/* Continuous Vertical Gradient Spine */
-.spineBeam {
-  position: absolute;
-  top: 24px;
-  bottom: 60px;
-  left: 25px;
-  width: 3px;
-  background: linear-gradient(
-    180deg,
-    #0284C7 0%,
-    #6366F1 25%,
-    #EC4899 50%,
-    #F59E0B 75%,
-    #10B981 100%
-  );
-  border-radius: 999px;
-  opacity: 0.35;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Vertical Step Row */
-.verticalStepItem {
-  display: grid;
-  grid-template-columns: 52px 1fr;
-  gap: 32px;
-  position: relative;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  padding: 4px 0;
-}
-
-/* Left: 3D Spine Node */
-.spineNodeCol {
-  position: relative;
-  display: flex;
-  flex-direction: column;
+.eyebrowBadge {
+  display: inline-flex;
   align-items: center;
-  z-index: 2;
-  padding-top: 2px;
+  gap: 8px;
+  padding: 7px 18px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
+  border: 1px solid rgba(2, 132, 199, 0.25);
+  box-shadow: inset 0 1.5px 0 #FFFFFF,
+              0 2px 8px rgba(2, 132, 199, 0.08),
+              0 1px 2px rgba(15, 23, 42, 0.04);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #0284C7;
+  margin-bottom: 16px;
 }
 
-.spineNodeDisk {
-  width: 52px;
-  height: 52px;
+.eyebrowDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #0284C7;
+  box-shadow: 0 0 8px #0284C7;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #0F172A;
+}
+
+.titleGradient {
+  background: linear-gradient(135deg, #0284C7 0%, #4F46E5 50%, #6366F1 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  display: inline-block;
+  letter-spacing: -0.03em;
+}
+
+.subtitle {
+  font-size: 16.5px;
+  color: #475569;
+  margin-top: 12px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* ══════════════════════════════════════════════════
+   HORIZONTAL WAVE ROADMAP CONTAINER
+══════════════════════════════════════════════════ */
+.waveRoadmapWrap {
   position: relative;
+  margin-top: 32px;
+  z-index: 2;
+}
+
+/* Wave SVG Track (Desktop) */
+.waveSvgTrack {
+  position: relative;
+  width: 100%;
+  height: 90px;
+  margin-bottom: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.waveSvg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.animatedWavePath {
+  animation: waveDashMove 18s linear infinite;
+}
+
+@keyframes waveDashMove {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -360;
+  }
+}
+
+/* ══════════════════════════════════════════════════
+   HORIZONTAL STEPPER NAVIGATION
+══════════════════════════════════════════════════ */
+.stepperNav {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.stepNavBtn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: var(--radius-lg);
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 2px 6px rgba(15, 23, 42, 0.03);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: left;
+}
+
+.stepNavBtn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(2, 132, 199, 0.35);
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 8px 18px rgba(15, 23, 42, 0.07);
+}
+
+.stepNavBtnActive {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F0F9FF 100%);
+  border-color: var(--stage-color);
+  box-shadow: inset 0 2px 0 #FFFFFF, 
+              0 8px 24px -4px rgba(15, 23, 42, 0.12),
+              0 0 0 1px var(--stage-color);
+}
+
+.stepNodeOuter {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stepNodeCore {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.5), 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s ease;
+}
+
+.stepNavBtn:hover .stepNodeCore,
+.stepNavBtnActive .stepNodeCore {
+  transform: scale(1.08);
+}
+
+.stepNodeNum {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.nodePulseRing {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.5px dashed;
+  animation: rotatePulse 4s linear infinite;
+}
+
+@keyframes rotatePulse {
+  0% { transform: rotate(0deg) scale(1); opacity: 0.9; }
+  50% { transform: rotate(180deg) scale(1.1); opacity: 0.5; }
+  100% { transform: rotate(360deg) scale(1); opacity: 0.9; }
+}
+
+.stepNavText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.navPhase {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.navName {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 800;
+  color: #0F172A;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ══════════════════════════════════════════════════
+   5-COLUMN HORIZONTAL STAGE CARDS STREAM
+══════════════════════════════════════════════════ */
+.cardsStream {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  align-items: stretch;
+  position: relative;
+  z-index: 2;
+}
+
+.waveStageCard {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(175deg, #FFFFFF 0%, #FAFCFE 50%, #F1F5F9 100%);
+  border: 1px solid rgba(218, 226, 237, 0.95);
+  border-radius: var(--radius-xl);
+  padding: 24px 20px;
+  box-shadow: 
+    inset 0 2.5px 0 #FFFFFF,
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -2px 3px rgba(15, 23, 42, 0.04),
+    inset 1px 0 0 rgba(255, 255, 255, 0.8),
+    inset -1px 0 0 rgba(255, 255, 255, 0.8),
+    0 12px 32px -6px rgba(15, 23, 42, 0.06),
+    0 2px 6px rgba(15, 23, 42, 0.03);
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
 }
 
-.diskOuterRing {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
-  border: 2px solid;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.waveStageCard:hover,
+.cardFocused {
+  transform: translateY(-6px);
+  border-color: var(--stage-color);
   box-shadow: 
-    inset 0 2px 0 #FFFFFF,
-    inset 0 -2px 4px rgba(15, 23, 42, 0.06),
-    0 6px 18px -4px rgba(15, 23, 42, 0.12);
-  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 2;
+    inset 0 2.5px 0 #FFFFFF,
+    inset 0 1px 1px rgba(255, 255, 255, 1),
+    inset 0 -1.5px 3px rgba(15, 23, 42, 0.03),
+    0 28px 56px -10px rgba(15, 23, 42, 0.12),
+    0 0 0 1.5px var(--stage-color);
 }
 
-.diskInnerCore {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.5),
-    0 2px 6px rgba(0, 0, 0, 0.15);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.diskNum {
-  font-family: var(--font-display);
-  font-size: 13.5px;
-  font-weight: 900;
-  color: #FFFFFF;
-  letter-spacing: -0.02em;
-}
-
-.diskPulseRing {
-  position: absolute;
-  inset: -5px;
-  border-radius: 50%;
-  border: 1.5px dashed;
-  opacity: 0;
-  transform: scale(0.85);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  pointer-events: none;
-}
-
-.verticalStepItem:hover .diskOuterRing,
-.itemActive .diskOuterRing {
-  transform: scale(1.08);
-  box-shadow: 
-    inset 0 2px 0 #FFFFFF,
-    0 10px 24px -4px rgba(15, 23, 42, 0.16);
-}
-
-.verticalStepItem:hover .diskPulseRing,
-.itemActive .diskPulseRing {
-  opacity: 1;
-  transform: scale(1.15) rotate(45deg);
-}
-
-/* ═══════════════════════════════════════════════════════════
-   RIGHT: OPEN CARD-FREE CONTENT STREAM
-═══════════════════════════════════════════════════════════ */
-
-.stepContentStream {
-  position: relative;
-  z-index: 2;
-  padding-bottom: 36px;
-}
-
-/* Meta Row */
-.stepMetaRow {
+/* Card Header */
+.cardHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.7);
 }
 
-.metaBadges {
+.stageOrbWrap {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 8px;
 }
 
-.phaseTag {
+.stageOrb {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-display);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  color: #FFFFFF;
+  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.5), 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+.headerMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+.phaseBadge {
+  font-family: var(--font-display);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 3px 10px;
-  border-radius: 999px;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
   border: 1px solid;
 }
 
-.timeTag {
-  font-family: var(--font-display);
-  font-size: 11.5px;
+.timeframePill {
+  font-size: 11px;
   font-weight: 700;
   color: #64748B;
-  background: #F8FAFC;
-  padding: 3px 10px;
-  border-radius: 999px;
-  border: 1px solid #E2E8F0;
 }
 
-.benchmarkTag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-display);
-  font-size: 11.5px;
-  font-weight: 800;
-  background: #F8FAFC;
-  padding: 4px 12px;
-  border-radius: 999px;
-  border: 1px solid #E2E8F0;
-  box-shadow: inset 0 1px 0 #FFFFFF;
-}
-
-.benchmarkDot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-}
-
-/* Title & Subtitle */
-.titleWrap {
+/* Card Body */
+.cardBody {
   display: flex;
-  align-items: baseline;
-  gap: 10px;
-  margin-bottom: 8px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
 }
 
-.stepTitle {
+.stageName {
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: 17px;
   font-weight: 800;
   color: #0F172A;
   line-height: 1.25;
 }
 
-.titleDivider {
-  color: #CBD5E1;
-  font-weight: 400;
-}
-
-.stepTagline {
+.stageTagline {
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
+  margin-bottom: 4px;
 }
 
-/* Editorial Narrative */
-.stepDesc {
-  font-size: 14.5px;
+.stageDesc {
+  font-size: 13px;
   color: #475569;
-  line-height: 1.6;
-  margin-bottom: 14px;
-  max-width: 720px;
+  line-height: 1.55;
 }
 
-/* Deliverables Stream Chips */
-.delRow {
+/* Deliverables Checklist */
+.deliverablesList {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px 10px;
-  margin-bottom: 14px;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+  padding: 12px 14px;
+  background: rgba(248, 250, 252, 0.85);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(226, 232, 240, 0.7);
+  box-shadow: inset 0 1px 0 #FFFFFF;
 }
 
-.delChip {
+.delHeader {
+  font-family: var(--font-display);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}
+
+.delItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1E293B;
+  line-height: 1.35;
+}
+
+.checkIcon {
+  font-weight: 900;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+.delText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Card Footer */
+.cardFooter {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid rgba(226, 232, 240, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.benchmarkRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.benchmarkDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.benchmarkText {
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #0F172A;
+  letter-spacing: -0.01em;
+}
+
+.milestonePill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: #1E293B;
-  background: #F8FAFC;
-  padding: 4px 11px;
-  border-radius: 999px;
-  border: 1px solid #E2E8F0;
-  box-shadow: inset 0 1px 0 #FFFFFF;
-  transition: all 0.2s ease;
-}
-
-.delChip:hover {
   background: #FFFFFF;
-  border-color: #CBD5E1;
-}
-
-.chipCheck {
-  font-weight: 900;
+  border: 1px dashed rgba(203, 213, 225, 0.9);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
   font-size: 11px;
 }
 
-/* Milestone Stream */
-.milestoneStream {
+.milestoneTag {
+  font-family: var(--font-display);
+  font-size: 9.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #64748B;
+}
+
+.milestoneVal {
+  font-weight: 600;
+  color: #334155;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ══════════════════════════════════════════════════
+   MOBILE & TABLET SLIDER CONTROLS
+══════════════════════════════════════════════════ */
+.sliderControls {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+  padding: 0 4px;
+}
+
+.sliderArrowBtn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background: #F8FAFC;
-  border: 1px dashed #CBD5E1;
-  padding: 4px 12px;
-  border-radius: 999px;
-  font-size: 12px;
-}
-
-.milestoneBadge {
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
+  border: 1px solid rgba(203, 213, 225, 0.95);
   font-family: var(--font-display);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 2px 7px;
-  border-radius: 999px;
-  border: 1px solid;
-  background: #FFFFFF;
-}
-
-.milestoneText {
-  font-family: var(--font-display);
+  font-size: 12.5px;
   font-weight: 700;
-  color: #1E293B;
+  color: #0F172A;
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 2px 6px rgba(15, 23, 42, 0.05);
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-/* Subtle Stream Divider */
-.stepDivider {
-  margin-top: 36px;
-  height: 1px;
-  background: linear-gradient(90deg, #E2E8F0 0%, #F1F5F9 80%, transparent 100%);
+.sliderArrowBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   RESPONSIVE DESIGN
-═══════════════════════════════════════════════════════════ */
+.sliderArrowBtn:not(:disabled):hover {
+  background: #E2E8F0;
+  color: #0284C7;
+  transform: translateY(-1px);
+}
 
-@media (max-width: 768px) {
-  .spineBeam {
-    left: 19px;
-  }
-  .verticalStepItem {
-    grid-template-columns: 40px 1fr;
+.sliderIndicators {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.indicatorDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #CBD5E1;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.25s ease;
+}
+
+.indicatorDotActive {
+  width: 24px;
+  border-radius: var(--radius-full);
+  background: #0284C7;
+  box-shadow: 0 0 8px rgba(2, 132, 199, 0.6);
+}
+
+/* ══════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+══════════════════════════════════════════════════ */
+@media (max-width: 1200px) {
+  .cardsStream {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 16px;
     gap: 16px;
+    -webkit-overflow-scrolling: touch;
   }
-  .spineNodeDisk {
-    width: 40px;
-    height: 40px;
+
+  .waveStageCard {
+    min-width: 280px;
+    max-width: 320px;
+    scroll-snap-align: center;
+    flex-shrink: 0;
   }
-  .diskOuterRing {
-    width: 40px;
-    height: 40px;
+
+  .sliderControls {
+    display: flex;
   }
-  .diskInnerCore {
-    width: 26px;
-    height: 26px;
+}
+
+@media (max-width: 900px) {
+  .stepperNav {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    gap: 10px;
+    -webkit-overflow-scrolling: touch;
   }
-  .diskNum {
-    font-size: 10.5px;
+
+  .stepNavBtn {
+    min-width: 200px;
+    flex-shrink: 0;
   }
-  .stepMetaRow {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-  }
-  .titleWrap {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-  }
-  .titleDivider {
+
+  .waveSvgTrack {
     display: none;
   }
-  .stepTitle {
-    font-size: 19px;
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 64px 0 76px;
+  }
+
+  .waveStageCard {
+    min-width: 260px;
+    padding: 20px 16px;
+  }
+
+  .sliderControls {
+    flex-direction: column;
+    gap: 12px;
   }
 }

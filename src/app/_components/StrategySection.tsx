@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import ScrollReveal from '@/components/ScrollReveal';
 import styles from './StrategySection.module.css';
 
@@ -30,7 +30,7 @@ const stages: StrategyStage[] = [
       'Ad Account Teardown'
     ],
     benchmark: '100% Diagnostic Clarity',
-    milestone: 'Forensic Audit & Channel Gap Matrix',
+    milestone: 'Forensic Audit & Gap Matrix',
     color: '#0284C7',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
@@ -51,8 +51,8 @@ const stages: StrategyStage[] = [
       'Server-Side Attribution',
       'CAC:LTV Forecast Engine'
     ],
-    benchmark: '3.5X Capital Efficiency Target',
-    milestone: 'Full-Funnel Financial Blueprint',
+    benchmark: '3.5X Capital Efficiency',
+    milestone: 'Financial Growth Blueprint',
     color: '#6366F1',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
@@ -69,13 +69,13 @@ const stages: StrategyStage[] = [
     desc: 'High-converting UGC video hooks, persuasion copywriting, and interactive landers designed to stop the scroll.',
     timeframe: 'Days 15–21',
     deliverables: [
-      'High-Converting Video Hooks',
+      'High-Converting Hooks',
       'Conversion Landing Pages',
       'Creative Sprint Matrix',
       'Brand Asset Library'
     ],
     benchmark: 'Top 1% Click Velocity',
-    milestone: 'Production Creative Matrix & Landers',
+    milestone: 'Production Creative Matrix',
     color: '#EC4899',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
@@ -89,7 +89,7 @@ const stages: StrategyStage[] = [
     num: '04',
     name: 'Algorithmic Launch',
     tagline: 'Precision Campaign Deployment',
-    desc: 'Omnichannel campaign deployment across Meta, Google, and Programmatic with real-time bid optimization.',
+    desc: 'Omnichannel campaign deployment across Meta, Google, and Programmatic with real-time automated bid optimization.',
     timeframe: 'Days 22–30',
     deliverables: [
       'Server CAPI Tracking',
@@ -97,8 +97,8 @@ const stages: StrategyStage[] = [
       'Automated Bid Rules',
       'Live Telemetry Dashboard'
     ],
-    benchmark: 'Zero Ad Waste',
-    milestone: 'Live Omnichannel Campaign Activation',
+    benchmark: 'Zero Media Waste',
+    milestone: 'Omnichannel Activation',
     color: '#F59E0B',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
@@ -111,7 +111,7 @@ const stages: StrategyStage[] = [
     num: '05',
     name: 'Scale & Compound',
     tagline: 'Compounding Revenue Engine',
-    desc: 'Aggressive scaling on winning creatives, secondary network expansion, and automated retention loops.',
+    desc: 'Aggressive scaling on winning creatives, secondary network expansion, and automated high-retention customer loops.',
     timeframe: 'Month 2+',
     deliverables: [
       'Winning Creative Scaler',
@@ -133,111 +133,241 @@ const stages: StrategyStage[] = [
 ];
 
 export default function StrategySection() {
-  const [activeStep, setActiveStep] = useState<number | null>(null);
+  const [activeStage, setActiveStage] = useState<number>(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const handleStageClick = (idx: number) => {
+    setActiveStage(idx);
+    if (scrollRef.current) {
+      const stageElements = scrollRef.current.querySelectorAll(`.${styles.waveStageCard}`);
+      if (stageElements[idx]) {
+        stageElements[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+    }
+  };
+
+  const handlePrev = () => {
+    handleStageClick(Math.max(0, activeStage - 1));
+  };
+
+  const handleNext = () => {
+    handleStageClick(Math.min(stages.length - 1, activeStage + 1));
+  };
 
   return (
-    <section className={`section ${styles.section}`}>
+    <section className={styles.section} id="growth-framework">
       <div className={styles.bgGlow} />
 
       <div className="container">
+        {/* Section Header */}
         <ScrollReveal className="text-center">
-          <div className="eyebrow">
-            <span className="eyebrow-dot" />
-            Our Growth Framework · Execution Blueprint
+          <div className={styles.headerWrap}>
+            <div className={styles.eyebrowBadge}>
+              <span className={styles.eyebrowDot} />
+              <span>Our Growth Framework · Execution Blueprint</span>
+            </div>
+            <h2 className={styles.title}>
+              From audit to<br />
+              <span className={styles.titleGradient}>compounding market scale.</span>
+            </h2>
+            <p className={styles.subtitle}>
+              A 5-stage execution timeline engineered to scale your brand with mathematical precision.
+            </p>
           </div>
-          <h2 className="display-lg" style={{ marginTop: 14 }}>
-            From audit to<br />
-            <span className="accent-gradient">compounding market scale.</span>
-          </h2>
-          <p className="body-lg" style={{ maxWidth: 520, margin: '12px auto 0' }}>
-            A 5-stage execution timeline engineered to scale your brand with mathematical precision.
-          </p>
         </ScrollReveal>
 
-        {/* Card-Free Vertical Connected Steps Stream */}
-        <div className={styles.verticalStepsStream}>
-          {/* Continuous Vertical Gradient Spine */}
-          <div className={styles.spineBeam} />
+        {/* ══════════════════════════════════════════════════
+            HORIZONTAL WAVE ROADMAP CONTAINER
+           ══════════════════════════════════════════════════ */}
+        <div className={styles.waveRoadmapWrap}>
+          {/* Horizontal Sinusoidal Broken-Dot Wave Track (Desktop SVG) */}
+          <div className={styles.waveSvgTrack}>
+            <svg 
+              className={styles.waveSvg} 
+              viewBox="0 0 1200 120" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="none"
+            >
+              <defs>
+                <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#0284C7" />
+                  <stop offset="25%" stopColor="#6366F1" />
+                  <stop offset="50%" stopColor="#EC4899" />
+                  <stop offset="75%" stopColor="#F59E0B" />
+                  <stop offset="100%" stopColor="#10B981" />
+                </linearGradient>
 
-          {stages.map((stage, idx) => {
-            const isHovered = activeStep === idx;
-            return (
-              <ScrollReveal key={stage.num} delay={idx * 0.06}>
-                <div
-                  className={`${styles.verticalStepItem} ${isHovered ? styles.itemActive : ''}`}
-                  onMouseEnter={() => setActiveStep(idx)}
-                  onMouseLeave={() => setActiveStep(null)}
-                  style={{ '--step-color': stage.color } as React.CSSProperties}
+                <linearGradient id="activeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#0284C7" stopOpacity="0.8" />
+                  <stop offset="100%" stopColor="#10B981" stopOpacity="0.8" />
+                </linearGradient>
+
+                <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="4" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+
+              {/* Underlying Broken Hyphenated Sine Wave */}
+              <path
+                d="M 60,60 C 200,10 260,110 380,60 C 500,10 560,110 680,60 C 800,10 860,110 980,60 C 1060,20 1140,70 1180,60"
+                stroke="rgba(203, 213, 225, 0.7)"
+                strokeWidth="2.5"
+                strokeDasharray="8 8"
+                strokeLinecap="round"
+              />
+
+              {/* Vibrant Colored Glowing Broken-Dot Wave */}
+              <path
+                d="M 60,60 C 200,10 260,110 380,60 C 500,10 560,110 680,60 C 800,10 860,110 980,60 C 1060,20 1140,70 1180,60"
+                stroke="url(#waveGradient)"
+                strokeWidth="3"
+                strokeDasharray="10 8"
+                strokeLinecap="round"
+                className={styles.animatedWavePath}
+                filter="url(#glowEffect)"
+              />
+
+              {/* Vertical Broken Hyphen Drop Connectors for each Node */}
+              <line x1="120" y1="60" x2="120" y2="115" stroke="#0284C7" strokeWidth="2" strokeDasharray="4 4" opacity="0.6" />
+              <line x1="360" y1="60" x2="360" y2="115" stroke="#6366F1" strokeWidth="2" strokeDasharray="4 4" opacity="0.6" />
+              <line x1="600" y1="60" x2="600" y2="115" stroke="#EC4899" strokeWidth="2" strokeDasharray="4 4" opacity="0.6" />
+              <line x1="840" y1="60" x2="840" y2="115" stroke="#F59E0B" strokeWidth="2" strokeDasharray="4 4" opacity="0.6" />
+              <line x1="1080" y1="60" x2="1080" y2="115" stroke="#10B981" strokeWidth="2" strokeDasharray="4 4" opacity="0.6" />
+            </svg>
+          </div>
+
+          {/* Interactive Horizontal Navigation Stepper */}
+          <div className={styles.stepperNav}>
+            {stages.map((st, idx) => {
+              const isSelected = activeStage === idx;
+              return (
+                <button
+                  key={st.num}
+                  type="button"
+                  onClick={() => handleStageClick(idx)}
+                  className={`${styles.stepNavBtn} ${isSelected ? styles.stepNavBtnActive : ''}`}
+                  style={{ '--stage-color': st.color } as React.CSSProperties}
+                  aria-label={`Jump to stage ${st.num}: ${st.name}`}
                 >
-                  {/* Left: 3D Spine Node */}
-                  <div className={styles.spineNodeCol}>
-                    <div className={styles.spineNodeDisk}>
-                      <div className={styles.diskOuterRing} style={{ borderColor: stage.color }}>
-                        <div className={styles.diskInnerCore} style={{ background: stage.color }}>
-                          <span className={styles.diskNum}>{stage.num}</span>
-                        </div>
+                  <div className={styles.stepNodeOuter}>
+                    <div className={styles.stepNodeCore} style={{ background: st.color }}>
+                      <span className={styles.stepNodeNum}>{st.num}</span>
+                    </div>
+                    {isSelected && <span className={styles.nodePulseRing} style={{ borderColor: st.color }} />}
+                  </div>
+                  <div className={styles.stepNavText}>
+                    <span className={styles.navPhase}>Phase {st.num}</span>
+                    <strong className={styles.navName}>{st.name}</strong>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* 5-Column Horizontal Cards Grid / Stream with Smooth Wave Transitions */}
+          <div className={styles.cardsStream} ref={scrollRef}>
+            {stages.map((stage, idx) => {
+              const isFocused = activeStage === idx;
+              return (
+                <div
+                  key={stage.num}
+                  className={`${styles.waveStageCard} ${isFocused ? styles.cardFocused : ''}`}
+                  onMouseEnter={() => setActiveStage(idx)}
+                  style={{ '--stage-color': stage.color } as React.CSSProperties}
+                >
+                  {/* Top Wave Anchor & Phase Badge */}
+                  <div className={styles.cardHeader}>
+                    <div className={styles.stageOrbWrap}>
+                      <div className={styles.stageOrb} style={{ background: stage.color }}>
+                        <span>{stage.num}</span>
                       </div>
-                      <div className={styles.diskPulseRing} style={{ borderColor: `${stage.color}50` }} />
+                      <span className={styles.hyphenConnector} />
+                    </div>
+
+                    <div className={styles.headerMeta}>
+                      <span 
+                        className={styles.phaseBadge}
+                        style={{ color: stage.color, borderColor: `${stage.color}35`, background: `${stage.color}10` }}
+                      >
+                        Phase {stage.num}
+                      </span>
+                      <span className={styles.timeframePill}>⏱ {stage.timeframe}</span>
                     </div>
                   </div>
 
-                  {/* Right: Crisp, Card-Free Step Content */}
-                  <div className={styles.stepContentStream}>
-                    {/* Header Row: Meta Badges */}
-                    <div className={styles.stepMetaRow}>
-                      <div className={styles.metaBadges}>
-                        <span 
-                          className={styles.phaseTag}
-                          style={{ color: stage.color, background: `${stage.color}12`, borderColor: `${stage.color}30` }}
-                        >
-                          Phase {stage.num}
-                        </span>
-                        <span className={styles.timeTag}>
-                          ⏱ {stage.timeframe}
-                        </span>
+                  {/* Stage Name & Tagline */}
+                  <div className={styles.cardBody}>
+                    <h3 className={styles.stageName}>{stage.name}</h3>
+                    <p className={styles.stageTagline} style={{ color: stage.color }}>
+                      {stage.tagline}
+                    </p>
+                    <p className={styles.stageDesc}>{stage.desc}</p>
+                  </div>
+
+                  {/* Deliverables Checklist Chips */}
+                  <div className={styles.deliverablesList}>
+                    <span className={styles.delHeader}>Core Deliverables:</span>
+                    {stage.deliverables.map((item) => (
+                      <div key={item} className={styles.delItem}>
+                        <span className={styles.checkIcon} style={{ color: stage.color }}>✓</span>
+                        <span className={styles.delText}>{item}</span>
                       </div>
+                    ))}
+                  </div>
 
-                      <div className={styles.benchmarkTag} style={{ color: stage.color }}>
-                        <span className={styles.benchmarkDot} style={{ background: stage.color }} />
-                        <span>{stage.benchmark}</span>
-                      </div>
+                  {/* Milestone & Benchmark Footer */}
+                  <div className={styles.cardFooter}>
+                    <div className={styles.benchmarkRow}>
+                      <span className={styles.benchmarkDot} style={{ background: stage.color }} />
+                      <span className={styles.benchmarkText}>{stage.benchmark}</span>
                     </div>
 
-                    {/* Step Title & Tagline */}
-                    <div className={styles.titleWrap}>
-                      <h3 className={styles.stepTitle}>{stage.name}</h3>
-                      <span className={styles.titleDivider}>—</span>
-                      <p className={styles.stepTagline} style={{ color: stage.color }}>{stage.tagline}</p>
+                    <div className={styles.milestonePill}>
+                      <span className={styles.milestoneTag}>Milestone</span>
+                      <span className={styles.milestoneVal}>{stage.milestone}</span>
                     </div>
-
-                    {/* Concise Editorial Narrative */}
-                    <p className={styles.stepDesc}>{stage.desc}</p>
-
-                    {/* Deliverables Stream Chips */}
-                    <div className={styles.delRow}>
-                      {stage.deliverables.map((item) => (
-                        <div key={item} className={styles.delChip}>
-                          <span className={styles.chipCheck} style={{ color: stage.color }}>✓</span>
-                          <span>{item}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Milestone Highlight */}
-                    <div className={styles.milestoneStream}>
-                      <span className={styles.milestoneBadge} style={{ color: stage.color, borderColor: `${stage.color}35` }}>
-                        Milestone
-                      </span>
-                      <span className={styles.milestoneText}>{stage.milestone}</span>
-                    </div>
-
-                    {/* Step Hairline Divider (except last) */}
-                    {idx < stages.length - 1 && <div className={styles.stepDivider} />}
                   </div>
                 </div>
-              </ScrollReveal>
-            );
-          })}
+              );
+            })}
+          </div>
+
+          {/* Mobile & Tablet Slider Controls */}
+          <div className={styles.sliderControls}>
+            <button
+              type="button"
+              onClick={handlePrev}
+              disabled={activeStage === 0}
+              className={styles.sliderArrowBtn}
+              aria-label="Previous Stage"
+            >
+              ← Previous Phase
+            </button>
+
+            <div className={styles.sliderIndicators}>
+              {stages.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => handleStageClick(i)}
+                  className={`${styles.indicatorDot} ${activeStage === i ? styles.indicatorDotActive : ''}`}
+                  aria-label={`Slide to stage ${i + 1}`}
+                />
+              ))}
+            </div>
+
+            <button
+              type="button"
+              onClick={handleNext}
+              disabled={activeStage === stages.length - 1}
+              className={styles.sliderArrowBtn}
+              aria-label="Next Stage"
+            >
+              Next Phase →
+            </button>
+          </div>
         </div>
       </div>
     </section>
