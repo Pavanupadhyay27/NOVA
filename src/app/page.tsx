@@ -7,6 +7,7 @@ import StrategySection from './_components/StrategySection';
 import FeaturedWork from './_components/FeaturedWork';
 import QuotesSection from './_components/QuotesSection';
 import TeamPreview from './_components/TeamPreview';
+import WhyChooseSection from './_components/WhyChooseSection';
 import FAQSection from './_components/FAQSection';
 import CTASection from './_components/CTASection';
 
@@ -26,6 +27,7 @@ export default function HomePage() {
       <FeaturedWork />
       <QuotesSection />
       <TeamPreview />
+      <WhyChooseSection />
       <FAQSection />
       <CTASection />
     </>
