@@ -1,72 +1,106 @@
 .section {
   position: relative;
-  padding: 64px 0 76px;
-  background: #FFFFFF;
-  border-top: 1px solid #F1F5F9;
-  border-bottom: 1px solid #F1F5F9;
+  padding: 84px 0 96px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 50%, #FFFFFF 100%);
+  border-top: 1px solid rgba(226, 232, 240, 0.9);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+  overflow: hidden;
 }
 
 /* ══════════════════════════════════════════════════
-   MINIMALIST SECTION HEADER
+   AMBIENT DEPTH LIGHTING
 ══════════════════════════════════════════════════ */
-.header {
-  margin-bottom: 40px;
+.ambientGlowLeft {
+  position: absolute;
+  top: 18%;
+  left: -8%;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.09) 0%, rgba(99, 102, 241, 0.03) 50%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
 }
 
-.badge {
+.ambientGlowRight {
+  position: absolute;
+  bottom: 10%;
+  right: -8%;
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(2, 132, 199, 0.04) 50%, transparent 70%);
+  filter: blur(85px);
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════════════════
+   SKEUOMORPHIC SECTION HEADER
+══════════════════════════════════════════════════ */
+.header {
+  margin-bottom: 48px;
+}
+
+.eyebrowBadge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 5px 14px;
-  border-radius: 9999px;
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
-  font-family: var(--font-display);
-  font-size: 12px;
-  font-weight: 700;
-  color: #334155;
-  margin-bottom: 16px;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+  padding: 7px 18px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
+  border: 1px solid rgba(2, 132, 199, 0.25);
+  box-shadow: inset 0 1.5px 0 #FFFFFF,
+              0 2px 8px rgba(2, 132, 199, 0.08),
+              0 1px 2px rgba(15, 23, 42, 0.04);
+  margin-bottom: 18px;
 }
 
 .pulseDot {
-  width: 7px;
-  height: 7px;
+  width: 7.5px;
+  height: 7.5px;
   border-radius: 50%;
   background: #10B981;
-  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
-  animation: pulseDot 2.4s infinite cubic-bezier(0.66, 0, 0, 1);
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulseDotGreen 2.2s infinite cubic-bezier(0.66, 0, 0, 1);
 }
 
-@keyframes pulseDot {
-  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
-  70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+@keyframes pulseDotGreen {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { box-shadow: 0 0 0 7px rgba(16, 185, 129, 0); }
   100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.eyebrowText {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #0284C7;
 }
 
 .title {
   font-family: var(--font-display);
-  font-size: clamp(30px, 3.8vw, 44px);
+  font-size: clamp(32px, 4vw, 48px);
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.12;
   letter-spacing: -0.03em;
   color: #0F172A;
 }
 
-.cleanGradient {
-  background: linear-gradient(135deg, #0284C7 0%, #4F46E5 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.titleAccent {
+  background: linear-gradient(135deg, #0284C7 0%, #4F46E5 50%, #6366F1 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
   display: inline-block;
+  letter-spacing: -0.03em;
 }
 
 .subtitle {
-  font-size: 16px;
-  color: #64748B;
-  margin-top: 10px;
-  max-width: 600px;
-  line-height: 1.6;
+  font-size: 16.5px;
+  color: #475569;
+  margin-top: 14px;
+  max-width: 660px;
+  line-height: 1.65;
 }
 
 /* ══════════════════════════════════════════════════
@@ -74,60 +108,95 @@
 ══════════════════════════════════════════════════ */
 .grid {
   display: grid;
-  grid-template-columns: 1.05fr 1fr;
+  grid-template-columns: 1.06fr 1fr;
   gap: 32px;
   align-items: stretch;
 }
 
 /* ══════════════════════════════════════════════════
-   LEFT PANEL: Channels Card
+   LEFT PANEL: Tactile Skeuomorphic Card
 ══════════════════════════════════════════════════ */
-.card {
+.skeuoCard {
   height: 100%;
   display: flex;
   flex-direction: column;
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-radius: 20px;
-  padding: 26px 28px;
-  box-shadow: 0 8px 30px -6px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02);
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  background: linear-gradient(175deg, #FFFFFF 0%, #FAFCFE 50%, #F1F5F9 100%);
+  border: 1px solid rgba(218, 226, 237, 0.95);
+  border-radius: var(--radius-2xl);
+  padding: 30px 32px;
+  box-shadow: 
+    inset 0 2.5px 0 #FFFFFF,
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -2px 3px rgba(15, 23, 42, 0.04),
+    inset 1px 0 0 rgba(255, 255, 255, 0.8),
+    inset -1px 0 0 rgba(255, 255, 255, 0.8),
+    0 16px 40px -8px rgba(15, 23, 42, 0.08),
+    0 2px 6px rgba(15, 23, 42, 0.03);
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.card:hover {
-  border-color: #CBD5E1;
-  box-shadow: 0 12px 36px -6px rgba(15, 23, 42, 0.07);
+.skeuoCard:hover {
+  transform: translateY(-5px);
+  border-color: rgba(2, 132, 199, 0.4);
+  box-shadow: 
+    inset 0 2.5px 0 #FFFFFF,
+    inset 0 1px 1px rgba(255, 255, 255, 1),
+    inset 0 -1.5px 3px rgba(15, 23, 42, 0.03),
+    0 32px 64px -10px rgba(15, 23, 42, 0.14),
+    0 0 0 1.5px rgba(2, 132, 199, 0.25);
 }
 
-.cardTop {
+/* Card Header */
+.cardHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 16px;
-  margin-bottom: 6px;
-  border-bottom: 1px solid #F1F5F9;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  margin-bottom: 8px;
 }
 
-.cardHeading {
+.channelBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   font-family: var(--font-display);
-  font-size: 13.5px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 800;
   color: #0F172A;
   letter-spacing: -0.01em;
 }
 
-.slaTag {
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 700;
+.sparkle {
   color: #0284C7;
-  background: #F0F9FF;
-  border: 1px solid #BAE6FD;
-  padding: 3px 9px;
-  border-radius: 9999px;
+  font-size: 14px;
 }
 
-.rows {
+.slaBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #0284C7;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F0F9FF 100%);
+  border: 1px solid #BAE6FD;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 1px 3px rgba(2, 132, 199, 0.08);
+}
+
+.slaDot {
+  width: 5.5px;
+  height: 5.5px;
+  border-radius: 50%;
+  background: #0284C7;
+}
+
+/* Rows List */
+.rowsList {
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -136,9 +205,9 @@
 .rowItem {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 14px 0;
-  border-bottom: 1px solid #F8FAFC;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
   transition: all 0.2s ease;
 }
 
@@ -146,75 +215,86 @@
   border-bottom: none;
 }
 
+/* Embossed 3D Icon Boxes */
 .iconBox {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  box-shadow: inset 0 2px 0 #FFFFFF,
+              inset 0 -1.5px 2px rgba(15, 23, 42, 0.06),
+              0 4px 10px rgba(15, 23, 42, 0.05),
+              0 1px 2px rgba(15, 23, 42, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.phoneIcon {
-  background: #F0F9FF;
+.iconPhone {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F0F9FF 100%);
   color: #0284C7;
+  border-color: #BAE6FD;
 }
 
-.whatsappIcon {
-  background: #ECFDF5;
+.iconWhatsApp {
+  background: linear-gradient(180deg, #FFFFFF 0%, #ECFDF5 100%);
   color: #10B981;
+  border-color: #A7F3D0;
 }
 
-.emailIcon {
-  background: #EEF2FF;
+.iconEmail {
+  background: linear-gradient(180deg, #FFFFFF 0%, #EEF2FF 100%);
   color: #4F46E5;
+  border-color: #C7D2FE;
 }
 
-.locationIcon {
-  background: #FFFBEB;
+.iconLocation {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFBEB 100%);
   color: #D97706;
+  border-color: #FDE68A;
 }
 
-.rowMain {
+/* Row Details */
+.rowDetails {
   flex: 1;
   min-width: 0;
 }
 
-.rowLabelGroup {
+.rowLabelRow {
   display: flex;
   align-items: center;
   gap: 8px;
   margin-bottom: 2px;
 }
 
-.rowLabel {
+.rowTag {
   font-family: var(--font-display);
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 700;
   color: #64748B;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
 }
 
-.rowMeta {
+.rowTiming {
   font-size: 11.5px;
   color: #94A3B8;
 }
 
-.fastTag {
+.replyChip {
   font-family: var(--font-display);
   font-size: 10.5px;
   font-weight: 700;
   color: #065F46;
   background: #D1FAE5;
-  padding: 1px 7px;
-  border-radius: 9999px;
+  padding: 1.5px 8px;
+  border-radius: var(--radius-full);
 }
 
-.rowValue {
+.rowPrimaryVal {
   font-family: var(--font-display);
-  font-size: 14.5px;
+  font-size: 15px;
   font-weight: 700;
   color: #0F172A;
   display: block;
@@ -224,328 +304,431 @@
   transition: color 0.15s ease;
 }
 
-.rowValue:hover {
+.rowPrimaryVal:hover {
   color: #0284C7;
 }
 
+.rowWhatsApp .rowPrimaryVal:hover {
+  color: #10B981;
+}
+
 .rowAddress {
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 500;
   color: #334155;
   line-height: 1.4;
   margin-top: 1px;
 }
 
+/* ══════════════════════════════════════════════════
+   PERFECTLY ALIGNED FIXED-WIDTH ACTION COLUMN
+══════════════════════════════════════════════════ */
 .rowActions {
+  width: 140px;
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: flex-end;
+  gap: 8px;
   flex-shrink: 0;
 }
 
-/* Minimalist Button Pills */
-.btnPillPrimary {
+/* Tactile Skeuomorphic Main Button (Fixed Width for 100% Alignment) */
+.btnTactile {
+  width: 96px;
+  height: 35px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 6px 13px;
-  border-radius: 9999px;
+  gap: 5px;
+  border-radius: var(--radius-full);
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 700;
-  background: #0284C7;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.btnBlue {
+  background: linear-gradient(180deg, #0284C7 0%, #0369A1 100%);
   color: #FFFFFF;
   border: 1px solid #0284C7;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: pointer;
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.45),
+              inset 0 -2px 0 rgba(0, 0, 0, 0.22),
+              0 3px 10px rgba(2, 132, 199, 0.3);
 }
 
-.btnPillPrimary:hover {
-  background: #0369A1;
-  transform: translateY(-1px);
+.btnBlue:hover {
+  background: linear-gradient(180deg, #0369A1 0%, #075985 100%);
+  transform: translateY(-1.5px);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.6),
+              inset 0 -2px 0 rgba(0, 0, 0, 0.28),
+              0 6px 16px rgba(2, 132, 199, 0.4);
 }
 
-.btnPillWhatsApp {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px 13px;
-  border-radius: 9999px;
-  font-family: var(--font-display);
-  font-size: 12px;
-  font-weight: 700;
-  background: #10B981;
+.btnBlue:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(2, 132, 199, 0.2);
+}
+
+.btnGreen {
+  background: linear-gradient(180deg, #10B981 0%, #059669 100%);
   color: #FFFFFF;
   border: 1px solid #10B981;
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.45),
+              inset 0 -2px 0 rgba(0, 0, 0, 0.22),
+              0 3px 10px rgba(16, 185, 129, 0.3);
+}
+
+.btnGreen:hover {
+  background: linear-gradient(180deg, #059669 0%, #047857 100%);
+  transform: translateY(-1.5px);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.6),
+              inset 0 -2px 0 rgba(0, 0, 0, 0.28),
+              0 6px 16px rgba(16, 185, 129, 0.4);
+}
+
+.btnGreen:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(16, 185, 129, 0.2);
+}
+
+.btnAmber {
+  background: linear-gradient(180deg, #F59E0B 0%, #D97706 100%);
+  color: #FFFFFF;
+  border: 1px solid #D97706;
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.45),
+              inset 0 -2px 0 rgba(0, 0, 0, 0.22),
+              0 3px 10px rgba(217, 119, 6, 0.28);
+}
+
+.btnAmber:hover {
+  background: linear-gradient(180deg, #D97706 0%, #B45309 100%);
+  transform: translateY(-1.5px);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.6),
+              inset 0 -2px 0 rgba(0, 0, 0, 0.28),
+              0 6px 16px rgba(217, 119, 6, 0.38);
+}
+
+.btnAmber:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(217, 119, 6, 0.2);
+}
+
+/* Tactile Skeuomorphic Copy Icon Button (Fixed 35px Square) */
+.btnTactileIcon {
+  width: 35px;
+  height: 35px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
+  border: 1px solid rgba(203, 213, 225, 0.95);
+  color: #475569;
+  box-shadow: inset 0 1.5px 0 #FFFFFF,
+              inset 0 -1.5px 0 rgba(15, 23, 42, 0.06),
+              0 2px 6px rgba(15, 23, 42, 0.05);
+  cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: pointer;
+  flex-shrink: 0;
 }
 
-.btnPillWhatsApp:hover {
-  background: #059669;
+.btnTactileIcon:hover {
+  background: linear-gradient(180deg, #F8FAFC 0%, #E2E8F0 100%);
+  border-color: #94A3B8;
+  color: #0284C7;
   transform: translateY(-1px);
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 4px 10px rgba(15, 23, 42, 0.08);
 }
 
-.btnPillGhost {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px 12px;
-  border-radius: 9999px;
-  font-family: var(--font-display);
-  font-size: 12px;
-  font-weight: 700;
-  background: #F8FAFC;
-  color: #334155;
-  border: 1px solid #E2E8F0;
-  transition: all 0.2s ease;
-  cursor: pointer;
+.btnTactileIcon:active {
+  background: #E2E8F0;
+  box-shadow: inset 0 2px 4px rgba(15, 23, 42, 0.12);
+  transform: translateY(1px);
 }
 
-.btnPillGhost:hover {
-  background: #F1F5F9;
-  color: #0F172A;
-  border-color: #CBD5E1;
+.copiedActive {
+  background: #ECFDF5 !important;
+  border-color: #10B981 !important;
+  color: #059669 !important;
 }
 
-.btnIconCopy {
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
-  color: #64748B;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.btnIconCopy:hover {
-  background: #F1F5F9;
-  color: #0F172A;
-  border-color: #CBD5E1;
-}
-
-.copiedText {
-  font-size: 11px;
+.copiedBadge {
+  font-size: 13px;
   font-weight: 800;
   color: #059669;
-  padding: 0 4px;
 }
 
+/* Card Footer */
 .cardFooter {
-  margin-top: 14px;
-  padding-top: 14px;
-  border-top: 1px solid #F1F5F9;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 12px;
 }
 
-.footerNote {
+.footerInfo {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 12px;
+  gap: 7px;
+  font-size: 12.5px;
   color: #64748B;
+  font-weight: 500;
 }
 
-.bulletDot {
-  width: 5px;
-  height: 5px;
+.footerDot {
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: #0284C7;
+  flex-shrink: 0;
 }
 
-.footerLink {
+.footerActionBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-family: var(--font-display);
-  font-size: 12.5px;
+  font-size: 13px;
   font-weight: 700;
   color: #0284C7;
-  transition: color 0.15s ease;
+  transition: gap 0.2s ease, color 0.2s ease;
 }
 
-.footerLink:hover {
+.footerActionBtn:hover {
+  gap: 9px;
   color: #0369A1;
-  text-decoration: underline;
+}
+
+.arrowIcon {
+  font-size: 14px;
 }
 
 /* ══════════════════════════════════════════════════
-   RIGHT PANEL: Map Card
+   RIGHT PANEL: Tactile Skeuomorphic Map Showcase
 ══════════════════════════════════════════════════ */
-.mapCard {
+.skeuoMapCard {
   height: 100%;
-  min-height: 440px;
+  min-height: 480px;
   display: flex;
   flex-direction: column;
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-radius: 20px;
+  background: linear-gradient(175deg, #FFFFFF 0%, #FAFCFE 50%, #F1F5F9 100%);
+  border: 1px solid rgba(218, 226, 237, 0.95);
+  border-radius: var(--radius-2xl);
   overflow: hidden;
-  box-shadow: 0 8px 30px -6px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02);
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 
+    inset 0 2.5px 0 #FFFFFF,
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -2px 3px rgba(15, 23, 42, 0.04),
+    inset 1px 0 0 rgba(255, 255, 255, 0.8),
+    inset -1px 0 0 rgba(255, 255, 255, 0.8),
+    0 16px 40px -8px rgba(15, 23, 42, 0.08),
+    0 2px 6px rgba(15, 23, 42, 0.03);
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.mapCard:hover {
-  border-color: #CBD5E1;
-  box-shadow: 0 12px 36px -6px rgba(15, 23, 42, 0.07);
+.skeuoMapCard:hover {
+  transform: translateY(-5px);
+  border-color: rgba(2, 132, 199, 0.4);
+  box-shadow: 
+    inset 0 2.5px 0 #FFFFFF,
+    inset 0 1px 1px rgba(255, 255, 255, 1),
+    inset 0 -1.5px 3px rgba(15, 23, 42, 0.03),
+    0 32px 64px -10px rgba(15, 23, 42, 0.14),
+    0 0 0 1.5px rgba(2, 132, 199, 0.25);
 }
 
-.mapHeader {
+/* Map Top Bar */
+.mapTopBar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 20px;
-  background: #FFFFFF;
-  border-bottom: 1px solid #F1F5F9;
+  padding: 16px 22px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
   z-index: 2;
 }
 
-.mapMeta {
+.mapLocationInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mapPinEmboss {
+  font-size: 20px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.12));
+}
+
+.mapTextWrap {
   display: flex;
   flex-direction: column;
 }
 
 .mapTitle {
   font-family: var(--font-display);
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 800;
   color: #0F172A;
   line-height: 1.2;
 }
 
-.mapSub {
+.mapSubtitle {
   font-size: 11.5px;
   color: #64748B;
   margin-top: 1px;
 }
 
-.mapHeaderBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 6px 13px;
-  border-radius: 9999px;
-  background: #0284C7;
-  color: #FFFFFF;
-  font-family: var(--font-display);
-  font-size: 11.5px;
-  font-weight: 700;
-  border: 1px solid #0284C7;
-  transition: all 0.2s ease;
+.mapTopBtn {
+  width: auto;
+  padding: 0 16px;
+  height: 35px;
 }
 
-.mapHeaderBtn:hover {
-  background: #0369A1;
-  transform: translateY(-1px);
+.arrowDiagonal {
+  font-size: 13px;
+  transition: transform 0.2s ease;
 }
 
-.mapFrameWrapper {
+.mapTopBtn:hover .arrowDiagonal {
+  transform: translate(2px, -2px);
+}
+
+/* Map Viewport */
+.mapViewport {
   position: relative;
   flex: 1;
   width: 100%;
-  min-height: 360px;
-  background: #F8FAFC;
+  min-height: 400px;
+  background: #E2E8F0;
 }
 
-.iframe {
+.mapIframe {
   width: 100%;
   height: 100%;
   border: 0;
   display: block;
 }
 
-.floatingPill {
+/* Floating Skeuomorphic Overlay Badge */
+.mapFloatingBadge {
   position: absolute;
-  bottom: 14px;
-  left: 14px;
-  right: 14px;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: 10px;
   background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(226, 232, 240, 0.9);
-  padding: 8px 14px;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  padding: 10px 16px;
+  border-radius: var(--radius-lg);
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 8px 24px rgba(15, 23, 42, 0.12);
+  z-index: 3;
 }
 
-.floatingDot {
-  width: 6px;
-  height: 6px;
+.floatingBadgeLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.floatingPulseDot {
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: #10B981;
+  box-shadow: 0 0 6px #10B981;
   flex-shrink: 0;
 }
 
-.floatingText {
-  font-size: 12px;
-  font-weight: 600;
-  color: #334155;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.floatingTitle {
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #0F172A;
 }
 
-.floatingAction {
+.floatingSep {
+  color: #CBD5E1;
+  font-size: 11px;
+}
+
+.floatingParking {
+  font-size: 12px;
+  font-weight: 600;
+  color: #059669;
+}
+
+.floatingMapLink {
   font-family: var(--font-display);
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 700;
   color: #0284C7;
   flex-shrink: 0;
+  transition: color 0.15s ease;
 }
 
-.floatingAction:hover {
+.floatingMapLink:hover {
+  color: #0369A1;
   text-decoration: underline;
 }
 
 /* ══════════════════════════════════════════════════
    RESPONSIVE BREAKPOINTS
 ══════════════════════════════════════════════════ */
-@media (max-width: 1024px) {
+@media (max-width: 1080px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 32px;
   }
 
-  .mapCard {
-    min-height: 380px;
+  .skeuoMapCard {
+    min-height: 420px;
   }
 
-  .mapFrameWrapper {
-    min-height: 320px;
+  .mapViewport {
+    min-height: 350px;
   }
 }
 
 @media (max-width: 640px) {
   .section {
-    padding: 48px 0 60px;
+    padding: 60px 0 76px;
   }
 
-  .card {
-    padding: 20px 16px;
+  .skeuoCard {
+    padding: 24px 18px;
   }
 
   .rowItem {
-    flex-wrap: wrap;
-    gap: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 
   .rowActions {
     width: 100%;
-    justify-content: flex-end;
+    justify-content: flex-start;
   }
 
-  .floatingPill {
-    left: 8px;
-    right: 8px;
-    bottom: 8px;
+  .mapFloatingBadge {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    padding: 8px 12px;
   }
 }
