@@ -1,5 +1,5 @@
 'use client';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import ScrollReveal from '@/components/ScrollReveal';
 import styles from './StrategySection.module.css';
 
@@ -133,29 +133,11 @@ const stages: StrategyStage[] = [
 ];
 
 export default function StrategySection() {
-  const [activeStage, setActiveStage] = useState<number>(0);
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const handleStageClick = (idx: number) => {
-    setActiveStage(idx);
-    if (scrollRef.current) {
-      const stageElements = scrollRef.current.querySelectorAll(`.${styles.waveStageCard}`);
-      if (stageElements[idx]) {
-        stageElements[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      }
-    }
-  };
-
-  const handlePrev = () => {
-    handleStageClick(Math.max(0, activeStage - 1));
-  };
-
-  const handleNext = () => {
-    handleStageClick(Math.min(stages.length - 1, activeStage + 1));
-  };
+  const [activeIdx, setActiveIdx] = useState<number | null>(null);
 
   return (
     <section className={styles.section} id="growth-framework">
+      {/* Background ambient lighting */}
       <div className={styles.bgGlow} />
 
       <div className="container">
@@ -177,20 +159,20 @@ export default function StrategySection() {
         </ScrollReveal>
 
         {/* ══════════════════════════════════════════════════
-            HORIZONTAL WAVE ROADMAP CONTAINER
+            HORIZONTAL UNDULATING WAVE & ALTERNATING NODES
            ══════════════════════════════════════════════════ */}
-        <div className={styles.waveRoadmapWrap}>
-          {/* Horizontal Sinusoidal Broken-Dot Wave Track (Desktop SVG) */}
+        <div className={styles.waveContainer}>
+          {/* Continuous Sinusoidal Broken-Dot Wave (SVG Track) */}
           <div className={styles.waveSvgTrack}>
-            <svg 
-              className={styles.waveSvg} 
-              viewBox="0 0 1200 120" 
-              fill="none" 
+            <svg
+              className={styles.waveSvg}
+              viewBox="0 0 1200 200"
+              fill="none"
               xmlns="http://www.w3.org/2000/svg"
               preserveAspectRatio="none"
             >
               <defs>
-                <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <linearGradient id="waveGradientFull" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="#0284C7" />
                   <stop offset="25%" stopColor="#6366F1" />
                   <stop offset="50%" stopColor="#EC4899" />
@@ -198,175 +180,159 @@ export default function StrategySection() {
                   <stop offset="100%" stopColor="#10B981" />
                 </linearGradient>
 
-                <linearGradient id="activeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#0284C7" stopOpacity="0.8" />
-                  <stop offset="100%" stopColor="#10B981" stopOpacity="0.8" />
-                </linearGradient>
-
-                <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="4" result="blur" />
+                <filter id="waveGlow" x="-10%" y="-30%" width="120%" height="160%">
+                  <feGaussianBlur stdDeviation="3.5" result="blur" />
                   <feComposite in="SourceGraphic" in2="blur" operator="over" />
                 </filter>
               </defs>
 
-              {/* Underlying Broken Hyphenated Sine Wave */}
+              {/* Underlying Base Broken-Hyphen Wave */}
               <path
-                d="M 60,60 C 200,10 260,110 380,60 C 500,10 560,110 680,60 C 800,10 860,110 980,60 C 1060,20 1140,70 1180,60"
-                stroke="rgba(203, 213, 225, 0.7)"
+                d="M 30,100 C 120,20 180,20 240,100 C 300,180 420,180 480,100 C 540,20 660,20 720,100 C 780,180 900,180 960,100 C 1020,20 1110,20 1170,100"
+                stroke="rgba(203, 213, 225, 0.6)"
                 strokeWidth="2.5"
                 strokeDasharray="8 8"
                 strokeLinecap="round"
               />
 
-              {/* Vibrant Colored Glowing Broken-Dot Wave */}
+              {/* Glowing Colored Broken Hyphen Wave */}
               <path
-                d="M 60,60 C 200,10 260,110 380,60 C 500,10 560,110 680,60 C 800,10 860,110 980,60 C 1060,20 1140,70 1180,60"
-                stroke="url(#waveGradient)"
-                strokeWidth="3"
+                d="M 30,100 C 120,20 180,20 240,100 C 300,180 420,180 480,100 C 540,20 660,20 720,100 C 780,180 900,180 960,100 C 1020,20 1110,20 1170,100"
+                stroke="url(#waveGradientFull)"
+                strokeWidth="3.5"
                 strokeDasharray="10 8"
                 strokeLinecap="round"
-                className={styles.animatedWavePath}
-                filter="url(#glowEffect)"
+                className={styles.animatedWave}
+                filter="url(#waveGlow)"
               />
-
-              {/* Vertical Broken Hyphen Drop Connectors for each Node */}
-              <line x1="120" y1="60" x2="120" y2="115" stroke="#0284C7" strokeWidth="2" strokeDasharray="4 4" opacity="0.6" />
-              <line x1="360" y1="60" x2="360" y2="115" stroke="#6366F1" strokeWidth="2" strokeDasharray="4 4" opacity="0.6" />
-              <line x1="600" y1="60" x2="600" y2="115" stroke="#EC4899" strokeWidth="2" strokeDasharray="4 4" opacity="0.6" />
-              <line x1="840" y1="60" x2="840" y2="115" stroke="#F59E0B" strokeWidth="2" strokeDasharray="4 4" opacity="0.6" />
-              <line x1="1080" y1="60" x2="1080" y2="115" stroke="#10B981" strokeWidth="2" strokeDasharray="4 4" opacity="0.6" />
             </svg>
           </div>
 
-          {/* Interactive Horizontal Navigation Stepper */}
-          <div className={styles.stepperNav}>
-            {stages.map((st, idx) => {
-              const isSelected = activeStage === idx;
-              return (
-                <button
-                  key={st.num}
-                  type="button"
-                  onClick={() => handleStageClick(idx)}
-                  className={`${styles.stepNavBtn} ${isSelected ? styles.stepNavBtnActive : ''}`}
-                  style={{ '--stage-color': st.color } as React.CSSProperties}
-                  aria-label={`Jump to stage ${st.num}: ${st.name}`}
-                >
-                  <div className={styles.stepNodeOuter}>
-                    <div className={styles.stepNodeCore} style={{ background: st.color }}>
-                      <span className={styles.stepNodeNum}>{st.num}</span>
-                    </div>
-                    {isSelected && <span className={styles.nodePulseRing} style={{ borderColor: st.color }} />}
-                  </div>
-                  <div className={styles.stepNavText}>
-                    <span className={styles.navPhase}>Phase {st.num}</span>
-                    <strong className={styles.navName}>{st.name}</strong>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* 5-Column Horizontal Cards Grid / Stream with Smooth Wave Transitions */}
-          <div className={styles.cardsStream} ref={scrollRef}>
+          {/* 5-Column Alternating Layout (Top -> Node -> Bottom) */}
+          <div className={styles.waveGrid}>
             {stages.map((stage, idx) => {
-              const isFocused = activeStage === idx;
+              const isAbove = idx % 2 === 0; // 0 (above), 1 (below), 2 (above), 3 (below), 4 (above)
+              const isHovered = activeIdx === idx;
+
               return (
                 <div
                   key={stage.num}
-                  className={`${styles.waveStageCard} ${isFocused ? styles.cardFocused : ''}`}
-                  onMouseEnter={() => setActiveStage(idx)}
+                  className={`${styles.waveColumn} ${isAbove ? styles.posAbove : styles.posBelow} ${isHovered ? styles.colActive : ''}`}
+                  onMouseEnter={() => setActiveIdx(idx)}
+                  onMouseLeave={() => setActiveIdx(null)}
                   style={{ '--stage-color': stage.color } as React.CSSProperties}
                 >
-                  {/* Top Wave Anchor & Phase Badge */}
-                  <div className={styles.cardHeader}>
-                    <div className={styles.stageOrbWrap}>
-                      <div className={styles.stageOrb} style={{ background: stage.color }}>
-                        <span>{stage.num}</span>
-                      </div>
-                      <span className={styles.hyphenConnector} />
-                    </div>
+                  {/* TOP ZONE (Rendered if step is ABOVE) */}
+                  <div className={styles.contentZoneTop}>
+                    {isAbove && (
+                      <div className={styles.stepContentWrap}>
+                        {/* Meta Row: Phase & Timeframe */}
+                        <div className={styles.metaRow}>
+                          <span 
+                            className={styles.phasePill}
+                            style={{ color: stage.color, borderColor: `${stage.color}40`, background: `${stage.color}10` }}
+                          >
+                            Phase {stage.num}
+                          </span>
+                          <span className={styles.timeframePill}>⏱ {stage.timeframe}</span>
+                        </div>
 
-                    <div className={styles.headerMeta}>
-                      <span 
-                        className={styles.phaseBadge}
-                        style={{ color: stage.color, borderColor: `${stage.color}35`, background: `${stage.color}10` }}
+                        {/* Title & Tagline */}
+                        <h3 className={styles.stepTitle}>{stage.name}</h3>
+                        <p className={styles.stepTagline} style={{ color: stage.color }}>
+                          {stage.tagline}
+                        </p>
+                        <p className={styles.stepDesc}>{stage.desc}</p>
+
+                        {/* Deliverables Checklist Chips */}
+                        <div className={styles.deliverablesList}>
+                          {stage.deliverables.slice(0, 3).map((item) => (
+                            <div key={item} className={styles.delChip}>
+                              <span className={styles.checkIcon} style={{ color: stage.color }}>✓</span>
+                              <span className={styles.delText}>{item}</span>
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Benchmark Badge */}
+                        <div className={styles.benchmarkBadge}>
+                          <span className={styles.benchmarkDot} style={{ background: stage.color }} />
+                          <span>{stage.benchmark}</span>
+                        </div>
+
+                        {/* Vertical Broken Hyphen Drop Connector leading to Circular Node */}
+                        <div className={`${styles.verticalConnector} ${styles.connectorDown}`} />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* MIDDLE ZONE: Circular 3D Node Sitting ON the Wave */}
+                  <div className={styles.nodeCenterZone}>
+                    <div 
+                      className={styles.circularNode}
+                      style={{ borderColor: isHovered ? stage.color : 'rgba(218, 226, 237, 0.95)' }}
+                    >
+                      {/* Outer Ring & Pulse Effect */}
+                      <div 
+                        className={styles.nodeCore}
+                        style={{ background: stage.color }}
                       >
-                        Phase {stage.num}
-                      </span>
-                      <span className={styles.timeframePill}>⏱ {stage.timeframe}</span>
-                    </div>
-                  </div>
-
-                  {/* Stage Name & Tagline */}
-                  <div className={styles.cardBody}>
-                    <h3 className={styles.stageName}>{stage.name}</h3>
-                    <p className={styles.stageTagline} style={{ color: stage.color }}>
-                      {stage.tagline}
-                    </p>
-                    <p className={styles.stageDesc}>{stage.desc}</p>
-                  </div>
-
-                  {/* Deliverables Checklist Chips */}
-                  <div className={styles.deliverablesList}>
-                    <span className={styles.delHeader}>Core Deliverables:</span>
-                    {stage.deliverables.map((item) => (
-                      <div key={item} className={styles.delItem}>
-                        <span className={styles.checkIcon} style={{ color: stage.color }}>✓</span>
-                        <span className={styles.delText}>{item}</span>
+                        <span className={styles.nodeNum}>{stage.num}</span>
                       </div>
-                    ))}
+
+                      <span 
+                        className={styles.nodePulseRing}
+                        style={{ borderColor: stage.color }}
+                      />
+                    </div>
                   </div>
 
-                  {/* Milestone & Benchmark Footer */}
-                  <div className={styles.cardFooter}>
-                    <div className={styles.benchmarkRow}>
-                      <span className={styles.benchmarkDot} style={{ background: stage.color }} />
-                      <span className={styles.benchmarkText}>{stage.benchmark}</span>
-                    </div>
+                  {/* BOTTOM ZONE (Rendered if step is BELOW) */}
+                  <div className={styles.contentZoneBottom}>
+                    {!isAbove && (
+                      <div className={styles.stepContentWrap}>
+                        {/* Vertical Broken Hyphen Rise Connector coming from Circular Node */}
+                        <div className={`${styles.verticalConnector} ${styles.connectorUp}`} />
 
-                    <div className={styles.milestonePill}>
-                      <span className={styles.milestoneTag}>Milestone</span>
-                      <span className={styles.milestoneVal}>{stage.milestone}</span>
-                    </div>
+                        {/* Meta Row: Phase & Timeframe */}
+                        <div className={styles.metaRow}>
+                          <span 
+                            className={styles.phasePill}
+                            style={{ color: stage.color, borderColor: `${stage.color}40`, background: `${stage.color}10` }}
+                          >
+                            Phase {stage.num}
+                          </span>
+                          <span className={styles.timeframePill}>⏱ {stage.timeframe}</span>
+                        </div>
+
+                        {/* Title & Tagline */}
+                        <h3 className={styles.stepTitle}>{stage.name}</h3>
+                        <p className={styles.stepTagline} style={{ color: stage.color }}>
+                          {stage.tagline}
+                        </p>
+                        <p className={styles.stepDesc}>{stage.desc}</p>
+
+                        {/* Deliverables Checklist Chips */}
+                        <div className={styles.deliverablesList}>
+                          {stage.deliverables.slice(0, 3).map((item) => (
+                            <div key={item} className={styles.delChip}>
+                              <span className={styles.checkIcon} style={{ color: stage.color }}>✓</span>
+                              <span className={styles.delText}>{item}</span>
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Benchmark Badge */}
+                        <div className={styles.benchmarkBadge}>
+                          <span className={styles.benchmarkDot} style={{ background: stage.color }} />
+                          <span>{stage.benchmark}</span>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               );
             })}
-          </div>
-
-          {/* Mobile & Tablet Slider Controls */}
-          <div className={styles.sliderControls}>
-            <button
-              type="button"
-              onClick={handlePrev}
-              disabled={activeStage === 0}
-              className={styles.sliderArrowBtn}
-              aria-label="Previous Stage"
-            >
-              ← Previous Phase
-            </button>
-
-            <div className={styles.sliderIndicators}>
-              {stages.map((_, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => handleStageClick(i)}
-                  className={`${styles.indicatorDot} ${activeStage === i ? styles.indicatorDotActive : ''}`}
-                  aria-label={`Slide to stage ${i + 1}`}
-                />
-              ))}
-            </div>
-
-            <button
-              type="button"
-              onClick={handleNext}
-              disabled={activeStage === stages.length - 1}
-              className={styles.sliderArrowBtn}
-              aria-label="Next Stage"
-            >
-              Next Phase →
-            </button>
           </div>
         </div>
       </div>

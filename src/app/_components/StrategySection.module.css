@@ -1,29 +1,29 @@
 .section {
   position: relative;
-  padding: 88px 0 100px;
+  padding: 96px 0 110px;
   background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 50%, #FFFFFF 100%);
-  border-top: 1px solid rgba(226, 232, 240, 0.8);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  border-top: 1px solid rgba(226, 232, 240, 0.85);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.85);
   overflow: hidden;
 }
 
 .bgGlow {
   position: absolute;
-  top: 30%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 1000px;
-  height: 600px;
+  height: 650px;
   background: radial-gradient(ellipse, rgba(2, 132, 199, 0.05) 0%, rgba(99, 102, 241, 0.03) 50%, transparent 75%);
   pointer-events: none;
-  filter: blur(90px);
+  filter: blur(95px);
 }
 
 /* ══════════════════════════════════════════════════
    HEADER
 ══════════════════════════════════════════════════ */
 .headerWrap {
-  margin-bottom: 48px;
+  margin-bottom: 56px;
 }
 
 .eyebrowBadge {
@@ -76,30 +76,33 @@
   font-size: 16.5px;
   color: #475569;
   margin-top: 12px;
-  max-width: 600px;
+  max-width: 620px;
   margin-left: auto;
   margin-right: auto;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 /* ══════════════════════════════════════════════════
-   HORIZONTAL WAVE ROADMAP CONTAINER
+   WAVE CONTAINER (HORIZONTAL SINUSOIDAL TRACK)
 ══════════════════════════════════════════════════ */
-.waveRoadmapWrap {
+.waveContainer {
   position: relative;
-  margin-top: 32px;
+  width: 100%;
+  margin-top: 20px;
   z-index: 2;
 }
 
-/* Wave SVG Track (Desktop) */
+/* Background Wave SVG Track */
 .waveSvgTrack {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
   width: 100%;
-  height: 90px;
-  margin-bottom: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 140px;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .waveSvg {
@@ -108,217 +111,111 @@
   overflow: visible;
 }
 
-.animatedWavePath {
-  animation: waveDashMove 18s linear infinite;
+.animatedWave {
+  animation: wavePulseMove 20s linear infinite;
 }
 
-@keyframes waveDashMove {
-  from {
-    stroke-dashoffset: 0;
-  }
-  to {
-    stroke-dashoffset: -360;
-  }
+@keyframes wavePulseMove {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -360; }
 }
 
 /* ══════════════════════════════════════════════════
-   HORIZONTAL STEPPER NAVIGATION
+   5-COLUMN ALTERNATING GRID (TOP - NODE - BOTTOM)
 ══════════════════════════════════════════════════ */
-.stepperNav {
+.waveGrid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 16px;
-  margin-bottom: 28px;
-}
-
-.stepNavBtn {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
-  border: 1px solid rgba(226, 232, 240, 0.9);
-  border-radius: var(--radius-lg);
-  box-shadow: inset 0 1px 0 #FFFFFF, 0 2px 6px rgba(15, 23, 42, 0.03);
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  text-align: left;
-}
-
-.stepNavBtn:hover {
-  transform: translateY(-2px);
-  border-color: rgba(2, 132, 199, 0.35);
-  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 8px 18px rgba(15, 23, 42, 0.07);
-}
-
-.stepNavBtnActive {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F0F9FF 100%);
-  border-color: var(--stage-color);
-  box-shadow: inset 0 2px 0 #FFFFFF, 
-              0 8px 24px -4px rgba(15, 23, 42, 0.12),
-              0 0 0 1px var(--stage-color);
-}
-
-.stepNodeOuter {
-  position: relative;
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.stepNodeCore {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.5), 0 2px 6px rgba(0, 0, 0, 0.15);
-  transition: transform 0.25s ease;
-}
-
-.stepNavBtn:hover .stepNodeCore,
-.stepNavBtnActive .stepNodeCore {
-  transform: scale(1.08);
-}
-
-.stepNodeNum {
-  font-family: var(--font-display);
-  font-size: 12px;
-  font-weight: 800;
-  color: #FFFFFF;
-}
-
-.nodePulseRing {
-  position: absolute;
-  inset: -3px;
-  border-radius: 50%;
-  border: 1.5px dashed;
-  animation: rotatePulse 4s linear infinite;
-}
-
-@keyframes rotatePulse {
-  0% { transform: rotate(0deg) scale(1); opacity: 0.9; }
-  50% { transform: rotate(180deg) scale(1.1); opacity: 0.5; }
-  100% { transform: rotate(360deg) scale(1); opacity: 0.9; }
-}
-
-.stepNavText {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.navPhase {
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 700;
-  color: #64748B;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.navName {
-  font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 800;
-  color: #0F172A;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* ══════════════════════════════════════════════════
-   5-COLUMN HORIZONTAL STAGE CARDS STREAM
-══════════════════════════════════════════════════ */
-.cardsStream {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
-  align-items: stretch;
   position: relative;
   z-index: 2;
 }
 
-.waveStageCard {
+.waveColumn {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(175deg, #FFFFFF 0%, #FAFCFE 50%, #F1F5F9 100%);
-  border: 1px solid rgba(218, 226, 237, 0.95);
-  border-radius: var(--radius-xl);
-  padding: 24px 20px;
-  box-shadow: 
-    inset 0 2.5px 0 #FFFFFF,
-    inset 0 1px 1px rgba(255, 255, 255, 0.95),
-    inset 0 -2px 3px rgba(15, 23, 42, 0.04),
-    inset 1px 0 0 rgba(255, 255, 255, 0.8),
-    inset -1px 0 0 rgba(255, 255, 255, 0.8),
-    0 12px 32px -6px rgba(15, 23, 42, 0.06),
-    0 2px 6px rgba(15, 23, 42, 0.03);
+  align-items: center;
   position: relative;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.waveStageCard:hover,
-.cardFocused {
-  transform: translateY(-6px);
-  border-color: var(--stage-color);
-  box-shadow: 
-    inset 0 2.5px 0 #FFFFFF,
-    inset 0 1px 1px rgba(255, 255, 255, 1),
-    inset 0 -1.5px 3px rgba(15, 23, 42, 0.03),
-    0 28px 56px -10px rgba(15, 23, 42, 0.12),
-    0 0 0 1.5px var(--stage-color);
-}
-
-/* Card Header */
-.cardHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.7);
-}
-
-.stageOrbWrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.stageOrb {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 800;
-  color: #FFFFFF;
-  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.5), 0 3px 8px rgba(0, 0, 0, 0.12);
-}
-
-.headerMeta {
+/* Content Zones */
+.contentZoneTop {
+  width: 100%;
+  min-height: 250px;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  gap: 3px;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
 }
 
-.phaseBadge {
+.contentZoneBottom {
+  width: 100%;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+
+/* Content Wrapper (Clean Card-Free Typography & Chips) */
+.stepContentWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding: 0 6px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.waveColumn:hover .stepContentWrap {
+  transform: translateY(-4px);
+}
+
+.posBelow:hover .stepContentWrap {
+  transform: translateY(4px);
+}
+
+/* Vertical Broken Dashed Hyphen Connectors */
+.verticalConnector {
+  width: 2px;
+  height: 26px;
+  border-left: 2px dashed var(--stage-color);
+  opacity: 0.55;
+  transition: all 0.3s ease;
+}
+
+.connectorDown {
+  margin-top: 10px;
+}
+
+.connectorUp {
+  margin-bottom: 10px;
+}
+
+.waveColumn:hover .verticalConnector {
+  opacity: 1;
+  height: 32px;
+}
+
+/* Meta Pill: Phase & Timeframe */
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.phasePill {
   font-family: var(--font-display);
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 2px 8px;
+  padding: 2.5px 10px;
   border-radius: var(--radius-full);
   border: 1px solid;
 }
@@ -327,246 +224,222 @@
   font-size: 11px;
   font-weight: 700;
   color: #64748B;
+  background: #FFFFFF;
+  padding: 2.5px 8px;
+  border-radius: var(--radius-full);
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
 }
 
-/* Card Body */
-.cardBody {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-bottom: 16px;
-}
-
-.stageName {
+/* Step Typography */
+.stepTitle {
   font-family: var(--font-display);
   font-size: 17px;
   font-weight: 800;
   color: #0F172A;
   line-height: 1.25;
+  margin-bottom: 3px;
 }
 
-.stageTagline {
+.stepTagline {
   font-family: var(--font-display);
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 800;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
-.stageDesc {
-  font-size: 13px;
+.stepDesc {
+  font-size: 12.5px;
   color: #475569;
-  line-height: 1.55;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  max-width: 220px;
 }
 
-/* Deliverables Checklist */
+/* Deliverables Checklist Chips */
 .deliverablesList {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-bottom: 18px;
-  padding: 12px 14px;
-  background: rgba(248, 250, 252, 0.85);
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(226, 232, 240, 0.7);
-  box-shadow: inset 0 1px 0 #FFFFFF;
-}
-
-.delHeader {
-  font-family: var(--font-display);
-  font-size: 10.5px;
-  font-weight: 700;
-  color: #64748B;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 2px;
-}
-
-.delItem {
-  display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 12px;
+  gap: 4px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.delChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
   font-weight: 600;
-  color: #1E293B;
-  line-height: 1.35;
+  color: #334155;
+  background: rgba(248, 250, 252, 0.95);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  padding: 2.5px 9px;
+  border-radius: var(--radius-full);
+  box-shadow: inset 0 1px 0 #FFFFFF;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.delChip:hover {
+  background: #FFFFFF;
+  border-color: var(--stage-color);
+  transform: scale(1.02);
 }
 
 .checkIcon {
   font-weight: 900;
-  font-size: 11px;
-  flex-shrink: 0;
+  font-size: 10px;
 }
 
 .delText {
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-/* Card Footer */
-.cardFooter {
-  margin-top: auto;
-  padding-top: 14px;
-  border-top: 1px solid rgba(226, 232, 240, 0.7);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.benchmarkRow {
-  display: flex;
+/* Benchmark Badge */
+.benchmarkBadge {
+  display: inline-flex;
   align-items: center;
   gap: 6px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  color: #0F172A;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
 }
 
 .benchmarkDot {
-  width: 6px;
-  height: 6px;
+  width: 5.5px;
+  height: 5.5px;
   border-radius: 50%;
   flex-shrink: 0;
 }
 
-.benchmarkText {
-  font-family: var(--font-display);
-  font-size: 11.5px;
-  font-weight: 800;
-  color: #0F172A;
-  letter-spacing: -0.01em;
-}
-
-.milestonePill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: #FFFFFF;
-  border: 1px dashed rgba(203, 213, 225, 0.9);
-  padding: 3px 8px;
-  border-radius: var(--radius-full);
-  font-size: 11px;
-}
-
-.milestoneTag {
-  font-family: var(--font-display);
-  font-size: 9.5px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: #64748B;
-}
-
-.milestoneVal {
-  font-weight: 600;
-  color: #334155;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 /* ══════════════════════════════════════════════════
-   MOBILE & TABLET SLIDER CONTROLS
+   MIDDLE ZONE: 3D CIRCULAR SKEUOMORPHIC NODE
 ══════════════════════════════════════════════════ */
-.sliderControls {
-  display: none;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 24px;
-  padding: 0 4px;
-}
-
-.sliderArrowBtn {
-  display: inline-flex;
-  align-items: center;
-  padding: 8px 16px;
-  border-radius: var(--radius-full);
-  background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
-  border: 1px solid rgba(203, 213, 225, 0.95);
-  font-family: var(--font-display);
-  font-size: 12.5px;
-  font-weight: 700;
-  color: #0F172A;
-  box-shadow: inset 0 1px 0 #FFFFFF, 0 2px 6px rgba(15, 23, 42, 0.05);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.sliderArrowBtn:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-
-.sliderArrowBtn:not(:disabled):hover {
-  background: #E2E8F0;
-  color: #0284C7;
-  transform: translateY(-1px);
-}
-
-.sliderIndicators {
+.nodeCenterZone {
+  height: 80px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
 }
 
-.indicatorDot {
-  width: 8px;
-  height: 8px;
+.circularNode {
+  width: 58px;
+  height: 58px;
   border-radius: 50%;
-  background: #CBD5E1;
-  border: none;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
+  border: 2.5px solid rgba(218, 226, 237, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    inset 0 2.5px 0 #FFFFFF,
+    inset 0 -2px 3px rgba(15, 23, 42, 0.06),
+    0 8px 24px -4px rgba(15, 23, 42, 0.14),
+    0 2px 6px rgba(15, 23, 42, 0.04);
+  position: relative;
   cursor: pointer;
-  padding: 0;
-  transition: all 0.25s ease;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.indicatorDotActive {
-  width: 24px;
-  border-radius: var(--radius-full);
-  background: #0284C7;
-  box-shadow: 0 0 8px rgba(2, 132, 199, 0.6);
+.nodeCore {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    inset 0 2px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -1.5px 0 rgba(0, 0, 0, 0.2),
+    0 3px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nodeNum {
+  font-family: var(--font-display);
+  font-size: 14.5px;
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+}
+
+.nodePulseRing {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1.5px dashed;
+  opacity: 0;
+  transform: scale(0.85);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+/* Hover & Active Node State */
+.waveColumn:hover .circularNode,
+.colActive .circularNode {
+  transform: scale(1.16);
+  box-shadow: 
+    inset 0 2.5px 0 #FFFFFF,
+    0 14px 32px -4px rgba(15, 23, 42, 0.2),
+    0 0 0 3px var(--stage-color);
+}
+
+.waveColumn:hover .nodeCore,
+.colActive .nodeCore {
+  transform: scale(1.05);
+}
+
+.waveColumn:hover .nodePulseRing,
+.colActive .nodePulseRing {
+  opacity: 1;
+  transform: scale(1.22) rotate(45deg);
 }
 
 /* ══════════════════════════════════════════════════
    RESPONSIVE BREAKPOINTS
 ══════════════════════════════════════════════════ */
-@media (max-width: 1200px) {
-  .cardsStream {
+@media (max-width: 1100px) {
+  .waveGrid {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    padding-bottom: 16px;
-    gap: 16px;
+    padding-bottom: 24px;
+    gap: 24px;
     -webkit-overflow-scrolling: touch;
   }
 
-  .waveStageCard {
-    min-width: 280px;
-    max-width: 320px;
+  .waveColumn {
+    min-width: 260px;
     scroll-snap-align: center;
-    flex-shrink: 0;
-  }
-
-  .sliderControls {
-    display: flex;
-  }
-}
-
-@media (max-width: 900px) {
-  .stepperNav {
-    display: flex;
-    overflow-x: auto;
-    padding-bottom: 8px;
-    gap: 10px;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .stepNavBtn {
-    min-width: 200px;
     flex-shrink: 0;
   }
 
   .waveSvgTrack {
     display: none;
+  }
+
+  .contentZoneTop,
+  .contentZoneBottom {
+    min-height: auto;
+  }
+
+  .nodeCenterZone {
+    height: 70px;
   }
 }
 
@@ -575,13 +448,21 @@
     padding: 64px 0 76px;
   }
 
-  .waveStageCard {
-    min-width: 260px;
-    padding: 20px 16px;
+  .waveColumn {
+    min-width: 240px;
   }
 
-  .sliderControls {
-    flex-direction: column;
-    gap: 12px;
+  .circularNode {
+    width: 50px;
+    height: 50px;
+  }
+
+  .nodeCore {
+    width: 32px;
+    height: 32px;
+  }
+
+  .nodeNum {
+    font-size: 12.5px;
   }
 }
