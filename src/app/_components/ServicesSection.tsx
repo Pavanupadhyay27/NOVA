@@ -136,9 +136,12 @@ const services: ServiceItem[] = [
 
 export default function ServicesSection() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+  const [showAll, setShowAll] = useState(false);
+
+  const displayedServices = showAll ? services : services.slice(0, 4);
 
   return (
-    <section className={`section ${styles.section}`}>
+    <section className={`section ${styles.section}`} id="services-section">
       <div className={styles.bgGlow} />
 
       <div className="container">
@@ -165,9 +168,9 @@ export default function ServicesSection() {
           </ScrollReveal>
         </div>
 
-        {/* Vertical Stream of Growth Practices */}
+        {/* Vertical Stream of Growth Practices (4 by default with View More toggle) */}
         <div className={styles.verticalStream}>
-          {services.map((service, idx) => {
+          {displayedServices.map((service, idx) => {
             const isHovered = hoveredIdx === idx;
             return (
               <ScrollReveal key={service.num} delay={idx * 0.05}>
@@ -233,11 +236,32 @@ export default function ServicesSection() {
                   </div>
                 </div>
 
-                {/* Subtle Divider (except last) */}
-                {idx < services.length - 1 && <div className={styles.streamDivider} />}
+                {/* Subtle Divider (except last in displayed list) */}
+                {idx < displayedServices.length - 1 && <div className={styles.streamDivider} />}
               </ScrollReveal>
             );
           })}
+        </div>
+
+        {/* View More / View Less Tactile Skeuomorphic Button */}
+        <div className={styles.toggleWrapper}>
+          <button
+            type="button"
+            onClick={() => {
+              if (showAll) {
+                const sectionEl = document.getElementById('services-section');
+                if (sectionEl) {
+                  sectionEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }
+              setShowAll(prev => !prev);
+            }}
+            className={styles.toggleBtn}
+            aria-expanded={showAll}
+          >
+            <span>{showAll ? 'Show Less Practices' : 'View More Practices (2 More)'}</span>
+            <span className={styles.toggleCount}>{showAll ? '↑' : '↓'}</span>
+          </button>
         </div>
       </div>
     </section>
