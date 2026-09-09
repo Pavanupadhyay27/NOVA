@@ -7,128 +7,51 @@ interface StrategyStage {
   num: string;
   name: string;
   tagline: string;
-  desc: string;
   timeframe: string;
-  deliverables: string[];
-  benchmark: string;
-  milestone: string;
+  focus: string;
   color: string;
-  icon: React.ReactNode;
 }
 
 const stages: StrategyStage[] = [
   {
     num: '01',
     name: 'Discover & Diagnose',
-    tagline: 'Commercial & Unit Economics Audit',
-    desc: 'Forensic audit of historical ad spend, customer economics, and funnels to unlock high-leverage growth vectors.',
+    tagline: 'Audit funnels, unit economics & historical ad spend.',
     timeframe: 'Days 1–7',
-    deliverables: [
-      'Unit Economics Audit',
-      'Customer Psychology Map',
-      'Competitor Gap Analysis',
-      'Ad Account Teardown'
-    ],
-    benchmark: '100% Diagnostic Clarity',
-    milestone: 'Forensic Audit & Gap Matrix',
+    focus: 'Diagnostic Audit',
     color: '#0284C7',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-    ),
   },
   {
     num: '02',
     name: 'Strategy Architecture',
-    tagline: 'Full-Funnel Growth Engineering',
-    desc: 'Custom omnichannel growth architecture mapping acquisition channels, conversion funnels, and CAC:LTV models.',
+    tagline: 'Custom omnichannel growth & conversion funnel modeling.',
     timeframe: 'Days 8–14',
-    deliverables: [
-      'Channel Mix Blueprint',
-      'Full-Funnel CRO System',
-      'Server-Side Attribution',
-      'CAC:LTV Forecast Engine'
-    ],
-    benchmark: '3.5X Capital Efficiency',
-    milestone: 'Financial Growth Blueprint',
+    focus: 'Growth Blueprint',
     color: '#6366F1',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-        <polyline points="2 17 12 22 22 17"></polyline>
-        <polyline points="2 12 12 17 22 12"></polyline>
-      </svg>
-    ),
   },
   {
     num: '03',
     name: 'High-Impact Creative',
-    tagline: 'Asset Production Sprint',
-    desc: 'High-converting UGC video hooks, persuasion copywriting, and interactive landers designed to stop the scroll.',
+    tagline: 'High-converting video hooks, copy & interactive landers.',
     timeframe: 'Days 15–21',
-    deliverables: [
-      'High-Converting Hooks',
-      'Conversion Landing Pages',
-      'Creative Sprint Matrix',
-      'Brand Asset Library'
-    ],
-    benchmark: 'Top 1% Click Velocity',
-    milestone: 'Production Creative Matrix',
+    focus: 'Creative Sprints',
     color: '#EC4899',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
-        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
-        <path d="M2 2l7.586 7.586"></path>
-      </svg>
-    ),
   },
   {
     num: '04',
     name: 'Algorithmic Launch',
-    tagline: 'Precision Campaign Deployment',
-    desc: 'Omnichannel campaign deployment across Meta, Google, and Programmatic with real-time automated bid optimization.',
+    tagline: 'Omnichannel campaign activation & automated bidding.',
     timeframe: 'Days 22–30',
-    deliverables: [
-      'Server CAPI Tracking',
-      'Micro-Audience Routing',
-      'Automated Bid Rules',
-      'Live Telemetry Dashboard'
-    ],
-    benchmark: 'Zero Media Waste',
-    milestone: 'Omnichannel Activation',
+    focus: 'Live Deployment',
     color: '#F59E0B',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
-        <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
-      </svg>
-    ),
   },
   {
     num: '05',
     name: 'Scale & Compound',
-    tagline: 'Compounding Revenue Engine',
-    desc: 'Aggressive scaling on winning creatives, secondary network expansion, and automated high-retention customer loops.',
+    tagline: 'Winning creative scaling & secondary channel expansion.',
     timeframe: 'Month 2+',
-    deliverables: [
-      'Winning Creative Scaler',
-      'Network Expansion',
-      'Retention & LTV Loops',
-      'Quarterly Scale Reviews'
-    ],
-    benchmark: '+142% Annual Scale',
-    milestone: 'Compounding ARR Engine',
+    focus: 'Compounding Scale',
     color: '#10B981',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <line x1="18" y1="20" x2="18" y2="10"></line>
-        <line x1="12" y1="20" x2="12" y2="4"></line>
-        <line x1="6" y1="20" x2="6" y2="14"></line>
-      </svg>
-    ),
   },
 ];
 
@@ -137,7 +60,6 @@ export default function StrategySection() {
 
   return (
     <section className={styles.section} id="growth-framework">
-      {/* Background ambient lighting */}
       <div className={styles.bgGlow} />
 
       <div className="container">
@@ -159,174 +81,139 @@ export default function StrategySection() {
         </ScrollReveal>
 
         {/* ══════════════════════════════════════════════════
-            HORIZONTAL UNDULATING WAVE & ALTERNATING NODES
+            CLEAN HORIZONTAL WAVE ROADMAP (ALTERNATING STEPS)
            ══════════════════════════════════════════════════ */}
-        <div className={styles.waveContainer}>
-          {/* Continuous Sinusoidal Broken-Dot Wave (SVG Track) */}
+        <div className={styles.waveRoadmap}>
+          {/* Continuous Sinusoidal Broken-Hyphen Wave Track */}
           <div className={styles.waveSvgTrack}>
             <svg
               className={styles.waveSvg}
-              viewBox="0 0 1200 200"
+              viewBox="0 0 1200 160"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               preserveAspectRatio="none"
             >
               <defs>
-                <linearGradient id="waveGradientFull" x1="0%" y1="0%" x2="100%" y2="0%">
+                <linearGradient id="cleanWaveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="#0284C7" />
                   <stop offset="25%" stopColor="#6366F1" />
                   <stop offset="50%" stopColor="#EC4899" />
                   <stop offset="75%" stopColor="#F59E0B" />
                   <stop offset="100%" stopColor="#10B981" />
                 </linearGradient>
-
-                <filter id="waveGlow" x="-10%" y="-30%" width="120%" height="160%">
-                  <feGaussianBlur stdDeviation="3.5" result="blur" />
+                <filter id="cleanGlow" x="-10%" y="-30%" width="120%" height="160%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
                   <feComposite in="SourceGraphic" in2="blur" operator="over" />
                 </filter>
               </defs>
 
               {/* Underlying Base Broken-Hyphen Wave */}
               <path
-                d="M 30,100 C 120,20 180,20 240,100 C 300,180 420,180 480,100 C 540,20 660,20 720,100 C 780,180 900,180 960,100 C 1020,20 1110,20 1170,100"
+                d="M 50,80 C 130,20 190,20 250,80 C 310,140 390,140 450,80 C 510,20 590,20 650,80 C 710,140 790,140 850,80 C 910,20 990,20 1050,80 C 1110,140 1150,110 1180,80"
                 stroke="rgba(203, 213, 225, 0.6)"
                 strokeWidth="2.5"
                 strokeDasharray="8 8"
                 strokeLinecap="round"
               />
 
-              {/* Glowing Colored Broken Hyphen Wave */}
+              {/* Glowing Colored Animated Broken-Hyphen Wave */}
               <path
-                d="M 30,100 C 120,20 180,20 240,100 C 300,180 420,180 480,100 C 540,20 660,20 720,100 C 780,180 900,180 960,100 C 1020,20 1110,20 1170,100"
-                stroke="url(#waveGradientFull)"
+                d="M 50,80 C 130,20 190,20 250,80 C 310,140 390,140 450,80 C 510,20 590,20 650,80 C 710,140 790,140 850,80 C 910,20 990,20 1050,80 C 1110,140 1150,110 1180,80"
+                stroke="url(#cleanWaveGrad)"
                 strokeWidth="3.5"
                 strokeDasharray="10 8"
                 strokeLinecap="round"
                 className={styles.animatedWave}
-                filter="url(#waveGlow)"
+                filter="url(#cleanGlow)"
               />
             </svg>
           </div>
 
-          {/* 5-Column Alternating Layout (Top -> Node -> Bottom) */}
-          <div className={styles.waveGrid}>
+          {/* 5-Column Alternating Layout */}
+          <div className={styles.stagesGrid}>
             {stages.map((stage, idx) => {
-              const isAbove = idx % 2 === 0; // 0 (above), 1 (below), 2 (above), 3 (below), 4 (above)
+              const isAbove = idx % 2 === 0; // 0, 2, 4 (Above) | 1, 3 (Below)
               const isHovered = activeIdx === idx;
 
               return (
                 <div
                   key={stage.num}
-                  className={`${styles.waveColumn} ${isAbove ? styles.posAbove : styles.posBelow} ${isHovered ? styles.colActive : ''}`}
+                  className={`${styles.stageColumn} ${isAbove ? styles.colAbove : styles.colBelow} ${isHovered ? styles.colHovered : ''}`}
                   onMouseEnter={() => setActiveIdx(idx)}
                   onMouseLeave={() => setActiveIdx(null)}
                   style={{ '--stage-color': stage.color } as React.CSSProperties}
                 >
-                  {/* TOP ZONE (Rendered if step is ABOVE) */}
-                  <div className={styles.contentZoneTop}>
+                  {/* TOP ZONE: Content for steps 01, 03, 05 */}
+                  <div className={styles.topSlot}>
                     {isAbove && (
-                      <div className={styles.stepContentWrap}>
-                        {/* Meta Row: Phase & Timeframe */}
-                        <div className={styles.metaRow}>
+                      <div className={styles.stepBubble}>
+                        <div className={styles.pillRow}>
                           <span 
                             className={styles.phasePill}
-                            style={{ color: stage.color, borderColor: `${stage.color}40`, background: `${stage.color}10` }}
+                            style={{ color: stage.color, borderColor: `${stage.color}35`, background: `${stage.color}12` }}
                           >
                             Phase {stage.num}
                           </span>
-                          <span className={styles.timeframePill}>⏱ {stage.timeframe}</span>
+                          <span className={styles.timePill}>⏱ {stage.timeframe}</span>
                         </div>
 
-                        {/* Title & Tagline */}
                         <h3 className={styles.stepTitle}>{stage.name}</h3>
-                        <p className={styles.stepTagline} style={{ color: stage.color }}>
-                          {stage.tagline}
-                        </p>
-                        <p className={styles.stepDesc}>{stage.desc}</p>
+                        <p className={styles.stepDesc}>{stage.tagline}</p>
 
-                        {/* Deliverables Checklist Chips */}
-                        <div className={styles.deliverablesList}>
-                          {stage.deliverables.slice(0, 3).map((item) => (
-                            <div key={item} className={styles.delChip}>
-                              <span className={styles.checkIcon} style={{ color: stage.color }}>✓</span>
-                              <span className={styles.delText}>{item}</span>
-                            </div>
-                          ))}
-                        </div>
+                        <span className={styles.focusPill} style={{ color: stage.color }}>
+                          <span className={styles.focusDot} style={{ background: stage.color }} />
+                          {stage.focus}
+                        </span>
 
-                        {/* Benchmark Badge */}
-                        <div className={styles.benchmarkBadge}>
-                          <span className={styles.benchmarkDot} style={{ background: stage.color }} />
-                          <span>{stage.benchmark}</span>
-                        </div>
-
-                        {/* Vertical Broken Hyphen Drop Connector leading to Circular Node */}
-                        <div className={`${styles.verticalConnector} ${styles.connectorDown}`} />
+                        {/* Broken Hyphen Drop Connector to Node */}
+                        <div className={`${styles.hyphenConnector} ${styles.connectorDown}`} />
                       </div>
                     )}
                   </div>
 
-                  {/* MIDDLE ZONE: Circular 3D Node Sitting ON the Wave */}
-                  <div className={styles.nodeCenterZone}>
+                  {/* CENTER ZONE: 3D Circular Skeuomorphic Node on Wave */}
+                  <div className={styles.nodeSlot}>
                     <div 
                       className={styles.circularNode}
                       style={{ borderColor: isHovered ? stage.color : 'rgba(218, 226, 237, 0.95)' }}
                     >
-                      {/* Outer Ring & Pulse Effect */}
                       <div 
                         className={styles.nodeCore}
                         style={{ background: stage.color }}
                       >
                         <span className={styles.nodeNum}>{stage.num}</span>
                       </div>
-
                       <span 
-                        className={styles.nodePulseRing}
+                        className={styles.pulseRing}
                         style={{ borderColor: stage.color }}
                       />
                     </div>
                   </div>
 
-                  {/* BOTTOM ZONE (Rendered if step is BELOW) */}
-                  <div className={styles.contentZoneBottom}>
+                  {/* BOTTOM ZONE: Content for steps 02, 04 */}
+                  <div className={styles.bottomSlot}>
                     {!isAbove && (
-                      <div className={styles.stepContentWrap}>
-                        {/* Vertical Broken Hyphen Rise Connector coming from Circular Node */}
-                        <div className={`${styles.verticalConnector} ${styles.connectorUp}`} />
+                      <div className={styles.stepBubble}>
+                        {/* Broken Hyphen Rise Connector from Node */}
+                        <div className={`${styles.hyphenConnector} ${styles.connectorUp}`} />
 
-                        {/* Meta Row: Phase & Timeframe */}
-                        <div className={styles.metaRow}>
+                        <div className={styles.pillRow}>
                           <span 
                             className={styles.phasePill}
-                            style={{ color: stage.color, borderColor: `${stage.color}40`, background: `${stage.color}10` }}
+                            style={{ color: stage.color, borderColor: `${stage.color}35`, background: `${stage.color}12` }}
                           >
                             Phase {stage.num}
                           </span>
-                          <span className={styles.timeframePill}>⏱ {stage.timeframe}</span>
+                          <span className={styles.timePill}>⏱ {stage.timeframe}</span>
                         </div>
 
-                        {/* Title & Tagline */}
                         <h3 className={styles.stepTitle}>{stage.name}</h3>
-                        <p className={styles.stepTagline} style={{ color: stage.color }}>
-                          {stage.tagline}
-                        </p>
-                        <p className={styles.stepDesc}>{stage.desc}</p>
+                        <p className={styles.stepDesc}>{stage.tagline}</p>
 
-                        {/* Deliverables Checklist Chips */}
-                        <div className={styles.deliverablesList}>
-                          {stage.deliverables.slice(0, 3).map((item) => (
-                            <div key={item} className={styles.delChip}>
-                              <span className={styles.checkIcon} style={{ color: stage.color }}>✓</span>
-                              <span className={styles.delText}>{item}</span>
-                            </div>
-                          ))}
-                        </div>
-
-                        {/* Benchmark Badge */}
-                        <div className={styles.benchmarkBadge}>
-                          <span className={styles.benchmarkDot} style={{ background: stage.color }} />
-                          <span>{stage.benchmark}</span>
-                        </div>
+                        <span className={styles.focusPill} style={{ color: stage.color }}>
+                          <span className={styles.focusDot} style={{ background: stage.color }} />
+                          {stage.focus}
+                        </span>
                       </div>
                     )}
                   </div>

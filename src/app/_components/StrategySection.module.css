@@ -23,7 +23,7 @@
    HEADER
 ══════════════════════════════════════════════════ */
 .headerWrap {
-  margin-bottom: 56px;
+  margin-bottom: 60px;
 }
 
 .eyebrowBadge {
@@ -83,12 +83,12 @@
 }
 
 /* ══════════════════════════════════════════════════
-   WAVE CONTAINER (HORIZONTAL SINUSOIDAL TRACK)
+   WAVE ROADMAP CONTAINER
 ══════════════════════════════════════════════════ */
-.waveContainer {
+.waveRoadmap {
   position: relative;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 24px;
   z-index: 2;
 }
 
@@ -100,7 +100,7 @@
   right: 0;
   transform: translateY(-50%);
   width: 100%;
-  height: 140px;
+  height: 120px;
   pointer-events: none;
   z-index: 1;
 }
@@ -112,7 +112,7 @@
 }
 
 .animatedWave {
-  animation: wavePulseMove 20s linear infinite;
+  animation: wavePulseMove 22s linear infinite;
 }
 
 @keyframes wavePulseMove {
@@ -121,17 +121,17 @@
 }
 
 /* ══════════════════════════════════════════════════
-   5-COLUMN ALTERNATING GRID (TOP - NODE - BOTTOM)
+   5-COLUMN STAGES GRID (TOP - NODE - BOTTOM)
 ══════════════════════════════════════════════════ */
-.waveGrid {
+.stagesGrid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
+  gap: 18px;
   position: relative;
   z-index: 2;
 }
 
-.waveColumn {
+.stageColumn {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -139,196 +139,20 @@
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Content Zones */
-.contentZoneTop {
+/* Top Slot (Above Wave) */
+.topSlot {
   width: 100%;
-  min-height: 250px;
+  height: 175px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+  padding-bottom: 20px;
   position: relative;
 }
 
-.contentZoneBottom {
-  width: 100%;
-  min-height: 250px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  position: relative;
-}
-
-/* Content Wrapper (Clean Card-Free Typography & Chips) */
-.stepContentWrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  padding: 0 6px;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.waveColumn:hover .stepContentWrap {
-  transform: translateY(-4px);
-}
-
-.posBelow:hover .stepContentWrap {
-  transform: translateY(4px);
-}
-
-/* Vertical Broken Dashed Hyphen Connectors */
-.verticalConnector {
-  width: 2px;
-  height: 26px;
-  border-left: 2px dashed var(--stage-color);
-  opacity: 0.55;
-  transition: all 0.3s ease;
-}
-
-.connectorDown {
-  margin-top: 10px;
-}
-
-.connectorUp {
-  margin-bottom: 10px;
-}
-
-.waveColumn:hover .verticalConnector {
-  opacity: 1;
-  height: 32px;
-}
-
-/* Meta Pill: Phase & Timeframe */
-.metaRow {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 8px;
-}
-
-.phasePill {
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 2.5px 10px;
-  border-radius: var(--radius-full);
-  border: 1px solid;
-}
-
-.timeframePill {
-  font-size: 11px;
-  font-weight: 700;
-  color: #64748B;
-  background: #FFFFFF;
-  padding: 2.5px 8px;
-  border-radius: var(--radius-full);
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
-}
-
-/* Step Typography */
-.stepTitle {
-  font-family: var(--font-display);
-  font-size: 17px;
-  font-weight: 800;
-  color: #0F172A;
-  line-height: 1.25;
-  margin-bottom: 3px;
-}
-
-.stepTagline {
-  font-family: var(--font-display);
-  font-size: 10.5px;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  margin-bottom: 6px;
-}
-
-.stepDesc {
-  font-size: 12.5px;
-  color: #475569;
-  line-height: 1.5;
-  margin-bottom: 10px;
-  max-width: 220px;
-}
-
-/* Deliverables Checklist Chips */
-.deliverablesList {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  margin-bottom: 10px;
-  width: 100%;
-}
-
-.delChip {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 11.5px;
-  font-weight: 600;
-  color: #334155;
-  background: rgba(248, 250, 252, 0.95);
-  border: 1px solid rgba(226, 232, 240, 0.85);
-  padding: 2.5px 9px;
-  border-radius: var(--radius-full);
-  box-shadow: inset 0 1px 0 #FFFFFF;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-  max-width: 100%;
-}
-
-.delChip:hover {
-  background: #FFFFFF;
-  border-color: var(--stage-color);
-  transform: scale(1.02);
-}
-
-.checkIcon {
-  font-weight: 900;
-  font-size: 10px;
-}
-
-.delText {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* Benchmark Badge */
-.benchmarkBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 800;
-  color: #0F172A;
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  padding: 3px 10px;
-  border-radius: var(--radius-full);
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
-}
-
-.benchmarkDot {
-  width: 5.5px;
-  height: 5.5px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-/* ══════════════════════════════════════════════════
-   MIDDLE ZONE: 3D CIRCULAR SKEUOMORPHIC NODE
-══════════════════════════════════════════════════ */
-.nodeCenterZone {
+/* Center Node Slot (Sitting ON Wave) */
+.nodeSlot {
   height: 80px;
   display: flex;
   align-items: center;
@@ -337,28 +161,154 @@
   z-index: 3;
 }
 
+/* Bottom Slot (Below Wave) */
+.bottomSlot {
+  width: 100%;
+  height: 175px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 20px;
+  position: relative;
+}
+
+/* Clean Step Bubble (Uncluttered Typography & Badges) */
+.stepBubble {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding: 0 4px;
+  max-width: 215px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stageColumn:hover .stepBubble {
+  transform: translateY(-3px);
+}
+
+.colBelow:hover .stepBubble {
+  transform: translateY(3px);
+}
+
+/* Broken Dashed Vertical Connectors */
+.hyphenConnector {
+  width: 2px;
+  height: 18px;
+  border-left: 2px dashed var(--stage-color);
+  opacity: 0.55;
+  transition: all 0.3s ease;
+}
+
+.connectorDown {
+  margin-top: 8px;
+}
+
+.connectorUp {
+  margin-bottom: 8px;
+}
+
+.stageColumn:hover .hyphenConnector {
+  opacity: 1;
+  height: 22px;
+}
+
+/* Pills Row */
+.pillRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.phasePill {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 9px;
+  border-radius: var(--radius-full);
+  border: 1px solid;
+}
+
+.timePill {
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748B;
+  background: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+}
+
+/* Title & Description */
+.stepTitle {
+  font-family: var(--font-display);
+  font-size: 16.5px;
+  font-weight: 800;
+  color: #0F172A;
+  line-height: 1.25;
+  margin-bottom: 4px;
+}
+
+.stepDesc {
+  font-size: 12.5px;
+  color: #475569;
+  line-height: 1.45;
+  margin-bottom: 8px;
+}
+
+/* Focus Pill */
+.focusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+.focusDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════════════
+   3D CIRCULAR SKEUOMORPHIC NODE
+══════════════════════════════════════════════════ */
 .circularNode {
-  width: 58px;
-  height: 58px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
   background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
-  border: 2.5px solid rgba(218, 226, 237, 0.95);
+  border: 2px solid rgba(218, 226, 237, 0.95);
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 
     inset 0 2.5px 0 #FFFFFF,
     inset 0 -2px 3px rgba(15, 23, 42, 0.06),
-    0 8px 24px -4px rgba(15, 23, 42, 0.14),
-    0 2px 6px rgba(15, 23, 42, 0.04);
+    0 8px 24px -4px rgba(15, 23, 42, 0.12),
+    0 2px 6px rgba(15, 23, 42, 0.03);
   position: relative;
   cursor: pointer;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nodeCore {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -372,13 +322,13 @@
 
 .nodeNum {
   font-family: var(--font-display);
-  font-size: 14.5px;
+  font-size: 13.5px;
   font-weight: 900;
   color: #FFFFFF;
   letter-spacing: -0.02em;
 }
 
-.nodePulseRing {
+.pulseRing {
   position: absolute;
   inset: -6px;
   border-radius: 50%;
@@ -389,32 +339,32 @@
   pointer-events: none;
 }
 
-/* Hover & Active Node State */
-.waveColumn:hover .circularNode,
-.colActive .circularNode {
-  transform: scale(1.16);
+/* Hover State */
+.stageColumn:hover .circularNode,
+.colHovered .circularNode {
+  transform: scale(1.15);
   box-shadow: 
     inset 0 2.5px 0 #FFFFFF,
-    0 14px 32px -4px rgba(15, 23, 42, 0.2),
+    0 14px 30px -4px rgba(15, 23, 42, 0.2),
     0 0 0 3px var(--stage-color);
 }
 
-.waveColumn:hover .nodeCore,
-.colActive .nodeCore {
-  transform: scale(1.05);
+.stageColumn:hover .nodeCore,
+.colHovered .nodeCore {
+  transform: scale(1.06);
 }
 
-.waveColumn:hover .nodePulseRing,
-.colActive .nodePulseRing {
+.stageColumn:hover .pulseRing,
+.colHovered .pulseRing {
   opacity: 1;
-  transform: scale(1.22) rotate(45deg);
+  transform: scale(1.2) rotate(45deg);
 }
 
 /* ══════════════════════════════════════════════════
    RESPONSIVE BREAKPOINTS
 ══════════════════════════════════════════════════ */
 @media (max-width: 1100px) {
-  .waveGrid {
+  .stagesGrid {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -423,8 +373,8 @@
     -webkit-overflow-scrolling: touch;
   }
 
-  .waveColumn {
-    min-width: 260px;
+  .stageColumn {
+    min-width: 240px;
     scroll-snap-align: center;
     flex-shrink: 0;
   }
@@ -433,12 +383,13 @@
     display: none;
   }
 
-  .contentZoneTop,
-  .contentZoneBottom {
-    min-height: auto;
+  .topSlot,
+  .bottomSlot {
+    height: auto;
+    min-height: 140px;
   }
 
-  .nodeCenterZone {
+  .nodeSlot {
     height: 70px;
   }
 }
@@ -448,21 +399,21 @@
     padding: 64px 0 76px;
   }
 
-  .waveColumn {
-    min-width: 240px;
+  .stageColumn {
+    min-width: 220px;
   }
 
   .circularNode {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
   }
 
   .nodeCore {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
   }
 
   .nodeNum {
-    font-size: 12.5px;
+    font-size: 12px;
   }
 }
