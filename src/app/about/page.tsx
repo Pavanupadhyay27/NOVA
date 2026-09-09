@@ -33,8 +33,8 @@ export default function AboutPage() {
         <section className={styles.hero}>
           <div className={styles.heroBg} />
           <div className="container">
-            <ScrollReveal>
-              <div className="eyebrow">
+            <ScrollReveal className="text-center">
+              <div className="eyebrow" style={{ margin: '0 auto 16px' }}>
                 <span className="eyebrow-dot" />
                 About Us
               </div>

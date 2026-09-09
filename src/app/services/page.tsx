@@ -116,8 +116,8 @@ export default function ServicesPage() {
           <div className={styles.heroBg} />
           <div className="container">
             <div className={styles.heroContent}>
-              <ScrollReveal>
-                <div className="eyebrow">
+              <ScrollReveal className="text-center">
+                <div className="eyebrow" style={{ margin: '0 auto 16px' }}>
                   <span className="eyebrow-dot" />
                   Services & Capabilities
                 </div>

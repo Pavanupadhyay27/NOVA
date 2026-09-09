@@ -6,8 +6,9 @@
 /* Hero */
 .hero {
   position: relative;
-  padding: 80px 0 100px;
+  padding: 80px 0 72px;
   overflow: hidden;
+  text-align: center;
 }
 
 .heroBg {
@@ -18,16 +19,19 @@
 }
 
 .heroContent {
-  max-width: 760px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .heroTitle {
-  margin-top: 20px;
+  margin-top: 16px;
   margin-bottom: 20px;
 }
 
 .heroSub {
-  max-width: 580px;
+  max-width: 620px;
+  margin: 0 auto;
 }
 
 /* Services section */
