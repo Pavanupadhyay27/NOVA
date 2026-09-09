@@ -55,7 +55,7 @@ export default function ContactPage() {
                 </div>
                 <div className={styles.detail}>
                   <span className={styles.detailLabel}>Growth Lab Location</span>
-                  <span className={styles.detailVal}>Bhubaneswar, Odisha, India — 751001</span>
+                  <span className={styles.detailVal}>Mallick Complex, Unit 3, Kharvela Nagar, Bhubaneswar — 751001</span>
                 </div>
                 <div className={styles.detail}>
                   <span className={styles.detailLabel}>Direct Contact</span>

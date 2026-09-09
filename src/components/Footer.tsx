@@ -91,7 +91,7 @@ export default function Footer() {
 
               <div className={styles.locationPill}>
                 <span className={styles.locPin}>📍</span>
-                <span>Growth Lab: Saheed Nagar, Bhubaneswar, Odisha — 751007</span>
+                <span>Growth Lab: Mallick Complex, Unit 3, Kharvela Nagar, Bhubaneswar — 751001</span>
               </div>
 
               <div className={styles.socials}>

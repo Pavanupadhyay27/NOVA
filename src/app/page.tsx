@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import HeroSection from './_components/HeroSection';
+import QuickConnectMapSection from './_components/QuickConnectMapSection';
 import ClientsSection from './_components/ClientsSection';
 import MetricsSection from './_components/MetricsSection';
 import ServicesSection from './_components/ServicesSection';
@@ -21,6 +22,7 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <QuickConnectMapSection />
       <ClientsSection />
       <MetricsSection />
       <ServicesSection />
