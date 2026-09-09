@@ -1,0 +1,436 @@
+.page {
+  background: #FFFFFF;
+  padding-top: calc(var(--nav-height) + 20px);
+}
+
+.hero {
+  position: relative;
+  padding: 80px 0 60px;
+  overflow: hidden;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 70% at 50% 0%, rgba(2, 132, 199, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.title {
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
+.sub {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* Section Header */
+.sectionHeader {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.sectionTag {
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0284C7;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 800;
+  color: #0F172A;
+}
+
+/* Executive Section: 2 Founders + 3 Leaders */
+.execSection {
+  padding: 20px 0 80px;
+}
+
+.topGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-bottom: 36px;
+}
+
+.founderCard {
+  background: linear-gradient(175deg, #FFFFFF 0%, #FAFCFE 45%, #EEF4FA 100%);
+  border: 1px solid rgba(218, 226, 237, 0.95);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  box-shadow: 
+    inset 0 2.5px 0 #FFFFFF,
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -2.5px 4px rgba(15, 23, 42, 0.05),
+    inset 1px 0 0 rgba(255, 255, 255, 0.8),
+    inset -1px 0 0 rgba(255, 255, 255, 0.8),
+    0 18px 44px -8px rgba(15, 23, 42, 0.08),
+    0 2px 6px rgba(15, 23, 42, 0.03);
+  transition: all 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.founderCard:hover {
+  transform: translateY(-8px) scale(1.008);
+  border-color: rgba(2, 132, 199, 0.5);
+  box-shadow: 
+    inset 0 2.5px 0 #FFFFFF,
+    inset 0 1px 1px rgba(255, 255, 255, 1),
+    inset 0 -1.5px 3px rgba(15, 23, 42, 0.03),
+    0 36px 72px -12px rgba(15, 23, 42, 0.16),
+    0 0 0 1.5px rgba(2, 132, 199, 0.35);
+}
+
+.founderImgBox {
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+  background: #F1F5F9;
+  overflow: hidden;
+}
+
+.founderDetails {
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+}
+
+.bottomGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.execCard {
+  background: linear-gradient(175deg, #FFFFFF 0%, #FAFCFE 45%, #EEF4FA 100%);
+  border: 1px solid rgba(218, 226, 237, 0.95);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 
+    inset 0 2.5px 0 #FFFFFF,
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -2.5px 4px rgba(15, 23, 42, 0.05),
+    inset 1px 0 0 rgba(255, 255, 255, 0.8),
+    inset -1px 0 0 rgba(255, 255, 255, 0.8),
+    0 14px 34px -6px rgba(15, 23, 42, 0.07),
+    0 2px 6px rgba(15, 23, 42, 0.03);
+  transition: all 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.execCard:hover {
+  transform: translateY(-8px) scale(1.01);
+  border-color: rgba(2, 132, 199, 0.5);
+  box-shadow: 
+    inset 0 2.5px 0 #FFFFFF,
+    inset 0 1px 1px rgba(255, 255, 255, 1),
+    inset 0 -1.5px 3px rgba(15, 23, 42, 0.03),
+    0 32px 64px -10px rgba(15, 23, 42, 0.15),
+    0 0 0 1.5px rgba(2, 132, 199, 0.35);
+}
+
+.execImgBox {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  background: #F1F5F9;
+  overflow: hidden;
+}
+
+.execImg {
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.execCard:hover .execImg,
+.founderCard:hover .execImg {
+  transform: scale(1.04);
+}
+
+.execImgOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.35) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.deptBadge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  color: #0284C7;
+  font-family: var(--font-display);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  z-index: 2;
+}
+
+.execDetails {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.execTopRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.execName {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 800;
+  color: #0F172A;
+  line-height: 1.25;
+}
+
+.execRole {
+  font-size: 12.5px;
+  color: #0284C7;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.linkedinLink {
+  color: #64748B;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  background: #F1F5F9;
+  border-radius: 50%;
+  border: 1px solid #E2E8F0;
+}
+
+.linkedinLink:hover {
+  color: #0A66C2;
+  background: #E0F2FE;
+  border-color: #BAE6FD;
+  transform: scale(1.1);
+}
+
+.execBio {
+  font-size: 13.5px;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.execQuote {
+  font-size: 13px;
+  color: #334155;
+  line-height: 1.55;
+  font-style: italic;
+  padding-left: 10px;
+  border-left: 2px solid #0284C7;
+  margin-top: auto;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+/* Practice Leads Grid */
+.teamSection {
+  padding: 40px 0 90px;
+}
+
+.practiceGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.card {
+  padding: 30px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  border-radius: var(--radius-xl);
+  box-shadow: inset 0 1.5px 0 #FFFFFF,
+              inset 0 -1px 0 rgba(15, 23, 42, 0.03),
+              0 8px 24px -4px rgba(15, 23, 42, 0.05),
+              0 2px 6px rgba(15, 23, 42, 0.03);
+  transition: all 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover {
+  border-color: rgba(2, 132, 199, 0.4);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: inset 0 1.5px 0 #FFFFFF,
+              0 22px 46px -8px rgba(15, 23, 42, 0.12),
+              0 0 0 1px rgba(2, 132, 199, 0.2);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 800;
+  border: 1px solid;
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 2px 6px rgba(15, 23, 42, 0.06);
+}
+
+.linkedinIcon {
+  color: #94A3B8;
+  transition: color var(--transition-fast);
+}
+
+.linkedinIcon:hover {
+  color: #0A66C2;
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dept {
+  font-family: var(--font-display);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  color: #0F172A;
+}
+
+.role {
+  font-size: 12.5px;
+  color: #0284C7;
+  font-weight: 600;
+}
+
+.bio {
+  font-size: 13px;
+  color: #64748B;
+  line-height: 1.55;
+}
+
+.quote {
+  font-size: 12.5px;
+  color: #475569;
+  line-height: 1.55;
+  font-style: italic;
+  padding-top: 10px;
+  border-top: 1px solid #F1F5F9;
+}
+
+/* Culture */
+.culture {
+  padding: 80px 0 96px;
+  background: #F8FAFC;
+}
+
+.cultureGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+
+.cultureItem {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  border-radius: var(--radius-xl);
+  padding: 30px 24px;
+  box-shadow: inset 0 1.5px 0 #FFFFFF,
+              inset 0 -1px 0 rgba(15, 23, 42, 0.03),
+              0 6px 20px rgba(15, 23, 42, 0.04);
+  transition: all 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cultureItem:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: inset 0 1.5px 0 #FFFFFF,
+              0 20px 42px rgba(15, 23, 42, 0.09),
+              0 0 0 1px rgba(2, 132, 199, 0.2);
+  border-color: rgba(2, 132, 199, 0.35);
+}
+
+.cultureTitle {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 8px;
+}
+
+.cultureDesc {
+  font-size: 13px;
+  color: #64748B;
+  line-height: 1.6;
+}
+
+@media (max-width: 1100px) {
+  .topGrid {
+    grid-template-columns: 1fr;
+  }
+  .founderCard {
+    grid-template-columns: 200px 1fr;
+  }
+  .bottomGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .founderCard {
+    grid-template-columns: 1fr;
+  }
+  .founderImgBox {
+    height: 260px;
+  }
+  .bottomGrid {
+    grid-template-columns: 1fr;
+  }
+  .practiceGrid {
+    grid-template-columns: 1fr;
+  }
+  .cultureGrid {
+    grid-template-columns: 1fr;
+  }
+}

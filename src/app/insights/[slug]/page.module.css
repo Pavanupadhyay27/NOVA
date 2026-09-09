@@ -1,0 +1,229 @@
+.page {
+  background: #FFFFFF;
+  padding-top: calc(var(--nav-height) + 30px);
+  padding-bottom: 100px;
+}
+
+.topNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #64748B;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.backBtn:hover {
+  color: #0284C7;
+}
+
+.categoryBadge {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0284C7;
+  background: rgba(2, 132, 199, 0.08);
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(2, 132, 199, 0.2);
+}
+
+.header {
+  margin-bottom: 36px;
+}
+
+.title {
+  font-size: clamp(28px, 3.8vw, 44px);
+  font-weight: 800;
+  color: #0F172A;
+  line-height: 1.18;
+  margin-bottom: 16px;
+}
+
+.summary {
+  font-size: 18px;
+  color: #475569;
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+
+.authorBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-lg);
+  box-shadow: inset 0 1px 0 #FFFFFF;
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.authorName {
+  font-family: var(--font-display);
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.authorRole {
+  font-size: 12.5px;
+  color: #64748B;
+}
+
+.readTimeBadge {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748B;
+}
+
+/* Banner Image */
+.bannerWrap {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  margin-bottom: 40px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 20px 48px -10px rgba(15, 23, 42, 0.08);
+}
+
+.bannerImg {
+  object-fit: cover;
+}
+
+.bannerOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.2) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Key Takeaways Box */
+.takeawaysBox {
+  background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
+  border: 1px solid #BAE6FD;
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  margin-bottom: 40px;
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 8px 24px rgba(2, 132, 199, 0.06);
+}
+
+.takeawaysHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.takeawaysIcon {
+  color: #0284C7;
+  font-size: 16px;
+}
+
+.takeawaysTitle {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 800;
+  color: #0369A1;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.takeawaysList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.takeawayItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14.5px;
+  color: #0C4A6E;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.takeawayDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #0284C7;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+/* Article Body */
+.articleBody {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-bottom: 56px;
+}
+
+.paragraph {
+  font-size: 17px;
+  color: #334155;
+  line-height: 1.8;
+}
+
+/* Author Footer */
+.authorFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 32px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-xl);
+  box-shadow: inset 0 1px 0 #FFFFFF;
+}
+
+.footerLeft {
+  max-width: 520px;
+}
+
+.footerAuthorName {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 6px;
+}
+
+.footerAuthorBio {
+  font-size: 13.5px;
+  color: #64748B;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .bannerWrap {
+    height: 280px;
+  }
+  .authorFooter {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

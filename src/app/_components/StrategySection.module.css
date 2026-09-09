@@ -1,0 +1,365 @@
+.section {
+  background: #FFFFFF;
+  padding: 96px 0 108px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bgGlow {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 600px;
+  background: radial-gradient(ellipse, rgba(2, 132, 199, 0.04) 0%, rgba(99, 102, 241, 0.02) 50%, transparent 75%);
+  pointer-events: none;
+  filter: blur(90px);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CARD-FREE VERTICAL STEPS STREAM (COMPACT & CLEAN)
+═══════════════════════════════════════════════════════════ */
+
+.verticalStepsStream {
+  max-width: 860px;
+  margin: 52px auto 0;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Continuous Vertical Gradient Spine */
+.spineBeam {
+  position: absolute;
+  top: 24px;
+  bottom: 60px;
+  left: 25px;
+  width: 3px;
+  background: linear-gradient(
+    180deg,
+    #0284C7 0%,
+    #6366F1 25%,
+    #EC4899 50%,
+    #F59E0B 75%,
+    #10B981 100%
+  );
+  border-radius: 999px;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Vertical Step Row */
+.verticalStepItem {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 32px;
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 4px 0;
+}
+
+/* Left: 3D Spine Node */
+.spineNodeCol {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+  padding-top: 2px;
+}
+
+.spineNodeDisk {
+  width: 52px;
+  height: 52px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.diskOuterRing {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    inset 0 2px 0 #FFFFFF,
+    inset 0 -2px 4px rgba(15, 23, 42, 0.06),
+    0 6px 18px -4px rgba(15, 23, 42, 0.12);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
+}
+
+.diskInnerCore {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.5),
+    0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.diskNum {
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+}
+
+.diskPulseRing {
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 1.5px dashed;
+  opacity: 0;
+  transform: scale(0.85);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.verticalStepItem:hover .diskOuterRing,
+.itemActive .diskOuterRing {
+  transform: scale(1.08);
+  box-shadow: 
+    inset 0 2px 0 #FFFFFF,
+    0 10px 24px -4px rgba(15, 23, 42, 0.16);
+}
+
+.verticalStepItem:hover .diskPulseRing,
+.itemActive .diskPulseRing {
+  opacity: 1;
+  transform: scale(1.15) rotate(45deg);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RIGHT: OPEN CARD-FREE CONTENT STREAM
+═══════════════════════════════════════════════════════════ */
+
+.stepContentStream {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 36px;
+}
+
+/* Meta Row */
+.stepMetaRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.metaBadges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.phaseTag {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid;
+}
+
+.timeTag {
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #64748B;
+  background: #F8FAFC;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid #E2E8F0;
+}
+
+.benchmarkTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 800;
+  background: #F8FAFC;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid #E2E8F0;
+  box-shadow: inset 0 1px 0 #FFFFFF;
+}
+
+.benchmarkDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+/* Title & Subtitle */
+.titleWrap {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.stepTitle {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: #0F172A;
+  line-height: 1.25;
+}
+
+.titleDivider {
+  color: #CBD5E1;
+  font-weight: 400;
+}
+
+.stepTagline {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Editorial Narrative */
+.stepDesc {
+  font-size: 14.5px;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 14px;
+  max-width: 720px;
+}
+
+/* Deliverables Stream Chips */
+.delRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin-bottom: 14px;
+}
+
+.delChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #1E293B;
+  background: #F8FAFC;
+  padding: 4px 11px;
+  border-radius: 999px;
+  border: 1px solid #E2E8F0;
+  box-shadow: inset 0 1px 0 #FFFFFF;
+  transition: all 0.2s ease;
+}
+
+.delChip:hover {
+  background: #FFFFFF;
+  border-color: #CBD5E1;
+}
+
+.chipCheck {
+  font-weight: 900;
+  font-size: 11px;
+}
+
+/* Milestone Stream */
+.milestoneStream {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #F8FAFC;
+  border: 1px dashed #CBD5E1;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.milestoneBadge {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 999px;
+  border: 1px solid;
+  background: #FFFFFF;
+}
+
+.milestoneText {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: #1E293B;
+}
+
+/* Subtle Stream Divider */
+.stepDivider {
+  margin-top: 36px;
+  height: 1px;
+  background: linear-gradient(90deg, #E2E8F0 0%, #F1F5F9 80%, transparent 100%);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE DESIGN
+═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .spineBeam {
+    left: 19px;
+  }
+  .verticalStepItem {
+    grid-template-columns: 40px 1fr;
+    gap: 16px;
+  }
+  .spineNodeDisk {
+    width: 40px;
+    height: 40px;
+  }
+  .diskOuterRing {
+    width: 40px;
+    height: 40px;
+  }
+  .diskInnerCore {
+    width: 26px;
+    height: 26px;
+  }
+  .diskNum {
+    font-size: 10.5px;
+  }
+  .stepMetaRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .titleWrap {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .titleDivider {
+    display: none;
+  }
+  .stepTitle {
+    font-size: 19px;
+  }
+}

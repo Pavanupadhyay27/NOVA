@@ -1,0 +1,98 @@
+.section {
+  padding: 80px 0 100px;
+  background: #FFFFFF;
+}
+
+.innerBox {
+  background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 50%, #F1F5F9 100%);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  border-radius: var(--radius-2xl);
+  padding: 72px 48px;
+  box-shadow: inset 0 2px 0 #FFFFFF,
+              inset 0 -1px 0 rgba(15, 23, 42, 0.04),
+              0 24px 60px -10px rgba(15, 23, 42, 0.08),
+              0 4px 12px rgba(15, 23, 42, 0.03);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.innerBox:hover {
+  border-color: rgba(2, 132, 199, 0.35);
+  box-shadow: inset 0 2px 0 #FFFFFF,
+              0 32px 72px -12px rgba(15, 23, 42, 0.12),
+              0 0 0 1px rgba(2, 132, 199, 0.15);
+}
+
+.headline {
+  margin-top: 14px;
+  margin-bottom: 16px;
+  color: #0F172A;
+}
+
+.sub {
+  color: #475569;
+  max-width: 480px;
+  margin: 0 auto 32px;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.proof {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding-top: 28px;
+  border-top: 1px solid #E2E8F0;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.proofItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.proofNum {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  color: #0284C7;
+  line-height: 1.1;
+}
+
+.proofLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.proofDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #CBD5E1;
+}
+
+@media (max-width: 640px) {
+  .innerBox {
+    padding: 40px 20px;
+  }
+  .proof {
+    gap: 16px;
+  }
+  .proofNum {
+    font-size: 17px;
+  }
+}

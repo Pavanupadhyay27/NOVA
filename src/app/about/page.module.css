@@ -1,0 +1,251 @@
+.page {
+  background: var(--bg-deep);
+  padding-top: var(--nav-height);
+}
+
+.hero {
+  position: relative;
+  padding: 80px 0 40px;
+  overflow: hidden;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 20% 50%, rgba(124, 58, 237, 0.09) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.title {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.sub {
+  max-width: 640px;
+}
+
+/* Image Showcase */
+.imageShowcase {
+  margin: 20px 0 80px;
+}
+
+.imageBox {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.image {
+  object-fit: cover;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(5, 8, 22, 0.8) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.imageCaption {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(5, 8, 22, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 8px 16px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 2;
+}
+
+.imageDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 8px var(--accent-cyan);
+}
+
+/* Philosophy */
+.philosophySection {
+  padding: 96px 0;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 56px;
+}
+
+.valueCard {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  border-radius: var(--radius-2xl);
+  padding: 40px 32px;
+  box-shadow: inset 0 1.5px 0 #FFFFFF,
+              inset 0 -1px 0 rgba(15, 23, 42, 0.03),
+              0 10px 30px -4px rgba(15, 23, 42, 0.05),
+              0 2px 6px rgba(15, 23, 42, 0.03);
+  transition: all 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.valueCard:hover {
+  transform: translateY(-8px) scale(1.008);
+  box-shadow: inset 0 1.5px 0 #FFFFFF,
+              0 26px 54px -10px rgba(15, 23, 42, 0.12),
+              0 0 0 1px rgba(2, 132, 199, 0.22);
+  border-color: rgba(2, 132, 199, 0.4);
+}
+
+.valueNum {
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #0284C7;
+  background: #FFFFFF;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid #E2E8F0;
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 1px 2px rgba(15, 23, 42, 0.04);
+  display: inline-block;
+  margin-bottom: 18px;
+}
+
+.valueTitle {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+
+.valueDesc {
+  font-size: 15px;
+  color: var(--text-dark-secondary);
+  line-height: 1.65;
+}
+
+/* Timeline */
+.timelineSection {
+  padding: 96px 0;
+  background: var(--bg-deep);
+}
+
+.timeline {
+  max-width: 720px;
+  margin: 56px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.timelineItem {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 32px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+.timelineItem:last-child {
+  border-bottom: none;
+}
+
+.timelineYear {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--accent-cyan);
+  padding-top: 2px;
+}
+
+.timelineTitle {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.timelineDesc {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* Team Section */
+.teamSection {
+  padding: 60px 0 100px;
+}
+
+.teamBanner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+}
+
+.teamBannerImgBox {
+  position: relative;
+  min-height: 380px;
+}
+
+.teamBannerImg {
+  object-fit: cover;
+}
+
+.teamOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent 60%, rgba(10, 15, 30, 0.9) 100%);
+  pointer-events: none;
+}
+
+.teamBannerContent {
+  padding: 56px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .imageBox {
+    height: 340px;
+  }
+  .valuesGrid {
+    grid-template-columns: 1fr;
+  }
+  .teamBanner {
+    grid-template-columns: 1fr;
+  }
+  .teamBannerImgBox {
+    height: 280px;
+  }
+  .teamBannerContent {
+    padding: 36px 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .timelineItem {
+    grid-template-columns: 80px 1fr;
+    gap: 16px;
+  }
+}
