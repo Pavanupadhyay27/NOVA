@@ -8,6 +8,7 @@ import FeaturedWork from './_components/FeaturedWork';
 import QuotesSection from './_components/QuotesSection';
 import TeamPreview from './_components/TeamPreview';
 import WhyChooseSection from './_components/WhyChooseSection';
+import RealGrowthSection from './_components/RealGrowthSection';
 import FAQSection from './_components/FAQSection';
 import CTASection from './_components/CTASection';
 
@@ -28,6 +29,7 @@ export default function HomePage() {
       <QuotesSection />
       <TeamPreview />
       <WhyChooseSection />
+      <RealGrowthSection />
       <FAQSection />
       <CTASection />
     </>
