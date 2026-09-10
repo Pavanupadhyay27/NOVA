@@ -1,6 +1,6 @@
 .section {
   position: relative;
-  padding: 44px 0 54px;
+  padding: 56px 0 64px;
   background: #FFFFFF;
   overflow: hidden;
 }
@@ -27,32 +27,10 @@
   filter: blur(60px);
 }
 
-/* Compact Side-by-Side Header */
+/* Compact Centered Section Header */
 .header {
-  margin-bottom: 28px;
-}
-
-.headerGrid {
-  display: grid;
-  grid-template-columns: 1.18fr 1fr;
-  gap: 36px;
-  align-items: flex-end;
-}
-
-.headerLeft {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-}
-
-.headerRight {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 14px;
-  text-align: left;
-  padding-bottom: 4px;
+  margin-bottom: 32px;
+  text-align: center;
 }
 
 .sparkleIcon {
@@ -67,10 +45,13 @@
 }
 
 .headline {
-  margin-top: 6px;
+  margin-top: 8px;
   margin-bottom: 10px;
   color: #0F172A;
-  font-size: clamp(26px, 2.7vw, 38px);
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: clamp(28px, 3.2vw, 42px);
   line-height: 1.18;
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -84,10 +65,11 @@
   font-size: 13px;
   font-weight: 700;
   color: #0284C7;
-  background: rgba(2, 132, 199, 0.08);
+  background: rgba(2, 132, 199, 0.07);
   border: 1px solid rgba(2, 132, 199, 0.22);
   padding: 4px 14px;
   border-radius: 9999px;
+  margin-bottom: 12px;
   letter-spacing: 0.01em;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 2px 8px rgba(2, 132, 199, 0.06);
 }
@@ -101,75 +83,44 @@
 }
 
 .subText {
+  max-width: 740px;
+  margin: 0 auto;
   color: #475569;
-  font-size: 14px;
-  line-height: 1.58;
-  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.6;
 }
 
-.headerActions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.brochureBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 18px;
-  font-family: var(--font-display);
-  font-size: 12.5px;
-  font-weight: 700;
-  color: #0F172A;
-  background: #FFFFFF;
-  border: 1px solid #CBD5E1;
-  border-radius: 9999px;
-  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 2px 6px rgba(15, 23, 42, 0.05);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  text-decoration: none;
-}
-
-.brochureBtn svg {
-  color: #0284C7;
-  transition: transform 0.2s ease;
-}
-
-.brochureBtn:hover {
-  border-color: #0284C7;
-  color: #0284C7;
-  background: #F0F9FF;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.15);
-}
-
-.brochureBtn:hover svg {
-  transform: translateY(2px);
-}
-
-/* Unified 3-Column Bento Grid */
+/* Bento Grid Architecture */
 .bentoGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.row1 {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 20px;
+}
+
+.row2 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-
-.partnershipCol {
-  grid-column: 1 / -1;
+  gap: 20px;
 }
 
 /* Base Bento Card */
 .bentoCard {
   border-radius: var(--radius-xl);
-  padding: 22px 20px;
+  padding: 26px 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 14px;
+  gap: 16px;
   position: relative;
   overflow: hidden;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  min-height: 210px;
+  min-height: 220px;
   height: 100%;
 }
 
@@ -195,15 +146,15 @@
     0 0 0 1.5px rgba(2, 132, 199, 0.3);
 }
 
-/* Card 1: AI First (Deep Royal Blue) */
+/* Card 1: AI-First (Midnight Sapphire Gradient) */
 .cardAi {
-  background: linear-gradient(145deg, #1E40AF 0%, #2563EB 50%, #3B82F6 100%);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: linear-gradient(135deg, #0A192F 0%, #0F2744 50%, #1E3A8A 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 
-    inset 0 2px 0 rgba(255, 255, 255, 0.45),
-    inset 0 -2px 0 rgba(0, 0, 0, 0.2),
-    0 14px 36px -8px rgba(37, 99, 235, 0.35),
-    0 4px 12px rgba(15, 23, 42, 0.08);
+    inset 0 2px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.4),
+    0 16px 40px -8px rgba(15, 23, 42, 0.4),
+    0 4px 12px rgba(15, 23, 42, 0.12);
   color: #FFFFFF;
 }
 
@@ -211,9 +162,9 @@
   position: absolute;
   top: -40px;
   right: -40px;
-  width: 160px;
-  height: 160px;
-  background: radial-gradient(circle, rgba(0, 212, 255, 0.35) 0%, transparent 70%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.3) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -221,36 +172,36 @@
 .cardAi:hover {
   transform: translateY(-4px);
   box-shadow: 
-    inset 0 2px 0 rgba(255, 255, 255, 0.6),
-    0 24px 48px -10px rgba(37, 99, 235, 0.45),
+    inset 0 2px 0 rgba(255, 255, 255, 0.5),
+    0 24px 48px -10px rgba(30, 58, 138, 0.5),
     0 0 0 2px rgba(0, 212, 255, 0.5);
 }
 
 .iconBoxAi {
-  width: 40px;
-  height: 40px;
-  border-radius: 11px;
-  background: rgba(255, 255, 255, 0.2);
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #FFFFFF;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .badgeAiPulse {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 3px 10px;
+  padding: 3.5px 11px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.14);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   font-family: var(--font-display);
-  font-size: 10px;
+  font-size: 10.5px;
   font-weight: 700;
   color: #FFFFFF;
   letter-spacing: 0.04em;
@@ -274,19 +225,19 @@
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  padding-top: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .aiTag {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.95);
-  background: rgba(255, 255, 255, 0.14);
-  padding: 2.5px 8px;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 3px 9px;
   border-radius: 6px;
 }
 
@@ -329,9 +280,9 @@
 }
 
 .iconBoxPerf {
-  width: 40px;
-  height: 40px;
-  border-radius: 11px;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.4);
@@ -345,12 +296,12 @@
 .badgePerf {
   display: inline-flex;
   align-items: center;
-  padding: 3px 10px;
+  padding: 3.5px 10px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.4);
   font-family: var(--font-display);
-  font-size: 9.5px;
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.06em;
   color: #FFFFFF;
@@ -363,7 +314,7 @@
 
 .statCallout {
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 800;
   color: #FFFFFF;
   letter-spacing: 0.02em;
@@ -382,7 +333,7 @@
 
 .tagExec {
   font-family: var(--font-display);
-  font-size: 9.5px;
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -396,7 +347,7 @@
 /* Card: Dedicated Team Tag */
 .tagExpert {
   font-family: var(--font-display);
-  font-size: 9.5px;
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -410,7 +361,7 @@
 /* Card: Reporting Tag */
 .tagReporting {
   font-family: var(--font-display);
-  font-size: 9.5px;
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -421,114 +372,152 @@
   border: 1px solid #F3E8FF;
 }
 
-/* Card: Strategy Tag */
-.tagStrategy {
-  font-family: var(--font-display);
-  font-size: 9.5px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #059669;
-  background: #ECFDF5;
-  padding: 3px 9px;
-  border-radius: 999px;
-  border: 1px solid #D1FAE5;
-}
-
-/* Full-Width Partnership Banner */
-.cardPartnership {
-  background: linear-gradient(135deg, #4338CA 0%, #6366F1 50%, #8B5CF6 100%);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+/* Row 3: Full-Width Playbook & Brochure Banner */
+.cardPlaybook {
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 60%, #0F2744 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-xl);
-  padding: 26px 32px;
+  padding: 32px 38px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 32px;
   color: #FFFFFF;
   box-shadow: 
-    inset 0 2px 0 rgba(255, 255, 255, 0.4),
-    inset 0 -2px 0 rgba(0, 0, 0, 0.2),
-    0 18px 44px -10px rgba(99, 102, 241, 0.35),
+    inset 0 2px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.35),
+    0 20px 48px -10px rgba(15, 23, 42, 0.35),
     0 4px 12px rgba(15, 23, 42, 0.08);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   min-height: auto;
 }
 
-.partnerGlow {
+.playbookGlow {
   position: absolute;
-  top: -50px;
+  top: -60px;
   left: 20%;
-  width: 260px;
-  height: 180px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  width: 320px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.25) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
 }
 
-.cardPartnership:hover {
+.cardPlaybook:hover {
   transform: translateY(-3px);
   box-shadow: 
-    inset 0 2px 0 rgba(255, 255, 255, 0.6),
-    0 26px 54px -12px rgba(99, 102, 241, 0.45),
-    0 0 0 2px rgba(196, 181, 253, 0.6);
+    inset 0 2px 0 rgba(255, 255, 255, 0.5),
+    0 28px 60px -12px rgba(15, 23, 42, 0.45),
+    0 0 0 2px rgba(2, 132, 199, 0.5);
 }
 
-.partnerLeft {
-  max-width: 680px;
+.playbookLeft {
+  max-width: 660px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
   z-index: 2;
 }
 
-.partnerTitle {
+.playbookBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #34D399;
+  background: rgba(52, 211, 153, 0.12);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  padding: 3px 10px;
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.playbookTitle {
+  font-family: var(--font-display);
+  font-size: 23px;
   font-weight: 800;
   color: #FFFFFF;
   letter-spacing: -0.02em;
 }
 
-.partnerText {
-  font-size: 13.5px;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.92);
+.playbookText {
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.88);
 }
 
-.partnerRight {
+.playbookRight {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   flex-shrink: 0;
   z-index: 2;
 }
 
-.partnerBtn {
+.btnBrochure {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 11px 22px;
+  padding: 12px 22px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.btnBrochure svg {
+  color: #38BDF8;
+}
+
+.btnBrochure:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: #38BDF8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(56, 189, 248, 0.25);
+}
+
+.btnConsultation {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
   background: #FFFFFF;
-  color: #4338CA;
+  color: #0F172A;
   font-family: var(--font-display);
   font-size: 13.5px;
   font-weight: 800;
   border-radius: 9999px;
   text-decoration: none;
-  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 4px 14px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 4px 14px rgba(0, 0, 0, 0.2);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
 }
 
-.partnerBtn:hover {
+.btnConsultation:hover {
   background: #F8FAFC;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
-.partnerArrow {
+.btnArrow {
   transition: transform 0.25s ease;
 }
 
-.partnerBtn:hover .partnerArrow {
+.btnConsultation:hover .btnArrow {
   transform: translateX(4px);
 }
 
@@ -541,9 +530,9 @@
 }
 
 .iconBox {
-  width: 40px;
-  height: 40px;
-  border-radius: 11px;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -563,12 +552,6 @@
   border-color: #F3E8FF;
 }
 
-.iconStrategy {
-  background: #ECFDF5;
-  color: #059669;
-  border-color: #D1FAE5;
-}
-
 .cardBody {
   display: flex;
   flex-direction: column;
@@ -578,7 +561,7 @@
 
 .cardTitle {
   font-family: var(--font-display);
-  font-size: 17.5px;
+  font-size: 18px;
   font-weight: 800;
   color: #0F172A;
   line-height: 1.3;
@@ -586,40 +569,40 @@
 
 .cardTitleWhite {
   font-family: var(--font-display);
-  font-size: 17.5px;
+  font-size: 18px;
   font-weight: 800;
   color: #FFFFFF;
   line-height: 1.3;
 }
 
 .cardText {
-  font-size: 13px;
+  font-size: 13.5px;
   color: #475569;
-  line-height: 1.52;
+  line-height: 1.55;
 }
 
 .cardTextWhite {
-  font-size: 13px;
+  font-size: 13.5px;
   color: rgba(255, 255, 255, 0.9);
-  line-height: 1.52;
+  line-height: 1.55;
 }
 
 /* Chip Pills */
 .chipsRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
-  padding-top: 9px;
+  gap: 6px;
+  padding-top: 10px;
   border-top: 1px solid #E2E8F0;
 }
 
 .chipPill {
   font-family: var(--font-display);
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 700;
   color: #475569;
   background: #FFFFFF;
-  padding: 3.5px 9px;
+  padding: 4px 10px;
   border-radius: 999px;
   border: 1px solid #E2E8F0;
   box-shadow: inset 0 1px 0 #FFFFFF, 0 1px 2px rgba(15, 23, 42, 0.03);
@@ -646,79 +629,85 @@ button.chipPill:hover {
 }
 
 .cardFooterSimple {
-  padding-top: 9px;
+  padding-top: 10px;
   border-top: 1px solid #E2E8F0;
 }
 
 .footerNote {
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 600;
   color: #64748B;
 }
 
 /* Responsive Breakpoints */
 @media (max-width: 1024px) {
-  .headerGrid {
+  .row1 {
     grid-template-columns: 1fr;
-    gap: 18px;
-    align-items: flex-start;
+    gap: 16px;
   }
-  .bentoGrid {
+  .row2 {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
-  .cardPartnership {
+  .cardPlaybook {
     flex-direction: column;
     align-items: flex-start;
-    padding: 22px 18px;
+    padding: 26px 22px;
+  }
+  .playbookRight {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 }
 
 @media (max-width: 680px) {
   .section {
-    padding: 32px 0 40px;
+    padding: 36px 0 44px;
   }
   .header {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
   }
   .headline {
-    font-size: 24px;
+    font-size: 25px;
   }
-  .hideMobile {
-    display: none;
-  }
-  .bentoGrid {
+  .row1, .row2 {
     grid-template-columns: 1fr;
     gap: 12px;
   }
   .bentoCard {
-    padding: 16px 14px;
+    padding: 18px 16px;
     min-height: auto;
-    gap: 10px;
+    gap: 12px;
   }
   .iconBox, .iconBoxAi, .iconBoxPerf {
-    width: 34px;
-    height: 34px;
-    border-radius: 9px;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
   }
   .cardTitle, .cardTitleWhite {
-    font-size: 15.5px;
+    font-size: 16px;
   }
   .cardText, .cardTextWhite {
-    font-size: 12px;
+    font-size: 12.5px;
   }
-  .cardPartnership {
-    padding: 16px 14px;
-    gap: 10px;
+  .cardPlaybook {
+    padding: 20px 16px;
+    gap: 14px;
   }
-  .partnerTitle {
-    font-size: 17px;
+  .playbookTitle {
+    font-size: 18px;
   }
-  .partnerText {
-    font-size: 12px;
+  .playbookText {
+    font-size: 12.5px;
   }
-  .partnerBtn {
-    padding: 8px 16px;
-    font-size: 12px;
+  .playbookRight {
+    flex-direction: column;
+    width: 100%;
+  }
+  .btnBrochure, .btnConsultation {
+    width: 100%;
+    padding: 10px 18px;
+    font-size: 12.5px;
   }
 }
