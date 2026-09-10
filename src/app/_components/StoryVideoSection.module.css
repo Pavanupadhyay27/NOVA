@@ -38,13 +38,14 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 52px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .paneCard {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  height: 100%;
   width: 100%;
 }
 
@@ -53,7 +54,6 @@
   flex-direction: column;
   gap: 14px;
   margin-bottom: 22px;
-  min-height: 180px;
 }
 
 .eyebrow {
@@ -93,7 +93,6 @@
   letter-spacing: -0.025em;
   color: #0F172A;
   margin: 0;
-  min-height: 2.4em;
 }
 
 .headlineHighlight {
@@ -109,7 +108,6 @@
   color: #475569;
   line-height: 1.6;
   margin: 0;
-  min-height: 3.2em;
 }
 
 .leadText strong {
@@ -122,6 +120,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  flex: 1;
 }
 
 .pillarCard {
@@ -174,11 +173,14 @@
   line-height: 1.48;
 }
 
-/* ── Right Pane: Video Viewport (Height Locked to match Left Pillars) ── */
+/* ── Right Pane: Video Viewport (Stretches to match exact height of Left Pillars) ── */
 .videoContainer {
   position: relative;
   width: 100%;
-  height: 258px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 290px;
   border-radius: var(--radius-2xl);
   isolation: isolate;
 }
@@ -201,7 +203,9 @@
 .videoWrapper {
   position: relative;
   width: 100%;
-  height: 258px;
+  flex: 1;
+  height: 100%;
+  min-height: 290px;
   border-radius: var(--radius-2xl);
   overflow: hidden;
   background: #0F172A;
