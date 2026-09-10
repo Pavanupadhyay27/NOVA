@@ -639,21 +639,71 @@
 
 @media (max-width: 640px) {
   .section {
-    padding: 60px 0 76px;
+    padding: 56px 0 68px;
+  }
+
+  .header {
+    margin-bottom: 32px;
+  }
+
+  .title {
+    font-size: 27px;
+    line-height: 1.18;
   }
 
   .skeuoCard {
-    padding: 24px 18px;
+    padding: 20px 16px;
   }
 
   .rowItem {
-    flex-direction: column;
-    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     gap: 12px;
+    padding: 13px 0;
+  }
+
+  .iconBox {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+
+  .rowDetails {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .rowPrimaryVal {
+    font-size: 13.5px;
+  }
+
+  .rowAddress {
+    font-size: 12px;
+    line-height: 1.35;
   }
 
   .rowActions {
-    width: 100%;
-    justify-content: flex-start;
+    width: auto;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .btnTactile {
+    width: auto;
+    padding: 0 13px;
+    height: 32px;
+    font-size: 11.5px;
+  }
+
+  .btnTactileIcon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .cardFooter {
+    flex-direction: row;
+    justify-content: space-between;
   }
 }

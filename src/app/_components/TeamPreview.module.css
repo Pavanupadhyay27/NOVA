@@ -234,27 +234,124 @@
 @media (max-width: 1024px) {
   .topGrid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
   .founderCard {
     grid-template-columns: 200px 1fr;
   }
   .bottomGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .leaderCard {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+  }
+  .leaderImgBox {
+    height: 100%;
+    min-height: 200px;
   }
 }
 
 @media (max-width: 768px) {
-  .founderCard {
-    grid-template-columns: 1fr;
-  }
-  .founderImgBox {
-    height: 240px;
-  }
-  .bottomGrid {
-    grid-template-columns: 1fr;
+  .section {
+    padding: 64px 0 72px;
   }
   .header {
     flex-direction: column;
     align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .topGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .bottomGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .founderCard {
+    grid-template-columns: 130px 1fr;
+    border-radius: var(--radius-xl);
+  }
+  .founderImgBox {
+    min-height: 100%;
+    height: 100%;
+  }
+  .founderDetails {
+    padding: 16px 14px;
+    gap: 8px;
+  }
+  .founderName {
+    font-size: 16px;
+  }
+  .founderRole {
+    font-size: 11.5px;
+  }
+  .founderBio {
+    font-size: 12px;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .founderQuote {
+    display: none;
+  }
+  .deptBadge {
+    top: 8px;
+    left: 8px;
+    font-size: 9px;
+    padding: 2px 8px;
+  }
+
+  .leaderCard {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    border-radius: var(--radius-xl);
+  }
+  .leaderImgBox {
+    height: 100%;
+    min-height: 100%;
+  }
+  .leaderDetails {
+    padding: 16px 14px;
+    gap: 6px;
+    justify-content: center;
+  }
+  .leaderName {
+    font-size: 15px;
+  }
+  .leaderRole {
+    font-size: 11.5px;
+  }
+  .leaderBio {
+    font-size: 12px;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 480px) {
+  .founderCard,
+  .leaderCard {
+    grid-template-columns: 112px 1fr;
+  }
+  .founderDetails,
+  .leaderDetails {
+    padding: 14px 12px;
+  }
+  .founderName,
+  .leaderName {
+    font-size: 14.5px;
+  }
+  .deptBadge {
+    display: none;
   }
 }

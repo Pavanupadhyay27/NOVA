@@ -178,11 +178,52 @@
 }
 
 @media (max-width: 640px) {
+  .section {
+    padding: 60px 0 68px;
+  }
   .grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 36px;
+  }
+  .card {
+    padding: 20px 16px;
+    border-radius: var(--radius-xl);
+  }
+  .cardTop {
+    margin-bottom: 14px;
+  }
+  .iconBadge {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+  .tagPill {
+    font-size: 9.5px;
+    padding: 2px 7px;
   }
   .metricVal {
-    font-size: 42px;
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+  .label {
+    font-size: 13.5px;
+    margin-bottom: 4px;
+  }
+  .desc {
+    font-size: 11.5px;
+    line-height: 1.45;
+    margin-bottom: 10px;
+  }
+  .benchmarkPill {
+    font-size: 10px;
   }
 }
+
+@media (max-width: 380px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
