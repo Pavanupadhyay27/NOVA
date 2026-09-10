@@ -572,29 +572,78 @@ button.chipPill:hover {
 @media (max-width: 1024px) {
   .row1 {
     grid-template-columns: 1fr;
+    gap: 18px;
   }
   .row2 {
     grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
   }
   .row3 {
     grid-template-columns: 1fr;
+    gap: 18px;
   }
   .cardPartnership {
     flex-direction: column;
     align-items: flex-start;
-    padding: 32px 28px;
+    padding: 30px 24px;
   }
 }
 
 @media (max-width: 640px) {
-  .row2 {
+  .section {
+    padding: 50px 0 60px;
+  }
+  .header {
+    margin-bottom: 28px;
+  }
+  .bentoGrid {
+    gap: 12px;
+  }
+  .row1, .row2, .row3 {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
   .bentoCard {
-    padding: 26px 20px;
+    padding: 18px 16px;
     min-height: auto;
+    gap: 12px;
+    border-radius: var(--radius-xl);
+  }
+  .iconBox, .iconBoxAi, .iconBoxPerf {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+  .cardTitle, .cardTitleWhite {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+  .cardText, .cardTextWhite {
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .chipsRow {
+    gap: 6px;
+    padding-top: 10px;
+  }
+  .chipPill {
+    font-size: 11px;
+    padding: 3px 10px;
+  }
+  .cardPartnership {
+    padding: 20px 16px;
+    border-radius: var(--radius-xl);
+    gap: 14px;
   }
   .partnerTitle {
-    font-size: 22px;
+    font-size: 18px;
+  }
+  .partnerText {
+    font-size: 12.5px;
+  }
+  .partnerBtn {
+    padding: 9px 18px;
+    font-size: 12.5px;
   }
 }
+

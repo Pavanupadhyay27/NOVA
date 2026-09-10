@@ -469,17 +469,19 @@
   .preFooterCard {
     flex-direction: column;
     align-items: flex-start;
-    padding: 32px 24px;
+    padding: 28px 22px;
+    gap: 20px;
   }
   .preFooterRight {
-    align-items: flex-start;
+    align-items: center;
     width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
+    gap: 12px;
   }
   .grid {
     grid-template-columns: 1fr 1fr;
-    gap: 36px;
+    gap: 28px;
   }
   .brandCol {
     grid-column: 1 / -1;
@@ -488,37 +490,158 @@
     grid-column: 1 / -1;
   }
   .contactCard {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .bottomInner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-  .bottomRight {
-    width: 100%;
+    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
   }
 }
 
 @media (max-width: 640px) {
-  .grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
   .preFooter {
-    padding: 40px 0 0;
+    padding: 30px 0 0;
   }
+  .preFooterCard {
+    padding: 20px 16px;
+    gap: 14px;
+    border-radius: var(--radius-xl);
+  }
+  .statusBadge {
+    font-size: 10px;
+    padding: 3px 10px;
+  }
+  .preFooterTitle {
+    font-size: 18px;
+    line-height: 1.25;
+  }
+  .preFooterSub {
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .preFooterRight {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+  .primaryCta {
+    padding: 10px 18px;
+    font-size: 12.5px;
+  }
+  .phoneChip {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+
   .main {
-    padding: 44px 0 36px;
+    padding: 32px 0 24px;
   }
-  .bottomRight {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 16px;
+  }
+  .brandCol {
+    grid-column: 1 / -1;
+  }
+  .brandDesc {
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    max-width: 100%;
+  }
+  .locationPill {
+    font-size: 11px;
+    padding: 8px 12px;
+    margin-bottom: 14px;
+    max-width: 100%;
+  }
+  .socials {
+    gap: 8px;
+  }
+  .social {
+    width: 34px;
+    height: 34px;
+  }
+
+  .colTitle {
+    font-size: 11px;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+  }
+  .links {
+    gap: 8px;
+  }
+  .link {
+    font-size: 12px;
+  }
+  .industriesList {
+    gap: 6px;
+  }
+  .industryItem {
+    font-size: 11.5px;
+  }
+
+  .contactCol {
+    grid-column: 1 / -1;
+  }
+  .contactCard {
+    padding: 14px 16px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .contactRow {
+    gap: 2px;
+  }
+  .contactTag {
+    font-size: 9.5px;
+  }
+  .contactEmail,
+  .contactPhone {
+    font-size: 12.5px;
+  }
+  .slaBadge {
+    padding: 4px 8px;
+    font-size: 10px;
+    width: 100%;
+  }
+
+  .bottom {
+    padding: 16px 0;
+  }
+  .bottomInner {
     flex-direction: column;
     align-items: flex-start;
-    gap: 14px;
+    gap: 12px;
   }
-  .legal {
+  .bottomLeft {
+    gap: 2px;
+  }
+  .copy {
+    font-size: 11px;
+  }
+  .certBadge {
+    font-size: 10px;
+  }
+  .bottomRight {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 8px;
     flex-wrap: wrap;
   }
+  .legal {
+    gap: 8px;
+  }
+  .legalLink {
+    font-size: 11px;
+  }
+  .backToTop {
+    padding: 4px 10px;
+    font-size: 10.5px;
+  }
 }
+

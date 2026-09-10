@@ -312,24 +312,94 @@
 @media (max-width: 1024px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 24px;
   }
 }
 
 @media (max-width: 640px) {
+  .section {
+    padding: 50px 0 60px;
+  }
+  .header {
+    margin-bottom: 24px;
+  }
   .headerTop {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
   }
-  .cardContent {
-    padding: 24px 20px;
+  .topDownloadBtn {
+    font-size: 11.5px;
+    padding: 7px 14px;
   }
-  .clientTitle {
-    font-size: 21px;
+  .grid {
+    gap: 16px;
+  }
+  .card {
+    border-radius: var(--radius-xl);
+  }
+  .cardVisual {
+    height: 160px;
   }
   .badgeWrap {
-    flex-direction: column;
-    align-items: flex-start;
+    bottom: 10px;
+    left: 12px;
+    right: 12px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     gap: 6px;
   }
+  .catBadge, .statPill {
+    font-size: 9.5px;
+    padding: 3px 10px;
+  }
+  .cardContent {
+    padding: 16px 14px;
+    gap: 10px;
+  }
+  .clientTitle {
+    font-size: 17px;
+  }
+  .overviewText {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .specBox {
+    padding: 10px 12px;
+    gap: 4px;
+  }
+  .challengeTag, .solutionTag {
+    font-size: 9.5px;
+    padding: 2px 7px;
+  }
+  .specText {
+    font-size: 11.5px;
+    line-height: 1.45;
+  }
+  .resultsBox {
+    padding: 10px 12px;
+    gap: 6px;
+  }
+  .resultsTitle {
+    font-size: 10.5px;
+  }
+  .resultsList {
+    gap: 5px;
+  }
+  .resultItem {
+    font-size: 11.5px;
+    gap: 6px;
+  }
+  .checkIcon {
+    width: 15px;
+    height: 15px;
+    font-size: 8px;
+  }
+  .cardBtn {
+    padding: 10px 16px;
+    font-size: 12px;
+  }
 }
+

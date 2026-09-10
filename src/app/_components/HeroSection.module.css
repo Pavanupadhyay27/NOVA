@@ -329,22 +329,70 @@
 @media (max-width: 1024px) {
   .inner {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 40px;
   }
   .imageCard {
     max-width: 100%;
   }
   .imageViewport {
-    height: 380px;
+    height: 360px;
   }
 }
 
 @media (max-width: 640px) {
+  .hero {
+    min-height: auto;
+    padding-top: calc(var(--nav-height) + 18px);
+    padding-bottom: 36px;
+  }
+  .inner {
+    gap: 24px;
+  }
+  .content {
+    gap: 14px;
+  }
+  .sub {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .actions {
+    gap: 8px;
+  }
+  .trustStrip {
+    font-size: 11.5px;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .imageCard {
+    border-radius: var(--radius-xl);
+  }
   .imageViewport {
-    height: 300px;
+    height: 210px;
+  }
+  .floatingBadge {
+    top: 10px;
+    left: 10px;
+    padding: 4px 10px;
+  }
+  .badgeText {
+    font-size: 10.5px;
+  }
+  .dotsWrap {
+    bottom: 10px;
+    right: 10px;
+    padding: 3px 8px;
+    gap: 5px;
+  }
+  .dot {
+    width: 5px;
+    height: 5px;
+  }
+  .dotActive {
+    width: 16px;
   }
   .splashCyan, .splashViolet, .splashAmber {
-    width: 320px;
-    height: 320px;
+    width: 260px;
+    height: 260px;
   }
 }
+
