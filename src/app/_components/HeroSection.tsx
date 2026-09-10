@@ -6,22 +6,22 @@ import styles from './HeroSection.module.css';
 
 const heroSlides = [
   {
-    id: 'strategy-growth',
-    src: '/images/hero_growth_mastery.jpg',
-    alt: 'Nova Spark growth strategy and marketing command team in Bhubaneswar',
-    caption: 'Strategic Growth & Scaling',
+    id: 'agency-team',
+    src: '/images/hero_real_agency_team.jpg',
+    alt: 'Nova Spark digital marketing and strategy team collaborating in Bhubaneswar',
+    caption: 'Strategic Growth & Execution',
   },
   {
-    id: 'performance-scale',
-    src: '/images/hero_performance_scale.jpg',
-    alt: 'Omnichannel Meta, Google Ads & automated AI growth analytics',
+    id: 'strategy-analytics',
+    src: '/images/hero_real_strategy_analytics.jpg',
+    alt: 'Marketing analytics, performance data, and campaign optimization meeting',
     caption: 'Performance & 10x ROI',
   },
   {
-    id: 'collaborative-team',
-    src: '/images/team_office.jpg',
-    alt: 'Happy collaborative marketing team and founders building digital revenue engines',
-    caption: 'Creative & Performance Teams',
+    id: 'marketing-growth',
+    src: '/images/hero_real_marketing_growth.jpg',
+    alt: 'Creative marketing professionals planning growth strategies and digital solutions',
+    caption: 'Creative & Performance Marketing',
   },
 ];
 
@@ -29,7 +29,7 @@ export default function HeroSection() {
   const [current, setCurrent] = useState(0);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Relaxed, ultra-smooth auto-slide interval (6.0 seconds per slide)
+  // Smooth auto-slide interval (6.0 seconds per slide)
   useEffect(() => {
     timerRef.current = setInterval(() => {
       setCurrent((prev) => (prev + 1) % heroSlides.length);
@@ -42,7 +42,7 @@ export default function HeroSection() {
 
   return (
     <section className={styles.hero}>
-      {/* Animated Color Splashes that Bloom and Float on Page Load */}
+      {/* Ambient background soft light glows */}
       <div className={styles.splashCyan} />
       <div className={styles.splashViolet} />
       <div className={styles.splashAmber} />
@@ -58,7 +58,7 @@ export default function HeroSection() {
 
           <h1 className={`display-hero ${styles.headline}`}>
             Digital Marketing Company{' '}
-            <span className={`accent-gradient ${styles.heroAccent3d}`}>in Bhubaneswar.</span>
+            <span className={`accent-gradient ${styles.heroAccent}`}>in Bhubaneswar.</span>
           </h1>
 
           <p className={`body-lg ${styles.sub}`}>
@@ -79,7 +79,7 @@ export default function HeroSection() {
               </Link>
             </div>
 
-            {/* Explore Our Services CTA - Highlighted and tactile */}
+            {/* Explore Our Services CTA */}
             <Link href="/services" className={styles.btnExploreWork}>
               <span className={styles.exploreIcon}>✦</span>
               <span className={styles.exploreLabel}>Explore Our Services</span>
@@ -100,7 +100,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Right — Large Luxury Cinematic Auto-Crossfade Image Frame */}
+        {/* Right — Large Clean Real Photography Showcase (No 3D / No Tilt Hover) */}
         <div className={styles.visual}>
           <div className={styles.imageCard}>
             <div className={styles.imageViewport}>
@@ -114,7 +114,7 @@ export default function HeroSection() {
                     alt={slide.alt}
                     fill
                     priority={idx === 0}
-                    sizes="(max-width: 900px) 100vw, 620px"
+                    sizes="(max-width: 900px) 100vw, 680px"
                     className={styles.slideImage}
                   />
                   <div className={styles.slideOverlay} />
