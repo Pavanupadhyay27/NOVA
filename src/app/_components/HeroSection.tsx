@@ -6,22 +6,22 @@ import styles from './HeroSection.module.css';
 
 const heroSlides = [
   {
-    id: 'happy-clients-1',
-    src: '/images/about_hero.jpg',
-    alt: 'Happy enterprise clients celebrating growth milestones with Nova Spark',
+    id: 'strategy-growth',
+    src: '/images/hero_growth_mastery.jpg',
+    alt: 'Nova Spark growth strategy and marketing command team in Bhubaneswar',
     caption: 'Strategic Growth & Scaling',
   },
   {
-    id: 'happy-clients-2',
-    src: '/images/team_office.jpg',
-    alt: 'Happy collaborative team and founders building digital revenue engines',
-    caption: 'Creative & Performance Teams',
+    id: 'performance-scale',
+    src: '/images/hero_performance_scale.jpg',
+    alt: 'Omnichannel Meta, Google Ads & automated AI growth analytics',
+    caption: 'Performance & 10x ROI',
   },
   {
-    id: 'happy-clients-3',
-    src: '/images/work_fashion.jpg',
-    alt: 'Happy customer faces and high-converting brand campaigns',
-    caption: 'D2C & Consumer Brands',
+    id: 'collaborative-team',
+    src: '/images/team_office.jpg',
+    alt: 'Happy collaborative marketing team and founders building digital revenue engines',
+    caption: 'Creative & Performance Teams',
   },
 ];
 

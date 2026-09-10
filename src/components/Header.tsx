@@ -142,11 +142,15 @@ export default function Header() {
           </Link>
         </nav>
 
-        {/* Tactile Skeuomorphic Button */}
-        <Link href="/contact" className={styles.ctaBtn}>
-          Let&apos;s Talk
-          <span className={styles.btnArrow}>→</span>
-        </Link>
+        {/* Tactile Skeuomorphic Button with Revolving Glowing Border Beam */}
+        <div className={styles.borderBeamWrapper}>
+          <div className={styles.borderGlowAmbient} />
+          <div className={styles.borderBeamSpin} />
+          <Link href="/contact" className={styles.ctaBtn}>
+            Let&apos;s Talk
+            <span className={styles.btnArrow}>→</span>
+          </Link>
+        </div>
 
         {/* Mobile Hamburger */}
         <button
