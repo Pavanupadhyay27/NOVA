@@ -1,6 +1,5 @@
 'use client';
 import { useRef } from 'react';
-import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import styles from './StoryVideoSection.module.css';
 
@@ -27,32 +26,34 @@ export default function StoryVideoSection() {
 
   return (
     <section className={styles.section} id="company-story">
-      {/* Soft Ambient Background Blooms */}
+      {/* Soft Ambient Background Glows */}
       <div className={styles.ambientGlowLeft} />
       <div className={styles.ambientGlowRight} />
 
       <div className="container">
         <div className={styles.dualGrid}>
           {/* ══════════════════════════════════════════════════
-              LEFT PANE: MINIMAL & ELEGANT COMPANY STORY
+              LEFT PANE: COMPANY INTRODUCTION
              ══════════════════════════════════════════════════ */}
           <ScrollReveal>
-            <div className={styles.storyPane}>
-              <div className={styles.eyebrow}>
-                <span className={styles.eyebrowDot} />
-                <span>COMPANY INTRODUCTION</span>
+            <div className={styles.paneCard}>
+              <div className={styles.paneHeader}>
+                <div className={styles.eyebrow}>
+                  <span className={styles.eyebrowDot} />
+                  <span>COMPANY INTRODUCTION</span>
+                </div>
+
+                <h2 className={styles.headline}>
+                  Growing Brands Through<br />
+                  <span className={`accent-gradient ${styles.headlineHighlight}`}>
+                    Strategy, Creativity & Performance.
+                  </span>
+                </h2>
+
+                <p className={styles.leadText}>
+                  At <strong>Nova Spark</strong>, we engineer full-funnel digital acquisition engines, high-converting creative campaigns, and automated revenue systems that turn customer attention into compounding scale.
+                </p>
               </div>
-
-              <h2 className={styles.storyHeadline}>
-                Growing Brands Through<br />
-                <span className={`accent-gradient ${styles.headlineHighlight}`}>
-                  Strategy, Creativity & Performance.
-                </span>
-              </h2>
-
-              <p className={styles.storyLead}>
-                At <strong>Nova Spark</strong>, we engineer full-funnel digital acquisition engines, high-converting creative campaigns, and automated revenue systems that turn customer attention into compounding scale.
-              </p>
 
               {/* 3 Minimal Feature Cards */}
               <div className={styles.pillarsList}>
@@ -68,42 +69,33 @@ export default function StoryVideoSection() {
                   </div>
                 ))}
               </div>
-
-              {/* Action Button */}
-              <div className={styles.actionRow}>
-                <Link href="/contact" className={styles.primaryBtn}>
-                  <span>Start Your Project</span>
-                  <span className={styles.arrow}>→</span>
-                </Link>
-                <div className={styles.trustText}>
-                  <span className={styles.star}>★</span>
-                  <span>4.9/5 Rating (50+ Brands)</span>
-                </div>
-              </div>
             </div>
           </ScrollReveal>
 
           {/* ══════════════════════════════════════════════════
-              RIGHT PANE: CLEAN PROCESS VIDEO SHOWCASE
+              RIGHT PANE: OUR WORKING PROCESS & CINEMATIC VIDEO
              ══════════════════════════════════════════════════ */}
           <ScrollReveal delay={100}>
-            <div className={styles.videoPane}>
-              <div className={styles.processHeader}>
-                <div className={styles.processEyebrow}>
-                  <span className={styles.processPulse} />
+            <div className={styles.paneCard}>
+              <div className={styles.paneHeader}>
+                <div className={styles.eyebrow}>
+                  <span className={styles.eyebrowDotIndigo} />
                   <span>OUR WORKING PROCESS</span>
                 </div>
 
-                <h3 className={styles.processTitle}>
-                  See How We Turn Ideas Into Results
-                </h3>
+                <h2 className={styles.headline}>
+                  See How We Turn Ideas<br />
+                  <span className={`accent-gradient ${styles.headlineHighlight}`}>
+                    Into Compounding Results.
+                  </span>
+                </h2>
 
-                <p className={styles.processDesc}>
-                  Take a look at how we move from strategy and creative planning through to execution and business growth you can actually measure.
+                <p className={styles.leadText}>
+                  Take an inside look at how our team moves from strategy and creative planning through to live execution and business growth you can actually measure.
                 </p>
               </div>
 
-              {/* Clean Minimal Video Frame */}
+              {/* High-Resolution Cinematic Video Viewport */}
               <div className={styles.videoContainer}>
                 <div className={styles.videoBackdrop} />
 

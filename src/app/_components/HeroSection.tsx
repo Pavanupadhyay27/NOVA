@@ -66,8 +66,13 @@ export default function HeroSection() {
           </p>
 
           <div className={styles.actions}>
-            {/* Highlighting CTA with Smooth Moving Gradient Glowing Border */}
-            <div className={styles.glowCtaWrapper}>
+            {/* CTA with Revolving Orbital Satellite (Earth-like Orbit) */}
+            <div className={styles.orbitWrapper}>
+              <div className={styles.orbitTrack} />
+              <div className={styles.orbitRing}>
+                <span className={styles.orbitPlanet} />
+              </div>
+
               <Link href="/contact" className={styles.btnStartProject}>
                 <span className={styles.btnShimmer} />
                 <span className={styles.btnGlassGloss} />

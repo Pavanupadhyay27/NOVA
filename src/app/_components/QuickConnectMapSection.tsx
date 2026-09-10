@@ -258,49 +258,43 @@ export default function QuickConnectMapSection() {
           </ScrollReveal>
 
           {/* ══════════════════════════════════════════════════
-              RIGHT PANEL: Tactile Skeuomorphic Map Showcase
+              RIGHT PANEL: Clean Static 3D Map Showcase
              ══════════════════════════════════════════════════ */}
           <ScrollReveal delay={160} direction="right">
             <div className={styles.skeuoMapCard}>
-              {/* Top Map Header with 3D Location Icon Badge */}
+              {/* Top Map Header with 3D Red Location Icon Badge */}
               <div className={styles.mapTopBar}>
                 <div className={styles.mapLocationInfo}>
                   <div className={styles.mapPin3dBadge}>
                     <div className={styles.mapPin3dIcon}>
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <defs>
-                          <linearGradient id="pinBodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stopColor="#00D4FF" />
-                            <stop offset="45%" stopColor="#0284C7" />
-                            <stop offset="100%" stopColor="#1E3A8A" />
+                          <linearGradient id="redPinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stopColor="#EF4444" />
+                            <stop offset="60%" stopColor="#DC2626" />
+                            <stop offset="100%" stopColor="#991B1B" />
                           </linearGradient>
-                          <linearGradient id="pinRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stopColor="#FFFFFF" />
-                            <stop offset="100%" stopColor="#94A3B8" />
-                          </linearGradient>
-                          <filter id="pinShadow3d" x="-20%" y="-20%" width="140%" height="140%">
-                            <feDropShadow dx="0" dy="2.5" stdDeviation="2.5" floodColor="rgba(2, 132, 199, 0.45)" />
+                          <filter id="redPinShadow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="rgba(220, 38, 38, 0.4)" />
                           </filter>
                         </defs>
                         <path
                           d="M12 2C7.86 2 4.5 5.36 4.5 9.5C4.5 14.85 11.22 21.42 11.51 21.7C11.64 21.83 11.82 21.9 12 21.9C12.18 21.9 12.36 21.83 12.49 21.7C12.78 21.42 19.5 14.85 19.5 9.5C19.5 5.36 16.14 2 12 2Z"
-                          fill="url(#pinBodyGrad)"
-                          filter="url(#pinShadow3d)"
-                          stroke="url(#pinRingGrad)"
+                          fill="url(#redPinGrad)"
+                          filter="url(#redPinShadow)"
+                          stroke="#FFFFFF"
                           strokeWidth="1.2"
                         />
-                        <circle cx="12" cy="9.5" r="4.2" fill="#FFFFFF" />
-                        <circle cx="12" cy="9.5" r="2.4" fill="#0284C7" />
-                        <circle cx="11.2" cy="8.6" r="0.9" fill="#FFFFFF" opacity="0.85" />
+                        <circle cx="12" cy="9.5" r="3.6" fill="#FFFFFF" />
+                        <circle cx="12" cy="9.5" r="2" fill="#DC2626" />
                       </svg>
                     </div>
-                    <span className={styles.mapPinPulseRing} />
                   </div>
 
                   <div className={styles.mapTextWrap}>
                     <div className={styles.mapTitleRow}>
                       <strong className={styles.mapTitle}>Nova Spark Studio & Lab</strong>
-                      <span className={styles.exactBadge}>3D Exact Pin</span>
+                      <span className={styles.exactBadge}>3D Location Pin</span>
                     </div>
                     <span className={styles.mapSubtitle}>Mallick Complex, Unit 3, Kharvela Nagar, Bhubaneswar</span>
                   </div>
@@ -317,7 +311,7 @@ export default function QuickConnectMapSection() {
                 </a>
               </div>
 
-              {/* Embedded Google Maps Container with 3D Exact Pin Overlay */}
+              {/* Clean Embedded Google Maps Viewport */}
               <div className={styles.mapViewport}>
                 <iframe
                   title="Nova Spark Studio Location Map"
@@ -330,57 +324,6 @@ export default function QuickConnectMapSection() {
                   referrerPolicy="no-referrer-when-downgrade"
                   className={styles.mapIframe}
                 />
-
-                {/* Interactive 3D Exact Location Pin & Radar Beacon */}
-                <div className={styles.exactLocationOverlay}>
-                  {/* Radar Pulse Waves */}
-                  <div className={styles.radarWaveOuter} />
-                  <div className={styles.radarWaveMiddle} />
-                  <div className={styles.radarWaveInner} />
-                  <div className={styles.groundShadow3d} />
-
-                  {/* 3D Floating Isometric Pin */}
-                  <a
-                    href={mapsSearchUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.pin3dAnchor}
-                    title="Click to view Nova Spark exact location on Google Maps"
-                    aria-label="Open Nova Spark Studio location on Google Maps"
-                  >
-                    <div className={styles.pin3dModel}>
-                      <div className={styles.pin3dHead}>
-                        <div className={styles.pin3dCore}>
-                          <span className={styles.pinSparkLogo}>⚡</span>
-                        </div>
-                        <span className={styles.pinGlint} />
-                      </div>
-                      <div className={styles.pin3dSpike} />
-                    </div>
-
-                    {/* Floating HUD Location Card */}
-                    <div className={styles.locationHudBadge}>
-                      <div className={styles.hudTop}>
-                        <span className={styles.hudDotLive} />
-                        <span className={styles.hudTitle}>Nova Spark HQ</span>
-                        <span className={styles.hudDist}>Direct Studio</span>
-                      </div>
-                      <div className={styles.hudAddress}>
-                        Mallick Complex, Unit 3, Kharvela Nagar
-                      </div>
-                      <div className={styles.hudFooter}>
-                        <span className={styles.hudCoords}>20.2926° N, 85.8415° E</span>
-                        <span className={styles.hudAction}>Open 3D Map ↗</span>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-
-                {/* Map Floating Control Pill */}
-                <div className={styles.mapFloatPill}>
-                  <span className={styles.pillSpark}>📍</span>
-                  <span>Mallick Complex · Unit 3, Kharvela Nagar</span>
-                </div>
               </div>
             </div>
           </ScrollReveal>
