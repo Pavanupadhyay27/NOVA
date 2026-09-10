@@ -21,32 +21,22 @@ interface ServiceItem {
 const services: ServiceItem[] = [
   {
     num: '01',
-    category: 'Paid & Performance',
-    title: 'Performance Marketing',
-    tagline: 'Predictable Customer Acquisition Engine',
-    desc: 'Turn ad spend into compounding revenue. High-converting acquisition campaigns across Google, Meta, and Programmatic networks with proprietary bidding models and server-side tracking.',
-    tags: ['Google Search & Shopping', 'Meta Advantage+', 'LinkedIn B2B Ads', 'YouTube Ads', 'Smart Retargeting'],
-    href: '/services/performance-marketing',
-    color: '#0284C7',
-    stat: '+142%',
-    statLabel: 'Avg Revenue Lift',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <line x1="18" y1="20" x2="18" y2="10"></line>
-        <line x1="12" y1="20" x2="12" y2="4"></line>
-        <line x1="6" y1="20" x2="6" y2="14"></line>
-      </svg>
-    ),
-  },
-  {
-    num: '02',
-    category: 'SEO & Organic',
-    title: 'SEO & Organic Growth',
-    tagline: 'Compounding Search Engine Authority',
-    desc: 'Dominate high-intent search rankings with technical indexing architecture, local Map Pack dominance, programmatic content engines, and high-authority backlink moats.',
-    tags: ['Technical SEO', 'Local Map Pack', 'Entity Semantic Search', 'Programmatic Content', 'High-DA Backlinks'],
+    category: 'SEO & Organic Growth',
+    title: 'Search Engine Optimization',
+    tagline: 'Higher Google Visibility & In-Market Searchers',
+    desc: 'Improve how often people see your business on Google and connect with customers who are looking for the things you offer or the services you provide. No matter if you are trying to attract customers who live nearby or people from away, we create search engine optimization plans that match what your business wants to achieve and how people are searching online.',
+    tags: [
+      'Technical SEO',
+      'On-page SEO',
+      'Local SEO',
+      'Keyword Research',
+      'Content Optimization',
+      'Google Business Profile Optimization',
+      'AEO & GEO Strategies',
+      'SEO Performance Tracking',
+    ],
     href: '/services/seo',
-    color: '#6366F1',
+    color: '#0284C7',
     stat: '+187%',
     statLabel: 'Organic Traffic Lift',
     icon: (
@@ -57,16 +47,53 @@ const services: ServiceItem[] = [
     ),
   },
   {
+    num: '02',
+    category: 'Paid Search & PPC',
+    title: 'Google Ads Management',
+    tagline: 'Targeted High-Intent Searchers Ready to Buy',
+    desc: 'Get in touch with people who are looking for products and services similar to what you have. We pay attention to the people, send messages that work well, make sure the website pages people land on are useful, and keep making things better over time.',
+    tags: [
+      'Search Ads',
+      'Performance Max',
+      'Display Ads',
+      'Shopping Ads',
+      'YouTube Ads',
+      'Lead Generation Campaigns',
+      'Conversion Tracking',
+      'Campaign Optimization',
+    ],
+    href: '/services/performance-marketing',
+    color: '#6366F1',
+    stat: '4.8x',
+    statLabel: 'Average ROAS',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="18" y1="20" x2="18" y2="10"></line>
+        <line x1="12" y1="20" x2="12" y2="4"></line>
+        <line x1="6" y1="20" x2="6" y2="14"></line>
+      </svg>
+    ),
+  },
+  {
     num: '03',
-    category: 'Social & Content',
-    title: 'Social Media & Content',
-    tagline: 'High-Retention Viral Community Loops',
-    desc: 'Transform attention into brand advocates. High-converting short-form video hooks, creator collaboration funnels, daily brand storytelling, and high-retention community loops.',
-    tags: ['Reels & TikTok Engines', 'Influencer Funnels', 'Community Management', 'Short-Form Video', 'DM Automation'],
-    href: '/services/social-media',
+    category: 'Meta & Paid Social',
+    title: 'Facebook & Instagram Ads',
+    tagline: 'Precision Audience Targeting & High-Converting Campaigns',
+    desc: 'Get closer to the people you want to reach by planning and running Meta advertising campaigns. Our goal is to make the traffic from paid media turn into real results for your business, not just make more people see your ads.',
+    tags: [
+      'Facebook Advertising',
+      'Instagram Advertising',
+      'Lead Generation',
+      'Remarketing',
+      'Conversion Campaigns',
+      'Creative Testing',
+      'Audience Targeting',
+      'Campaign Optimization',
+    ],
+    href: '/services/performance-marketing',
     color: '#EC4899',
-    stat: '10M+',
-    statLabel: 'Monthly Impressions',
+    stat: '+142%',
+    statLabel: 'Revenue Lift',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
@@ -76,15 +103,23 @@ const services: ServiceItem[] = [
   },
   {
     num: '04',
-    category: 'Brand & Creative',
-    title: 'Creative & Branding',
-    tagline: 'Distinctive Market Positioning & Identity',
-    desc: 'Make your brand impossible to ignore. Complete visual identity systems, motion graphics, high-converting ad creatives, and conversion copywriting that commands category leadership.',
-    tags: ['Brand Guidelines', '3D & Motion Graphics', 'Packaging Design', 'Conversion Copy', 'Creative Sprints'],
-    href: '/services/creative-branding',
+    category: 'Social Media & Content',
+    title: 'Social Media Marketing',
+    tagline: 'Brand Presence & Engaging Community Content',
+    desc: 'Make sure your business is always present and interesting on social media by creating content that shows who you are and connects with the people you want to reach. We develop social strategies based on your industry, audience, objectives, and brand identity.',
+    tags: [
+      'Content Strategy',
+      'Social Media Management',
+      'Creative Posts',
+      'Reels & Videos',
+      'Brand Communication',
+      'Audience Engagement',
+      'Campaign Planning',
+    ],
+    href: '/services/social-media',
     color: '#F59E0B',
-    stat: '100+',
-    statLabel: 'Brands Scaled',
+    stat: '10M+',
+    statLabel: 'Monthly Impressions',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
@@ -95,13 +130,46 @@ const services: ServiceItem[] = [
   },
   {
     num: '05',
-    category: 'Engineering & Web',
-    title: 'Web & Technology',
-    tagline: 'High-Converting Digital Flagship Platforms',
-    desc: 'Digital storefronts engineered for speed and conversion. Blazing-fast Next.js architectures, headless checkouts, sub-second load times, and frictionless mobile conversion funnels.',
-    tags: ['Next.js & React 19', 'Headless E-Commerce', 'CRO A/B Testing', 'Tactile UI/UX', 'Performance Audits'],
-    href: '/services/web-development',
+    category: 'Local Search & Map Dominance',
+    title: 'Local SEO & Google Business Profile',
+    tagline: 'Reach Nearby Customers Looking for Local Services',
+    desc: 'Reach customers searching for businesses near them. Our local marketing services help make your business easier to find on Google Search and Google Maps. For businesses that want to attract customers in Bhubaneswar and the areas around it, being easy to find can help bring in more phone calls, questions, visits and leads.',
+    tags: [
+      'Local SEO',
+      'Google Business Profile Optimization',
+      'Local Keyword Targeting',
+      'Citation Building',
+      'Review Strategy',
+      'Location-Based Content',
+      'Maps Optimization',
+    ],
+    href: '/services/seo',
     color: '#10B981',
+    stat: '#1 Rank',
+    statLabel: 'Local Map Pack',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+        <circle cx="12" cy="10" r="3"></circle>
+      </svg>
+    ),
+  },
+  {
+    num: '06',
+    category: 'Web & Conversion Solutions',
+    title: 'Website Design & Conversion Solutions',
+    tagline: 'High-Converting Digital Storefronts & Platforms',
+    desc: 'Your website is usually the first time people interact with your business. We design websites that look good, are easy to use, include search engine optimization basics and help people take the actions you want them to take.',
+    tags: [
+      'Business Websites',
+      'Landing Pages',
+      'Conversion-Focused Page Design',
+      'Website Content',
+      'User Experience Improvements',
+      'SEO-Friendly Website Structure',
+    ],
+    href: '/services/web-development',
+    color: '#06B6D4',
     stat: '99/100',
     statLabel: 'Lighthouse Score',
     icon: (
@@ -109,26 +177,6 @@ const services: ServiceItem[] = [
         <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
         <line x1="8" y1="21" x2="16" y2="21"></line>
         <line x1="12" y1="17" x2="12" y2="21"></line>
-      </svg>
-    ),
-  },
-  {
-    num: '06',
-    category: 'Autonomous AI',
-    title: 'AI & Automation',
-    tagline: 'Autonomous Revenue Operations Infrastructure',
-    desc: 'Scale revenue operations without adding headcount. Agentic lead scoring, automated WhatsApp nurturing funnels, intelligent CRM sync, and real-time revenue analytics dashboards.',
-    tags: ['Lead Qualification AI', 'WhatsApp AI Bots', 'Autonomous CRM', 'Attribution Engine', 'Automated Pipelines'],
-    href: '/services/ai-automation',
-    color: '#06B6D4',
-    stat: '-60%',
-    statLabel: 'Operating Overhead',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"></path>
-        <rect x="4" y="8" width="16" height="12" rx="2"></rect>
-        <path d="M9 13v2"></path>
-        <path d="M15 13v2"></path>
       </svg>
     ),
   },
@@ -153,11 +201,12 @@ export default function ServicesSection() {
               What We Do · Specialized Growth Practices
             </div>
             <h2 className="display-lg" style={{ marginTop: 14 }}>
-              Everything your revenue needs<br />
-              <span className="accent-gradient">to compound and dominate.</span>
+              Digital Marketing Services<br />
+              <span className="accent-gradient">in Bhubaneswar.</span>
             </h2>
-            <p className="body-lg" style={{ maxWidth: 580, marginTop: 12 }}>
-              Six specialized growth disciplines engineered into one synchronized vertical engine — eliminating silos so every campaign compounds in ROI.
+            <p className="body-lg" style={{ maxWidth: 660, marginTop: 12 }}>
+              Your business needs more than isolated marketing efforts. It needs a strategy that connects search, paid advertising, social media, content and conversion-focused experiences.<br /><br />
+              At <strong>Nova Spark</strong>, our digital marketing services are built to help businesses boost visibility, draw in the right customers, create qualified leads, and support long-term growth.
             </p>
           </ScrollReveal>
 
