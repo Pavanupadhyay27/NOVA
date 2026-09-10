@@ -1,6 +1,6 @@
 .section {
   position: relative;
-  padding: 100px 0 110px 0;
+  padding: 90px 0 100px 0;
   background: #FFFFFF;
   overflow: hidden;
   border-top: 1px solid rgba(226, 232, 240, 0.8);
@@ -11,10 +11,10 @@
   position: absolute;
   top: 15%;
   left: -120px;
-  width: 550px;
-  height: 550px;
-  background: radial-gradient(circle, rgba(2, 132, 199, 0.08) 0%, rgba(99, 102, 241, 0.03) 50%, transparent 75%);
-  filter: blur(85px);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.07) 0%, rgba(99, 102, 241, 0.03) 50%, transparent 75%);
+  filter: blur(80px);
   pointer-events: none;
 }
 
@@ -22,37 +22,38 @@
   position: absolute;
   bottom: 10%;
   right: -100px;
-  width: 550px;
-  height: 550px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, rgba(16, 185, 129, 0.03) 50%, transparent 75%);
-  filter: blur(85px);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.07) 0%, rgba(16, 185, 129, 0.03) 50%, transparent 75%);
+  filter: blur(80px);
   pointer-events: none;
 }
 
 /* ══════════════════════════════════════════════════
-   DUAL PANE GRID (EQUAL HEIGHT & ALIGNMENT)
+   DUAL PANE GRID (EXACT EQUAL HEIGHT & ALIGNMENT)
 ══════════════════════════════════════════════════ */
 .dualGrid {
   position: relative;
   z-index: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  align-items: stretch;
+  gap: 52px;
+  align-items: start;
 }
 
 .paneCard {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  height: 100%;
+  width: 100%;
 }
 
 .paneHeader {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: 14px;
+  margin-bottom: 22px;
+  min-height: 180px;
 }
 
 .eyebrow {
@@ -86,12 +87,13 @@
 
 .headline {
   font-family: var(--font-display);
-  font-size: clamp(28px, 3vw, 40px);
+  font-size: clamp(26px, 2.7vw, 36px);
   font-weight: 800;
-  line-height: 1.18;
+  line-height: 1.2;
   letter-spacing: -0.025em;
   color: #0F172A;
-  min-height: 2.36em;
+  margin: 0;
+  min-height: 2.4em;
 }
 
 .headlineHighlight {
@@ -103,10 +105,11 @@
 }
 
 .leadText {
-  font-size: 15.5px;
+  font-size: 15px;
   color: #475569;
-  line-height: 1.65;
-  min-height: 3.3em;
+  line-height: 1.6;
+  margin: 0;
+  min-height: 3.2em;
 }
 
 .leadText strong {
@@ -114,19 +117,18 @@
   font-weight: 700;
 }
 
-/* ── 3 Feature Pillar Cards (Left Pane) ── */
+/* ── Left Pane: 3 Feature Pillar Cards ── */
 .pillarsList {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  flex: 1;
+  gap: 12px;
 }
 
 .pillarCard {
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  padding: 16px 20px;
+  padding: 14px 18px;
   background: #FFFFFF;
   border: 1.5px solid #E2E8F0;
   border-radius: var(--radius-lg);
@@ -141,44 +143,42 @@
 }
 
 .pillarIconBox {
-  width: 38px;
-  height: 38px;
-  border-radius: 11px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   background: #F8FAFC;
   border: 1px solid #E2E8F0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  font-size: 17px;
   flex-shrink: 0;
 }
 
 .pillarContent {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 2px;
 }
 
 .pillarTitle {
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: 14.5px;
   font-weight: 800;
   color: #0F172A;
 }
 
 .pillarDesc {
-  font-size: 13.5px;
+  font-size: 13px;
   color: #64748B;
-  line-height: 1.5;
+  line-height: 1.48;
 }
 
-/* ── High-Resolution Video Viewport (Right Pane) ── */
+/* ── Right Pane: Video Viewport (Height Locked to match Left Pillars) ── */
 .videoContainer {
   position: relative;
   width: 100%;
-  flex: 1;
-  min-height: 380px;
-  display: flex;
+  height: 258px;
   border-radius: var(--radius-2xl);
   isolation: isolate;
 }
@@ -188,28 +188,27 @@
   inset: -6px;
   border-radius: calc(var(--radius-2xl) + 6px);
   background: linear-gradient(135deg, rgba(2, 132, 199, 0.2) 0%, rgba(99, 102, 241, 0.15) 100%);
-  filter: blur(20px);
-  opacity: 0.7;
+  filter: blur(18px);
+  opacity: 0.65;
   z-index: -1;
   transition: opacity 0.3s ease;
 }
 
 .videoContainer:hover .videoBackdrop {
-  opacity: 0.95;
+  opacity: 0.9;
 }
 
 .videoWrapper {
   position: relative;
   width: 100%;
-  height: 100%;
-  min-height: 380px;
+  height: 258px;
   border-radius: var(--radius-2xl);
   overflow: hidden;
   background: #0F172A;
   border: 1px solid rgba(226, 232, 240, 0.95);
   box-shadow: 
     inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    0 24px 60px -12px rgba(15, 23, 42, 0.14),
+    0 20px 48px -10px rgba(15, 23, 42, 0.12),
     0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
@@ -224,29 +223,29 @@
 /* ── Floating Founder Badge ── */
 .founderBadge {
   position: absolute;
-  bottom: 22px;
-  left: 20px;
+  bottom: 14px;
+  left: 14px;
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1.5px solid rgba(255, 255, 255, 0.95);
-  border-radius: var(--radius-xl);
-  padding: 10px 18px;
+  border-radius: var(--radius-lg);
+  padding: 8px 14px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   box-shadow: 
-    0 12px 30px rgba(0, 0, 0, 0.16),
+    0 10px 24px rgba(0, 0, 0, 0.14),
     inset 0 1px 0 #FFFFFF;
   z-index: 3;
-  max-width: 340px;
+  max-width: 320px;
   pointer-events: none;
 }
 
 .quoteIconBox {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-md);
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
   background: linear-gradient(135deg, rgba(2, 132, 199, 0.12) 0%, rgba(99, 102, 241, 0.15) 100%);
   border: 1px solid rgba(2, 132, 199, 0.2);
   color: #0284C7;
@@ -259,12 +258,12 @@
 .founderInfo {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
 }
 
 .founderEyebrow {
   font-family: var(--font-display);
-  font-size: 10px;
+  font-size: 9.5px;
   font-weight: 800;
   letter-spacing: 0.05em;
   color: #6366F1;
@@ -273,10 +272,10 @@
 
 .founderText {
   font-family: var(--font-display);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 750;
   color: #0F172A;
-  line-height: 1.3;
+  line-height: 1.25;
 }
 
 /* ══════════════════════════════════════════════════
@@ -285,7 +284,12 @@
 @media (max-width: 1024px) {
   .dualGrid {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 40px;
+  }
+
+  .paneHeader {
+    min-height: auto;
+    margin-bottom: 18px;
   }
 
   .headline {
@@ -297,41 +301,39 @@
   }
 
   .videoContainer, .videoWrapper {
-    min-height: 340px;
-    height: 340px;
+    height: 280px;
   }
 }
 
 @media (max-width: 640px) {
   .section {
-    padding: 60px 0 70px 0;
+    padding: 55px 0 65px 0;
   }
 
   .dualGrid {
-    gap: 36px;
+    gap: 32px;
   }
 
   .headline {
-    font-size: 26px;
+    font-size: 24px;
   }
 
   .videoContainer, .videoWrapper {
-    min-height: 240px;
-    height: 240px;
+    height: 220px;
   }
 
   .founderBadge {
-    bottom: 12px;
+    bottom: 10px;
     left: 10px;
-    padding: 8px 12px;
-    max-width: 280px;
+    padding: 6px 10px;
+    max-width: 260px;
   }
 
   .founderText {
-    font-size: 11.5px;
+    font-size: 11px;
   }
 
   .founderEyebrow {
-    font-size: 9px;
+    font-size: 8.5px;
   }
 }
