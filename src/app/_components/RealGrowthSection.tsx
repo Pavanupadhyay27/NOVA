@@ -124,7 +124,7 @@ export default function RealGrowthSection() {
                 Real Growth. <span className="accent-gradient">Real Businesses.</span>
               </h2>
               <p className={`body-lg ${styles.sub}`}>
-                Every business has unique challenges. Here&apos;s how Nova Spark transformed digital presence into measurable business growth.
+                See how our Digital Marketing Solutions have helped businesses improve their presence generate leads and achieve measurable results.
               </p>
             </div>
           </ScrollReveal>
