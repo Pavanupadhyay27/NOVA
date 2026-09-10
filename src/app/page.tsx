@@ -21,8 +21,8 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <QuickConnectMapSection />
       <ClientsSection />
+      <QuickConnectMapSection />
       <MetricsSection />
       <ServicesSection />
       <StrategySection />
