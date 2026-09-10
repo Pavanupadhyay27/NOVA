@@ -22,20 +22,24 @@ export default function WhyChooseSection() {
               <span>Why Choose Nova Spark</span>
             </div>
             <h2 className={`display-lg ${styles.headline}`}>
-              Digital Growth Powered By<br />
-              <span className="accent-gradient">Strategy, AI & Creativity</span>
+              Turning Ideas Into<br />
+              <span className="accent-gradient">Measurable Business Growth.</span>
             </h2>
-            <p className={`body-lg ${styles.sub}`}>
-              We bring together smart technology, creative thinking, and performance marketing to help brands grow faster, with results you can actually track.
+            <p className={styles.subHeadline}>
+              Digital Growth Powered by Strategy, AI &amp; Creativity
+            </p>
+            <p className={`body-lg ${styles.sub}`} style={{ maxWidth: 760 }}>
+              Every business has different goals and challenges. That&apos;s why we create customized marketing strategies instead of using a one-size-fits-all approach.<br /><br />
+              From improving search visibility and generating leads to increasing brand awareness and online sales, our team focuses on marketing activities that contribute to real business growth. Choosing the agency can make a real difference in your online growth. Nova Spark brings together technology, creativity, strategy and performance marketing to help your business grow.
             </p>
           </ScrollReveal>
         </div>
 
         {/* Bento Grid */}
         <div className={styles.bentoGrid}>
-          {/* Row 1: Card 1 (AI First Approach) + Card 2 (Dedicated Growth Team) */}
+          {/* Row 1: Card 1 (AI-First Approach) + Card 2 (Dedicated Growth Team) */}
           <div className={styles.row1}>
-            {/* Card 1: AI First Approach (Vibrant Deep Blue Card) */}
+            {/* Card 1: AI-First Approach (Vibrant Deep Blue Card) */}
             <ScrollReveal delay={0} className={styles.colAi}>
               <div className={`${styles.bentoCard} ${styles.cardAi}`}>
                 <div className={styles.cardAiMesh} />
@@ -56,20 +60,20 @@ export default function WhyChooseSection() {
                 </div>
 
                 <div className={styles.cardBody}>
-                  <h3 className={styles.cardTitleWhite}>AI First Approach</h3>
+                  <h3 className={styles.cardTitleWhite}>AI-First Approach</h3>
                   <p className={styles.cardTextWhite}>
-                    We use AI-powered workflows, automation, and data insights to make sharper marketing decisions, faster.
+                    We use AI-powered tools, automation and data insights to make marketing decisions and boost campaign efficiency.
                   </p>
                 </div>
 
                 <div className={styles.cardAiFooter}>
                   <div className={styles.aiTag}>
                     <span className={styles.aiTagDot} />
-                    <span>Predictive Bidding</span>
+                    <span>Data Insights & Automation</span>
                   </div>
                   <div className={styles.aiTag}>
                     <span className={styles.aiTagDot} />
-                    <span>Server Signal Optimization</span>
+                    <span>Campaign Efficiency</span>
                   </div>
                 </div>
               </div>
@@ -87,18 +91,18 @@ export default function WhyChooseSection() {
                       <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                     </svg>
                   </div>
-                  <span className={styles.tagExpert}>OUR EXPERTS</span>
+                  <span className={styles.tagExpert}>DEDICATED TEAM</span>
                 </div>
 
                 <div className={styles.cardBody}>
                   <h3 className={styles.cardTitle}>Dedicated Growth Team</h3>
                   <p className={styles.cardText}>
-                    Marketers, designers, developers, and strategists working as one team behind your brand, not a rotating cast of freelancers.
+                    Our team includes marketers, designers, developers and strategists who work closely together to support your business goals.
                   </p>
                 </div>
 
                 <div className={styles.chipsRow}>
-                  {['Marketing Experts', 'Creative Team', 'Growth Strategy', 'Full-Stack Developers'].map(chip => (
+                  {['Marketers', 'Designers', 'Developers', 'Strategists'].map(chip => (
                     <button
                       key={chip}
                       type="button"
@@ -113,9 +117,9 @@ export default function WhyChooseSection() {
             </ScrollReveal>
           </div>
 
-          {/* Row 2: 3 Cards (Transparent Reporting, Weekly Reviews, Performance Focus) */}
+          {/* Row 2: 2 Cards (Reporting & Performance Focus) */}
           <div className={styles.row2}>
-            {/* Card 3: Transparent Reporting */}
+            {/* Card 3: Reporting */}
             <ScrollReveal delay={120}>
               <div className={`${styles.bentoCard} ${styles.cardLight}`}>
                 <div className={styles.cardHeader}>
@@ -126,52 +130,24 @@ export default function WhyChooseSection() {
                       <line x1="6" y1="20" x2="6" y2="14" />
                     </svg>
                   </div>
-                  <span className={styles.metricTag}>Live Data</span>
+                  <span className={styles.metricTag}>Transparent Data</span>
                 </div>
 
                 <div className={styles.cardBody}>
-                  <h3 className={styles.cardTitle}>Transparent Reporting</h3>
+                  <h3 className={styles.cardTitle}>Reporting</h3>
                   <p className={styles.cardText}>
-                    Clear dashboards and honest campaign insights, so you always know exactly what your marketing spend is doing.
+                    You get clear reports and campaign insights so you always know how your marketing is performing.
                   </p>
                 </div>
 
                 <div className={styles.cardFooterSimple}>
-                  <span className={styles.footerNote}>100% Attribution Clarity · 0 Hidden Markups</span>
+                  <span className={styles.footerNote}>Clear Dashboards · Actionable Insights</span>
                 </div>
               </div>
             </ScrollReveal>
 
-            {/* Card 4: Weekly Reviews */}
+            {/* Card 4: Performance Focus (Warm Coral/Orange Card) */}
             <ScrollReveal delay={180}>
-              <div className={`${styles.bentoCard} ${styles.cardLight}`}>
-                <div className={styles.cardHeader}>
-                  <div className={`${styles.iconBox} ${styles.iconReviews}`}>
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                      <line x1="16" y1="2" x2="16" y2="6" />
-                      <line x1="8" y1="2" x2="8" y2="6" />
-                      <line x1="3" y1="10" x2="21" y2="10" />
-                    </svg>
-                  </div>
-                  <span className={styles.metricTag}>Weekly Sprints</span>
-                </div>
-
-                <div className={styles.cardBody}>
-                  <h3 className={styles.cardTitle}>Weekly Reviews</h3>
-                  <p className={styles.cardText}>
-                    Regular check-ins to track progress, flag what&apos;s working, and fix what isn&apos;t before it becomes a bigger problem.
-                  </p>
-                </div>
-
-                <div className={styles.cardFooterSimple}>
-                  <span className={styles.footerNote}>Weekly Sprint Syncs · Real-Time Slack Access</span>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Card 5: Performance Focus (Warm Coral/Orange Card) */}
-            <ScrollReveal delay={240}>
               <div className={`${styles.bentoCard} ${styles.cardPerformance}`}>
                 <div className={styles.cardPerfMesh} />
                 <div className={styles.cardHeader}>
@@ -182,26 +158,26 @@ export default function WhyChooseSection() {
                       <circle cx="12" cy="12" r="2" />
                     </svg>
                   </div>
-                  <span className={styles.badgePerf}>ROAS Driven</span>
+                  <span className={styles.badgePerf}>Results Driven</span>
                 </div>
 
                 <div className={styles.cardBody}>
                   <h3 className={styles.cardTitleWhite}>Performance Focus</h3>
                   <p className={styles.cardTextWhite}>
-                    Every campaign is built around leads, revenue, and growth you can measure, not vanity metrics.
+                    Our campaigns are built to deliver results—leads, sales, visibility and long-term business growth.
                   </p>
                 </div>
 
                 <div className={styles.cardPerfFooter}>
-                  <span className={styles.statCallout}>Target: 3.5X – 8X ROAS</span>
+                  <span className={styles.statCallout}>Leads · Sales · Real Visibility</span>
                 </div>
               </div>
             </ScrollReveal>
           </div>
 
-          {/* Row 3: Card 6 (Fast Execution) + Card 7 (Growth Strategy) */}
+          {/* Row 3: Card 5 (Fast Execution) + Card 6 (Long-Term Growth Strategy) */}
           <div className={styles.row3}>
-            {/* Card 6: Fast Execution (Warm Golden Highlight) */}
+            {/* Card 5: Fast Execution */}
             <ScrollReveal delay={200} className={styles.colExec}>
               <div className={`${styles.bentoCard} ${styles.cardLight} ${styles.cardExec}`}>
                 <div className={styles.cardHeader}>
@@ -210,18 +186,18 @@ export default function WhyChooseSection() {
                       <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
                     </svg>
                   </div>
-                  <span className={styles.tagExec}>EXECUTION EXCELLENCE</span>
+                  <span className={styles.tagExec}>CONTINUOUS MOMENTUM</span>
                 </div>
 
                 <div className={styles.cardBody}>
                   <h3 className={styles.cardTitle}>Fast Execution</h3>
                   <p className={styles.cardText}>
-                    Quick campaign launches, rapid testing, and continuous optimisation to keep you ahead of competitors.
+                    We focus on implementation, testing, optimization and continuous improvement to keep momentum.
                   </p>
                 </div>
 
                 <div className={styles.chipsRow}>
-                  {['Quick Launches', 'A/B Testing', 'Optimization'].map(chip => (
+                  {['Implementation', 'Rapid Testing', 'Optimization', 'Continuous Improvement'].map(chip => (
                     <span key={chip} className={styles.chipPill}>
                       {chip}
                     </span>
@@ -230,7 +206,7 @@ export default function WhyChooseSection() {
               </div>
             </ScrollReveal>
 
-            {/* Card 7: Growth Strategy */}
+            {/* Card 6: Long-Term Growth Strategy */}
             <ScrollReveal delay={280} className={styles.colStrategy}>
               <div className={`${styles.bentoCard} ${styles.cardLight} ${styles.cardStrategy}`}>
                 <div className={styles.cardHeader}>
@@ -240,31 +216,31 @@ export default function WhyChooseSection() {
                       <polyline points="17 6 23 6 23 12" />
                     </svg>
                   </div>
-                  <span className={styles.metricTag}>Compounding</span>
+                  <span className={styles.metricTag}>Sustainable Scale</span>
                 </div>
 
                 <div className={styles.cardBody}>
-                  <h3 className={styles.cardTitle}>Growth Strategy</h3>
+                  <h3 className={styles.cardTitle}>Long-Term Growth Strategy</h3>
                   <p className={styles.cardText}>
-                    Long-term roadmaps built for sustainable growth, not short bursts of activity that fade after a month.
+                    Our Online Marketing Services are designed to support growth, not just short-term wins.
                   </p>
                 </div>
 
                 <div className={styles.cardFooterSimple}>
-                  <span className={styles.footerNote}>12-Month Compounding Roadmap</span>
+                  <span className={styles.footerNote}>Sustainable Growth Architecture</span>
                 </div>
               </div>
             </ScrollReveal>
           </div>
 
-          {/* Row 4: Card 8 (Long-Term Partnership Banner) */}
+          {/* Row 4: Partnership Banner */}
           <ScrollReveal delay={250}>
             <div className={`${styles.bentoCard} ${styles.cardPartnership}`}>
               <div className={styles.partnerGlow} />
               <div className={styles.partnerLeft}>
-                <h3 className={styles.partnerTitle}>Long-Term Partnership</h3>
+                <h3 className={styles.partnerTitle}>Ready to Scale Your Business?</h3>
                 <p className={styles.partnerText}>
-                  We don&apos;t just run campaigns and disappear, we stay on as your growth partner and help build a stronger digital future.
+                  Partner with Nova Spark and turn your marketing into a predictable, compounding revenue engine.
                 </p>
               </div>
               <div className={styles.partnerRight}>
