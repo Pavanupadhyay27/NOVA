@@ -10,15 +10,15 @@ export default function CTASection() {
           <ScrollReveal className="text-center">
             <div className="eyebrow">
               <span className="eyebrow-dot" />
-              Ready to Scale?
+              Get Started
             </div>
             <h2 className={`display-xl ${styles.headline}`}>
-              Ready to make your<br />
-              <span className="accent-gradient">next growth story</span><br />
-              unforgettable?
+              Ready to Grow Your<br />
+              <span className="accent-gradient">Business Online?</span>
             </h2>
-            <p className={`body-lg ${styles.sub}`}>
-              Let&apos;s build a predictable, compounding revenue engine for your brand.
+            <p className={`body-lg ${styles.sub}`} style={{ maxWidth: 760, margin: '0 auto 32px' }}>
+              Whether you want to improve search engine rankings, generate leads, connect with more customers using paid ads, or create a stronger online presence, Nova Spark can help you build a plan that matches your business goals.<br /><br />
+              Understand where your business stands online and find chances to grow.
             </p>
             <div className={styles.actions}>
               {/* Primary CTA with Continuous Revolving Glowing Border Beam */}
