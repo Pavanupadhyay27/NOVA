@@ -1,6 +1,6 @@
 .section {
   position: relative;
-  padding: 100px 0 120px;
+  padding: 68px 0 84px;
   background: #FFFFFF;
   overflow: hidden;
 }
@@ -28,7 +28,7 @@
 }
 
 .header {
-  margin-bottom: 56px;
+  margin-bottom: 40px;
 }
 
 .headerTop {
@@ -36,7 +36,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .trophyIcon {
@@ -44,11 +44,14 @@
 }
 
 .topDownloadBtn {
-  font-size: 13.5px;
-  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 9px 18px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  border-radius: 9999px;
+  text-decoration: none;
 }
 
 .headerMain {
@@ -56,21 +59,30 @@
 }
 
 .headline {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   color: #0F172A;
 }
 
 .sub {
   color: #475569;
-  max-width: 640px;
-  line-height: 1.65;
+  max-width: 680px;
+  line-height: 1.62;
+  font-size: 15px;
 }
 
 /* 2x2 Grid of Rich Case Study Cards */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 
 .card {
@@ -80,26 +92,25 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  flex: 1;
   box-shadow: 
     inset 0 2.5px 0 #FFFFFF,
     inset 0 1px 1px rgba(255, 255, 255, 0.95),
     inset 0 -2.5px 4px rgba(15, 23, 42, 0.05),
-    inset 1px 0 0 rgba(255, 255, 255, 0.8),
-    inset -1px 0 0 rgba(255, 255, 255, 0.8),
     0 16px 40px -8px rgba(15, 23, 42, 0.07),
     0 2px 6px rgba(15, 23, 42, 0.03);
-  transition: all 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
 }
 
 .card:hover {
-  transform: translateY(-8px) scale(1.006);
+  transform: translateY(-6px);
   border-color: rgba(2, 132, 199, 0.45);
   box-shadow: 
     inset 0 2.5px 0 #FFFFFF,
     inset 0 1px 1px rgba(255, 255, 255, 1),
-    inset 0 -1.5px 3px rgba(15, 23, 42, 0.03),
-    0 36px 72px -12px rgba(15, 23, 42, 0.15),
+    0 28px 60px -10px rgba(15, 23, 42, 0.14),
     0 0 0 1.5px rgba(2, 132, 199, 0.3);
 }
 
@@ -107,9 +118,10 @@
 .cardVisual {
   position: relative;
   width: 100%;
-  height: 240px;
+  height: 220px;
   background: #F1F5F9;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .cardImg {
@@ -118,25 +130,25 @@
 }
 
 .card:hover .cardImg {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 .imgOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(15, 23, 42, 0.5) 0%, rgba(15, 23, 42, 0.1) 60%, transparent 100%);
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.55) 0%, rgba(15, 23, 42, 0.12) 60%, transparent 100%);
   pointer-events: none;
 }
 
 .badgeWrap {
   position: absolute;
-  bottom: 16px;
-  left: 20px;
-  right: 20px;
+  bottom: 14px;
+  left: 18px;
+  right: 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
   z-index: 2;
 }
 
@@ -149,10 +161,13 @@
   color: #0F172A;
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(10px);
-  padding: 5px 14px;
+  padding: 4px 12px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.95);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .statPill {
@@ -162,42 +177,50 @@
   letter-spacing: 0.05em;
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(10px);
-  padding: 5px 14px;
+  padding: 4px 12px;
   border-radius: 999px;
   border: 1px solid;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  white-space: nowrap;
 }
 
-/* Card Content */
+/* Card Content Area - Flex Column with Space-Between */
 .cardContent {
-  padding: 34px 30px;
+  padding: 26px 24px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 14px;
   flex: 1;
+}
+
+.cardContentHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 80px;
 }
 
 .clientTitle {
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: 21px;
   font-weight: 800;
   color: #0F172A;
   line-height: 1.25;
 }
 
 .overviewText {
-  font-size: 14.5px;
+  font-size: 13.5px;
   color: #475569;
-  line-height: 1.65;
+  line-height: 1.55;
 }
 
 /* Challenge & Solution Blocks */
 .specBox {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 5px;
   background: #FFFFFF;
-  padding: 18px 20px;
+  padding: 13px 15px;
   border-radius: var(--radius-lg);
   border: 1px solid #E2E8F0;
   box-shadow: inset 0 1px 0 #FFFFFF, 0 1px 3px rgba(15, 23, 42, 0.03);
@@ -210,34 +233,34 @@
 
 .challengeTag {
   font-family: var(--font-display);
-  font-size: 11.5px;
+  font-size: 10.5px;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #DC2626;
   background: #FEF2F2;
-  padding: 3px 10px;
+  padding: 2.5px 8px;
   border-radius: 6px;
   border: 1px solid #FEE2E2;
 }
 
 .solutionTag {
   font-family: var(--font-display);
-  font-size: 11.5px;
+  font-size: 10.5px;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #0284C7;
   background: #F0F9FF;
-  padding: 3px 10px;
+  padding: 2.5px 8px;
   border-radius: 6px;
   border: 1px solid #E0F2FE;
 }
 
 .specText {
-  font-size: 13.5px;
+  font-size: 13px;
   color: #334155;
-  line-height: 1.6;
+  line-height: 1.52;
 }
 
 /* Verified Results Box */
@@ -245,11 +268,11 @@
   background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
   border: 1px solid #BBF7D0;
   border-radius: var(--radius-lg);
-  padding: 20px;
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 4px 14px rgba(16, 185, 129, 0.06);
+  gap: 8px;
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 2px 8px rgba(16, 185, 129, 0.06);
 }
 
 .resultsHeader {
@@ -259,7 +282,7 @@
 
 .resultsTitle {
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -269,72 +292,102 @@
 .resultsList {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .resultItem {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  font-size: 13.5px;
+  gap: 8px;
+  font-size: 12.5px;
   color: #166534;
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 1.45;
 }
 
 .checkIcon {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background: #16A34A;
   color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 800;
   flex-shrink: 0;
   margin-top: 1px;
 }
 
-.cardBtn {
+/* Pinned Bottom Action */
+.cardActions {
   margin-top: auto;
+  padding-top: 8px;
+}
+
+.cardBtn {
   width: 100%;
-  padding: 13px 24px;
-  font-size: 14px;
+  padding: 11px 20px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
+  color: #FFFFFF !important;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 3px 10px rgba(2, 132, 199, 0.18);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.cardBtn:hover {
+  background: linear-gradient(135deg, #0369A1 0%, #0284C7 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.28);
+}
+
+.cardBtn svg {
+  transition: transform 0.2s ease;
+}
+
+.cardBtn:hover svg {
+  transform: translateY(2px);
 }
 
 /* Responsive */
 @media (max-width: 1024px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
+  }
+  .cardContentHeader {
+    min-height: auto;
   }
 }
 
 @media (max-width: 640px) {
   .section {
-    padding: 50px 0 60px;
+    padding: 44px 0 54px;
   }
   .header {
     margin-bottom: 24px;
   }
   .headerTop {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
   .topDownloadBtn {
     font-size: 11.5px;
     padding: 7px 14px;
   }
   .grid {
-    gap: 16px;
+    gap: 14px;
   }
   .card {
     border-radius: var(--radius-xl);
@@ -346,14 +399,11 @@
     bottom: 10px;
     left: 12px;
     right: 12px;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
     gap: 6px;
   }
   .catBadge, .statPill {
     font-size: 9.5px;
-    padding: 3px 10px;
+    padding: 3px 8px;
   }
   .cardContent {
     padding: 16px 14px;
@@ -364,42 +414,23 @@
   }
   .overviewText {
     font-size: 12px;
-    line-height: 1.5;
   }
   .specBox {
-    padding: 10px 12px;
+    padding: 9px 11px;
     gap: 4px;
-  }
-  .challengeTag, .solutionTag {
-    font-size: 9.5px;
-    padding: 2px 7px;
   }
   .specText {
     font-size: 11.5px;
-    line-height: 1.45;
   }
   .resultsBox {
     padding: 10px 12px;
     gap: 6px;
   }
-  .resultsTitle {
-    font-size: 10.5px;
-  }
-  .resultsList {
-    gap: 5px;
-  }
   .resultItem {
     font-size: 11.5px;
-    gap: 6px;
-  }
-  .checkIcon {
-    width: 15px;
-    height: 15px;
-    font-size: 8px;
   }
   .cardBtn {
-    padding: 10px 16px;
+    padding: 9px 16px;
     font-size: 12px;
   }
 }
-
