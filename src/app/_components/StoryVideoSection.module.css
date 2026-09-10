@@ -1,6 +1,6 @@
 .section {
   position: relative;
-  padding: 72px 0 80px 0;
+  padding: 92px 0 100px 0;
   background: #FFFFFF;
   overflow: hidden;
   border-top: 1px solid rgba(226, 232, 240, 0.7);
@@ -11,10 +11,10 @@
   position: absolute;
   top: 15%;
   left: -120px;
-  width: 480px;
-  height: 480px;
-  background: radial-gradient(circle, rgba(2, 132, 199, 0.06) 0%, rgba(99, 102, 241, 0.02) 50%, transparent 75%);
-  filter: blur(75px);
+  width: 540px;
+  height: 540px;
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.07) 0%, rgba(99, 102, 241, 0.02) 50%, transparent 75%);
+  filter: blur(85px);
   pointer-events: none;
 }
 
@@ -22,10 +22,10 @@
   position: absolute;
   bottom: 10%;
   right: -100px;
-  width: 480px;
-  height: 480px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, rgba(16, 185, 129, 0.02) 50%, transparent 75%);
-  filter: blur(75px);
+  width: 540px;
+  height: 540px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.07) 0%, rgba(16, 185, 129, 0.02) 50%, transparent 75%);
+  filter: blur(85px);
   pointer-events: none;
 }
 
@@ -37,7 +37,7 @@
   z-index: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  gap: 52px;
   align-items: stretch;
 }
 
@@ -52,8 +52,8 @@
 .paneHeader {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-bottom: 20px;
+  gap: 14px;
+  margin-bottom: 24px;
 }
 
 .eyebrow {
@@ -87,9 +87,9 @@
 
 .headline {
   font-family: var(--font-display);
-  font-size: clamp(24px, 2.5vw, 33px);
+  font-size: clamp(26px, 2.7vw, 36px);
   font-weight: 800;
-  line-height: 1.22;
+  line-height: 1.2;
   letter-spacing: -0.025em;
   color: #0F172A;
   margin: 0;
@@ -104,9 +104,9 @@
 }
 
 .leadText {
-  font-size: 14.5px;
+  font-size: 15px;
   color: #475569;
-  line-height: 1.58;
+  line-height: 1.62;
   margin: 0;
 }
 
@@ -119,59 +119,59 @@
 .pillarsList {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
   flex: 1;
 }
 
 .pillarCard {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 16px 20px;
+  gap: 20px;
+  padding: 22px 24px;
   background: #FFFFFF;
   border: 1.5px solid #E2E8F0;
-  border-radius: var(--radius-lg);
-  box-shadow: inset 0 1px 0 #FFFFFF, 0 2px 6px rgba(15, 23, 42, 0.02);
+  border-radius: var(--radius-xl);
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 4px 12px rgba(15, 23, 42, 0.03);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   flex: 1;
 }
 
 .pillarCard:hover {
   border-color: rgba(2, 132, 199, 0.45);
-  transform: translateY(-2px);
-  box-shadow: inset 0 1px 0 #FFFFFF, 0 8px 20px rgba(2, 132, 199, 0.08);
+  transform: translateY(-2.5px);
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 12px 28px rgba(2, 132, 199, 0.09);
 }
 
 .pillarIconBox {
-  width: 42px;
-  height: 42px;
-  border-radius: 11px;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
   background: #F8FAFC;
   border: 1.5px solid #E2E8F0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 19px;
+  font-size: 24px;
   flex-shrink: 0;
 }
 
 .pillarContent {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
 }
 
 .pillarTitle {
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 800;
   color: #0F172A;
 }
 
 .pillarDesc {
-  font-size: 13px;
+  font-size: 14px;
   color: #64748B;
-  line-height: 1.48;
+  line-height: 1.52;
 }
 
 /* ── Right Pane: Video Viewport (Stretches to match exact height of Left Pillars) ── */
@@ -181,7 +181,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 290px;
+  min-height: 380px;
   border-radius: var(--radius-2xl);
   isolation: isolate;
 }
@@ -206,14 +206,14 @@
   width: 100%;
   flex: 1;
   height: 100%;
-  min-height: 290px;
+  min-height: 380px;
   border-radius: var(--radius-2xl);
   overflow: hidden;
   background: #0F172A;
   border: 1px solid rgba(226, 232, 240, 0.95);
   box-shadow: 
     inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    0 20px 48px -10px rgba(15, 23, 42, 0.12),
+    0 24px 54px -10px rgba(15, 23, 42, 0.14),
     0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
@@ -230,22 +230,22 @@
 /* ── Floating Minimal Founder Badge ── */
 .founderBadge {
   position: absolute;
-  bottom: 14px;
-  left: 14px;
+  bottom: 18px;
+  left: 18px;
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.95);
-  border-radius: var(--radius-md);
-  padding: 7px 13px;
+  border-radius: var(--radius-lg);
+  padding: 9px 16px;
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 10px;
   box-shadow: 
-    0 8px 20px rgba(0, 0, 0, 0.12),
+    0 8px 24px rgba(0, 0, 0, 0.14),
     inset 0 1px 0 #FFFFFF;
   z-index: 3;
-  max-width: 300px;
+  max-width: 320px;
   pointer-events: none;
 }
 
