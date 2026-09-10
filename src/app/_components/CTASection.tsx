@@ -27,7 +27,7 @@ export default function CTASection() {
                 <div className={styles.borderBeamSpin} />
                 <Link href="/contact" className={styles.btnStartPrimary}>
                   <span className={styles.btnShimmer} />
-                  <span>Start the Conversation</span>
+                  <span>Book a Free Consultation</span>
                   <span className={styles.btnArrow}>→</span>
                 </Link>
               </div>

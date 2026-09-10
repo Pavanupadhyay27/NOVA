@@ -39,10 +39,16 @@ export default function Footer() {
 
   return (
     <footer className={styles.footer}>
+      {/* Background ambient lighting */}
+      <div className={styles.ambientGlow1} />
+      <div className={styles.ambientGlow2} />
+      <div className={styles.ambientMesh} />
+
       {/* Top Pre-Footer Banner / Quick Connect */}
       <div className={styles.preFooter}>
         <div className="container">
           <div className={styles.preFooterCard}>
+            <div className={styles.preFooterGlow} />
             <div className={styles.preFooterLeft}>
               <div className={styles.statusBadge}>
                 <span className={styles.statusDot} />
@@ -56,8 +62,8 @@ export default function Footer() {
               </p>
             </div>
             <div className={styles.preFooterRight}>
-              <Link href="/contact" className={`btn btn-primary ${styles.primaryCta}`}>
-                Start a Project
+              <Link href="/contact" className={styles.primaryCta}>
+                <span>Start a Project</span>
                 <span className={styles.ctaArrow}>→</span>
               </Link>
               <a href="tel:+918280788689" className={styles.phoneChip}>
@@ -77,15 +83,17 @@ export default function Footer() {
           <div className={styles.grid}>
             {/* Col 1: Brand & Identity */}
             <div className={styles.brandCol}>
-              <Link href="/" className={styles.logo}>
-                <Image
-                  src="/images/logo.png"
-                  alt="Nova Spark — Digital Marketing Agency"
-                  width={168}
-                  height={44}
-                  style={{ width: 'auto', height: '42px' }}
-                  className={styles.footerLogoImg}
-                />
+              <Link href="/" className={styles.logoWrap}>
+                <div className={styles.logoCard}>
+                  <Image
+                    src="/images/logo.png"
+                    alt="Nova Spark — Digital Marketing Agency"
+                    width={160}
+                    height={42}
+                    style={{ width: 'auto', height: '36px' }}
+                    className={styles.footerLogoImg}
+                  />
+                </div>
               </Link>
               <p className={styles.brandDesc}>
                 Full-funnel digital growth agency engineering predictable revenue engines, high-converting creative campaigns, and automated acquisition systems.
@@ -98,25 +106,25 @@ export default function Footer() {
 
               <div className={styles.socials}>
                 <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className={styles.social} aria-label="LinkedIn">
-                  <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.6a1.66 1.66 0 1 0 0 3.32 1.66 1.66 0 0 0 0-3.32z"/>
                   </svg>
                 </a>
                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className={styles.social} aria-label="Instagram">
-                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
                   </svg>
                 </a>
                 <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className={styles.social} aria-label="YouTube">
-                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-1.96C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.4 19.54C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
                     <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/>
                   </svg>
                 </a>
                 <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className={styles.social} aria-label="Twitter / X">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                   </svg>
                 </a>
@@ -129,7 +137,10 @@ export default function Footer() {
               <ul className={styles.links}>
                 {services.map(s => (
                   <li key={s.href}>
-                    <Link href={s.href} className={styles.link}>{s.label}</Link>
+                    <Link href={s.href} className={styles.link}>
+                      <span className={styles.linkArrow}>›</span>
+                      <span>{s.label}</span>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -137,11 +148,14 @@ export default function Footer() {
 
             {/* Col 3: Company */}
             <div className={styles.col}>
-              <h4 className={styles.colTitle}>Company & Work</h4>
+              <h4 className={styles.colTitle}>Company &amp; Work</h4>
               <ul className={styles.links}>
                 {company.map(c => (
                   <li key={c.href}>
-                    <Link href={c.href} className={styles.link}>{c.label}</Link>
+                    <Link href={c.href} className={styles.link}>
+                      <span className={styles.linkArrow}>›</span>
+                      <span>{c.label}</span>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -208,7 +222,7 @@ export default function Footer() {
                 <span className={styles.legalSep}>·</span>
                 <Link href="/terms" className={styles.legalLink}>Terms of Service</Link>
                 <span className={styles.legalSep}>·</span>
-                <Link href="/contact" className={styles.legalLink}>Support & SLAs</Link>
+                <Link href="/contact" className={styles.legalLink}>Support &amp; SLAs</Link>
               </div>
 
               <button
