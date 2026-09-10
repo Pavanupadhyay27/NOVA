@@ -144,76 +144,103 @@
 }
 
 /* ══════════════════════════════════════════════════
-   EARTH ORBIT REVOLVING SATELLITE BUTTON (Start a Project)
+   CONTINUOUS REVOLVING GLOWING BORDER BEAM BUTTON
 ══════════════════════════════════════════════════ */
-.orbitWrapper {
+.borderBeamWrapper {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 4px;
   border-radius: var(--radius-full);
-}
-
-/* Subtle dashed celestial orbit track line */
-.orbitTrack {
-  position: absolute;
-  inset: -3px;
-  border-radius: var(--radius-full);
-  border: 1px dashed rgba(2, 132, 199, 0.35);
-  pointer-events: none;
-  transition: border-color 0.3s ease;
-}
-
-/* 360-degree Rotating Ring that carries the Earth satellite */
-.orbitRing {
-  position: absolute;
-  inset: -6px;
-  border-radius: var(--radius-full);
-  pointer-events: none;
-  animation: orbitSpin 4.5s linear infinite;
-  transform-origin: center center;
-  z-index: 3;
-}
-
-/* Glowing Celestial Orb / Earth Satellite */
-.orbitPlanet {
-  position: absolute;
-  top: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #FFFFFF 0%, #00D4FF 40%, #0284C7 85%);
+  padding: 2.2px;
+  overflow: hidden;
+  isolation: isolate;
+  background: rgba(15, 23, 42, 0.08);
   box-shadow: 
-    0 0 8px #00D4FF,
-    0 0 16px rgba(2, 132, 199, 0.9),
-    0 0 24px rgba(99, 102, 241, 0.7);
+    0 10px 28px -6px rgba(2, 132, 199, 0.35),
+    0 4px 12px rgba(15, 23, 42, 0.08);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
 }
 
-@keyframes orbitSpin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.borderBeamWrapper:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 16px 36px -6px rgba(2, 132, 199, 0.5),
+    0 0 28px rgba(0, 212, 255, 0.4);
 }
 
-.orbitWrapper:hover .orbitRing {
-  animation-duration: 2.2s;
+/* Ambient Outward Glow that matches the rotating beam */
+.borderGlowAmbient {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 260%;
+  height: 520%;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 220deg,
+    rgba(0, 212, 255, 0.5) 270deg,
+    rgba(56, 189, 248, 0.85) 305deg,
+    rgba(129, 140, 248, 0.8) 335deg,
+    rgba(236, 72, 153, 0.6) 355deg,
+    rgba(0, 212, 255, 0.5) 360deg
+  );
+  animation: rotateBorderBeam 3s linear infinite;
+  filter: blur(14px);
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 0;
 }
 
-.orbitWrapper:hover .orbitTrack {
-  border-color: rgba(0, 212, 255, 0.6);
+/* Sharp Radiant Revolving Border Beam */
+.borderBeamSpin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 280%;
+  height: 560%;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 200deg,
+    rgba(0, 212, 255, 0) 230deg,
+    #00D4FF 270deg,
+    #38BDF8 300deg,
+    #818CF8 330deg,
+    #EC4899 350deg,
+    #00D4FF 360deg
+  );
+  animation: rotateBorderBeam 3s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes rotateBorderBeam {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.borderBeamWrapper:hover .borderBeamSpin,
+.borderBeamWrapper:hover .borderGlowAmbient {
+  animation-duration: 1.8s;
 }
 
 /* Primary Highlighting Start Project Button */
 .btnStartProject {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 9px;
-  padding: 14px 30px;
+  padding: 13.5px 29px;
   border-radius: var(--radius-full);
   background: linear-gradient(135deg, #0284C7 0%, #0369A1 50%, #4F46E5 100%);
   color: #FFFFFF;
@@ -222,9 +249,8 @@
   font-weight: 800;
   letter-spacing: -0.01em;
   text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.35);
   box-shadow: 
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.55),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.5),
     inset 0 -1.5px 0 rgba(0, 0, 0, 0.25);
   overflow: hidden;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);

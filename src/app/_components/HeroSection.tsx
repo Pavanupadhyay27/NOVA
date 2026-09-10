@@ -66,12 +66,10 @@ export default function HeroSection() {
           </p>
 
           <div className={styles.actions}>
-            {/* CTA with Revolving Orbital Satellite (Earth-like Orbit) */}
-            <div className={styles.orbitWrapper}>
-              <div className={styles.orbitTrack} />
-              <div className={styles.orbitRing}>
-                <span className={styles.orbitPlanet} />
-              </div>
+            {/* CTA with Continuous Revolving Glowing Border Beam */}
+            <div className={styles.borderBeamWrapper}>
+              <div className={styles.borderGlowAmbient} />
+              <div className={styles.borderBeamSpin} />
 
               <Link href="/contact" className={styles.btnStartProject}>
                 <span className={styles.btnShimmer} />
