@@ -57,7 +57,7 @@ export default function HeroSection() {
           </div>
 
           <h1 className={`display-hero ${styles.headline}`}>
-            Digital Marketing Company<br />
+            Digital Marketing Company{' '}
             <span className={`accent-gradient ${styles.heroAccent3d}`}>in Bhubaneswar.</span>
           </h1>
 
