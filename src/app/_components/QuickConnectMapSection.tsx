@@ -258,60 +258,11 @@ export default function QuickConnectMapSection() {
           </ScrollReveal>
 
           {/* ══════════════════════════════════════════════════
-              RIGHT PANEL: Clean Static 3D Map Showcase
+              RIGHT PANEL: Clean Full-Bleed 3D Map Showcase
              ══════════════════════════════════════════════════ */}
           <ScrollReveal delay={160} direction="right">
             <div className={styles.skeuoMapCard}>
-              {/* Top Map Header with 3D Red Location Icon Badge */}
-              <div className={styles.mapTopBar}>
-                <div className={styles.mapLocationInfo}>
-                  <div className={styles.mapPin3dBadge}>
-                    <div className={styles.mapPin3dIcon}>
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <defs>
-                          <linearGradient id="redPinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stopColor="#EF4444" />
-                            <stop offset="60%" stopColor="#DC2626" />
-                            <stop offset="100%" stopColor="#991B1B" />
-                          </linearGradient>
-                          <filter id="redPinShadow" x="-20%" y="-20%" width="140%" height="140%">
-                            <feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="rgba(220, 38, 38, 0.4)" />
-                          </filter>
-                        </defs>
-                        <path
-                          d="M12 2C7.86 2 4.5 5.36 4.5 9.5C4.5 14.85 11.22 21.42 11.51 21.7C11.64 21.83 11.82 21.9 12 21.9C12.18 21.9 12.36 21.83 12.49 21.7C12.78 21.42 19.5 14.85 19.5 9.5C19.5 5.36 16.14 2 12 2Z"
-                          fill="url(#redPinGrad)"
-                          filter="url(#redPinShadow)"
-                          stroke="#FFFFFF"
-                          strokeWidth="1.2"
-                        />
-                        <circle cx="12" cy="9.5" r="3.6" fill="#FFFFFF" />
-                        <circle cx="12" cy="9.5" r="2" fill="#DC2626" />
-                      </svg>
-                    </div>
-                  </div>
-
-                  <div className={styles.mapTextWrap}>
-                    <div className={styles.mapTitleRow}>
-                      <strong className={styles.mapTitle}>Nova Spark Studio & Lab</strong>
-                      <span className={styles.exactBadge}>3D Location Pin</span>
-                    </div>
-                    <span className={styles.mapSubtitle}>Mallick Complex, Unit 3, Kharvela Nagar, Bhubaneswar</span>
-                  </div>
-                </div>
-
-                <a
-                  href={mapsSearchUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`${styles.btnTactile} ${styles.btnBlue} ${styles.mapTopBtn}`}
-                >
-                  <span>Get Directions</span>
-                  <span className={styles.arrowDiagonal}>↗</span>
-                </a>
-              </div>
-
-              {/* Clean Embedded Google Maps Viewport */}
+              {/* Full Viewport Google Maps Embed */}
               <div className={styles.mapViewport}>
                 <iframe
                   title="Nova Spark Studio Location Map"
@@ -324,6 +275,64 @@ export default function QuickConnectMapSection() {
                   referrerPolicy="no-referrer-when-downgrade"
                   className={styles.mapIframe}
                 />
+
+                {/* Persistent Animated 3D Red Location Beacon Pin */}
+                <div className={styles.centerPinOverlay}>
+                  {/* Radar Wave Pulses on Map Ground */}
+                  <div className={styles.radarWaveOuter} />
+                  <div className={styles.radarWaveInner} />
+                  <div className={styles.pinGroundShadow} />
+
+                  {/* 3D Floating Pin Anchor */}
+                  <a
+                    href={mapsSearchUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.pin3dAnchor}
+                    title="Nova Spark Studio — Click to open in Google Maps"
+                    aria-label="Open Nova Spark Studio location on Google Maps"
+                  >
+                    <div className={styles.pin3dFloatingBody}>
+                      <svg width="44" height="54" viewBox="0 0 44 54" fill="none" className={styles.pinSvg}>
+                        <defs>
+                          <linearGradient id="red3dGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stopColor="#FF4D4D" />
+                            <stop offset="35%" stopColor="#EF4444" />
+                            <stop offset="70%" stopColor="#DC2626" />
+                            <stop offset="100%" stopColor="#991B1B" />
+                          </linearGradient>
+                          <linearGradient id="pinRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stopColor="#FFFFFF" />
+                            <stop offset="100%" stopColor="#CBD5E1" />
+                          </linearGradient>
+                          <filter id="pin3dShadow" x="-30%" y="-20%" width="160%" height="160%">
+                            <feDropShadow dx="0" dy="4" stdDeviation="4" floodColor="rgba(220, 38, 38, 0.45)" />
+                          </filter>
+                        </defs>
+                        {/* 3D Pin Outer Body */}
+                        <path
+                          d="M22 2C11.51 2 3 10.51 3 21C3 33.5 20.4 49.8 21.16 50.5C21.6 50.9 22.4 50.9 22.84 50.5C23.6 49.8 41 33.5 41 21C41 10.51 32.49 2 22 2Z"
+                          fill="url(#red3dGrad)"
+                          stroke="url(#pinRingGrad)"
+                          strokeWidth="1.8"
+                          filter="url(#pin3dShadow)"
+                        />
+                        {/* 3D Gloss Highlight Arc */}
+                        <path
+                          d="M10 14C12.5 8 18 5 22 5"
+                          stroke="#FFFFFF"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          opacity="0.85"
+                        />
+                        {/* Inner Core Ring */}
+                        <circle cx="22" cy="21" r="8.5" fill="#FFFFFF" />
+                        <circle cx="22" cy="21" r="5" fill="#DC2626" />
+                        <circle cx="20.5" cy="19.5" r="2" fill="#FFFFFF" opacity="0.9" />
+                      </svg>
+                    </div>
+                  </a>
+                </div>
               </div>
             </div>
           </ScrollReveal>

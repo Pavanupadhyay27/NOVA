@@ -513,21 +513,20 @@
 /* ══════════════════════════════════════════════════
    RIGHT PANEL: Tactile Skeuomorphic Map Showcase
 ══════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════
+   RIGHT PANEL: Full-Bleed Clean 3D Map Showcase
+══════════════════════════════════════════════════ */
 .skeuoMapCard {
   height: 100%;
   min-height: 480px;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(175deg, #FFFFFF 0%, #FAFCFE 50%, #F1F5F9 100%);
-  border: 1px solid rgba(218, 226, 237, 0.95);
+  background: #0F172A;
+  border: 1.5px solid rgba(226, 232, 240, 0.95);
   border-radius: var(--radius-2xl);
   overflow: hidden;
   box-shadow: 
-    inset 0 2.5px 0 #FFFFFF,
-    inset 0 1px 1px rgba(255, 255, 255, 0.95),
-    inset 0 -2px 3px rgba(15, 23, 42, 0.04),
-    inset 1px 0 0 rgba(255, 255, 255, 0.8),
-    inset -1px 0 0 rgba(255, 255, 255, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
     0 16px 40px -8px rgba(15, 23, 42, 0.08),
     0 2px 6px rgba(15, 23, 42, 0.03);
   position: relative;
@@ -535,143 +534,22 @@
 }
 
 .skeuoMapCard:hover {
-  transform: translateY(-5px);
-  border-color: rgba(2, 132, 199, 0.4);
+  transform: translateY(-3px);
+  border-color: rgba(2, 132, 199, 0.45);
   box-shadow: 
-    inset 0 2.5px 0 #FFFFFF,
-    inset 0 1px 1px rgba(255, 255, 255, 1),
-    inset 0 -1.5px 3px rgba(15, 23, 42, 0.03),
-    0 32px 64px -10px rgba(15, 23, 42, 0.14),
+    inset 0 1px 0 #FFFFFF,
+    0 28px 56px -10px rgba(15, 23, 42, 0.12),
     0 0 0 1.5px rgba(2, 132, 199, 0.25);
 }
 
-/* Map Top Bar */
-.mapTopBar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
-  z-index: 5;
-}
-
-.mapLocationInfo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-/* 3D Map Pin Badge in Header */
-.mapPin3dBadge {
-  position: relative;
-  width: 42px;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(145deg, #FFFFFF 0%, #EFF6FF 100%);
-  border: 1.5px solid rgba(2, 132, 199, 0.35);
-  border-radius: 12px;
-  box-shadow: 
-    inset 0 1.5px 0 #FFFFFF,
-    inset 0 -1.5px 2px rgba(15, 23, 42, 0.05),
-    0 4px 12px rgba(2, 132, 199, 0.18);
-  flex-shrink: 0;
-}
-
-.mapPin3dIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: translateZ(0);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.mapPin3dBadge:hover .mapPin3dIcon {
-  transform: scale(1.15) translateY(-2px);
-}
-
-.mapPinPulseRing {
-  position: absolute;
-  inset: -4px;
-  border-radius: 14px;
-  border: 1.5px solid rgba(0, 212, 255, 0.6);
-  animation: pinRingPulse 2.5s ease-out infinite;
-  pointer-events: none;
-}
-
-@keyframes pinRingPulse {
-  0% { transform: scale(0.95); opacity: 0.9; }
-  100% { transform: scale(1.25); opacity: 0; }
-}
-
-.mapTextWrap {
-  display: flex;
-  flex-direction: column;
-}
-
-.mapTitleRow {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.mapTitle {
-  font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 800;
-  color: #0F172A;
-  line-height: 1.2;
-}
-
-.exactBadge {
-  display: inline-flex;
-  align-items: center;
-  font-family: var(--font-display);
-  font-size: 10px;
-  font-weight: 800;
-  color: #0284C7;
-  background: #E0F2FE;
-  border: 1px solid rgba(2, 132, 199, 0.35);
-  padding: 1.5px 7px;
-  border-radius: var(--radius-full);
-  letter-spacing: 0.02em;
-}
-
-.mapSubtitle {
-  font-size: 11.5px;
-  color: #64748B;
-  margin-top: 1px;
-}
-
-.mapTopBtn {
-  width: auto;
-  padding: 0 16px;
-  height: 35px;
-}
-
-.arrowDiagonal {
-  font-size: 13px;
-  transition: transform 0.2s ease;
-}
-
-.mapTopBtn:hover .arrowDiagonal {
-  transform: translate(2px, -2px);
-}
-
-/* ══════════════════════════════════════════════════
-   MAP VIEWPORT & 3D LOCATION BEACON OVERLAY
-══════════════════════════════════════════════════ */
 .mapViewport {
   position: relative;
-  flex: 1;
   width: 100%;
-  min-height: 420px;
-  background: #E2E8F0;
+  height: 100%;
+  flex: 1;
+  min-height: 480px;
   overflow: hidden;
+  background: #E2E8F0;
 }
 
 .mapIframe {
@@ -681,223 +559,123 @@
   display: block;
 }
 
-/* 3D Location Marker Overlay (Centered precisely) */
-.exactLocationOverlay {
+/* ══════════════════════════════════════════════════
+   PERSISTENT ANIMATED 3D RED LOCATION PIN BEACON
+══════════════════════════════════════════════════ */
+.centerPinOverlay {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
-  z-index: 4;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100px;
+  height: 100px;
 }
 
-/* Radar Sonar Waves Expanding Across Map */
-.radarWaveOuter,
-.radarWaveMiddle,
+/* Concentric Radar Pulses at the pin tip */
+.radarWaveOuter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 72px;
+  height: 72px;
+  transform: translate(-50%, 14px) rotateX(60deg);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.4) 0%, rgba(220, 38, 38, 0.1) 60%, transparent 80%);
+  border: 1.5px solid rgba(239, 68, 68, 0.6);
+  animation: radarPing 2.4s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+  pointer-events: none;
+}
+
 .radarWaveInner {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 42px;
+  height: 42px;
+  transform: translate(-50%, 14px) rotateX(60deg);
   border-radius: 50%;
-  border: 1.5px solid rgba(2, 132, 199, 0.7);
-  background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, rgba(2, 132, 199, 0.05) 70%, transparent 100%);
-  transform: translate(-50%, -50%) rotateX(60deg);
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.5) 0%, transparent 70%);
+  border: 1.5px solid rgba(239, 68, 68, 0.8);
+  animation: radarPing 2.4s cubic-bezier(0.2, 0.8, 0.4, 1) infinite 0.6s;
   pointer-events: none;
 }
 
-.radarWaveOuter {
-  width: 160px;
-  height: 160px;
-  animation: radarPulse 3s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
-}
-
-.radarWaveMiddle {
-  width: 110px;
-  height: 110px;
-  animation: radarPulse 3s cubic-bezier(0.2, 0.8, 0.4, 1) infinite 0.7s;
-}
-
-.radarWaveInner {
-  width: 60px;
-  height: 60px;
-  animation: radarPulse 3s cubic-bezier(0.2, 0.8, 0.4, 1) infinite 1.4s;
-}
-
-@keyframes radarPulse {
+@keyframes radarPing {
   0% {
-    transform: translate(-50%, -50%) rotateX(60deg) scale(0.2);
+    transform: translate(-50%, 14px) rotateX(60deg) scale(0.3);
     opacity: 1;
   }
-  80% {
-    opacity: 0.5;
-  }
   100% {
-    transform: translate(-50%, -50%) rotateX(60deg) scale(1.6);
+    transform: translate(-50%, 14px) rotateX(60deg) scale(1.6);
     opacity: 0;
   }
 }
 
-/* Ground 3D Oval Drop Shadow */
-.groundShadow3d {
+/* 3D Ground Shadow */
+.pinGroundShadow {
   position: absolute;
-  top: calc(50% + 24px);
+  top: 50%;
   left: 50%;
-  width: 32px;
-  height: 12px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(15, 23, 42, 0.45) 0%, rgba(2, 132, 199, 0.2) 60%, transparent 100%);
-  transform: translate(-50%, -50%);
-  filter: blur(2.5px);
-  animation: groundShadowFloat 2.6s ease-in-out infinite alternate;
-}
-
-@keyframes groundShadowFloat {
-  0% { transform: translate(-50%, -50%) scale(0.85); opacity: 0.5; }
-  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.8; }
-}
-
-/* 3D Pin Anchor with Hover Interactivity */
-.pin3dAnchor {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  pointer-events: auto;
-  cursor: pointer;
-  transform: translateY(-24px);
-  animation: pin3dFloat 2.6s ease-in-out infinite alternate;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.pin3dAnchor:hover {
-  transform: translateY(-32px) scale(1.06);
-}
-
-@keyframes pin3dFloat {
-  0% { transform: translateY(-22px); }
-  100% { transform: translateY(-30px); }
-}
-
-/* 3D Dimensional Pin Model */
-.pin3dModel {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  filter: drop-shadow(0 8px 16px rgba(2, 132, 199, 0.45));
-}
-
-.pin3dHead {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: linear-gradient(140deg, #38BDF8 0%, #0284C7 45%, #1E40AF 100%);
-  border: 2.5px solid #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  box-shadow: 
-    inset 0 3px 0 rgba(255, 255, 255, 0.8),
-    inset 0 -3px 3px rgba(0, 0, 0, 0.25),
-    0 0 16px rgba(0, 212, 255, 0.6);
-  z-index: 2;
-}
-
-.pin3dCore {
+  transform: translate(-50%, 14px);
   width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.15), 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-.pinSparkLogo {
-  font-size: 14px;
-  color: #0284C7;
-  filter: drop-shadow(0 0 3px #0284C7);
-}
-
-.pinGlint {
-  position: absolute;
-  top: 3px;
-  left: 7px;
-  width: 14px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.85);
-  transform: rotate(-30deg);
+  background: rgba(15, 23, 42, 0.4);
+  filter: blur(2px);
+  animation: shadowBreathe 2.4s ease-in-out infinite alternate;
   pointer-events: none;
 }
 
-.pin3dSpike {
-  width: 0;
-  height: 0;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
-  border-top: 14px solid #1E40AF;
-  margin-top: -3px;
-  z-index: 1;
-  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.3));
+@keyframes shadowBreathe {
+  0% {
+    transform: translate(-50%, 14px) scale(1);
+    opacity: 0.45;
+  }
+  100% {
+    transform: translate(-50%, 14px) scale(0.65);
+    opacity: 0.2;
+  }
 }
 
-/* Floating Glass HUD Location Badge Attached to Pin */
-.locationHudBadge {
-  position: absolute;
-  bottom: calc(100% + 10px);
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(15, 23, 42, 0.92);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  padding: 10px 14px;
-  color: #FFFFFF;
-  box-shadow: 
-    0 12px 28px rgba(15, 23, 42, 0.35),
-    0 0 0 1px rgba(0, 212, 255, 0.3);
-  min-width: 210px;
-  text-align: left;
-  transition: all 0.25s ease;
-  pointer-events: none;
-}
-
-.pin3dAnchor:hover .locationHudBadge {
-  background: rgba(15, 23, 42, 0.98);
-  border-color: rgba(0, 212, 255, 0.6);
-  box-shadow: 
-    0 16px 36px rgba(15, 23, 42, 0.45),
-    0 0 16px rgba(0, 212, 255, 0.4);
-}
-
-.hudTop {
+/* 3D Floating Pin Body */
+.pin3dAnchor {
+  pointer-events: auto;
+  cursor: pointer;
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin-bottom: 3px;
+  justify-content: center;
+  transform: translateY(-24px);
+  text-decoration: none;
 }
 
-.hudDotLive {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #10B981;
-  box-shadow: 0 0 8px #10B981;
+.pin3dFloatingBody {
+  animation: pinLevitate 2.4s ease-in-out infinite alternate;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease;
+  filter: drop-shadow(0 6px 14px rgba(220, 38, 38, 0.4));
 }
 
-.hudTitle {
-  font-family: var(--font-display);
-  font-size: 12px;
-  font-weight: 800;
-  color: #FFFFFF;
+.pin3dAnchor:hover .pin3dFloatingBody {
+  transform: scale(1.15) translateY(-6px);
+  filter: drop-shadow(0 12px 24px rgba(220, 38, 38, 0.6)) drop-shadow(0 0 16px rgba(239, 68, 68, 0.7));
+}
+
+@keyframes pinLevitate {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-9px);
+  }
+}
+
+.pinSvg {
+  display: block;
 }
 
 .hudDist {
