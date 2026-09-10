@@ -5,7 +5,7 @@ import styles from './TeamPreview.module.css';
 
 const founders = [
   {
-    name: 'Shankarshan Nayak',
+    name: 'Shankarsan Nayak',
     role: 'Founder & CEO',
     dept: 'Executive Leadership',
     image: '/images/team/exec_1.png',

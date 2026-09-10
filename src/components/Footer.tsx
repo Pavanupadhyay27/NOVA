@@ -22,12 +22,14 @@ const company = [
 ];
 
 const industries = [
+  { label: 'IT Products & App Marketing' },
+  { label: 'Yoga & Wellness Brands' },
+  { label: 'Travel & Tourism Agencies' },
+  { label: 'Interior Design & Architecture' },
+  { label: 'EduTech & Knowledge Platforms' },
   { label: 'D2C & E-Commerce Brands' },
   { label: 'Real Estate Developers' },
   { label: 'Healthcare & Specialized Clinics' },
-  { label: 'EdTech & Knowledge Platforms' },
-  { label: 'Premium Hospitality & F&B' },
-  { label: 'Funded Tech & B2B Startups' },
 ];
 
 export default function Footer() {

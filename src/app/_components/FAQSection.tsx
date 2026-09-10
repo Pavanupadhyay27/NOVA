@@ -10,7 +10,7 @@ const faqs = [
   },
   {
     q: 'Which industries do you work with?',
-    a: 'We have deep experience in e-commerce, real estate, D2C, education, healthcare, and professional services. Our frameworks adapt to any industry where digital growth matters.',
+    a: 'We have deep experience in IT products & app marketing, e-commerce & D2C, yoga & wellness, travel agencies, interior design, edutech, real estate, healthcare, and professional services. Our frameworks adapt to any industry where digital growth matters.',
   },
   {
     q: 'How long does it take to see results?',

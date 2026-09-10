@@ -13,8 +13,8 @@ import FAQSection from './_components/FAQSection';
 import CTASection from './_components/CTASection';
 
 export const metadata: Metadata = {
-  title: 'Nova Spark — Digital Growth Agency in Bhubaneswar',
-  description: 'We build brands that move people. Strategy, creativity, technology and performance marketing engineered to turn attention into measurable growth.',
+  title: 'Digital Marketing company in Bhubaneswar | Nova Spark',
+  description: 'Discover top-notch digital marketing company in Bhubaneswar. From SEO to social media, we help you connect with your audience and increase sales!',
 };
 
 export default function HomePage() {

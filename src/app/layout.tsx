@@ -4,24 +4,75 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://novasparkdigitalmarketingagency.com"),
   title: {
-    default: "Nova Spark — Digital Growth Agency in Bhubaneswar",
+    default: "Digital Marketing company in Bhubaneswar | Nova Spark",
     template: "%s | Nova Spark"
   },
-  description: "Nova Spark is a premium digital growth agency in Bhubaneswar. We combine strategy, creativity, technology and performance marketing to build brands that move people.",
-  keywords: ["digital marketing", "SEO", "performance marketing", "social media", "Bhubaneswar", "digital agency"],
+  description: "Discover top-notch digital marketing company in Bhubaneswar. From SEO to social media, we help you connect with your audience and increase sales!",
+  keywords: [
+    "Digital Marketing company in Bhubaneswar",
+    "Digital Marketing Services",
+    "Online marketing Services",
+    "Digital Marketing Agency",
+    "Digital Marketing Solutions",
+    "Best Digital Marketing Agency in Bhubaneswar",
+    "SEO",
+    "Performance Marketing",
+    "Social Media Marketing",
+    "Bhubaneswar"
+  ],
   authors: [{ name: "Nova Spark" }],
   openGraph: {
-    title: "Nova Spark — Digital Growth Agency",
-    description: "Strategy, creativity, technology and performance marketing engineered to turn attention into measurable growth.",
-    url: "https://novaspark.in",
-    siteName: "Nova Spark",
+    title: "Digital Marketing company in Bhubaneswar | Nova Spark",
+    description: "Discover top-notch digital marketing company in Bhubaneswar. From SEO to social media, we help you connect with your audience and increase sales!",
+    url: "https://novasparkdigitalmarketingagency.com/",
+    siteName: "Nova Spark Digital Marketing Agency",
     type: "website",
+    images: [
+      {
+        url: "https://novasparkdigitalmarketingagency.com/wp-content/uploads/2025/12/Nova-Spark-wo-bg-Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Nova Spark Digital Marketing Agency"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nova Spark — Digital Growth Agency",
-    description: "Strategy, creativity, technology and performance marketing engineered to turn attention into measurable growth.",
+    title: "Digital Marketing company in Bhubaneswar | Nova Spark",
+    description: "Discover top-notch digital marketing company in Bhubaneswar. From SEO to social media, we help you connect with your audience and increase sales!",
+    images: ["https://novasparkdigitalmarketingagency.com/wp-content/uploads/2025/12/Nova-Spark-wo-bg-Logo.png"]
+  }
+};
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Nova Spark Digital Marketing Agency",
+  "image": "https://novasparkdigitalmarketingagency.com/wp-content/uploads/2025/12/Nova-Spark-wo-bg-Logo.png",
+  "@id": "",
+  "url": "https://novasparkdigitalmarketingagency.com/",
+  "telephone": "+91 82807 88689",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Growth Lab: Mallick Complex, Unit 3, Kharvela Nagar,",
+    "addressLocality": "Bhubaneswar",
+    "postalCode": "751001",
+    "addressCountry": "IN"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "opens": "09:30",
+    "closes": "18:30"
   }
 };
 
@@ -36,6 +87,10 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
       </head>
       <body>
         <Header />
