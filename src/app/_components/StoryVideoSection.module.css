@@ -1,6 +1,6 @@
 .section {
   position: relative;
-  padding: 64px 0 72px 0;
+  padding: 72px 0 80px 0;
   background: #FFFFFF;
   overflow: hidden;
   border-top: 1px solid rgba(226, 232, 240, 0.7);
@@ -11,8 +11,8 @@
   position: absolute;
   top: 15%;
   left: -120px;
-  width: 420px;
-  height: 420px;
+  width: 480px;
+  height: 480px;
   background: radial-gradient(circle, rgba(2, 132, 199, 0.06) 0%, rgba(99, 102, 241, 0.02) 50%, transparent 75%);
   filter: blur(75px);
   pointer-events: none;
@@ -22,22 +22,22 @@
   position: absolute;
   bottom: 10%;
   right: -100px;
-  width: 420px;
-  height: 420px;
+  width: 480px;
+  height: 480px;
   background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, rgba(16, 185, 129, 0.02) 50%, transparent 75%);
   filter: blur(75px);
   pointer-events: none;
 }
 
 /* ══════════════════════════════════════════════════
-   DUAL PANE GRID (COMPACT, BALANCED & FULLY VISIBLE)
+   DUAL PANE GRID (EXACT EQUAL HEIGHT & DIMENSION)
 ══════════════════════════════════════════════════ */
 .dualGrid {
   position: relative;
   z-index: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 36px;
+  gap: 48px;
   align-items: stretch;
 }
 
@@ -52,8 +52,8 @@
 .paneHeader {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 16px;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
 .eyebrow {
@@ -61,12 +61,12 @@
   align-items: center;
   gap: 6px;
   font-family: var(--font-display);
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 800;
   letter-spacing: 0.06em;
   color: #0284C7;
   text-transform: uppercase;
-  height: 18px;
+  height: 20px;
 }
 
 .eyebrowDot {
@@ -87,9 +87,9 @@
 
 .headline {
   font-family: var(--font-display);
-  font-size: clamp(22px, 2.2vw, 29px);
+  font-size: clamp(24px, 2.5vw, 33px);
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.22;
   letter-spacing: -0.025em;
   color: #0F172A;
   margin: 0;
@@ -104,9 +104,9 @@
 }
 
 .leadText {
-  font-size: 14px;
+  font-size: 14.5px;
   color: #475569;
-  line-height: 1.52;
+  line-height: 1.58;
   margin: 0;
 }
 
@@ -115,89 +115,90 @@
   font-weight: 700;
 }
 
-/* ── Left Pane: Compact Feature Pillar Cards ── */
+/* ── Left Pane: Larger & Prominent Pillar Cards ── */
 .pillarsList {
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 14px;
   flex: 1;
 }
 
 .pillarCard {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 14px;
+  gap: 16px;
+  padding: 16px 20px;
   background: #FFFFFF;
   border: 1.5px solid #E2E8F0;
-  border-radius: var(--radius-md);
-  box-shadow: inset 0 1px 0 #FFFFFF, 0 1px 4px rgba(15, 23, 42, 0.02);
+  border-radius: var(--radius-lg);
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 2px 6px rgba(15, 23, 42, 0.02);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  flex: 1;
 }
 
 .pillarCard:hover {
   border-color: rgba(2, 132, 199, 0.45);
-  transform: translateY(-1.5px);
-  box-shadow: inset 0 1px 0 #FFFFFF, 0 6px 14px rgba(2, 132, 199, 0.08);
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 8px 20px rgba(2, 132, 199, 0.08);
 }
 
 .pillarIconBox {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
   background: #F8FAFC;
-  border: 1px solid #E2E8F0;
+  border: 1.5px solid #E2E8F0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 15px;
+  font-size: 19px;
   flex-shrink: 0;
 }
 
 .pillarContent {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 3px;
 }
 
 .pillarTitle {
   font-family: var(--font-display);
-  font-size: 13.5px;
+  font-size: 15px;
   font-weight: 800;
   color: #0F172A;
 }
 
 .pillarDesc {
-  font-size: 12px;
+  font-size: 13px;
   color: #64748B;
-  line-height: 1.4;
+  line-height: 1.48;
 }
 
-/* ── Right Pane: Compact Video Viewport ── */
+/* ── Right Pane: Video Viewport (Stretches to match exact height of Left Pillars) ── */
 .videoContainer {
   position: relative;
   width: 100%;
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 196px;
-  border-radius: var(--radius-xl);
+  min-height: 290px;
+  border-radius: var(--radius-2xl);
   isolation: isolate;
 }
 
 .videoBackdrop {
   position: absolute;
-  inset: -5px;
-  border-radius: calc(var(--radius-xl) + 5px);
+  inset: -6px;
+  border-radius: calc(var(--radius-2xl) + 6px);
   background: linear-gradient(135deg, rgba(2, 132, 199, 0.18) 0%, rgba(99, 102, 241, 0.12) 100%);
-  filter: blur(14px);
-  opacity: 0.6;
+  filter: blur(16px);
+  opacity: 0.65;
   z-index: -1;
   transition: opacity 0.3s ease;
 }
 
 .videoContainer:hover .videoBackdrop {
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .videoWrapper {
@@ -205,18 +206,20 @@
   width: 100%;
   flex: 1;
   height: 100%;
-  min-height: 196px;
-  border-radius: var(--radius-xl);
+  min-height: 290px;
+  border-radius: var(--radius-2xl);
   overflow: hidden;
   background: #0F172A;
   border: 1px solid rgba(226, 232, 240, 0.95);
   box-shadow: 
     inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    0 16px 36px -8px rgba(15, 23, 42, 0.12),
-    0 2px 6px rgba(15, 23, 42, 0.04);
+    0 20px 48px -10px rgba(15, 23, 42, 0.12),
+    0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
 .videoPlayer {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -227,29 +230,29 @@
 /* ── Floating Minimal Founder Badge ── */
 .founderBadge {
   position: absolute;
-  bottom: 12px;
-  left: 12px;
+  bottom: 14px;
+  left: 14px;
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.95);
   border-radius: var(--radius-md);
-  padding: 6px 12px;
+  padding: 7px 13px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
   box-shadow: 
     0 8px 20px rgba(0, 0, 0, 0.12),
     inset 0 1px 0 #FFFFFF;
   z-index: 3;
-  max-width: 290px;
+  max-width: 300px;
   pointer-events: none;
 }
 
 .quoteIconBox {
-  width: 24px;
-  height: 24px;
-  border-radius: 6px;
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
   background: linear-gradient(135deg, rgba(2, 132, 199, 0.12) 0%, rgba(99, 102, 241, 0.15) 100%);
   border: 1px solid rgba(2, 132, 199, 0.2);
   color: #0284C7;
@@ -260,8 +263,8 @@
 }
 
 .quoteIconBox svg {
-  width: 12px;
-  height: 12px;
+  width: 13px;
+  height: 13px;
 }
 
 .founderInfo {
@@ -272,7 +275,7 @@
 
 .founderEyebrow {
   font-family: var(--font-display);
-  font-size: 8.5px;
+  font-size: 9px;
   font-weight: 800;
   letter-spacing: 0.05em;
   color: #6366F1;
@@ -281,7 +284,7 @@
 
 .founderText {
   font-family: var(--font-display);
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 750;
   color: #0F172A;
   line-height: 1.25;
@@ -293,41 +296,41 @@
 @media (max-width: 1024px) {
   .dualGrid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 36px;
   }
 
   .videoContainer, .videoWrapper {
-    min-height: 240px;
-    height: 240px;
+    min-height: 260px;
+    height: 260px;
   }
 }
 
 @media (max-width: 640px) {
   .section {
-    padding: 48px 0 54px 0;
+    padding: 50px 0 58px 0;
   }
 
   .dualGrid {
-    gap: 24px;
+    gap: 28px;
   }
 
   .headline {
-    font-size: 22px;
+    font-size: 23px;
   }
 
   .videoContainer, .videoWrapper {
-    min-height: 200px;
-    height: 200px;
+    min-height: 220px;
+    height: 220px;
   }
 
   .founderBadge {
-    bottom: 8px;
-    left: 8px;
-    padding: 5px 9px;
-    max-width: 250px;
+    bottom: 10px;
+    left: 10px;
+    padding: 6px 10px;
+    max-width: 260px;
   }
 
   .founderText {
-    font-size: 10.5px;
+    font-size: 11px;
   }
 }

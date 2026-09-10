@@ -6,18 +6,18 @@ import styles from './StoryVideoSection.module.css';
 const storyPillars = [
   {
     icon: '🎯',
-    title: 'Diagnostic Strategy',
-    desc: 'Funnel audits, unit economics modeling, and custom growth architecture.',
+    title: 'Diagnostic Strategy & Moats',
+    desc: 'Funnel audits, unit economics modeling, and custom omnichannel growth architecture.',
   },
   {
     icon: '🎨',
-    title: 'High-Impact Creative',
-    desc: 'Commercial videography, AI-accelerated copy, and high-converting landing pages.',
+    title: 'High-Impact Creative & Media',
+    desc: 'Commercial videography, AI-accelerated copy, and landing pages engineered to convert.',
   },
   {
     icon: '📈',
-    title: 'Compounding Scale',
-    desc: 'Algorithmic Meta Ads, Google search dominance, and automated lead pipelines.',
+    title: 'Compounding Algorithmic Scale',
+    desc: 'Omnichannel Meta Ads, Google search SERP dominance, and automated lead pipelines.',
   },
 ];
 
@@ -55,7 +55,7 @@ export default function StoryVideoSection() {
                 </p>
               </div>
 
-              {/* 3 Minimal Feature Cards */}
+              {/* 3 Larger & Aligned Feature Cards */}
               <div className={styles.pillarsList}>
                 {storyPillars.map((item, idx) => (
                   <div key={idx} className={styles.pillarCard}>
@@ -73,7 +73,7 @@ export default function StoryVideoSection() {
           </ScrollReveal>
 
           {/* ══════════════════════════════════════════════════
-              RIGHT PANE: OUR WORKING PROCESS & CINEMATIC VIDEO
+              RIGHT PANE: OUR WORKING PROCESS & EQUAL VIDEO
              ══════════════════════════════════════════════════ */}
           <ScrollReveal delay={100}>
             <div className={styles.paneCard}>
@@ -95,7 +95,7 @@ export default function StoryVideoSection() {
                 </p>
               </div>
 
-              {/* High-Resolution Cinematic Video Viewport */}
+              {/* Video Viewport Locked in Equal Height to Left Cards */}
               <div className={styles.videoContainer}>
                 <div className={styles.videoBackdrop} />
 
