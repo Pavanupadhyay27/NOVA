@@ -1,20 +1,20 @@
 .section {
   position: relative;
-  padding: 90px 0 100px 0;
+  padding: 64px 0 72px 0;
   background: #FFFFFF;
   overflow: hidden;
-  border-top: 1px solid rgba(226, 232, 240, 0.8);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  border-top: 1px solid rgba(226, 232, 240, 0.7);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.7);
 }
 
 .ambientGlowLeft {
   position: absolute;
   top: 15%;
   left: -120px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(2, 132, 199, 0.07) 0%, rgba(99, 102, 241, 0.03) 50%, transparent 75%);
-  filter: blur(80px);
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.06) 0%, rgba(99, 102, 241, 0.02) 50%, transparent 75%);
+  filter: blur(75px);
   pointer-events: none;
 }
 
@@ -22,22 +22,22 @@
   position: absolute;
   bottom: 10%;
   right: -100px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.07) 0%, rgba(16, 185, 129, 0.03) 50%, transparent 75%);
-  filter: blur(80px);
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, rgba(16, 185, 129, 0.02) 50%, transparent 75%);
+  filter: blur(75px);
   pointer-events: none;
 }
 
 /* ══════════════════════════════════════════════════
-   DUAL PANE GRID (EXACT EQUAL HEIGHT & ALIGNMENT)
+   DUAL PANE GRID (COMPACT, BALANCED & FULLY VISIBLE)
 ══════════════════════════════════════════════════ */
 .dualGrid {
   position: relative;
   z-index: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 52px;
+  gap: 36px;
   align-items: stretch;
 }
 
@@ -52,42 +52,42 @@
 .paneHeader {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  margin-bottom: 22px;
+  gap: 10px;
+  margin-bottom: 16px;
 }
 
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.06em;
   color: #0284C7;
   text-transform: uppercase;
-  height: 22px;
+  height: 18px;
 }
 
 .eyebrowDot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: #0284C7;
-  box-shadow: 0 0 8px #0284C7;
+  box-shadow: 0 0 6px #0284C7;
 }
 
 .eyebrowDotIndigo {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: #6366F1;
-  box-shadow: 0 0 8px #6366F1;
+  box-shadow: 0 0 6px #6366F1;
 }
 
 .headline {
   font-family: var(--font-display);
-  font-size: clamp(26px, 2.7vw, 36px);
+  font-size: clamp(22px, 2.2vw, 29px);
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.025em;
@@ -104,9 +104,9 @@
 }
 
 .leadText {
-  font-size: 15px;
+  font-size: 14px;
   color: #475569;
-  line-height: 1.6;
+  line-height: 1.52;
   margin: 0;
 }
 
@@ -115,89 +115,89 @@
   font-weight: 700;
 }
 
-/* ── Left Pane: 3 Feature Pillar Cards ── */
+/* ── Left Pane: Compact Feature Pillar Cards ── */
 .pillarsList {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 9px;
   flex: 1;
 }
 
 .pillarCard {
   display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  padding: 14px 18px;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
   background: #FFFFFF;
   border: 1.5px solid #E2E8F0;
-  border-radius: var(--radius-lg);
-  box-shadow: inset 0 1px 0 #FFFFFF, 0 2px 6px rgba(15, 23, 42, 0.02);
+  border-radius: var(--radius-md);
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 1px 4px rgba(15, 23, 42, 0.02);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .pillarCard:hover {
   border-color: rgba(2, 132, 199, 0.45);
-  transform: translateY(-2px);
-  box-shadow: inset 0 1px 0 #FFFFFF, 0 8px 20px rgba(2, 132, 199, 0.08);
+  transform: translateY(-1.5px);
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 6px 14px rgba(2, 132, 199, 0.08);
 }
 
 .pillarIconBox {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
   background: #F8FAFC;
   border: 1px solid #E2E8F0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 17px;
+  font-size: 15px;
   flex-shrink: 0;
 }
 
 .pillarContent {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
 }
 
 .pillarTitle {
   font-family: var(--font-display);
-  font-size: 14.5px;
+  font-size: 13.5px;
   font-weight: 800;
   color: #0F172A;
 }
 
 .pillarDesc {
-  font-size: 13px;
+  font-size: 12px;
   color: #64748B;
-  line-height: 1.48;
+  line-height: 1.4;
 }
 
-/* ── Right Pane: Video Viewport (Stretches to match exact height of Left Pillars) ── */
+/* ── Right Pane: Compact Video Viewport ── */
 .videoContainer {
   position: relative;
   width: 100%;
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 290px;
-  border-radius: var(--radius-2xl);
+  min-height: 196px;
+  border-radius: var(--radius-xl);
   isolation: isolate;
 }
 
 .videoBackdrop {
   position: absolute;
-  inset: -6px;
-  border-radius: calc(var(--radius-2xl) + 6px);
-  background: linear-gradient(135deg, rgba(2, 132, 199, 0.2) 0%, rgba(99, 102, 241, 0.15) 100%);
-  filter: blur(18px);
-  opacity: 0.65;
+  inset: -5px;
+  border-radius: calc(var(--radius-xl) + 5px);
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.18) 0%, rgba(99, 102, 241, 0.12) 100%);
+  filter: blur(14px);
+  opacity: 0.6;
   z-index: -1;
   transition: opacity 0.3s ease;
 }
 
 .videoContainer:hover .videoBackdrop {
-  opacity: 0.9;
+  opacity: 0.85;
 }
 
 .videoWrapper {
@@ -205,15 +205,15 @@
   width: 100%;
   flex: 1;
   height: 100%;
-  min-height: 290px;
-  border-radius: var(--radius-2xl);
+  min-height: 196px;
+  border-radius: var(--radius-xl);
   overflow: hidden;
   background: #0F172A;
   border: 1px solid rgba(226, 232, 240, 0.95);
   box-shadow: 
     inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    0 20px 48px -10px rgba(15, 23, 42, 0.12),
-    0 2px 8px rgba(15, 23, 42, 0.04);
+    0 16px 36px -8px rgba(15, 23, 42, 0.12),
+    0 2px 6px rgba(15, 23, 42, 0.04);
 }
 
 .videoPlayer {
@@ -224,32 +224,32 @@
   display: block;
 }
 
-/* ── Floating Founder Badge ── */
+/* ── Floating Minimal Founder Badge ── */
 .founderBadge {
   position: absolute;
-  bottom: 14px;
-  left: 14px;
+  bottom: 12px;
+  left: 12px;
   background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1.5px solid rgba(255, 255, 255, 0.95);
-  border-radius: var(--radius-lg);
-  padding: 8px 14px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: var(--radius-md);
+  padding: 6px 12px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   box-shadow: 
-    0 10px 24px rgba(0, 0, 0, 0.14),
+    0 8px 20px rgba(0, 0, 0, 0.12),
     inset 0 1px 0 #FFFFFF;
   z-index: 3;
-  max-width: 320px;
+  max-width: 290px;
   pointer-events: none;
 }
 
 .quoteIconBox {
-  width: 28px;
-  height: 28px;
-  border-radius: var(--radius-sm);
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
   background: linear-gradient(135deg, rgba(2, 132, 199, 0.12) 0%, rgba(99, 102, 241, 0.15) 100%);
   border: 1px solid rgba(2, 132, 199, 0.2);
   color: #0284C7;
@@ -257,6 +257,11 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+}
+
+.quoteIconBox svg {
+  width: 12px;
+  height: 12px;
 }
 
 .founderInfo {
@@ -267,7 +272,7 @@
 
 .founderEyebrow {
   font-family: var(--font-display);
-  font-size: 9.5px;
+  font-size: 8.5px;
   font-weight: 800;
   letter-spacing: 0.05em;
   color: #6366F1;
@@ -276,7 +281,7 @@
 
 .founderText {
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 750;
   color: #0F172A;
   line-height: 1.25;
@@ -288,56 +293,41 @@
 @media (max-width: 1024px) {
   .dualGrid {
     grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .paneHeader {
-    min-height: auto;
-    margin-bottom: 18px;
-  }
-
-  .headline {
-    min-height: auto;
-  }
-
-  .leadText {
-    min-height: auto;
+    gap: 32px;
   }
 
   .videoContainer, .videoWrapper {
-    height: 280px;
+    min-height: 240px;
+    height: 240px;
   }
 }
 
 @media (max-width: 640px) {
   .section {
-    padding: 55px 0 65px 0;
+    padding: 48px 0 54px 0;
   }
 
   .dualGrid {
-    gap: 32px;
+    gap: 24px;
   }
 
   .headline {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .videoContainer, .videoWrapper {
-    height: 220px;
+    min-height: 200px;
+    height: 200px;
   }
 
   .founderBadge {
-    bottom: 10px;
-    left: 10px;
-    padding: 6px 10px;
-    max-width: 260px;
+    bottom: 8px;
+    left: 8px;
+    padding: 5px 9px;
+    max-width: 250px;
   }
 
   .founderText {
-    font-size: 11px;
-  }
-
-  .founderEyebrow {
-    font-size: 8.5px;
+    font-size: 10.5px;
   }
 }
