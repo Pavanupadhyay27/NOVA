@@ -1,18 +1,14 @@
+import Image from 'next/image';
 import styles from './ClientsSection.module.css';
 
 const clientLogos = [
-  { name: 'Spotify', logo: 'SPOTIFY' },
-  { name: 'Google', logo: 'GOOGLE' },
-  { name: 'Nike', logo: 'NIKE' },
-  { name: 'Amazon', logo: 'AMAZON' },
-  { name: 'Logitech', logo: 'LOGITECH' },
-  { name: 'Airbnb', logo: 'AIRBNB' },
-  { name: 'Razorpay', logo: 'RAZORPAY' },
-  { name: 'CRED', logo: 'CRED' },
-  { name: 'Flipkart', logo: 'FLIPKART' },
-  { name: 'Swiggy', logo: 'SWIGGY' },
-  { name: 'Zomato', logo: 'ZOMATO' },
-  { name: 'Nykaa', logo: 'NYKAA' },
+  { name: 'Weekend Bhraman', src: '/images/clients/weekend-bhraman.png' },
+  { name: 'Travysys', src: '/images/clients/travysys.png' },
+  { name: 'Sri Pandurangan Divine Fresh', src: '/images/clients/sri-pandurangan-divine-fresh.png' },
+  { name: 'Praveen Electronics', src: '/images/clients/praveen-electronics.png' },
+  { name: 'Medallion House', src: '/images/clients/medallion-house.png' },
+  { name: 'HEED', src: '/images/clients/heed.png' },
+  { name: 'EKATRAA', src: '/images/clients/ekatraa.png' },
 ];
 
 export default function ClientsSection() {
@@ -24,12 +20,18 @@ export default function ClientsSection() {
       <div className={styles.marqueeWrapper}>
         <div className={styles.fadeLeft} />
         <div className={styles.marqueeTrack}>
-          {/* Double array for seamless infinite loop */}
+          {/* Quadruple array for seamless continuous loop */}
           {[...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos].map((c, i) => (
-            <div key={i} className={styles.clientItem}>
-              <div className={styles.logoBadge}>
-                <span className={styles.clientDot} />
-                <span className={styles.clientName}>{c.logo}</span>
+            <div key={i} className={styles.clientItem} title={c.name}>
+              <div className={styles.logoCard}>
+                <Image
+                  src={c.src}
+                  alt={`${c.name} logo`}
+                  width={140}
+                  height={50}
+                  className={styles.logoImage}
+                  priority={i < 7}
+                />
               </div>
             </div>
           ))}
