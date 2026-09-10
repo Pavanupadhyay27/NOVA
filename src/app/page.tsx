@@ -23,8 +23,8 @@ export default function HomePage() {
     <>
       <HeroSection />
       <ClientsSection />
-      <StoryVideoSection />
       <QuickConnectMapSection />
+      <StoryVideoSection />
       <MetricsSection />
       <ServicesSection />
       <StrategySection />

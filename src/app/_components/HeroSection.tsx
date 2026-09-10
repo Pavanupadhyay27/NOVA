@@ -66,14 +66,8 @@ export default function HeroSection() {
           </p>
 
           <div className={styles.actions}>
-            {/* Highlighting CTA with Super Smooth Continuous Corner-Glowing Light Beam */}
+            {/* Highlighting CTA with Smooth Moving Gradient Glowing Border */}
             <div className={styles.glowCtaWrapper}>
-              {/* Surrounding Ambient Glowing Halo */}
-              <div className={styles.glowHalo} />
-              
-              {/* Precision Border Light Beam Track sweeping seamlessly around corners */}
-              <div className={styles.borderBeamTrack} />
-
               <Link href="/contact" className={styles.btnStartProject}>
                 <span className={styles.btnShimmer} />
                 <span className={styles.btnGlassGloss} />
