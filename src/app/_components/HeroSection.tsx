@@ -57,12 +57,12 @@ export default function HeroSection() {
           </div>
 
           <h1 className={`display-hero ${styles.headline}`}>
-            We build brands<br />
-            <span className={`accent-gradient ${styles.heroAccent3d}`}>that move people.</span>
+            Digital Marketing Company<br />
+            <span className={`accent-gradient ${styles.heroAccent3d}`}>in Bhubaneswar.</span>
           </h1>
 
           <p className={`body-lg ${styles.sub}`}>
-            We engineer full-funnel digital acquisition engines, high-converting creative campaigns, and automated revenue systems that turn customer attention into compounding scale.
+            Grow your business with digital marketing that focuses on visibility, getting the right leads, keeping customers engaged, and seeing real results. Nova Spark is a Digital marketing company based in Bhubaneswar. We offer SEO, Google Ads, Meta Ads, social media marketing, website solutions, and other services designed to deliver performance and growth.
           </p>
 
           <div className={styles.actions}>
@@ -74,15 +74,15 @@ export default function HeroSection() {
               <Link href="/contact" className={styles.btnStartProject}>
                 <span className={styles.btnShimmer} />
                 <span className={styles.btnGlassGloss} />
-                <span className={styles.btnLabel}>Start a Project</span>
+                <span className={styles.btnLabel}>Get Free Consultation</span>
                 <span className={styles.btnArrow}>→</span>
               </Link>
             </div>
 
-            {/* Explore Our Work CTA - Highlighted and tactile */}
-            <Link href="/work" className={styles.btnExploreWork}>
+            {/* Explore Our Services CTA - Highlighted and tactile */}
+            <Link href="/services" className={styles.btnExploreWork}>
               <span className={styles.exploreIcon}>✦</span>
-              <span className={styles.exploreLabel}>Explore Our Work</span>
+              <span className={styles.exploreLabel}>Explore Our Services</span>
             </Link>
           </div>
 
