@@ -66,12 +66,36 @@ export default function HeroSection() {
           </p>
 
           <div className={styles.actions}>
-            <Link href="/contact" className="btn btn-primary">
-              Start a Project
-              <span className={styles.btnArrow}>→</span>
-            </Link>
-            <Link href="/work" className="btn btn-secondary" style={{ boxShadow: 'var(--shadow-skeuo-card)' }}>
-              Explore Our Work
+            {/* Start a Project with surrounding corner glowing spark */}
+            <div className={styles.sparkWrapper}>
+              <div className={styles.sparkAura} />
+              
+              {/* Corner Glowing Spark Star */}
+              <div className={styles.cornerSparkTopRight}>
+                <span className={styles.sparkFlare} />
+                <svg className={styles.sparkSvg} viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0L14.4 9.6L24 12L14.4 14.4L12 24L9.6 14.4L0 12L9.6 9.6L12 0Z" />
+                </svg>
+              </div>
+
+              {/* Bottom-left glowing mini spark */}
+              <div className={styles.cornerSparkBottomLeft}>
+                <svg className={styles.sparkSvgMini} viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0L14.4 9.6L24 12L14.4 14.4L12 24L9.6 14.4L0 12L9.6 9.6L12 0Z" />
+                </svg>
+              </div>
+
+              <Link href="/contact" className={styles.btnStartProject}>
+                <span className={styles.btnShimmer} />
+                <span className={styles.btnLabel}>Start a Project</span>
+                <span className={styles.btnArrow}>→</span>
+              </Link>
+            </div>
+
+            {/* Explore Our Work CTA - Highlighted and tactile */}
+            <Link href="/work" className={styles.btnExploreWork}>
+              <span className={styles.exploreIcon}>✦</span>
+              <span className={styles.exploreLabel}>Explore Our Work</span>
             </Link>
           </div>
 

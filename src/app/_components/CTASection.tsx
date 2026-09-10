@@ -21,12 +21,24 @@ export default function CTASection() {
               Let&apos;s build a predictable, compounding revenue engine for your brand.
             </p>
             <div className={styles.actions}>
-              <Link href="/contact" className="btn btn-primary">
-                Start the Conversation
-                <span className="btn-arrow">→</span>
-              </Link>
-              <Link href="/work" className="btn btn-secondary">
-                View Our Work
+              <div className={styles.sparkWrapper}>
+                <div className={styles.sparkAura} />
+                <div className={styles.cornerSparkTopRight}>
+                  <span className={styles.sparkFlare} />
+                  <svg className={styles.sparkSvg} viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0L14.4 9.6L24 12L14.4 14.4L12 24L9.6 14.4L0 12L9.6 9.6L12 0Z" />
+                  </svg>
+                </div>
+                <Link href="/contact" className={styles.btnStartPrimary}>
+                  <span className={styles.btnShimmer} />
+                  <span>Start the Conversation</span>
+                  <span className={styles.btnArrow}>→</span>
+                </Link>
+              </div>
+
+              <Link href="/work" className={styles.btnExploreSecondary}>
+                <span className={styles.exploreIcon}>✦</span>
+                <span>View Our Work</span>
               </Link>
             </div>
 
