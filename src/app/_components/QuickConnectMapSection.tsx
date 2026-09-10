@@ -7,10 +7,10 @@ import styles from './QuickConnectMapSection.module.css';
 export default function QuickConnectMapSection() {
   const [copiedField, setCopiedField] = useState<string | null>(null);
 
-  const phone = '+91 98765 43210';
-  const rawPhone = '+919876543210';
-  const email = 'hello@novaspark.in';
-  const whatsappUrl = 'https://wa.me/919876543210?text=Hi%20Nova%20Spark%2C%20I%20would%20like%20to%20discuss%20a%20project%20for%20my%20brand.';
+  const phone = '+91 82807 88689';
+  const rawPhone = '+918280788689';
+  const email = 'connect@novasparkdigitalmarketingagency.com';
+  const whatsappUrl = 'https://wa.me/918280788689?text=Hi%20Nova%20Spark%2C%20I%20would%20like%20to%20discuss%20a%20project%20for%20my%20brand.';
   const address = 'Mallick Complex, Unit 3, Kharvela Nagar, Bhubaneswar, Odisha 751001';
   const mapsSearchUrl = 'https://www.google.com/maps/search/?api=1&query=Mallick+Complex,+Unit+3,+Kharvela+Nagar,+Bhubaneswar,+Odisha+751001';
   const mapsEmbedUrl = 'https://maps.google.com/maps?q=Mallick+Complex,+Unit+3,+Kharvela+Nagar,+Bhubaneswar,+Odisha+751001&t=&z=16&ie=UTF8&iwloc=&output=embed';

@@ -49,8 +49,8 @@ export default function ContactPage() {
               <div className={styles.contactDetails}>
                 <div className={styles.detail}>
                   <span className={styles.detailLabel}>Direct Email</span>
-                  <a href="mailto:hello@novaspark.in" className={styles.detailVal}>
-                    hello@novaspark.in
+                  <a href="mailto:connect@novasparkdigitalmarketingagency.com" className={styles.detailVal}>
+                    connect@novasparkdigitalmarketingagency.com
                   </a>
                 </div>
                 <div className={styles.detail}>
@@ -59,7 +59,7 @@ export default function ContactPage() {
                 </div>
                 <div className={styles.detail}>
                   <span className={styles.detailLabel}>Direct Contact</span>
-                  <span className={styles.detailVal}>+91 98765 43210</span>
+                  <a href="tel:+918280788689" className={styles.detailVal}>+91 82807 88689</a>
                 </div>
                 <div className={styles.detail}>
                   <span className={styles.detailLabel}>Response SLA</span>
