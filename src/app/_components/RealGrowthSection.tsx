@@ -16,6 +16,7 @@ interface CaseStudy {
   image: string;
   color: string;
   statBadge: string;
+  pdfUrl: string;
 }
 
 const caseStudies: CaseStudy[] = [
@@ -34,6 +35,7 @@ const caseStudies: CaseStudy[] = [
     image: '/images/about_hero.jpg',
     color: '#0284C7',
     statBadge: '₹15–20 CPL',
+    pdfUrl: '/docs/medallion_house_case_study.pdf',
   },
   {
     id: 'weekend-bhraman',
@@ -50,6 +52,7 @@ const caseStudies: CaseStudy[] = [
     image: '/images/dashboard_hero.jpg',
     color: '#6366F1',
     statBadge: '7+ Tour Packages',
+    pdfUrl: '/docs/weekend_bhraman_case_study.pdf',
   },
   {
     id: 'ekatraa',
@@ -66,6 +69,7 @@ const caseStudies: CaseStudy[] = [
     image: '/images/work_restaurant.jpg',
     color: '#EC4899',
     statBadge: '5X View Velocity',
+    pdfUrl: '/docs/ekatraa_case_study.pdf',
   },
   {
     id: 'sri-pandurangan',
@@ -82,18 +86,11 @@ const caseStudies: CaseStudy[] = [
     image: '/images/team_office.jpg',
     color: '#10B981',
     statBadge: '<₹20 Inbound Leads',
+    pdfUrl: '/docs/divine_fresh_case_study.pdf',
   },
 ];
 
 export default function RealGrowthSection() {
-  const [activeFilter, setActiveFilter] = useState<string>('All');
-
-  const categories = ['All', 'Meta Ads', 'SEO & GBP', 'E-Commerce'];
-
-  const filteredStudies = activeFilter === 'All'
-    ? caseStudies
-    : caseStudies.filter(cs => cs.category.toLowerCase().includes(activeFilter.toLowerCase().replace('&', '')));
-
   return (
     <section className={`section ${styles.section}`}>
       {/* Background ambient lighting */}
@@ -107,16 +104,22 @@ export default function RealGrowthSection() {
             <div className={styles.headerTop}>
               <div className="eyebrow">
                 <span className={styles.trophyIcon}>🏆</span>
-                <span>Proven Results & Case Studies</span>
+                <span>Proven Results &amp; Case Studies</span>
               </div>
-              <Link href="/work" className={`btn btn-secondary ${styles.topDownloadBtn}`}>
+              <a
+                href="/docs/medallion_house_case_study.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`btn btn-secondary ${styles.topDownloadBtn}`}
+                download
+              >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                   <polyline points="7 10 12 15 17 10" />
                   <line x1="12" y1="15" x2="12" y2="3" />
                 </svg>
-                <span>Download All Case Studies</span>
-              </Link>
+                <span>Download Featured Case Study (PDF)</span>
+              </a>
             </div>
 
             <div className={styles.headerMain}>
@@ -132,7 +135,7 @@ export default function RealGrowthSection() {
 
         {/* 2x2 Grid of Detailed Case Study Cards */}
         <div className={styles.grid}>
-          {filteredStudies.map((study, idx) => (
+          {caseStudies.map((study, idx) => (
             <ScrollReveal key={study.id} delay={idx * 80}>
               <div className={styles.card} style={{ '--accent-color': study.color } as React.CSSProperties}>
                 {/* Visual Header with Image & Badges */}
@@ -156,8 +159,10 @@ export default function RealGrowthSection() {
 
                 {/* Content Details */}
                 <div className={styles.cardContent}>
-                  <h3 className={styles.clientTitle}>{study.client}</h3>
-                  <p className={styles.overviewText}>{study.overview}</p>
+                  <div className={styles.cardContentHeader}>
+                    <h3 className={styles.clientTitle}>{study.client}</h3>
+                    <p className={styles.overviewText}>{study.overview}</p>
+                  </div>
 
                   {/* Challenge Block */}
                   <div className={styles.specBox}>
@@ -190,15 +195,25 @@ export default function RealGrowthSection() {
                     </ul>
                   </div>
 
-                  {/* Bottom Action */}
-                  <Link href="/contact" className={`btn btn-primary ${styles.cardBtn}`}>
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                      <polyline points="7 10 12 15 17 10" />
-                      <line x1="12" y1="15" x2="12" y2="3" />
-                    </svg>
-                    <span>Download Case Study</span>
-                  </Link>
+                  {/* Bottom Action: Direct Case Study PDF Download */}
+                  <div className={styles.cardActions}>
+                    <a
+                      href={study.pdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`btn btn-primary ${styles.cardBtn}`}
+                      download
+                    >
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="12" y1="18" x2="12" y2="12" />
+                        <line x1="9" y1="15" x2="12" y2="18" />
+                        <line x1="15" y1="15" x2="12" y2="18" />
+                      </svg>
+                      <span>Download {study.client} Case Study (PDF)</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </ScrollReveal>
