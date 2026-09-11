@@ -138,18 +138,18 @@
   align-items: center;
   gap: 8px;
   white-space: nowrap;
-  background: linear-gradient(135deg, #0D007F 0%, #0B2093 50%, #1A3DB5 100%);
+  background: linear-gradient(135deg, #FFB800 0%, #F59E0B 45%, #D97706 100%);
   color: #FFFFFF !important;
   border-radius: 9999px;
   text-decoration: none;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 4px 16px rgba(11, 32, 147, 0.35);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 4px 16px rgba(245, 158, 11, 0.35);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .primaryCta:hover {
-  background: linear-gradient(135deg, #0B2093 0%, #1E40AF 100%);
+  background: linear-gradient(135deg, #FFC700 0%, #FFB800 100%);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(11, 32, 147, 0.5);
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.5);
 }
 
 .ctaArrow {
