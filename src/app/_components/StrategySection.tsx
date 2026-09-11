@@ -222,6 +222,46 @@ export default function StrategySection() {
             })}
           </div>
         </div>
+
+        {/* ══════════════════════════════════════════════════
+            MOBILE VERTICAL TIMELINE STEPPER (< 900px)
+           ══════════════════════════════════════════════════ */}
+        <div className={styles.mobileTimeline}>
+          {stages.map((stage, idx) => (
+            <div 
+              key={stage.num} 
+              className={styles.mobileStep}
+              style={{ '--stage-color': stage.color } as React.CSSProperties}
+            >
+              <div className={styles.mobileLineCol}>
+                <div className={styles.mobileNode} style={{ background: stage.color }}>
+                  <span>{stage.num}</span>
+                </div>
+                {idx < stages.length - 1 && <div className={styles.mobileDashedLine} />}
+              </div>
+
+              <div className={styles.mobileCard}>
+                <div className={styles.pillRow}>
+                  <span 
+                    className={styles.phasePill}
+                    style={{ color: stage.color, borderColor: `${stage.color}35`, background: `${stage.color}12` }}
+                  >
+                    Phase {stage.num}
+                  </span>
+                  <span className={styles.timePill}>⏱ {stage.timeframe}</span>
+                </div>
+
+                <h3 className={styles.mobileStepTitle}>{stage.name}</h3>
+                <p className={styles.mobileStepDesc}>{stage.tagline}</p>
+
+                <span className={styles.focusPill} style={{ color: stage.color }}>
+                  <span className={styles.focusDot} style={{ background: stage.color }} />
+                  {stage.focus}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

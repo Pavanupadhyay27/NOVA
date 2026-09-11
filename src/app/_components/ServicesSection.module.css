@@ -761,47 +761,89 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+  .section {
+    padding: 56px 0 68px;
+  }
+  .header {
+    margin-bottom: 36px;
+  }
   .streamRow {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 14px;
+    padding: 20px 14px;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 1px solid #E2E8F0;
+    border-radius: var(--radius-xl);
+    background: #FFFFFF;
+    margin-bottom: 12px;
   }
   .rowLeftCol {
     flex-direction: row;
     align-items: center;
+    gap: 10px;
+  }
+  .iconPlate {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+  }
+  .rowMidCol {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
   }
   .rowRightCol {
     grid-column: 1 / -1;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     gap: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed #E2E8F0;
+    width: 100%;
   }
   .practiceTitle {
-    font-size: 20px;
+    font-size: 19px;
+    word-break: break-word;
+  }
+  .practiceDesc {
+    font-size: 13.5px;
+    margin-bottom: 10px;
+  }
+  .chipsRow {
+    gap: 6px;
+  }
+  .chipPill {
+    font-size: 11px;
+    padding: 3px 8px;
   }
   .ctaCard {
-    padding: 30px 18px 26px;
+    padding: 26px 18px 24px;
     border-radius: var(--radius-xl);
   }
   .ctaHeadline {
-    font-size: 21px;
+    font-size: 20px;
   }
   .ctaSubtext {
-    font-size: 13.5px;
+    font-size: 13px;
   }
   .ctaPillsRow {
     gap: 6px;
   }
   .ctaPill {
-    font-size: 11.5px;
-    padding: 4.5px 10px;
+    font-size: 11px;
+    padding: 4px 9px;
   }
   .borderBeamWrapper,
   .btnCtaMain {
     width: 100%;
     justify-content: center;
-    padding: 13px 20px;
-    font-size: 14.5px;
+    padding: 12px 18px;
+    font-size: 14px;
   }
   .ctaTrustStrip {
     flex-direction: column;

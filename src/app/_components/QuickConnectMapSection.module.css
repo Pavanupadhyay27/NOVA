@@ -817,19 +817,24 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
-    padding: 11px 0;
+    gap: 8px;
+    padding: 10px 0;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .iconBox {
     width: 36px;
     height: 36px;
     border-radius: 9px;
+    flex-shrink: 0;
   }
 
   .rowDetails {
     flex: 1;
     min-width: 0;
+    overflow: hidden;
   }
 
   .rowTag {
@@ -846,30 +851,35 @@
   }
 
   .rowPrimaryVal {
-    font-size: 13px;
+    font-size: 12.5px;
+    word-break: break-all;
+    overflow-wrap: anywhere;
   }
 
   .rowAddress {
     font-size: 11.5px;
     line-height: 1.35;
+    word-break: break-word;
+    overflow-wrap: anywhere;
   }
 
   .rowActions {
     width: auto;
-    gap: 5px;
+    gap: 4px;
     flex-shrink: 0;
   }
 
   .btnTactile {
     width: auto;
-    padding: 0 11px;
-    height: 29px;
-    font-size: 11px;
+    padding: 0 9px;
+    height: 28px;
+    font-size: 10.5px;
+    white-space: nowrap;
   }
 
   .btnTactileIcon {
-    width: 29px;
-    height: 29px;
+    width: 28px;
+    height: 28px;
   }
 
   .cardFooter {
