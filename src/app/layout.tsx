@@ -44,6 +44,18 @@ export const metadata: Metadata = {
     title: "Digital Marketing company in Bhubaneswar | Nova Spark",
     description: "Discover top-notch digital marketing company in Bhubaneswar. From SEO to social media, we help you connect with your audience and increase sales!",
     images: ["https://novasparkdigitalmarketingagency.com/wp-content/uploads/2025/12/Nova-Spark-wo-bg-Logo.png"]
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/images/logo.png', type: 'image/png' },
+      { url: '/favicon.png', type: 'image/png' }
+    ],
+    shortcut: ['/images/logo.png'],
+    apple: [
+      { url: '/images/logo.png', sizes: '180x180', type: 'image/png' },
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }
+    ]
   }
 };
 
@@ -85,6 +97,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/images/logo.png" type="image/png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/images/logo.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />

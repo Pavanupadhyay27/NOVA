@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
+import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import styles from './MetricsSection.module.css';
 
@@ -107,24 +108,26 @@ export default function MetricsSection() {
       <div className={styles.ambientGlow} />
       
       <div className="container">
+        {/* Centered Header */}
         <ScrollReveal className="text-center">
-          <div className="eyebrow">
+          <div className="eyebrow" style={{ margin: '0 auto 12px' }}>
             <span className="eyebrow-dot" />
-            Revenue & Performance Proof
+            <span>Revenue &amp; Performance Proof</span>
           </div>
           <h2 className={`display-lg ${styles.title}`}>
             Precision Growth.<br />
             <span className="accent-gradient">Quantified in Revenue.</span>
           </h2>
-          <p className="body-lg" style={{ maxWidth: 560, margin: '14px auto 0' }}>
-            Measurable commercial milestones engineered for ambitious brands that chose predictability over guesswork.
+          <p className="body-lg" style={{ maxWidth: 620, margin: '14px auto 0' }}>
+            Measurable commercial milestones engineered for ambitious brands that chose predictability and compounding revenue over guesswork.
           </p>
         </ScrollReveal>
 
+        {/* 4 Performance Metric Cards Grid */}
         <div className={styles.grid}>
           {metrics.map((m, i) => (
-            <ScrollReveal key={m.label} delay={i * 90}>
-              <div className={styles.card}>
+            <ScrollReveal key={m.label} delay={i * 80}>
+              <div className={styles.card} style={{ '--accent-color': m.color } as React.CSSProperties}>
                 {/* Header row: Clean icon badge + tag */}
                 <div className={styles.cardTop}>
                   <div className={styles.iconBadge} style={{ color: m.color }}>
@@ -167,6 +170,52 @@ export default function MetricsSection() {
             </ScrollReveal>
           ))}
         </div>
+
+        {/* Revenue Growth CTA Banner Card */}
+        <ScrollReveal delay={320}>
+          <div className={styles.ctaCard}>
+            <div className={styles.ctaGlowBg} />
+            <div className={styles.ctaContent}>
+              <div className={styles.ctaHeaderRow}>
+                <span className={styles.ctaBadge}>
+                  <span className={styles.ctaBadgeDot} />
+                  <span>Custom Revenue Strategy</span>
+                </span>
+                <span className={styles.ctaSlotsBadge}>⚡ Limited Q3/Q4 Audit Slots</span>
+              </div>
+
+              <h3 className={styles.ctaTitle}>
+                Ready to Turn Your Marketing Spend into <span className="accent-gradient">Predictable Revenue?</span>
+              </h3>
+              
+              <p className={styles.ctaDesc}>
+                Get a comprehensive 360° revenue audit, competitive traffic analysis, and actionable scaling roadmap designed specifically for your industry.
+              </p>
+
+              <div className={styles.ctaTrustPills}>
+                <span className={styles.trustItem}>✓ Free 30-Min Consultation</span>
+                <span className={styles.trustItem}>✓ Tailored ROI Model</span>
+                <span className={styles.trustItem}>✓ Zero Obligation</span>
+              </div>
+            </div>
+
+            <div className={styles.ctaActionWrap}>
+              {/* Revolving Glowing Border CTA Button */}
+              <div className={styles.borderBeamWrapper}>
+                <div className={styles.borderGlowAmbient} />
+                <div className={styles.borderBeamSpin} />
+
+                <Link href="/contact" className={styles.ctaBtn}>
+                  <span className={styles.btnShimmer} />
+                  <span className={styles.btnGlassGloss} />
+                  <span className={styles.btnLabel}>Claim Free Growth Audit</span>
+                  <span className={styles.btnArrow}>→</span>
+                </Link>
+              </div>
+              <span className={styles.ctaSubtext}>⚡ Average response time: &lt; 2 hours</span>
+            </div>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
