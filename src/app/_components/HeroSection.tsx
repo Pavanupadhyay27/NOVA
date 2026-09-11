@@ -51,9 +51,9 @@ export default function HeroSection() {
       <div className={`container ${styles.inner}`}>
         {/* Left Content */}
         <div className={styles.content}>
-          <div className="eyebrow">
-            <span className="eyebrow-dot" />
-            Digital Growth Studio · Bhubaneswar
+          <div className={styles.heroEyebrow}>
+            <span className={styles.heroEyebrowDot} />
+            <span>Growth Studio · Bhubaneswar</span>
           </div>
 
           <h1 className={`display-hero ${styles.headline}`}>
