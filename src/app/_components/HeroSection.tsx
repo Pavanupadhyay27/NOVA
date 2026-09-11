@@ -18,8 +18,8 @@ const heroSlides = [
     caption: 'Performance & 10x ROI',
   },
   {
-    id: 'marketing-growth',
-    src: '/images/hero_real_marketing_growth.jpg',
+    id: 'slide-3',
+    src: '/images/Slide 2.jpg',
     alt: 'Creative marketing professionals planning growth strategies and digital solutions',
     caption: 'Creative & Performance Marketing',
   },
