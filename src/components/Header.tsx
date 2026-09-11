@@ -152,34 +152,101 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* Mobile Hamburger */}
+        {/* Mobile Hamburger Button */}
         <button
           className={`${styles.hamburger} ${menuOpen ? styles.open : ''}`}
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle navigation"
+          aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={menuOpen}
         >
           <span /><span /><span />
         </button>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer & Animated Backdrop */}
       {menuOpen && (
-        <div className={styles.mobileMenu}>
-          <nav className={styles.mobileNav}>
-            <Link href="/" className={styles.mobileLink}>Home</Link>
-            <Link href="/services" className={styles.mobileLink}>Services & Practices</Link>
-            <Link href="/work" className={styles.mobileLink}>Work & Case Studies</Link>
-            <Link href="/about" className={styles.mobileLink}>About Nova Spark</Link>
-            <Link href="/about/team" className={styles.mobileLink}>Leadership & Team</Link>
-            <Link href="/process" className={styles.mobileLink}>Growth Process</Link>
-            <Link href="/insights" className={styles.mobileLink}>Insights & Articles</Link>
-          </nav>
-          <div className={styles.mobileCTA}>
-            <Link href="/contact" className="btn btn-primary w-full" style={{ justifyContent: 'center' }}>
-              Start a Conversation →
-            </Link>
+        <>
+          <div 
+            className={styles.mobileBackdrop} 
+            onClick={() => setMenuOpen(false)}
+            aria-hidden="true" 
+          />
+          <div className={styles.mobileMenu}>
+            {/* Top Status Header */}
+            <div className={styles.mobileHeader}>
+              <div className={styles.mobileStatusBadge}>
+                <span className={styles.mobileStatusDot} />
+                <span>Growth Lab · Bhubaneswar</span>
+              </div>
+              <button 
+                className={styles.mobileCloseBtn} 
+                onClick={() => setMenuOpen(false)}
+                aria-label="Close menu"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Navigation Links Grid with Micro-Badges */}
+            <nav className={styles.mobileNav}>
+              {[
+                { href: '/', label: 'Home', badge: '01', icon: '🏠' },
+                { href: '/services', label: 'Services & Practices', badge: '02', icon: '⚡' },
+                { href: '/work', label: 'Work & Case Studies', badge: '03', icon: '🏆' },
+                { href: '/about', label: 'About Nova Spark', badge: '04', icon: '💡' },
+                { href: '/about/team', label: 'Leadership & Team', badge: '05', icon: '👥' },
+                { href: '/process', label: 'Execution Process', badge: '06', icon: '🎯' },
+                { href: '/insights', label: 'Insights & Articles', badge: '07', icon: '📚' },
+              ].map((item, i) => {
+                const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href);
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`${styles.mobileLink} ${isActive ? styles.mobileLinkActive : ''}`}
+                    style={{ animationDelay: `${i * 0.04}s` }}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    <div className={styles.mobileLinkLeft}>
+                      <span className={styles.mobileLinkIcon}>{item.icon}</span>
+                      <span className={styles.mobileLinkLabel}>{item.label}</span>
+                    </div>
+                    <span className={styles.mobileLinkBadge}>{item.badge}</span>
+                  </Link>
+                );
+              })}
+            </nav>
+
+            {/* Quick Direct Contact Strip */}
+            <div className={styles.mobileContactStrip}>
+              <a href="tel:+918280788689" className={styles.mobileContactBtn}>
+                <span className={styles.phoneIcon}>📞</span>
+                <span>+91 82807 88689</span>
+              </a>
+              <a href="mailto:connect@novasparkdigitalmarketingagency.com" className={styles.mobileContactBtn}>
+                <span className={styles.emailIcon}>✉️</span>
+                <span>Email Us</span>
+              </a>
+            </div>
+
+            {/* Bottom High-Impact CTA */}
+            <div className={styles.mobileCTA}>
+              <div className={styles.borderBeamWrapper} style={{ width: '100%' }}>
+                <div className={styles.borderGlowAmbient} />
+                <div className={styles.borderBeamSpin} />
+                <Link 
+                  href="/contact" 
+                  className={styles.ctaBtn} 
+                  style={{ width: '100%', justifyContent: 'center', minHeight: '46px', fontSize: '14.5px' }}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Start a Conversation
+                  <span className={styles.btnArrow}>→</span>
+                </Link>
+              </div>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </header>
   );
