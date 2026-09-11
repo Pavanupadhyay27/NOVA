@@ -99,6 +99,18 @@
   white-space: pre-line;
 }
 
+.brandLink {
+  color: #0B2093;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast);
+}
+
+.brandLink:hover {
+  color: #D97706;
+}
+
 @media (max-width: 640px) {
   .section {
     padding: 36px 0 42px;

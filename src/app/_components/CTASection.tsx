@@ -13,8 +13,7 @@ export default function CTASection() {
               Get Started
             </div>
             <h2 className={`display-xl ${styles.headline}`}>
-              Ready to Grow Your<br />
-              <span className="accent-gradient">Business Online?</span>
+              Ready to Scale <span className="accent-gradient">With a Dedicated Growth Partner?</span>
             </h2>
             <p className={`body-lg ${styles.sub}`} style={{ maxWidth: 760, margin: '0 auto 32px' }}>
               Whether you want to improve search engine rankings, generate leads, connect with more customers using paid ads, or create a stronger online presence, Nova Spark can help you build a plan that matches your business goals.<br /><br />

@@ -56,6 +56,9 @@ export const metadata: Metadata = {
       { url: '/images/logo.png', sizes: '180x180', type: 'image/png' },
       { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }
     ]
+  },
+  alternates: {
+    canonical: 'https://novasparkdigitalmarketingagency.com/digital-marketing-company-in-bhubaneswar',
   }
 };
 
@@ -97,6 +100,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="canonical" href="https://novasparkdigitalmarketingagency.com/digital-marketing-company-in-bhubaneswar" />
         <link rel="icon" href="/images/logo.png" type="image/png" />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/images/logo.png" />

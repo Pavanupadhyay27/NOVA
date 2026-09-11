@@ -43,12 +43,12 @@ export default function StoryVideoSection() {
                   <span>COMPANY INTRODUCTION</span>
                 </div>
 
-                <h2 className={styles.headline}>
+                <h3 className={styles.headline}>
                   Growing Brands Through<br />
                   <span className={`accent-gradient ${styles.headlineHighlight}`}>
                     Strategy, Creativity &amp; Performance.
                   </span>
-                </h2>
+                </h3>
 
                 <p className={styles.leadText}>
                   At <strong>Nova Spark</strong>, we engineer full-funnel digital acquisition engines, high-converting creative campaigns, and automated revenue systems that turn customer attention into compounding scale.
@@ -63,7 +63,7 @@ export default function StoryVideoSection() {
                       <span>{item.icon}</span>
                     </div>
                     <div className={styles.pillarContent}>
-                      <h3 className={styles.pillarTitle}>{item.title}</h3>
+                      <h4 className={styles.pillarTitle}>{item.title}</h4>
                       <p className={styles.pillarDesc}>{item.desc}</p>
                     </div>
                   </div>
@@ -83,12 +83,12 @@ export default function StoryVideoSection() {
                   <span>OUR WORKING PROCESS</span>
                 </div>
 
-                <h2 className={styles.headline}>
+                <h3 className={styles.headline}>
                   See How We Turn Ideas<br />
                   <span className={`accent-gradient ${styles.headlineHighlight}`}>
                     Into Compounding Results.
                   </span>
-                </h2>
+                </h3>
 
                 <p className={styles.leadText}>
                   Take an inside look at how our team moves from strategy and creative planning through to live execution and business growth you can actually measure.

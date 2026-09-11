@@ -106,9 +106,9 @@ export default function RealGrowthSection() {
               <span>Proven Results &amp; Case Studies</span>
             </div>
 
-            <h2 className={`display-lg ${styles.headline}`}>
+            <h3 className={`display-lg ${styles.headline}`}>
               Real Growth. <span className="accent-gradient">Real Businesses.</span>
-            </h2>
+            </h3>
 
             <p className={`body-lg ${styles.sub}`}>
               See how our digital marketing strategies help businesses improve visibility, generate qualified leads, and achieve measurable commercial returns.
@@ -145,7 +145,7 @@ export default function RealGrowthSection() {
                   </div>
 
                   <div className={styles.cardContentHeader}>
-                    <h3 className={styles.clientTitle}>{study.client}</h3>
+                    <h4 className={styles.clientTitle}>{study.client}</h4>
                     <p className={styles.overviewText}>{study.overview}</p>
                   </div>
 

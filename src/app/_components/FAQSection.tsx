@@ -1,9 +1,15 @@
 'use client';
 import { useState } from 'react';
+import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import styles from './FAQSection.module.css';
 
-const faqs = [
+interface FAQItem {
+  q: string;
+  a: React.ReactNode;
+}
+
+const faqs: FAQItem[] = [
   {
     q: 'What Does a Digital Marketing Company Do?',
     a: 'A digital marketing company helps businesses to develop their online presence, reach their target audience, create qualified leads, and boost conversions using SEO, ads, social media, web pages, and more digital marketing solutions.',
@@ -26,7 +32,14 @@ const faqs = [
   },
   {
     q: 'What makes Nova Spark the best digital marketing company?',
-    a: 'Nova Spark is a blend of strategy, creativity, data, and performance, offering focused digital marketing services. We deliver measurable results, clear communication, and tailored digital marketing solutions that meet your business goals.',
+    a: (
+      <>
+        <Link href="https://novasparkdigitalmarketingagency.com/" className={styles.brandLink}>
+          Nova Spark
+        </Link>{' '}
+        is a blend of strategy, creativity, data, and performance, offering focused digital marketing services. We deliver measurable results, clear communication, and tailored digital marketing solutions that meet your business goals.
+      </>
+    ),
   },
 ];
 
@@ -41,10 +54,10 @@ export default function FAQSection() {
             <span className="eyebrow-dot" />
             FAQ &amp; Knowledge Base
           </div>
-          <h2 className="display-lg" style={{ marginTop: 16 }}>
+          <h3 className="display-lg" style={{ marginTop: 16 }}>
             The Answers Behind{' '}
             <span className="accent-gradient">Better Marketing</span>
-          </h2>
+          </h3>
         </ScrollReveal>
 
         <div className={styles.list}>

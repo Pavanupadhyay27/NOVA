@@ -40,10 +40,10 @@ export default function QuickConnectMapSection() {
               <span className={styles.eyebrowText}>Direct Access & Headquarters</span>
             </div>
 
-            <h2 className={styles.title}>
+            <h3 className={styles.title}>
               Connect with us directly.<br />
               <span className={styles.titleAccent}>Zero wait times. Real human conversations.</span>
-            </h2>
+            </h3>
 
             <p className={styles.subtitle}>
               Reach our senior growth partners directly or visit our studio in Kharvela Nagar. No automated switchboards or gatekeepers.

@@ -21,9 +21,9 @@ export default function WhyChooseSection() {
               <span className={styles.sparkleIcon}>✨</span>
               <span>Why Choose Nova Spark</span>
             </div>
-            <h2 className={`display-lg ${styles.headline}`}>
+            <h3 className={`display-lg ${styles.headline}`}>
               Turning Ideas Into <span className="accent-gradient">Measurable Business Growth.</span>
-            </h2>
+            </h3>
             <div className={styles.subHeadlinePill}>
               <span className={styles.subHeadlineDot} />
               <span>Digital Growth Powered by Strategy, AI &amp; Creativity</span>
@@ -60,7 +60,7 @@ export default function WhyChooseSection() {
                 </div>
 
                 <div className={styles.cardBody}>
-                  <h3 className={styles.cardTitleWhite}>AI-First Approach</h3>
+                  <h4 className={styles.cardTitleWhite}>AI-First Approach</h4>
                   <p className={styles.cardTextWhite}>
                     We use AI-powered tools, automation and data insights to make marketing decisions and boost campaign efficiency.
                   </p>
@@ -99,7 +99,7 @@ export default function WhyChooseSection() {
                 </div>
 
                 <div className={styles.cardBody}>
-                  <h3 className={styles.cardTitle}>Dedicated Growth Team</h3>
+                  <h4 className={styles.cardTitle}>Dedicated Growth Team</h4>
                   <p className={styles.cardText}>
                     Our team includes marketers, designers, developers and strategists who work closely together to support your business goals.
                   </p>
@@ -138,7 +138,7 @@ export default function WhyChooseSection() {
                 </div>
 
                 <div className={styles.cardBody}>
-                  <h3 className={styles.cardTitle}>Reporting</h3>
+                  <h4 className={styles.cardTitle}>Reporting</h4>
                   <p className={styles.cardText}>
                     You get clear reports and campaign insights so you always know how your marketing is performing.
                   </p>
@@ -166,7 +166,7 @@ export default function WhyChooseSection() {
                 </div>
 
                 <div className={styles.cardBody}>
-                  <h3 className={styles.cardTitleWhite}>Performance Focus</h3>
+                  <h4 className={styles.cardTitleWhite}>Performance Focus</h4>
                   <p className={styles.cardTextWhite}>
                     Our campaigns are built to deliver results—leads, sales, visibility and long-term business growth.
                   </p>
@@ -191,7 +191,7 @@ export default function WhyChooseSection() {
                 </div>
 
                 <div className={styles.cardBody}>
-                  <h3 className={styles.cardTitle}>Fast Execution</h3>
+                  <h4 className={styles.cardTitle}>Fast Execution</h4>
                   <p className={styles.cardText}>
                     We focus on implementation, testing, optimization and continuous improvement to keep momentum.
                   </p>
@@ -221,9 +221,9 @@ export default function WhyChooseSection() {
                   </svg>
                   <span>Long-Term Growth Strategy</span>
                 </div>
-                <h3 className={styles.playbookTitle}>
+                <h4 className={styles.playbookTitle}>
                   Sustainable Growth Architecture &amp; Execution
-                </h3>
+                </h4>
                 <p className={styles.playbookText}>
                   Our Online Marketing Services are designed to support compounding growth, not just short-term wins. Nova Spark brings together technology, creativity, strategy, and performance marketing to help your business scale.
                 </p>

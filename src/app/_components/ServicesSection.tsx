@@ -206,10 +206,10 @@ export default function ServicesSection() {
               <span className="eyebrow-dot" />
               What We Do · Integrated Growth Practices
             </div>
-            <h2 className={`display-lg ${styles.headline}`}>
+            <h3 className={`display-lg ${styles.headline}`}>
               Best Digital Marketing Services{' '}
               <span className="accent-gradient">in Bhubaneswar</span>
-            </h2>
+            </h3>
             <p className={`body-lg ${styles.subText}`}>
               As a trusted digital marketing company in Bhubaneswar, we are able to provide you with integrated digital marketing services, including SEO, online marketing services, paid advertising, social media, and web solutions. Our digital marketing solutions help businesses generate qualified leads, strengthen visibility, and achieve measurable growth through strategic campaigns.
             </p>
@@ -271,7 +271,7 @@ export default function ServicesSection() {
                       </span>
                     </div>
 
-                    <h3 className={styles.practiceTitle}>{service.title}</h3>
+                    <h4 className={styles.practiceTitle}>{service.title}</h4>
                     <p className={styles.practiceTagline} style={{ color: service.color }}>{service.tagline}</p>
                     <p className={styles.practiceDesc}>{service.desc}</p>
 
@@ -345,9 +345,9 @@ export default function ServicesSection() {
               </div>
 
               {/* Centered Typography (Concise & High Impact) */}
-              <h3 className={styles.ctaHeadline}>
+              <div className={styles.ctaHeadline}>
                 Your Business Deserves a <span className="accent-gradient">Strategy That Delivers</span>
-              </h3>
+              </div>
 
               <p className={styles.ctaSubtext}>
                 Create a tailored growth plan across Search, Paid Media, and web solutions, built to strengthen your online presence, convert more visitors, and maximize the return on your marketing investment.

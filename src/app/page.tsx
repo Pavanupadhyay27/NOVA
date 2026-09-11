@@ -16,6 +16,9 @@ import CTASection from './_components/CTASection';
 export const metadata: Metadata = {
   title: 'Digital Marketing company in Bhubaneswar | Nova Spark',
   description: 'Discover top-notch digital marketing company in Bhubaneswar. From SEO to social media, we help you connect with your audience and increase sales!',
+  alternates: {
+    canonical: 'https://novasparkdigitalmarketingagency.com/digital-marketing-company-in-bhubaneswar',
+  },
 };
 
 export default function HomePage() {

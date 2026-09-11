@@ -133,10 +133,10 @@ export default function StrategySection() {
               <span className={styles.eyebrowDot} />
               <span>Our Growth Framework · Execution Blueprint</span>
             </div>
-            <h2 className={styles.title}>
+            <h3 className={styles.title}>
               From audit to<br />
               <span className={styles.titleGradient}>compounding market scale.</span>
-            </h2>
+            </h3>
             <p className={styles.subtitle}>
               A 5-stage execution timeline engineered to scale your brand with mathematical precision.
             </p>
@@ -222,7 +222,7 @@ export default function StrategySection() {
                               <span className={styles.timePill}>⏱ {stage.timeframe}</span>
                             </div>
 
-                            <h3 className={styles.stepTitle}>{stage.name}</h3>
+                            <h4 className={styles.stepTitle}>{stage.name}</h4>
                             <p className={styles.stepDesc}>{stage.tagline}</p>
 
                             <span className={styles.focusPill} style={{ color: stage.color }}>
@@ -272,7 +272,7 @@ export default function StrategySection() {
                               <span className={styles.timePill}>⏱ {stage.timeframe}</span>
                             </div>
 
-                            <h3 className={styles.stepTitle}>{stage.name}</h3>
+                            <h4 className={styles.stepTitle}>{stage.name}</h4>
                             <p className={styles.stepDesc}>{stage.tagline}</p>
 
                             <span className={styles.focusPill} style={{ color: stage.color }}>
@@ -422,7 +422,7 @@ export default function StrategySection() {
               </div>
             </div>
 
-            <h3 className={styles.mobStageTitle}>{activeMobileStage.name}</h3>
+            <h4 className={styles.mobStageTitle}>{activeMobileStage.name}</h4>
             <p className={styles.mobStageDesc}>{activeMobileStage.tagline}</p>
 
             <div className={styles.mobFocusRow}>

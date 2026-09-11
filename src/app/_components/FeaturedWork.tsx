@@ -56,10 +56,10 @@ export default function FeaturedWork() {
                 <span className="eyebrow-dot" />
                 Selected Case Studies
               </div>
-              <h2 className="display-lg" style={{ marginTop: 16 }}>
-                Work that<br />
-                <span className="accent-gradient">speaks for itself.</span>
-              </h2>
+              <h3 className="display-lg" style={{ marginTop: 16 }}>
+                Real Work. Real Impact.{' '}
+                <span className="accent-gradient">Real Growth.</span>
+              </h3>
             </div>
             <Link href="/work" className="btn btn-secondary">
               View All Work →

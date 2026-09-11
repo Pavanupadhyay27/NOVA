@@ -125,10 +125,10 @@ export default function QuotesSection() {
             <span className="eyebrow-dot" />
             Client Stories &amp; Testimonials
           </div>
-          <h2 className={`display-lg ${styles.sectionHeading}`}>
+          <h3 className={`display-lg ${styles.sectionHeading}`}>
             Chosen by Brands With{' '}
             <span className="accent-gradient">Big Ambitions</span>
-          </h2>
+          </h3>
           <p className={`body-lg ${styles.sectionSub}`}>
             Real stories from founders, directors, and marketing leaders who trusted Nova Spark to turn digital marketing into stronger visibility, better leads, and measurable results.
           </p>

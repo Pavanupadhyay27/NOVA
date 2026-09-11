@@ -75,10 +75,10 @@ export default function TeamPreview() {
               <span className="eyebrow-dot" />
               Leadership & Executive Team
             </div>
-            <h2 className="display-lg" style={{ marginTop: 14 }}>
+            <h3 className="display-lg" style={{ marginTop: 14 }}>
               Meet the minds<br />
               <span className="accent-gradient">powering your growth.</span>
-            </h2>
+            </h3>
             <p className="body-lg" style={{ maxWidth: 540, marginTop: 12 }}>
               Dedicated operators and growth architects leading every campaign from strategy to execution.
             </p>
@@ -115,7 +115,7 @@ export default function TeamPreview() {
                 <div className={styles.founderDetails}>
                   <div className={styles.titleRow}>
                     <div>
-                      <h3 className={styles.founderName}>{exec.name}</h3>
+                      <h4 className={styles.founderName}>{exec.name}</h4>
                       <p className={styles.founderRole} style={{ color: exec.color }}>{exec.role}</p>
                     </div>
                     <a href={exec.linkedin} target="_blank" rel="noopener noreferrer" className={styles.linkedinBtn} aria-label="LinkedIn">

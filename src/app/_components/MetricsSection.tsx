@@ -114,10 +114,10 @@ export default function MetricsSection() {
             <span className="eyebrow-dot" />
             <span>Revenue &amp; Performance Proof</span>
           </div>
-          <h2 className={`display-lg ${styles.title}`}>
+          <h3 className={`display-lg ${styles.title}`}>
             Precision Growth.<br />
             <span className="accent-gradient">Quantified in Revenue.</span>
-          </h2>
+          </h3>
           <p className="body-lg" style={{ maxWidth: 620, margin: '14px auto 0' }}>
             Measurable commercial milestones engineered for ambitious brands that chose predictability and compounding revenue over guesswork.
           </p>
@@ -157,7 +157,7 @@ export default function MetricsSection() {
                 </div>
 
                 {/* Label & Description */}
-                <h3 className={styles.label}>{m.label}</h3>
+                <h4 className={styles.label}>{m.label}</h4>
                 <p className={styles.desc}>{m.desc}</p>
 
                 {/* Benchmark Footer */}
@@ -185,9 +185,9 @@ export default function MetricsSection() {
               <span className={styles.ctaSlotsBadge}>⚡ Limited Q3/Q4 Audit Slots</span>
             </div>
 
-            <h3 className={styles.ctaTitle}>
+            <div className={styles.ctaTitle}>
               Ready to Turn Your Marketing Spend into <span className="accent-gradient">Predictable Revenue?</span>
-            </h3>
+            </div>
             
             <p className={styles.ctaDesc}>
               Get a comprehensive 360° revenue audit, competitive traffic analysis, and actionable scaling roadmap designed specifically for your industry.
