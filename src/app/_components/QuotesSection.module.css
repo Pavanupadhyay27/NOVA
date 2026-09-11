@@ -1,6 +1,6 @@
 .section {
   position: relative;
-  padding: 54px 0 60px;
+  padding: 50px 0 56px;
   background: #F8FAFC;
   overflow: hidden;
 }
@@ -12,35 +12,46 @@
   transform: translate(-50%, -50%);
   width: 800px;
   height: 450px;
-  background: radial-gradient(ellipse, rgba(2, 132, 199, 0.05) 0%, rgba(99, 102, 241, 0.02) 60%, transparent 80%);
+  background: radial-gradient(ellipse, rgba(11, 32, 147, 0.05) 0%, rgba(245, 158, 11, 0.03) 60%, transparent 80%);
   pointer-events: none;
   filter: blur(70px);
 }
 
+.sectionHeading {
+  margin-top: 10px;
+  margin-bottom: 0;
+  letter-spacing: -0.02em;
+}
+
+.sectionSub {
+  max-width: 640px;
+  margin: 12px auto 0;
+  line-height: 1.6;
+  color: #475569;
+}
+
 .carouselContainer {
   margin-top: 28px;
-  max-width: 920px;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* Prestigious Skeuomorphic Testimonial Card with Fixed Zero-CLS Height */
+/* Prestigious Skeuomorphic Testimonial Card */
 .quoteCard {
   position: relative;
-  min-height: 430px;
+  min-height: 410px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background: linear-gradient(175deg, #FFFFFF 0%, #FAFCFE 45%, #EEF4FA 100%);
-  border: 1px solid rgba(218, 226, 237, 0.95);
+  border: 1.5px solid rgba(218, 226, 237, 0.95);
   border-radius: var(--radius-2xl);
-  padding: 44px 50px 36px;
+  padding: 38px 44px 32px;
   box-shadow: 
     inset 0 2.5px 0 #FFFFFF,
     inset 0 1px 1px rgba(255, 255, 255, 0.95),
     inset 0 -2.5px 4px rgba(15, 23, 42, 0.05),
-    inset 1px 0 0 rgba(255, 255, 255, 0.8),
-    inset -1px 0 0 rgba(255, 255, 255, 0.8),
     0 20px 48px -10px rgba(15, 23, 42, 0.08),
     0 2px 6px rgba(15, 23, 42, 0.03);
   overflow: hidden;
@@ -48,26 +59,34 @@
 }
 
 .quoteCard:hover {
-  border-color: rgba(11, 32, 147, 0.5);
+  border-color: rgba(11, 32, 147, 0.4);
   box-shadow: 
     inset 0 2.5px 0 #FFFFFF,
     inset 0 1px 1px rgba(255, 255, 255, 1),
-    inset 0 -1.5px 3px rgba(15, 23, 42, 0.03),
-    0 36px 72px -12px rgba(15, 23, 42, 0.14),
-    0 0 0 1.5px rgba(11, 32, 147, 0.3);
+    0 32px 64px -12px rgba(15, 23, 42, 0.12),
+    0 0 0 1px rgba(11, 32, 147, 0.2);
 }
 
 .cardHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
 }
 
 .starsRow {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
 }
 
 .star {
@@ -76,32 +95,43 @@
 }
 
 .verifiedBadge {
-  margin-left: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   font-family: var(--font-display);
   font-size: 11px;
   font-weight: 700;
   color: #10B981;
   background: rgba(16, 185, 129, 0.08);
   padding: 3px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  white-space: nowrap;
+}
+
+.verifiedDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 5px #10B981;
 }
 
 .categoryTag {
   font-family: var(--font-display);
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  background: #F8FAFC;
-  padding: 4px 12px;
-  border-radius: 999px;
+  padding: 3.5px 12px;
+  border-radius: var(--radius-full);
   border: 1px solid #E2E8F0;
+  white-space: nowrap;
 }
 
 /* Stable Viewport with Constant Dimensions (Zero CLS) */
 .quoteViewport {
-  min-height: 230px;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -119,7 +149,7 @@
 @keyframes smoothCrossfade {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(5px);
   }
   to {
     opacity: 1;
@@ -128,17 +158,17 @@
 }
 
 .quoteTextWrap {
-  min-height: 115px;
+  min-height: 95px;
   display: flex;
   align-items: center;
 }
 
 .quoteText {
-  font-family: var(--font-display);
-  font-size: 20.5px;
-  font-weight: 600;
+  font-family: var(--font-sans);
+  font-size: 18.5px;
+  font-weight: 500;
   line-height: 1.6;
-  color: #000000;
+  color: #0F172A;
   letter-spacing: -0.01em;
 }
 
@@ -146,43 +176,55 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  padding-top: 20px;
-  border-top: 1px solid #F1F5F9;
+  gap: 16px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
 }
 
 .authorInfo {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
+  min-width: 0;
+  flex: 1;
 }
 
 .avatar {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 800;
   color: #FFFFFF;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
   flex-shrink: 0;
+}
+
+.authorMeta {
+  min-width: 0;
 }
 
 .authorName {
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 800;
   color: #000000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .authorRole {
-  font-size: 12.5px;
+  font-size: 12px;
   color: #64748B;
   margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .companyName {
@@ -195,26 +237,28 @@
   flex-direction: column;
   align-items: flex-end;
   background: #FFFFFF;
-  padding: 10px 18px;
+  padding: 8px 14px;
   border-radius: var(--radius-md);
   border: 1px solid #E2E8F0;
   box-shadow: inset 0 1.5px 0 #FFFFFF, 0 2px 6px rgba(15, 23, 42, 0.04);
+  flex-shrink: 0;
 }
 
 .statPrimary {
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 800;
   line-height: 1.2;
 }
 
 .statSecondary {
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 600;
   color: #64748B;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   margin-top: 2px;
+  white-space: nowrap;
 }
 
 /* Controls */
@@ -222,15 +266,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 24px;
-  padding-top: 16px;
-  border-top: 1px solid #F1F5F9;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
 }
 
 .dots {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
 }
 
 .navDot {
@@ -241,112 +285,192 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  transition: all var(--transition-fast);
+  transition: all 0.25s ease;
 }
 
 .activeDot {
-  width: 24px;
-  border-radius: 999px;
-  background: #0B2093;
-  box-shadow: 0 2px 8px rgba(11, 32, 147, 0.4);
+  width: 22px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(11, 32, 147, 0.35);
 }
 
 .navButtons {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .navBtn {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: #FFFFFF;
   border: 1px solid #E2E8F0;
   color: #0F172A;
-  font-size: 15px;
+  font-size: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   box-shadow: inset 0 1.5px 0 #FFFFFF, 0 2px 6px rgba(15, 23, 42, 0.05);
-  transition: all var(--transition-fast);
+  transition: all 0.2s ease;
 }
 
 .navBtn:hover {
   background: #0B2093;
   color: #FFFFFF;
   border-color: #0B2093;
-  transform: scale(1.08);
-  box-shadow: 0 4px 14px rgba(11, 32, 147, 0.35);
+  transform: scale(1.06);
 }
 
 .counter {
   font-family: var(--font-display);
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 700;
   color: #64748B;
 }
 
+/* ══════════════════════════════════════════════════
+   MOBILE VIEWPORT (< 768px): UNCLUTTERED, CRISP & SAFE
+══════════════════════════════════════════════════ */
 @media (max-width: 768px) {
   .section {
-    padding: 36px 0 42px;
+    padding: 28px 0 34px;
   }
-  .carouselContainer {
-    margin-top: 20px;
+
+  .sectionHeading {
+    font-size: clamp(23px, 6vw, 28px) !important;
   }
-  .quoteCard {
-    padding: 24px 18px 20px;
-    min-height: 350px;
-    border-radius: var(--radius-xl);
-  }
-  .cardHeader {
-    margin-bottom: 14px;
-  }
-  .categoryTag {
-    font-size: 10px;
-    padding: 2px 9px;
-  }
-  .quoteViewport {
-    min-height: 180px;
-  }
-  .quoteTextWrap {
-    min-height: 90px;
-  }
-  .quoteText {
-    font-size: 15.5px;
+
+  .sectionSub {
+    font-size: 13px;
+    margin-top: 8px;
     line-height: 1.5;
   }
-  .footerRow {
-    flex-direction: row;
+
+  .carouselContainer {
+    margin-top: 16px;
+  }
+
+  .quoteCard {
+    padding: 16px 14px 14px;
+    min-height: auto;
+    border-radius: var(--radius-xl);
+  }
+
+  .cardHeader {
+    display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 8px;
-    padding-top: 14px;
+    gap: 6px;
+    margin-bottom: 12px;
   }
-  .authorInfo {
-    gap: 10px;
+
+  .starsRow {
+    gap: 6px;
   }
-  .avatar {
-    width: 38px;
-    height: 38px;
-    font-size: 13px;
-  }
-  .authorName {
+
+  .star {
     font-size: 14px;
   }
+
+  .verifiedBadge {
+    font-size: 9.5px;
+    padding: 2px 7px;
+    gap: 4px;
+  }
+
+  .categoryTag {
+    font-size: 9.5px;
+    padding: 2px 8px;
+    max-width: 48%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .quoteViewport {
+    min-height: auto;
+  }
+
+  .quoteTextWrap {
+    min-height: auto;
+    margin-bottom: 12px;
+  }
+
+  .quoteText {
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .footerRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 12px;
+  }
+
+  .authorInfo {
+    gap: 8px;
+  }
+
+  .avatar {
+    width: 34px;
+    height: 34px;
+    font-size: 12px;
+  }
+
+  .authorName {
+    font-size: 13.5px;
+  }
+
   .authorRole {
     font-size: 11px;
+    margin-top: 1px;
   }
+
   .metricsBadge {
-    padding: 6px 12px;
-    align-items: flex-end;
+    padding: 4px 8px;
+    border-radius: 6px;
   }
+
   .statPrimary {
-    font-size: 14px;
+    font-size: 12.5px;
   }
+
   .statSecondary {
-    font-size: 9.5px;
+    font-size: 9px;
+  }
+
+  /* Safe from floating WhatsApp button */
+  .controlsRow {
+    margin-top: 12px;
+    padding-top: 10px;
+    padding-right: 48px;
+  }
+
+  .navBtn {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+
+  .counter {
+    font-size: 11px;
   }
 }
 
+@media (max-width: 420px) {
+  .cardHeader {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .categoryTag {
+    max-width: 100%;
+  }
+
+  .controlsRow {
+    padding-right: 52px;
+  }
+}

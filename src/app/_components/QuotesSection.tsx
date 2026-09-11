@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import ScrollReveal from '@/components/ScrollReveal';
 import styles from './QuotesSection.module.css';
 
@@ -62,26 +62,52 @@ export default function QuotesSection() {
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
 
-  // Smooth Auto-Slide every 5 seconds (pauses on mouse hover)
+  const handleNext = useCallback(() => {
+    setCurrent((prev) => (prev + 1) % testimonials.length);
+  }, []);
+
+  const handlePrev = useCallback(() => {
+    setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  }, []);
+
+  // Smooth Auto-Slide every 5.5 seconds (pauses on interaction)
   useEffect(() => {
     if (isPaused) return;
 
     timerRef.current = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
+      handleNext();
+    }, 5500);
 
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isPaused]);
+  }, [isPaused, handleNext]);
 
-  const handleNext = () => {
-    setCurrent((prev) => (prev + 1) % testimonials.length);
+  // Touch Swipe Handlers
+  const onTouchStart = (e: React.TouchEvent) => {
+    setIsPaused(true);
+    touchStartX.current = e.targetTouches[0].clientX;
   };
 
-  const handlePrev = () => {
-    setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  const onTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const onTouchEnd = () => {
+    if (touchStartX.current && touchEndX.current) {
+      const distance = touchStartX.current - touchEndX.current;
+      if (distance > 40) {
+        handleNext();
+      } else if (distance < -40) {
+        handlePrev();
+      }
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+    setTimeout(() => setIsPaused(false), 5000);
   };
 
   const active = testimonials[current];
@@ -95,31 +121,41 @@ export default function QuotesSection() {
       <div className={styles.bgGlow} />
       <div className="container">
         <ScrollReveal className="text-center">
-          <div className="eyebrow">
+          <div className="eyebrow" style={{ margin: '0 auto 10px' }}>
             <span className="eyebrow-dot" />
             Client Stories &amp; Testimonials
           </div>
-          <h2 className="display-lg" style={{ marginTop: 14 }}>
+          <h2 className={`display-lg ${styles.sectionHeading}`}>
             Chosen by Brands With{' '}
             <span className="accent-gradient">Big Ambitions</span>
           </h2>
-          <p className="body-lg" style={{ maxWidth: 640, margin: '14px auto 0' }}>
+          <p className={`body-lg ${styles.sectionSub}`}>
             Real stories from founders, directors, and marketing leaders who trusted Nova Spark to turn digital marketing into stronger visibility, better leads, and measurable results.
           </p>
         </ScrollReveal>
 
         <div className={styles.carouselContainer}>
           <ScrollReveal delay={100}>
-            <div className={styles.quoteCard}>
+            <div 
+              className={styles.quoteCard}
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
+            >
               {/* Top Row: Stars + Category Tag */}
               <div className={styles.cardHeader}>
                 <div className={styles.starsRow}>
-                  {[...Array(active.stars)].map((_, i) => (
-                    <span key={i} className={styles.star}>★</span>
-                  ))}
-                  <span className={styles.verifiedBadge}>● Verified Partner</span>
+                  <div className={styles.stars}>
+                    {[...Array(active.stars)].map((_, i) => (
+                      <span key={i} className={styles.star}>★</span>
+                    ))}
+                  </div>
+                  <span className={styles.verifiedBadge}>
+                    <span className={styles.verifiedDot} />
+                    Verified Partner
+                  </span>
                 </div>
-                <span className={styles.categoryTag} style={{ color: active.color }}>
+                <span className={styles.categoryTag} style={{ color: active.color, borderColor: `${active.color}35`, background: `${active.color}0D` }}>
                   {active.tag}
                 </span>
               </div>
@@ -142,7 +178,7 @@ export default function QuotesSection() {
                       >
                         {active.avatarInitials}
                       </div>
-                      <div>
+                      <div className={styles.authorMeta}>
                         <h4 className={styles.authorName}>{active.author}</h4>
                         <p className={styles.authorRole}>
                           {active.role} • <span className={styles.companyName}>{active.company}</span>
@@ -150,7 +186,7 @@ export default function QuotesSection() {
                       </div>
                     </div>
 
-                    <div className={styles.metricsBadge}>
+                    <div className={styles.metricsBadge} style={{ borderColor: `${active.color}30` }}>
                       <div className={styles.statPrimary} style={{ color: active.color }}>
                         {active.stat}
                       </div>
@@ -160,7 +196,7 @@ export default function QuotesSection() {
                 </div>
               </div>
 
-              {/* Bottom Pagination & Auto-Slide Controls */}
+              {/* Bottom Pagination & Navigation Controls (Safe from Floating WhatsApp Icon) */}
               <div className={styles.controlsRow}>
                 <div className={styles.dots}>
                   {testimonials.map((t, idx) => (
@@ -169,6 +205,7 @@ export default function QuotesSection() {
                       className={`${styles.navDot} ${idx === current ? styles.activeDot : ''}`}
                       onClick={() => setCurrent(idx)}
                       aria-label={`Go to review ${idx + 1}`}
+                      style={{ background: idx === current ? active.color : undefined }}
                     />
                   ))}
                 </div>
