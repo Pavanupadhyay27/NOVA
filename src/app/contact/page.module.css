@@ -11,8 +11,8 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 50% 60% at 10% 40%, rgba(2, 132, 199, 0.05) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 50% at 90% 70%, rgba(99, 102, 241, 0.04) 0%, transparent 60%);
+    radial-gradient(ellipse 50% 60% at 10% 40%, rgba(11, 32, 147, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at 90% 70%, rgba(13, 0, 127, 0.04) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -64,14 +64,14 @@
 
 .detailVal {
   font-size: 15px;
-  color: #0F172A;
+  color: #000000;
   font-weight: 600;
   text-decoration: none;
   transition: color var(--transition-fast);
 }
 
 a.detailVal:hover {
-  color: #0284C7;
+  color: #0B2093;
 }
 
 .socials {
@@ -93,9 +93,9 @@ a.detailVal:hover {
 }
 
 .social:hover {
-  color: #0284C7;
-  border-color: #BAE6FD;
-  background: #F0F9FF;
+  color: #0B2093;
+  border-color: #C7D2FE;
+  background: #EEF2FF;
 }
 
 /* Form */
@@ -117,10 +117,10 @@ a.detailVal:hover {
 }
 
 .form:hover {
-  border-color: rgba(2, 132, 199, 0.35);
+  border-color: rgba(11, 32, 147, 0.35);
   box-shadow: inset 0 2px 0 #FFFFFF,
               0 32px 64px -12px rgba(15, 23, 42, 0.12),
-              0 0 0 1px rgba(2, 132, 199, 0.15);
+              0 0 0 1px rgba(11, 32, 147, 0.15);
 }
 
 .formRow {
@@ -139,7 +139,7 @@ a.detailVal:hover {
   font-family: var(--font-display);
   font-size: 13px;
   font-weight: 700;
-  color: #0F172A;
+  color: #000000;
 }
 
 .input {
@@ -149,7 +149,7 @@ a.detailVal:hover {
   padding: 13px 16px;
   font-family: var(--font-body);
   font-size: 14.5px;
-  color: #0F172A;
+  color: #000000;
   transition: all var(--transition-fast);
   width: 100%;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
@@ -161,8 +161,8 @@ a.detailVal:hover {
 
 .input:focus {
   outline: none;
-  border-color: #0284C7;
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+  border-color: #0B2093;
+  box-shadow: 0 0 0 3px rgba(11, 32, 147, 0.15);
 }
 
 .textarea {
@@ -193,16 +193,16 @@ a.detailVal:hover {
 
 .serviceBtn:hover {
   border-color: #CBD5E1;
-  color: #0F172A;
+  color: #000000;
   background: #F8FAFC;
 }
 
 .serviceBtnActive {
-  background: #E0F2FE !important;
-  border-color: #BAE6FD !important;
-  color: #0284C7 !important;
+  background: #EEF2FF !important;
+  border-color: #C7D2FE !important;
+  color: #0B2093 !important;
   font-weight: 700;
-  box-shadow: inset 0 1px 2px rgba(2, 132, 199, 0.1);
+  box-shadow: inset 0 1px 2px rgba(11, 32, 147, 0.1);
 }
 
 .submit {

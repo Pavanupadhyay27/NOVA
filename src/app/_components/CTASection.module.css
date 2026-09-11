@@ -18,16 +18,16 @@
 }
 
 .innerBox:hover {
-  border-color: rgba(2, 132, 199, 0.35);
+  border-color: rgba(11, 32, 147, 0.35);
   box-shadow: inset 0 2px 0 #FFFFFF,
               0 32px 72px -12px rgba(15, 23, 42, 0.12),
-              0 0 0 1px rgba(2, 132, 199, 0.15);
+              0 0 0 1px rgba(11, 32, 147, 0.15);
 }
 
 .headline {
   margin-top: 14px;
   margin-bottom: 16px;
-  color: #0F172A;
+  color: #000000;
 }
 
 .sub {
@@ -59,7 +59,7 @@
   isolation: isolate;
   background: rgba(15, 23, 42, 0.08);
   box-shadow: 
-    0 10px 28px -6px rgba(2, 132, 199, 0.4),
+    0 10px 28px -6px rgba(11, 32, 147, 0.4),
     0 4px 12px rgba(15, 23, 42, 0.1);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
 }
@@ -67,8 +67,8 @@
 .borderBeamWrapper:hover {
   transform: translateY(-2.5px) scale(1.02);
   box-shadow: 
-    0 16px 36px -6px rgba(2, 132, 199, 0.55),
-    0 0 28px rgba(0, 212, 255, 0.45);
+    0 16px 36px -6px rgba(11, 32, 147, 0.55),
+    0 0 28px rgba(11, 32, 147, 0.45);
 }
 
 .borderGlowAmbient {
@@ -82,11 +82,11 @@
     from 0deg,
     transparent 0deg,
     transparent 220deg,
-    rgba(0, 212, 255, 0.5) 270deg,
-    rgba(56, 189, 248, 0.85) 305deg,
-    rgba(129, 140, 248, 0.8) 335deg,
+    rgba(11, 32, 147, 0.5) 270deg,
+    rgba(13, 0, 127, 0.85) 305deg,
+    rgba(29, 78, 216, 0.8) 335deg,
     rgba(236, 72, 153, 0.6) 355deg,
-    rgba(0, 212, 255, 0.5) 360deg
+    rgba(11, 32, 147, 0.5) 360deg
   );
   animation: ctaBeamSpin 3s linear infinite;
   filter: blur(14px);
@@ -106,12 +106,12 @@
     from 0deg,
     transparent 0deg,
     transparent 200deg,
-    rgba(0, 212, 255, 0) 230deg,
-    #00D4FF 270deg,
-    #38BDF8 300deg,
-    #818CF8 330deg,
+    rgba(11, 32, 147, 0) 230deg,
+    #0B2093 270deg,
+    #0D007F 300deg,
+    #1D4ED8 330deg,
     #EC4899 350deg,
-    #00D4FF 360deg
+    #0B2093 360deg
   );
   animation: ctaBeamSpin 3s linear infinite;
   pointer-events: none;
@@ -137,7 +137,7 @@
   gap: 9px;
   padding: 14.5px 32px;
   border-radius: var(--radius-full);
-  background: linear-gradient(135deg, #0284C7 0%, #0369A1 50%, #4F46E5 100%);
+  background: linear-gradient(135deg, #0D007F 0%, #0B2093 50%, #1A3DB5 100%);
   color: #FFFFFF;
   font-family: var(--font-display);
   font-size: 15px;
@@ -176,18 +176,18 @@
 
 .btnStartPrimary:hover {
   transform: translateY(-2.5px) scale(1.02);
-  background: linear-gradient(135deg, #0284C7 0%, #00D4FF 50%, #4F46E5 100%);
+  background: linear-gradient(135deg, #0B2093 0%, #1A3DB5 50%, #0D007F 100%);
   box-shadow: 
     inset 0 2.5px 0 rgba(255, 255, 255, 0.7),
     inset 0 -2px 0 rgba(0, 0, 0, 0.25),
-    0 14px 32px -4px rgba(2, 132, 199, 0.65),
-    0 0 24px rgba(0, 212, 255, 0.4);
+    0 14px 32px -4px rgba(11, 32, 147, 0.65),
+    0 0 24px rgba(11, 32, 147, 0.4);
   color: #FFFFFF;
 }
 
 .btnStartPrimary:active {
   transform: translateY(1px) scale(0.99);
-  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(2, 132, 199, 0.3);
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(11, 32, 147, 0.3);
 }
 
 .btnArrow {
@@ -208,7 +208,7 @@
   padding: 15px 28px;
   border-radius: var(--radius-full);
   background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
-  color: #0F172A;
+  color: #000000;
   font-family: var(--font-display);
   font-size: 15px;
   font-weight: 700;
@@ -224,25 +224,25 @@
 }
 
 .exploreIcon {
-  color: #0284C7;
+  color: #0B2093;
   font-size: 13px;
   transition: transform 0.25s ease, color 0.25s ease;
 }
 
 .btnExploreSecondary:hover {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F0F9FF 100%);
-  border-color: #0284C7;
-  color: #0284C7;
+  background: linear-gradient(180deg, #FFFFFF 0%, #EEF2FF 100%);
+  border-color: #0B2093;
+  color: #0B2093;
   transform: translateY(-2.5px);
   box-shadow: 
     inset 0 2px 0 #FFFFFF,
-    0 10px 24px -4px rgba(2, 132, 199, 0.2),
-    0 0 0 1px rgba(2, 132, 199, 0.3);
+    0 10px 24px -4px rgba(11, 32, 147, 0.2),
+    0 0 0 1px rgba(11, 32, 147, 0.3);
 }
 
 .btnExploreSecondary:hover .exploreIcon {
   transform: rotate(45deg) scale(1.2);
-  color: #00D4FF;
+  color: #0D007F;
 }
 
 .btnExploreSecondary:active {
@@ -273,7 +273,7 @@
   font-family: var(--font-display);
   font-size: 20px;
   font-weight: 800;
-  color: #0284C7;
+  color: #0B2093;
   line-height: 1.1;
 }
 

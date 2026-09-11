@@ -12,7 +12,7 @@
 .heroBg {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 70% 80% at 50% 0%, rgba(0, 212, 255, 0.08) 0%, transparent 60%);
+  background: radial-gradient(ellipse 70% 80% at 50% 0%, rgba(11, 32, 147, 0.08) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -123,11 +123,11 @@
   font-family: var(--font-mono);
   font-size: 13px;
   font-weight: 700;
-  color: var(--accent-cyan);
-  background: rgba(0, 212, 255, 0.1);
+  color: #0B2093;
+  background: rgba(11, 32, 147, 0.08);
   padding: 4px 10px;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(0, 212, 255, 0.2);
+  border: 1px solid rgba(11, 32, 147, 0.2);
 }
 
 .sectionTitle {

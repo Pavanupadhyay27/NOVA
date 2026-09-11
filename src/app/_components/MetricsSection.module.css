@@ -51,13 +51,13 @@
 
 .card:hover {
   transform: translateY(-8px) scale(1.01);
-  border-color: rgba(2, 132, 199, 0.5);
+  border-color: rgba(11, 32, 147, 0.5);
   box-shadow: 
     inset 0 2.5px 0 #FFFFFF,
     inset 0 1px 1px rgba(255, 255, 255, 1),
-    inset 0 -1.5px 3px rgba(15, 23, 42, 0.03),
-    0 36px 72px -12px rgba(15, 23, 42, 0.16),
-    0 0 0 1.5px rgba(2, 132, 199, 0.35);
+    inset 0 -1.5px 3px rgba(0, 0, 0, 0.03),
+    0 36px 72px -12px rgba(11, 32, 147, 0.16),
+    0 0 0 1.5px rgba(11, 32, 147, 0.35);
 }
 
 .cardTop {
@@ -78,7 +78,7 @@
   border: 1px solid rgba(226, 232, 240, 0.95);
   box-shadow: inset 0 2px 0 #FFFFFF,
               inset 0 -1.5px 2px rgba(0, 0, 0, 0.06),
-              0 4px 12px rgba(15, 23, 42, 0.08);
+              0 4px 12px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -100,7 +100,7 @@
   padding: 4px 11px;
   border-radius: 999px;
   border: 1px solid #E2E8F0;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 .tagDot {
@@ -114,7 +114,7 @@
   font-size: 50px;
   font-weight: 900;
   line-height: 1;
-  color: #0F172A;
+  color: #000000;
   letter-spacing: -0.045em;
   margin-bottom: 14px;
 }
@@ -145,7 +145,7 @@
   font-family: var(--font-display);
   font-size: 16px;
   font-weight: 800;
-  color: #0F172A;
+  color: #000000;
   line-height: 1.3;
   margin-bottom: 8px;
 }
@@ -171,59 +171,74 @@
   display: inline-block;
 }
 
-@media (max-width: 1100px) {
+/* Tablet Viewport (768px – 1024px): Clean 2x2 Grid */
+@media (max-width: 1024px) {
+  .section {
+    padding: 80px 0 72px;
+  }
   .grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 44px;
+  }
+  .card {
+    padding: 26px 22px;
+  }
+  .metricVal {
+    font-size: 42px;
   }
 }
 
-@media (max-width: 640px) {
+/* Mobile Viewport (< 768px): Clean Single Column Flow with min gap-4 (16px) */
+@media (max-width: 767px) {
   .section {
-    padding: 60px 0 68px;
+    padding: 54px 0 60px;
   }
   .grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    margin-top: 36px;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 32px;
   }
   .card {
-    padding: 20px 16px;
+    padding: 22px 18px;
     border-radius: var(--radius-xl);
   }
   .cardTop {
     margin-bottom: 14px;
   }
   .iconBadge {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
   }
   .tagPill {
-    font-size: 9.5px;
-    padding: 2px 7px;
+    font-size: 10px;
+    padding: 3px 9px;
   }
   .metricVal {
-    font-size: 32px;
-    margin-bottom: 8px;
-  }
-  .label {
-    font-size: 13.5px;
-    margin-bottom: 4px;
-  }
-  .desc {
-    font-size: 11.5px;
-    line-height: 1.45;
+    font-size: 38px;
     margin-bottom: 10px;
   }
+  .label {
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+  .desc {
+    font-size: 12.5px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
   .benchmarkPill {
-    font-size: 10px;
+    font-size: 11px;
   }
 }
 
-@media (max-width: 380px) {
-  .grid {
-    grid-template-columns: 1fr;
-    gap: 14px;
+@media (max-width: 480px) {
+  .card {
+    padding: 18px 16px;
+  }
+  .metricVal {
+    font-size: 34px;
   }
 }
 

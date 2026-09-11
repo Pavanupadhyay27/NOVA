@@ -13,7 +13,7 @@ const testimonials = [
     stat: '+142% Net Revenue',
     subStat: '4.8X Blended ROAS',
     avatarInitials: 'SM',
-    color: '#0284C7',
+    color: '#0B2093',
     stars: 5,
     tag: 'E-Commerce Scale'
   },
@@ -26,7 +26,7 @@ const testimonials = [
     stat: '#1 on Google',
     subStat: '+187% Organic Inquiries',
     avatarInitials: 'AM',
-    color: '#6366F1',
+    color: '#0D007F',
     stars: 5,
     tag: 'Real Estate Growth'
   },

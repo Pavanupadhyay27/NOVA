@@ -15,6 +15,7 @@ const founders = [
     role: 'Founder & CEO',
     dept: 'Executive Leadership',
     image: '/images/team/exec_1.png',
+    imagePosition: '50% 10%',
     bio: 'Founder of Nova Spark, a digital marketing agency in Bhubaneswar, driving innovation, digital transformation, and sustainable business growth through strategy, creativity, and measurable results.',
     quote: 'We drive innovation, digital transformation, and sustainable business growth through strategy, creativity, and measurable results.',
     linkedin: 'https://linkedin.com',
@@ -24,6 +25,7 @@ const founders = [
     role: 'Founding Team Member & COO',
     dept: 'Operations & Scaling',
     image: '/images/team/exec_2.png',
+    imagePosition: '50% 12%',
     bio: 'Leading digital marketing operations with 12+ years of experience, focused on seamless execution, operational excellence and delivering consistent client success.',
     quote: 'Focused on seamless execution, operational excellence and delivering consistent client success.',
     linkedin: 'https://linkedin.com',
@@ -36,6 +38,7 @@ const leaders = [
     role: 'Founding Team Member & CGO',
     dept: 'Growth & Strategy',
     image: '/images/team/exec_3.png',
+    imagePosition: '50% 12%',
     bio: 'Spearheading commercial growth, strategic enterprise acquisitions, and high-value brand partnerships to expand Nova Spark\'s market footprint across India.',
     quote: 'Building high-leverage growth partnerships that unlock compounding market valuation for ambitious brands.',
     linkedin: 'https://linkedin.com',
@@ -45,6 +48,7 @@ const leaders = [
     role: 'Operation Executive',
     dept: 'Delivery & Analytics',
     image: '/images/team/exec_4.jpg',
+    imagePosition: '50% 10%',
     bio: 'Orchestrating campaign delivery pipelines, cross-channel technical infrastructure, and strict SLA compliance for predictable client ROI and operational excellence.',
     quote: 'Operational rigor and precision delivery ensure every campaign produces audited business results.',
     linkedin: 'https://linkedin.com',
@@ -54,6 +58,7 @@ const leaders = [
     role: 'HR Admin Executive',
     dept: 'People & Culture',
     image: '/images/team/exec_5.png',
+    imagePosition: '50% 2%',
     bio: 'Fostering high-performance agency culture, talent acquisition, people development, and seamless organizational administration across the studio.',
     quote: 'Empowering world-class creative and engineering talent to build the next generation of growth systems.',
     linkedin: 'https://linkedin.com',
@@ -66,7 +71,7 @@ const practiceLeads = [
     role: 'Lead AI Workflow Engineer',
     dept: 'AI & Automation',
     initials: 'DM',
-    color: '#0284C7',
+    color: '#0B2093',
     bio: 'Designs intelligent agentic lead-scoring pipelines, WhatsApp AI response bots, and automated client intelligence dashboards.',
     quote: 'Automate repetitive operational tasks to amplify strategic high-leverage growth.',
     linkedin: 'https://linkedin.com',
@@ -86,7 +91,7 @@ const practiceLeads = [
     role: 'Lead SEO & Organic Growth Strategist',
     dept: 'Search & Content Intelligence',
     initials: 'AM',
-    color: '#6366F1',
+    color: '#0D007F',
     bio: 'Specialist in technical indexing, local map pack dominance, and high-intent programmatic content hubs generating compounding traffic.',
     quote: 'Dominating organic search results creates long-term brand equity with zero ongoing ad spend.',
     linkedin: 'https://linkedin.com',
@@ -139,6 +144,7 @@ export default function TeamPage() {
                         fill
                         priority={i < 2}
                         className={styles.execImg}
+                        style={{ objectPosition: leader.imagePosition || '50% 15%' }}
                         sizes="(max-width: 900px) 100vw, 50vw"
                       />
                       <div className={styles.execImgOverlay} />
@@ -177,6 +183,7 @@ export default function TeamPage() {
                         alt={leader.name}
                         fill
                         className={styles.execImg}
+                        style={{ objectPosition: leader.imagePosition || '50% 15%' }}
                         sizes="(max-width: 900px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                       <div className={styles.execImgOverlay} />

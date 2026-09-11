@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import MobileBottomBar from "@/components/MobileBottomBar";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://novasparkdigitalmarketingagency.com"),
@@ -96,6 +97,7 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+        <MobileBottomBar />
       </body>
     </html>
   );

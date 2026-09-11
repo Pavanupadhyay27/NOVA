@@ -9,9 +9,10 @@ const founders = [
     role: 'Founder & CEO',
     dept: 'Executive Leadership',
     image: '/images/team/exec_1.png',
+    imagePosition: '50% 10%',
     bio: 'Founder of Nova Spark, driving innovation, digital transformation, and sustainable business growth through strategy, creativity, and measurable results.',
     quote: 'We drive innovation, digital transformation, and sustainable business growth through strategy, creativity, and measurable results.',
-    color: '#0284C7',
+    color: '#0B2093',
     linkedin: 'https://linkedin.com',
   },
   {
@@ -19,9 +20,10 @@ const founders = [
     role: 'Founding Team Member & COO',
     dept: 'Operations & Scaling',
     image: '/images/team/exec_2.png',
+    imagePosition: '50% 12%',
     bio: 'Leading digital marketing operations with 12+ years of experience, focused on seamless execution, operational excellence and delivering consistent client success.',
     quote: 'Focused on seamless execution, operational excellence and delivering consistent client success.',
-    color: '#6366F1',
+    color: '#0D007F',
     linkedin: 'https://linkedin.com',
   },
 ];
@@ -32,6 +34,7 @@ const leaders = [
     role: 'Founding Team Member & CGO',
     dept: 'Growth & Strategy',
     image: '/images/team/exec_3.png',
+    imagePosition: '50% 12%',
     bio: 'Spearheading commercial growth, strategic enterprise acquisitions, and high-value brand partnerships to expand Nova Spark\'s market footprint.',
     quote: 'Building high-leverage growth partnerships that unlock compounding market valuation.',
     color: '#EC4899',
@@ -42,6 +45,7 @@ const leaders = [
     role: 'Operation Executive',
     dept: 'Delivery & Analytics',
     image: '/images/team/exec_4.jpg',
+    imagePosition: '50% 10%',
     bio: 'Orchestrating campaign delivery pipelines, cross-channel technical infrastructure, and strict SLA compliance for predictable client ROI.',
     quote: 'Operational rigor and precision delivery ensure every campaign produces audited results.',
     color: '#10B981',
@@ -52,6 +56,7 @@ const leaders = [
     role: 'HR Admin Executive',
     dept: 'People & Culture',
     image: '/images/team/exec_5.png',
+    imagePosition: '50% 2%',
     bio: 'Fostering high-performance agency culture, talent acquisition, people development, and seamless organizational administration.',
     quote: 'Empowering world-class creative and engineering talent to build the next generation of growth systems.',
     color: '#F59E0B',
@@ -98,6 +103,7 @@ export default function TeamPreview() {
                     fill
                     priority
                     className={styles.photo}
+                    style={{ objectPosition: exec.imagePosition || '50% 15%' }}
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className={styles.photoOverlay} />
@@ -139,6 +145,7 @@ export default function TeamPreview() {
                     alt={exec.name}
                     fill
                     className={styles.photo}
+                    style={{ objectPosition: exec.imagePosition || '50% 15%' }}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                   <div className={styles.photoOverlay} />

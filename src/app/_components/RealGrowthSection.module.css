@@ -60,7 +60,7 @@
 
 .headline {
   margin-bottom: 12px;
-  color: #0F172A;
+  color: #000000;
 }
 
 .sub {
@@ -97,21 +97,21 @@
   box-shadow: 
     inset 0 2.5px 0 #FFFFFF,
     inset 0 1px 1px rgba(255, 255, 255, 0.95),
-    inset 0 -2.5px 4px rgba(15, 23, 42, 0.05),
-    0 16px 40px -8px rgba(15, 23, 42, 0.07),
-    0 2px 6px rgba(15, 23, 42, 0.03);
+    inset 0 -2.5px 4px rgba(0, 0, 0, 0.05),
+    0 16px 40px -8px rgba(0, 0, 0, 0.07),
+    0 2px 6px rgba(0, 0, 0, 0.03);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
 }
 
 .card:hover {
   transform: translateY(-6px);
-  border-color: rgba(2, 132, 199, 0.45);
+  border-color: rgba(11, 32, 147, 0.45);
   box-shadow: 
     inset 0 2.5px 0 #FFFFFF,
     inset 0 1px 1px rgba(255, 255, 255, 1),
-    0 28px 60px -10px rgba(15, 23, 42, 0.14),
-    0 0 0 1.5px rgba(2, 132, 199, 0.3);
+    0 28px 60px -10px rgba(11, 32, 147, 0.14),
+    0 0 0 1.5px rgba(11, 32, 147, 0.3);
 }
 
 /* Card Visual Image */
@@ -136,7 +136,7 @@
 .imgOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(15, 23, 42, 0.55) 0%, rgba(15, 23, 42, 0.12) 60%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.12) 60%, transparent 100%);
   pointer-events: none;
 }
 
@@ -158,7 +158,7 @@
   font-weight: 800;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #0F172A;
+  color: #000000;
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(10px);
   padding: 4px 12px;
@@ -204,7 +204,7 @@
   font-family: var(--font-display);
   font-size: 21px;
   font-weight: 800;
-  color: #0F172A;
+  color: #000000;
   line-height: 1.25;
 }
 
@@ -223,7 +223,7 @@
   padding: 13px 15px;
   border-radius: var(--radius-lg);
   border: 1px solid #E2E8F0;
-  box-shadow: inset 0 1px 0 #FFFFFF, 0 1px 3px rgba(15, 23, 42, 0.03);
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 1px 3px rgba(0, 0, 0, 0.03);
 }
 
 .specHeader {
@@ -250,11 +250,11 @@
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #0284C7;
-  background: #F0F9FF;
+  color: #0B2093;
+  background: #EEF2FF;
   padding: 2.5px 8px;
   border-radius: 6px;
-  border: 1px solid #E0F2FE;
+  border: 1px solid #C7D2FE;
 }
 
 .specText {
@@ -336,19 +336,19 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
+  background: linear-gradient(135deg, #0D007F 0%, #0B2093 100%);
   color: #FFFFFF !important;
   border-radius: 9999px;
   text-decoration: none;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 3px 10px rgba(2, 132, 199, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 3px 10px rgba(11, 32, 147, 0.18);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
 }
 
 .cardBtn:hover {
-  background: linear-gradient(135deg, #0369A1 0%, #0284C7 100%);
+  background: linear-gradient(135deg, #0B2093 0%, #1A3DB5 100%);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.28);
+  box-shadow: 0 6px 16px rgba(11, 32, 147, 0.28);
 }
 
 .cardBtn svg {
@@ -359,18 +359,29 @@
   transform: translateY(2px);
 }
 
-/* Responsive */
+/* Tablet Viewport (768px – 1024px): Balanced 2-Column Grid with 16:9 Visuals */
 @media (max-width: 1024px) {
+  .section {
+    padding: 56px 0 70px;
+  }
   .grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+  }
+  .cardVisual {
+    height: 190px;
   }
   .cardContentHeader {
     min-height: auto;
   }
+  .cardContent {
+    padding: 20px 18px;
+    gap: 12px;
+  }
 }
 
-@media (max-width: 640px) {
+/* Mobile Viewport (< 768px): Stacked Vertical Cards with Full Readability & 48px Touch Buttons */
+@media (max-width: 767px) {
   .section {
     padding: 44px 0 54px;
   }
@@ -383,54 +394,78 @@
     gap: 12px;
   }
   .topDownloadBtn {
-    font-size: 11.5px;
-    padding: 7px 14px;
+    width: 100%;
+    min-height: 48px;
+    justify-content: center;
+    font-size: 12.5px;
+    padding: 10px 18px;
+  }
+  .headline {
+    font-size: clamp(26px, 7vw, 36px) !important;
   }
   .grid {
-    gap: 14px;
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
   .card {
     border-radius: var(--radius-xl);
   }
   .cardVisual {
-    height: 160px;
+    height: 190px;
+    aspect-ratio: 16 / 9;
   }
   .badgeWrap {
-    bottom: 10px;
-    left: 12px;
-    right: 12px;
-    gap: 6px;
+    bottom: 12px;
+    left: 14px;
+    right: 14px;
+    gap: 8px;
   }
   .catBadge, .statPill {
-    font-size: 9.5px;
-    padding: 3px 8px;
+    font-size: 10px;
+    padding: 3.5px 10px;
+  }
+  .cardContent {
+    padding: 20px 16px;
+    gap: 12px;
+  }
+  .clientTitle {
+    font-size: 19px;
+  }
+  .overviewText {
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .specBox {
+    padding: 11px 13px;
+    gap: 5px;
+  }
+  .specText {
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .resultsBox {
+    padding: 12px 14px;
+    gap: 8px;
+  }
+  .resultsTitle {
+    font-size: 11px;
+  }
+  .resultItem {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+  .cardBtn {
+    min-height: 48px;
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardVisual {
+    height: 170px;
   }
   .cardContent {
     padding: 16px 14px;
-    gap: 10px;
-  }
-  .clientTitle {
-    font-size: 17px;
-  }
-  .overviewText {
-    font-size: 12px;
-  }
-  .specBox {
-    padding: 9px 11px;
-    gap: 4px;
-  }
-  .specText {
-    font-size: 11.5px;
-  }
-  .resultsBox {
-    padding: 10px 12px;
-    gap: 6px;
-  }
-  .resultItem {
-    font-size: 11.5px;
-  }
-  .cardBtn {
-    padding: 9px 16px;
-    font-size: 12px;
   }
 }

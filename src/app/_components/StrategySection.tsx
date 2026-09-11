@@ -19,7 +19,7 @@ const stages: StrategyStage[] = [
     tagline: 'Audit funnels, unit economics & historical ad spend.',
     timeframe: 'Days 1–7',
     focus: 'Diagnostic Audit',
-    color: '#0284C7',
+    color: '#0B2093',
   },
   {
     num: '02',
@@ -27,7 +27,7 @@ const stages: StrategyStage[] = [
     tagline: 'Custom omnichannel growth & conversion funnel modeling.',
     timeframe: 'Days 8–14',
     focus: 'Growth Blueprint',
-    color: '#6366F1',
+    color: '#0D007F',
   },
   {
     num: '03',
@@ -95,9 +95,9 @@ export default function StrategySection() {
             >
               <defs>
                 <linearGradient id="cleanWaveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#0284C7" />
-                  <stop offset="25%" stopColor="#6366F1" />
-                  <stop offset="50%" stopColor="#EC4899" />
+                  <stop offset="0%" stopColor="#0D007F" />
+                  <stop offset="25%" stopColor="#0B2093" />
+                  <stop offset="50%" stopColor="#1A3DB5" />
                   <stop offset="75%" stopColor="#F59E0B" />
                   <stop offset="100%" stopColor="#10B981" />
                 </linearGradient>

@@ -41,13 +41,13 @@
 
 .founderCard:hover {
   transform: translateY(-8px) scale(1.008);
-  border-color: rgba(2, 132, 199, 0.5);
+  border-color: rgba(11, 32, 147, 0.5);
   box-shadow: 
     inset 0 2.5px 0 #FFFFFF,
     inset 0 1px 1px rgba(255, 255, 255, 1),
     inset 0 -1.5px 3px rgba(15, 23, 42, 0.03),
     0 36px 72px -12px rgba(15, 23, 42, 0.16),
-    0 0 0 1.5px rgba(2, 132, 199, 0.35);
+    0 0 0 1.5px rgba(11, 32, 147, 0.35);
 }
 
 .founderImgBox {
@@ -113,7 +113,7 @@
   font-family: var(--font-display);
   font-size: 20px;
   font-weight: 800;
-  color: #0F172A;
+  color: #000000;
   line-height: 1.2;
 }
 
@@ -135,7 +135,7 @@
   line-height: 1.55;
   font-style: italic;
   padding-left: 10px;
-  border-left: 2.5px solid #0284C7;
+  border-left: 2.5px solid #0B2093;
   margin-top: 4px;
 }
 
@@ -186,13 +186,13 @@
 
 .leaderCard:hover {
   transform: translateY(-8px) scale(1.01);
-  border-color: rgba(2, 132, 199, 0.5);
+  border-color: rgba(11, 32, 147, 0.5);
   box-shadow: 
     inset 0 2.5px 0 #FFFFFF,
     inset 0 1px 1px rgba(255, 255, 255, 1),
     inset 0 -1.5px 3px rgba(15, 23, 42, 0.03),
     0 32px 64px -10px rgba(15, 23, 42, 0.15),
-    0 0 0 1.5px rgba(2, 132, 199, 0.35);
+    0 0 0 1.5px rgba(11, 32, 147, 0.35);
 }
 
 .leaderImgBox {
@@ -215,7 +215,7 @@
   font-family: var(--font-display);
   font-size: 18px;
   font-weight: 800;
-  color: #0F172A;
+  color: #000000;
   line-height: 1.25;
 }
 
@@ -233,125 +233,116 @@
 
 @media (max-width: 1024px) {
   .topGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
   .founderCard {
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+  }
+  .founderImgBox {
+    height: 240px;
+    min-height: 240px;
   }
   .bottomGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 18px;
   }
   .leaderCard {
-    display: grid;
-    grid-template-columns: 200px 1fr;
+    display: flex;
+    flex-direction: column;
   }
   .leaderImgBox {
-    height: 100%;
-    min-height: 200px;
+    height: 220px;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 860px) {
+  .topGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .bottomGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+
+@media (max-width: 640px) {
   .section {
-    padding: 64px 0 72px;
+    padding: 56px 0 64px;
   }
   .header {
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
   }
   .topGrid {
     grid-template-columns: 1fr;
-    gap: 16px;
-    margin-bottom: 16px;
+    gap: 18px;
+    margin-bottom: 18px;
   }
   .bottomGrid {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 18px;
   }
-  .founderCard {
-    grid-template-columns: 130px 1fr;
+  .founderCard,
+  .leaderCard {
+    display: flex;
+    flex-direction: column;
     border-radius: var(--radius-xl);
-  }
-  .founderImgBox {
-    min-height: 100%;
-    height: 100%;
-  }
-  .founderDetails {
-    padding: 16px 14px;
-    gap: 8px;
-  }
-  .founderName {
-    font-size: 16px;
-  }
-  .founderRole {
-    font-size: 11.5px;
-  }
-  .founderBio {
-    font-size: 12px;
-    line-height: 1.5;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+  .founderImgBox,
+  .leaderImgBox {
+    width: 100%;
+    height: 260px;
+    min-height: 260px;
+  }
+  .founderDetails,
+  .leaderDetails {
+    padding: 20px 18px;
+    gap: 10px;
+  }
+  .founderName,
+  .leaderName {
+    font-size: 18px;
+  }
+  .founderRole,
+  .leaderRole {
+    font-size: 13px;
+  }
+  .founderBio,
+  .leaderBio {
+    font-size: 13px;
+    line-height: 1.6;
+    display: block;
+    overflow: visible;
   }
   .founderQuote {
-    display: none;
+    display: block;
+    font-size: 12.5px;
+    margin-top: 6px;
   }
   .deptBadge {
-    top: 8px;
-    left: 8px;
-    font-size: 9px;
-    padding: 2px 8px;
-  }
-
-  .leaderCard {
-    display: grid;
-    grid-template-columns: 130px 1fr;
-    border-radius: var(--radius-xl);
-  }
-  .leaderImgBox {
-    height: 100%;
-    min-height: 100%;
-  }
-  .leaderDetails {
-    padding: 16px 14px;
-    gap: 6px;
-    justify-content: center;
-  }
-  .leaderName {
-    font-size: 15px;
-  }
-  .leaderRole {
-    font-size: 11.5px;
-  }
-  .leaderBio {
-    font-size: 12px;
-    line-height: 1.5;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    top: 12px;
+    left: 12px;
+    font-size: 10px;
+    padding: 3px 10px;
+    display: inline-block;
   }
 }
 
 @media (max-width: 480px) {
-  .founderCard,
-  .leaderCard {
-    grid-template-columns: 112px 1fr;
+  .founderImgBox,
+  .leaderImgBox {
+    height: 240px;
+    min-height: 240px;
   }
   .founderDetails,
   .leaderDetails {
-    padding: 14px 12px;
-  }
-  .founderName,
-  .leaderName {
-    font-size: 14.5px;
-  }
-  .deptBadge {
-    display: none;
+    padding: 18px 16px;
   }
 }

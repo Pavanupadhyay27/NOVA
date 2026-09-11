@@ -36,7 +36,7 @@ const services: ServiceItem[] = [
       'SEO Performance Tracking',
     ],
     href: '/services/seo',
-    color: '#0284C7',
+    color: '#0B2093',
     stat: '+187%',
     statLabel: 'Organic Traffic Lift',
     icon: (
@@ -63,7 +63,7 @@ const services: ServiceItem[] = [
       'Campaign Optimization',
     ],
     href: '/services/performance-marketing',
-    color: '#6366F1',
+    color: '#0D007F',
     stat: '4.8x',
     statLabel: 'Average ROAS',
     icon: (

@@ -24,7 +24,7 @@
 }
 
 .backBtn:hover {
-  color: #0284C7;
+  color: #0B2093;
 }
 
 .categoryBadge {
@@ -33,11 +33,11 @@
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #0284C7;
-  background: rgba(2, 132, 199, 0.08);
+  color: #0B2093;
+  background: rgba(11, 32, 147, 0.08);
   padding: 4px 12px;
   border-radius: 999px;
-  border: 1px solid rgba(2, 132, 199, 0.2);
+  border: 1px solid rgba(11, 32, 147, 0.2);
 }
 
 .header {
@@ -47,7 +47,7 @@
 .title {
   font-size: clamp(28px, 3.8vw, 44px);
   font-weight: 800;
-  color: #0F172A;
+  color: #000000;
   line-height: 1.18;
   margin-bottom: 16px;
 }
@@ -79,7 +79,7 @@
   font-family: var(--font-display);
   font-size: 14.5px;
   font-weight: 700;
-  color: #0F172A;
+  color: #000000;
 }
 
 .authorRole {
@@ -119,12 +119,12 @@
 
 /* Key Takeaways Box */
 .takeawaysBox {
-  background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
-  border: 1px solid #BAE6FD;
+  background: linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%);
+  border: 1px solid #C7D2FE;
   border-radius: var(--radius-xl);
   padding: 28px;
   margin-bottom: 40px;
-  box-shadow: inset 0 1px 0 #FFFFFF, 0 8px 24px rgba(2, 132, 199, 0.06);
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 8px 24px rgba(11, 32, 147, 0.06);
 }
 
 .takeawaysHeader {
@@ -135,7 +135,7 @@
 }
 
 .takeawaysIcon {
-  color: #0284C7;
+  color: #0B2093;
   font-size: 16px;
 }
 
@@ -143,7 +143,7 @@
   font-family: var(--font-display);
   font-size: 16px;
   font-weight: 800;
-  color: #0369A1;
+  color: #0D007F;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -159,7 +159,7 @@
   align-items: flex-start;
   gap: 12px;
   font-size: 14.5px;
-  color: #0C4A6E;
+  color: #0B2093;
   line-height: 1.6;
   font-weight: 500;
 }
@@ -168,7 +168,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #0284C7;
+  background: #0B2093;
   margin-top: 8px;
   flex-shrink: 0;
 }
@@ -208,7 +208,7 @@
   font-family: var(--font-display);
   font-size: 16px;
   font-weight: 800;
-  color: #0F172A;
+  color: #000000;
   margin-bottom: 6px;
 }
 

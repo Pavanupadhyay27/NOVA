@@ -13,7 +13,7 @@
   left: -120px;
   width: 540px;
   height: 540px;
-  background: radial-gradient(circle, rgba(2, 132, 199, 0.07) 0%, rgba(99, 102, 241, 0.02) 50%, transparent 75%);
+  background: radial-gradient(circle, rgba(11, 32, 147, 0.07) 0%, rgba(13, 0, 127, 0.02) 50%, transparent 75%);
   filter: blur(85px);
   pointer-events: none;
 }
@@ -24,7 +24,7 @@
   right: -100px;
   width: 540px;
   height: 540px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.07) 0%, rgba(16, 185, 129, 0.02) 50%, transparent 75%);
+  background: radial-gradient(circle, rgba(13, 0, 127, 0.07) 0%, rgba(16, 185, 129, 0.02) 50%, transparent 75%);
   filter: blur(85px);
   pointer-events: none;
 }
@@ -64,7 +64,7 @@
   font-size: 11.5px;
   font-weight: 800;
   letter-spacing: 0.06em;
-  color: #0284C7;
+  color: #0B2093;
   text-transform: uppercase;
   height: 20px;
 }
@@ -73,16 +73,16 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #0284C7;
-  box-shadow: 0 0 6px #0284C7;
+  background: #0B2093;
+  box-shadow: 0 0 6px #0B2093;
 }
 
 .eyebrowDotIndigo {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #6366F1;
-  box-shadow: 0 0 6px #6366F1;
+  background: #0D007F;
+  box-shadow: 0 0 6px #0D007F;
 }
 
 .headline {
@@ -91,13 +91,13 @@
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.025em;
-  color: #0F172A;
+  color: #000000;
   margin: 0;
 }
 
 .headlineHighlight {
   display: inline-block;
-  background: linear-gradient(135deg, #0284C7 0%, #4F46E5 60%, #6366F1 100%) !important;
+  background: linear-gradient(135deg, #0D007F 0%, #0B2093 50%, #1A3DB5 100%) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
@@ -111,7 +111,7 @@
 }
 
 .leadText strong {
-  color: #0F172A;
+  color: #000000;
   font-weight: 700;
 }
 
@@ -137,9 +137,9 @@
 }
 
 .pillarCard:hover {
-  border-color: rgba(2, 132, 199, 0.45);
+  border-color: rgba(11, 32, 147, 0.45);
   transform: translateY(-2.5px);
-  box-shadow: inset 0 1px 0 #FFFFFF, 0 12px 28px rgba(2, 132, 199, 0.09);
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 12px 28px rgba(11, 32, 147, 0.09);
 }
 
 .pillarIconBox {
@@ -165,7 +165,7 @@
   font-family: var(--font-display);
   font-size: 17px;
   font-weight: 800;
-  color: #0F172A;
+  color: #000000;
 }
 
 .pillarDesc {
@@ -190,7 +190,7 @@
   position: absolute;
   inset: -6px;
   border-radius: calc(var(--radius-2xl) + 6px);
-  background: linear-gradient(135deg, rgba(2, 132, 199, 0.18) 0%, rgba(99, 102, 241, 0.12) 100%);
+  background: linear-gradient(135deg, rgba(11, 32, 147, 0.18) 0%, rgba(13, 0, 127, 0.12) 100%);
   filter: blur(16px);
   opacity: 0.65;
   z-index: -1;
@@ -253,9 +253,9 @@
   width: 26px;
   height: 26px;
   border-radius: 7px;
-  background: linear-gradient(135deg, rgba(2, 132, 199, 0.12) 0%, rgba(99, 102, 241, 0.15) 100%);
-  border: 1px solid rgba(2, 132, 199, 0.2);
-  color: #0284C7;
+  background: linear-gradient(135deg, rgba(11, 32, 147, 0.12) 0%, rgba(13, 0, 127, 0.15) 100%);
+  border: 1px solid rgba(11, 32, 147, 0.2);
+  color: #0B2093;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -278,7 +278,7 @@
   font-size: 9px;
   font-weight: 800;
   letter-spacing: 0.05em;
-  color: #6366F1;
+  color: #0B2093;
   text-transform: uppercase;
 }
 
@@ -286,7 +286,7 @@
   font-family: var(--font-display);
   font-size: 11.5px;
   font-weight: 750;
-  color: #0F172A;
+  color: #000000;
   line-height: 1.25;
 }
 

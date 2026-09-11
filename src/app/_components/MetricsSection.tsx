@@ -12,7 +12,7 @@ const metrics = [
     tag: 'Audited Scale',
     benchmark: '↑ 142% YoY Portfolio Scale',
     progress: '94%',
-    color: '#0284C7',
+    color: '#0B2093',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <line x1="12" y1="1" x2="12" y2="23"></line>
@@ -28,7 +28,7 @@ const metrics = [
     tag: 'Peak Efficiency',
     benchmark: 'Industry Benchmark: 2.4X',
     progress: '88%',
-    color: '#6366F1',
+    color: '#0D007F',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>

@@ -25,7 +25,7 @@ const projects: Record<string, {
       { val: '+83%', label: 'Lead Volume' },
       { val: '-32%', label: 'Cost per Acquisition' },
     ],
-    color: '#00D4FF',
+    color: '#0B2093',
     image: '/images/work_ecommerce.jpg',
   },
   'real-estate': {
@@ -41,7 +41,7 @@ const projects: Record<string, {
       { val: '#1', label: 'Google Ranking' },
       { val: '-60%', label: 'Cost per Lead' },
     ],
-    color: '#7C3AED',
+    color: '#0D007F',
     image: '/images/work_realestate.jpg',
   },
   'd2c-fashion': {

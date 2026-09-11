@@ -16,7 +16,7 @@ const steps = [
     desc: 'We start with an intensive research phase — your business, market landscape, competitors, and target audience. We find the real opportunity, not just the obvious one.',
     deliverables: ['Business & goal audit', 'Competitive analysis', 'Audience research', 'Opportunity mapping'],
     duration: '1–2 weeks',
-    color: '#00D4FF',
+    color: '#0B2093',
   },
   {
     num: '02',
@@ -25,7 +25,7 @@ const steps = [
     desc: 'We translate insights into a custom growth strategy — channel selection, budget allocation, content pillars, and KPIs. No copy-paste templates. Your strategy, built for your opportunity.',
     deliverables: ['Growth strategy document', 'Channel plan', 'Budget allocation', 'KPI framework'],
     duration: '1–2 weeks',
-    color: '#7C3AED',
+    color: '#0D007F',
   },
   {
     num: '03',

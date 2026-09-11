@@ -16,7 +16,7 @@ const services = [
     desc: 'Turn advertising into predictable, scalable growth. We engineer campaigns across Google, Meta, LinkedIn, and YouTube that generate measurable ROAS.',
     features: ['Google Search & Display', 'Meta Ads (Facebook/Instagram)', 'LinkedIn B2B Campaigns', 'YouTube & Video Ads', 'Retargeting & Remarketing', 'Programmatic Advertising'],
     stat: '8X Avg ROAS',
-    color: '#00D4FF',
+    color: '#0B2093',
     href: '/services/performance-marketing',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -32,7 +32,7 @@ const services = [
     desc: 'Dominate search results and build authority that compounds. Technical excellence, content strategy, and local SEO to make you impossible to ignore.',
     features: ['Technical SEO Audits', 'Local SEO & Maps', 'Content Strategy', 'Link Building', 'Keyword Intelligence', 'Conversion Optimization'],
     stat: '+187% Avg Traffic',
-    color: '#7C3AED',
+    color: '#0D007F',
     href: '/services/seo',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

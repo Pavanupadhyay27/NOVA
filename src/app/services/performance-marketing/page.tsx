@@ -14,7 +14,7 @@ export default function PerformanceMarketingPage() {
       subtitle="Full-funnel performance campaigns that convert."
       description="We engineer paid campaigns that transform your ad budget into predictable revenue. Every rupee tracked, every conversion optimized, every channel mastered."
       emoji="📊"
-      color="#00D4FF"
+      color="#0B2093"
       metrics={[
         { val: '+142%', label: 'Average Revenue Growth' },
         { val: '4.8X', label: 'Average ROAS' },
