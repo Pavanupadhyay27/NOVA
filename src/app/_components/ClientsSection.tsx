@@ -16,9 +16,11 @@ const clientLogos = [
 export default function ClientsSection() {
   return (
     <section className={styles.section}>
-      <div className={styles.label}>
-        <span className={styles.labelDot} />
-        <span>Trusted by Ambitious Brands &amp; Growing Enterprises</span>
+      <div className="container">
+        <div className={styles.label}>
+          <span className={styles.labelDot} />
+          <span>Trusted by Ambitious Brands &amp; Growing Enterprises</span>
+        </div>
       </div>
 
       {/* Slower, Smooth Infinite Marquee Carousel with High-Visibility Logos */}
