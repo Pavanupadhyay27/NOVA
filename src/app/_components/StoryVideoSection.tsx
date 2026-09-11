@@ -1,5 +1,5 @@
 'use client';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import ScrollReveal from '@/components/ScrollReveal';
 import styles from './StoryVideoSection.module.css';
 
@@ -23,6 +23,12 @@ const storyPillars = [
 
 export default function StoryVideoSection() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+  }, []);
 
   return (
     <section className={styles.section} id="company-story">
@@ -104,12 +110,11 @@ export default function StoryVideoSection() {
                     ref={videoRef}
                     className={styles.videoPlayer}
                     src="/videos/NS REEL 22 AUG.mp4"
-                    poster="/images/team_office.jpg"
                     autoPlay
                     loop
                     muted
                     playsInline
-                    preload="metadata"
+                    preload="auto"
                   />
 
                   {/* Floating Minimal Founder Badge */}
