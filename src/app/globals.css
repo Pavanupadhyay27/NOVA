@@ -306,10 +306,10 @@ ul, ol {
   box-shadow: 0 0 8px #F59E0B;
 }
 
-/* ── Accent text (Vibrant Golden Spark with 3D Depth) ── */
+/* ── Accent text (Pure Rich Golden Spark with 3D Depth) ── */
 .accent { color: #D97706; }
 .accent-gradient {
-  background: linear-gradient(135deg, #EA580C 0%, #D97706 45%, #B45309 100%) !important;
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 50%, #B45309 100%) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
@@ -324,7 +324,7 @@ ul, ol {
   letter-spacing: -0.03em;
 }
 
-/* ── Tactile Skeuomorphic Buttons ── */
+/* ── Tactile Skeuomorphic Buttons (Supernova Exact Blue) ── */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -341,25 +341,25 @@ ul, ol {
 }
 
 .btn-primary {
-  background: linear-gradient(180deg, #FFB800 0%, #F59E0B 50%, #D97706 100%);
-  color: #FFFFFF;
-  border: 1px solid #D97706;
-  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.55),
-              inset 0 -2px 0 rgba(0, 0, 0, 0.2),
-              0 6px 18px rgba(245, 158, 11, 0.35);
+  background: linear-gradient(135deg, #1A3DB5 0%, #0B2093 50%, #0D007F 100%);
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.45),
+              inset 0 -2px 0 rgba(0, 0, 0, 0.3),
+              0 8px 24px rgba(11, 32, 147, 0.4);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(180deg, #FFC700 0%, #FFB800 50%, #F59E0B 100%);
+  background: linear-gradient(135deg, #2563EB 0%, #1A3DB5 50%, #0B2093 100%);
   transform: translateY(-2px);
-  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.7),
-              inset 0 -2px 0 rgba(0, 0, 0, 0.25),
-              0 10px 24px rgba(245, 158, 11, 0.45);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.6),
+              inset 0 -2px 0 rgba(0, 0, 0, 0.35),
+              0 12px 30px rgba(11, 32, 147, 0.55);
 }
 
 .btn-primary:active {
   transform: translateY(1px);
-  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.35), 0 2px 4px rgba(245, 158, 11, 0.2);
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.35), 0 2px 4px rgba(11, 32, 147, 0.2);
 }
 
 .btn-secondary {
