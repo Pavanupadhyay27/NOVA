@@ -351,15 +351,15 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: linear-gradient(135deg, #1A3DB5 0%, #0B2093 50%, #0D007F 100%);
+  background: linear-gradient(135deg, #0C1E5B 0%, #071244 50%, #030826 100%);
   color: #FFFFFF !important;
   border-radius: 9999px;
   text-decoration: none;
   overflow: hidden;
   box-shadow: 
     inset 0 1.5px 0 rgba(255, 255, 255, 0.45),
-    inset 0 -1.5px 0 rgba(0, 0, 0, 0.3),
-    0 8px 24px rgba(11, 32, 147, 0.35);
+    inset 0 -1.5px 0 rgba(0, 0, 0, 0.4),
+    0 8px 24px rgba(4, 10, 38, 0.4);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
 }
@@ -370,7 +370,7 @@
   left: 0;
   right: 0;
   height: 50%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255) 100%);
   border-radius: 9999px 9999px 0 0;
   pointer-events: none;
 }
@@ -392,11 +392,11 @@
 }
 
 .cardBtn:hover {
-  background: linear-gradient(135deg, #2563EB 0%, #1A3DB5 50%, #0B2093 100%);
+  background: linear-gradient(135deg, #102675 0%, #0B1C5C 50%, #061038 100%);
   transform: translateY(-2px);
   box-shadow: 
     inset 0 1.5px 0 rgba(255, 255, 255, 0.6),
-    0 12px 28px rgba(11, 32, 147, 0.45);
+    0 12px 28px rgba(4, 10, 38, 0.5);
 }
 
 .btnDownloadIcon {
