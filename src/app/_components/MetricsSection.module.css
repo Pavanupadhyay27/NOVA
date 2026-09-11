@@ -339,7 +339,7 @@
   transform: translateY(-2.5px) scale(1.02);
   box-shadow: 
     0 16px 36px -6px rgba(11, 32, 147, 0.52),
-    0 0 28px rgba(11, 32, 147, 0.4);
+    0 0 28px rgba(236, 72, 153, 0.55);
 }
 
 .borderGlowAmbient {
@@ -356,7 +356,7 @@
     rgba(11, 32, 147, 0.5) 270deg,
     rgba(13, 0, 127, 0.85) 305deg,
     rgba(29, 78, 216, 0.8) 335deg,
-    rgba(236, 72, 153, 0.85) 355deg,
+    rgba(236, 72, 153, 0.9) 355deg,
     rgba(11, 32, 147, 0.5) 360deg
   );
   animation: ctaBeamSpin 3s linear infinite;
@@ -378,11 +378,11 @@
     transparent 0deg,
     transparent 200deg,
     rgba(11, 32, 147, 0) 230deg,
-    #1D4ED8 270deg,
-    #0B2093 300deg,
-    #0D007F 330deg,
-    #2563EB 350deg,
-    #1D4ED8 360deg
+    #1D4ED8 260deg,
+    #0B2093 290deg,
+    #EC4899 325deg,
+    #F43F5E 345deg,
+    #2563EB 360deg
   );
   animation: ctaBeamSpin 3s linear infinite;
   pointer-events: none;
