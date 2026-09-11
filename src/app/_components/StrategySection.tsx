@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import ScrollReveal from '@/components/ScrollReveal';
 import styles from './StrategySection.module.css';
 
@@ -58,15 +58,67 @@ const stages: StrategyStage[] = [
 export default function StrategySection() {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const [mobileStep, setMobileStep] = useState<number>(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState<boolean>(true);
+
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+  const resumeTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   const activeMobileStage = stages[mobileStep];
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     setMobileStep((prev) => (prev === 0 ? stages.length - 1 : prev - 1));
+  }, []);
+
+  const handleNext = useCallback(() => {
+    setMobileStep((prev) => (prev === stages.length - 1 ? 0 : prev + 1));
+  }, []);
+
+  const pauseTemporarily = useCallback((durationMs = 6000) => {
+    setIsAutoPlaying(false);
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    resumeTimerRef.current = setTimeout(() => {
+      setIsAutoPlaying(true);
+    }, durationMs);
+  }, []);
+
+  // Automatic progression for mobile carousel & circular nodes
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+
+    const interval = setInterval(() => {
+      setMobileStep((prev) => (prev + 1) % stages.length);
+    }, 3800);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
+
+  useEffect(() => {
+    return () => {
+      if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    };
+  }, []);
+
+  // Touch Swipe Handlers for mobile
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+    pauseTemporarily(7000);
   };
 
-  const handleNext = () => {
-    setMobileStep((prev) => (prev === stages.length - 1 ? 0 : prev + 1));
+  const onTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const distance = touchStartX.current - touchEndX.current;
+    if (distance > 45) {
+      handleNext();
+    } else if (distance < -45) {
+      handlePrev();
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
   };
 
   return (
@@ -239,10 +291,15 @@ export default function StrategySection() {
         </div>
 
         {/* ══════════════════════════════════════════════════
-            2. MOBILE VIEW: 100% UNCLIPPED 5-NODE WAVE + ACTIVE CARD
+            2. MOBILE VIEW: AUTO-SCROLLING 5-NODE WAVE + ACTIVE CARD
            ══════════════════════════════════════════════════ */}
-        <div className={styles.mobileWaveContainer}>
-          {/* Full-Width 5-Node Sinusoidal Wave Progress Bar */}
+        <div 
+          className={styles.mobileWaveContainer}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
+          {/* Full-Width 5-Node Sinusoidal Wave Progress Bar with Live Auto-Scroll Flow */}
           <div className={styles.mobileWaveTrack}>
             <svg
               className={styles.mobileSvgWave}
@@ -291,12 +348,20 @@ export default function StrategySection() {
                   <button
                     key={stage.num}
                     type="button"
-                    onClick={() => setMobileStep(idx)}
+                    onClick={() => {
+                      setMobileStep(idx);
+                      pauseTemporarily(7000);
+                    }}
                     className={`${styles.mobileNodeBtn} ${isPeak ? styles.mobPeak : styles.mobTrough} ${isSelected ? styles.mobNodeActive : ''}`}
                     aria-label={`View Phase ${stage.num}: ${stage.name}`}
                     style={{ '--node-accent': stage.color } as React.CSSProperties}
                   >
-                    <span className={styles.mobNodeTag}>P{stage.num}</span>
+                    <span 
+                      className={styles.mobNodeTag} 
+                      style={{ color: isSelected ? stage.color : undefined, fontWeight: isSelected ? 900 : 700 }}
+                    >
+                      P{stage.num}
+                    </span>
                     <div className={styles.mobNodeCircle}>
                       <div className={styles.mobNodeCore} style={{ background: stage.color }}>
                         <span className={styles.mobNodeNum}>{stage.num}</span>
@@ -311,8 +376,20 @@ export default function StrategySection() {
             </div>
           </div>
 
-          {/* Active Stage Detailed Spotlight Card */}
-          <div className={styles.mobileActiveCard} style={{ '--card-accent': activeMobileStage.color } as React.CSSProperties}>
+          {/* Active Stage Detailed Auto-Scrolling Spotlight Card */}
+          <div 
+            key={activeMobileStage.num} 
+            className={`${styles.mobileActiveCard} ${styles.cardFadeIn}`} 
+            style={{ '--card-accent': activeMobileStage.color } as React.CSSProperties}
+          >
+            {/* Auto-Scroll Progress Bar */}
+            <div className={styles.cardProgressTrack}>
+              <div 
+                className={`${styles.cardProgressBar} ${isAutoPlaying ? styles.progressActive : styles.progressPaused}`}
+                style={{ backgroundColor: activeMobileStage.color }}
+              />
+            </div>
+
             <div className={styles.mobileCardHeader}>
               <div className={styles.mobPillsWrap}>
                 <span
@@ -327,9 +404,22 @@ export default function StrategySection() {
                 </span>
                 <span className={styles.mobTimeBadge}>⏱ {activeMobileStage.timeframe}</span>
               </div>
-              <span className={styles.mobStepCounter}>
-                {mobileStep + 1} / {stages.length}
-              </span>
+              
+              <div className={styles.mobHeaderRight}>
+                <button
+                  type="button"
+                  onClick={() => setIsAutoPlaying((prev) => !prev)}
+                  className={styles.autoPlayToggle}
+                  title={isAutoPlaying ? 'Pause Auto-Scroll' : 'Resume Auto-Scroll'}
+                  aria-label={isAutoPlaying ? 'Pause Auto-Scroll' : 'Resume Auto-Scroll'}
+                >
+                  <span className={styles.autoPlayDot} style={{ background: isAutoPlaying ? activeMobileStage.color : '#94A3B8' }} />
+                  <span className={styles.autoPlayText}>{isAutoPlaying ? 'Auto' : 'Paused'}</span>
+                </button>
+                <span className={styles.mobStepCounter}>
+                  {mobileStep + 1} / {stages.length}
+                </span>
+              </div>
             </div>
 
             <h3 className={styles.mobStageTitle}>{activeMobileStage.name}</h3>
@@ -342,11 +432,14 @@ export default function StrategySection() {
               </span>
             </div>
 
-            {/* Navigation Switcher Bar */}
+            {/* Navigation Switcher Bar with Step Indicators */}
             <div className={styles.mobNavControls}>
               <button
                 type="button"
-                onClick={handlePrev}
+                onClick={() => {
+                  handlePrev();
+                  pauseTemporarily(7000);
+                }}
                 className={styles.mobNavArrowBtn}
                 aria-label="Previous step"
               >
@@ -358,7 +451,10 @@ export default function StrategySection() {
                   <button
                     key={st.num}
                     type="button"
-                    onClick={() => setMobileStep(idx)}
+                    onClick={() => {
+                      setMobileStep(idx);
+                      pauseTemporarily(7000);
+                    }}
                     className={`${styles.mobStepDot} ${mobileStep === idx ? styles.mobStepDotActive : ''}`}
                     style={{
                       background: mobileStep === idx ? st.color : 'rgba(203, 213, 225, 0.8)',
@@ -370,7 +466,10 @@ export default function StrategySection() {
 
               <button
                 type="button"
-                onClick={handleNext}
+                onClick={() => {
+                  handleNext();
+                  pauseTemporarily(7000);
+                }}
                 className={styles.mobNavArrowBtn}
                 aria-label="Next step"
               >

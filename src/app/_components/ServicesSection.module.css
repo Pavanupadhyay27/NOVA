@@ -131,6 +131,19 @@
     0 2px 8px rgba(15, 23, 42, 0.04);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   flex-shrink: 0;
+  overflow: hidden;
+}
+
+.practiceIcon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.streamRow:hover .practiceIcon {
+  transform: scale(1.12);
 }
 
 .streamRow:hover .iconPlate {

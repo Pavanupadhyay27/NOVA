@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import CTASection from '../_components/CTASection';
 import styles from './page.module.css';
@@ -18,13 +19,7 @@ const services = [
     stat: '8X Avg ROAS',
     color: '#0B2093',
     href: '/services/performance-marketing',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <line x1="18" y1="20" x2="18" y2="10"></line>
-        <line x1="12" y1="20" x2="12" y2="4"></line>
-        <line x1="6" y1="20" x2="6" y2="14"></line>
-      </svg>
-    ),
+    iconSrc: '/images/icons/google-ads.svg',
   },
   {
     num: '02',
@@ -34,12 +29,7 @@ const services = [
     stat: '+187% Avg Traffic',
     color: '#0D007F',
     href: '/services/seo',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-    ),
+    iconSrc: '/images/icons/seo.svg',
   },
   {
     num: '03',
@@ -49,12 +39,7 @@ const services = [
     stat: '+320% Avg Reach',
     color: '#F59E0B',
     href: '/services/social-media',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-        <line x1="12" y1="18" x2="12.01" y2="18"></line>
-      </svg>
-    ),
+    iconSrc: '/images/icons/social-media.svg',
   },
   {
     num: '04',
@@ -64,13 +49,7 @@ const services = [
     stat: '100+ Brands Built',
     color: '#EC4899',
     href: '/services/creative-branding',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
-        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
-        <path d="M2 2l7.586 7.586"></path>
-      </svg>
-    ),
+    iconSrc: '/images/icons/branding.svg',
   },
   {
     num: '05',
@@ -80,30 +59,17 @@ const services = [
     stat: '+256% Avg Conversion',
     color: '#34D399',
     href: '/services/web-development',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-        <line x1="8" y1="21" x2="16" y2="21"></line>
-        <line x1="12" y1="17" x2="12" y2="21"></line>
-      </svg>
-    ),
+    iconSrc: '/images/icons/web-development.svg',
   },
   {
     num: '06',
-    title: 'AI & Automation',
-    desc: 'Scale smarter with intelligent workflows. AI-powered content, lead automation, customer support, and marketing intelligence systems.',
-    features: ['AI Content Generation', 'Lead Qualification AI', 'CRM Automation', 'Chatbot Systems', 'Workflow Automation', 'Predictive Analytics'],
-    stat: '-60% Operational Cost',
-    color: '#60A5FA',
+    title: 'Digital Marketing & Strategy',
+    desc: 'Scale smarter with integrated full-funnel digital marketing, omnichannel tracking, automated bidding systems, and compounding growth funnels.',
+    features: ['Digital Marketing Strategy', 'Lead Qualification Automation', 'CRM Integration', 'Omnichannel Attribution', 'Conversion Funnels', 'Growth Auditing'],
+    stat: '-60% Cost Per Lead',
+    color: '#10B981',
     href: '/services/ai-automation',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"></path>
-        <rect x="4" y="8" width="16" height="12" rx="2"></rect>
-        <path d="M9 13v2"></path>
-        <path d="M15 13v2"></path>
-      </svg>
-    ),
+    iconSrc: '/images/icons/digital-marketing.svg',
   },
 ];
 
@@ -126,7 +92,7 @@ export default function ServicesPage() {
                   <span className="accent-gradient">by accident.</span>
                 </h1>
                 <p className={`body-lg ${styles.heroSub}`}>
-                  We combine six disciplines into one coherent growth system — so every effort compounds and every rupee spent works harder.
+                  We combine integrated disciplines into one coherent growth system — so every effort compounds and every rupee spent works harder.
                 </p>
               </ScrollReveal>
             </div>
@@ -141,8 +107,14 @@ export default function ServicesPage() {
                 <ScrollReveal key={s.num} delay={i * 80}>
                   <Link href={s.href} className={`${styles.card} card`} style={{ '--c': s.color } as React.CSSProperties}>
                     <div className={styles.cardTop}>
-                      <div className={styles.cardIcon} style={{ background: `${s.color}18`, color: s.color }}>
-                        {s.icon}
+                      <div className={styles.cardIcon} style={{ background: `${s.color}18`, borderColor: `${s.color}35` }}>
+                        <Image
+                          src={s.iconSrc}
+                          alt={`${s.title} icon`}
+                          width={28}
+                          height={28}
+                          style={{ objectFit: 'contain' }}
+                        />
                       </div>
                       <span className={styles.cardNum}>{s.num}</span>
                     </div>

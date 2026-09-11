@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import styles from './ServicesSection.module.css';
 
@@ -15,7 +16,7 @@ interface ServiceItem {
   color: string;
   stat: string;
   statLabel: string;
-  icon: React.ReactNode;
+  iconSrc: string;
 }
 
 const services: ServiceItem[] = [
@@ -39,12 +40,7 @@ const services: ServiceItem[] = [
     color: '#0B2093',
     stat: '+187%',
     statLabel: 'Organic Traffic Lift',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-    ),
+    iconSrc: '/images/icons/seo.svg',
   },
   {
     num: '02',
@@ -66,13 +62,7 @@ const services: ServiceItem[] = [
     color: '#0D007F',
     stat: '4.8x',
     statLabel: 'Average ROAS',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <line x1="18" y1="20" x2="18" y2="10"></line>
-        <line x1="12" y1="20" x2="12" y2="4"></line>
-        <line x1="6" y1="20" x2="6" y2="14"></line>
-      </svg>
-    ),
+    iconSrc: '/images/icons/google-ads.svg',
   },
   {
     num: '03',
@@ -94,12 +84,7 @@ const services: ServiceItem[] = [
     color: '#EC4899',
     stat: '+142%',
     statLabel: 'Revenue Lift',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-        <line x1="12" y1="18" x2="12.01" y2="18"></line>
-      </svg>
-    ),
+    iconSrc: '/images/icons/meta-ads.svg',
   },
   {
     num: '04',
@@ -120,39 +105,27 @@ const services: ServiceItem[] = [
     color: '#F59E0B',
     stat: '10M+',
     statLabel: 'Monthly Impressions',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
-        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
-        <path d="M2 2l7.586 7.586"></path>
-      </svg>
-    ),
+    iconSrc: '/images/icons/social-media.svg',
   },
   {
     num: '05',
-    category: 'Local Search & Map Dominance',
-    title: 'Local SEO & Google Business Profile',
-    tagline: 'Reach Nearby Customers Looking for Local Services',
-    desc: 'Reach customers searching for businesses near them. Our local marketing services help make your business easier to find on Google Search and Google Maps. For businesses that want to attract customers in Bhubaneswar and the areas around it, being easy to find can help bring in more phone calls, questions, visits and leads.',
+    category: 'Integrated Growth & Funnels',
+    title: 'Digital Marketing & Content Strategy',
+    tagline: 'Compounding Lead Generation & Local Dominance',
+    desc: 'Reach customers searching for businesses near them and build a compounding digital footprint. Our integrated digital marketing and content strategy solutions help businesses generate qualified leads, strengthen visibility, and achieve measurable growth.',
     tags: [
-      'Local SEO',
-      'Google Business Profile Optimization',
-      'Local Keyword Targeting',
-      'Citation Building',
-      'Review Strategy',
-      'Location-Based Content',
-      'Maps Optimization',
+      'Digital Marketing Strategy',
+      'Content Strategy',
+      'Local SEO & Maps',
+      'Brand Positioning',
+      'Lead Funnels',
+      'Conversion Rate Optimization',
     ],
     href: '/services/seo',
     color: '#10B981',
     stat: '#1 Rank',
     statLabel: 'Local Map Pack',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-        <circle cx="12" cy="10" r="3"></circle>
-      </svg>
-    ),
+    iconSrc: '/images/icons/digital-marketing.svg',
   },
   {
     num: '06',
@@ -172,13 +145,46 @@ const services: ServiceItem[] = [
     color: '#06B6D4',
     stat: '99/100',
     statLabel: 'Lighthouse Score',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-        <line x1="8" y1="21" x2="16" y2="21"></line>
-        <line x1="12" y1="17" x2="12" y2="21"></line>
-      </svg>
-    ),
+    iconSrc: '/images/icons/web-development.svg',
+  },
+  {
+    num: '07',
+    category: 'Brand Identity & Visual Design',
+    title: 'Creative Branding & Logo Design',
+    tagline: 'Distinctive Visual Identity & Market Positioning',
+    desc: 'Transform your business into a recognizable, trusted brand with custom logo design, comprehensive visual identity systems, typography, color palettes, and brand guidelines that captivate your target audience.',
+    tags: [
+      'Logo Design',
+      'Brand Identity',
+      'Typography & Palettes',
+      'Brand Guidelines',
+      'Visual Assets',
+      'Packaging & Print',
+    ],
+    href: '/services/creative-branding',
+    color: '#8B5CF6',
+    stat: '100+',
+    statLabel: 'Brands Designed',
+    iconSrc: '/images/icons/branding.svg',
+  },
+  {
+    num: '08',
+    category: 'Creator & Influence Growth',
+    title: 'Influencer Marketing & Creator Campaigns',
+    tagline: 'High-Authority Endorsements & Viral Brand Reach',
+    desc: 'Leverage hyper-relevant regional and national influencers to amplify your product or service. We identify, negotiate, and execute ROI-focused creator campaigns that drive immediate credibility and surge conversions.',
+    tags: [
+      'Influencer Sourcing',
+      'Creator Campaign Management',
+      'UGC Production',
+      'ROI Tracking',
+      'Regional Creator Outreach',
+    ],
+    href: '/services/social-media',
+    color: '#D97706',
+    stat: '50M+',
+    statLabel: 'Campaign Views',
+    iconSrc: '/images/icons/influencer-marketing.svg',
   },
 ];
 
@@ -244,7 +250,13 @@ export default function ServicesSection() {
                         background: isHovered ? `${service.color}15` : '#F8FAFC'
                       }}
                     >
-                      {service.icon}
+                      <Image
+                        src={service.iconSrc}
+                        alt={`${service.title} icon`}
+                        width={30}
+                        height={30}
+                        className={styles.practiceIcon}
+                      />
                     </div>
                   </div>
 
@@ -312,7 +324,7 @@ export default function ServicesSection() {
             className={styles.toggleBtn}
             aria-expanded={showAll}
           >
-            <span>{showAll ? 'Show Fewer Practices' : 'View All 6 Practices'}</span>
+            <span>{showAll ? 'Show Fewer Practices' : `View All ${services.length} Practices`}</span>
             <span className={styles.toggleCount}>{showAll ? '↑' : '↓'}</span>
           </button>
         </div>
