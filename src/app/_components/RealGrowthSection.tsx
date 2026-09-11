@@ -121,7 +121,7 @@ export default function RealGrowthSection() {
           {caseStudies.map((study, idx) => (
             <ScrollReveal key={study.id} delay={idx * 80} className={styles.cardWrapper}>
               <div className={styles.card} style={{ '--accent-color': study.color } as React.CSSProperties}>
-                {/* Visual Header with Image & Floating Frosted Badges */}
+                {/* Visual Header with Image (Full 1200x500 Aspect Ratio) */}
                 <div className={styles.cardVisual}>
                   <Image
                     src={study.image}
@@ -129,20 +129,21 @@ export default function RealGrowthSection() {
                     fill
                     className={styles.cardImg}
                     sizes="(max-width: 900px) 100vw, 600px"
+                    priority={idx < 2}
                   />
-                  <div className={styles.imgOverlay} />
-                  
-                  <div className={styles.badgeWrap}>
+                </div>
+
+                {/* Content Details */}
+                <div className={styles.cardContent}>
+                  {/* Category & Stat Badges clearly positioned below image */}
+                  <div className={styles.metaRow}>
                     <span className={styles.catBadge}>{study.category}</span>
                     <span className={styles.statPill}>
                       <span className={styles.statDot} style={{ background: study.color }} />
                       <span style={{ color: study.color, fontWeight: 800 }}>{study.statBadge}</span>
                     </span>
                   </div>
-                </div>
 
-                {/* Content Details */}
-                <div className={styles.cardContent}>
                   <div className={styles.cardContentHeader}>
                     <h3 className={styles.clientTitle}>{study.client}</h3>
                     <p className={styles.overviewText}>{study.overview}</p>
