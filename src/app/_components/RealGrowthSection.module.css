@@ -1,6 +1,6 @@
 .section {
   position: relative;
-  padding: 72px 0 92px;
+  padding: 50px 0 58px;
   background: #FFFFFF;
   overflow: hidden;
 }
@@ -29,7 +29,7 @@
 
 /* Header Section */
 .header {
-  margin-bottom: 48px;
+  margin-bottom: 28px;
   text-align: center;
 }
 
@@ -427,7 +427,7 @@
 /* Tablet Viewport (768px – 1024px) */
 @media (max-width: 1024px) {
   .section {
-    padding: 56px 0 72px;
+    padding: 42px 0 50px;
   }
   .grid {
     grid-template-columns: repeat(2, 1fr);
@@ -449,10 +449,10 @@
 /* Mobile Viewport (< 768px): Stacked Vertical Cards & 48px Touch Targets */
 @media (max-width: 767px) {
   .section {
-    padding: 44px 0 56px;
+    padding: 34px 0 40px;
   }
   .header {
-    margin-bottom: 28px;
+    margin-bottom: 20px;
   }
   .headline {
     font-size: clamp(26px, 7vw, 36px) !important;

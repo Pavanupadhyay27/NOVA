@@ -1,13 +1,13 @@
 .section {
   background: #FFFFFF;
-  padding: 90px 0;
+  padding: 54px 0 60px;
 }
 
 .header {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 48px;
+  margin-bottom: 28px;
   gap: 24px;
 }
 
@@ -265,6 +265,9 @@
 }
 
 @media (max-width: 640px) {
+  .section {
+    padding: 36px 0 42px;
+  }
   .smallGrid {
     grid-template-columns: 1fr;
   }

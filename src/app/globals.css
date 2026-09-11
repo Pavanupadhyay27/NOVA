@@ -264,7 +264,7 @@ ul, ol {
 }
 
 .section {
-  padding: var(--space-7) 0;
+  padding: 56px 0 64px;
 }
 
 @media (max-width: 640px) {
@@ -273,7 +273,7 @@ ul, ol {
     padding: 0 16px;
   }
   .section {
-    padding: var(--space-5) 0;
+    padding: 36px 0 42px;
   }
 }
 

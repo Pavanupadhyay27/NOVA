@@ -1,10 +1,10 @@
 .section {
   background: #F8FAFC;
-  padding: 90px 0;
+  padding: 54px 0 60px;
 }
 
 .list {
-  margin-top: 48px;
+  margin-top: 28px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -98,3 +98,21 @@
   line-height: 1.65;
   white-space: pre-line;
 }
+
+@media (max-width: 640px) {
+  .section {
+    padding: 36px 0 42px;
+  }
+  .list {
+    margin-top: 20px;
+    gap: 10px;
+  }
+  .item {
+    padding: 0 18px;
+  }
+  .question {
+    font-size: 14.5px;
+    padding: 16px 0;
+  }
+}
+

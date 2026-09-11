@@ -1,5 +1,5 @@
 .section {
-  padding: 80px 0 100px;
+  padding: 48px 0 64px;
   background: #FFFFFF;
 }
 
@@ -7,7 +7,7 @@
   background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 50%, #F1F5F9 100%);
   border: 1px solid rgba(226, 232, 240, 0.95);
   border-radius: var(--radius-2xl);
-  padding: 72px 48px;
+  padding: 52px 36px;
   box-shadow: inset 0 2px 0 #FFFFFF,
               inset 0 -1px 0 rgba(15, 23, 42, 0.04),
               0 24px 60px -10px rgba(15, 23, 42, 0.08),
@@ -33,7 +33,7 @@
 .sub {
   color: #475569;
   max-width: 480px;
-  margin: 0 auto 32px;
+  margin: 0 auto 24px;
 }
 
 .actions {
@@ -42,7 +42,7 @@
   align-items: center;
   gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 /* ══════════════════════════════════════════════════
@@ -293,8 +293,11 @@
 }
 
 @media (max-width: 640px) {
+  .section {
+    padding: 36px 0 44px;
+  }
   .innerBox {
-    padding: 40px 20px;
+    padding: 32px 18px;
   }
   .proof {
     gap: 16px;

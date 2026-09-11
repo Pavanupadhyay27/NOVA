@@ -1,6 +1,6 @@
 .section {
   position: relative;
-  padding: 84px 0 96px;
+  padding: 52px 0 60px;
   background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 50%, #FFFFFF 100%);
   overflow: hidden;
 }
@@ -34,7 +34,7 @@
    SKEUOMORPHIC SECTION HEADER (CENTERED)
 ══════════════════════════════════════════════════ */
 .header {
-  margin-bottom: 48px;
+  margin-bottom: 32px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -787,11 +787,11 @@
 
 @media (max-width: 768px) {
   .section {
-    padding: 56px 0 60px;
+    padding: 38px 0 44px;
   }
 
   .header {
-    margin-bottom: 28px;
+    margin-bottom: 22px;
   }
 
   .eyebrowBadge {
@@ -915,7 +915,7 @@
 
 @media (max-width: 480px) {
   .section {
-    padding: 44px 0 48px;
+    padding: 32px 0 38px;
   }
 
   .skeuoCard {

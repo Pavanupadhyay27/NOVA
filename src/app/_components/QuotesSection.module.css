@@ -1,6 +1,6 @@
 .section {
   position: relative;
-  padding: 100px 0;
+  padding: 54px 0 60px;
   background: #F8FAFC;
   overflow: hidden;
 }
@@ -18,7 +18,7 @@
 }
 
 .carouselContainer {
-  margin-top: 50px;
+  margin-top: 28px;
   max-width: 920px;
   margin-left: auto;
   margin-right: auto;
@@ -290,10 +290,10 @@
 
 @media (max-width: 768px) {
   .section {
-    padding: 64px 0 72px;
+    padding: 36px 0 42px;
   }
   .carouselContainer {
-    margin-top: 32px;
+    margin-top: 20px;
   }
   .quoteCard {
     padding: 24px 18px 20px;
