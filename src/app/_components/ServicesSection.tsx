@@ -296,8 +296,8 @@ export default function ServicesSection() {
           })}
         </div>
 
-        {/* Bottom Actions: View More / View Less & Link to All Services */}
-        <div className={styles.bottomActions}>
+        {/* View More / View Less Toggle Button */}
+        <div className={styles.toggleWrapper}>
           <button
             type="button"
             onClick={() => {
@@ -315,11 +315,92 @@ export default function ServicesSection() {
             <span>{showAll ? 'Show Fewer Practices' : 'View All 6 Practices'}</span>
             <span className={styles.toggleCount}>{showAll ? '↑' : '↓'}</span>
           </button>
+        </div>
 
-          <Link href="/services" className={styles.allServicesLink}>
-            <span>View Full Service Catalog</span>
-            <span className={styles.allServicesArrow}>→</span>
-          </Link>
+        {/* Centered High-Impact Skeuomorphic CTA Card */}
+        <div className={styles.ctaCardWrapper}>
+          <ScrollReveal>
+            <div className={styles.ctaCard}>
+              <div className={styles.ctaCardGlow} />
+              <div className={styles.ctaCardMesh} />
+
+              {/* Centered Top Badge */}
+              <div className={styles.ctaBadgeWrap}>
+                <div className={styles.ctaBadge}>
+                  <span className={styles.badgeDot} />
+                  <span>Tailored Growth Solutions · Bhubaneswar &amp; Beyond</span>
+                </div>
+              </div>
+
+              {/* Centered Typography */}
+              <h3 className={styles.ctaHeadline}>
+                Looking for a <span className="accent-gradient">Custom Marketing Strategy</span> for Your Business?
+              </h3>
+
+              <p className={styles.ctaSubtext}>
+                Every industry has unique customer acquisition dynamics and conversion bottlenecks. Our senior growth strategists architect personalized multi-channel systems across Search, Paid Media, and High-Converting Websites to deliver predictable, compounding revenue.
+              </p>
+
+              {/* Centered Feature Capability Pills */}
+              <div className={styles.ctaPillsRow}>
+                <div className={styles.ctaPill}>
+                  <span className={styles.pillIcon}>📊</span>
+                  <span>Full-Funnel Opportunity Audit</span>
+                </div>
+                <div className={styles.ctaPill}>
+                  <span className={styles.pillIcon}>🎯</span>
+                  <span>High-Intent Lead Pipelines</span>
+                </div>
+                <div className={styles.ctaPill}>
+                  <span className={styles.pillIcon}>📈</span>
+                  <span>Compounding ROAS Scaling</span>
+                </div>
+                <div className={styles.ctaPill}>
+                  <span className={styles.pillIcon}>🛡️</span>
+                  <span>Dedicated Senior Execution Team</span>
+                </div>
+              </div>
+
+              {/* Centered Skeuomorphic Button & Trust Verification (At the Bottom of Card) */}
+              <div className={styles.ctaBottomCenter}>
+                <div className={styles.borderBeamWrapper}>
+                  <div className={styles.borderGlowAmbient} />
+                  <div className={styles.borderBeamSpin} />
+
+                  <Link href="/contact" className={styles.btnCtaMain}>
+                    <span className={styles.btnShimmer} />
+                    <span className={styles.btnGlassGloss} />
+                    <span className={styles.btnLabel}>Book Free Strategy Consultation</span>
+                    <span className={styles.btnArrow}>→</span>
+                  </Link>
+                </div>
+
+                <div className={styles.ctaTrustStrip}>
+                  <div className={styles.trustItem}>
+                    <span className={styles.trustCheck}>✓</span>
+                    <span>100% Free 30-Min Call</span>
+                  </div>
+                  <span className={styles.trustSep}>•</span>
+                  <div className={styles.trustItem}>
+                    <span className={styles.trustCheck}>✓</span>
+                    <span>Custom Growth Blueprint</span>
+                  </div>
+                  <span className={styles.trustSep}>•</span>
+                  <div className={styles.trustItem}>
+                    <span className={styles.trustCheck}>✓</span>
+                    <span>Zero Obligation</span>
+                  </div>
+                </div>
+
+                <div className={styles.catalogLinkRow}>
+                  <Link href="/services" className={styles.catalogLink}>
+                    <span>Or Explore Complete Service Directory</span>
+                    <span className={styles.catalogArrow}>→</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>
