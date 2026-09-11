@@ -98,38 +98,21 @@ export default function RealGrowthSection() {
       <div className={styles.bgLight2} />
 
       <div className="container">
-        {/* Section Header */}
+        {/* Section Header (Centered & High-Impact) */}
         <div className={styles.header}>
-          <ScrollReveal>
-            <div className={styles.headerTop}>
-              <div className="eyebrow">
-                <span className={styles.trophyIcon}>🏆</span>
-                <span>Proven Results &amp; Case Studies</span>
-              </div>
-              <a
-                href="/docs/medallion_house_case_study.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`btn btn-secondary ${styles.topDownloadBtn}`}
-                download
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="7 10 12 15 17 10" />
-                  <line x1="12" y1="15" x2="12" y2="3" />
-                </svg>
-                <span>Download Featured Case Study (PDF)</span>
-              </a>
+          <ScrollReveal direction="up" className="text-center">
+            <div className="eyebrow" style={{ margin: '0 auto 12px' }}>
+              <span className={styles.trophyIcon}>🏆</span>
+              <span>Proven Results &amp; Case Studies</span>
             </div>
 
-            <div className={styles.headerMain}>
-              <h2 className={`display-lg ${styles.headline}`}>
-                Real Growth. <span className="accent-gradient">Real Businesses.</span>
-              </h2>
-              <p className={`body-lg ${styles.sub}`}>
-                See how our Digital Marketing Solutions have helped businesses improve their presence generate leads and achieve measurable results.
-              </p>
-            </div>
+            <h2 className={`display-lg ${styles.headline}`}>
+              Real Growth. <span className="accent-gradient">Real Businesses.</span>
+            </h2>
+
+            <p className={`body-lg ${styles.sub}`}>
+              See how our digital marketing strategies help businesses improve visibility, generate qualified leads, and achieve measurable commercial returns.
+            </p>
           </ScrollReveal>
         </div>
 
@@ -138,7 +121,7 @@ export default function RealGrowthSection() {
           {caseStudies.map((study, idx) => (
             <ScrollReveal key={study.id} delay={idx * 80} className={styles.cardWrapper}>
               <div className={styles.card} style={{ '--accent-color': study.color } as React.CSSProperties}>
-                {/* Visual Header with Image & Badges */}
+                {/* Visual Header with Image & Floating Frosted Badges */}
                 <div className={styles.cardVisual}>
                   <Image
                     src={study.image}
@@ -151,8 +134,9 @@ export default function RealGrowthSection() {
                   
                   <div className={styles.badgeWrap}>
                     <span className={styles.catBadge}>{study.category}</span>
-                    <span className={styles.statPill} style={{ borderColor: study.color, color: study.color }}>
-                      {study.statBadge}
+                    <span className={styles.statPill}>
+                      <span className={styles.statDot} style={{ background: study.color }} />
+                      <span style={{ color: study.color, fontWeight: 800 }}>{study.statBadge}</span>
                     </span>
                   </div>
                 </div>
@@ -164,25 +148,29 @@ export default function RealGrowthSection() {
                     <p className={styles.overviewText}>{study.overview}</p>
                   </div>
 
-                  {/* Challenge Block */}
-                  <div className={styles.specBox}>
-                    <div className={styles.specHeader}>
-                      <span className={styles.challengeTag}>⚡ Challenge</span>
+                  {/* Challenge & Solution Cards */}
+                  <div className={styles.specsGrid}>
+                    {/* Challenge Block */}
+                    <div className={styles.specBox}>
+                      <div className={styles.specHeader}>
+                        <span className={styles.challengeTag}>⚡ Challenge</span>
+                      </div>
+                      <p className={styles.specText}>{study.challenge}</p>
                     </div>
-                    <p className={styles.specText}>{study.challenge}</p>
+
+                    {/* Solution Block */}
+                    <div className={styles.specBox}>
+                      <div className={styles.specHeader}>
+                        <span className={styles.solutionTag}>🚀 Nova Spark Solution</span>
+                      </div>
+                      <p className={styles.specText}>{study.solution}</p>
+                    </div>
                   </div>
 
-                  {/* Solution Block */}
-                  <div className={styles.specBox}>
-                    <div className={styles.specHeader}>
-                      <span className={styles.solutionTag}>🚀 Nova Spark Solution</span>
-                    </div>
-                    <p className={styles.specText}>{study.solution}</p>
-                  </div>
-
-                  {/* Results Box (Tactile Mint Highlight) */}
+                  {/* Results Box (Tactile Emerald Highlight) */}
                   <div className={styles.resultsBox}>
                     <div className={styles.resultsHeader}>
+                      <span className={styles.resultsIcon}>🛡️</span>
                       <span className={styles.resultsTitle}>Verified Commercial Results</span>
                     </div>
                     <ul className={styles.resultsList}>
@@ -195,7 +183,7 @@ export default function RealGrowthSection() {
                     </ul>
                   </div>
 
-                  {/* Bottom Action: Direct Case Study PDF Download */}
+                  {/* Bottom Action: Glossy Skeuomorphic Case Study Download Button */}
                   <div className={styles.cardActions}>
                     <a
                       href={study.pdfUrl}
@@ -204,14 +192,17 @@ export default function RealGrowthSection() {
                       className={styles.cardBtn}
                       download
                     >
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <span className={styles.btnShimmer} />
+                      <span className={styles.btnGlassGloss} />
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" className={styles.btnDownloadIcon}>
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                         <polyline points="14 2 14 8 20 8" />
                         <line x1="12" y1="18" x2="12" y2="12" />
                         <line x1="9" y1="15" x2="12" y2="18" />
                         <line x1="15" y1="15" x2="12" y2="18" />
                       </svg>
-                      <span>Download {study.client} Case Study (PDF)</span>
+                      <span className={styles.btnLabel}>Download Complete Case Study (PDF)</span>
+                      <span className={styles.btnArrow}>→</span>
                     </a>
                   </div>
                 </div>
