@@ -13,7 +13,7 @@ const heroSlides = [
   },
   {
     id: 'slide-2',
-    src: '/images/Slide 3.jpg',
+    src: '/images/slide 3.webp',
     alt: 'Nova Spark marketing performance data and digital solutions',
     caption: 'Performance & 10x ROI',
   },
