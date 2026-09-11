@@ -56,7 +56,7 @@ export default function QuickConnectMapSection() {
           {/* ══════════════════════════════════════════════════
               LEFT PANEL: Tactile Skeuomorphic Channel Hub
              ══════════════════════════════════════════════════ */}
-          <ScrollReveal delay={80} direction="left">
+          <ScrollReveal delay={80} direction="up">
             <div className={styles.skeuoCard}>
               {/* Card Top Header */}
               <div className={styles.cardHeader}>
@@ -260,7 +260,7 @@ export default function QuickConnectMapSection() {
           {/* ══════════════════════════════════════════════════
               RIGHT PANEL: Clean Full-Bleed 3D Map Showcase
              ══════════════════════════════════════════════════ */}
-          <ScrollReveal delay={160} direction="right">
+          <ScrollReveal delay={160} direction="up">
             <div className={styles.skeuoMapCard}>
               {/* Full Viewport Google Maps Embed */}
               <div className={styles.mapViewport}>

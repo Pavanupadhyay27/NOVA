@@ -114,7 +114,7 @@
 ══════════════════════════════════════════════════ */
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 32px;
   align-items: stretch;
   width: 100%;
@@ -131,6 +131,7 @@
   max-width: 100%;
   min-width: 0;
   box-sizing: border-box;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   background: linear-gradient(175deg, #FFFFFF 0%, #FAFCFE 50%, #F1F5F9 100%);
@@ -772,8 +773,10 @@
 ══════════════════════════════════════════════════ */
 @media (max-width: 1080px) {
   .grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 24px;
+    width: 100%;
+    max-width: 100%;
   }
 
   .skeuoMapCard {

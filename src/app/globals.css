@@ -424,6 +424,10 @@ ul, ol {
               transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
               filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform, filter;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .reveal-left {
@@ -450,6 +454,13 @@ ul, ol {
   opacity: 1;
   transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg);
   filter: blur(0);
+}
+
+@media (max-width: 768px) {
+  .reveal-left,
+  .reveal-right {
+    transform: translate3d(0, 24px, 0);
+  }
 }
 
 /* ── Scrollbar ── */
