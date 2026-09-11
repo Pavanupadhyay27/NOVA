@@ -68,7 +68,7 @@
   transform: translateY(-2.5px) scale(1.02);
   box-shadow: 
     0 16px 36px -6px rgba(11, 32, 147, 0.55),
-    0 0 28px rgba(236, 72, 153, 0.55);
+    0 0 28px rgba(255, 184, 0, 0.55);
 }
 
 .borderGlowAmbient {
@@ -81,16 +81,18 @@
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
-    transparent 220deg,
-    rgba(11, 32, 147, 0.5) 270deg,
-    rgba(13, 0, 127, 0.85) 305deg,
-    rgba(29, 78, 216, 0.8) 335deg,
-    rgba(236, 72, 153, 0.9) 355deg,
-    rgba(11, 32, 147, 0.5) 360deg
+    transparent 200deg,
+    rgba(11, 32, 147, 0.4) 240deg,
+    rgba(29, 78, 216, 0.8) 275deg,
+    rgba(56, 189, 248, 0.85) 300deg,
+    rgba(253, 224, 71, 0.95) 325deg,
+    rgba(255, 184, 0, 1) 345deg,
+    rgba(255, 138, 0, 0.95) 355deg,
+    rgba(217, 119, 6, 0.7) 360deg
   );
   animation: ctaBeamSpin 3s linear infinite;
   filter: blur(14px);
-  opacity: 0.9;
+  opacity: 0.95;
   pointer-events: none;
   z-index: 0;
 }
@@ -105,13 +107,15 @@
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
-    transparent 200deg,
-    rgba(11, 32, 147, 0) 230deg,
-    #1D4ED8 260deg,
-    #0B2093 290deg,
-    #EC4899 325deg,
-    #F43F5E 345deg,
-    #2563EB 360deg
+    transparent 180deg,
+    rgba(11, 32, 147, 0) 220deg,
+    #0B2093 250deg,
+    #1D4ED8 275deg,
+    #38BDF8 300deg,
+    #FDE047 325deg,
+    #FFB800 345deg,
+    #FF8A00 355deg,
+    #D97706 360deg
   );
   animation: ctaBeamSpin 3s linear infinite;
   pointer-events: none;

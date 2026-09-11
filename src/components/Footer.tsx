@@ -33,7 +33,9 @@ export default function Footer() {
   return (
     <footer className={styles.footer} id="footer">
       {/* Ambient Lighting & Atmosphere */}
+      <div className={styles.ambientTopGlow} />
       <div className={styles.ambientTopLine} />
+      <div className={styles.ambientTopBeam} />
       <div className={styles.ambientGlowGold} />
       <div className={styles.ambientGlowBlue} />
       <div className={styles.ambientMesh} />
