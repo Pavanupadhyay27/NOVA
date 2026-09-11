@@ -221,6 +221,10 @@
   gap: 16px;
   padding: 16px 0;
   border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   transition: all 0.2s ease;
 }
 
@@ -270,8 +274,10 @@
 
 /* Row Details */
 .rowDetails {
-  flex: 1;
+  flex: 1 1 0%;
   min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .rowLabelRow {
@@ -279,6 +285,7 @@
   align-items: center;
   gap: 8px;
   margin-bottom: 2px;
+  flex-wrap: wrap;
 }
 
 .rowTag {
@@ -314,6 +321,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 100%;
   transition: color 0.15s ease;
 }
 
@@ -331,13 +339,14 @@
   color: #334155;
   line-height: 1.4;
   margin-top: 1px;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 /* ══════════════════════════════════════════════════
-   PERFECTLY ALIGNED FIXED-WIDTH ACTION COLUMN
+   PERFECTLY ALIGNED ACTION COLUMN
 ══════════════════════════════════════════════════ */
 .rowActions {
-  width: 140px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -345,10 +354,11 @@
   flex-shrink: 0;
 }
 
-/* Tactile Skeuomorphic Main Button (Fixed Width for 100% Alignment) */
+/* Tactile Skeuomorphic Main Button */
 .btnTactile {
-  width: 96px;
+  min-width: 88px;
   height: 35px;
+  padding: 0 14px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -767,7 +777,135 @@
   }
 
   .skeuoMapCard {
+    min-height: 380px;
+  }
+
+  .mapViewport {
     min-height: 360px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 56px 0 60px;
+  }
+
+  .header {
+    margin-bottom: 28px;
+  }
+
+  .eyebrowBadge {
+    padding: 5px 14px;
+    margin-bottom: 14px;
+  }
+
+  .eyebrowText {
+    font-size: 11px;
+  }
+
+  .title {
+    font-size: clamp(24px, 5.5vw, 32px);
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    line-height: 1.55;
+    margin-top: 10px;
+  }
+
+  .grid {
+    gap: 20px;
+  }
+
+  .skeuoCard {
+    padding: 20px 18px;
+    border-radius: var(--radius-xl);
+  }
+
+  .cardHeader {
+    padding-bottom: 14px;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .channelBadge {
+    font-size: 13.5px;
+  }
+
+  .slaBadge {
+    font-size: 10.5px;
+    padding: 3px 9px;
+    white-space: nowrap;
+  }
+
+  .rowItem {
+    gap: 12px;
+    padding: 13px 0;
+  }
+
+  .iconBox {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+
+  .rowTag {
+    font-size: 11px;
+  }
+
+  .rowTiming {
+    font-size: 10.5px;
+  }
+
+  .replyChip {
+    font-size: 9.5px;
+    padding: 1.5px 6px;
+  }
+
+  .rowPrimaryVal {
+    font-size: 13.5px;
+  }
+
+  .rowAddress {
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  .rowActions {
+    gap: 6px;
+  }
+
+  .btnTactile {
+    min-width: 72px;
+    height: 32px;
+    padding: 0 10px;
+    font-size: 11.5px;
+  }
+
+  .btnTactileIcon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .cardFooter {
+    margin-top: 14px;
+    padding-top: 14px;
+    gap: 10px;
+  }
+
+  .footerInfo {
+    font-size: 11.5px;
+  }
+
+  .footerActionBtn {
+    font-size: 12px;
+  }
+
+  .skeuoMapCard {
+    min-height: 320px;
+    border-radius: var(--radius-xl);
   }
 
   .mapViewport {
@@ -775,81 +913,24 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 480px) {
   .section {
     padding: 44px 0 48px;
   }
 
-  .header {
-    margin-bottom: 22px;
-  }
-
-  .eyebrowBadge {
-    padding: 4px 12px;
-    margin-bottom: 12px;
-  }
-
-  .eyebrowText {
-    font-size: 10.5px;
-  }
-
-  .title {
-    font-size: 22px;
-    line-height: 1.22;
-  }
-
-  .subtitle {
-    font-size: 13px;
-    line-height: 1.5;
-    margin-top: 8px;
-  }
-
-  .grid {
-    gap: 16px;
-  }
-
   .skeuoCard {
-    padding: 16px 14px;
-    border-radius: var(--radius-xl);
-  }
-
-  .cardHeader {
-    padding-bottom: 12px;
-    margin-bottom: 4px;
-  }
-
-  .channelBadge {
-    font-size: 13px;
-  }
-
-  .slaBadge {
-    font-size: 10px;
-    padding: 3px 8px;
+    padding: 16px 12px;
   }
 
   .rowItem {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
     gap: 8px;
-    padding: 10px 0;
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
+    padding: 11px 0;
   }
 
   .iconBox {
-    width: 36px;
-    height: 36px;
-    border-radius: 9px;
-    flex-shrink: 0;
-  }
-
-  .rowDetails {
-    flex: 1;
-    min-width: 0;
-    overflow: hidden;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
   }
 
   .rowTag {
@@ -862,86 +943,46 @@
 
   .replyChip {
     font-size: 9px;
-    padding: 1px 6px;
   }
 
   .rowPrimaryVal {
     font-size: 12.5px;
-    word-break: break-all;
-    overflow-wrap: anywhere;
   }
 
   .rowAddress {
     font-size: 11.5px;
-    line-height: 1.35;
-    word-break: break-word;
-    overflow-wrap: anywhere;
   }
 
   .rowActions {
-    width: auto;
     gap: 4px;
-    flex-shrink: 0;
   }
 
   .btnTactile {
-    width: auto;
-    padding: 0 9px;
-    height: 28px;
-    font-size: 10.5px;
-    white-space: nowrap;
+    min-width: 62px;
+    height: 30px;
+    padding: 0 8px;
+    font-size: 11px;
   }
 
   .btnTactileIcon {
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
   }
 
   .cardFooter {
-    margin-top: 12px;
-    padding-top: 12px;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .footerInfo {
-    font-size: 11px;
-  }
-
-  .footerActionBtn {
-    font-size: 11.5px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
 
   .skeuoMapCard {
-    min-height: auto;
-    border-radius: var(--radius-xl);
-  }
-
-  .mapTopBar {
-    padding: 10px 14px;
-  }
-
-  .mapPinEmboss {
-    font-size: 16px;
-  }
-
-  .mapTitle {
-    font-size: 12.5px;
-  }
-
-  .mapSubtitle {
-    font-size: 10px;
-  }
-
-  .mapTopBtn {
-    height: 29px;
-    padding: 0 10px;
-    font-size: 11px;
+    min-height: 260px;
   }
 
   .mapViewport {
-    min-height: 200px;
-    height: 200px;
+    min-height: 260px;
+    height: 260px;
   }
 }
+
 

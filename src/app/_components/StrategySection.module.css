@@ -70,6 +70,38 @@
   letter-spacing: -0.03em;
 }
 
+.swipeHint {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  margin-bottom: 6px;
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 750;
+  color: #B45309;
+  background: #FFFBEB;
+  border: 1px solid #FDE68A;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 2px 6px rgba(245, 158, 11, 0.08);
+  animation: swipeBob 2.5s ease-in-out infinite;
+}
+
+@keyframes swipeBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2.5px); }
+}
+
+.swipeHand {
+  font-size: 13px;
+  display: inline-block;
+}
+
 .subtitle {
   font-size: 16.5px;
   color: #475569;
@@ -81,13 +113,30 @@
 }
 
 /* ══════════════════════════════════════════════════
-   WAVE ROADMAP CONTAINER
+   WAVE ROADMAP CONTAINER (RESPONSIVE HORIZONTAL SWIPE)
 ══════════════════════════════════════════════════ */
 .waveRoadmap {
   position: relative;
   width: 100%;
+  max-width: 100%;
   margin-top: 24px;
   z-index: 2;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 16px;
+}
+
+.waveRoadmap::-webkit-scrollbar {
+  display: none;
+}
+
+.waveInner {
+  position: relative;
+  width: 100%;
+  min-width: 1120px;
 }
 
 /* Background Wave SVG Track */
@@ -249,8 +298,9 @@
   font-size: 16.5px;
   font-weight: 800;
   color: #000000;
-  line-height: 1.25;
+  line-height: 1.22;
   margin-bottom: 4px;
+  letter-spacing: -0.015em;
 }
 
 .stepDesc {
@@ -258,21 +308,24 @@
   color: #475569;
   line-height: 1.45;
   margin-bottom: 8px;
+  max-width: 195px;
 }
 
 /* Focus Pill */
 .focusPill {
+  font-family: var(--font-display);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 800;
   background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  padding: 2px 10px;
+  padding: 2.5px 9px;
   border-radius: var(--radius-full);
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 1.5px 4px rgba(15, 23, 42, 0.04);
 }
 
 .focusDot {
@@ -283,13 +336,13 @@
 }
 
 /* ══════════════════════════════════════════════════
-   3D CIRCULAR SKEUOMORPHIC NODE
+   3D CIRCULAR SKEUOMORPHIC NODE ON WAVE
 ══════════════════════════════════════════════════ */
 .circularNode {
-  width: 54px;
-  height: 54px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFE 50%, #F1F5F9 100%);
   border: 2px solid rgba(218, 226, 237, 0.95);
   display: flex;
   align-items: center;
@@ -297,54 +350,61 @@
   box-shadow: 
     inset 0 2.5px 0 #FFFFFF,
     inset 0 -2px 3px rgba(15, 23, 42, 0.06),
-    0 8px 24px -4px rgba(15, 23, 42, 0.12),
-    0 2px 6px rgba(15, 23, 42, 0.03);
+    0 10px 24px -4px rgba(15, 23, 42, 0.12),
+    0 2px 6px rgba(15, 23, 42, 0.04);
   position: relative;
   cursor: pointer;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .nodeCore {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #FFFFFF;
   box-shadow: 
-    inset 0 2px 0 rgba(255, 255, 255, 0.55),
-    inset 0 -1.5px 0 rgba(0, 0, 0, 0.2),
-    0 3px 8px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    inset 0 2px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1.5px 0 rgba(0, 0, 0, 0.25),
+    0 4px 10px rgba(0, 0, 0, 0.16);
+  transition: transform 0.3s ease;
 }
 
 .nodeNum {
   font-family: var(--font-display);
-  font-size: 13.5px;
+  font-size: 15px;
   font-weight: 900;
-  color: #FFFFFF;
   letter-spacing: -0.02em;
 }
 
+/* Ambient Pulse Ring */
 .pulseRing {
   position: absolute;
   inset: -6px;
   border-radius: 50%;
   border: 1.5px dashed;
-  opacity: 0;
-  transform: scale(0.85);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0.4;
+  animation: pulseRingSpin 10s linear infinite;
   pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+@keyframes pulseRingSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* Hover State */
 .stageColumn:hover .circularNode,
 .colHovered .circularNode {
-  transform: scale(1.15);
+  transform: scale(1.14);
   box-shadow: 
     inset 0 2.5px 0 #FFFFFF,
-    0 14px 30px -4px rgba(15, 23, 42, 0.2),
-    0 0 0 3px var(--stage-color);
+    inset 0 -2px 3px rgba(15, 23, 42, 0.04),
+    0 16px 36px -6px rgba(15, 23, 42, 0.2),
+    0 0 0 2px var(--stage-color);
 }
 
 .stageColumn:hover .nodeCore,
@@ -358,148 +418,42 @@
   transform: scale(1.2) rotate(45deg);
 }
 
-.mobileTimeline {
-  display: none;
-}
-
 /* ══════════════════════════════════════════════════
-   RESPONSIVE BREAKPOINTS: CLEAN VERTICAL STEPPER (< 900px)
+   RESPONSIVE BREAKPOINTS (HORIZONTAL WAVE PRESERVED)
 ══════════════════════════════════════════════════ */
-@media (max-width: 900px) {
+@media (max-width: 992px) {
   .section {
-    padding: 60px 0 72px;
+    padding: 56px 0 68px;
+  }
+
+  .swipeHint {
+    display: inline-flex;
   }
 
   .headerWrap {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
 
   .title {
-    font-size: clamp(26px, 7vw, 36px);
+    font-size: clamp(26px, 6.5vw, 36px);
   }
 
   .subtitle {
     font-size: 14.5px;
+    margin-top: 10px;
   }
 
   .waveRoadmap {
-    display: none;
-  }
-
-  .mobileTimeline {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+    display: block;
     width: 100%;
-    margin-top: 24px;
-  }
-
-  .mobileStep {
-    display: flex;
-    align-items: stretch;
-    gap: 16px;
-    position: relative;
-    width: 100%;
-  }
-
-  .mobileLineCol {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 48px;
-    flex-shrink: 0;
-  }
-
-  .mobileCircularNode {
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
-    border: 2px solid rgba(218, 226, 237, 0.95);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 
-      inset 0 2px 0 #FFFFFF,
-      inset 0 -1.5px 2px rgba(15, 23, 42, 0.06),
-      0 6px 18px -3px rgba(15, 23, 42, 0.12);
-    position: relative;
-    flex-shrink: 0;
-    z-index: 2;
-  }
-
-  .mobileNodeCore {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 
-      inset 0 1.5px 0 rgba(255, 255, 255, 0.6),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.2),
-      0 2px 6px rgba(0, 0, 0, 0.12);
-  }
-
-  .mobilePulseRing {
-    position: absolute;
-    inset: -4px;
-    border-radius: 50%;
-    border: 1.5px dashed;
-    opacity: 0.6;
-    animation: mobilePulseRingSpin 8s linear infinite;
-    pointer-events: none;
-  }
-
-  @keyframes mobilePulseRingSpin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-  .mobileDashedLine {
-    width: 2px;
-    flex: 1;
-    min-height: 32px;
-    border-left: 2.5px dashed var(--stage-color, rgba(203, 213, 225, 0.9));
-    opacity: 0.65;
-    margin: 4px 0;
-  }
-
-  .mobileCard {
-    flex: 1;
-    min-width: 0;
-    background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFE 50%, #F1F6FD 100%);
-    border: 1.5px solid rgba(226, 232, 240, 0.95);
-    border-radius: var(--radius-xl);
-    padding: 18px 16px;
-    margin-bottom: 20px;
-    box-shadow: 
-      inset 0 2px 0 #FFFFFF,
-      inset 0 1px 1px rgba(255, 255, 255, 0.95),
-      0 8px 24px -6px rgba(11, 32, 147, 0.08),
-      0 2px 6px rgba(15, 23, 42, 0.03);
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    transition: all 0.25s ease;
-  }
-
-  .mobileFocusRow {
-    margin-top: 4px;
-  }
-
-  .mobileStepTitle {
-    font-family: var(--font-display);
-    font-size: 16.5px;
-    font-weight: 800;
-    color: #000000;
-    line-height: 1.25;
-  }
-
-  .mobileStepDesc {
-    font-size: 13px;
-    color: #475569;
-    line-height: 1.5;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-top: 8px;
+    padding-bottom: 24px;
+    margin-top: 16px;
+    margin-bottom: 0;
   }
 }
 
@@ -508,11 +462,16 @@
     padding: 48px 0 58px;
   }
 
-  .mobileCard {
-    padding: 16px 14px;
+  .headerWrap {
+    margin-bottom: 18px;
   }
 
-  .mobileStepTitle {
-    font-size: 15.5px;
+  .title {
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 13.5px;
   }
 }
+
