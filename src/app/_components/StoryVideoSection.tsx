@@ -35,7 +35,7 @@ export default function StoryVideoSection() {
           {/* ══════════════════════════════════════════════════
               LEFT PANE: COMPANY INTRODUCTION
              ══════════════════════════════════════════════════ */}
-          <ScrollReveal>
+          <ScrollReveal className={styles.revealCol}>
             <div className={styles.paneCard}>
               <div className={styles.paneHeader}>
                 <div className={styles.eyebrow}>
@@ -46,7 +46,7 @@ export default function StoryVideoSection() {
                 <h2 className={styles.headline}>
                   Growing Brands Through<br />
                   <span className={`accent-gradient ${styles.headlineHighlight}`}>
-                    Strategy, Creativity & Performance.
+                    Strategy, Creativity &amp; Performance.
                   </span>
                 </h2>
 
@@ -75,7 +75,7 @@ export default function StoryVideoSection() {
           {/* ══════════════════════════════════════════════════
               RIGHT PANE: OUR WORKING PROCESS & EQUAL VIDEO
              ══════════════════════════════════════════════════ */}
-          <ScrollReveal delay={100}>
+          <ScrollReveal delay={100} className={styles.revealCol}>
             <div className={styles.paneCard}>
               <div className={styles.paneHeader}>
                 <div className={styles.eyebrow}>
