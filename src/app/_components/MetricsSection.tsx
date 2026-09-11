@@ -130,7 +130,7 @@ export default function MetricsSection() {
               <div className={styles.card} style={{ '--accent-color': m.color } as React.CSSProperties}>
                 {/* Header row: Clean icon badge + tag */}
                 <div className={styles.cardTop}>
-                  <div className={styles.iconBadge} style={{ color: m.color }}>
+                  <div className={styles.iconBadge} style={{ color: m.color, background: `${m.color}0D`, borderColor: `${m.color}25` }}>
                     {m.icon}
                   </div>
                   <div className={styles.tagPill}>
@@ -162,7 +162,7 @@ export default function MetricsSection() {
 
                 {/* Benchmark Footer */}
                 <div className={styles.cardFooter}>
-                  <span className={styles.benchmarkPill} style={{ color: m.color }}>
+                  <span className={styles.benchmarkPill} style={{ color: m.color, borderColor: `${m.color}30`, background: `${m.color}08` }}>
                     {m.benchmark}
                   </span>
                 </div>
@@ -171,33 +171,27 @@ export default function MetricsSection() {
           ))}
         </div>
 
-        {/* Revenue Growth CTA Banner Card */}
+        {/* Revenue Growth CTA Banner Card (Centered, Symmetrical, High Impact) */}
         <ScrollReveal delay={320}>
           <div className={styles.ctaCard}>
             <div className={styles.ctaGlowBg} />
-            <div className={styles.ctaContent}>
-              <div className={styles.ctaHeaderRow}>
-                <span className={styles.ctaBadge}>
-                  <span className={styles.ctaBadgeDot} />
-                  <span>Custom Revenue Strategy</span>
-                </span>
-                <span className={styles.ctaSlotsBadge}>⚡ Limited Q3/Q4 Audit Slots</span>
-              </div>
+            <div className={styles.ctaMesh} />
 
-              <h3 className={styles.ctaTitle}>
-                Ready to Turn Your Marketing Spend into <span className="accent-gradient">Predictable Revenue?</span>
-              </h3>
-              
-              <p className={styles.ctaDesc}>
-                Get a comprehensive 360° revenue audit, competitive traffic analysis, and actionable scaling roadmap designed specifically for your industry.
-              </p>
-
-              <div className={styles.ctaTrustPills}>
-                <span className={styles.trustItem}>✓ Free 30-Min Consultation</span>
-                <span className={styles.trustItem}>✓ Tailored ROI Model</span>
-                <span className={styles.trustItem}>✓ Zero Obligation</span>
-              </div>
+            <div className={styles.ctaHeaderRow}>
+              <span className={styles.ctaBadge}>
+                <span className={styles.ctaBadgeDot} />
+                <span>Custom Revenue Strategy</span>
+              </span>
+              <span className={styles.ctaSlotsBadge}>⚡ Limited Q3/Q4 Audit Slots</span>
             </div>
+
+            <h3 className={styles.ctaTitle}>
+              Ready to Turn Your Marketing Spend into <span className="accent-gradient">Predictable Revenue?</span>
+            </h3>
+            
+            <p className={styles.ctaDesc}>
+              Get a comprehensive 360° revenue audit, competitive traffic analysis, and actionable scaling roadmap designed specifically for your industry.
+            </p>
 
             <div className={styles.ctaActionWrap}>
               {/* Revolving Glowing Border CTA Button */}
@@ -213,6 +207,14 @@ export default function MetricsSection() {
                 </Link>
               </div>
               <span className={styles.ctaSubtext}>⚡ Average response time: &lt; 2 hours</span>
+            </div>
+
+            <div className={styles.ctaTrustPills}>
+              <span className={styles.trustItem}>✓ Free 30-Min Consultation</span>
+              <span className={styles.trustSep}>•</span>
+              <span className={styles.trustItem}>✓ Tailored ROI Model</span>
+              <span className={styles.trustSep}>•</span>
+              <span className={styles.trustItem}>✓ Zero Obligation</span>
             </div>
           </div>
         </ScrollReveal>
