@@ -193,27 +193,31 @@ export default function ServicesSection() {
       <div className={styles.bgGlow} />
 
       <div className="container">
-        {/* Section Header */}
+        {/* Section Header (Centered, Symmetrical, High-Impact UX) */}
         <div className={styles.header}>
-          <ScrollReveal direction="up">
-            <div className="eyebrow">
+          <ScrollReveal direction="up" className="text-center">
+            <div className="eyebrow" style={{ margin: '0 auto 12px' }}>
               <span className="eyebrow-dot" />
               What We Do · Specialized Growth Practices
             </div>
-            <h2 className="display-lg" style={{ marginTop: 14 }}>
-              Digital Marketing Services<br />
+            <h2 className={`display-lg ${styles.headline}`}>
+              Digital Marketing Services{' '}
               <span className="accent-gradient">in Bhubaneswar.</span>
             </h2>
-            <p className="body-lg" style={{ maxWidth: 660, marginTop: 12 }}>
-              Your business needs more than isolated marketing efforts. It needs a strategy that connects search, paid advertising, social media, content and conversion-focused experiences.<br /><br />
-              At <strong>Nova Spark</strong>, our digital marketing services are built to help businesses boost visibility, draw in the right customers, create qualified leads, and support long-term growth.
+            <p className={`body-lg ${styles.subText}`}>
+              Your business needs more than isolated marketing efforts. We build integrated strategies across search visibility, performance advertising, social media, and conversion-focused web solutions designed to generate qualified leads and drive real business growth.
             </p>
-          </ScrollReveal>
-
-          <ScrollReveal delay={120} direction="left">
-            <Link href="/services" className="btn btn-secondary">
-              Explore All 6 Practices →
-            </Link>
+            <div className={styles.headerPills}>
+              <span className={styles.headerPill}>
+                <span className={styles.pillDot} /> Full-Funnel Strategy
+              </span>
+              <span className={styles.headerPill}>
+                <span className={styles.pillDot} /> Qualified Lead Generation
+              </span>
+              <span className={styles.headerPill}>
+                <span className={styles.pillDot} /> Measurable ROI
+              </span>
+            </div>
           </ScrollReveal>
         </div>
 
@@ -292,8 +296,8 @@ export default function ServicesSection() {
           })}
         </div>
 
-        {/* View More / View Less Tactile Skeuomorphic Button */}
-        <div className={styles.toggleWrapper}>
+        {/* Bottom Actions: View More / View Less & Link to All Services */}
+        <div className={styles.bottomActions}>
           <button
             type="button"
             onClick={() => {
@@ -308,9 +312,14 @@ export default function ServicesSection() {
             className={styles.toggleBtn}
             aria-expanded={showAll}
           >
-            <span>{showAll ? 'Show Less Practices' : 'View More Practices (2 More)'}</span>
+            <span>{showAll ? 'Show Fewer Practices' : 'View All 6 Practices'}</span>
             <span className={styles.toggleCount}>{showAll ? '↑' : '↓'}</span>
           </button>
+
+          <Link href="/services" className={styles.allServicesLink}>
+            <span>View Full Service Catalog</span>
+            <span className={styles.allServicesArrow}>→</span>
+          </Link>
         </div>
       </div>
     </section>
