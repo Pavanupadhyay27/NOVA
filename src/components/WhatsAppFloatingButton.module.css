@@ -1,0 +1,274 @@
+.floatingContainer {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.whatsappBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  pointer-events: auto;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ══════════════════════════════════════════════════
+   AMBIENT RADAR BREATHING PULSES
+══════════════════════════════════════════════════ */
+.pulseRadar {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(37, 211, 102, 0.45) 0%, rgba(18, 140, 126, 0.1) 60%, transparent 80%);
+  border: 1.5px solid rgba(37, 211, 102, 0.6);
+  animation: radarPulse 2.8s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pulseRadarSecondary {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(37, 211, 102, 0.35) 0%, transparent 70%);
+  border: 1.5px solid rgba(37, 211, 102, 0.4);
+  animation: radarPulse 2.8s cubic-bezier(0.16, 1, 0.3, 1) infinite 1.2s;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes radarPulse {
+  0% {
+    transform: scale(0.85);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* ══════════════════════════════════════════════════
+   SKEUOMORPHIC BUTTON CORE
+══════════════════════════════════════════════════ */
+.btnBody {
+  position: relative;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #25D366 0%, #20BA5A 45%, #128C7E 100%);
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 
+    inset 0 2.5px 0 rgba(255, 255, 255, 0.75),
+    inset 0 -3px 4px rgba(0, 0, 0, 0.28),
+    0 12px 28px -4px rgba(18, 140, 126, 0.5),
+    0 4px 10px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  overflow: hidden;
+  z-index: 2;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.whatsappIcon {
+  width: 32px;
+  height: 32px;
+  color: #FFFFFF;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+  position: relative;
+  z-index: 2;
+  transition: transform 0.25s ease;
+}
+
+/* Glass Gloss Highlight */
+.btnGlassGloss {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.05) 80%, transparent 100%);
+  border-radius: 50% 50% 0 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Moving Light Shimmer */
+.btnShimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
+  transform: skewX(-25deg);
+  animation: whatsappShimmer 4.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 3;
+}
+
+@keyframes whatsappShimmer {
+  0%, 70% { left: -100%; }
+  100% { left: 200%; }
+}
+
+/* ══════════════════════════════════════════════════
+   HOVER & ENERGETIC CRACKING / POP CLICK ANIMATION
+══════════════════════════════════════════════════ */
+.whatsappBtn:hover .btnBody {
+  transform: scale(1.08) translateY(-2px);
+  background: linear-gradient(135deg, #2BF073 0%, #25D366 45%, #15A090 100%);
+  box-shadow: 
+    inset 0 3px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -3px 4px rgba(0, 0, 0, 0.3),
+    0 16px 36px -4px rgba(37, 211, 102, 0.65),
+    0 0 20px rgba(37, 211, 102, 0.4);
+}
+
+.whatsappBtn:hover .whatsappIcon {
+  transform: scale(1.08) rotate(-4deg);
+}
+
+/* Click Cracking / Compression & Elastic Pop */
+.btnClicked .btnBody {
+  animation: crackPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.4) forwards;
+}
+
+@keyframes crackPop {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(0.82) rotate(-8deg);
+    box-shadow: 
+      inset 0 4px 6px rgba(0, 0, 0, 0.4),
+      0 2px 6px rgba(18, 140, 126, 0.3);
+  }
+  65% {
+    transform: scale(1.18) rotate(4deg);
+    box-shadow: 
+      inset 0 3px 0 rgba(255, 255, 255, 1),
+      0 20px 42px rgba(37, 211, 102, 0.7),
+      0 0 28px rgba(37, 211, 102, 0.6);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Click Ripple Burst Particle */
+.clickRippleBurst {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+  animation: rippleBurst 0.6s ease-out forwards;
+  pointer-events: none;
+  z-index: 4;
+}
+
+@keyframes rippleBurst {
+  0% {
+    transform: scale(0.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+/* ══════════════════════════════════════════════════
+   FLOATING TOOLTIP PILL
+══════════════════════════════════════════════════ */
+.tooltipPill {
+  position: absolute;
+  right: calc(100% + 14px);
+  top: 50%;
+  transform: translateY(-50%) translateX(10px);
+  opacity: 0;
+  pointer-events: none;
+  background: #0F172A;
+  color: #FFFFFF;
+  padding: 8px 14px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  white-space: nowrap;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.whatsappBtn:hover .tooltipPill {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+.onlineDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #25D366;
+  box-shadow: 0 0 6px #25D366;
+  flex-shrink: 0;
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+.tooltipText {
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 750;
+  letter-spacing: 0.01em;
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.75;
+  }
+}
+
+/* ══════════════════════════════════════════════════
+   MOBILE VIEWPORT
+══════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .floatingContainer {
+    bottom: 22px;
+    right: 20px;
+  }
+
+  .btnBody {
+    width: 56px;
+    height: 56px;
+  }
+
+  .whatsappIcon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .tooltipPill {
+    display: none;
+  }
+}

@@ -397,7 +397,7 @@
   .mobileStep {
     display: flex;
     align-items: stretch;
-    gap: 14px;
+    gap: 16px;
     position: relative;
     width: 100%;
   }
@@ -406,50 +406,86 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 38px;
+    width: 48px;
     flex-shrink: 0;
   }
 
-  .mobileNode {
-    width: 36px;
-    height: 36px;
+  .mobileCircularNode {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
+    border: 2px solid rgba(218, 226, 237, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+      inset 0 2px 0 #FFFFFF,
+      inset 0 -1.5px 2px rgba(15, 23, 42, 0.06),
+      0 6px 18px -3px rgba(15, 23, 42, 0.12);
+    position: relative;
+    flex-shrink: 0;
+    z-index: 2;
+  }
+
+  .mobileNodeCore {
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #FFFFFF;
-    font-family: var(--font-display);
-    font-size: 12.5px;
-    font-weight: 800;
     box-shadow: 
-      inset 0 2px 0 rgba(255, 255, 255, 0.5),
-      0 4px 12px rgba(11, 32, 147, 0.15);
-    flex-shrink: 0;
-    z-index: 2;
+      inset 0 1.5px 0 rgba(255, 255, 255, 0.6),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+      0 2px 6px rgba(0, 0, 0, 0.12);
+  }
+
+  .mobilePulseRing {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1.5px dashed;
+    opacity: 0.6;
+    animation: mobilePulseRingSpin 8s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes mobilePulseRingSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
   }
 
   .mobileDashedLine {
     width: 2px;
     flex: 1;
-    min-height: 28px;
-    border-left: 2px dashed rgba(203, 213, 225, 0.9);
+    min-height: 32px;
+    border-left: 2.5px dashed var(--stage-color, rgba(203, 213, 225, 0.9));
+    opacity: 0.65;
     margin: 4px 0;
   }
 
   .mobileCard {
     flex: 1;
     min-width: 0;
-    background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
-    border: 1px solid rgba(226, 232, 240, 0.95);
+    background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFE 50%, #F1F6FD 100%);
+    border: 1.5px solid rgba(226, 232, 240, 0.95);
     border-radius: var(--radius-xl);
-    padding: 16px 14px;
-    margin-bottom: 16px;
+    padding: 18px 16px;
+    margin-bottom: 20px;
     box-shadow: 
-      inset 0 1.5px 0 #FFFFFF,
-      0 4px 16px rgba(15, 23, 42, 0.04);
+      inset 0 2px 0 #FFFFFF,
+      inset 0 1px 1px rgba(255, 255, 255, 0.95),
+      0 8px 24px -6px rgba(11, 32, 147, 0.08),
+      0 2px 6px rgba(15, 23, 42, 0.03);
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 8px;
+    transition: all 0.25s ease;
+  }
+
+  .mobileFocusRow {
+    margin-top: 4px;
   }
 
   .mobileStepTitle {
@@ -473,7 +509,7 @@
   }
 
   .mobileCard {
-    padding: 14px 12px;
+    padding: 16px 14px;
   }
 
   .mobileStepTitle {

@@ -234,8 +234,11 @@ export default function StrategySection() {
               style={{ '--stage-color': stage.color } as React.CSSProperties}
             >
               <div className={styles.mobileLineCol}>
-                <div className={styles.mobileNode} style={{ background: stage.color }}>
-                  <span>{stage.num}</span>
+                <div className={styles.mobileCircularNode}>
+                  <div className={styles.mobileNodeCore} style={{ background: stage.color }}>
+                    <span className={styles.nodeNum}>{stage.num}</span>
+                  </div>
+                  <span className={styles.mobilePulseRing} style={{ borderColor: stage.color }} />
                 </div>
                 {idx < stages.length - 1 && <div className={styles.mobileDashedLine} />}
               </div>
@@ -254,10 +257,12 @@ export default function StrategySection() {
                 <h3 className={styles.mobileStepTitle}>{stage.name}</h3>
                 <p className={styles.mobileStepDesc}>{stage.tagline}</p>
 
-                <span className={styles.focusPill} style={{ color: stage.color }}>
-                  <span className={styles.focusDot} style={{ background: stage.color }} />
-                  {stage.focus}
-                </span>
+                <div className={styles.mobileFocusRow}>
+                  <span className={styles.focusPill} style={{ color: stage.color }}>
+                    <span className={styles.focusDot} style={{ background: stage.color }} />
+                    {stage.focus}
+                  </span>
+                </div>
               </div>
             </div>
           ))}
