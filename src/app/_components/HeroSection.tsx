@@ -53,7 +53,7 @@ export default function HeroSection() {
         <div className={styles.content}>
           <div className={styles.heroEyebrow}>
             <span className={styles.heroEyebrowDot} />
-            <span>Growth Studio · Bhubaneswar</span>
+            <span>Digital Growth Studio · Bhubaneswar</span>
           </div>
 
           <h1 className={`display-hero ${styles.headline}`}>
