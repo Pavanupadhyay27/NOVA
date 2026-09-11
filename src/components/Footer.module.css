@@ -6,13 +6,13 @@
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Ambient Visual Effects — Animated Glowing Nova Spark Logo Stream across Top Border */
+/* Ambient Visual Effects — Ultra-Thin Crisp Glowing Nova Spark Laser Stream across Top Border */
 .ambientTopLine {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 1px;
   background: rgba(255, 255, 255, 0.08);
   z-index: 2;
 }
@@ -22,57 +22,58 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 2.5px;
+  height: 1.5px;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(11, 32, 147, 0.2) 10%,
-    #0B2093 25%,
-    #1D4ED8 40%,
-    #38BDF8 52%,
-    #FDE047 62%,
-    #FFB800 72%,
-    #FF8A00 82%,
-    #D97706 90%,
+    rgba(11, 32, 147, 0) 15%,
+    #0B2093 30%,
+    #1D4ED8 45%,
+    #38BDF8 58%,
+    #FFD54F 68%,
+    #FFB800 78%,
+    #F59E0B 88%,
+    #D97706 95%,
     transparent 100%
   );
   background-size: 200% 100%;
-  animation: footerBeamStream 3.6s linear infinite;
+  animation: footerCrispFlow 3.8s linear infinite;
   z-index: 4;
 }
 
 .ambientTopGlow {
   position: absolute;
-  top: -8px;
+  top: 0;
   left: 0;
-  right: 0;
-  height: 22px;
+  width: 100%;
+  height: 3px;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(11, 32, 147, 0.4) 15%,
-    rgba(29, 78, 216, 0.7) 32%,
-    rgba(56, 189, 248, 0.85) 48%,
-    rgba(253, 224, 71, 0.95) 60%,
-    rgba(255, 184, 0, 1) 72%,
-    rgba(255, 138, 0, 0.85) 84%,
-    rgba(217, 119, 6, 0.4) 92%,
+    rgba(11, 32, 147, 0) 15%,
+    rgba(11, 32, 147, 0.6) 30%,
+    rgba(29, 78, 216, 0.8) 45%,
+    rgba(56, 189, 248, 0.85) 58%,
+    rgba(255, 213, 79, 0.95) 68%,
+    rgba(255, 184, 0, 1) 78%,
+    rgba(245, 158, 11, 0.8) 88%,
+    rgba(217, 119, 6, 0.4) 95%,
     transparent 100%
   );
   background-size: 200% 100%;
-  animation: footerBeamStream 3.6s linear infinite;
-  filter: blur(10px);
-  opacity: 0.95;
+  animation: footerCrispFlow 3.8s linear infinite;
+  filter: blur(2px);
+  opacity: 0.85;
   pointer-events: none;
   z-index: 3;
 }
 
-@keyframes footerBeamStream {
+@keyframes footerCrispFlow {
   0% {
-    background-position: 100% 0%;
+    background-position: 200% 0;
   }
   100% {
-    background-position: -100% 0%;
+    background-position: -200% 0;
   }
 }
 
