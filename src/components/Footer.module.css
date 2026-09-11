@@ -464,51 +464,64 @@
 
 @media (max-width: 640px) {
   .main {
-    padding: 34px 0 28px;
+    padding: 26px 0 20px;
   }
 
-  /* Horizontal 2-Column Grid on Mobile */
+  /* Horizontal Multi-Column Grid on Mobile */
   .grid {
     grid-template-columns: 1fr 1fr;
-    gap: 22px 14px;
+    gap: 18px 12px;
   }
 
   .colAbout {
     grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
   }
 
   .logoRow {
-    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 2px;
   }
 
   .logoPlate {
-    padding: 6px 12px;
+    padding: 5px 10px;
   }
 
   .logoImg {
-    height: 30px;
+    height: 26px;
+  }
+
+  .statusPill {
+    font-size: 10px;
+    padding: 3px 8px;
   }
 
   .aboutText {
-    font-size: 12.5px;
-    line-height: 1.55;
-    margin-top: 4px;
-    margin-bottom: 12px;
+    font-size: 11.5px;
+    line-height: 1.45;
+    margin-top: 2px;
+    margin-bottom: 4px;
     max-width: 100%;
   }
 
   .colHeading {
-    font-size: 14px;
-    margin-bottom: 12px;
-    padding-bottom: 6px;
+    font-size: 13px;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
   }
 
   .navLink {
-    font-size: 12.5px;
+    font-size: 12px;
   }
 
   .linkList {
-    gap: 8px;
+    gap: 6px;
   }
 
   /* Quick Links & Our Services side-by-side */
@@ -520,46 +533,66 @@
     grid-column: 2;
   }
 
-  /* Contact Us Full-Width with Compact Items */
+  /* Contact Us Full-Width with Horizontal Grid */
   .colContact {
     grid-column: 1 / -1;
-    margin-top: 4px;
+    margin-top: 2px;
   }
 
   .contactDetails {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-    margin-bottom: 14px;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 10px;
   }
 
   .contactItem {
-    gap: 10px;
+    gap: 7px;
+    padding: 6px 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 8px;
+  }
+
+  /* Address spans both columns */
+  .contactItem:nth-child(3) {
+    grid-column: 1 / -1;
   }
 
   .contactIconBox {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  .contactLabel {
+    font-size: 8.5px;
   }
 
   .contactText {
-    font-size: 12px;
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .socialRow {
-    gap: 8px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    justify-content: flex-start;
   }
 
   .socialBtn {
-    width: 34px;
-    height: 34px;
-    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    border-radius: 7px;
   }
 
   /* Sub-Footer Horizontal Flow */
   .subFooter {
-    padding: 16px 0;
+    padding: 12px 0;
   }
 
   .subFooterInner {
@@ -568,11 +601,13 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
   }
 
   .copyrightText {
-    font-size: 11.5px;
+    font-size: 10.5px;
+    width: 100%;
+    text-align: center;
   }
 
   .legalAndTop {
@@ -580,20 +615,20 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    gap: 12px;
-  }
-
-  .legalLinks {
     gap: 8px;
   }
 
+  .legalLinks {
+    gap: 6px;
+  }
+
   .legalAnchor {
-    font-size: 11.5px;
+    font-size: 11px;
   }
 
   .backToTopBtn {
-    padding: 5px 12px;
-    font-size: 11px;
+    padding: 4px 10px;
+    font-size: 10.5px;
   }
 }
 

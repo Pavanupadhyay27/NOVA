@@ -446,94 +446,155 @@
   }
 }
 
-/* Mobile Viewport (< 768px): Stacked Vertical Cards & 48px Touch Targets */
+/* Mobile Viewport (< 768px): Compact Vertical Cards with High-Density Proportions */
 @media (max-width: 767px) {
   .section {
-    padding: 34px 0 40px;
+    padding: 28px 0 34px;
   }
   .header {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
   .headline {
-    font-size: clamp(26px, 7vw, 36px) !important;
+    font-size: clamp(24px, 6vw, 30px) !important;
+    margin-bottom: 8px;
+  }
+  .sub {
+    font-size: 13.5px;
+    line-height: 1.5;
   }
   .grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 16px;
   }
   .card {
     border-radius: var(--radius-xl);
   }
   .cardVisual {
-    aspect-ratio: 12 / 5;
+    aspect-ratio: 16 / 7;
     height: auto;
   }
   .metaRow {
-    gap: 8px;
+    gap: 6px;
+    margin-bottom: 0px;
+    flex-wrap: nowrap;
   }
   .catBadge {
-    font-size: 10px;
-    padding: 4px 10px;
-    max-width: 100%;
+    font-size: 9.5px;
+    padding: 3px 9px;
+    max-width: 58%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
   .statPill {
-    font-size: 10.5px;
-    padding: 4px 10px;
+    font-size: 9.5px;
+    padding: 3px 9px;
+    gap: 4px;
+  }
+  .statDot {
+    width: 5px;
+    height: 5px;
   }
   .cardContent {
-    padding: 20px 16px;
-    gap: 13px;
+    padding: 14px 14px 12px;
+    gap: 10px;
+  }
+  .cardContentHeader {
+    gap: 4px;
+    min-height: auto;
   }
   .clientTitle {
-    font-size: 19px;
+    font-size: 17px;
+    line-height: 1.25;
   }
   .overviewText {
-    font-size: 13px;
-    line-height: 1.55;
-  }
-  .specBox {
-    padding: 12px 14px;
-  }
-  .specText {
-    font-size: 12.5px;
-    line-height: 1.5;
-  }
-  .resultsBox {
-    padding: 13px 14px;
-    gap: 8px;
-  }
-  .resultsTitle {
-    font-size: 10.5px;
-  }
-  .resultItem {
     font-size: 12px;
     line-height: 1.45;
   }
+  .specsGrid {
+    gap: 6px;
+  }
+  .specBox {
+    padding: 9px 11px;
+    gap: 4px;
+    border-radius: var(--radius-md);
+  }
+  .challengeTag,
+  .solutionTag {
+    font-size: 9.5px;
+    padding: 1.5px 6.5px;
+  }
+  .specText {
+    font-size: 11.5px;
+    line-height: 1.45;
+  }
+  .resultsBox {
+    padding: 10px 12px;
+    gap: 6px;
+    border-radius: var(--radius-md);
+  }
+  .resultsTitle {
+    font-size: 10px;
+  }
+  .resultsList {
+    gap: 5px;
+  }
+  .resultItem {
+    font-size: 11.5px;
+    line-height: 1.35;
+    gap: 6px;
+  }
+  .checkIcon {
+    width: 14px;
+    height: 14px;
+    font-size: 8px;
+    margin-top: 1px;
+  }
+  .cardActions {
+    padding-top: 2px;
+  }
   .cardBtn {
-    min-height: 48px;
-    padding: 12px 18px;
-    font-size: 12.5px;
+    min-height: 40px;
+    padding: 9px 14px;
+    font-size: 12px;
   }
 }
 
 @media (max-width: 480px) {
+  .section {
+    padding: 24px 0 30px;
+  }
+  .grid {
+    gap: 14px;
+  }
   .cardVisual {
-    aspect-ratio: 12 / 5;
-    height: auto;
-  }
-  .metaRow {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-  }
-  .catBadge {
-    max-width: 100%;
+    aspect-ratio: 16 / 7.2;
   }
   .cardContent {
-    padding: 16px 14px;
+    padding: 12px 12px 10px;
+    gap: 8px;
+  }
+  .clientTitle {
+    font-size: 16px;
+  }
+  .overviewText {
+    font-size: 11.5px;
+  }
+  .specBox {
+    padding: 8px 10px;
+  }
+  .specText {
+    font-size: 11px;
+  }
+  .resultsBox {
+    padding: 9px 11px;
+  }
+  .resultItem {
+    font-size: 11px;
   }
   .cardBtn {
-    font-size: 12px;
-    padding: 12px 14px;
+    min-height: 38px;
+    font-size: 11.5px;
+    padding: 8px 12px;
   }
 }
