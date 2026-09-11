@@ -103,12 +103,13 @@ export default function StoryVideoSection() {
                   <video
                     ref={videoRef}
                     className={styles.videoPlayer}
-                    src="/videos/agency-story.mp4"
+                    src="/videos/NS REEL 22 AUG.mp4"
                     poster="/images/team_office.jpg"
                     autoPlay
                     loop
                     muted
                     playsInline
+                    preload="metadata"
                   />
 
                   {/* Floating Minimal Founder Badge */}

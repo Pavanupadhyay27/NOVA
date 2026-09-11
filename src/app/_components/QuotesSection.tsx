@@ -97,14 +97,14 @@ export default function QuotesSection() {
         <ScrollReveal className="text-center">
           <div className="eyebrow">
             <span className="eyebrow-dot" />
-            Client Endorsements & Quotes
+            Client Stories &amp; Testimonials
           </div>
           <h2 className="display-lg" style={{ marginTop: 14 }}>
-            Trusted by the leaders<br />
-            <span className="accent-gradient">shaping tomorrow.</span>
+            Chosen by Brands With{' '}
+            <span className="accent-gradient">Big Ambitions</span>
           </h2>
-          <p className="body-lg" style={{ maxWidth: 540, margin: '14px auto 0' }}>
-            Real experiences from founders, managing directors, and CMOs who transformed their market reach with Nova Spark.
+          <p className="body-lg" style={{ maxWidth: 640, margin: '14px auto 0' }}>
+            Real stories from founders, directors, and marketing leaders who trusted Nova Spark to turn digital marketing into stronger visibility, better leads, and measurable results.
           </p>
         </ScrollReveal>
 

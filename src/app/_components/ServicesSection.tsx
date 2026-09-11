@@ -198,14 +198,14 @@ export default function ServicesSection() {
           <ScrollReveal direction="up" className="text-center">
             <div className="eyebrow" style={{ margin: '0 auto 12px' }}>
               <span className="eyebrow-dot" />
-              What We Do · Specialized Growth Practices
+              What We Do · Integrated Growth Practices
             </div>
             <h2 className={`display-lg ${styles.headline}`}>
-              Digital Marketing Services{' '}
-              <span className="accent-gradient">in Bhubaneswar.</span>
+              Best Digital Marketing Services{' '}
+              <span className="accent-gradient">in Bhubaneswar</span>
             </h2>
             <p className={`body-lg ${styles.subText}`}>
-              Your business needs more than isolated marketing efforts. We build integrated strategies across search visibility, performance advertising, social media, and conversion-focused web solutions designed to generate qualified leads and drive real business growth.
+              As a trusted digital marketing company in Bhubaneswar, we are able to provide you with integrated digital marketing services, including SEO, online marketing services, paid advertising, social media, and web solutions. Our digital marketing solutions help businesses generate qualified leads, strengthen visibility, and achieve measurable growth through strategic campaigns.
             </p>
             <div className={styles.headerPills}>
               <span className={styles.headerPill}>
@@ -328,17 +328,17 @@ export default function ServicesSection() {
               <div className={styles.ctaBadgeWrap}>
                 <div className={styles.ctaBadge}>
                   <span className={styles.badgeDot} />
-                  <span>Tailored Growth Solutions · Bhubaneswar &amp; Beyond</span>
+                  <span>Tailored Growth Strategy · Bhubaneswar &amp; Beyond</span>
                 </div>
               </div>
 
               {/* Centered Typography (Concise & High Impact) */}
               <h3 className={styles.ctaHeadline}>
-                Need a <span className="accent-gradient">Custom Marketing Strategy</span> for Your Business?
+                Your Business Deserves a <span className="accent-gradient">Strategy That Delivers</span>
               </h3>
 
               <p className={styles.ctaSubtext}>
-                Get an integrated growth roadmap across Search, Paid Media, and High-Converting Websites engineered to maximize your commercial return.
+                Create a tailored growth plan across Search, Paid Media, and web solutions, built to strengthen your online presence, convert more visitors, and maximize the return on your marketing investment.
               </p>
 
               {/* Centered Feature Capability Pills */}

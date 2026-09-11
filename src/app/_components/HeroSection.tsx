@@ -6,15 +6,15 @@ import styles from './HeroSection.module.css';
 
 const heroSlides = [
   {
-    id: 'agency-team',
-    src: '/images/hero_real_agency_team.jpg',
-    alt: 'Nova Spark digital marketing and strategy team collaborating in Bhubaneswar',
+    id: 'slide-1',
+    src: '/images/Slide 1.jpg',
+    alt: 'Nova Spark digital marketing company strategy and campaigns in Bhubaneswar',
     caption: 'Strategic Growth & Execution',
   },
   {
-    id: 'strategy-analytics',
-    src: '/images/hero_real_strategy_analytics.jpg',
-    alt: 'Marketing analytics, performance data, and campaign optimization meeting',
+    id: 'slide-2',
+    src: '/images/Slide 3.jpg',
+    alt: 'Nova Spark marketing performance data and digital solutions',
     caption: 'Performance & 10x ROI',
   },
   {
@@ -58,12 +58,17 @@ export default function HeroSection() {
 
           <h1 className={`display-hero ${styles.headline}`}>
             Digital Marketing Company{' '}
-            <span className={`accent-gradient ${styles.heroAccent}`}>in Bhubaneswar.</span>
+            <span className={`accent-gradient ${styles.heroAccent}`}>in Bhubaneswar</span>
           </h1>
 
-          <p className={`body-lg ${styles.sub}`}>
-            Grow your business with digital marketing that focuses on visibility, getting the right leads, keeping customers engaged, and seeing real results. Nova Spark is a Digital marketing company based in Bhubaneswar. We offer SEO, Google Ads, Meta Ads, social media marketing, website solutions, and other services designed to deliver performance and growth.
-          </p>
+          <div className={styles.sub}>
+            <p>
+              Expand the business through a results-oriented digital marketing company in Bhubaneswar specializing in enhancing online visibility, audience targeting, lead generation, and customer retention.
+            </p>
+            <p>
+              Nova Spark offers you an all-in-one digital marketing solution designed for your business objectives. Whether it&apos;s SEO, Google Ads, or other platform ads, social media marketing, web solutions, or any other performance channel, we can help businesses build their presence online and drive measurable growth.
+            </p>
+          </div>
 
           <div className={styles.actions}>
             {/* CTA with Continuous Revolving Glowing Border Beam */}
