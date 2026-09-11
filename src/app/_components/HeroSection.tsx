@@ -29,11 +29,11 @@ export default function HeroSection() {
   const [current, setCurrent] = useState(0);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Smooth auto-slide interval (6.0 seconds per slide)
+  // Smooth auto-slide interval (3.5 seconds per slide for faster transition)
   useEffect(() => {
     timerRef.current = setInterval(() => {
       setCurrent((prev) => (prev + 1) % heroSlides.length);
-    }, 6000);
+    }, 3500);
 
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
