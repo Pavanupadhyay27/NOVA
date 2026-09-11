@@ -45,15 +45,16 @@ export default function ClientsSection() {
       </div>
 
       {/* Premium Skeuomorphic Partnership CTA Card */}
-      <div className="container" style={{ marginTop: 36 }}>
+      <div className="container" style={{ marginTop: 40 }}>
         <ScrollReveal>
           <div className={styles.ctaCard}>
+            <div className={styles.ctaGlowOrb} />
             <div className={styles.ctaCardMesh} />
             
             <div className={styles.ctaCardContent}>
               <div className={styles.ctaBadge}>
                 <span className={styles.badgePulse} />
-                <span>Strategic Growth Partnership</span>
+                <span>Limited Growth Slots · Strategic Partnership</span>
               </div>
               
               <h3 className={styles.ctaTitle}>
@@ -61,8 +62,23 @@ export default function ClientsSection() {
               </h3>
               
               <p className={styles.ctaSubtitle}>
-                Get a comprehensive 360° digital growth audit and customized roadmap tailored to your market, competitors, and revenue goals.
+                Get an in-depth 360° digital marketing audit and a tailored growth roadmap across Search, Paid Media, and High-Converting Funnels.
               </p>
+
+              <div className={styles.ctaFeatures}>
+                <div className={styles.featurePill}>
+                  <span className={styles.featureIcon}>📊</span>
+                  <span>Competitor &amp; SERP Benchmark</span>
+                </div>
+                <div className={styles.featurePill}>
+                  <span className={styles.featureIcon}>🎯</span>
+                  <span>Paid Ads &amp; Lead Leakage Audit</span>
+                </div>
+                <div className={styles.featurePill}>
+                  <span className={styles.featureIcon}>⚡</span>
+                  <span>1-on-1 Growth Strategy Session</span>
+                </div>
+              </div>
             </div>
 
             <div className={styles.ctaActions}>
@@ -79,9 +95,21 @@ export default function ClientsSection() {
                 </Link>
               </div>
 
-              <div className={styles.ctaTrustTag}>
-                <span className={styles.trustCheck}>✓</span>
-                <span>100% Free · No Obligation · 24h Response</span>
+              <div className={styles.ctaTrustCard}>
+                <div className={styles.trustItem}>
+                  <span className={styles.trustCheck}>✓</span>
+                  <span>100% Free Audit</span>
+                </div>
+                <span className={styles.trustSep}>•</span>
+                <div className={styles.trustItem}>
+                  <span className={styles.trustCheck}>✓</span>
+                  <span>24h Turnaround</span>
+                </div>
+                <span className={styles.trustSep}>•</span>
+                <div className={styles.trustItem}>
+                  <span className={styles.trustCheck}>✓</span>
+                  <span>No Obligation</span>
+                </div>
               </div>
             </div>
           </div>
