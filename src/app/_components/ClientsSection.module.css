@@ -323,14 +323,14 @@
     transparent 0deg,
     transparent 220deg,
     rgba(11, 32, 147, 0.5) 270deg,
-    rgba(29, 78, 216, 0.85) 305deg,
-    rgba(13, 0, 127, 0.8) 335deg,
-    rgba(37, 99, 235, 0.6) 355deg,
+    rgba(13, 0, 127, 0.85) 305deg,
+    rgba(29, 78, 216, 0.8) 335deg,
+    rgba(236, 72, 153, 0.85) 355deg,
     rgba(11, 32, 147, 0.5) 360deg
   );
   animation: rotateBeam 3s linear infinite;
   filter: blur(12px);
-  opacity: 0.8;
+  opacity: 0.9;
   pointer-events: none;
   z-index: 0;
 }
@@ -339,20 +339,22 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 260%;
-  height: 520%;
+  width: 280%;
+  height: 560%;
   transform: translate(-50%, -50%);
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
-    transparent 240deg,
-    #0D007F 280deg,
-    #0B2093 315deg,
-    #1D4ED8 340deg,
-    #2563EB 355deg,
-    #0D007F 360deg
+    transparent 200deg,
+    rgba(11, 32, 147, 0) 230deg,
+    #0B2093 270deg,
+    #0D007F 300deg,
+    #1D4ED8 330deg,
+    #EC4899 350deg,
+    #0B2093 360deg
   );
   animation: rotateBeam 3s linear infinite;
+  pointer-events: none;
   z-index: 1;
 }
 

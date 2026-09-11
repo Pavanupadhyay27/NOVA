@@ -83,14 +83,14 @@
     transparent 0deg,
     transparent 220deg,
     rgba(11, 32, 147, 0.5) 270deg,
-    rgba(29, 78, 216, 0.85) 305deg,
-    rgba(13, 0, 127, 0.8) 335deg,
-    rgba(37, 99, 235, 0.7) 355deg,
+    rgba(13, 0, 127, 0.85) 305deg,
+    rgba(29, 78, 216, 0.8) 335deg,
+    rgba(236, 72, 153, 0.85) 355deg,
     rgba(11, 32, 147, 0.5) 360deg
   );
   animation: ctaBeamSpin 3s linear infinite;
   filter: blur(14px);
-  opacity: 0.85;
+  opacity: 0.9;
   pointer-events: none;
   z-index: 0;
 }
@@ -107,11 +107,11 @@
     transparent 0deg,
     transparent 200deg,
     rgba(11, 32, 147, 0) 230deg,
-    #0D007F 270deg,
-    #0B2093 300deg,
+    #0B2093 270deg,
+    #0D007F 300deg,
     #1D4ED8 330deg,
-    #2563EB 350deg,
-    #0D007F 360deg
+    #EC4899 350deg,
+    #0B2093 360deg
   );
   animation: ctaBeamSpin 3s linear infinite;
   pointer-events: none;
