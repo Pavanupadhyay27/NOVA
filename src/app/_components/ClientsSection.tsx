@@ -44,45 +44,48 @@ export default function ClientsSection() {
         <div className={styles.fadeRight} />
       </div>
 
-      {/* Premium Skeuomorphic Partnership CTA Card */}
+      {/* Premium Skeuomorphic Partnership CTA Card (Centered & High-Impact) */}
       <div className="container" style={{ marginTop: 40 }}>
         <ScrollReveal>
           <div className={styles.ctaCard}>
             <div className={styles.ctaGlowOrb} />
             <div className={styles.ctaCardMesh} />
             
-            <div className={styles.ctaCardContent}>
+            {/* Centered Top Badge */}
+            <div className={styles.ctaBadgeWrap}>
               <div className={styles.ctaBadge}>
                 <span className={styles.badgePulse} />
                 <span>Limited Growth Slots · Strategic Partnership</span>
               </div>
-              
-              <h3 className={styles.ctaTitle}>
-                Ready to Join Our Roster of <span className="accent-gradient">High-Growth Brands?</span>
-              </h3>
-              
-              <p className={styles.ctaSubtitle}>
-                Get an in-depth 360° digital marketing audit and a tailored growth roadmap across Search, Paid Media, and High-Converting Funnels.
-              </p>
+            </div>
+            
+            {/* Centered Typography (Concise & Punchy) */}
+            <h3 className={styles.ctaTitle}>
+              Ready to Scale With a <span className="accent-gradient">Dedicated Growth Partner?</span>
+            </h3>
+            
+            <p className={styles.ctaSubtitle}>
+              Join 50+ ambitious brands scaling qualified lead pipelines, Google search authority, and high-ROAS paid media with Nova Spark.
+            </p>
 
-              <div className={styles.ctaFeatures}>
-                <div className={styles.featurePill}>
-                  <span className={styles.featureIcon}>📊</span>
-                  <span>Competitor &amp; SERP Benchmark</span>
-                </div>
-                <div className={styles.featurePill}>
-                  <span className={styles.featureIcon}>🎯</span>
-                  <span>Paid Ads &amp; Lead Leakage Audit</span>
-                </div>
-                <div className={styles.featurePill}>
-                  <span className={styles.featureIcon}>⚡</span>
-                  <span>1-on-1 Growth Strategy Session</span>
-                </div>
+            {/* Centered Feature Capability Pills */}
+            <div className={styles.ctaFeatures}>
+              <div className={styles.featurePill}>
+                <span className={styles.featureIcon}>🎯</span>
+                <span>Competitor SERP Intelligence</span>
+              </div>
+              <div className={styles.featurePill}>
+                <span className={styles.featureIcon}>⚡</span>
+                <span>Full-Funnel Ad Optimization</span>
+              </div>
+              <div className={styles.featurePill}>
+                <span className={styles.featureIcon}>📈</span>
+                <span>10x Growth Framework</span>
               </div>
             </div>
 
-            <div className={styles.ctaActions}>
-              {/* Continuous Revolving Glowing Border Beam Skeuomorphic Button */}
+            {/* Centered Skeuomorphic Button & Trust Verification (At the Bottom of Card) */}
+            <div className={styles.ctaBottomCenter}>
               <div className={styles.borderBeamWrapper}>
                 <div className={styles.borderGlowAmbient} />
                 <div className={styles.borderBeamSpin} />

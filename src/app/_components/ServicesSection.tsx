@@ -332,20 +332,20 @@ export default function ServicesSection() {
                 </div>
               </div>
 
-              {/* Centered Typography */}
+              {/* Centered Typography (Concise & High Impact) */}
               <h3 className={styles.ctaHeadline}>
-                Looking for a <span className="accent-gradient">Custom Marketing Strategy</span> for Your Business?
+                Need a <span className="accent-gradient">Custom Marketing Strategy</span> for Your Business?
               </h3>
 
               <p className={styles.ctaSubtext}>
-                Every industry has unique customer acquisition dynamics and conversion bottlenecks. Our senior growth strategists architect personalized multi-channel systems across Search, Paid Media, and High-Converting Websites to deliver predictable, compounding revenue.
+                Get an integrated growth roadmap across Search, Paid Media, and High-Converting Websites engineered to maximize your commercial return.
               </p>
 
               {/* Centered Feature Capability Pills */}
               <div className={styles.ctaPillsRow}>
                 <div className={styles.ctaPill}>
                   <span className={styles.pillIcon}>📊</span>
-                  <span>Full-Funnel Opportunity Audit</span>
+                  <span>Full-Funnel &amp; SERP Audit</span>
                 </div>
                 <div className={styles.ctaPill}>
                   <span className={styles.pillIcon}>🎯</span>
@@ -354,10 +354,6 @@ export default function ServicesSection() {
                 <div className={styles.ctaPill}>
                   <span className={styles.pillIcon}>📈</span>
                   <span>Compounding ROAS Scaling</span>
-                </div>
-                <div className={styles.ctaPill}>
-                  <span className={styles.pillIcon}>🛡️</span>
-                  <span>Dedicated Senior Execution Team</span>
                 </div>
               </div>
 
