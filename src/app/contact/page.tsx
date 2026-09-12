@@ -70,7 +70,7 @@ export default function ContactPage() {
       <div className="container">
         <div className={styles.grid}>
           {/* ══════════════════════════════════════════════════
-              LEFT INFO PANE
+              LEFT INFO PANE — SKEUOMORPHIC & CLEAN
              ══════════════════════════════════════════════════ */}
           <div className={styles.left}>
             <ScrollReveal>
@@ -93,7 +93,7 @@ export default function ContactPage() {
                 </p>
               </div>
 
-              {/* Minimalist, Elegant Contact Details */}
+              {/* Skeuomorphic Tactile Contact Cards */}
               <div className={styles.contactDetails}>
                 <div className={styles.detailCard}>
                   <div className={styles.detailIcon}>
@@ -147,7 +147,7 @@ export default function ContactPage() {
           </div>
 
           {/* ══════════════════════════════════════════════════
-              RIGHT PANE: ULTRA-CLEAN SKEUOMORPHIC FORM
+              RIGHT PANE: SKEUOMORPHIC FORM WITH BEAM BUTTON
              ══════════════════════════════════════════════════ */}
           <div className={styles.right}>
             <ScrollReveal delay={100}>
@@ -242,22 +242,32 @@ export default function ContactPage() {
                     />
                   </div>
 
+                  {/* ══════════════════════════════════════════════════
+                      REVOLVING GLOWING BORDER BEAM SUBMIT BUTTON
+                     ══════════════════════════════════════════════════ */}
                   <div className={styles.submitWrapper}>
-                    <button
-                      type="submit"
-                      className={styles.submitBtn}
-                      disabled={isSubmitting}
-                    >
-                      <span>{isSubmitting ? 'Sending Request...' : 'Start the Conversation →'}</span>
-                    </button>
+                    <div className={styles.borderBeamWrapper}>
+                      <div className={styles.borderGlowAmbient} />
+                      <div className={styles.borderBeamSpin} />
+                      <button
+                        type="submit"
+                        className={styles.submitBtn}
+                        disabled={isSubmitting}
+                      >
+                        <span className={styles.btnShimmer} />
+                        <span className={styles.btnGlassGloss} />
+                        <span className={styles.btnLabel}>
+                          {isSubmitting ? 'Sending Request...' : 'Start the Conversation →'}
+                        </span>
+                      </button>
+                    </div>
                   </div>
                 </form>
               ) : (
                 /* ══════════════════════════════════════════════════
-                   BOUNCING GREEN CHECKMARK SUCCESS CARD
+                   INLINE SUCCESS CARD (FALLBACK)
                    ══════════════════════════════════════════════════ */
                 <div className={styles.successCard}>
-                  {/* Bouncing Green Ball Animation */}
                   <div className={styles.ballContainer}>
                     <div className={styles.bouncingBall}>
                       <svg className={styles.checkIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round">
