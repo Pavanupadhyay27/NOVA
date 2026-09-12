@@ -130,9 +130,9 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <div className={styles.detailContent}>
-                    <span className={styles.detailLabel}>Direct Phone &amp; SLA</span>
+                    <span className={styles.detailLabel}>Direct Phone</span>
                     <a href="tel:+918280788689" className={styles.detailVal}>
-                      +91 82807 88689 <span className={styles.slaPill}>24h SLA</span>
+                      +91 82807 88689 <span className={styles.slaPill}>Contact Now</span>
                     </a>
                   </div>
                 </div>
@@ -171,9 +171,9 @@ export default function ContactPage() {
                       />
                     </div>
                     <div className={styles.field}>
-                      <label className={styles.label}>Work Email / Phone *</label>
+                      <label className={styles.label}>Work Email *</label>
                       <input
-                        type="text"
+                        type="email"
                         className={styles.input}
                         placeholder="e.g. rahul@brand.com"
                         required
