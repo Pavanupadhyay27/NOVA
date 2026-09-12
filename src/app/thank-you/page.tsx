@@ -3,8 +3,8 @@ import Link from 'next/link';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Thank You | Nova Spark — Digital Marketing Agency',
-  description: 'Inquiry received. Our growth strategists will be in touch with your custom roadmap.',
+  title: 'Thank You — Request Received | Nova Spark Bhubaneswar',
+  description: 'Thank you for connecting with Nova Spark, the leading digital marketing company in Bhubaneswar. We have received your project targets and will contact you within 2 hours.',
 };
 
 export default function ThankYouPage() {
@@ -17,17 +17,29 @@ export default function ThankYouPage() {
       <div className={styles.meshPattern} />
 
       <div className={styles.wrapper}>
-        {/* Animated Bouncing 3D Green Checkmark Element */}
+        {/* Animated Bouncing 3D Green Checkmark with Ground Impact Spark Burst */}
         <div className={styles.checkStage}>
-          <div className={styles.pulseRing1} />
-          <div className={styles.pulseRing2} />
-          <div className={styles.pulseRing3} />
-          
-          {/* Decorative floating sparkle stars */}
-          <span className={`${styles.sparkle} ${styles.sparkle1}`}>✦</span>
-          <span className={`${styles.sparkle} ${styles.sparkle2}`}>★</span>
-          <span className={`${styles.sparkle} ${styles.sparkle3}`}>✦</span>
+          {/* Ground Impact Shockwave Wave */}
+          <div className={styles.impactWave} />
 
+          {/* Dynamic Ground Impact Sparks radiating on bounce */}
+          <div className={styles.sparksContainer}>
+            <span className={`${styles.sparkRay} ${styles.sparkTop}`} />
+            <span className={`${styles.sparkRay} ${styles.sparkTopRight}`} />
+            <span className={`${styles.sparkRay} ${styles.sparkRight}`} />
+            <span className={`${styles.sparkRay} ${styles.sparkBottomRight}`} />
+            <span className={`${styles.sparkRay} ${styles.sparkBottomLeft}`} />
+            <span className={`${styles.sparkRay} ${styles.sparkLeft}`} />
+            <span className={`${styles.sparkRay} ${styles.sparkTopLeft}`} />
+
+            {/* Glowing Golden & Emerald Sparkle Stars */}
+            <span className={`${styles.starSpark} ${styles.star1}`}>✦</span>
+            <span className={`${styles.starSpark} ${styles.star2}`}>★</span>
+            <span className={`${styles.starSpark} ${styles.star3}`}>✦</span>
+            <span className={`${styles.starSpark} ${styles.star4}`}>★</span>
+          </div>
+
+          {/* 3D Skeuomorphic Bouncing Emerald Sphere */}
           <div className={styles.checkSphere}>
             <div className={styles.sphereHighlight} />
             <svg
@@ -42,44 +54,48 @@ export default function ThankYouPage() {
               <polyline points="20 6 9 17 4 12" className={styles.checkStroke} />
             </svg>
           </div>
+
+          {/* Dynamic Ground Contact Shadow */}
           <div className={styles.sphereShadow} />
         </div>
 
-        {/* Minimalist, Ultra-Attractive Brand Copy */}
+        {/* SEO & Brand Focused Status Pill */}
         <div className={styles.statusBadge}>
           <span className={styles.statusDot} />
-          <span>REQUEST CONFIRMED</span>
+          <span>INQUIRY RECEIVED • BHUBANESWAR GROWTH LAB</span>
         </div>
 
         <h1 className={styles.title}>
-          We&apos;ve Got It.
+          We&apos;ve Got Your Brief!
         </h1>
 
         <p className={styles.subtitle}>
-          Our growth strategists are reviewing your brief. We&apos;ll be in touch within <strong>2 hours</strong> with your growth roadmap.
+          Nova Spark&apos;s digital growth strategists in Bhubaneswar are analyzing your requirements. We&apos;ll be in touch within <strong>2 hours</strong> with your customized roadmap.
         </p>
 
-        {/* 3 Value Assurance Pills */}
-        <div className={styles.pillRow}>
-          <div className={styles.assurancePill}>
-            <span className={styles.pillIcon}>⚡</span>
-            <span>2h Response SLA</span>
+        {/* Compact SEO & Contact Trust Strip */}
+        <div className={styles.trustStrip}>
+          <div className={styles.trustItem}>
+            <span className={styles.trustIcon}>⚡</span>
+            <span>2-Hour Response SLA</span>
           </div>
-          <div className={styles.assurancePill}>
-            <span className={styles.pillIcon}>🎯</span>
-            <span>Tailored Growth Audit</span>
-          </div>
-          <div className={styles.assurancePill}>
-            <span className={styles.pillIcon}>🔒</span>
-            <span>Zero Spam &amp; Confidential</span>
+          <div className={styles.trustDivider} />
+          <a href="tel:+918280788689" className={styles.trustItemLink}>
+            <span className={styles.trustIcon}>📞</span>
+            <span>+91 82807 88689</span>
+          </a>
+          <div className={styles.trustDivider} />
+          <div className={styles.trustItem}>
+            <span className={styles.trustIcon}>📍</span>
+            <span>Kharvela Nagar, Bhubaneswar</span>
           </div>
         </div>
 
-        {/* High-End Action CTAs */}
+        {/* High-End Tactile Action CTAs */}
         <div className={styles.actions}>
           <Link href="/" className={styles.primaryBtn}>
             <span>Back to Homepage</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -90,13 +106,13 @@ export default function ThankYouPage() {
           </Link>
 
           <a
-            href="https://wa.me/918280788689?text=Hi%20Nova%20Spark%2C%20I%20just%20submitted%20a%20project%20inquiry."
+            href="https://wa.me/918280788689?text=Hi%20Nova%20Spark%2C%20I%20just%20submitted%20my%20project%20inquiry."
             target="_blank"
             rel="noopener noreferrer"
             className={styles.whatsappBtn}
           >
             <span className={styles.waLiveDot} />
-            <span>Chat on WhatsApp</span>
+            <span>Fast-Track on WhatsApp</span>
           </a>
         </div>
       </div>
