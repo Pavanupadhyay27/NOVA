@@ -115,6 +115,13 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
+  align-items: stretch;
+}
+
+.bottomGrid > * {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .execCard {
@@ -124,6 +131,8 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  width: 100%;
   box-shadow: 
     inset 0 2.5px 0 #FFFFFF,
     inset 0 1px 1px rgba(255, 255, 255, 0.95),
@@ -152,6 +161,7 @@
   height: 280px;
   background: #F1F5F9;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .execImg {
@@ -204,6 +214,7 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 12px;
+  min-height: 46px;
 }
 
 .execName {
@@ -244,6 +255,7 @@
   font-size: 13.5px;
   color: #475569;
   line-height: 1.6;
+  flex: 1;
 }
 
 .execQuote {
@@ -267,6 +279,13 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+  align-items: stretch;
+}
+
+.practiceGrid > * {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .card {

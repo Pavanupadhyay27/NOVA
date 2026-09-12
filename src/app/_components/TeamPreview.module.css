@@ -17,6 +17,13 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 28px;
   margin-bottom: 32px;
+  align-items: stretch;
+}
+
+.topGrid > * {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .founderCard {
@@ -26,6 +33,8 @@
   overflow: hidden;
   display: grid;
   grid-template-columns: 220px 1fr;
+  height: 100%;
+  width: 100%;
   box-shadow: 
     inset 0 2.5px 0 #FFFFFF,
     inset 0 1px 1px rgba(255, 255, 255, 0.95),
@@ -162,6 +171,13 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
+  align-items: stretch;
+}
+
+.bottomGrid > * {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .leaderCard {
@@ -171,6 +187,8 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  width: 100%;
   box-shadow: 
     inset 0 2.5px 0 #FFFFFF,
     inset 0 1px 1px rgba(255, 255, 255, 0.95),
@@ -199,6 +217,7 @@
   height: 240px;
   background: #F1F5F9;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .leaderDetails {
@@ -207,6 +226,10 @@
   flex-direction: column;
   gap: 10px;
   flex: 1;
+}
+
+.leaderDetails .titleRow {
+  min-height: 46px;
 }
 
 .leaderName {
@@ -227,6 +250,7 @@
   font-size: 13px;
   color: #64748B;
   line-height: 1.6;
+  flex: 1;
 }
 
 @media (max-width: 1024px) {
