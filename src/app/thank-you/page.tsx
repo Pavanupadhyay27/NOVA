@@ -3,21 +3,21 @@ import Link from 'next/link';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Thank You — Request Received | Nova Spark Bhubaneswar',
-  description: 'Thank you for connecting with Nova Spark, the leading digital marketing company in Bhubaneswar. We have received your project targets and will contact you within 2 hours.',
+  title: 'Thank You | Nova Spark — Digital Marketing Agency',
+  description: 'Thank you for reaching out to Nova Spark. We have received your inquiry and will be in touch within 2 hours.',
 };
 
 export default function ThankYouPage() {
   return (
     <main className={styles.container}>
-      {/* Soft Radiant Ambient Glows */}
+      {/* Soft Ambient Radiant Glows */}
       <div className={styles.bgGlowEmerald} />
       <div className={styles.bgGlowGold} />
       <div className={styles.bgGlowBlue} />
       <div className={styles.meshPattern} />
 
       <div className={styles.card}>
-        {/* Cute & Glossy 3D Bouncing Emerald Checkmark */}
+        {/* Realistic Physics 3D Bouncing Emerald Checkmark */}
         <div className={styles.checkStage}>
           <div className={styles.checkSphere}>
             <div className={styles.sphereGlossTop} />
@@ -38,18 +38,19 @@ export default function ThankYouPage() {
           <div className={styles.sphereShadow} />
         </div>
 
-        {/* Cute & Brand Status Pill */}
+        {/* Minimalist Status Badge */}
         <div className={styles.statusBadge}>
           <span className={styles.statusDot} />
-          <span>INQUIRY CONFIRMED • BHUBANESWAR</span>
+          <span>INQUIRY RECEIVED</span>
         </div>
 
+        {/* Minimalist Clean Heading & Subtitle */}
         <h1 className={styles.title}>
-          We&apos;ve Got Your Brief!
+          Thank You!
         </h1>
 
         <p className={styles.subtitle}>
-          Nova Spark&apos;s digital growth strategists in Bhubaneswar are analyzing your requirements. We&apos;ll be in touch within <strong>2 hours</strong> with your customized roadmap.
+          We&apos;ve received your brief. A growth strategist will reach out within <strong>2 hours</strong> with your customized roadmap.
         </p>
 
         {/* Clean Skeuomorphic Trust Bar (No Emojis) */}
@@ -65,8 +66,8 @@ export default function ThankYouPage() {
           </a>
           <div className={styles.trustDivider} />
           <div className={styles.trustItem}>
-            <span className={styles.trustLabel}>Growth Lab</span>
-            <span className={styles.trustVal}>Kharvela Nagar, Bhubaneswar</span>
+            <span className={styles.trustLabel}>Location</span>
+            <span className={styles.trustVal}>Bhubaneswar, Odisha</span>
           </div>
         </div>
 

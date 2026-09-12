@@ -66,14 +66,14 @@
 .card {
   position: relative;
   z-index: 2;
-  max-width: 540px;
+  max-width: 520px;
   width: 100%;
   margin: 0 auto;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 26px 30px;
+  padding: 28px 30px;
   background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFE 55%, #F4F8FC 100%);
   border: 1px solid rgba(226, 232, 240, 0.9);
   border-radius: 28px;
@@ -99,12 +99,12 @@
 }
 
 /* ══════════════════════════════════════════════════
-   CUTE 3D BOUNCING EMERALD CHECK BUTTON
+   REALISTIC PHYSICS BOUNCING EMERALD BALL
    ══════════════════════════════════════════════════ */
 .checkStage {
   position: relative;
   width: 80px;
-  height: 80px;
+  height: 84px;
   margin-bottom: 12px;
   display: flex;
   align-items: center;
@@ -112,8 +112,8 @@
 }
 
 .checkSphere {
-  width: 72px;
-  height: 72px;
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
   background: linear-gradient(145deg, #4ADE80 0%, #22C55E 35%, #16A34A 75%, #15803D 100%);
   display: flex;
@@ -126,34 +126,37 @@
     0 4px 8px -2px rgba(21, 128, 61, 0.3),
     inset 0 3.5px 5px rgba(255, 255, 255, 0.8),
     inset 0 -3.5px 5px rgba(20, 83, 45, 0.5);
-  animation: cuteBounce 1.4s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
+  animation: realisticBounce 1.35s ease-in-out infinite;
 }
 
-@keyframes cuteBounce {
+@keyframes realisticBounce {
   0% {
-    transform: translateY(0) scale(1.08, 0.92);
+    transform: translateY(0) scale(1.16, 0.84);
   }
-  38% {
-    transform: translateY(-22px) scale(0.94, 1.06);
+  12% {
+    transform: translateY(-8px) scale(0.92, 1.1);
   }
-  50% {
-    transform: translateY(-22px) scale(1, 1);
+  45% {
+    transform: translateY(-26px) scale(1, 1);
   }
-  82% {
-    transform: translateY(0) scale(1.12, 0.88);
+  74% {
+    transform: translateY(-8px) scale(0.95, 1.08);
+  }
+  90% {
+    transform: translateY(0) scale(1.18, 0.82);
   }
   100% {
-    transform: translateY(0) scale(1.08, 0.92);
+    transform: translateY(0) scale(1.16, 0.84);
   }
 }
 
-/* Top primary glass specular reflection */
+/* Top glass specular reflection */
 .sphereGlossTop {
   position: absolute;
   top: 4px;
-  left: 12px;
-  width: 28px;
-  height: 14px;
+  left: 11px;
+  width: 26px;
+  height: 13px;
   border-radius: 50%;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
   transform: rotate(-22deg);
@@ -164,9 +167,9 @@
 .sphereGlossCrescent {
   position: absolute;
   bottom: 4px;
-  right: 14px;
-  width: 20px;
-  height: 8px;
+  right: 12px;
+  width: 18px;
+  height: 7px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.3);
   transform: rotate(20deg);
@@ -174,42 +177,45 @@
   pointer-events: none;
 }
 
-/* Organic Ground Contact Shadow */
+/* Realistic Ground Contact Shadow */
 .sphereShadow {
   position: absolute;
   bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
-  width: 48px;
+  width: 46px;
   height: 8px;
   border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(21, 128, 61, 0.45) 0%, transparent 75%);
-  filter: blur(2px);
-  animation: cuteShadow 1.4s cubic-bezier(0.28, 0.84, 0.42, 1) infinite;
+  background: radial-gradient(ellipse, rgba(21, 128, 61, 0.5) 0%, transparent 75%);
+  animation: realisticShadow 1.35s ease-in-out infinite;
 }
 
-@keyframes cuteShadow {
+@keyframes realisticShadow {
   0% {
-    transform: translateX(-50%) scale(1.15);
-    opacity: 0.85;
-  }
-  38%, 50% {
-    transform: translateX(-50%) scale(0.5);
-    opacity: 0.2;
-  }
-  82% {
-    transform: translateX(-50%) scale(1.25);
+    transform: translateX(-50%) scale(1.25, 1);
     opacity: 0.95;
+    filter: blur(1.5px);
+  }
+  45% {
+    transform: translateX(-50%) scale(0.45, 0.45);
+    opacity: 0.18;
+    filter: blur(4px);
+  }
+  90% {
+    transform: translateX(-50%) scale(1.3, 1.05);
+    opacity: 1;
+    filter: blur(1px);
   }
   100% {
-    transform: translateX(-50%) scale(1.15);
-    opacity: 0.85;
+    transform: translateX(-50%) scale(1.25, 1);
+    opacity: 0.95;
+    filter: blur(1.5px);
   }
 }
 
 .checkIcon {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
@@ -260,7 +266,7 @@
 }
 
 .title {
-  font-size: clamp(1.75rem, 3.6vw, 2.25rem);
+  font-size: clamp(1.85rem, 3.8vw, 2.35rem);
   font-weight: 800;
   color: #0A1020;
   letter-spacing: -0.035em;
@@ -272,7 +278,7 @@
   font-size: clamp(0.9rem, 1.5vw, 0.98rem);
   color: #475569;
   line-height: 1.5;
-  max-width: 470px;
+  max-width: 450px;
   margin: 0 0 16px;
 }
 
