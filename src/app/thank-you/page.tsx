@@ -10,59 +10,38 @@ export const metadata: Metadata = {
 export default function ThankYouPage() {
   return (
     <main className={styles.container}>
-      {/* Radiant Background Mesh & Ambient Glows */}
+      {/* Soft Radiant Ambient Glows */}
       <div className={styles.bgGlowEmerald} />
       <div className={styles.bgGlowGold} />
       <div className={styles.bgGlowBlue} />
       <div className={styles.meshPattern} />
 
-      <div className={styles.wrapper}>
-        {/* Animated Bouncing 3D Green Checkmark with Ground Impact Spark Burst */}
+      <div className={styles.card}>
+        {/* Cute & Glossy 3D Bouncing Emerald Checkmark */}
         <div className={styles.checkStage}>
-          {/* Ground Impact Shockwave Wave */}
-          <div className={styles.impactWave} />
-
-          {/* Dynamic Ground Impact Sparks radiating on bounce */}
-          <div className={styles.sparksContainer}>
-            <span className={`${styles.sparkRay} ${styles.sparkTop}`} />
-            <span className={`${styles.sparkRay} ${styles.sparkTopRight}`} />
-            <span className={`${styles.sparkRay} ${styles.sparkRight}`} />
-            <span className={`${styles.sparkRay} ${styles.sparkBottomRight}`} />
-            <span className={`${styles.sparkRay} ${styles.sparkBottomLeft}`} />
-            <span className={`${styles.sparkRay} ${styles.sparkLeft}`} />
-            <span className={`${styles.sparkRay} ${styles.sparkTopLeft}`} />
-
-            {/* Glowing Golden & Emerald Sparkle Stars */}
-            <span className={`${styles.starSpark} ${styles.star1}`}>✦</span>
-            <span className={`${styles.starSpark} ${styles.star2}`}>★</span>
-            <span className={`${styles.starSpark} ${styles.star3}`}>✦</span>
-            <span className={`${styles.starSpark} ${styles.star4}`}>★</span>
-          </div>
-
-          {/* 3D Skeuomorphic Bouncing Emerald Sphere */}
           <div className={styles.checkSphere}>
-            <div className={styles.sphereHighlight} />
+            <div className={styles.sphereGlossTop} />
+            <div className={styles.sphereGlossCrescent} />
             <svg
               className={styles.checkIcon}
               viewBox="0 0 24 24"
               fill="none"
-              stroke="currentColor"
-              strokeWidth="3.4"
+              stroke="#FFFFFF"
+              strokeWidth="3.6"
               strokeLinecap="round"
               strokeLinejoin="round"
             >
               <polyline points="20 6 9 17 4 12" className={styles.checkStroke} />
             </svg>
           </div>
-
           {/* Dynamic Ground Contact Shadow */}
           <div className={styles.sphereShadow} />
         </div>
 
-        {/* SEO & Brand Focused Status Pill */}
+        {/* Cute & Brand Status Pill */}
         <div className={styles.statusBadge}>
           <span className={styles.statusDot} />
-          <span>INQUIRY RECEIVED • BHUBANESWAR GROWTH LAB</span>
+          <span>INQUIRY CONFIRMED • BHUBANESWAR</span>
         </div>
 
         <h1 className={styles.title}>
@@ -73,29 +52,29 @@ export default function ThankYouPage() {
           Nova Spark&apos;s digital growth strategists in Bhubaneswar are analyzing your requirements. We&apos;ll be in touch within <strong>2 hours</strong> with your customized roadmap.
         </p>
 
-        {/* Compact SEO & Contact Trust Strip */}
-        <div className={styles.trustStrip}>
+        {/* Clean Skeuomorphic Trust Bar (No Emojis) */}
+        <div className={styles.trustBar}>
           <div className={styles.trustItem}>
-            <span className={styles.trustIcon}>⚡</span>
-            <span>2-Hour Response SLA</span>
+            <span className={styles.trustLabel}>SLA</span>
+            <span className={styles.trustVal}>2-Hour Response</span>
           </div>
           <div className={styles.trustDivider} />
           <a href="tel:+918280788689" className={styles.trustItemLink}>
-            <span className={styles.trustIcon}>📞</span>
-            <span>+91 82807 88689</span>
+            <span className={styles.trustLabel}>Direct Helpline</span>
+            <span className={styles.trustVal}>+91 82807 88689</span>
           </a>
           <div className={styles.trustDivider} />
           <div className={styles.trustItem}>
-            <span className={styles.trustIcon}>📍</span>
-            <span>Kharvela Nagar, Bhubaneswar</span>
+            <span className={styles.trustLabel}>Growth Lab</span>
+            <span className={styles.trustVal}>Kharvela Nagar, Bhubaneswar</span>
           </div>
         </div>
 
-        {/* High-End Tactile Action CTAs */}
+        {/* Skeuomorphic & Tactile Action Buttons */}
         <div className={styles.actions}>
           <Link href="/" className={styles.primaryBtn}>
             <span>Back to Homepage</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -111,7 +90,7 @@ export default function ThankYouPage() {
             rel="noopener noreferrer"
             className={styles.whatsappBtn}
           >
-            <span className={styles.waLiveDot} />
+            <span className={styles.waDot} />
             <span>Fast-Track on WhatsApp</span>
           </a>
         </div>
