@@ -4,7 +4,7 @@ import styles from './page.module.css';
 
 export const metadata: Metadata = {
   title: 'Thank You | Nova Spark — Digital Marketing Agency',
-  description: 'Thank you for reaching out to Nova Spark. We have received your inquiry and will be in touch within 2 hours.',
+  description: 'Thank you for reaching out to Nova Spark. We have received your inquiry and will be in touch with your custom roadmap.',
 };
 
 export default function ThankYouPage() {
@@ -52,24 +52,6 @@ export default function ThankYouPage() {
         <p className={styles.subtitle}>
           We’ve safely received your request. One of our expert growth strategists will be in touch with you through your custom roadmap.
         </p>
-
-        {/* Clean Skeuomorphic Trust Bar (No Emojis) */}
-        <div className={styles.trustBar}>
-          <div className={styles.trustItem}>
-            <span className={styles.trustLabel}>SLA</span>
-            <span className={styles.trustVal}>2-Hour Response</span>
-          </div>
-          <div className={styles.trustDivider} />
-          <a href="tel:+918280788689" className={styles.trustItemLink}>
-            <span className={styles.trustLabel}>Direct Helpline</span>
-            <span className={styles.trustVal}>+91 82807 88689</span>
-          </a>
-          <div className={styles.trustDivider} />
-          <div className={styles.trustItem}>
-            <span className={styles.trustLabel}>Location</span>
-            <span className={styles.trustVal}>Bhubaneswar, Odisha</span>
-          </div>
-        </div>
 
         {/* Skeuomorphic & Tactile Action Buttons */}
         <div className={styles.actions}>
