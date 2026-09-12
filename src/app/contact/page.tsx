@@ -93,10 +93,15 @@ export default function ContactPage() {
                 </p>
               </div>
 
-              {/* Compact Contact Badges */}
+              {/* Minimalist, Elegant Contact Details */}
               <div className={styles.contactDetails}>
                 <div className={styles.detailCard}>
-                  <div className={styles.detailIcon}>✉</div>
+                  <div className={styles.detailIcon}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="2" y="4" width="20" height="16" rx="2" />
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                    </svg>
+                  </div>
                   <div className={styles.detailContent}>
                     <span className={styles.detailLabel}>Direct Email</span>
                     <a href="mailto:connect@novasparkdigitalmarketingagency.com" className={styles.detailVal}>
@@ -106,7 +111,12 @@ export default function ContactPage() {
                 </div>
 
                 <div className={styles.detailCard}>
-                  <div className={styles.detailIcon}>📍</div>
+                  <div className={styles.detailIcon}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                  </div>
                   <div className={styles.detailContent}>
                     <span className={styles.detailLabel}>Growth Lab Location</span>
                     <span className={styles.detailVal}>Mallick Complex, Unit 3, Kharvela Nagar, Bhubaneswar</span>
@@ -114,7 +124,11 @@ export default function ContactPage() {
                 </div>
 
                 <div className={styles.detailCard}>
-                  <div className={styles.detailIcon}>⚡</div>
+                  <div className={styles.detailIcon}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                  </div>
                   <div className={styles.detailContent}>
                     <span className={styles.detailLabel}>Direct Phone &amp; SLA</span>
                     <a href="tel:+918280788689" className={styles.detailVal}>
@@ -133,10 +147,10 @@ export default function ContactPage() {
           </div>
 
           {/* ══════════════════════════════════════════════════
-              RIGHT PANE: FORM & BOUNCING CHECKMARK SUCCESS STATE
+              RIGHT PANE: ULTRA-CLEAN SKEUOMORPHIC FORM
              ══════════════════════════════════════════════════ */}
           <div className={styles.right}>
-            <ScrollReveal delay={120}>
+            <ScrollReveal delay={100}>
               {!isSubmitted ? (
                 <form className={styles.form} onSubmit={handleSubmit}>
                   <div className={styles.formHeader}>
@@ -182,16 +196,19 @@ export default function ContactPage() {
                     </div>
                     <div className={styles.field}>
                       <label className={styles.label}>Monthly Growth Budget</label>
-                      <select
-                        className={styles.select}
-                        value={form.budget}
-                        onChange={(e) => setForm((f) => ({ ...f, budget: e.target.value }))}
-                      >
-                        <option value="₹50K – ₹1.5L / month">₹50K – ₹1.5L / month</option>
-                        <option value="₹1.5L – ₹5L / month">₹1.5L – ₹5L / month</option>
-                        <option value="₹5L – ₹15L / month">₹5L – ₹15L / month</option>
-                        <option value="₹15L+ / month">₹15L+ / month</option>
-                      </select>
+                      <div className={styles.selectWrapper}>
+                        <select
+                          className={styles.select}
+                          value={form.budget}
+                          onChange={(e) => setForm((f) => ({ ...f, budget: e.target.value }))}
+                        >
+                          <option value="₹50K – ₹1.5L / month">₹50K – ₹1.5L / month</option>
+                          <option value="₹1.5L – ₹5L / month">₹1.5L – ₹5L / month</option>
+                          <option value="₹5L – ₹15L / month">₹5L – ₹15L / month</option>
+                          <option value="₹15L+ / month">₹15L+ / month</option>
+                        </select>
+                        <div className={styles.selectArrow}>▼</div>
+                      </div>
                     </div>
                   </div>
 
@@ -219,28 +236,20 @@ export default function ContactPage() {
                     <textarea
                       className={`${styles.input} ${styles.textarea}`}
                       placeholder="Share your target revenue, current bottlenecks, ad channels, or key timelines..."
-                      rows={3}
+                      rows={2}
                       value={form.message}
                       onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
                     />
                   </div>
 
                   <div className={styles.submitWrapper}>
-                    <div className={styles.borderBeamWrapper}>
-                      <div className={styles.borderGlowAmbient} />
-                      <div className={styles.borderBeamSpin} />
-                      <button
-                        type="submit"
-                        className={styles.submitBtn}
-                        disabled={isSubmitting}
-                      >
-                        <span className={styles.btnShimmer} />
-                        <span className={styles.btnGlassGloss} />
-                        <span className={styles.btnLabel}>
-                          {isSubmitting ? 'Sending Request...' : 'Start the Conversation →'}
-                        </span>
-                      </button>
-                    </div>
+                    <button
+                      type="submit"
+                      className={styles.submitBtn}
+                      disabled={isSubmitting}
+                    >
+                      <span>{isSubmitting ? 'Sending Request...' : 'Start the Conversation →'}</span>
+                    </button>
                   </div>
                 </form>
               ) : (
@@ -248,17 +257,14 @@ export default function ContactPage() {
                    BOUNCING GREEN CHECKMARK SUCCESS CARD
                    ══════════════════════════════════════════════════ */
                 <div className={styles.successCard}>
-                  <div className={styles.confettiMesh} />
-
                   {/* Bouncing Green Ball Animation */}
                   <div className={styles.ballContainer}>
-                    <div className={styles.pulseRing1} />
-                    <div className={styles.pulseRing2} />
                     <div className={styles.bouncingBall}>
-                      <svg className={styles.checkIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round">
+                      <svg className={styles.checkIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round">
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
                     </div>
+                    <div className={styles.ballShadow} />
                   </div>
 
                   <div className={styles.successBadge}>
@@ -271,26 +277,9 @@ export default function ContactPage() {
                   </h3>
 
                   <p className={styles.successDesc}>
-                    Thank you{form.name ? `, ${form.name}` : ''}! Our senior growth team in Bhubaneswar has received your project details. We will analyze your requirements and reach out within <strong>24 business hours</strong> with a bespoke preliminary growth blueprint.
+                    Thank you{form.name ? `, ${form.name}` : ''}! Our senior growth team in Bhubaneswar has received your project details. We will analyze your requirements and reach out within <strong>2 hours</strong> with a bespoke preliminary growth blueprint.
                   </p>
 
-                  {/* Summary Tags */}
-                  {(form.services.length > 0 || form.budget) && (
-                    <div className={styles.summaryBox}>
-                      <div className={styles.summaryItem}>
-                        <span className={styles.summaryLabel}>Selected Focus</span>
-                        <span className={styles.summaryVal}>
-                          {form.services.length > 0 ? form.services.join(' · ') : 'Integrated Digital Marketing'}
-                        </span>
-                      </div>
-                      <div className={styles.summaryItem}>
-                        <span className={styles.summaryLabel}>Growth Budget</span>
-                        <span className={styles.summaryVal}>{form.budget}</span>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Quick Action Buttons */}
                   <div className={styles.successActions}>
                     <a
                       href={`https://wa.me/918280788689?text=${whatsappMessage}`}
@@ -298,16 +287,10 @@ export default function ContactPage() {
                       rel="noopener noreferrer"
                       className={styles.whatsappBtn}
                     >
-                      <span>💬 Instant WhatsApp Fast-Track</span>
-                      <span>→</span>
+                      <span>💬 Direct WhatsApp Connect</span>
                     </a>
-
-                    <button
-                      type="button"
-                      onClick={handleReset}
-                      className={styles.resetBtn}
-                    >
-                      <span>↻ Send Another Inquiry</span>
+                    <button type="button" onClick={handleReset} className={styles.resetBtn}>
+                      ← Submit Another Inquiry
                     </button>
                   </div>
                 </div>
