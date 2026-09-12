@@ -235,8 +235,8 @@ export default function ContactPage() {
                     <label className={styles.label}>Tell us about your project &amp; goals</label>
                     <textarea
                       className={`${styles.input} ${styles.textarea}`}
-                      placeholder="Share your target revenue, current bottlenecks, ad channels, or key timelines..."
-                      rows={2}
+                      placeholder="Share your business targets, monthly revenue goals, key marketing challenges, or timelines..."
+                      rows={3}
                       value={form.message}
                       onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
                     />
