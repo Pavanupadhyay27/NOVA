@@ -107,11 +107,12 @@ export default function RealGrowthSection() {
             </div>
 
             <h3 className={`display-lg ${styles.headline}`}>
-              Real Growth. <span className="accent-gradient">Real Businesses.</span>
+              From Digital Strategy to{' '}
+              <span className="accent-gradient">Measurable Growth</span>
             </h3>
 
             <p className={`body-lg ${styles.sub}`}>
-              See how our digital marketing strategies help businesses improve visibility, generate qualified leads, and achieve measurable commercial returns.
+              Check out the outcomes we provide with our digital marketing services. From SEO and Google Ads to social media and local marketing, our digital marketing solutions are built to create visibility, leads, and lasting business value.
             </p>
           </ScrollReveal>
         </div>

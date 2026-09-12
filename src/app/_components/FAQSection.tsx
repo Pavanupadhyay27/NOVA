@@ -11,10 +11,6 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    q: 'What Does a Digital Marketing Company Do?',
-    a: 'A digital marketing company helps businesses to develop their online presence, reach their target audience, create qualified leads, and boost conversions using SEO, ads, social media, web pages, and more digital marketing solutions.',
-  },
-  {
     q: 'What Digital Marketing Services Does Nova Spark Offer in Bhubaneswar?',
     a: 'Nova Spark offers full-service digital marketing services such as SEO, Google Ads, Meta Ads, social media marketing, website solutions, content marketing, and more, which are specific to your business goals.',
   },
@@ -31,7 +27,7 @@ const faqs: FAQItem[] = [
     a: 'Yes, our online marketing services are tailored for businesses of various sizes. We create practical strategies around your budget, goals, audience, and industry to improve visibility, generate leads, and support growth.',
   },
   {
-    q: 'What makes Nova Spark the best digital marketing company?',
+    q: 'What makes Nova Spark the best digital marketing company in Bhubaneswar?',
     a: (
       <>
         <Link href="https://novasparkdigitalmarketingagency.com/" className={styles.brandLink}>
@@ -40,6 +36,10 @@ const faqs: FAQItem[] = [
         is a blend of strategy, creativity, data, and performance, offering focused digital marketing services. We deliver measurable results, clear communication, and tailored digital marketing solutions that meet your business goals.
       </>
     ),
+  },
+  {
+    q: 'What industries does Nova Spark work with?',
+    a: 'We work with IT and app businesses, Yoga and Wellness, Travel Agencies, Interior Design, EdTech, e-commerce, real estate, healthcare, education, D2C brands, and professional services.',
   },
 ];
 
