@@ -1,90 +1,349 @@
-.page {
-  min-height: 85vh;
+.container {
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg-deep);
+  background: #050811;
   position: relative;
   overflow: hidden;
-  padding: calc(var(--nav-height) + 40px) 0 80px;
+  padding: 24px 20px;
 }
 
-.bgGlow {
+/* Ambient dynamic background lighting */
+.bgGlowGreen {
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 600px;
-  height: 400px;
-  background: radial-gradient(ellipse, rgba(0, 212, 255, 0.12) 0%, rgba(124, 58, 237, 0.06) 60%, transparent 80%);
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, rgba(5, 150, 105, 0.08) 45%, transparent 70%);
   pointer-events: none;
-  filter: blur(50px);
+  filter: blur(80px);
+  z-index: 1;
 }
 
-.card {
-  max-width: 640px;
+.bgGlowBlue {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(0, 212, 255, 0.08) 0%, transparent 65%);
+  pointer-events: none;
+  filter: blur(90px);
+  z-index: 1;
+}
+
+.gridOverlay {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.wrapper {
+  position: relative;
+  z-index: 2;
+  max-width: 580px;
+  width: 100%;
   margin: 0 auto;
-  background: rgba(10, 15, 30, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(20px);
-  border-radius: var(--radius-xl);
-  padding: 64px 48px;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 48px 36px;
+  background: rgba(10, 16, 30, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 
+    0 24px 64px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(16, 185, 129, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: fadeInCard 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.checkWrap {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: rgba(0, 212, 255, 0.12);
-  border: 2px solid var(--accent-cyan);
-  color: var(--accent-cyan);
+@keyframes fadeInCard {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ══════════════════════════════════════════════════
+   BOUNCING GREEN CHECKMARK ANIMATION
+   ══════════════════════════════════════════════════ */
+.bounceArea {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  margin-bottom: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 28px;
-  box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
-  animation: popIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-@keyframes popIn {
+.pulseRingOuter {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  animation: pulseOuter 2.4s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+.pulseRingInner {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.2);
+  animation: pulseInner 2.4s cubic-bezier(0.25, 1, 0.5, 1) infinite 0.4s;
+}
+
+@keyframes pulseOuter {
   0% {
-    transform: scale(0.6);
+    transform: scale(0.85);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.3);
     opacity: 0;
   }
   100% {
-    transform: scale(1);
-    opacity: 1;
+    transform: scale(1.3);
+    opacity: 0;
   }
+}
+
+@keyframes pulseInner {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+}
+
+.checkSphere {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  box-shadow: 
+    0 0 36px rgba(16, 185, 129, 0.55),
+    0 8px 24px rgba(5, 150, 105, 0.4),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4);
+  position: relative;
+  z-index: 2;
+  animation: bounceBall 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) infinite alternate;
+}
+
+@keyframes bounceBall {
+  0% {
+    transform: translateY(0) scale(1, 1);
+  }
+  40% {
+    transform: translateY(-14px) scale(0.96, 1.04);
+  }
+  75% {
+    transform: translateY(0) scale(1.05, 0.95);
+  }
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+}
+
+.checkIcon {
+  width: 42px;
+  height: 42px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+}
+
+.checkStroke {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: drawCheck 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+}
+
+@keyframes drawCheck {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ══════════════════════════════════════════════════
+   MINIMALIST TYPOGRAPHY
+   ══════════════════════════════════════════════════ */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: #34D399;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 8px #10B981;
+  animation: blinkDot 1.5s ease-in-out infinite;
+}
+
+@keyframes blinkDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
 }
 
 .title {
-  margin-bottom: 16px;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0 0 12px;
 }
 
-.sub {
-  color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: 36px;
-  max-width: 500px;
+.subtitle {
+  font-size: clamp(0.95rem, 1.8vw, 1.08rem);
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.6;
+  max-width: 440px;
+  margin: 0 0 32px;
 }
 
-.actionRow {
+.subtitle strong {
+  color: #34D399;
+  font-weight: 600;
+}
+
+/* ══════════════════════════════════════════════════
+   ACTION BUTTONS
+   ══════════════════════════════════════════════════ */
+.actions {
   display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
-@media (max-width: 640px) {
-  .card {
-    padding: 40px 24px;
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #00D4FF 0%, #0070F3 100%);
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 20px rgba(0, 112, 243, 0.35);
+}
+
+.primaryBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0, 112, 243, 0.55);
+}
+
+.secondaryBtn {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.secondaryBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.whatsappBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: rgba(37, 211, 102, 0.1);
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  color: #25D366;
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.whatsappBtn:hover {
+  background: rgba(37, 211, 102, 0.2);
+  border-color: #25D366;
+  color: #25D366;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.25);
+}
+
+.waDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #25D366;
+  box-shadow: 0 0 6px #25D366;
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    padding: 36px 20px;
+    border-radius: 20px;
   }
-  .checkWrap {
-    width: 64px;
-    height: 64px;
+  .actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .primaryBtn,
+  .secondaryBtn,
+  .whatsappBtn {
+    width: 100%;
+    justify-content: center;
   }
 }

@@ -1,10 +1,12 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import ScrollReveal from '@/components/ScrollReveal';
 import styles from './page.module.css';
 
 export default function ContactPage() {
+  const router = useRouter();
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -39,8 +41,8 @@ export default function ContactPage() {
     setIsSubmitting(true);
     setTimeout(() => {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 500);
+      router.push('/thank-you');
+    }, 400);
   };
 
   const handleReset = () => {
