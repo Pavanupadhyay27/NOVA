@@ -105,9 +105,10 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Right — Large Clean Real Photography Showcase (No 3D / No Tilt Hover) */}
+        {/* Right — Large Skeuomorphic Photography Showcase Frame */}
         <div className={styles.visual}>
           <div className={styles.imageCard}>
+            <div className={styles.frameSpecularHighlight} />
             <div className={styles.imageViewport}>
               {heroSlides.map((slide, idx) => (
                 <div
@@ -126,13 +127,17 @@ export default function HeroSection() {
                 </div>
               ))}
 
-              {/* Minimalist Floating Status Badge */}
+              {/* Physical Glass Screen Specular Sheen */}
+              <div className={styles.glassGlossSheen} />
+              <div className={styles.innerEngravedBezel} />
+
+              {/* Minimalist Floating Skeuomorphic Status Badge */}
               <div className={styles.floatingBadge}>
                 <span className={styles.badgePulse} />
                 <span className={styles.badgeText}>Real Client Growth</span>
               </div>
 
-              {/* Minimalist Dot Indicators */}
+              {/* Minimalist Tactile Dot Indicators */}
               <div className={styles.dotsWrap}>
                 {heroSlides.map((_, idx) => (
                   <button
