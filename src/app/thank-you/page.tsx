@@ -46,11 +46,11 @@ export default function ThankYouPage() {
 
         {/* Minimalist Clean Heading & Subtitle */}
         <h1 className={styles.title}>
-          Thank You!
+          Let’s Get Growing
         </h1>
 
         <p className={styles.subtitle}>
-          We&apos;ve received your brief. A growth strategist will reach out within <strong>2 hours</strong> with your customized roadmap.
+          We’ve safely received your request. One of our expert growth strategists will be in touch with you through your custom roadmap.
         </p>
 
         {/* Clean Skeuomorphic Trust Bar (No Emojis) */}
