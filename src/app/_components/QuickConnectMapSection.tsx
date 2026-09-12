@@ -37,12 +37,12 @@ export default function QuickConnectMapSection() {
           <div className={styles.header}>
             <div className={styles.eyebrowBadge}>
               <span className={styles.pulseDot} />
-              <span className={styles.eyebrowText}>Direct Access & Headquarters</span>
+              <span className={styles.eyebrowText}>Your Trusted Digital Marketing Company in Bhubaneswar</span>
             </div>
 
             <h3 className={styles.title}>
-              Connect with us directly.<br />
-              <span className={styles.titleAccent}>Zero wait times. Real human conversations.</span>
+              Grow Your Business with<br />
+              <span className={styles.titleAccent}>Tailored Digital Marketing Solutions</span>
             </h3>
 
             <p className={styles.subtitle}>

@@ -57,17 +57,17 @@ export default function ClientsSection() {
             <div className={styles.ctaBadgeWrap}>
               <div className={styles.ctaBadge}>
                 <span className={styles.badgePulse} />
-                <span>Limited Growth Slots · Strategic Partnership</span>
+                <span>For Ambitious Businesses · Strategy That Moves the Needle</span>
               </div>
             </div>
             
             {/* Centered Typography (Concise & Punchy) */}
             <h3 className={styles.ctaTitle}>
-              Ready to Scale With a <span className="accent-gradient">Dedicated Growth Partner?</span>
+              Your Business Deserves a <span className="accent-gradient">Smarter Digital Strategy</span>
             </h3>
             
             <p className={styles.ctaSubtitle}>
-              Join 50+ ambitious brands scaling qualified lead pipelines, Google search authority, and high-ROAS paid media with Nova Spark.
+              Partner with a trusted Digital Marketing Company in Bhubaneswar for SEO, Google Ads, online marketing services, and tailored Digital Marketing Solutions that drive visibility, leads, and growth.
             </p>
 
             {/* Centered Feature Capability Pills */}

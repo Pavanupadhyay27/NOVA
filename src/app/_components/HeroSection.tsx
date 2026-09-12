@@ -53,7 +53,7 @@ export default function HeroSection() {
         <div className={styles.content}>
           <div className={styles.heroEyebrow}>
             <span className={styles.heroEyebrowDot} />
-            <span>Digital Growth Studio · Bhubaneswar</span>
+            <span>Bhubaneswar’s Experts for Smarter Digital Marketing</span>
           </div>
 
           <h1 className={`display-hero ${styles.headline}`}>
@@ -63,10 +63,10 @@ export default function HeroSection() {
 
           <div className={styles.sub}>
             <p>
-              Expand the business through a results-oriented digital marketing company in Bhubaneswar specializing in enhancing online visibility, audience targeting, lead generation, and customer retention.
+              Grow your Bhubaneswar business with Nova Spark, a results-driven digital marketing company helping local businesses overcome low visibility, reach the right audience, and generate quality leads.
             </p>
             <p>
-              Nova Spark offers you an all-in-one digital marketing solution designed for your business objectives. Whether it&apos;s SEO, Google Ads, or other platform ads, social media marketing, web solutions, or any other performance channel, we can help businesses build their presence online and drive measurable growth.
+              From SEO and Google Ads to social media marketing and web solutions, we offer personalised digital marketing services that turn online challenges into measurable business growth.
             </p>
           </div>
 
