@@ -1,5 +1,5 @@
 'use client';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import ScrollReveal from '@/components/ScrollReveal';
 import styles from './StoryVideoSection.module.css';
 
@@ -22,16 +22,72 @@ const storyPillars = [
 ];
 
 export default function StoryVideoSection() {
+  const sectionRef = useRef<HTMLElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isMuted, setIsMuted] = useState(true);
+  const [userInteracted, setUserInteracted] = useState(false);
 
-  useEffect(() => {
-    if (videoRef.current) {
+  // Toggle sound manually
+  const toggleSound = useCallback(() => {
+    if (!videoRef.current) return;
+    setUserInteracted(true);
+    if (isMuted) {
+      videoRef.current.muted = false;
+      videoRef.current.volume = 0.85;
       videoRef.current.play().catch(() => {});
+      setIsMuted(false);
+    } else {
+      videoRef.current.muted = true;
+      setIsMuted(true);
     }
-  }, []);
+  }, [isMuted]);
+
+  // Scroll into view detection for scroll-triggered video sound
+  useEffect(() => {
+    const el = sectionRef.current;
+    const video = videoRef.current;
+    if (!el || !video) return;
+
+    // Detect user gesture to enable unmuted playback according to browser autoplay policy
+    const handleFirstGesture = () => {
+      setUserInteracted(true);
+      window.removeEventListener('click', handleFirstGesture);
+      window.removeEventListener('touchstart', handleFirstGesture);
+      window.removeEventListener('scroll', handleFirstGesture);
+    };
+    window.addEventListener('click', handleFirstGesture, { passive: true });
+    window.addEventListener('touchstart', handleFirstGesture, { passive: true });
+    window.addEventListener('scroll', handleFirstGesture, { passive: true });
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+          // If user has interacted, un-mute sound automatically when scrolled into section
+          if (userInteracted && !isMuted) {
+            video.muted = false;
+            video.volume = 0.85;
+          }
+        } else {
+          // Auto-mute and pause audio when scrolled away
+          video.muted = true;
+        }
+      },
+      { threshold: 0.35 }
+    );
+
+    observer.observe(el);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('click', handleFirstGesture);
+      window.removeEventListener('touchstart', handleFirstGesture);
+      window.removeEventListener('scroll', handleFirstGesture);
+    };
+  }, [userInteracted, isMuted]);
 
   return (
-    <section className={styles.section} id="company-story">
+    <section className={styles.section} id="company-story" ref={sectionRef}>
       {/* Soft Ambient Background Glows */}
       <div className={styles.ambientGlowLeft} />
       <div className={styles.ambientGlowRight} />
@@ -112,10 +168,35 @@ export default function StoryVideoSection() {
                     src="/videos/NS REEL 22 AUG.mp4"
                     autoPlay
                     loop
-                    muted
+                    muted={isMuted}
                     playsInline
                     preload="auto"
                   />
+
+                  {/* Sound Control Toggle Floating Button */}
+                  <button
+                    type="button"
+                    onClick={toggleSound}
+                    className={`${styles.soundControlBtn} ${!isMuted ? styles.soundActive : ''}`}
+                    aria-label={isMuted ? 'Enable video sound' : 'Mute video sound'}
+                    title={isMuted ? 'Click to play sound' : 'Click to mute sound'}
+                  >
+                    {!isMuted ? (
+                      <>
+                        <span className={styles.equalizer}>
+                          <span className={styles.eqBar} />
+                          <span className={styles.eqBar} />
+                          <span className={styles.eqBar} />
+                        </span>
+                        <span className={styles.soundLabel}>Sound On</span>
+                      </>
+                    ) : (
+                      <>
+                        <span className={styles.muteIcon}>🔇</span>
+                        <span className={styles.soundLabel}>Sound Off · Tap for Audio</span>
+                      </>
+                    )}
+                  </button>
 
                   {/* Floating Minimal Founder Badge */}
                   <div className={styles.founderBadge}>

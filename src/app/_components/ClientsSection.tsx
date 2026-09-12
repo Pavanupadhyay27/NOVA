@@ -11,6 +11,8 @@ const clientLogos = [
   { name: 'Medallion House', src: '/images/clients/medallion-house.png' },
   { name: 'HEED', src: '/images/clients/heed.png' },
   { name: 'EKATRAA', src: '/images/clients/ekatraa.png' },
+  { name: 'Sabour', src: '/images/clients/Sabour-logo.png' },
+  { name: 'Zue Studio', src: '/images/clients/Zue-Studio-Logo-color (1).png' },
 ];
 
 export default function ClientsSection() {
