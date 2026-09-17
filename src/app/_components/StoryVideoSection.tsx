@@ -113,7 +113,7 @@ export default function StoryVideoSection() {
                 </h3>
 
                 <p className={styles.leadText}>
-                  At <strong>Nova Spark</strong>, we engineer full-funnel digital acquisition engines, high-converting creative campaigns, and automated revenue systems that turn customer attention into compounding scale.
+                  At <strong>Marketing Copilot</strong>, we engineer full-funnel digital acquisition engines, high-converting creative campaigns, and automated revenue systems that turn customer attention into compounding scale.
                 </p>
               </div>
 

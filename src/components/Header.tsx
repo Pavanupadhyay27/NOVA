@@ -6,12 +6,26 @@ import Image from 'next/image';
 import styles from './Header.module.css';
 
 const services = [
+  { href: '/services/seo', label: 'SEO Services', desc: 'Rank #1 on Google in Bhubaneswar' },
+  { href: '/services/google-ads', label: 'Google Ads / PPC', desc: 'High-ROI paid search campaigns' },
+  { href: '/services/meta-ads', label: 'Meta Ads', desc: 'Facebook & Instagram growth ads' },
+  { href: '/services/social-media', label: 'Social Media Marketing', desc: 'Build community & brand presence' },
+  { href: '/services/web-development', label: 'Website Development', desc: 'Conversion-engineered websites' },
+  { href: '/services/creative-branding', label: 'Branding & Creative Services', desc: 'Make your brand unforgettable' },
+  { href: '/services/local-seo', label: 'Local SEO', desc: 'Dominate Bhubaneswar local search' },
+  { href: '/services/ecommerce-marketing', label: 'E-commerce Marketing', desc: 'Scale your online store revenue' },
   { href: '/services/performance-marketing', label: 'Performance Marketing', desc: 'Turn ad spend into predictable revenue' },
-  { href: '/services/seo', label: 'SEO & Organic Growth', desc: 'Dominate search and build compounding reach' },
-  { href: '/services/social-media', label: 'Social Media & Content', desc: 'Turn attention into loyal engaged community' },
-  { href: '/services/creative-branding', label: 'Creative & Branding', desc: 'Make your brand impossible to forget' },
-  { href: '/services/web-development', label: 'Web & Technology', desc: 'Digital experiences engineered to convert' },
-  { href: '/services/ai-automation', label: 'AI & Automation', desc: 'Scale smarter with intelligent agentic systems' },
+  { href: '/services/ai-automation', label: 'Content Marketing', desc: 'Content that ranks and converts' },
+];
+
+const mobileLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/services', label: 'Services' },
+  { href: '/about', label: 'About Us' },
+  { href: '/portfolio', label: 'Portfolio' },
+  { href: '/industries', label: 'Industries' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/faq', label: 'FAQ' },
 ];
 
 export default function Header() {
@@ -46,45 +60,47 @@ export default function Header() {
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.inner}>
-        {/* Official Brand Logo */}
-        <Link href="/" className={styles.logo}>
+        {/* Logo */}
+        <Link href="/" className={styles.logo} aria-label="Marketing Copilot Homepage">
           <Image
-            src="/images/logo.png"
-            alt="Nova Spark — Digital Marketing Agency"
-            width={148}
-            height={38}
+            src="/images/marketing-copilot-transparent.png"
+            alt="Marketing Copilot — Digital Marketing Agency Bhubaneswar"
+            width={200}
+            height={68}
             priority
-            style={{ width: 'auto', height: '38px' }}
+            style={{ width: 'auto', height: '44px' }}
             className={styles.logoImg}
           />
         </Link>
 
-        {/* Seamless Skeuomorphic Nav Links with Home */}
+        {/* Desktop Nav */}
         <nav className={styles.nav}>
-          <Link 
-            href="/" 
+          {/* Home */}
+          <Link
+            href="/"
             className={`${styles.navLink} ${pathname === '/' ? styles.engravedActive : ''}`}
           >
             Home
           </Link>
 
+          {/* Services with dropdown */}
           <div
             className={styles.navItem}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <Link 
-              href="/services" 
+            <Link
+              href="/services"
               className={`${styles.navLink} ${pathname.startsWith('/services') ? styles.engravedActive : ''}`}
             >
               Services
               <svg width="9" height="9" viewBox="0 0 12 12" fill="currentColor" style={{ marginLeft: 4 }}>
-                <path d="M6 8L2 4h8L6 8z"/>
+                <path d="M6 8L2 4h8L6 8z" />
               </svg>
             </Link>
 
             {servicesOpen && (
-              <div 
+              <div
                 className={styles.dropdown}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
@@ -99,60 +115,67 @@ export default function Header() {
                 </div>
                 <div className={styles.dropdownFooter}>
                   <Link href="/services" className={styles.dropdownAll}>
-                    Explore all 6 growth practices <span>→</span>
+                    Explore all 10 growth services <span>→</span>
                   </Link>
                 </div>
               </div>
             )}
           </div>
 
-          <Link 
-            href="/work" 
-            className={`${styles.navLink} ${pathname.startsWith('/work') ? styles.engravedActive : ''}`}
+          {/* About Us */}
+          <Link
+            href="/about"
+            className={`${styles.navLink} ${pathname.startsWith('/about') ? styles.engravedActive : ''}`}
           >
-            Work
+            About Us
           </Link>
-          
-          <Link 
-            href="/about" 
-            className={`${styles.navLink} ${pathname === '/about' ? styles.engravedActive : ''}`}
+
+          {/* Portfolio */}
+          <Link
+            href="/portfolio"
+            className={`${styles.navLink} ${pathname.startsWith('/portfolio') ? styles.engravedActive : ''}`}
           >
-            About
+            Portfolio
           </Link>
-          
-          <Link 
-            href="/about/team" 
-            className={`${styles.navLink} ${pathname === '/about/team' ? styles.engravedActive : ''}`}
+
+          {/* Industries */}
+          <Link
+            href="/industries"
+            className={`${styles.navLink} ${pathname.startsWith('/industries') ? styles.engravedActive : ''}`}
           >
-            Team
+            Industries
           </Link>
-          
-          <Link 
-            href="/process" 
-            className={`${styles.navLink} ${pathname === '/process' ? styles.engravedActive : ''}`}
+
+          {/* Blog */}
+          <Link
+            href="/blog"
+            className={`${styles.navLink} ${pathname.startsWith('/blog') ? styles.engravedActive : ''}`}
           >
-            Process
+            Blog
           </Link>
-          
-          <Link 
-            href="/insights" 
-            className={`${styles.navLink} ${pathname.startsWith('/insights') ? styles.engravedActive : ''}`}
+
+          {/* FAQ */}
+          <Link
+            href="/faq"
+            className={`${styles.navLink} ${pathname === '/faq' ? styles.engravedActive : ''}`}
           >
-            Insights
+            FAQ
           </Link>
         </nav>
 
-        {/* Tactile Skeuomorphic Button with Revolving Glowing Border Beam */}
+        {/* CTA Button with revolving border beam */}
         <div className={styles.borderBeamWrapper}>
           <div className={styles.borderGlowAmbient} />
           <div className={styles.borderBeamSpin} />
           <Link href="/contact" className={styles.ctaBtn}>
-            Let&apos;s Talk
+            <span className={styles.btnShimmer} />
+            <span className={styles.btnGlassGloss} />
+            <span>Let&apos;s Talk</span>
             <span className={styles.btnArrow}>→</span>
           </Link>
         </div>
 
-        {/* Mobile Hamburger Button */}
+        {/* Mobile Hamburger */}
         <button
           className={`${styles.hamburger} ${menuOpen ? styles.open : ''}`}
           onClick={() => setMenuOpen(!menuOpen)}
@@ -163,25 +186,17 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Clean Minimal Mobile Menu with Smooth Animation */}
+      {/* Mobile Menu */}
       {menuOpen && (
         <>
-          <div 
-            className={styles.mobileBackdrop} 
+          <div
+            className={styles.mobileBackdrop}
             onClick={() => setMenuOpen(false)}
-            aria-hidden="true" 
+            aria-hidden="true"
           />
           <div className={styles.mobileMenu}>
             <nav className={styles.mobileNav}>
-              {[
-                { href: '/', label: 'Home' },
-                { href: '/services', label: 'Services & Practices' },
-                { href: '/work', label: 'Work & Case Studies' },
-                { href: '/about', label: 'About Nova Spark' },
-                { href: '/about/team', label: 'Leadership & Team' },
-                { href: '/process', label: 'Execution Process' },
-                { href: '/insights', label: 'Insights & Articles' },
-              ].map((item) => {
+              {mobileLinks.map((item) => {
                 const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href);
                 return (
                   <Link
@@ -196,12 +211,10 @@ export default function Header() {
                 );
               })}
             </nav>
-
-            {/* Bottom Minimalist CTA */}
             <div className={styles.mobileCTA}>
-              <Link 
-                href="/contact" 
-                className="btn btn-primary w-full" 
+              <Link
+                href="/contact"
+                className="btn btn-primary w-full"
                 style={{ justifyContent: 'center', width: '100%', padding: '13px 20px', fontSize: '14.5px' }}
                 onClick={() => setMenuOpen(false)}
               >

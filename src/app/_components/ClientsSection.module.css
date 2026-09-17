@@ -299,11 +299,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-full);
+  border-radius: 9999px !important;
+  clip-path: inset(0 round 9999px);
+  -webkit-clip-path: inset(0 round 9999px);
   padding: 2.4px;
   overflow: hidden;
   isolation: isolate;
-  background: rgba(0, 0, 0, 0.08);
+  background: rgba(15, 23, 42, 0.08);
   box-shadow: 
     0 12px 30px -6px rgba(11, 32, 147, 0.45),
     0 4px 12px rgba(0, 0, 0, 0.08);
@@ -386,7 +388,7 @@
   font-weight: 800;
   letter-spacing: -0.01em;
   padding: 14px 34px;
-  border-radius: var(--radius-full);
+  border-radius: 9999px !important;
   text-decoration: none;
   overflow: hidden;
   box-shadow: 

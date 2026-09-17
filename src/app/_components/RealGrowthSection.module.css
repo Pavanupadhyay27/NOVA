@@ -339,21 +339,110 @@
   padding-top: 6px;
 }
 
+.borderBeamWrapper {
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px !important;
+  clip-path: inset(0 round 9999px);
+  -webkit-clip-path: inset(0 round 9999px);
+  padding: 2.2px;
+  overflow: hidden;
+  isolation: isolate;
+  background: rgba(15, 23, 42, 0.08);
+  box-shadow: 
+    0 8px 24px -4px rgba(11, 32, 147, 0.4),
+    0 2px 6px rgba(15, 23, 42, 0.06);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease;
+}
+
+.borderBeamWrapper:hover {
+  transform: translateY(-2.5px);
+  box-shadow: 
+    0 14px 32px -4px rgba(11, 32, 147, 0.55),
+    0 0 24px rgba(245, 158, 11, 0.5);
+}
+
+.borderGlowAmbient {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 260%;
+  height: 520%;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 180deg,
+    rgba(11, 32, 147, 0.3) 220deg,
+    rgba(29, 78, 216, 0.8) 260deg,
+    rgba(56, 189, 248, 0.9) 290deg,
+    rgba(253, 224, 71, 0.95) 320deg,
+    #F59E0B 345deg,
+    #FFB800 355deg,
+    rgba(217, 119, 6, 0.7) 360deg
+  );
+  animation: cardBeamSpin 3s linear infinite;
+  filter: blur(12px);
+  opacity: 0.95;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.borderBeamSpin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 280%;
+  height: 560%;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 170deg,
+    rgba(11, 32, 147, 0) 210deg,
+    #0B2093 245deg,
+    #1D4ED8 275deg,
+    #38BDF8 300deg,
+    #FDE047 325deg,
+    #FFB800 345deg,
+    #FF8A00 355deg,
+    #D97706 360deg
+  );
+  animation: cardBeamSpin 3s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes cardBeamSpin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.borderBeamWrapper:hover .borderBeamSpin,
+.borderBeamWrapper:hover .borderGlowAmbient {
+  animation-duration: 1.8s;
+}
+
 .cardBtn {
   position: relative;
+  z-index: 2;
   width: 100%;
   min-height: 48px;
   padding: 12px 20px;
   font-family: var(--font-display);
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   background: linear-gradient(135deg, #122E9E 0%, #0B2093 50%, #0D007F 100%);
   color: #FFFFFF !important;
-  border-radius: 9999px;
+  border-radius: 9999px !important;
   text-decoration: none;
   overflow: hidden;
   box-shadow: 

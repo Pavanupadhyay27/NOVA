@@ -8,13 +8,13 @@ const heroSlides = [
   {
     id: 'slide-1',
     src: '/images/Slide 1.jpg',
-    alt: 'Nova Spark digital marketing company strategy and campaigns in Bhubaneswar',
+    alt: 'Marketing Copilot digital marketing company strategy and campaigns in Bhubaneswar',
     caption: 'Strategic Growth & Execution',
   },
   {
     id: 'slide-2',
     src: '/images/slide 3.webp',
-    alt: 'Nova Spark marketing performance data and digital solutions',
+    alt: 'Marketing Copilot marketing performance data and digital solutions',
     caption: 'Performance & 10x ROI',
   },
   {
@@ -63,7 +63,7 @@ export default function HeroSection() {
 
           <div className={styles.sub}>
             <p>
-              Grow your Bhubaneswar business with Nova Spark, a results-driven digital marketing company helping local businesses overcome low visibility, reach the right audience, and generate quality leads.
+              Grow your Bhubaneswar business with Marketing Copilot, a results-driven digital marketing company helping local businesses overcome low visibility, reach the right audience, and generate quality leads.
             </p>
             <p>
               From SEO and Google Ads to social media marketing and web solutions, we offer personalised digital marketing services that turn online challenges into measurable business growth.
@@ -76,19 +76,26 @@ export default function HeroSection() {
               <div className={styles.borderGlowAmbient} />
               <div className={styles.borderBeamSpin} />
 
-              <Link href="/contact" className={styles.btnStartProject}>
+              <Link href="/contact" className={styles.btnStartPrimary}>
                 <span className={styles.btnShimmer} />
                 <span className={styles.btnGlassGloss} />
-                <span className={styles.btnLabel}>Get Free Consultation</span>
+                <span className={styles.btnLabel}>Claim Free Growth Audit</span>
                 <span className={styles.btnArrow}>→</span>
               </Link>
             </div>
 
             {/* Explore Our Services CTA */}
-            <Link href="/services" className={styles.btnExploreWork}>
-              <span className={styles.exploreIcon}>✦</span>
-              <span className={styles.exploreLabel}>Explore Our Services</span>
-            </Link>
+            <div className={styles.borderBeamWrapper}>
+              <div className={styles.borderGlowAmbient} />
+              <div className={styles.borderBeamSpin} />
+              <Link href="/services" className={styles.btnExploreWork}>
+                <span className={styles.btnShimmer} />
+                <span className={styles.btnGlassGloss} />
+                <span className={styles.exploreIcon}>✦</span>
+                <span className={styles.exploreLabel}>Explore Our Services</span>
+                <span className={styles.btnArrow}>→</span>
+              </Link>
+            </div>
           </div>
 
           {/* Clean Skeuomorphic Trust Strip */}

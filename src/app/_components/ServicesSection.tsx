@@ -320,23 +320,29 @@ export default function ServicesSection() {
 
         {/* View More / View Less Toggle Button */}
         <div className={styles.toggleWrapper}>
-          <button
-            type="button"
-            onClick={() => {
-              if (showAll) {
-                const sectionEl = document.getElementById('services-section');
-                if (sectionEl) {
-                  sectionEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          <div className={styles.borderBeamWrapper}>
+            <div className={styles.borderGlowAmbient} />
+            <div className={styles.borderBeamSpin} />
+            <button
+              type="button"
+              onClick={() => {
+                if (showAll) {
+                  const sectionEl = document.getElementById('services-section');
+                  if (sectionEl) {
+                    sectionEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
                 }
-              }
-              setShowAll(prev => !prev);
-            }}
-            className={styles.toggleBtn}
-            aria-expanded={showAll}
-          >
-            <span>{showAll ? 'Show Fewer Practices' : `View All ${services.length} Practices`}</span>
-            <span className={styles.toggleCount}>{showAll ? '↑' : '↓'}</span>
-          </button>
+                setShowAll(prev => !prev);
+              }}
+              className={styles.toggleBtn}
+              aria-expanded={showAll}
+            >
+              <span className={styles.btnShimmer} />
+              <span className={styles.btnGlassGloss} />
+              <span>{showAll ? 'Show Fewer Practices' : `View All ${services.length} Practices`}</span>
+              <span className={styles.toggleCount}>{showAll ? '↑' : '↓'}</span>
+            </button>
+          </div>
         </div>
 
         {/* Centered High-Impact Skeuomorphic CTA Card */}
@@ -388,7 +394,7 @@ export default function ServicesSection() {
                   <Link href="/contact" className={styles.btnCtaMain}>
                     <span className={styles.btnShimmer} />
                     <span className={styles.btnGlassGloss} />
-                    <span className={styles.btnLabel}>Book Free Strategy Consultation</span>
+                    <span className={styles.btnLabel}>Claim Free Growth Audit</span>
                     <span className={styles.btnArrow}>→</span>
                   </Link>
                 </div>

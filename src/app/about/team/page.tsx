@@ -5,8 +5,8 @@ import CTASection from '@/app/_components/CTASection';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Executive Leadership & Team — Nova Spark',
-  description: 'Meet the executive leadership, growth strategists, operations leads, and engineers building scalable brands at Nova Spark in Bhubaneswar.',
+  title: 'Executive Leadership & Team — Marketing Copilot',
+  description: 'Meet the executive leadership, growth strategists, operations leads, and engineers building scalable brands at Marketing Copilot in Bhubaneswar.',
 };
 
 const founders = [
@@ -16,7 +16,7 @@ const founders = [
     dept: 'Executive Leadership',
     image: '/images/team/exec_1.png',
     imagePosition: '50% 10%',
-    bio: 'Founder of Nova Spark, a digital marketing agency in Bhubaneswar, driving innovation, digital transformation, and sustainable business growth through strategy, creativity, and measurable results.',
+    bio: 'Founder of Marketing Copilot, a digital marketing agency in Bhubaneswar, driving innovation, digital transformation, and sustainable business growth through strategy, creativity, and measurable results.',
     quote: 'We drive innovation, digital transformation, and sustainable business growth through strategy, creativity, and measurable results.',
     linkedin: 'https://linkedin.com',
   },
@@ -39,7 +39,7 @@ const leaders = [
     dept: 'Growth & Strategy',
     image: '/images/team/exec_3.png',
     imagePosition: '50% 12%',
-    bio: 'Spearheading commercial growth, strategic enterprise acquisitions, and high-value brand partnerships to expand Nova Spark\'s market footprint across India.',
+    bio: 'Spearheading commercial growth, strategic enterprise acquisitions, and high-value brand partnerships to expand Marketing Copilot\'s market footprint across India.',
     quote: 'Building high-leverage growth partnerships that unlock compounding market valuation for ambitious brands.',
     linkedin: 'https://linkedin.com',
   },
@@ -260,7 +260,7 @@ export default function TeamPage() {
                 Work Culture & Values
               </div>
               <h2 className="display-md">
-                How we operate at Nova Spark.
+                How we operate at Marketing Copilot.
               </h2>
             </ScrollReveal>
             <div className={styles.cultureGrid}>

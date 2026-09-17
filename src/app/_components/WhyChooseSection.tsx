@@ -19,7 +19,7 @@ export default function WhyChooseSection() {
           <ScrollReveal className="text-center">
             <div className="eyebrow" style={{ margin: '0 auto 10px' }}>
               <span className={styles.sparkleIcon}>✨</span>
-              <span>Why Choose Nova Spark</span>
+              <span>Why Choose Marketing Copilot</span>
             </div>
             <h3 className={`display-lg ${styles.headline}`}>
               Turning Ideas Into <span className="accent-gradient">Measurable Business Growth.</span>
@@ -225,15 +225,21 @@ export default function WhyChooseSection() {
                   Sustainable Growth Architecture &amp; Execution
                 </h4>
                 <p className={styles.playbookText}>
-                  Our Online Marketing Services are designed to support compounding growth, not just short-term wins. Nova Spark brings together technology, creativity, strategy, and performance marketing to help your business scale.
+                  Our Online Marketing Services are designed to support compounding growth, not just short-term wins. Marketing Copilot brings together technology, creativity, strategy, and performance marketing to help your business scale.
                 </p>
               </div>
 
               <div className={styles.playbookRight}>
-                <Link href="/contact" className={styles.btnConsultation}>
-                  <span>Get Free Consultation</span>
-                  <span className={styles.btnArrow}>→</span>
-                </Link>
+                <div className={styles.borderBeamWrapper}>
+                  <div className={styles.borderGlowAmbient} />
+                  <div className={styles.borderBeamSpin} />
+                  <Link href="/contact" className={styles.btnConsultation}>
+                    <span className={styles.btnShimmer} />
+                    <span className={styles.btnGlassGloss} />
+                    <span>Claim Free Growth Audit</span>
+                    <span className={styles.btnArrow}>→</span>
+                  </Link>
+                </div>
               </div>
             </div>
           </ScrollReveal>

@@ -118,7 +118,7 @@ const articles: Record<string, ArticleData> = {
     ],
     content: [
       'Too many agency reporting dashboards celebrate 10X ROAS metrics that merely capture customers who were already going to purchase directly.',
-      'At Nova Spark, we enforce ruthless attribution integrity. We separate branded search campaigns from non-branded discovery, calculate true customer lifetime value (LTV), and optimize for bottom-line contribution margin.',
+      'At Marketing Copilot, we enforce ruthless attribution integrity. We separate branded search campaigns from non-branded discovery, calculate true customer lifetime value (LTV), and optimize for bottom-line contribution margin.',
       'When every rupee of media spend is held accountable to incremental profit, scaling budgets from ₹5 Lakhs to ₹50 Lakhs becomes a predictable financial decision.'
     ]
   },
@@ -147,9 +147,9 @@ const articles: Record<string, ArticleData> = {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const a = articles[slug];
-  if (!a) return { title: 'Article Not Found — Nova Spark' };
+  if (!a) return { title: 'Article Not Found — Marketing Copilot' };
   return {
-    title: `${a.title} — Nova Spark Insights`,
+    title: `${a.title} — Marketing Copilot Insights`,
     description: a.summary,
   };
 }
@@ -228,7 +228,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             <div className={styles.footerLeft}>
               <h4 className={styles.footerAuthorName}>Written by {a.author}</h4>
               <p className={styles.footerAuthorBio}>
-                Senior growth operator and partner at Nova Spark. Engineering high-velocity digital marketing frameworks for ambitious brands across India.
+                Senior growth operator and partner at Marketing Copilot. Engineering high-velocity digital marketing frameworks for ambitious brands across India.
               </p>
             </div>
             <Link href="/contact" className="btn btn-primary">

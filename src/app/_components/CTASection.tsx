@@ -16,7 +16,7 @@ export default function CTASection() {
               Ready to Scale <span className="accent-gradient">With a Dedicated Growth Partner?</span>
             </h2>
             <p className={`body-lg ${styles.sub}`} style={{ maxWidth: 760, margin: '0 auto 32px' }}>
-              Whether you want to improve search engine rankings, generate leads, connect with more customers using paid ads, or create a stronger online presence, Nova Spark can help you build a plan that matches your business goals.<br /><br />
+              Whether you want to improve search engine rankings, generate leads, connect with more customers using paid ads, or create a stronger online presence, Marketing Copilot can help you build a plan that matches your business goals.<br /><br />
               Understand where your business stands online and find chances to grow.
             </p>
             <div className={styles.actions}>
@@ -26,15 +26,23 @@ export default function CTASection() {
                 <div className={styles.borderBeamSpin} />
                 <Link href="/contact" className={styles.btnStartPrimary}>
                   <span className={styles.btnShimmer} />
-                  <span>Book a Free Consultation</span>
+                  <span className={styles.btnGlassGloss} />
+                  <span>Claim Free Growth Audit</span>
                   <span className={styles.btnArrow}>→</span>
                 </Link>
               </div>
 
-              <Link href="/work" className={styles.btnExploreSecondary}>
-                <span className={styles.exploreIcon}>✦</span>
-                <span>View Our Work</span>
-              </Link>
+              <div className={styles.borderBeamWrapper}>
+                <div className={styles.borderGlowAmbient} />
+                <div className={styles.borderBeamSpin} />
+                <Link href="/portfolio" className={styles.btnExploreSecondary}>
+                  <span className={styles.btnShimmer} />
+                  <span className={styles.btnGlassGloss} />
+                  <span className={styles.exploreIcon}>✦</span>
+                  <span>View Our Work</span>
+                  <span className={styles.btnArrow}>→</span>
+                </Link>
+              </div>
             </div>
 
             <div className={styles.proof}>

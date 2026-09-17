@@ -14,10 +14,10 @@ import FAQSection from '../_components/FAQSection';
 import CTASection from '../_components/CTASection';
 
 export const metadata: Metadata = {
-  title: 'Digital Marketing company in Bhubaneswar | Nova Spark',
-  description: 'Discover top-notch digital marketing company in Bhubaneswar. From SEO to social media, we help you connect with your audience and increase sales!',
+  title: 'Digital Marketing Company in Bhubaneswar | Marketing Copilot',
+  description: 'Bhubaneswar’s leading digital marketing company. Drive revenue, high-intent leads, and top Google rankings with Marketing Copilot.',
   alternates: {
-    canonical: 'https://novasparkdigitalmarketingagency.com/digital-marketing-company-in-bhubaneswar',
+    canonical: 'https://marketingcopilot.in/digital-marketing-company-in-bhubaneswar',
   },
 };
 

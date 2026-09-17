@@ -58,7 +58,7 @@ export default function ContactPage() {
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hi Nova Spark, I would like to discuss a project. Name: ${form.name || 'Client'}, Company: ${form.company || 'N/A'}, Services: ${form.services.join(', ') || 'All Services'}, Budget: ${form.budget}.`
+    `Hi Marketing Copilot, I would like to discuss a project. Name: ${form.name || 'Client'}, Company: ${form.company || 'N/A'}, Services: ${form.services.join(', ') || 'All Services'}, Budget: ${form.budget}.`
   );
 
   return (
@@ -89,7 +89,7 @@ export default function ContactPage() {
                   Have a business goal, a marketing challenge, or a new idea? Tell us about it.
                 </p>
                 <p className={styles.subBody}>
-                  Nova Spark is a Digital Marketing Company in Bhubaneswar helping brands grow through strategic SEO, performance marketing, social media, web development, and AI-driven digital solutions.
+                  Marketing Copilot is a Digital Marketing Company in Bhubaneswar helping brands grow through strategic SEO, performance marketing, social media, web development, and AI-driven digital solutions.
                 </p>
               </div>
 

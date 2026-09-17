@@ -53,8 +53,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-full);
-  padding: 2.2px;
+  border-radius: 9999px !important;
+  clip-path: inset(0 round 9999px);
+  -webkit-clip-path: inset(0 round 9999px);
+  padding: 2.4px;
   overflow: hidden;
   isolation: isolate;
   background: rgba(15, 23, 42, 0.08);
@@ -140,7 +142,7 @@
   justify-content: center;
   gap: 9px;
   padding: 14.5px 32px;
-  border-radius: var(--radius-full);
+  border-radius: 9999px !important;
   background: linear-gradient(135deg, #122E9E 0%, #0B2093 50%, #0D007F 100%);
   color: #FFFFFF !important;
   font-family: var(--font-display);
@@ -206,54 +208,48 @@
 
 .btnExploreSecondary {
   position: relative;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 15px 28px;
-  border-radius: var(--radius-full);
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
-  color: #000000;
+  padding: 14.5px 30px;
+  border-radius: 9999px !important;
+  background: linear-gradient(135deg, #122E9E 0%, #0B2093 50%, #0D007F 100%);
+  color: #FFFFFF !important;
   font-family: var(--font-display);
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   text-decoration: none;
-  border: 1.5px solid #CBD5E1;
+  overflow: hidden;
   box-shadow: 
-    inset 0 2px 0 #FFFFFF,
-    inset 0 -1.5px 0 rgba(15, 23, 42, 0.05),
-    0 6px 18px rgba(15, 23, 42, 0.06),
-    0 1px 2px rgba(15, 23, 42, 0.04);
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1.5px 0 rgba(0, 0, 0, 0.4),
+    0 8px 24px rgba(11, 32, 147, 0.45);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .exploreIcon {
-  color: #0B2093;
-  font-size: 13px;
+  color: #FFB800;
+  font-size: 14px;
   transition: transform 0.25s ease, color 0.25s ease;
 }
 
 .btnExploreSecondary:hover {
-  background: linear-gradient(180deg, #FFFFFF 0%, #EEF2FF 100%);
-  border-color: #0B2093;
-  color: #0B2093;
-  transform: translateY(-2.5px);
-  box-shadow: 
-    inset 0 2px 0 #FFFFFF,
-    0 10px 24px -4px rgba(11, 32, 147, 0.2),
-    0 0 0 1px rgba(11, 32, 147, 0.3);
+  background: linear-gradient(135deg, #1D4ED8 0%, #0B2093 50%, #0D007F 100%);
+  color: #FFFFFF !important;
 }
 
 .btnExploreSecondary:hover .exploreIcon {
   transform: rotate(45deg) scale(1.2);
-  color: #0D007F;
+  color: #FDE047;
 }
 
 .btnExploreSecondary:active {
   transform: translateY(1px);
-  background: #E2E8F0;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .proof {

@@ -163,7 +163,7 @@ export default function RealGrowthSection() {
                     {/* Solution Block */}
                     <div className={styles.specBox}>
                       <div className={styles.specHeader}>
-                        <span className={styles.solutionTag}>🚀 Nova Spark Solution</span>
+                        <span className={styles.solutionTag}>🚀 Marketing Copilot Solution</span>
                       </div>
                       <p className={styles.specText}>{study.solution}</p>
                     </div>
@@ -187,25 +187,29 @@ export default function RealGrowthSection() {
 
                   {/* Bottom Action: Glossy Skeuomorphic Case Study Download Button */}
                   <div className={styles.cardActions}>
-                    <a
-                      href={study.pdfUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.cardBtn}
-                      download
-                    >
-                      <span className={styles.btnShimmer} />
-                      <span className={styles.btnGlassGloss} />
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" className={styles.btnDownloadIcon}>
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                        <polyline points="14 2 14 8 20 8" />
-                        <line x1="12" y1="18" x2="12" y2="12" />
-                        <line x1="9" y1="15" x2="12" y2="18" />
-                        <line x1="15" y1="15" x2="12" y2="18" />
-                      </svg>
-                      <span className={styles.btnLabel}>Download Complete Case Study (PDF)</span>
-                      <span className={styles.btnArrow}>→</span>
-                    </a>
+                    <div className={styles.borderBeamWrapper}>
+                      <div className={styles.borderGlowAmbient} />
+                      <div className={styles.borderBeamSpin} />
+                      <a
+                        href={study.pdfUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.cardBtn}
+                        download
+                      >
+                        <span className={styles.btnShimmer} />
+                        <span className={styles.btnGlassGloss} />
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" className={styles.btnDownloadIcon}>
+                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                          <polyline points="14 2 14 8 20 8" />
+                          <line x1="12" y1="18" x2="12" y2="12" />
+                          <line x1="9" y1="15" x2="12" y2="18" />
+                          <line x1="15" y1="15" x2="12" y2="18" />
+                        </svg>
+                        <span className={styles.btnLabel}>Download Complete Case Study (PDF)</span>
+                        <span className={styles.btnArrow}>→</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>

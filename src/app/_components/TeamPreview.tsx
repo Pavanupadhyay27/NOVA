@@ -10,7 +10,7 @@ const founders = [
     dept: 'Executive Leadership',
     image: '/images/team/exec_1.png',
     imagePosition: '50% 10%',
-    bio: 'Founder of Nova Spark, driving innovation, digital transformation, and sustainable business growth through strategy, creativity, and measurable results.',
+    bio: 'Founder of Marketing Copilot, driving innovation, digital transformation, and sustainable business growth through strategy, creativity, and measurable results.',
     quote: 'We drive innovation, digital transformation, and sustainable business growth through strategy, creativity, and measurable results.',
     color: '#0B2093',
     linkedin: 'https://linkedin.com',
@@ -35,7 +35,7 @@ const leaders = [
     dept: 'Growth & Strategy',
     image: '/images/team/exec_3.png',
     imagePosition: '50% 12%',
-    bio: 'Spearheading commercial growth, strategic enterprise acquisitions, and high-value brand partnerships to expand Nova Spark\'s market footprint.',
+    bio: 'Spearheading commercial growth, strategic enterprise acquisitions, and high-value brand partnerships to expand Marketing Copilot\'s market footprint.',
     quote: 'Building high-leverage growth partnerships that unlock compounding market valuation.',
     color: '#EC4899',
     linkedin: 'https://linkedin.com',
@@ -85,9 +85,16 @@ export default function TeamPreview() {
           </ScrollReveal>
 
           <ScrollReveal delay={100}>
-            <Link href="/about/team" className="btn btn-secondary">
-              View Full Team →
-            </Link>
+            <div className={styles.borderBeamWrapper}>
+              <div className={styles.borderGlowAmbient} />
+              <div className={styles.borderBeamSpin} />
+              <Link href="/about/team" className={styles.btnTeam}>
+                <span className={styles.btnShimmer} />
+                <span className={styles.btnGlassGloss} />
+                <span>View Full Team</span>
+                <span className={styles.btnArrow}>→</span>
+              </Link>
+            </div>
           </ScrollReveal>
         </div>
 

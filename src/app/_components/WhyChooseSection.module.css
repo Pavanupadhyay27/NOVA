@@ -489,35 +489,162 @@
   box-shadow: 0 4px 16px rgba(56, 189, 248, 0.25);
 }
 
-.btnConsultation {
+.borderBeamWrapper {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 12px 24px;
-  background: #FFFFFF;
-  color: #0F172A;
-  font-family: var(--font-display);
-  font-size: 13.5px;
-  font-weight: 800;
-  border-radius: 9999px;
+  border-radius: 9999px !important;
+  clip-path: inset(0 round 9999px);
+  -webkit-clip-path: inset(0 round 9999px);
+  padding: 2.4px;
+  overflow: hidden;
+  isolation: isolate;
+  background: rgba(15, 23, 42, 0.08);
+  box-shadow: 
+    0 10px 28px -6px rgba(11, 32, 147, 0.45),
+    0 4px 14px rgba(15, 23, 42, 0.1);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease;
   text-decoration: none;
-  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.borderBeamWrapper:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 
+    0 18px 40px -6px rgba(11, 32, 147, 0.6),
+    0 0 32px rgba(245, 158, 11, 0.5);
+}
+
+.borderGlowAmbient {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 280%;
+  height: 560%;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 180deg,
+    rgba(11, 32, 147, 0.3) 220deg,
+    rgba(29, 78, 216, 0.8) 260deg,
+    rgba(56, 189, 248, 0.9) 290deg,
+    rgba(253, 224, 71, 0.95) 320deg,
+    #F59E0B 345deg,
+    #FFB800 355deg,
+    rgba(217, 119, 6, 0.7) 360deg
+  );
+  animation: whyBeamSpin 3s linear infinite;
+  filter: blur(14px);
+  opacity: 0.95;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.borderBeamSpin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 600%;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 170deg,
+    rgba(11, 32, 147, 0) 210deg,
+    #0B2093 245deg,
+    #1D4ED8 275deg,
+    #38BDF8 300deg,
+    #FDE047 325deg,
+    #FFB800 345deg,
+    #FF8A00 355deg,
+    #D97706 360deg
+  );
+  animation: whyBeamSpin 3s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes whyBeamSpin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.borderBeamWrapper:hover .borderBeamSpin,
+.borderBeamWrapper:hover .borderGlowAmbient {
+  animation-duration: 1.8s;
+}
+
+.btnConsultation {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 28px;
+  background: linear-gradient(135deg, #122E9E 0%, #0B2093 50%, #0D007F 100%);
+  color: #FFFFFF !important;
+  font-family: var(--font-display);
+  font-size: 14.5px;
+  font-weight: 800;
+  border-radius: 9999px !important;
+  text-decoration: none;
+  overflow: hidden;
+  box-shadow: 
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1.5px 0 rgba(0, 0, 0, 0.4),
+    0 8px 24px rgba(11, 32, 147, 0.45);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
 }
 
 .btnConsultation:hover {
-  background: #F8FAFC;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(135deg, #1D4ED8 0%, #0B2093 50%, #0D007F 100%);
+}
+
+.btnShimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.38) 50%,
+    transparent 100%
+  );
+  transform: skewX(-22deg);
+  animation: whyShimmerPass 3.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes whyShimmerPass {
+  0% { left: -100%; }
+  35%, 100% { left: 160%; }
+}
+
+.btnGlassGloss {
+  position: absolute;
+  top: 1px;
+  left: 8%;
+  right: 8%;
+  height: 48%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.03) 100%);
+  border-radius: 999px;
+  pointer-events: none;
 }
 
 .btnArrow {
-  transition: transform 0.25s ease;
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.2s ease;
 }
 
-.btnConsultation:hover .btnArrow {
+.borderBeamWrapper:hover .btnArrow {
   transform: translateX(4px);
 }
 

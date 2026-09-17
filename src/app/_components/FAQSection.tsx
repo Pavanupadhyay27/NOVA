@@ -11,8 +11,8 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    q: 'What Digital Marketing Services Does Nova Spark Offer in Bhubaneswar?',
-    a: 'Nova Spark offers full-service digital marketing services such as SEO, Google Ads, Meta Ads, social media marketing, website solutions, content marketing, and more, which are specific to your business goals.',
+    q: 'What Digital Marketing Services Does Marketing Copilot Offer in Bhubaneswar?',
+    a: 'Marketing Copilot offers full-service digital marketing services such as SEO, Google Ads, Meta Ads, social media marketing, website solutions, content marketing, and more, which are specific to your business goals.',
   },
   {
     q: 'Can You Help My Business Rank on Google in Bhubaneswar?',
@@ -27,19 +27,19 @@ const faqs: FAQItem[] = [
     a: 'Yes, our online marketing services are tailored for businesses of various sizes. We create practical strategies around your budget, goals, audience, and industry to improve visibility, generate leads, and support growth.',
   },
   {
-    q: 'What makes Nova Spark the best digital marketing company in Bhubaneswar?',
+    q: 'What makes Marketing Copilot the best digital marketing company in Bhubaneswar?',
     a: (
       <>
-        <Link href="https://novasparkdigitalmarketingagency.com/" className={styles.brandLink}>
-          Nova Spark
+        <Link href="/" className={styles.brandLink}>
+          Marketing Copilot
         </Link>{' '}
         is a blend of strategy, creativity, data, and performance, offering focused digital marketing services. We deliver measurable results, clear communication, and tailored digital marketing solutions that meet your business goals.
       </>
     ),
   },
   {
-    q: 'What industries does Nova Spark work with?',
-    a: 'We work with IT and app businesses, Yoga and Wellness, Travel Agencies, Interior Design, EdTech, e-commerce, real estate, healthcare, education, D2C brands, and professional services.',
+    q: 'What industries does Marketing Copilot work with?',
+    a: 'We work with IT and app businesses, Yoga and Wellness, Travel Agencies, Interior Design, EdTech, e-commerce, real estate, healthcare, education, D2C brands, and professional services in Bhubaneswar and across Odisha.',
   },
 ];
 

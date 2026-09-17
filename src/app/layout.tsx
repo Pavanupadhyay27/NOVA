@@ -5,70 +5,70 @@ import Footer from "@/components/Footer";
 import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://novasparkdigitalmarketingagency.com"),
+  metadataBase: new URL("https://marketingcopilot.in"),
   title: {
-    default: "Digital Marketing company in Bhubaneswar | Nova Spark",
-    template: "%s | Nova Spark"
+    default: "Digital Marketing Company in Bhubaneswar | Marketing Copilot",
+    template: "%s | Marketing Copilot"
   },
-  description: "Discover top-notch digital marketing company in Bhubaneswar. From SEO to social media, we help you connect with your audience and increase sales!",
+  description: "Bhubaneswar's premier digital marketing agency. From SEO, Google Ads, Meta Ads to web development & high-converting content, Marketing Copilot scales your revenue.",
   keywords: [
     "Digital Marketing company in Bhubaneswar",
+    "Marketing Copilot",
+    "Marketing Copilot Bhubaneswar",
     "Digital Marketing Services",
     "Online marketing Services",
     "Digital Marketing Agency",
     "Digital Marketing Solutions",
     "Best Digital Marketing Agency in Bhubaneswar",
-    "SEO",
+    "SEO Bhubaneswar",
     "Performance Marketing",
     "Social Media Marketing",
     "Bhubaneswar"
   ],
-  authors: [{ name: "Nova Spark" }],
+  authors: [{ name: "Marketing Copilot" }],
   openGraph: {
-    title: "Digital Marketing company in Bhubaneswar | Nova Spark",
-    description: "Discover top-notch digital marketing company in Bhubaneswar. From SEO to social media, we help you connect with your audience and increase sales!",
-    url: "https://novasparkdigitalmarketingagency.com/",
-    siteName: "Nova Spark Digital Marketing Agency",
+    title: "Digital Marketing Company in Bhubaneswar | Marketing Copilot",
+    description: "Bhubaneswar's premier digital marketing agency. We engineer compounding search rankings, paid ads ROI, and modern websites for brands across Odisha.",
+    url: "https://marketingcopilot.in/",
+    siteName: "Marketing Copilot Digital Marketing Agency",
     type: "website",
     images: [
       {
-        url: "https://novasparkdigitalmarketingagency.com/wp-content/uploads/2025/12/Nova-Spark-wo-bg-Logo.png",
+        url: "/images/marketing-copilot-logo.png",
         width: 1200,
         height: 630,
-        alt: "Nova Spark Digital Marketing Agency"
+        alt: "Marketing Copilot Digital Marketing Agency Bhubaneswar"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Digital Marketing company in Bhubaneswar | Nova Spark",
-    description: "Discover top-notch digital marketing company in Bhubaneswar. From SEO to social media, we help you connect with your audience and increase sales!",
-    images: ["https://novasparkdigitalmarketingagency.com/wp-content/uploads/2025/12/Nova-Spark-wo-bg-Logo.png"]
+    title: "Digital Marketing Company in Bhubaneswar | Marketing Copilot",
+    description: "Bhubaneswar's premier digital marketing agency. Scale your business with Marketing Copilot.",
+    images: ["/images/marketing-copilot-logo.png"]
   },
   icons: {
     icon: [
-      { url: '/favicon.ico?v=4', sizes: 'any' },
-      { url: '/favicon.png?v=4', type: 'image/png' },
-      { url: '/favicon-32x32.png?v=4', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon-16x16.png?v=4', sizes: '16x16', type: 'image/png' }
+      { url: '/icon.png', type: 'image/png' },
+      { url: '/images/logo-emblem.png', type: 'image/png' },
     ],
-    shortcut: ['/favicon.png?v=4'],
+    shortcut: ['/icon.png'],
     apple: [
-      { url: '/apple-touch-icon.png?v=4', sizes: '180x180', type: 'image/png' }
+      { url: '/icon.png', sizes: '180x180', type: 'image/png' }
     ]
   },
   alternates: {
-    canonical: 'https://novasparkdigitalmarketingagency.com/digital-marketing-company-in-bhubaneswar',
+    canonical: 'https://marketingcopilot.in/digital-marketing-company-in-bhubaneswar',
   }
 };
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "name": "Nova Spark Digital Marketing Agency",
-  "image": "https://novasparkdigitalmarketingagency.com/wp-content/uploads/2025/12/Nova-Spark-wo-bg-Logo.png",
-  "@id": "",
-  "url": "https://novasparkdigitalmarketingagency.com/",
+  "name": "Marketing Copilot — Digital Marketing Agency",
+  "image": "/images/marketing-copilot-logo.png",
+  "@id": "https://marketingcopilot.in",
+  "url": "https://marketingcopilot.in/",
   "telephone": "+91 82807 88689",
   "address": {
     "@type": "PostalAddress",
@@ -100,10 +100,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="canonical" href="https://novasparkdigitalmarketingagency.com/digital-marketing-company-in-bhubaneswar" />
-        <link rel="icon" href="/images/logo.png" type="image/png" />
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/images/logo.png" />
+        <link rel="canonical" href="https://marketingcopilot.in/digital-marketing-company-in-bhubaneswar" />
+        <link rel="icon" href="/icon.png" type="image/png" />
+        <link rel="shortcut icon" href="/icon.png" />
+        <link rel="apple-touch-icon" href="/icon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />

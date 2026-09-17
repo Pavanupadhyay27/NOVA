@@ -5,7 +5,7 @@ import styles from './WhatsAppFloatingButton.module.css';
 export default function WhatsAppFloatingButton() {
   const [isClicked, setIsClicked] = useState(false);
 
-  const whatsappUrl = 'https://wa.me/918280788689?text=Hi%20Nova%20Spark%2C%20I%20would%20like%20to%20know%20more%20about%20your%20digital%20marketing%20services.';
+  const whatsappUrl = 'https://wa.me/918280788689?text=Hi%20Marketing%20Copilot%2C%20I%20would%20like%20to%20know%20more%20about%20your%20digital%20marketing%20services.';
 
   const handleClick = () => {
     setIsClicked(true);
@@ -22,7 +22,7 @@ export default function WhatsAppFloatingButton() {
         rel="noopener noreferrer"
         onClick={handleClick}
         className={`${styles.whatsappBtn} ${isClicked ? styles.btnClicked : ''}`}
-        aria-label="Chat with Nova Spark on WhatsApp (+91 82807 88689)"
+        aria-label="Chat with Marketing Copilot on WhatsApp (+91 82807 88689)"
       >
         {/* Ambient Pulsing Radar Ring */}
         <span className={styles.pulseRadar} />

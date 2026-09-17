@@ -3,8 +3,8 @@ import Link from 'next/link';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Thank You | Nova Spark — Digital Marketing Agency',
-  description: 'Thank you for reaching out to Nova Spark. We have received your inquiry and will be in touch with your custom roadmap.',
+  title: 'Thank You | Marketing Copilot — Digital Marketing Agency',
+  description: 'Thank you for reaching out to Marketing Copilot. We have received your inquiry and will be in touch with your custom roadmap.',
 };
 
 export default function ThankYouPage() {
@@ -63,12 +63,12 @@ export default function ThankYouPage() {
             </svg>
           </Link>
 
-          <Link href="/work" className={styles.secondaryBtn}>
+          <Link href="/portfolio" className={styles.secondaryBtn}>
             Explore Case Studies
           </Link>
 
           <a
-            href="https://wa.me/918280788689?text=Hi%20Nova%20Spark%2C%20I%20just%20submitted%20my%20project%20inquiry."
+            href="https://wa.me/918280788689?text=Hi%20Marketing%20Copilot%2C%20I%20just%20submitted%20my%20project%20inquiry."
             target="_blank"
             rel="noopener noreferrer"
             className={styles.whatsappBtn}

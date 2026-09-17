@@ -6,8 +6,8 @@ import CTASection from '@/app/_components/CTASection';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'About Nova Spark — Digital Growth Agency in Bhubaneswar',
-  description: 'We believe growth should be designed, not hoped for. Learn about our story, philosophy, and the team behind the work.',
+  title: 'About Marketing Copilot — Digital Growth Agency in Bhubaneswar',
+  description: 'We believe growth should be designed, not hoped for. Learn about our story, philosophy, and the team behind Marketing Copilot in Bhubaneswar.',
 };
 
 const timeline = [
@@ -43,7 +43,7 @@ export default function AboutPage() {
                 <span className="accent-gradient">should be engineered.</span>
               </h1>
               <p className={`body-lg ${styles.sub}`}>
-                Nova Spark is a premier digital growth agency based in Bhubaneswar. We combine strategy, creativity, technology, and performance marketing to build revenue engines that make brands scale.
+                Marketing Copilot is a premier digital growth agency based in Bhubaneswar. We combine strategy, creativity, technology, and performance marketing to build revenue engines that make brands scale.
               </p>
             </ScrollReveal>
           </div>
@@ -56,7 +56,7 @@ export default function AboutPage() {
               <div className={styles.imageBox}>
                 <Image
                   src="/images/about_hero.jpg"
-                  alt="Nova Spark Studio and Growth Hub"
+                  alt="Marketing Copilot Studio and Growth Hub"
                   fill
                   priority
                   className={styles.image}
@@ -134,7 +134,7 @@ export default function AboutPage() {
                 <div className={styles.teamBannerImgBox}>
                   <Image
                     src="/images/team_office.jpg"
-                    alt="Nova Spark Team"
+                    alt="Marketing Copilot Team"
                     fill
                     className={styles.teamBannerImg}
                     sizes="(max-width: 900px) 100vw, 50vw"

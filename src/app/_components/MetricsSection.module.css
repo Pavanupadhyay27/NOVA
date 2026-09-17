@@ -326,7 +326,9 @@
   align-items: center;
   justify-content: center;
   padding: 2.5px;
-  border-radius: var(--radius-full);
+  border-radius: 9999px !important;
+  clip-path: inset(0 round 9999px);
+  -webkit-clip-path: inset(0 round 9999px);
   overflow: hidden;
   background: rgba(15, 23, 42, 0.08);
   box-shadow: 
@@ -411,7 +413,7 @@
   justify-content: center;
   gap: 10px;
   padding: 15px 34px;
-  border-radius: var(--radius-full);
+  border-radius: 9999px !important;
   background: linear-gradient(135deg, #122E9E 0%, #0B2093 50%, #0D007F 100%);
   color: #FFFFFF !important;
   font-family: var(--font-display);

@@ -6,7 +6,7 @@ import styles from './QuotesSection.module.css';
 const testimonials = [
   {
     id: 1,
-    quote: "Nova Spark didn't just manage our ads — they completely re-engineered our customer acquisition architecture. Scaling from ₹5L/month to over ₹2Cr+ monthly revenue in under six months was something we didn't think was possible in our category.",
+    quote: "Marketing Copilot didn't just manage our ads — they completely re-engineered our customer acquisition architecture. Scaling from ₹5L/month to over ₹2Cr+ monthly revenue in under six months was something we didn't think was possible in our category.",
     author: 'Sameer Meher',
     role: 'Co-Founder & CEO',
     company: 'UrbanDrape E-Commerce',
@@ -19,7 +19,7 @@ const testimonials = [
   },
   {
     id: 2,
-    quote: "Finding an agency that truly understands high-ticket buyer psychology and technical SEO is rare. Nova Spark positioned our luxury properties at #1 on Google and generated 90+ high-net-worth inquiries every single month.",
+    quote: "Finding an agency that truly understands high-ticket buyer psychology and technical SEO is rare. Marketing Copilot positioned our luxury properties at #1 on Google and generated 90+ high-net-worth inquiries every single month.",
     author: 'Alok Mohanty',
     role: 'Managing Director',
     company: 'Utkal Royal Residences',
@@ -45,7 +45,7 @@ const testimonials = [
   },
   {
     id: 4,
-    quote: "In the luxury hospitality space, timing and hype are everything. Nova Spark's local SEO and influencer drop campaigns made our dining locations the most sought-after weekend reservation spots across the state.",
+    quote: "In the luxury hospitality space, timing and hype are everything. Marketing Copilot's local SEO and influencer drop campaigns made our dining locations the most sought-after weekend reservation spots across the state.",
     author: 'Chef Debashish Roy',
     role: 'Chief Culinary Officer',
     company: 'Noir Dining Experience',
@@ -130,7 +130,7 @@ export default function QuotesSection() {
             <span className="accent-gradient">Big Ambitions</span>
           </h3>
           <p className={`body-lg ${styles.sectionSub}`}>
-            Real stories from founders, directors, and marketing leaders who trusted Nova Spark to turn digital marketing into stronger visibility, better leads, and measurable results.
+            Real stories from founders, directors, and marketing leaders who trusted Marketing Copilot to turn digital marketing into stronger visibility, better leads, and measurable results.
           </p>
         </ScrollReveal>
 

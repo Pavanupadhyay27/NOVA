@@ -10,7 +10,7 @@ export default function QuickConnectMapSection() {
   const phone = '+91 82807 88689';
   const rawPhone = '+918280788689';
   const email = 'connect@novasparkdigitalmarketingagency.com';
-  const whatsappUrl = 'https://wa.me/918280788689?text=Hi%20Nova%20Spark%2C%20I%20would%20like%20to%20discuss%20a%20project%20for%20my%20brand.';
+  const whatsappUrl = 'https://wa.me/918280788689?text=Hi%20Marketing%20Copilot%2C%20I%20would%20like%20to%20discuss%20a%20project%20for%20my%20brand.';
   const address = 'Mallick Complex, Unit 3, Kharvela Nagar, Bhubaneswar, Odisha 751001';
   const mapsSearchUrl = 'https://www.google.com/maps/search/?api=1&query=Mallick+Complex,+Unit+3,+Kharvela+Nagar,+Bhubaneswar,+Odisha+751001';
   const mapsEmbedUrl = 'https://maps.google.com/maps?q=Mallick+Complex,+Unit+3,+Kharvela+Nagar,+Bhubaneswar,+Odisha+751001&t=&z=16&ie=UTF8&iwloc=&output=embed';
@@ -249,10 +249,16 @@ export default function QuickConnectMapSection() {
                   <span className={styles.footerDot} />
                   <span>In-person consultations available by appointment</span>
                 </div>
-                <Link href="/contact" className={styles.footerActionBtn}>
-                  <span>Start a Project</span>
-                  <span className={styles.arrowIcon}>→</span>
-                </Link>
+                <div className={styles.borderBeamWrapper}>
+                  <div className={styles.borderGlowAmbient} />
+                  <div className={styles.borderBeamSpin} />
+                  <Link href="/contact" className={styles.footerActionBtn}>
+                    <span className={styles.btnShimmer} />
+                    <span className={styles.btnGlassGloss} />
+                    <span>Claim Free Growth Audit</span>
+                    <span className={styles.arrowIcon}>→</span>
+                  </Link>
+                </div>
               </div>
             </div>
           </ScrollReveal>
@@ -265,7 +271,7 @@ export default function QuickConnectMapSection() {
               {/* Full Viewport Google Maps Embed */}
               <div className={styles.mapViewport}>
                 <iframe
-                  title="Nova Spark Studio Location Map"
+                  title="Marketing Copilot Studio Location Map"
                   src={mapsEmbedUrl}
                   width="100%"
                   height="100%"
@@ -289,8 +295,8 @@ export default function QuickConnectMapSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.pin3dAnchor}
-                    title="Nova Spark Studio — Click to open in Google Maps"
-                    aria-label="Open Nova Spark Studio location on Google Maps"
+                    title="Marketing Copilot Studio — Click to open in Google Maps"
+                    aria-label="Open Marketing Copilot Studio location on Google Maps"
                   >
                     <div className={styles.pin3dFloatingBody}>
                       <svg width="44" height="54" viewBox="0 0 44 54" fill="none" className={styles.pinSvg}>

@@ -9,7 +9,7 @@ export default function MobileBottomBar() {
       <a
         href="tel:+918280788689"
         className={styles.callBtn}
-        aria-label="Call Nova Spark at +91 82807 88689"
+        aria-label="Call Marketing Copilot at +91 82807 88689"
       >
         <svg
           className={styles.callIcon}
