@@ -4,37 +4,58 @@
 }
 
 .header {
+  margin-bottom: 32px;
+}
+
+.bottomCtaRow {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 28px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.ctaReveal {
+  display: inline-flex !important;
+  width: auto !important;
+  max-width: fit-content !important;
+  align-items: center;
+  justify-content: center;
+  align-self: center !important;
+  margin: 0 auto !important;
 }
 
 .borderBeamWrapper {
   position: relative;
-  display: inline-flex;
+  display: inline-flex !important;
+  width: auto !important;
+  max-width: fit-content !important;
   align-items: center;
   justify-content: center;
   border-radius: 9999px !important;
   clip-path: inset(0 round 9999px);
   -webkit-clip-path: inset(0 round 9999px);
-  padding: 2.2px;
+  padding: 1.8px;
   overflow: hidden;
   isolation: isolate;
-  background: rgba(15, 23, 42, 0.08);
+  background: rgba(0, 0, 0, 0.08);
   box-shadow: 
-    0 8px 24px -4px rgba(11, 32, 147, 0.4),
-    0 2px 6px rgba(15, 23, 42, 0.06);
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease;
+    0 4px 16px -2px rgba(11, 32, 147, 0.4),
+    0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
   flex-shrink: 0;
+  margin: 0 auto !important;
+  align-self: center !important;
 }
 
 .borderBeamWrapper:hover {
-  transform: translateY(-2.5px) scale(1.02);
+  transform: translateY(-2px);
   box-shadow: 
-    0 14px 32px -4px rgba(11, 32, 147, 0.55),
-    0 0 24px rgba(245, 158, 11, 0.5);
+    0 8px 24px -2px rgba(11, 32, 147, 0.55),
+    0 0 22px rgba(255, 184, 0, 0.5);
 }
 
 .borderGlowAmbient {
@@ -47,17 +68,17 @@
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
-    transparent 180deg,
-    rgba(11, 32, 147, 0.3) 220deg,
-    rgba(29, 78, 216, 0.8) 260deg,
-    rgba(56, 189, 248, 0.9) 290deg,
-    rgba(253, 224, 71, 0.95) 320deg,
-    #F59E0B 345deg,
-    #FFB800 355deg,
+    transparent 200deg,
+    rgba(11, 32, 147, 0.4) 240deg,
+    rgba(29, 78, 216, 0.8) 275deg,
+    rgba(56, 189, 248, 0.85) 300deg,
+    rgba(253, 224, 71, 0.95) 325deg,
+    rgba(255, 184, 0, 1) 345deg,
+    rgba(255, 138, 0, 0.95) 355deg,
     rgba(217, 119, 6, 0.7) 360deg
   );
-  animation: teamBeamSpin 3s linear infinite;
-  filter: blur(12px);
+  animation: navBeamSpin 3s linear infinite;
+  filter: blur(10px);
   opacity: 0.95;
   pointer-events: none;
   z-index: 0;
@@ -73,9 +94,9 @@
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
-    transparent 170deg,
-    rgba(11, 32, 147, 0) 210deg,
-    #0B2093 245deg,
+    transparent 180deg,
+    rgba(11, 32, 147, 0) 220deg,
+    #0B2093 250deg,
     #1D4ED8 275deg,
     #38BDF8 300deg,
     #FDE047 325deg,
@@ -83,12 +104,12 @@
     #FF8A00 355deg,
     #D97706 360deg
   );
-  animation: teamBeamSpin 3s linear infinite;
+  animation: navBeamSpin 3s linear infinite;
   pointer-events: none;
   z-index: 1;
 }
 
-@keyframes teamBeamSpin {
+@keyframes navBeamSpin {
   0% { transform: translate(-50%, -50%) rotate(0deg); }
   100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
@@ -104,28 +125,31 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 12px 26px;
+  gap: 7px;
+  padding: 10px 24px;
   background: linear-gradient(135deg, #122E9E 0%, #0B2093 50%, #0D007F 100%);
   color: #FFFFFF !important;
   font-family: var(--font-display);
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.01em;
   border-radius: 9999px !important;
   text-decoration: none;
   overflow: hidden;
-  box-shadow: 
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.45),
-    inset 0 -1.5px 0 rgba(0, 0, 0, 0.4),
-    0 8px 24px rgba(11, 32, 147, 0.45);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 2px 8px rgba(11, 32, 147, 0.35);
+  transition: all var(--transition-fast);
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .btnTeam:hover {
   background: linear-gradient(135deg, #1D4ED8 0%, #0B2093 50%, #0D007F 100%);
   color: #FFFFFF !important;
+}
+
+.btnTeam:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35);
 }
 
 .btnShimmer {
@@ -137,15 +161,15 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0.38) 50%,
     transparent 100%
   );
   transform: skewX(-22deg);
-  animation: teamShimmer 3.5s ease-in-out infinite;
+  animation: navShimmerPass 3.5s ease-in-out infinite;
   pointer-events: none;
 }
 
-@keyframes teamShimmer {
+@keyframes navShimmerPass {
   0% { left: -100%; }
   35%, 100% { left: 160%; }
 }
@@ -156,18 +180,20 @@
   left: 8%;
   right: 8%;
   height: 48%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.05) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.03) 100%);
   border-radius: 999px;
   pointer-events: none;
 }
 
 .btnArrow {
   display: inline-block;
-  transition: transform 0.2s ease;
+  transition: transform var(--transition-fast);
+  font-size: 15px;
+  line-height: 1;
 }
 
 .borderBeamWrapper:hover .btnArrow {
-  transform: translateX(4px);
+  transform: translateX(3px);
 }
 
 /* Tier 1: 2 Spacious Co-Founder Cards */

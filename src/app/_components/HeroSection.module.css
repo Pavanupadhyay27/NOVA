@@ -96,8 +96,8 @@
 
 .inner {
   display: grid;
-  grid-template-columns: 1.02fr 1.05fr;
-  gap: clamp(32px, 3.5vw, 48px);
+  grid-template-columns: 1.08fr 0.95fr;
+  gap: clamp(28px, 3.2vw, 44px);
   align-items: center;
   position: relative;
   z-index: 2;
@@ -196,9 +196,15 @@
 .actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
   margin-top: clamp(2px, 0.8vh, 8px);
+}
+
+@media (min-width: 768px) {
+  .actions {
+    flex-wrap: nowrap;
+  }
 }
 
 /* ══════════════════════════════════════════════════
@@ -291,6 +297,47 @@
   animation-duration: 1.8s;
 }
 
+.borderBeamWrapperSecondary {
+  background: rgba(15, 23, 42, 0.06);
+  box-shadow: 
+    0 4px 18px -4px rgba(15, 23, 42, 0.08),
+    0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.borderBeamWrapperSecondary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 
+    0 12px 28px -4px rgba(15, 23, 42, 0.12),
+    0 0 24px rgba(245, 158, 11, 0.25);
+}
+
+.borderGlowAmbientSecondary {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 280%;
+  height: 560%;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 180deg,
+    rgba(14, 165, 233, 0.2) 230deg,
+    rgba(245, 158, 11, 0.35) 300deg,
+    rgba(217, 119, 6, 0.25) 360deg
+  );
+  animation: heroBeamSpin 3s linear infinite;
+  filter: blur(12px);
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.borderBeamWrapperSecondary:hover .borderBeamSpin,
+.borderBeamWrapperSecondary:hover .borderGlowAmbientSecondary {
+  animation-duration: 1.8s;
+}
+
 .btnStartPrimary,
 .btnStartProject {
   position: relative;
@@ -298,13 +345,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 15px 32px;
+  gap: 8px;
+  padding: 13.5px 24px;
   border-radius: 9999px !important;
   background: linear-gradient(135deg, #122E9E 0%, #0B2093 50%, #0D007F 100%);
   color: #FFFFFF !important;
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: 14.5px;
   font-weight: 800;
   letter-spacing: -0.01em;
   text-decoration: none;
@@ -365,7 +412,7 @@
   display: inline-block;
   position: relative;
   z-index: 2;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .borderBeamWrapper:hover .btnArrow {
@@ -378,44 +425,54 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  background: linear-gradient(135deg, #122E9E 0%, #0B2093 50%, #0D007F 100%);
-  color: #FFFFFF !important;
+  gap: 8px;
+  background: #FFFFFF;
+  color: #0F172A !important;
   font-family: var(--font-display);
-  font-size: 15px;
-  font-weight: 800;
+  font-size: 14.5px;
+  font-weight: 700;
   letter-spacing: -0.01em;
-  padding: 15px 32px;
+  padding: 13.5px 22px;
   border-radius: 9999px !important;
   text-decoration: none;
   overflow: hidden;
   box-shadow: 
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.45),
-    inset 0 -1.5px 0 rgba(0, 0, 0, 0.4),
-    0 8px 24px rgba(11, 32, 147, 0.45);
+    inset 0 1.5px 0 #FFFFFF,
+    0 1px 2px rgba(15, 23, 42, 0.04);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
   cursor: pointer;
 }
 
 .exploreIcon {
-  color: #FFB800;
-  font-size: 14px;
+  color: #EA580C;
+  font-size: 13px;
+  display: inline-block;
   transition: transform 0.25s ease, color 0.25s ease;
 }
 
 .exploreLabel {
-  color: #FFFFFF !important;
+  color: #0F172A !important;
+  transition: color 0.25s ease;
 }
 
 .btnExploreWork:hover {
-  background: linear-gradient(135deg, #1D4ED8 0%, #0B2093 50%, #0D007F 100%);
-  color: #FFFFFF !important;
+  background: #F8FAFC;
+  color: #0B2093 !important;
+}
+
+.btnExploreWork:hover .exploreLabel {
+  color: #0B2093 !important;
 }
 
 .btnExploreWork:hover .exploreIcon {
   transform: rotate(45deg) scale(1.2);
-  color: #FDE047;
+  color: #D97706;
+}
+
+.btnExploreWork:hover .btnArrow {
+  transform: translateX(4px);
+  color: #0B2093;
 }
 
 /* Skeuomorphic Trust Strip */
@@ -460,140 +517,341 @@
   display: flex;
   justify-content: center;
   width: 100%;
+  position: relative;
 }
 
 .imageCard {
   position: relative;
   width: 100%;
   max-width: 730px;
-  background: transparent;
-  border: none;
-  border-radius: var(--radius-2xl);
-  overflow: hidden;
+  border-radius: 28px;
+  padding: 3px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(226, 232, 240, 0.6) 50%, rgba(14, 165, 233, 0.25) 100%);
   box-shadow: 
-    0 24px 60px -12px rgba(0, 0, 0, 0.16),
-    0 8px 24px -4px rgba(11, 32, 147, 0.08);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+    inset 0 2px 0 #FFFFFF,
+    inset 0 -1.5px 2px rgba(15, 23, 42, 0.08),
+    0 24px 60px -12px rgba(11, 32, 147, 0.16),
+    0 10px 24px -4px rgba(15, 23, 42, 0.06);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
 }
 
 .imageCard:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   box-shadow: 
-    0 32px 75px -12px rgba(0, 0, 0, 0.22),
-    0 12px 30px -4px rgba(11, 32, 147, 0.12);
+    inset 0 2px 0 #FFFFFF,
+    0 32px 75px -12px rgba(11, 32, 147, 0.22),
+    0 14px 32px -4px rgba(15, 23, 42, 0.1);
 }
 
 .imageViewport {
   position: relative;
   width: 100%;
   height: clamp(480px, 64vh, 610px);
-  background: #0F172A;
-  border: none;
-  border-radius: var(--radius-2xl);
+  background: #0B132B;
+  border-radius: 26px;
   overflow: hidden;
 }
 
-/* Clean Opacity Crossfade (No Zooming/Distortion) */
 .slideItem {
   position: absolute;
   inset: 0;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.7s ease-in-out;
-  will-change: opacity;
+  transition: opacity 0.8s ease-in-out, transform 8s ease-out;
+  transform: scale(1.04);
+  will-change: opacity, transform;
 }
 
 .slideActive {
   opacity: 1;
   pointer-events: auto;
+  transform: scale(1);
 }
 
 .slideImage {
   object-fit: cover;
-  object-position: center;
+  object-position: center 25%;
 }
 
 .slideOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.32) 0%, rgba(0, 0, 0, 0.04) 50%, transparent 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 23, 42, 0.2) 0%,
+    rgba(15, 23, 42, 0.05) 40%,
+    rgba(11, 19, 43, 0.75) 100%
+  );
   pointer-events: none;
 }
 
-/* Minimalist Floating Skeuomorphic Status Badge */
-.floatingBadge {
+/* Slide Caption Bar */
+.slideCaptionBar {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  right: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.captionTag {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #38BDF8;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.captionText {
+  font-family: var(--font-display);
+  font-size: clamp(14px, 1.3vw, 17px);
+  font-weight: 700;
+  color: #FFFFFF;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  line-height: 1.25;
+}
+
+/* ══════════════════════════════════════════════════
+   FLOATING SKEUOMORPHIC KPI TELEMETRY CARDS
+══════════════════════════════════════════════════ */
+
+.kpiCardTopRight {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 4;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 252, 0.92) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  border-radius: 18px;
+  padding: 12px 16px;
+  box-shadow: 
+    inset 0 1.5px 0 #FFFFFF,
+    inset 0 -1px 2px rgba(15, 23, 42, 0.04),
+    0 14px 32px -4px rgba(11, 32, 147, 0.22),
+    0 4px 12px rgba(0, 0, 0, 0.08);
+  animation: kpiFloat1 5s ease-in-out infinite alternate;
+  min-width: 155px;
+}
+
+.kpiHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.kpiPulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 8px #10B981, 0 0 2px #10B981;
+  animation: kpiDotPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes kpiDotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.3); }
+}
+
+.kpiLabel {
+  font-family: var(--font-display);
+  font-size: 10.5px;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #64748B;
+}
+
+.kpiValueRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.kpiValue {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 850;
+  color: #0B2093;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.kpiBadge {
+  font-size: 10.5px;
+  font-weight: 750;
+  color: #059669;
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  padding: 2px 7px;
+  border-radius: 999px;
+  box-shadow: inset 0 1px 0 #FFFFFF;
+}
+
+.kpiSparkline {
+  width: 100%;
+  height: 24px;
+  display: block;
+}
+
+/* Floating Stat 2: Bottom Left Pipeline Card */
+.kpiCardBottomLeft {
   position: absolute;
   top: 20px;
   left: 20px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1.5px solid rgba(255, 255, 255, 0.95);
-  border-radius: 9999px;
-  padding: 7px 18px;
+  z-index: 4;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(11, 19, 43, 0.96) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  padding: 12px 16px;
+  box-shadow: 
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.3),
+    0 16px 36px -4px rgba(0, 0, 0, 0.4),
+    0 4px 12px rgba(11, 32, 147, 0.3);
+  animation: kpiFloat2 6s ease-in-out infinite alternate;
+}
+
+.kpiMetaRow {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.kpiMetaIcon {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 4px 10px rgba(245, 158, 11, 0.4);
+  flex-shrink: 0;
+}
+
+.kpiMetaNumber {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 850;
+  color: #FFFFFF;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.kpiMetaSubtitle {
+  font-size: 10.5px;
+  color: #94A3B8;
+  font-weight: 600;
+}
+
+.kpiPartnersStrip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 10px;
+  font-weight: 700;
+  color: #CBD5E1;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.kpiPlatformDot {
+  color: #64748B;
+}
+
+/* Floating Stat 3: Center Bottom Ranking Pill */
+.kpiPillCenter {
+  position: absolute;
+  bottom: 74px;
+  left: 24px;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(254, 243, 199, 0.95) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid #FDE68A;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #92400E;
   box-shadow: 
     inset 0 1.5px 0 #FFFFFF,
-    inset 0 -1px 2px rgba(0, 0, 0, 0.04),
-    0 8px 24px rgba(0, 0, 0, 0.14);
-  z-index: 3;
+    0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.badgePulse {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #10B981;
-  box-shadow: 0 0 8px #10B981;
+.trophyIcon {
+  font-size: 13px;
 }
 
-.badgeText {
-  font-family: var(--font-display);
-  font-size: 12.5px;
-  font-weight: 700;
-  color: #000000;
-  letter-spacing: 0.02em;
+@keyframes kpiFloat1 {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-8px); }
+}
+
+@keyframes kpiFloat2 {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(6px); }
 }
 
 /* Minimalist Tactile Dot Indicators */
 .dotsWrap {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  bottom: 24px;
+  right: 24px;
   display: flex;
   align-items: center;
   gap: 8px;
-  background: rgba(15, 23, 42, 0.65);
+  background: rgba(15, 23, 42, 0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  padding: 6px 12px;
+  padding: 6px 14px;
   border-radius: 9999px;
   border: 1px solid rgba(255, 255, 255, 0.25);
   box-shadow: 
     inset 0 1px 0 rgba(255, 255, 255, 0.3),
     0 6px 18px rgba(0, 0, 0, 0.3);
-  z-index: 3;
+  z-index: 4;
 }
 
 .dot {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.45);
   border: none;
   padding: 0;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .dotActive {
-  width: 22px;
+  width: 24px;
   border-radius: 999px;
   background: linear-gradient(135deg, #FFB800 0%, #F59E0B 100%);
-  box-shadow: 0 0 10px rgba(255, 184, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 12px rgba(255, 184, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 /* Responsive Breakpoints */
@@ -709,10 +967,12 @@
     gap: 12px;
   }
   
-  .borderBeamWrapper {
+  .borderBeamWrapper,
+  .borderBeamWrapperSecondary {
     width: 100%;
   }
   
+  .btnStartPrimary,
   .btnStartProject {
     width: 100%;
     min-height: 48px;
@@ -741,17 +1001,54 @@
   }
   
   .imageViewport {
-    height: clamp(260px, 40vh, 340px);
+    height: clamp(300px, 45vh, 380px);
   }
   
-  .floatingBadge {
-    top: 12px;
+  .kpiCardTopRight {
+    top: 10px;
+    right: 10px;
+    padding: 7px 10px;
+    min-width: 120px;
+    border-radius: 12px;
+  }
+
+  .kpiValue {
+    font-size: 15px;
+  }
+
+  .kpiSparkline {
+    height: 16px;
+  }
+  
+  .kpiCardBottomLeft {
+    top: 10px;
+    left: 10px;
+    padding: 7px 10px;
+    border-radius: 12px;
+  }
+
+  .kpiMetaNumber {
+    font-size: 13px;
+  }
+
+  .kpiMetaIcon {
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
+  }
+
+  .kpiPillCenter {
+    display: none;
+  }
+
+  .slideCaptionBar {
+    bottom: 12px;
     left: 12px;
-    padding: 5px 12px;
+    right: 80px;
   }
-  
-  .badgeText {
-    font-size: 11px;
+
+  .captionText {
+    font-size: 13px;
   }
   
   .dotsWrap {

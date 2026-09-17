@@ -1,10 +1,38 @@
 import type { Metadata } from 'next';
 import ServicePageTemplate from '@/components/ServicePageTemplate';
+import QuickConnectMapSection from '@/app/_components/QuickConnectMapSection';
+import SEORoiCalculator from './_components/SEORoiCalculator';
+import SEORankingRoadmap from './_components/SEORankingRoadmap';
+import SEORankComparisonMatrix from './_components/SEORankComparisonMatrix';
 
 export const metadata: Metadata = {
   title: 'SEO Services in Bhubaneswar — Rank #1 on Google | Marketing Copilot',
   description: 'Dominate Google search in Bhubaneswar with expert SEO services from Marketing Copilot. Technical SEO, local 3-pack rankings & high-converting content across Odisha.',
 };
+
+const seoHeroSlides = [
+  {
+    id: 'seo-slide-1',
+    src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop',
+    alt: 'Marketing Copilot organic SEO performance analytics and Bhubaneswar Google keyword rankings',
+    caption: 'Algorithmic Organic Search Architecture',
+    tag: 'Technical SEO',
+  },
+  {
+    id: 'seo-slide-2',
+    src: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop',
+    alt: 'Senior SEO search strategists planning Google 3-Pack rankings and local search dominance',
+    caption: 'Local Google 3-Pack & Map Pack Domination',
+    tag: 'Hyperlocal SEO',
+  },
+  {
+    id: 'seo-slide-3',
+    src: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=1200&auto=format&fit=crop',
+    alt: 'Core Web Vitals speed optimization and keyword cluster ranking dashboard',
+    caption: 'High-Intent Commercial Keyword Clusters',
+    tag: 'Revenue SEO',
+  },
+];
 
 export default function SEOPage() {
   return (
@@ -16,7 +44,16 @@ export default function SEOPage() {
       emoji="🔍"
       color="#7C3AED"
       heroImage="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80"
+      heroSlides={seoHeroSlides}
       spotlightImage="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80"
+      calculatorSection={<SEORoiCalculator />}
+      thirdSection={<QuickConnectMapSection />}
+      extraSections={
+        <>
+          <SEORankingRoadmap />
+          <SEORankComparisonMatrix />
+        </>
+      }
       metrics={[
         { val: '+240%', label: 'Organic Inquiries' },
         { val: 'Top 3', label: 'Google 3-Pack Rank' },

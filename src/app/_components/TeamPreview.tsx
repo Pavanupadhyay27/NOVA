@@ -68,33 +68,16 @@ export default function TeamPreview() {
   return (
     <section className={`section ${styles.section}`}>
       <div className="container">
-        {/* Header */}
+        {/* Header - Eyebrow deleted as requested */}
         <div className={styles.header}>
           <ScrollReveal>
-            <div className="eyebrow">
-              <span className="eyebrow-dot" />
-              Leadership & Executive Team
-            </div>
-            <h3 className="display-lg" style={{ marginTop: 14 }}>
+            <h3 className="display-lg">
               Meet the minds<br />
               <span className="accent-gradient">powering your growth.</span>
             </h3>
             <p className="body-lg" style={{ maxWidth: 540, marginTop: 12 }}>
               Dedicated operators and growth architects leading every campaign from strategy to execution.
             </p>
-          </ScrollReveal>
-
-          <ScrollReveal delay={100}>
-            <div className={styles.borderBeamWrapper}>
-              <div className={styles.borderGlowAmbient} />
-              <div className={styles.borderBeamSpin} />
-              <Link href="/about/team" className={styles.btnTeam}>
-                <span className={styles.btnShimmer} />
-                <span className={styles.btnGlassGloss} />
-                <span>View Full Team</span>
-                <span className={styles.btnArrow}>→</span>
-              </Link>
-            </div>
           </ScrollReveal>
         </div>
 
@@ -178,6 +161,22 @@ export default function TeamPreview() {
               </div>
             </ScrollReveal>
           ))}
+        </div>
+
+        {/* Center Bottom View Full Team CTA */}
+        <div className={styles.bottomCtaRow}>
+          <ScrollReveal delay={120} className={styles.ctaReveal}>
+            <div className={styles.borderBeamWrapper}>
+              <div className={styles.borderGlowAmbient} />
+              <div className={styles.borderBeamSpin} />
+              <Link href="/about/team" className={styles.btnTeam}>
+                <span className={styles.btnShimmer} />
+                <span className={styles.btnGlassGloss} />
+                <span>View Full Team</span>
+                <span className={styles.btnArrow}>→</span>
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

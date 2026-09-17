@@ -20,7 +20,7 @@ export default function CTASection() {
               Understand where your business stands online and find chances to grow.
             </p>
             <div className={styles.actions}>
-              {/* Primary CTA with Continuous Revolving Glowing Border Beam */}
+              {/* Primary CTA with Navbar Revolving Border Beam Style */}
               <div className={styles.borderBeamWrapper}>
                 <div className={styles.borderGlowAmbient} />
                 <div className={styles.borderBeamSpin} />
@@ -32,14 +32,13 @@ export default function CTASection() {
                 </Link>
               </div>
 
-              <div className={styles.borderBeamWrapper}>
-                <div className={styles.borderGlowAmbient} />
+              {/* Secondary CTA (Empty / White with Revolving Border Beam) */}
+              <div className={`${styles.borderBeamWrapper} ${styles.borderBeamWrapperSecondary}`}>
+                <div className={styles.borderGlowAmbientSecondary} />
                 <div className={styles.borderBeamSpin} />
                 <Link href="/portfolio" className={styles.btnExploreSecondary}>
-                  <span className={styles.btnShimmer} />
-                  <span className={styles.btnGlassGloss} />
                   <span className={styles.exploreIcon}>✦</span>
-                  <span>View Our Work</span>
+                  <span className={styles.exploreLabel}>View Our Work</span>
                   <span className={styles.btnArrow}>→</span>
                 </Link>
               </div>

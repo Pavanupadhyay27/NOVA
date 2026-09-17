@@ -1,0 +1,696 @@
+.section {
+  position: relative;
+  padding: 85px 0 92px;
+  background: #F8FAFC;
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+  overflow: hidden;
+}
+
+/* Ambient Background Light */
+.ambientGlow1 {
+  position: absolute;
+  top: 10%;
+  left: -8%;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(75px);
+}
+
+.ambientGlow2 {
+  position: absolute;
+  bottom: 5%;
+  right: -8%;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(75px);
+}
+
+/* Section Header */
+.header {
+  margin-bottom: 38px;
+  text-align: center;
+}
+
+.calcIcon {
+  font-size: 14px;
+  display: inline-block;
+  animation: pulseIcon 2s infinite ease-in-out;
+}
+
+@keyframes pulseIcon {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+}
+
+.headline {
+  margin-top: 10px;
+  margin-bottom: 14px;
+  color: #0F172A;
+  max-width: 840px;
+  margin-left: auto;
+  margin-right: auto;
+  letter-spacing: -0.02em;
+}
+
+.subText {
+  max-width: 740px;
+  margin: 0 auto;
+  color: #475569;
+  font-size: 15.5px;
+  line-height: 1.65;
+}
+
+/* Master Skeuomorphic Console */
+.calcConsole {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: linear-gradient(175deg, #FFFFFF 0%, #FAFCFE 45%, #EEF4FA 100%);
+  border: 1.5px solid rgba(218, 226, 237, 0.95);
+  border-radius: var(--radius-2xl);
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 36px;
+  padding: 38px 40px;
+  box-shadow: 
+    inset 0 2.5px 0 #FFFFFF,
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -2.5px 4px rgba(15, 23, 42, 0.05),
+    0 24px 56px -12px rgba(15, 23, 42, 0.1),
+    0 4px 12px rgba(15, 23, 42, 0.03);
+  overflow: hidden;
+}
+
+.consoleGlow {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════════════════
+   LEFT PANE: CONTROLS & INPUTS
+   ══════════════════════════════════════════════════ */
+
+.inputPane {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  justify-content: center;
+}
+
+.inputSectionLabel {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: #1E293B;
+  letter-spacing: 0.01em;
+  margin-bottom: 10px;
+}
+
+/* Segmented Objective Toggle */
+.segmentedToggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  background: #F1F5F9;
+  padding: 5px;
+  border-radius: var(--radius-lg);
+  border: 1px solid #E2E8F0;
+  box-shadow: inset 0 2px 4px rgba(15, 23, 42, 0.06);
+}
+
+.segmentBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #64748B;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+  line-height: 1.25;
+}
+
+.btnIcon {
+  font-size: 14px;
+}
+
+.segmentBtnActive {
+  background: #FFFFFF;
+  color: #7C3AED;
+  box-shadow: 
+    inset 0 1.5px 0 #FFFFFF,
+    0 2px 8px rgba(124, 58, 237, 0.14),
+    0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+/* Budget Slider Section */
+.budgetSection {
+  background: #FFFFFF;
+  padding: 22px 20px;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 
+    inset 0 1.5px 0 #FFFFFF,
+    0 2px 6px rgba(15, 23, 42, 0.03);
+}
+
+.budgetHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.budgetDisplay {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  color: #7C3AED;
+  letter-spacing: -0.02em;
+  background: #F5F3FF;
+  border: 1px solid #DDD6FE;
+  padding: 4px 14px;
+  border-radius: 8px;
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 1px 3px rgba(124, 58, 237, 0.08);
+}
+
+/* Custom Slider Track */
+.sliderTrackWrap {
+  position: relative;
+  width: 100%;
+  height: 28px;
+  display: flex;
+  align-items: center;
+}
+
+.rangeInput {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background: #E2E8F0;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  box-shadow: inset 0 1px 3px rgba(15, 23, 42, 0.15);
+}
+
+.rangeInput::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+  border: 3px solid #FFFFFF;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.45);
+  cursor: grab;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.rangeInput::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.6);
+}
+
+.sliderFill {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  height: 8px;
+  background: linear-gradient(90deg, #7C3AED 0%, #A855F7 50%, #38BDF8 100%);
+  border-radius: 999px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Preset Buttons */
+.presetsRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.presetLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748B;
+}
+
+.presetsList {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.presetBtn {
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #334155;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.presetBtn:hover {
+  background: #F5F3FF;
+  color: #7C3AED;
+  border-color: #DDD6FE;
+}
+
+.presetBtnActive {
+  background: #7C3AED;
+  color: #FFFFFF;
+  border-color: #7C3AED;
+  box-shadow: 0 2px 6px rgba(124, 58, 237, 0.3);
+}
+
+.guaranteePill {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #1E293B;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  box-shadow: inset 0 1px 0 #FFFFFF;
+}
+
+.shieldIcon {
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════════════
+   RIGHT PANE: 3D SKEUOMORPHIC TELEMETRY DASHBOARD
+   ══════════════════════════════════════════════════ */
+
+.outputPane {
+  background: linear-gradient(145deg, #0F172A 0%, #1E1B4B 60%, #172554 100%);
+  border-radius: var(--radius-xl);
+  padding: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 
+    inset 0 2px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.4),
+    0 18px 44px -10px rgba(15, 23, 42, 0.5);
+  color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+}
+
+.telemetryCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding-bottom: 12px;
+}
+
+.liveIndicator {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-display);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #C084FC;
+}
+
+.livePulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 8px #10B981;
+  animation: pulseAi 1.8s infinite;
+}
+
+@keyframes pulseAi {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.modelTag {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.telemetryCard {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-lg);
+  padding: 16px 14px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.telemetryCardAdVal {
+  border-color: rgba(192, 132, 252, 0.35);
+  background: rgba(192, 132, 252, 0.08);
+}
+
+.cardGlowEdge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+}
+
+.telemetryLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.telemetryValue {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.telemetryValueVal {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 800;
+  color: #C084FC;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 14px rgba(192, 132, 252, 0.5);
+}
+
+.telemetrySub {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: 2px;
+}
+
+.telemetrySub strong {
+  color: #FFFFFF;
+}
+
+/* Revenue Pipeline Card */
+.pipelineCard {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.pipelineLabel {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #34D399;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.pipelineNumber {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+}
+
+.pipelineSpark {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.sparkCaption {
+  font-size: 10px;
+  color: #34D399;
+  font-weight: 600;
+}
+
+/* Output Footer & CTA with navbar revolving glowing border beam */
+.outputActionRow {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 6px;
+}
+
+.disclaimerText {
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Revolving Glowing Border Beam matching Navbar */
+.borderBeamWrapper {
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px !important;
+  clip-path: inset(0 round 9999px);
+  -webkit-clip-path: inset(0 round 9999px);
+  padding: 1.8px;
+  overflow: hidden;
+  isolation: isolate;
+  background: rgba(0, 0, 0, 0.08);
+  box-shadow: 
+    0 4px 16px -2px rgba(11, 32, 147, 0.4),
+    0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  flex-shrink: 0;
+}
+
+.borderBeamWrapper:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 24px -2px rgba(11, 32, 147, 0.55),
+    0 0 22px rgba(255, 184, 0, 0.5);
+}
+
+.borderGlowAmbient {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 260%;
+  height: 520%;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 200deg,
+    rgba(11, 32, 147, 0.4) 240deg,
+    rgba(29, 78, 216, 0.8) 275deg,
+    rgba(56, 189, 248, 0.85) 300deg,
+    rgba(253, 224, 71, 0.95) 325deg,
+    rgba(255, 184, 0, 1) 345deg,
+    rgba(255, 138, 0, 0.95) 355deg,
+    rgba(217, 119, 6, 0.7) 360deg
+  );
+  animation: navBeamSpin 3s linear infinite;
+  filter: blur(10px);
+  opacity: 0.95;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.borderBeamSpin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 280%;
+  height: 560%;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 180deg,
+    rgba(11, 32, 147, 0) 220deg,
+    #0B2093 250deg,
+    #1D4ED8 275deg,
+    #38BDF8 300deg,
+    #FDE047 325deg,
+    #FFB800 345deg,
+    #FF8A00 355deg,
+    #D97706 360deg
+  );
+  animation: navBeamSpin 3s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes navBeamSpin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.btnLaunchStrategy {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 13px 22px;
+  background: linear-gradient(135deg, #122E9E 0%, #0B2093 50%, #0D007F 100%);
+  color: #FFFFFF !important;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1.5px 0 rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.btnShimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.38) 50%,
+    transparent 100%
+  );
+  transform: skewX(-22deg);
+  animation: navShimmerPass 3.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes navShimmerPass {
+  0% { left: -100%; }
+  35%, 100% { left: 160%; }
+}
+
+.btnGlassGloss {
+  position: absolute;
+  top: 1px;
+  left: 8%;
+  right: 8%;
+  height: 48%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.03) 100%);
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.btnText {
+  position: relative;
+  z-index: 2;
+}
+
+.btnArrow {
+  display: inline-block;
+  transition: transform var(--transition-fast);
+  font-size: 15px;
+  line-height: 1;
+  position: relative;
+  z-index: 2;
+}
+
+.borderBeamWrapper:hover .btnArrow {
+  transform: translateX(3px);
+}
+
+/* ══════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════ */
+
+@media (max-width: 960px) {
+  .calcConsole {
+    grid-template-columns: 1fr;
+    padding: 26px 20px;
+    gap: 28px;
+  }
+  
+  .outputPane {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .segmentedToggle {
+    grid-template-columns: 1fr;
+  }
+
+  .metricsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .pipelineCard {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .pipelineSpark {
+    align-items: flex-start;
+  }
+}

@@ -279,8 +279,11 @@ ul, ol {
 
 /* ── Eyebrow (Clean Tactile Skeuomorphic Pill) ── */
 .eyebrow {
-  display: inline-flex;
+  display: inline-flex !important;
   align-items: center;
+  justify-content: center;
+  width: fit-content !important;
+  max-width: max-content !important;
   gap: 8px;
   padding: 7px 18px;
   border-radius: var(--radius-full);
@@ -296,6 +299,13 @@ ul, ol {
   text-transform: uppercase;
   color: #B45309;
   margin-bottom: var(--space-2);
+}
+
+.text-center .eyebrow,
+.eyebrow-center {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  align-self: center !important;
 }
 
 .eyebrow-dot {
@@ -514,10 +524,29 @@ ul, ol {
               transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
               filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform, filter;
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
   box-sizing: border-box;
+}
+
+/* Grids where cards wrapped in reveal need to take full column height */
+.grid > .reveal,
+.topGrid > .reveal,
+.bottomGrid > .reveal,
+.servicesGrid > .reveal,
+.advantageGrid > .reveal,
+[class*="Grid"] > .reveal,
+[class*="bentoGrid"] > .reveal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+/* Revolving Glowing Border Beam CTA Buttons - Never stretch, hug tightly */
+[class*="borderBeamWrapper"] {
+  display: inline-flex !important;
+  width: auto !important;
+  max-width: fit-content !important;
+  align-self: center !important;
 }
 
 .reveal-left {
@@ -546,6 +575,32 @@ ul, ol {
   filter: blur(0);
 }
 
+/* ── Skeuomorphic Card System & Equal-Height Stretch ── */
+.skeuo-card-base {
+  background: linear-gradient(175deg, #FFFFFF 0%, #FAFCFE 50%, #F1F5F9 100%);
+  border: 1px solid rgba(218, 226, 237, 0.95);
+  border-radius: var(--radius-xl);
+  box-shadow: 
+    inset 0 2px 0 #FFFFFF,
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -2px 3px rgba(15, 23, 42, 0.04),
+    0 10px 28px -6px rgba(15, 23, 42, 0.06),
+    0 2px 6px rgba(15, 23, 42, 0.02);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.skeuo-card-base:hover {
+  transform: translateY(-4px);
+  border-color: rgba(11, 32, 147, 0.4);
+  box-shadow: 
+    inset 0 2px 0 #FFFFFF,
+    inset 0 1px 1px rgba(255, 255, 255, 1),
+    0 20px 42px -8px rgba(11, 32, 147, 0.14),
+    0 0 0 1.5px rgba(11, 32, 147, 0.25);
+}
+
 @media (max-width: 768px) {
   .reveal-left,
   .reveal-right {
@@ -569,7 +624,13 @@ ul, ol {
 }
 
 /* ── Utilities ── */
-.text-center { text-align: center; }
+.text-center { 
+  text-align: center; 
+  display: flex;
+  flex-direction: column;
+  align-items: center !important;
+  justify-content: center;
+}
 .flex { display: flex; }
 .flex-col { display: flex; flex-direction: column; }
 .items-center { align-items: center; }

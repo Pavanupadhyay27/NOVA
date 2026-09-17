@@ -84,13 +84,11 @@ export default function HeroSection() {
               </Link>
             </div>
 
-            {/* Explore Our Services CTA */}
-            <div className={styles.borderBeamWrapper}>
-              <div className={styles.borderGlowAmbient} />
+            {/* Explore Our Services CTA (Empty / Outline with revolving glowing border beam) */}
+            <div className={`${styles.borderBeamWrapper} ${styles.borderBeamWrapperSecondary}`}>
+              <div className={styles.borderGlowAmbientSecondary} />
               <div className={styles.borderBeamSpin} />
               <Link href="/services" className={styles.btnExploreWork}>
-                <span className={styles.btnShimmer} />
-                <span className={styles.btnGlassGloss} />
                 <span className={styles.exploreIcon}>✦</span>
                 <span className={styles.exploreLabel}>Explore Our Services</span>
                 <span className={styles.btnArrow}>→</span>

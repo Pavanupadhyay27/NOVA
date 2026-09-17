@@ -50,7 +50,7 @@ export default function FAQSection() {
     <section className={`section ${styles.section}`}>
       <div className="container-sm">
         <ScrollReveal className="text-center">
-          <div className="eyebrow">
+          <div className="eyebrow" style={{ margin: '0 auto 14px' }}>
             <span className="eyebrow-dot" />
             FAQ &amp; Knowledge Base
           </div>

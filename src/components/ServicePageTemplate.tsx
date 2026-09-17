@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -26,6 +26,14 @@ export interface ServiceCaseHighlight {
   summary: string;
 }
 
+export interface ServiceHeroSlide {
+  id: string;
+  src: string;
+  alt: string;
+  caption?: string;
+  tag?: string;
+}
+
 export interface ServicePageProps {
   eyebrow: string;
   title: string;
@@ -34,6 +42,7 @@ export interface ServicePageProps {
   emoji: string;
   color: string;
   heroImage?: string;
+  heroSlides?: ServiceHeroSlide[];
   spotlightImage?: string;
   metrics: { val: string; label: string }[];
   services: { title: string; desc: string; deliverables?: string[] }[];
@@ -42,6 +51,182 @@ export interface ServicePageProps {
   localAdvantages?: ServiceAdvantage[];
   caseHighlight?: ServiceCaseHighlight;
   faqs?: ServiceFAQ[];
+  calculatorSection?: React.ReactNode;
+  thirdSection?: React.ReactNode;
+  extraSections?: React.ReactNode;
+}
+
+function getPlatformMeta(name: string) {
+  const lower = name.toLowerCase();
+  if (lower.includes('search console')) {
+    return {
+      category: 'SERP Crawl & Indexing',
+      icon: (
+        <svg width="26" height="26" viewBox="0 0 48 48" fill="none">
+          <rect width="48" height="48" rx="12" fill="#E8F0FE" />
+          <path d="M12 30L20 20L26 26L36 14" stroke="#4285F4" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="36" cy="14" r="4" fill="#EA4335" />
+          <path d="M26 34H36" stroke="#34A853" strokeWidth="3.5" strokeLinecap="round" />
+          <path d="M12 34H20" stroke="#FBBC05" strokeWidth="3.5" strokeLinecap="round" />
+        </svg>
+      ),
+    };
+  }
+  if (lower.includes('business profile') || lower.includes('google my business') || lower.includes('gmb')) {
+    return {
+      category: 'Map 3-Pack & Citations',
+      icon: (
+        <svg width="26" height="26" viewBox="0 0 48 48" fill="none">
+          <rect width="48" height="48" rx="12" fill="#E8F0FE" />
+          <path d="M12 18L24 12L36 18V34H12V18Z" fill="#1A73E8" />
+          <path d="M18 34V22H30V34" fill="#FFFFFF" />
+          <path d="M10 18H38L36 14H12L10 18Z" fill="#4285F4" />
+          <circle cx="24" cy="28" r="3" fill="#FBBC04" />
+        </svg>
+      ),
+    };
+  }
+  if (lower.includes('analytics') || lower.includes('ga4')) {
+    return {
+      category: 'Behavior & Attribution',
+      icon: (
+        <svg width="26" height="26" viewBox="0 0 48 48" fill="none">
+          <rect width="48" height="48" rx="12" fill="#FFF7ED" />
+          <rect x="14" y="27" width="5.5" height="9" rx="2.5" fill="#F59E0B" />
+          <rect x="22" y="19" width="5.5" height="17" rx="2.5" fill="#D97706" />
+          <rect x="30" y="13" width="5.5" height="23" rx="2.5" fill="#EA580C" />
+          <circle cx="32.75" cy="13" r="2.5" fill="#C2410C" />
+        </svg>
+      ),
+    };
+  }
+  if (lower.includes('semrush')) {
+    return {
+      category: 'Keyword & Gap Matrix',
+      icon: (
+        <svg width="26" height="26" viewBox="0 0 48 48" fill="none">
+          <rect width="48" height="48" rx="12" fill="#FFF1EB" />
+          <path d="M24 12C24 12 20 18 20 22C20 25.3 22.7 28 26 28C26.5 28 27 27.9 27.4 27.8C26.8 30.2 24.6 32 22 32C19.8 32 18 30.7 17.2 28.8C16.5 30.2 16 31.8 16 33.5C16 39.3 20.7 44 26.5 44C32.3 44 37 39.3 37 33.5C37 25 24 12 24 12Z" fill="#FF642D" />
+        </svg>
+      ),
+    };
+  }
+  if (lower.includes('ahrefs')) {
+    return {
+      category: 'Backlink Authority Spider',
+      icon: (
+        <svg width="26" height="26" viewBox="0 0 48 48" fill="none">
+          <rect width="48" height="48" rx="12" fill="#EFF6FF" />
+          <path d="M14 34L24 14L34 34H27.5L24 23.5L20.5 34H14Z" fill="#0058FF" />
+          <path d="M21.5 27.5H26.5L24 23.5L21.5 27.5Z" fill="#FF3B30" />
+        </svg>
+      ),
+    };
+  }
+  if (lower.includes('screaming frog')) {
+    return {
+      category: 'Technical Spider Audit',
+      icon: (
+        <svg width="26" height="26" viewBox="0 0 48 48" fill="none">
+          <rect width="48" height="48" rx="12" fill="#ECFDF5" />
+          <ellipse cx="24" cy="27" rx="12" ry="10" fill="#10B981" />
+          <circle cx="18" cy="18" r="4.5" fill="#059669" />
+          <circle cx="30" cy="18" r="4.5" fill="#059669" />
+          <circle cx="18" cy="18" r="2.2" fill="#FFFFFF" />
+          <circle cx="30" cy="18" r="2.2" fill="#FFFFFF" />
+          <circle cx="18.5" cy="18" r="1.1" fill="#064E3B" />
+          <circle cx="30.5" cy="18" r="1.1" fill="#064E3B" />
+          <path d="M19 29C21.5 31.5 26.5 31.5 29 29" stroke="#064E3B" strokeWidth="2.5" strokeLinecap="round" />
+        </svg>
+      ),
+    };
+  }
+  if (lower.includes('looker') || lower.includes('studio')) {
+    return {
+      category: 'Live Executive BI',
+      icon: (
+        <svg width="26" height="26" viewBox="0 0 48 48" fill="none">
+          <rect width="48" height="48" rx="12" fill="#F8FAFC" />
+          <path d="M14 16L24 22L34 16L24 10L14 16Z" fill="#4285F4" />
+          <path d="M14 16V28L24 34V22L14 16Z" fill="#34A853" />
+          <path d="M34 16V28L24 34V22L34 16Z" fill="#FBBC04" />
+          <circle cx="24" cy="22" r="3.5" fill="#EA4335" />
+        </svg>
+      ),
+    };
+  }
+  if (lower.includes('next.js') || lower.includes('vercel')) {
+    return {
+      category: 'Sub-Second Web Vitals',
+      icon: (
+        <svg width="26" height="26" viewBox="0 0 48 48" fill="none">
+          <rect width="48" height="48" rx="12" fill="#0F172A" />
+          <path d="M16 16V32M16 16L30 32M32 16V32" stroke="#FFFFFF" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      ),
+    };
+  }
+  if (lower.includes('meta') || lower.includes('facebook') || lower.includes('instagram')) {
+    return {
+      category: 'Paid Social Funnels',
+      icon: (
+        <svg width="26" height="26" viewBox="0 0 48 48" fill="none">
+          <rect width="48" height="48" rx="12" fill="#F0F7FF" />
+          <path d="M13 25C13 21 16 18 20 18C23 18 25 20.5 26.5 22.5C28 20.5 30 18 33 18C37 18 40 21 40 25C40 29 37 32 33 32C30 32 28 29.5 26.5 27.5C25 29.5 23 32 20 32C16 32 13 29 13 25Z" stroke="#0081FB" strokeWidth="3.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        </svg>
+      ),
+    };
+  }
+  if (lower.includes('google ads')) {
+    return {
+      category: 'Commercial Paid Intent',
+      icon: (
+        <svg width="26" height="26" viewBox="0 0 48 48" fill="none">
+          <rect width="48" height="48" rx="12" fill="#FFFBEB" />
+          <path d="M17 14L29 34" stroke="#FBBC04" strokeWidth="5.5" strokeLinecap="round" />
+          <path d="M23 14L35 34" stroke="#4285F4" strokeWidth="5.5" strokeLinecap="round" />
+          <circle cx="15" cy="32" r="4" fill="#34A853" />
+        </svg>
+      ),
+    };
+  }
+  if (lower.includes('schema') || lower.includes('json-ld')) {
+    return {
+      category: 'Rich Snippets & Graph',
+      icon: (
+        <svg width="26" height="26" viewBox="0 0 48 48" fill="none">
+          <rect width="48" height="48" rx="12" fill="#EFF6FF" />
+          <circle cx="18" cy="18" r="4.5" fill="#0B2093" />
+          <circle cx="30" cy="18" r="4.5" fill="#3B82F6" />
+          <circle cx="24" cy="30" r="4.5" fill="#10B981" />
+          <path d="M18 18L30 18L24 30Z" stroke="#0B2093" strokeWidth="2.5" fill="none" />
+        </svg>
+      ),
+    };
+  }
+  if (lower.includes('shopify')) {
+    return {
+      category: 'E-Commerce Storefront',
+      icon: (
+        <svg width="26" height="26" viewBox="0 0 48 48" fill="none">
+          <rect width="48" height="48" rx="12" fill="#F0FDF4" />
+          <path d="M30 16L28 14H20L18 16H14L16 34H32L34 16H30Z" fill="#95BF47" />
+          <path d="M22 22C22 21 23 20 24.5 20C26 20 26.5 21 26 22.5C25.5 24 22 25 22 26.5C22 28 23 29 24.5 29C26 29 27 28 27 27" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+      ),
+    };
+  }
+  // Default Enterprise Tech Icon
+  return {
+    category: 'Enterprise Stack',
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 48 48" fill="none">
+        <rect width="48" height="48" rx="12" fill="#F8FAFC" />
+        <circle cx="24" cy="24" r="10" stroke="#0B2093" strokeWidth="3.2" />
+        <circle cx="24" cy="24" r="3.5" fill="#F59E0B" />
+      </svg>
+    ),
+  };
 }
 
 export default function ServicePageTemplate({
@@ -51,6 +236,7 @@ export default function ServicePageTemplate({
   description,
   color,
   heroImage = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80',
+  heroSlides,
   spotlightImage = 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80',
   metrics,
   services,
@@ -59,8 +245,20 @@ export default function ServicePageTemplate({
   localAdvantages,
   caseHighlight,
   faqs,
+  calculatorSection,
+  thirdSection,
+  extraSections,
 }: ServicePageProps) {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    if (!heroSlides || heroSlides.length <= 1) return;
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [heroSlides]);
 
   const defaultAdvantages: ServiceAdvantage[] = localAdvantages || [
     {
@@ -206,30 +404,69 @@ export default function ServicePageTemplate({
                   {/* Ambient Radiant Backdrop Glow */}
                   <div className={styles.visualBackdropGlow} />
 
-                  {/* Skeuomorphic Glass Card with Real Photography */}
+                  {/* Skeuomorphic Glass Card with Real Photography or Auto-Slider */}
                   <div className={styles.heroVisualCard}>
-                    <div className={styles.heroImageContainer}>
-                      <Image
-                        src={heroImage}
-                        alt={`${eyebrow} in Bhubaneswar — Marketing Copilot`}
-                        fill
-                        priority
-                        sizes="(max-width: 768px) 100vw, 480px"
-                        className={styles.heroPhoto}
-                      />
-                      <div className={styles.heroPhotoOverlay} />
+                    {heroSlides && heroSlides.length > 0 ? (
+                      <div className={styles.sliderViewport}>
+                        {heroSlides.map((slide, idx) => (
+                          <div
+                            key={slide.id}
+                            className={`${styles.slideItem} ${idx === currentSlide ? styles.slideActive : ''}`}
+                          >
+                            <Image
+                              src={slide.src}
+                              alt={slide.alt}
+                              fill
+                              priority={idx === 0}
+                              sizes="(max-width: 768px) 100vw, 480px"
+                              className={styles.heroPhoto}
+                            />
+                          </div>
+                        ))}
 
-                      {/* Floating Glass 3D Badges */}
-                      <div className={styles.floatingTopBadge}>
-                        <span className={styles.badgeEmeraldDot} />
-                        <span>Live Rank: #1 Google 3-Pack</span>
-                      </div>
+                        {/* Minimal Clean Status Badge */}
+                        <div className={styles.floatingTopBadge}>
+                          <span className={styles.badgeEmeraldDot} />
+                          <span>#1 Ranked on Google</span>
+                        </div>
 
-                      <div className={styles.floatingBottomBadge}>
-                        <span className={styles.badgeEmeraldDot} />
-                        <span>Marketing Copilot · Bhubaneswar</span>
+                        {/* Dot Indicators */}
+                        <div className={styles.dotsWrap}>
+                          {heroSlides.map((_, idx) => (
+                            <button
+                              key={idx}
+                              type="button"
+                              className={`${styles.dot} ${idx === currentSlide ? styles.dotActive : ''}`}
+                              onClick={() => setCurrentSlide(idx)}
+                              aria-label={`Slide ${idx + 1}`}
+                            />
+                          ))}
+                        </div>
                       </div>
-                    </div>
+                    ) : (
+                      <div className={styles.heroImageContainer}>
+                        <Image
+                          src={heroImage}
+                          alt={`${eyebrow} in Bhubaneswar — Marketing Copilot`}
+                          fill
+                          priority
+                          sizes="(max-width: 768px) 100vw, 480px"
+                          className={styles.heroPhoto}
+                        />
+                        <div className={styles.heroPhotoOverlay} />
+
+                        {/* Floating Glass 3D Badges */}
+                        <div className={styles.floatingTopBadge}>
+                          <span className={styles.badgeEmeraldDot} />
+                          <span>Live Rank: #1 Google 3-Pack</span>
+                        </div>
+
+                        <div className={styles.floatingBottomBadge}>
+                          <span className={styles.badgeEmeraldDot} />
+                          <span>Marketing Copilot · Bhubaneswar</span>
+                        </div>
+                      </div>
+                    )}
 
                     {/* Tactile Extruded Metric Tiles */}
                     <div className={styles.visualMetricsGrid}>
@@ -283,7 +520,12 @@ export default function ServicePageTemplate({
       </section>
 
       {/* ══════════════════════════════════════════════════
-          3. CORE SERVICES DELIVERABLES (Skeuomorphic Cards)
+          3. THIRD SECTION (OPTIONAL e.g. QUICK CONNECT MAP)
+         ══════════════════════════════════════════════════ */}
+      {thirdSection}
+
+      {/* ══════════════════════════════════════════════════
+          4. CORE SERVICES DELIVERABLES (Skeuomorphic Cards)
          ══════════════════════════════════════════════════ */}
       <section className={styles.servicesSection}>
         <div className="container">
@@ -328,6 +570,12 @@ export default function ServicePageTemplate({
           </div>
         </div>
       </section>
+
+      {/* Optional Interactive Calculator Section */}
+      {calculatorSection}
+
+      {/* Optional Live SERP / Interactive Showcase Sections */}
+      {extraSections}
 
       {/* ══════════════════════════════════════════════════
           4. THE COPILOT DIFFERENCE (COMPARISON MATRIX)
@@ -529,40 +777,127 @@ export default function ServicePageTemplate({
       </section>
 
       {/* ══════════════════════════════════════════════════
-          7. BHUBANESWAR CASE STUDY HIGHLIGHT (ROI Card)
+          7. BHUBANESWAR CASE STUDY HIGHLIGHT (TACTILE SKEUOMORPHIC SHOWCASE)
          ══════════════════════════════════════════════════ */}
       <section className={styles.caseSection}>
         <div className="container">
           <ScrollReveal>
-            <div className={styles.caseCard}>
-              <div className={styles.caseCardBgGlow} />
-              <div>
-                <div className={styles.caseEyebrow}>
-                  <span>📍 Verified Bhubaneswar Case Result</span>
+            <div className={styles.caseCardSkeuo}>
+              {/* Dynamic Atmospheric Backlight Glows */}
+              <div className={styles.caseGlowAmber} />
+              <div className={styles.caseGlowSapphire} />
+              <div className={styles.caseCardGlassSheen} />
+
+              {/* Top Bar inside Card */}
+              <div className={styles.caseTopBar}>
+                <div className={styles.caseStatusBadge}>
+                  <span className={styles.caseStatusPulse} />
+                  <span>VERIFIED BHUBANESWAR CLIENT CASE STUDY</span>
                 </div>
-                <h3 className={styles.caseTitle}>
-                  {defaultCase.client}
-                </h3>
-                <p className={styles.caseStory}>
-                  {defaultCase.summary}
-                </p>
-                <div style={{ fontSize: 13, color: '#FEF3C7', fontWeight: 600 }}>
-                  Location: {defaultCase.location}
+                <div className={styles.caseSectorTag}>
+                  <span>Patia &amp; Chandrasekharpur Corridor</span>
                 </div>
               </div>
 
-              <div className={styles.caseRightPane}>
-                <div className={styles.caseMetricVal}>{defaultCase.metric}</div>
-                <div className={styles.caseMetricLabel}>{defaultCase.metricLabel}</div>
-                <div className={styles.borderBeamWrapper}>
-                  <div className={styles.borderGlowAmbient} />
-                  <div className={styles.borderBeamSpin} />
-                  <Link href="/portfolio" className={styles.btnStartPrimary} style={{ padding: '12px 24px', fontSize: 13.5 }}>
-                    <span className={styles.btnShimmer} />
-                    <span className={styles.btnGlassGloss} />
-                    <span>View All Case Studies</span>
-                    <span className={styles.btnArrow}>→</span>
-                  </Link>
+              {/* Main Split Grid: Left Details & Story, Right Visual Architecture + 3 KPI Tiles */}
+              <div className={styles.caseMainGrid}>
+                {/* Left Column: Client Story & Strategy */}
+                <div className={styles.caseInfoCol}>
+                  <h3 className={styles.caseClientTitle}>
+                    {defaultCase.client}
+                  </h3>
+                  <div className={styles.caseLocationBadge}>
+                    <span className={styles.locationPin}>📍</span>
+                    <span>{defaultCase.location}</span>
+                  </div>
+
+                  <p className={styles.caseExecutiveSummary}>
+                    {defaultCase.summary}
+                  </p>
+
+                  {/* Tactile Strategy Chips */}
+                  <div className={styles.caseStrategyChips}>
+                    <span className={styles.caseStratChip}>
+                      <span className={styles.caseStratCheck}>✓</span> Local Geo-Schema Markup
+                    </span>
+                    <span className={styles.caseStratChip}>
+                      <span className={styles.caseStratCheck}>✓</span> Patia Micro-Market Authority
+                    </span>
+                    <span className={styles.caseStratChip}>
+                      <span className={styles.caseStratCheck}>✓</span> High-Intent Buyer Funnel
+                    </span>
+                  </div>
+
+                  {/* Direct Testimonial Quote Callout Box */}
+                  <div className={styles.caseQuoteBox}>
+                    <div className={styles.caseQuoteIcon}>“</div>
+                    <p className={styles.caseQuoteText}>
+                      Marketing Copilot transformed our digital footprint. We went from completely unranked to owning the top spot across all luxury real estate queries in Bhubaneswar.
+                    </p>
+                    <div className={styles.caseQuoteAuthor}>
+                      — Commercial Sales &amp; Growth Directorate, Utkal Royal
+                    </div>
+                  </div>
+
+                  {/* Action CTA Button */}
+                  <div className={styles.caseCtaWrapper}>
+                    <div className={styles.borderBeamWrapper}>
+                      <div className={styles.borderGlowAmbient} />
+                      <div className={styles.borderBeamSpin} />
+                      <Link href="/portfolio" className={styles.btnStartPrimary} style={{ padding: '13px 26px', fontSize: 13.5 }}>
+                        <span className={styles.btnShimmer} />
+                        <span className={styles.btnGlassGloss} />
+                        <span>Explore All Client Case Studies</span>
+                        <span className={styles.btnArrow}>→</span>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column: Visual Real Estate Showcase + 3 Raised Metric Cards */}
+                <div className={styles.caseConsoleCol}>
+                  {/* Visual Preview Window */}
+                  <div className={styles.caseVisualWindow}>
+                    <Image
+                      src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80"
+                      alt={defaultCase.client}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 420px"
+                      className={styles.caseWindowImg}
+                    />
+                    <div className={styles.caseWindowOverlay} />
+                    <div className={styles.caseWindowBadgeTop}>
+                      <span className={styles.googleGLogo}>G</span>
+                      <span>Google SERP #1 Verified Result</span>
+                    </div>
+                    <div className={styles.caseWindowFooter}>
+                      <span>Luxury Residential &amp; Commercial Towers</span>
+                    </div>
+                  </div>
+
+                  {/* 3 Tactile Skeuomorphic KPI Stat Blocks */}
+                  <div className={styles.caseKpiTilesRow}>
+                    <div className={styles.caseKpiTile}>
+                      <div className={styles.kpiTileIcon}>🏆</div>
+                      <div className={styles.kpiTileNumber}>{defaultCase.metric}</div>
+                      <div className={styles.kpiTileLabel}>Top Google Position</div>
+                      <div className={styles.kpiTileSub}>18 High-Value Keywords</div>
+                    </div>
+
+                    <div className={styles.caseKpiTile}>
+                      <div className={styles.kpiTileIcon}>📈</div>
+                      <div className={styles.kpiTileNumber}>+340%</div>
+                      <div className={styles.kpiTileLabel}>Buyer Inquiries</div>
+                      <div className={styles.kpiTileSub}>90+ HNI Leads / Month</div>
+                    </div>
+
+                    <div className={styles.caseKpiTile}>
+                      <div className={styles.kpiTileIcon}>⚡</div>
+                      <div className={styles.kpiTileNumber}>90 Days</div>
+                      <div className={styles.kpiTileLabel}>Speed to Page 1</div>
+                      <div className={styles.kpiTileSub}>Zero Black-Hat Risks</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -571,21 +906,38 @@ export default function ServicePageTemplate({
       </section>
 
       {/* ══════════════════════════════════════════════════
-          8. PLATFORMS WE MASTER
+          8. ENTERPRISE PLATFORMS WITH AUTHENTIC BRAND LOGOS
          ══════════════════════════════════════════════════ */}
       {platforms && platforms.length > 0 && (
         <section className={styles.platformsSection}>
           <div className="container">
             <ScrollReveal className="text-center">
-              <p className="label" style={{ color: '#64748B', marginBottom: 20 }}>
-                Enterprise Platforms &amp; Growth Technologies We Master
+              <div className="eyebrow" style={{ margin: '0 auto 12px' }}>
+                <span className="eyebrow-dot" />
+                <span>Enterprise Growth Infrastructure</span>
+              </div>
+              <h3 className="display-sm" style={{ color: '#0F172A', marginBottom: 8 }}>
+                Platforms &amp; Technologies We Master
+              </h3>
+              <p className="body-sm" style={{ color: '#64748B', maxWidth: 620, margin: '0 auto 28px' }}>
+                Enterprise toolchains and proprietary growth stacks deployed across Bhubaneswar client campaigns.
               </p>
-              <div className={styles.platforms}>
-                {platforms.map((p) => (
-                  <span key={p} className={styles.platform}>
-                    {p}
-                  </span>
-                ))}
+
+              <div className={styles.platformCardsGrid}>
+                {platforms.map((p) => {
+                  const meta = getPlatformMeta(p);
+                  return (
+                    <div key={p} className={styles.platformCard}>
+                      <div className={styles.platformIconWrapper}>
+                        {meta.icon}
+                      </div>
+                      <div className={styles.platformTextCol}>
+                        <span className={styles.platformCardTitle}>{p}</span>
+                        <span className={styles.platformCategoryTag}>{meta.category}</span>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </ScrollReveal>
           </div>
