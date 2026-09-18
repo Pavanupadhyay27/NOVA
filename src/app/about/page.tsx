@@ -597,11 +597,6 @@ export default function AboutPage() {
                       className={styles.cockpitImg}
                       sizes="(max-width: 900px) 100vw, 540px"
                     />
-                    <div className={styles.cockpitImgOverlay} />
-                    <div className={styles.cockpitFloatingTag}>
-                      <span className={styles.tagIcon}>📍</span>
-                      <span>Growth Lab &amp; Studio · Kharvela Nagar</span>
-                    </div>
                   </div>
 
                   {/* 3 Telemetry Live Gauges */}
