@@ -576,9 +576,61 @@ export default function AboutPage() {
   const [activePhase, setActivePhase] = useState<number>(0);
   const [activeEpoch, setActiveEpoch] = useState<number>(0);
   const [activePipelineStage, setActivePipelineStage] = useState<number>(0);
+  const [isStoryAutoElevated, setIsStoryAutoElevated] = useState<boolean>(false);
 
   const counterRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const countersStarted = useRef(false);
+  const storySectionRef = useRef<HTMLElement | null>(null);
+  const touchStartXRef = useRef<number>(0);
+  const lastWheelTimeRef = useRef<number>(0);
+
+  // Auto-elevate skeuomorphic card when scrolling down into view
+  useEffect(() => {
+    const el = document.getElementById('founding-story');
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsStoryAutoElevated(true);
+        }
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Touch and wheel slide gesture handlers for the founding story deck
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartXRef.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const diff = touchStartXRef.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 45) {
+      if (diff > 0) {
+        setActiveEpoch((prev) => (prev < foundingStoryEpochs.length - 1 ? prev + 1 : 0));
+      } else {
+        setActiveEpoch((prev) => (prev > 0 ? prev - 1 : foundingStoryEpochs.length - 1));
+      }
+    }
+  };
+
+  const handleDeckWheel = (e: React.WheelEvent) => {
+    if (Math.abs(e.deltaX) > 25) {
+      const now = Date.now();
+      if (now - lastWheelTimeRef.current > 450) {
+        lastWheelTimeRef.current = now;
+        if (e.deltaX > 0) {
+          setActiveEpoch((prev) => (prev < foundingStoryEpochs.length - 1 ? prev + 1 : prev));
+        } else {
+          setActiveEpoch((prev) => (prev > 0 ? prev - 1 : prev));
+        }
+      }
+    }
+  };
 
   // Counter animation on scroll
   useEffect(() => {
@@ -795,9 +847,9 @@ export default function AboutPage() {
       <QuickConnectMapSection id="war-room-section" />
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 4: THE FOUNDING STORY (CLEAN & ELEGANT CHRONICLE)
+          SECTION 4: THE FOUNDING STORY (SKEUOMORPHIC SLIDING CHRONICLE)
          ══════════════════════════════════════════════════════ */}
-      <section className={styles.cleanStorySection} id="founding-story">
+      <section className={styles.cleanStorySection} id="founding-story" ref={storySectionRef}>
         <div className="container">
           <ScrollReveal className="text-center">
             <div className="eyebrow" style={{ margin: '0 auto 12px' }}>
@@ -813,146 +865,230 @@ export default function AboutPage() {
             </p>
           </ScrollReveal>
 
-          {/* Clean Stepper Tabs (Global White & Royal Blue Palette) */}
-          <div className={styles.storyTabsBar}>
-            {foundingStoryEpochs.map((item, idx) => {
-              const isActive = activeEpoch === idx;
-              return (
-                <button
-                  key={item.epoch}
-                  type="button"
-                  onClick={() => setActiveEpoch(idx)}
-                  className={`${styles.storyTabBtn} ${isActive ? styles.storyTabActive : ''}`}
-                >
-                  <span className={styles.tabYearBadge}>{item.year}</span>
-                  <span className={styles.tabTitleText}>{item.title}</span>
-                </button>
-              );
-            })}
+          {/* Skeuomorphic Stepper Timeline Scrubber */}
+          <div className={styles.storyTimelineScrubberWrap}>
+            <div className={styles.storyTimelineScrubber}>
+              {foundingStoryEpochs.map((item, idx) => {
+                const isActive = activeEpoch === idx;
+                const isPast = activeEpoch > idx;
+                return (
+                  <button
+                    key={item.epoch}
+                    type="button"
+                    onClick={() => setActiveEpoch(idx)}
+                    className={`${styles.storyTabBtn} ${isActive ? styles.storyTabActive : ''} ${isPast ? styles.storyTabPast : ''}`}
+                    aria-label={`Jump to ${item.year}: ${item.title}`}
+                  >
+                    <span className={styles.tabStepNum}>0{idx + 1}</span>
+                    <span className={styles.tabYearBadge}>{item.year}</span>
+                    <span className={styles.tabTitleText}>{item.title}</span>
+                    {isActive && <span className={styles.activeTabGlowLine} />}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
-          {/* Active Story Card: Clean White Dual-Pane Layout */}
-          <div className={styles.storyShowcaseCard}>
-            <div className={styles.storyCardGrid}>
-              {/* Left Column: Narrative Conviction & Founder Quote */}
-              <div className={styles.storyNarrativeCol}>
-                <div className={styles.storyMetaRow}>
-                  <span className={styles.storyChapterTag}>CHAPTER 0{activeEpoch + 1} OF 04</span>
-                  <span className={styles.storyBadgePill}>{foundingStoryEpochs[activeEpoch].badgeLabel}</span>
-                </div>
+          {/* 3D Skeuomorphic Stage Wrapper with Auto-Elevation on Scroll */}
+          <div
+            className={`${styles.storyStageWrapper} ${
+              isStoryAutoElevated ? styles.storyStageElevated : ''
+            }`}
+          >
+            {/* Sliding Viewport Container with Touch & Wheel Sliding Interaction */}
+            <div
+              className={styles.storyDeckViewport}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+              onWheel={handleDeckWheel}
+            >
+              <div
+                className={styles.storyDeckTrack}
+                style={{ transform: `translateX(-${activeEpoch * 100}%)` }}
+              >
+                {foundingStoryEpochs.map((item, idx) => {
+                  const isCurrent = activeEpoch === idx;
+                  return (
+                    <div key={item.epoch} className={styles.storySlideWrap}>
+                      <div className={`${styles.skeuoStoryCard} ${isCurrent ? styles.skeuoCardActive : ''}`}>
+                        {/* Top Skeuomorphic Bevel Edge & Metadata Strip */}
+                        <div className={styles.cardSkeuoTopBar}>
+                          <div className={styles.cardTopLeft}>
+                            <div className={styles.embossedYearBadge}>
+                              <span className={styles.embossedYearDot} style={{ backgroundColor: item.color }} />
+                              <span className={styles.embossedYearText}>{item.year}</span>
+                            </div>
+                            <span className={styles.cardActIndicator}>ACT 0{idx + 1} OF 04</span>
+                            <span className={styles.cardCodenameBadge}>{item.badgeLabel}</span>
+                          </div>
 
-                <h3 className={styles.storyMainTitle}>{foundingStoryEpochs[activeEpoch].title}</h3>
+                          <div className={styles.cardTopRight}>
+                            <span className={styles.cardReadingTime}>
+                              <span className={styles.readingIcon}>⏱</span> 2 MIN CHAPTER
+                            </span>
+                            <div className={styles.cardProgressMiniBar}>
+                              <div
+                                className={styles.progressMiniFill}
+                                style={{ width: `${((idx + 1) / foundingStoryEpochs.length) * 100}%` }}
+                              />
+                            </div>
+                          </div>
+                        </div>
 
-                {/* Editorial Founder Quote */}
-                <blockquote className={styles.storyEditorialQuote}>
-                  &ldquo;{foundingStoryEpochs[activeEpoch].quote}&rdquo;
-                </blockquote>
+                        {/* Dual-Column Storytelling Grid */}
+                        <div className={styles.cardStoryGrid}>
+                          {/* Left Column: Narrative Soul & Founder Conviction */}
+                          <div className={styles.storyNarrativeCol}>
+                            <div className={styles.chapterTitleBlock}>
+                              <span className={styles.chapterTaglineText} style={{ color: item.color }}>
+                                {item.tagline}
+                              </span>
+                              <h3 className={styles.storyMainTitle}>{item.title}</h3>
+                            </div>
 
-                {/* Founder Bio Signature Strip */}
-                <div className={styles.storyAuthorStrip}>
-                  <div className={styles.authorAvatarWrap}>
-                    <Image
-                      src={foundingStoryEpochs[activeEpoch].authorAvatar}
-                      alt={foundingStoryEpochs[activeEpoch].author}
-                      width={44}
-                      height={44}
-                      className={styles.authorAvatarImg}
-                    />
-                  </div>
-                  <div className={styles.authorInfoCol}>
-                    <span className={styles.authorName}>{foundingStoryEpochs[activeEpoch].author}</span>
-                    <span className={styles.authorRoleTitle}>{foundingStoryEpochs[activeEpoch].authorRole}</span>
-                  </div>
-                </div>
+                            {/* Skeuomorphic Debossed Parchment Quote */}
+                            <div className={styles.quoteSkeuoPanel}>
+                              <div className={styles.quoteMarkGlow}>&ldquo;</div>
+                              <blockquote className={styles.quoteText}>
+                                {item.quote}
+                              </blockquote>
+                            </div>
 
-                {/* Tactical Turning Points Checklist */}
-                <div className={styles.turningPointsSection}>
-                  <span className={styles.turningPointsHeading}>STRATEGIC TURNING POINTS:</span>
-                  <ul className={styles.cleanPointsList}>
-                    {foundingStoryEpochs[activeEpoch].turningPoints.map((point, pIdx) => (
-                      <li key={pIdx} className={styles.cleanPointItem}>
-                        <span className={styles.cleanCheckmark}>✓</span>
-                        <span className={styles.cleanPointText}>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+                            {/* Founder Physical ID Credential Strip */}
+                            <div className={styles.founderIdStrip}>
+                              <div className={styles.founderAvatarEmbossed}>
+                                <Image
+                                  src={item.authorAvatar}
+                                  alt={item.author}
+                                  width={48}
+                                  height={48}
+                                  className={styles.founderAvatarImg}
+                                />
+                              </div>
+                              <div className={styles.founderTextInfo}>
+                                <div className={styles.founderNameRow}>
+                                  <span className={styles.founderNameText}>{item.author}</span>
+                                  <span className={styles.founderVerifiedPill}>✓ Co-Owner Accountability</span>
+                                </div>
+                                <span className={styles.founderRoleSubtitle}>{item.authorRole} · Marketing Copilot</span>
+                              </div>
+                            </div>
 
-              {/* Right Column: Measurable Standards & Real Impact Panel */}
-              <div className={styles.storyImpactCol}>
-                <div className={styles.impactPanelCard}>
-                  <div className={styles.impactPanelHeader}>
-                    <span className={styles.impactEyebrow}>VERIFIED BENCHMARK</span>
-                    <span className={styles.impactYearTag}>{foundingStoryEpochs[activeEpoch].year}</span>
-                  </div>
+                            {/* Strategic Turning Points Checklist */}
+                            <div className={styles.turningPointsCard}>
+                              <div className={styles.turningPointsHeader}>
+                                <span className={styles.turningPointsEyebrow}>STRATEGIC TURNING POINTS IN THIS CHAPTER:</span>
+                              </div>
+                              <ul className={styles.turningPointsList}>
+                                {item.turningPoints.map((point, pIdx) => (
+                                  <li key={pIdx} className={styles.turningPointItem}>
+                                    <span className={styles.turningCheckmarkPill}>✓</span>
+                                    <span className={styles.turningPointText}>{point}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
 
-                  {/* Hero Metric Showcase */}
-                  <div className={styles.heroMetricRow}>
-                    <div className={styles.heroMetricDigit}>
-                      {foundingStoryEpochs[activeEpoch].metricHero}
-                    </div>
-                    <div className={styles.heroMetricDescriptor}>
-                      {foundingStoryEpochs[activeEpoch].metricLabel}
-                    </div>
-                  </div>
+                          {/* Right Column: Precision Machined Telemetry Plate */}
+                          <div className={styles.storyImpactCol}>
+                            <div className={styles.telemetrySkeuoPlate}>
+                              <div className={styles.telemetryPlateHeader}>
+                                <div className={styles.plateHeaderLeft}>
+                                  <span className={styles.telemetryDotLive} />
+                                  <span className={styles.telemetryEyebrow}>AUDITED CHAPTER BENCHMARK</span>
+                                </div>
+                                <span className={styles.telemetryYearBadge}>EST. {item.year}</span>
+                              </div>
 
-                  {/* 4 Quantitative Delivery Metrics */}
-                  <div className={styles.impactMetricsGrid}>
-                    {foundingStoryEpochs[activeEpoch].artifactMetrics.map((metric, mIdx) => (
-                      <div
-                        key={mIdx}
-                        className={`${styles.impactMetricCell} ${
-                          metric.bad ? styles.cellBad : metric.good ? styles.cellGood : ''
-                        }`}
-                      >
-                        <span className={styles.impactMetricVal}>{metric.val}</span>
-                        <span className={styles.impactMetricLbl}>{metric.label}</span>
+                              {/* Hero Metric Medallion */}
+                              <div className={styles.heroMetricMedallion}>
+                                <div className={styles.heroMetricNumber} style={{ color: item.color }}>
+                                  {item.metricHero}
+                                </div>
+                                <div className={styles.heroMetricLabelWrap}>
+                                  <span className={styles.heroMetricBadgePill}>FORENSIC TELEMETRY</span>
+                                  <p className={styles.heroMetricLabelText}>{item.metricLabel}</p>
+                                </div>
+                              </div>
+
+                              {/* 4 Quantitative Telemetry Quadrants */}
+                              <div className={styles.quadrantGrid}>
+                                {item.artifactMetrics.map((metric, mIdx) => (
+                                  <div
+                                    key={mIdx}
+                                    className={`${styles.quadrantCell} ${
+                                      metric.bad ? styles.cellBad : metric.good ? styles.cellGood : ''
+                                    }`}
+                                  >
+                                    <div className={styles.cellHeader}>
+                                      <span className={styles.cellStatusDot} />
+                                      <span className={styles.quadrantVal}>{metric.val}</span>
+                                    </div>
+                                    <span className={styles.quadrantLbl}>{metric.label}</span>
+                                  </div>
+                                ))}
+                              </div>
+
+                              {/* Sovereign Takeaway Box */}
+                              <div className={styles.sovereignTakeawayBox}>
+                                <span className={styles.sovereignShield}>🛡️</span>
+                                <div className={styles.sovereignTextCol}>
+                                  <strong>The Sovereign Standard:</strong>
+                                  <p>{item.resolution}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Skeuomorphic Bottom Control Footer */}
+                        <div className={styles.cardSkeuoFooter}>
+                          <button
+                            type="button"
+                            onClick={() => setActiveEpoch((prev) => (prev > 0 ? prev - 1 : foundingStoryEpochs.length - 1))}
+                            className={styles.skeuoNavBtn}
+                            aria-label="Previous story chapter"
+                          >
+                            <span className={styles.navBtnArrow}>←</span>
+                            <span>Previous Chapter</span>
+                          </button>
+
+                          <div className={styles.footerCenterControls}>
+                            <div className={styles.stepperPillsRow}>
+                              {foundingStoryEpochs.map((ep, dotIdx) => (
+                                <button
+                                  key={dotIdx}
+                                  type="button"
+                                  onClick={() => setActiveEpoch(dotIdx)}
+                                  className={`${styles.stepperPillItem} ${activeEpoch === dotIdx ? styles.stepperPillActive : ''}`}
+                                  title={`${ep.year}: ${ep.title}`}
+                                  aria-label={`Slide to Chapter ${dotIdx + 1}: ${ep.year}`}
+                                >
+                                  <span className={styles.stepperPillYear}>{ep.year}</span>
+                                </button>
+                              ))}
+                            </div>
+                            <span className={styles.swipeHintText}>
+                              ⟷ Drag, scroll, or use arrows to slide chapters
+                            </span>
+                          </div>
+
+                          <button
+                            type="button"
+                            onClick={() => setActiveEpoch((prev) => (prev < foundingStoryEpochs.length - 1 ? prev + 1 : 0))}
+                            className={styles.skeuoNavBtn}
+                            aria-label="Next story chapter"
+                          >
+                            <span>Next Chapter</span>
+                            <span className={styles.navBtnArrow}>→</span>
+                          </button>
+                        </div>
                       </div>
-                    ))}
-                  </div>
-
-                  {/* Permanent Standard Takeaway */}
-                  <div className={styles.standardResolutionBox}>
-                    <span className={styles.resolutionIcon}>✓</span>
-                    <div className={styles.resolutionTextWrap}>
-                      <strong>The Sovereign Standard:</strong>
-                      <p>{foundingStoryEpochs[activeEpoch].resolution}</p>
                     </div>
-                  </div>
-                </div>
+                  );
+                })}
               </div>
-            </div>
-
-            {/* Stepper Navigation Footer */}
-            <div className={styles.storyFooterNav}>
-              <button
-                type="button"
-                onClick={() => setActiveEpoch((prev) => (prev > 0 ? prev - 1 : foundingStoryEpochs.length - 1))}
-                className={styles.stepperNavBtn}
-              >
-                ← Previous Chapter
-              </button>
-
-              <div className={styles.stepperIndicators}>
-                {foundingStoryEpochs.map((_, dotIdx) => (
-                  <button
-                    key={dotIdx}
-                    type="button"
-                    onClick={() => setActiveEpoch(dotIdx)}
-                    className={`${styles.stepperDot} ${activeEpoch === dotIdx ? styles.stepperDotActive : ''}`}
-                    aria-label={`Go to chapter ${dotIdx + 1}`}
-                  />
-                ))}
-              </div>
-
-              <button
-                type="button"
-                onClick={() => setActiveEpoch((prev) => (prev < foundingStoryEpochs.length - 1 ? prev + 1 : 0))}
-                className={styles.stepperNavBtn}
-              >
-                Next Chapter →
-              </button>
             </div>
           </div>
         </div>
