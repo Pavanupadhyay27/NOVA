@@ -273,3 +273,52 @@
   align-items: center;
   line-height: 1;
 }
+
+/* ══════════════════════════════════════════════════
+   RESPONSIVE COMPACT MOBILE STYLING
+   ══════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .beamWrapper {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .innerBtn {
+    padding: 8px 16px !important;
+    font-size: 12.5px !important;
+    gap: 5px !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    line-height: 1.3 !important;
+  }
+  .lg .innerBtn {
+    padding: 9px 18px !important;
+    font-size: 13px !important;
+  }
+  .md .innerBtn {
+    padding: 8px 16px !important;
+    font-size: 12.5px !important;
+  }
+  .sm .innerBtn {
+    padding: 6px 12px !important;
+    font-size: 11.5px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .innerBtn {
+    padding: 7px 14px !important;
+    font-size: 12px !important;
+  }
+  .lg .innerBtn {
+    padding: 8px 16px !important;
+    font-size: 12.5px !important;
+  }
+  .md .innerBtn {
+    padding: 7px 14px !important;
+    font-size: 12px !important;
+  }
+  .sm .innerBtn {
+    padding: 5px 10px !important;
+    font-size: 11px !important;
+  }
+}

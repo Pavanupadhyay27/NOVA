@@ -52,13 +52,19 @@ export default function Footer() {
                 <Link href="/" className={styles.logoAnchor}>
                   <div className={styles.logoPlate}>
                     <Image
-                      src="/images/marketing-copilot-transparent.png"
+                      src="/images/marketing-copilot-brand.png"
                       alt="Marketing Copilot Digital Marketing Agency"
                       width={200}
                       height={68}
-                      style={{ width: 'auto', height: '48px' }}
+                      style={{ width: 'auto', height: '42px' }}
                       className={styles.logoImg}
                     />
+                    <div className={styles.footerBrandTaglineCol}>
+                      <span className={styles.footerBrandPrimaryText}>Your Business, Our Strategies</span>
+                      <span className={styles.footerBrandSubText}>
+                        <span className={styles.footerBrandSparkle}>✦</span> Powered by NovaSpark
+                      </span>
+                    </div>
                   </div>
                 </Link>
 

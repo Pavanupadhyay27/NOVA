@@ -47,26 +47,66 @@
 /* Logo with Official Transparent 3D Emblem */
 .logo {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   text-decoration: none;
   flex-shrink: 0;
   padding: 0;
   background: transparent;
   border: none;
   box-shadow: none;
+  gap: 2px;
   transition: transform var(--transition-fast);
 }
 
 .logo:hover {
-  transform: scale(1.03);
+  transform: translateY(-1px);
 }
 
 .logoImg {
-  height: 48px;
+  height: 25px;
   width: auto;
-  max-width: 240px;
+  max-width: 145px;
   object-fit: contain;
   display: block;
+}
+
+.brandTaglineCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  line-height: 1;
+}
+
+.brandPrimaryText {
+  font-family: var(--font-display);
+  font-size: 8.5px;
+  font-weight: 800;
+  color: #0F172A;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.brandSubText {
+  font-family: var(--font-display), sans-serif;
+  font-size: 6.8px;
+  font-weight: 800;
+  color: #0B2093;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin-top: 1px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.brandSparkle {
+  color: #F59E0B;
+  font-size: 6.5px;
 }
 
 /* Seamless Nav Links (Completely Wire-Free) */
@@ -713,10 +753,21 @@
 .mobileServicesList {
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  max-height: 280px;
+  gap: 4px;
+  max-height: 320px;
   overflow-y: auto;
-  padding-right: 2px;
+  padding-right: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(11, 32, 147, 0.2) transparent;
+}
+
+.mobileServicesList::-webkit-scrollbar {
+  width: 4px;
+}
+
+.mobileServicesList::-webkit-scrollbar-thumb {
+  background: rgba(11, 32, 147, 0.25);
+  border-radius: 999px;
 }
 
 .mobileServiceItem {
@@ -880,13 +931,16 @@
     padding: 0 8px 0 14px;
   }
   .logoImg {
-    height: 34px;
+    height: 26px;
   }
   .nav {
     display: none !important;
   }
   /* STRICTLY HIDE "LET'S TALK" IN NAVBAR ON MOBILE/TABLET */
   .borderBeamWrapper {
+    display: none !important;
+  }
+  .brandTaglineCol {
     display: none !important;
   }
   .hamburger {
@@ -905,7 +959,7 @@
     padding: 0 6px 0 12px;
   }
   .logoImg {
-    height: 30px;
+    height: 22px;
   }
   .mobileMenu {
     top: 68px;

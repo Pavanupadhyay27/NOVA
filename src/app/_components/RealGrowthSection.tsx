@@ -191,8 +191,9 @@ export default function RealGrowthSection() {
                       href={study.pdfUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      label="Download Complete Case Study (PDF)"
-                      size="md"
+                      label="Download Case Study (PDF)"
+                      size="sm"
+                      fullWidth
                     />
                   </div>
                 </div>
@@ -202,8 +203,8 @@ export default function RealGrowthSection() {
         </div>
 
         {/* Bottom Runway Action CTA */}
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: 44 }}>
-          <BeamButton href="/contact" label="Get a Custom Case Study & Growth Plan" size="md" />
+        <div className={styles.bottomCtaWrap}>
+          <BeamButton href="/contact" label="Get Custom Case Study & Growth Plan" size="md" />
         </div>
       </div>
     </section>

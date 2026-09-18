@@ -66,10 +66,6 @@ export default function QuickConnectMapSection({ id = 'direct-connect' }: { id?:
                   <span className={styles.sparkle}>⚡</span>
                   <span>Direct Channels</span>
                 </div>
-                <div className={styles.slaBadge}>
-                  <span className={styles.slaDot} />
-                  <span>24-Hour SLA Guaranteed</span>
-                </div>
               </div>
 
               {/* Rows List with Perfectly Aligned Action Columns */}

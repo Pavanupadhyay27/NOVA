@@ -33,7 +33,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(true);
   const dropdownTimerRef = useRef<NodeJS.Timeout | null>(null);
   const pathname = usePathname();
 
@@ -48,7 +48,7 @@ export default function Header() {
     setPrevPathname(pathname);
     setMenuOpen(false);
     setServicesOpen(false);
-    setMobileServicesOpen(false);
+    setMobileServicesOpen(true);
   }
 
   const handleMouseEnter = () => {
@@ -65,17 +65,23 @@ export default function Header() {
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.inner}>
-        {/* Logo */}
+        {/* Logo Lockup (Stacked) */}
         <Link href="/" className={styles.logo} aria-label="Marketing Copilot Homepage">
           <Image
-            src="/images/marketing-copilot-transparent.png"
+            src="/images/marketing-copilot-brand.png"
             alt="Marketing Copilot — Digital Marketing Agency Bhubaneswar"
             width={200}
             height={68}
             priority
-            style={{ width: 'auto', height: '44px' }}
+            style={{ width: 'auto', height: '32px' }}
             className={styles.logoImg}
           />
+          <div className={styles.brandTaglineCol}>
+            <span className={styles.brandPrimaryText}>Your Business, Our Strategies</span>
+            <span className={styles.brandSubText}>
+              <span className={styles.brandSparkle}>✦</span> Powered by NovaSpark
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Nav */}
@@ -179,7 +185,11 @@ export default function Header() {
         {/* Mobile Hamburger */}
         <button
           className={`${styles.hamburger} ${menuOpen ? styles.open : ''}`}
-          onClick={() => setMenuOpen(!menuOpen)}
+          onClick={() => {
+            const next = !menuOpen;
+            setMenuOpen(next);
+            if (next) setMobileServicesOpen(true);
+          }}
           aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
           aria-expanded={menuOpen}
         >

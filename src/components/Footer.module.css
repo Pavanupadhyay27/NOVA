@@ -149,23 +149,64 @@
 
 .logoPlate {
   display: inline-flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   background: transparent;
   border: none;
   box-shadow: none;
   padding: 0;
+  gap: 3px;
   transition: transform 0.2s ease;
 }
 
 .logoPlate:hover {
-  transform: scale(1.03);
+  transform: translateY(-1px);
 }
 
 .logoImg {
-  height: 52px;
+  height: 34px;
   width: auto;
+  max-width: 170px;
   object-fit: contain;
   display: block;
+}
+
+.footerBrandTaglineCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  line-height: 1;
+}
+
+.footerBrandPrimaryText {
+  font-family: var(--font-display);
+  font-size: 9.5px;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.footerBrandSubText {
+  font-family: var(--font-display), sans-serif;
+  font-size: 7.5px;
+  font-weight: 700;
+  color: #60A5FA;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin-top: 1px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.footerBrandSparkle {
+  color: #FCD34D;
+  font-size: 7px;
 }
 
 .statusPill {

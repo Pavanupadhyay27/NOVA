@@ -59,6 +59,9 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 32px;
   align-items: stretch;
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
 }
 
 .cardWrapper {
@@ -66,6 +69,9 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .card {
@@ -77,6 +83,10 @@
   flex-direction: column;
   height: 100%;
   flex: 1;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   box-shadow: 
     inset 0 2.5px 0 #FFFFFF,
     inset 0 1px 1px rgba(255, 255, 255, 0.95),
@@ -538,10 +548,19 @@
   }
 }
 
+.bottomCtaWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 44px;
+  width: 100%;
+  max-width: 100%;
+}
+
 /* Mobile Viewport (< 768px): Compact Vertical Cards with High-Density Proportions */
 @media (max-width: 767px) {
   .section {
     padding: 28px 0 34px;
+    overflow: hidden;
   }
   .header {
     margin-bottom: 16px;
@@ -557,23 +576,38 @@
   .grid {
     grid-template-columns: 1fr;
     gap: 16px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+  .cardWrapper {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
   .card {
     border-radius: var(--radius-xl);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
   }
   .cardVisual {
     aspect-ratio: 16 / 7;
     height: auto;
+    width: 100%;
   }
   .metaRow {
     gap: 6px;
-    margin-bottom: 0px;
-    flex-wrap: nowrap;
+    margin-bottom: 2px;
+    flex-wrap: wrap !important;
+    width: 100%;
+    min-width: 0;
   }
   .catBadge {
     font-size: 9.5px;
     padding: 3px 9px;
-    max-width: 58%;
+    max-width: 100%;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -582,6 +616,7 @@
     font-size: 9.5px;
     padding: 3px 9px;
     gap: 4px;
+    max-width: 100%;
   }
   .statDot {
     width: 5px;
@@ -590,10 +625,14 @@
   .cardContent {
     padding: 14px 14px 12px;
     gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
   }
   .cardContentHeader {
     gap: 4px;
     min-height: auto;
+    width: 100%;
   }
   .clientTitle {
     font-size: 17px;
@@ -605,11 +644,14 @@
   }
   .specsGrid {
     gap: 6px;
+    width: 100%;
   }
   .specBox {
     padding: 9px 11px;
     gap: 4px;
     border-radius: var(--radius-md);
+    width: 100%;
+    box-sizing: border-box;
   }
   .challengeTag,
   .solutionTag {
@@ -624,6 +666,8 @@
     padding: 10px 12px;
     gap: 6px;
     border-radius: var(--radius-md);
+    width: 100%;
+    box-sizing: border-box;
   }
   .resultsTitle {
     font-size: 10px;
@@ -644,11 +688,40 @@
   }
   .cardActions {
     padding-top: 2px;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
   }
-  .cardBtn {
-    min-height: 40px;
-    padding: 9px 14px;
-    font-size: 12px;
+  .cardActions :global(.beamWrapper) {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .cardActions :global(.innerBtn) {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+    box-sizing: border-box !important;
+    justify-content: center !important;
+    white-space: normal !important;
+    text-align: center !important;
+  }
+  .bottomCtaWrap {
+    margin-top: 24px;
+    width: 100%;
+  }
+  .bottomCtaWrap :global(.beamWrapper) {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .bottomCtaWrap :global(.innerBtn) {
+    width: 100% !important;
+    justify-content: center !important;
+    font-size: 12.5px !important;
+    padding: 9px 14px !important;
+    white-space: normal !important;
+    text-align: center !important;
   }
 }
 
@@ -684,9 +757,12 @@
   .resultItem {
     font-size: 11px;
   }
-  .cardBtn {
-    min-height: 38px;
-    font-size: 11.5px;
-    padding: 8px 12px;
+  .cardActions :global(.innerBtn) {
+    font-size: 11px !important;
+    padding: 7px 10px !important;
+  }
+  .bottomCtaWrap :global(.innerBtn) {
+    font-size: 12px !important;
+    padding: 8px 12px !important;
   }
 }

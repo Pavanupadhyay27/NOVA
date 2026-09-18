@@ -6158,31 +6158,58 @@
 
 @media (max-width: 768px) {
   .heroSection {
-    padding: 36px 0 24px;
+    padding: 30px 0 20px;
   }
   .heroTitle {
-    font-size: 32px;
+    font-size: 28px !important;
+    line-height: 1.16;
+  }
+  .heroSub {
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  .heroCtaWrapper {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .heroCtaWrapper :global(.beamWrapper) {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .heroCtaWrapper :global(.innerBtn) {
+    width: 100% !important;
+    justify-content: center !important;
   }
   .sliderViewport {
     aspect-ratio: 16 / 10;
-    min-height: 280px;
-    max-height: 380px;
+    min-height: 240px;
+    max-height: 340px;
     height: auto;
+    border-radius: 16px;
+  }
+  .heroSliderCard {
+    border-radius: 18px;
+    padding: 2px;
   }
   .categoryFilterBar {
-    gap: 6px;
+    gap: 5px;
   }
   .filterPill {
-    padding: 6px 12px;
-    font-size: 11.5px;
+    padding: 5px 10px;
+    font-size: 11px;
   }
   .showcaseSegmentBar {
     gap: 4px;
-    padding: 4px;
+    padding: 3px;
+    border-radius: 14px;
   }
   .segmentTab {
-    padding: 7px 10px;
-    font-size: 11.5px;
+    padding: 6px 9px;
+    font-size: 11px;
+    border-radius: 10px;
   }
   .segmentTabCount {
     display: none;
@@ -6192,6 +6219,86 @@
     min-height: auto;
     gap: 14px;
   }
+
+  /* Compact Practice Cards */
+  .practiceListStack {
+    gap: 10px;
+  }
+  .practiceListCard {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    padding: 14px 14px 12px 16px !important;
+    border-radius: 16px !important;
+  }
+  .practiceCardBorder {
+    width: 4px;
+    border-radius: 16px 0 0 16px;
+  }
+  .practiceCardNum {
+    display: none !important;
+  }
+  .practiceCardIcon {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 11px !important;
+  }
+  .practiceIconImg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+  .practiceCardCat {
+    font-size: 9.5px !important;
+  }
+  .practiceCardTitle {
+    font-size: 16px !important;
+    line-height: 1.25 !important;
+  }
+  .practiceCardDesc {
+    font-size: 12px !important;
+    line-height: 1.45 !important;
+  }
+  .practiceCardChips {
+    gap: 4px !important;
+    margin-top: 2px !important;
+  }
+  .practiceChip {
+    font-size: 9.5px !important;
+    padding: 2px 7px !important;
+  }
+  .practiceCardRight {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    border-left: none !important;
+    padding-left: 0 !important;
+    padding-top: 8px !important;
+    border-top: 1px solid #E2E8F0 !important;
+  }
+  .practiceMetricBox {
+    align-items: flex-start !important;
+  }
+  .practiceMetricVal {
+    font-size: 20px !important;
+  }
+  .practiceMetricLabel {
+    font-size: 9px !important;
+    text-align: left !important;
+    max-width: none !important;
+  }
+  .practiceExploreLink {
+    font-size: 11.5px !important;
+    padding: 5px 10px !important;
+    border-radius: 8px !important;
+    background: rgba(11, 32, 147, 0.05) !important;
+  }
+  .seeMoreBtn {
+    min-height: 38px !important;
+    padding: 8px 18px !important;
+    font-size: 12px !important;
+  }
+
   .cityZoneGrid {
     grid-template-columns: 1fr;
     gap: 12px;
@@ -6202,7 +6309,7 @@
     border-radius: 14px;
   }
   .cityStatItem {
-    padding: 16px 18px;
+    padding: 12px 14px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
   .cityStatItem:nth-child(odd) {
@@ -6212,45 +6319,49 @@
     border-right: none;
   }
   .cityStatVal {
-    font-size: 22px;
+    font-size: 19px;
   }
   .panelDeliverablesGrid {
     grid-template-columns: 1fr;
-    gap: 8px;
+    gap: 6px;
   }
   .panelTitle {
-    font-size: 20px;
+    font-size: 18px;
   }
   .panelImageFrame {
-    height: 180px;
+    height: 160px;
   }
   .panelActions {
     flex-direction: column;
     align-items: stretch;
+    gap: 8px;
   }
   .panelExploreBtn,
   .panelSecondaryBtn {
     justify-content: center;
     width: 100%;
+    min-height: 38px;
+    padding: 8px 14px;
+    font-size: 12px;
   }
   .growthStudioConsole {
-    padding: 16px;
-    border-radius: 20px;
+    padding: 14px 12px;
+    border-radius: 18px;
   }
   .studioStagePanel {
-    padding: 18px;
+    padding: 14px 12px;
   }
   .stageDeliverablesGrid {
     grid-template-columns: 1fr;
-    gap: 8px;
+    gap: 6px;
   }
   .stagePhotoFrame {
-    height: 180px;
+    height: 160px;
   }
   .stageActionBar {
     flex-direction: column;
     align-items: stretch;
-    gap: 12px;
+    gap: 10px;
   }
   .stageNavControls {
     justify-content: space-between;
@@ -6258,76 +6369,97 @@
   .stageActionBtn {
     width: 100%;
     justify-content: center;
+    min-height: 38px;
+    padding: 8px 14px;
+    font-size: 12px;
   }
   .architectureGrid {
     grid-template-columns: 1fr;
   }
   .orbitalDial {
-    width: 310px;
-    height: 310px;
+    width: 280px;
+    height: 280px;
   }
   .revolvingOrbBall {
-    top: -110px;
+    top: -95px;
   }
   .orbitCenterHub {
-    width: 136px;
-    height: 136px;
+    width: 120px;
+    height: 120px;
   }
   .hubMetricValue {
-    font-size: 22px;
+    font-size: 19px;
   }
   .orbitNode {
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 44px;
   }
   .nodeNum {
-    font-size: 14px;
+    font-size: 12px;
   }
+
+  /* Compact Clean Phase Cards */
   .cleanPhaseCard {
-    padding: 22px 18px;
+    padding: 16px 14px !important;
+    border-radius: 16px !important;
   }
   .phaseCardHeadline {
-    font-size: 20px;
+    font-size: 18px !important;
   }
   .phaseCardFooter {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
+    align-items: stretch;
+    gap: 10px;
   }
   .phaseAuditBtn {
-    width: 100%;
-    justify-content: center;
+    width: 100% !important;
+    justify-content: center !important;
+    min-height: 40px !important;
+    padding: 8px 14px !important;
+    font-size: 12.5px !important;
   }
+
   .techCardsGrid {
-    grid-template-columns: 1fr;
-  }
-  .calcConsole {
-    padding: 20px 16px;
-  }
-  .calcResultsGrid {
     grid-template-columns: 1fr;
     gap: 10px;
   }
+
+  /* Compact Calculator Console */
+  .calcConsole {
+    padding: 16px 12px !important;
+    border-radius: 16px !important;
+  }
+  .calcResultsGrid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
   .dealPillsRow {
     flex-direction: column;
+    gap: 6px;
   }
   .dealPillBtn {
     width: 100%;
     text-align: center;
+    padding: 7px 12px;
+    font-size: 12px;
+    min-height: 36px;
   }
   .calcActionBtn {
-    width: 100%;
-    justify-content: center;
+    width: 100% !important;
+    justify-content: center !important;
+    min-height: 40px !important;
+    padding: 8px 14px !important;
+    font-size: 12.5px !important;
   }
 
   /* Section 6: The Copilot Standard Single Card Responsive */
   .copilotSingleCard {
-    padding: 20px 14px;
-    border-radius: 20px;
+    padding: 16px 12px !important;
+    border-radius: 16px !important;
   }
   .copilotCardHeader {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 10px;
     text-align: center;
   }
   .headerColCopilot,
@@ -6335,60 +6467,71 @@
     align-items: center;
   }
   .headerColVs {
-    margin: 4px auto;
+    margin: 2px auto;
   }
   .rowComparisonGrid {
     grid-template-columns: 1fr;
-    gap: 8px;
+    gap: 6px;
   }
   .comparisonRowCard {
-    padding: 14px 12px;
+    padding: 10px 10px !important;
+    border-radius: 12px !important;
   }
   .cellCopilot {
-    padding: 10px 12px;
+    padding: 8px 10px !important;
   }
   .copilotFooterActions {
     flex-direction: column;
-    align-items: center;
-    gap: 12px;
+    align-items: stretch;
+    gap: 10px;
   }
   .copilotBlueCtaBtn {
-    width: 100%;
-    justify-content: center;
+    width: 100% !important;
+    justify-content: center !important;
+    min-height: 40px !important;
+    padding: 8px 14px !important;
+    font-size: 12.5px !important;
   }
 
   /* Section 7: Hyperlocal Regional Intelligence Ladder Responsive */
   .verticalLadderContainer {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 16px;
   }
   .ladderSpineWrapper {
-    padding: 12px 8px 12px 28px;
+    padding: 10px 6px 10px 24px;
   }
   .ladderRailsTrack {
-    left: 10px;
+    left: 8px;
   }
   .ladderDeckCard {
-    padding: 20px 16px;
-    border-radius: 20px;
+    padding: 16px 14px !important;
+    border-radius: 16px !important;
   }
   .deckTelemetryGrid {
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 8px;
   }
   .deckActionRow {
     flex-direction: column;
     align-items: stretch;
-    gap: 12px;
+    gap: 10px;
   }
   .deckDeployBlueBtn {
-    width: 100%;
-    justify-content: center;
+    width: 100% !important;
+    justify-content: center !important;
+    min-height: 40px !important;
+    padding: 8px 14px !important;
+    font-size: 12.5px !important;
   }
 
   /* Section 8: Enterprise MarTech Stack CTA */
   .techActionBtn {
-    width: 100%;
-    justify-content: center;
+    width: 100% !important;
+    justify-content: center !important;
+    min-height: 40px !important;
+    padding: 8px 14px !important;
+    font-size: 12.5px !important;
   }
 }
+
