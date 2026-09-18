@@ -22,7 +22,7 @@ export default function CTASection() {
             </p>
             <div className={styles.actions}>
               <BeamButton href="/contact" label="Claim Free Growth Audit" size="lg" />
-              <BeamButton href="/portfolio" label="View Our Work" size="lg" />
+              <BeamButton href="/portfolio" label="View Our Work" size="lg" variant="outline" />
             </div>
           </ScrollReveal>
         </div>

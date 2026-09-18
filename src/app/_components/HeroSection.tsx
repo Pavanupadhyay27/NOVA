@@ -73,7 +73,13 @@ export default function HeroSection() {
 
           <div className={styles.actions}>
             <BeamButton href="/contact" label="Claim Free Growth Audit" size="lg" />
-            <BeamButton href="/services" label="Explore Our Services" size="lg" />
+            <BeamButton
+              href="/services"
+              label="Explore Our Services"
+              size="lg"
+              variant="outline"
+              icon={<span style={{ color: '#EA580C', fontSize: '12px', marginRight: '3px' }}>✦</span>}
+            />
           </div>
 
           {/* Clean Skeuomorphic Trust Strip */}

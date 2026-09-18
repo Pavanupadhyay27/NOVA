@@ -8,8 +8,10 @@ export interface BeamButtonProps {
   href?: string;
   label?: string;
   children?: React.ReactNode;
+  icon?: React.ReactNode;
   arrow?: boolean;
   size?: 'sm' | 'md' | 'lg';
+  variant?: 'primary' | 'outline';
   fullWidth?: boolean;
   className?: string;
   wrapperClassName?: string;
@@ -27,8 +29,10 @@ export default function BeamButton({
   href,
   label,
   children,
+  icon,
   arrow = true,
   size = 'md',
+  variant = 'primary',
   fullWidth = false,
   className,
   wrapperClassName,
@@ -43,8 +47,9 @@ export default function BeamButton({
 }: BeamButtonProps) {
   const content = (
     <>
-      <span className={styles.shimmer} />
-      <span className={styles.gloss} />
+      <span className={variant === 'outline' ? styles.shimmerOutline : styles.shimmer} />
+      {variant !== 'outline' && <span className={styles.gloss} />}
+      {icon && <span className={styles.iconSlot}>{icon}</span>}
       <span className={styles.btnText}>{children ?? label}</span>
       {arrow && <span className={styles.arrow}>→</span>}
     </>
@@ -52,6 +57,7 @@ export default function BeamButton({
 
   const wrapperClasses = [
     styles.beamWrapper,
+    variant === 'outline' ? styles.beamWrapperOutline : '',
     styles[size],
     fullWidth ? styles.fullWidth : '',
     wrapperClassName ?? '',
@@ -61,6 +67,7 @@ export default function BeamButton({
 
   const innerClasses = [
     styles.innerBtn,
+    variant === 'outline' ? styles.innerBtnOutline : styles.innerBtnPrimary,
     fullWidth ? styles.innerFullWidth : '',
     className ?? '',
   ]
