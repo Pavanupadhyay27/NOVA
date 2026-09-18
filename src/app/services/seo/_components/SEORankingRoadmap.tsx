@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import BeamButton from '@/components/BeamButton';
 import ScrollReveal from '@/components/ScrollReveal';
 import styles from './SEORankingRoadmap.module.css';
 
@@ -266,12 +267,7 @@ export default function SEORankingRoadmap() {
 
         {/* Bottom Tactile Action Link */}
         <div className={styles.bottomCtaRow}>
-          <Link href="/contact" className={styles.sprintCtaBtn}>
-            <span className={styles.btnShimmer} />
-            <span className={styles.btnGlass} />
-            <span>Schedule Your 90-Day Sprint Kickoff</span>
-            <span className={styles.btnArrow}>→</span>
-          </Link>
+          <BeamButton href="/contact" label="Schedule Your 90-Day Sprint Kickoff" size="md" />
         </div>
       </div>
     </section>

@@ -1,5 +1,5 @@
 'use client';
-import Link from 'next/link';
+import BeamButton from '@/components/BeamButton';
 import styles from './MobileBottomBar.module.css';
 
 export default function MobileBottomBar() {
@@ -27,12 +27,9 @@ export default function MobileBottomBar() {
         <span className={styles.callLabel}>Call</span>
       </a>
 
-      {/* Primary Consultation Action Button */}
+      {/* Primary Consultation Action Button with continuous border beam */}
       <div className={styles.ctaBtnWrapper}>
-        <Link href="/contact" className={styles.consultBtn}>
-          <span>Free Consultation</span>
-          <span className={styles.btnArrow}>→</span>
-        </Link>
+        <BeamButton href="/contact" label="Free Consultation" size="md" fullWidth />
       </div>
     </aside>
   );

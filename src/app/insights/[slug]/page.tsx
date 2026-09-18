@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import ScrollReveal from '@/components/ScrollReveal';
 import CTASection from '@/app/_components/CTASection';
+import BeamButton from '@/components/BeamButton';
 import styles from './page.module.css';
 
 interface ArticleData {
@@ -231,9 +232,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 Senior growth operator and partner at Marketing Copilot. Engineering high-velocity digital marketing frameworks for ambitious brands across India.
               </p>
             </div>
-            <Link href="/contact" className="btn btn-primary">
-              Discuss Strategy →
-            </Link>
+            <BeamButton href="/contact" label="Discuss Strategy" size="md" />
           </div>
         </div>
       </div>

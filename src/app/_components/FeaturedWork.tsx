@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import BeamButton from '@/components/BeamButton';
 import ScrollReveal from '@/components/ScrollReveal';
 import styles from './FeaturedWork.module.css';
 
@@ -61,9 +62,7 @@ export default function FeaturedWork() {
                 <span className="accent-gradient">Real Growth.</span>
               </h3>
             </div>
-            <Link href="/work" className="btn btn-secondary">
-              View All Work →
-            </Link>
+            <BeamButton href="/work" label="View All Work" size="md" />
           </div>
         </ScrollReveal>
 

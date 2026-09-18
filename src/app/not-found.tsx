@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import BeamButton from '@/components/BeamButton';
 import styles from './not-found.module.css';
 
 export default function NotFound() {
@@ -14,12 +14,8 @@ export default function NotFound() {
           We can&apos;t find what you&apos;re looking for. Let&apos;s get you back on track.
         </p>
         <div className={styles.actions}>
-          <Link href="/" className="btn btn-primary">
-            Back to Home →
-          </Link>
-          <Link href="/contact" className="btn btn-secondary">
-            Contact Us
-          </Link>
+          <BeamButton href="/" label="Back to Home" size="md" />
+          <BeamButton href="/contact" label="Contact Us" size="md" />
         </div>
       </div>
     </div>

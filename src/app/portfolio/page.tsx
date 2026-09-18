@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import BeamButton from '@/components/BeamButton';
 import ScrollReveal from '@/components/ScrollReveal';
 import CTASection from '../_components/CTASection';
 import styles from './page.module.css';
@@ -219,17 +220,7 @@ export default function PortfolioPage() {
               Want predictable revenue results like these for your Bhubaneswar business?
             </p>
             <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link href="/contact" className="btn btn-primary">
-                Book Free Bhubaneswar Strategy Session <span className="btn-arrow">→</span>
-              </Link>
-              <a
-                href="https://wa.me/918280788689?text=Hi%20Marketing%20Copilot%2C%20I%20saw%20your%20case%20studies%20and%20would%20like%20to%20discuss%20a%20project."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-secondary"
-              >
-                💬 Chat on WhatsApp
-              </a>
+              <BeamButton href="/contact" label="Book Free Strategy Session" size="md" />
             </div>
           </ScrollReveal>
         </div>

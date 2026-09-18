@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import BeamButton from '@/components/BeamButton';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -55,13 +56,7 @@ export default function ThankYouPage() {
 
         {/* Skeuomorphic & Tactile Action Buttons */}
         <div className={styles.actions}>
-          <Link href="/" className={styles.primaryBtn}>
-            <span>Back to Homepage</span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </Link>
+          <BeamButton href="/" label="Back to Homepage" size="md" />
 
           <Link href="/portfolio" className={styles.secondaryBtn}>
             Explore Case Studies

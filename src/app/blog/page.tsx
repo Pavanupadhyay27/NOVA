@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import BeamButton from '@/components/BeamButton';
 import ScrollReveal from '@/components/ScrollReveal';
 import CTASection from '../_components/CTASection';
 import styles from './page.module.css';
@@ -233,9 +234,7 @@ export default function BlogPage() {
                   <p className={styles.sideCtaText}>
                     Get a personalized 15-minute Google search &amp; ad analysis for your business.
                   </p>
-                  <Link href="/contact" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-                    Request Free Audit →
-                  </Link>
+                  <BeamButton href="/contact" label="Request Free Audit" size="sm" />
                 </div>
               </aside>
             </div>

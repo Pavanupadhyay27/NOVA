@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import CTASection from '@/app/_components/CTASection';
+import BeamButton from '@/components/BeamButton';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -152,9 +153,7 @@ export default function AboutPage() {
                   <p className="body-md" style={{ color: 'rgba(255,255,255,0.7)', marginBottom: 32 }}>
                     From growth hackers and technical SEO engineers to motion designers and AI architects — we bring world-class digital expertise to every project.
                   </p>
-                  <Link href="/contact" className="btn btn-primary">
-                    Work With Us →
-                  </Link>
+                  <BeamButton href="/contact" label="Work With Us" size="md" />
                 </div>
               </div>
             </ScrollReveal>

@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import BeamButton from '@/components/BeamButton';
 import ScrollReveal from '@/components/ScrollReveal';
 import CTASection from '../_components/CTASection';
 import styles from './page.module.css';
@@ -225,12 +226,7 @@ export default function FAQPage() {
                       Our Bhubaneswar team is happy to answer any question about your business and digital marketing options — no obligation.
                     </p>
                     <div className={styles.contactActions}>
-                      <Link href="/contact" className="btn btn-primary">
-                        Talk to Our Team <span className="btn-arrow">→</span>
-                      </Link>
-                      <Link href="/services" className="btn btn-secondary">
-                        Explore Our Services
-                      </Link>
+                      <BeamButton href="/contact" label="Talk to Our Team" size="md" />
                     </div>
                   </div>
                 </ScrollReveal>
