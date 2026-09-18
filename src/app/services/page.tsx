@@ -3,6 +3,7 @@ import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
+import BeamButton from '@/components/BeamButton';
 import QuickConnectMapSection from '../_components/QuickConnectMapSection';
 import CTASection from '../_components/CTASection';
 import styles from './page.module.css';
@@ -675,22 +676,17 @@ export default function ServicesPage() {
                     Most agencies sell disconnected tactics. We combine search dominance, sub-second web engineering, commercial videography, and paid media into an automated growth system that multiplies your pipeline.
                   </p>
 
-                  {/* Revolving Glowing Border Beam CTA Button */}
+                  {/* Revolving Glowing Border Beam CTA Buttons */}
                   <div className={styles.heroCtaWrapper}>
-                    <div className={styles.borderBeamWrapper}>
-                      <div className={styles.borderGlowAmbient} />
-                      <div className={styles.borderBeamSpin} />
-                      <Link href="/contact" className={styles.heroActionBtn}>
-                        <span className={styles.btnShimmer} />
-                        <span>Schedule Studio Session</span>
-                        <span className={styles.btnArrow}>→</span>
-                      </Link>
-                    </div>
-
-                    <a href="#growth-architecture" className={styles.explorePillBtn}>
-                      <span>Explore 10 Disciplines</span>
-                      <span>↓</span>
-                    </a>
+                    <BeamButton href="/contact" label="Schedule Studio Session" size="lg" />
+                    <BeamButton
+                      href="#growth-architecture"
+                      label="Explore 10 Disciplines"
+                      size="lg"
+                      variant="outline"
+                      arrow={false}
+                      icon={<span style={{ marginRight: '6px' }}>↓</span>}
+                    />
                   </div>
 
                   {/* Trust Proof Strip with Avatars & 4.9/5 Rating */}
@@ -868,17 +864,13 @@ export default function ServicesPage() {
             {/* See More / See Less toggle */}
             {hasMore && (
               <div className={styles.seeMoreBtnWrap}>
-                <button
-                  type="button"
-                  className={styles.seeMoreBtn}
+                <BeamButton
                   onClick={() => setShowAllServices((v) => !v)}
-                >
-                  {showAllServices ? (
-                    <><span>↑</span><span>See Less</span></>
-                  ) : (
-                    <><span>See {filteredServices.length - 4} More Practices</span><span>↓</span></>
-                  )}
-                </button>
+                  label={showAllServices ? 'Show Fewer Practices ↑' : `See ${filteredServices.length - 4} More Practices ↓`}
+                  size="md"
+                  variant="outline"
+                  arrow={false}
+                />
               </div>
             )}
           </div>
@@ -1060,16 +1052,11 @@ export default function ServicesPage() {
                         </div>
                       </div>
 
-                      <div className={styles.borderBeamWrapper}>
-                        <div className={styles.borderGlowAmbient} />
-                        <div className={styles.borderBeamSpin} />
-                        <Link href="/contact" className={styles.phaseCtaBtn}>
-                          <span className={styles.btnShimmer} />
-                          <span className={styles.btnGlassGloss} />
-                          <span>Initiate Phase {currentPhase.num} Sprint</span>
-                          <span className={styles.btnArrow}>→</span>
-                        </Link>
-                      </div>
+                      <BeamButton
+                        href="/contact"
+                        label={`Initiate Phase ${currentPhase.num} Sprint`}
+                        size="md"
+                      />
 
                     </div>
                   </div>
@@ -1203,16 +1190,7 @@ export default function ServicesPage() {
               {/* Console Action Bar with Centered Animated Pill Button */}
               <div className={styles.calcConsoleFooter}>
                 <div className={styles.calcBtnWrapper}>
-                  <div className={styles.borderBeamWrapper}>
-                    <div className={styles.borderGlowAmbient} />
-                    <div className={styles.borderBeamSpin} />
-                    <Link href="/contact" className={styles.calcCtaBtn}>
-                      <span className={styles.btnShimmer} />
-                      <span className={styles.btnGlassGloss} />
-                      <span>Claim Your Custom Forecast</span>
-                      <span className={styles.btnArrow}>→</span>
-                    </Link>
-                  </div>
+                  <BeamButton href="/contact" label="Claim Your Custom Forecast" size="md" />
                 </div>
               </div>
             </div>
@@ -1299,16 +1277,7 @@ export default function ServicesPage() {
               {/* Footer CTA */}
               <div className={styles.copilotCardFooter}>
                 <div className={styles.blueBtnWrapper}>
-                  <div className={styles.borderBeamWrapper}>
-                    <div className={styles.borderGlowAmbient} />
-                    <div className={styles.borderBeamSpin} />
-                    <Link href="/contact" className={styles.copilotCtaBtn}>
-                      <span className={styles.btnShimmer} />
-                      <span className={styles.btnGlassGloss} />
-                      <span>Claim Your 14-Day Sprint</span>
-                      <span className={styles.btnArrow}>→</span>
-                    </Link>
-                  </div>
+                  <BeamButton href="/contact" label="Claim Your 14-Day Sprint" size="md" />
                 </div>
                 <div className={styles.copilotFooterNotice}>
                   <span className={styles.reassuranceDot} />
@@ -1405,16 +1374,7 @@ export default function ServicesPage() {
 
             {/* Bottom CTA */}
             <div className={styles.cityCommandCta}>
-              <div className={styles.borderBeamWrapper}>
-                <div className={styles.borderGlowAmbient} />
-                <div className={styles.borderBeamSpin} />
-                <Link href="/contact" className={styles.cityCtaBtn}>
-                  <span className={styles.btnShimmer} />
-                  <span className={styles.btnGlassGloss} />
-                  <span>Target Your Local District</span>
-                  <span className={styles.btnArrow}>→</span>
-                </Link>
-              </div>
+              <BeamButton href="/contact" label="Target Your Local District" size="md" />
               <span className={styles.cityCommandNote}>Geofencing calibrated within 48 hours of onboarding</span>
             </div>
           </div>
@@ -1466,16 +1426,7 @@ export default function ServicesPage() {
 
             {/* Centered Action Runway for Martech Stack */}
             <div className={styles.techCtaWrap}>
-              <div className={styles.borderBeamWrapper}>
-                <div className={styles.borderGlowAmbient} />
-                <div className={styles.borderBeamSpin} />
-                <Link href="/contact" className={styles.techCtaBtn}>
-                  <span className={styles.btnShimmer} />
-                  <span className={styles.btnGlassGloss} />
-                  <span>Audit Your Marketing Tech Stack</span>
-                  <span className={styles.btnArrow}>→</span>
-                </Link>
-              </div>
+              <BeamButton href="/contact" label="Audit Your Marketing Tech Stack" size="md" />
             </div>
           </div>
         </section>

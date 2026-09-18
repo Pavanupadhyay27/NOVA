@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
+import BeamButton from '@/components/BeamButton';
 import CTASection from '@/app/_components/CTASection';
 import styles from './ServicePage.module.css';
 
@@ -366,15 +367,7 @@ export default function ServicePageTemplate({
                 
                 {/* Animated Revolving Border Beam CTA Button */}
                 <div className={styles.heroActions}>
-                  <div className={styles.borderBeamWrapper}>
-                    <div className={styles.borderGlowAmbient} />
-                    <div className={styles.borderBeamSpin} />
-                    <Link href="/contact" className={styles.btnStartPrimary}>
-                      <span className={styles.btnShimmer} />
-                      <span>Claim Free Growth Audit</span>
-                      <span className={styles.btnArrow}>→</span>
-                    </Link>
-                  </div>
+                  <BeamButton href="/contact" label="Claim Free Growth Audit" size="lg" />
                 </div>
 
                 {/* Trust Strip with Avatars and Ratings */}
@@ -723,14 +716,8 @@ export default function ServicePageTemplate({
                 </div>
 
                 {/* Animated Glowing Border Beam Button */}
-                <div className={styles.borderBeamWrapper} style={{ alignSelf: 'flex-start' }}>
-                  <div className={styles.borderGlowAmbient} />
-                  <div className={styles.borderBeamSpin} />
-                  <Link href="/contact" className={styles.btnStartPrimary}>
-                    <span className={styles.btnShimmer} />
-                    <span>Book 1-on-1 Strategy Session</span>
-                    <span className={styles.btnArrow}>→</span>
-                  </Link>
+                <div style={{ alignSelf: 'flex-start', marginTop: 10 }}>
+                  <BeamButton href="/contact" label="Book 1-on-1 Strategy Session" size="md" />
                 </div>
               </ScrollReveal>
             </div>
@@ -835,15 +822,7 @@ export default function ServicePageTemplate({
 
                   {/* Action CTA Button */}
                   <div className={styles.caseCtaWrapper}>
-                    <div className={styles.borderBeamWrapper}>
-                      <div className={styles.borderGlowAmbient} />
-                      <div className={styles.borderBeamSpin} />
-                      <Link href="/portfolio" className={styles.btnStartPrimary} style={{ padding: '13px 26px', fontSize: 13.5 }}>
-                        <span className={styles.btnShimmer} />
-                        <span>Explore All Client Case Studies</span>
-                        <span className={styles.btnArrow}>→</span>
-                      </Link>
-                    </div>
+                    <BeamButton href="/portfolio" label="Explore All Client Case Studies" size="md" />
                   </div>
                 </div>
 
