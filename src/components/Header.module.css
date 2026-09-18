@@ -875,10 +875,10 @@
     height: 60px;
   }
   .inner {
-    padding: 0 8px 0 14px;
+    padding: 0 10px 0 14px;
   }
   .logoImg {
-    height: 26px;
+    height: 25px;
   }
   .nav {
     display: none !important;
@@ -888,7 +888,7 @@
     display: none !important;
   }
   .brandTaglineCol {
-    display: none !important;
+    display: flex !important;
   }
   .hamburger {
     display: flex !important;
@@ -899,14 +899,20 @@
 @media (max-width: 480px) {
   .header {
     width: calc(100% - 16px);
-    top: 10px;
+    top: 8px;
     height: 56px;
   }
   .inner {
-    padding: 0 6px 0 12px;
+    padding: 0 8px 0 12px;
   }
   .logoImg {
     height: 22px;
+  }
+  .brandPrimaryText {
+    font-size: 7.5px;
+  }
+  .brandSubText {
+    font-size: 6px;
   }
   .mobileMenu {
     top: 8px;
