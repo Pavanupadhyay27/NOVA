@@ -342,10 +342,6 @@ export default function ServicePageTemplate({
     setOpenFaq((prev) => (prev === index ? null : index));
   };
 
-  const whatsappMessage = encodeURIComponent(
-    `Hi Marketing Copilot, I am looking for ${eyebrow.replace(/[^a-zA-Z0-9 ]/g, '')} services in Bhubaneswar. Could we schedule a consultation?`
-  );
-
   return (
     <div className={styles.page} style={{ '--accent': color } as React.CSSProperties}>
       {/* ══════════════════════════════════════════════════
@@ -375,7 +371,6 @@ export default function ServicePageTemplate({
                     <div className={styles.borderBeamSpin} />
                     <Link href="/contact" className={styles.btnStartPrimary}>
                       <span className={styles.btnShimmer} />
-                      <span className={styles.btnGlassGloss} />
                       <span>Claim Free Growth Audit</span>
                       <span className={styles.btnArrow}>→</span>
                     </Link>
@@ -733,7 +728,6 @@ export default function ServicePageTemplate({
                   <div className={styles.borderBeamSpin} />
                   <Link href="/contact" className={styles.btnStartPrimary}>
                     <span className={styles.btnShimmer} />
-                    <span className={styles.btnGlassGloss} />
                     <span>Book 1-on-1 Strategy Session</span>
                     <span className={styles.btnArrow}>→</span>
                   </Link>
@@ -846,7 +840,6 @@ export default function ServicePageTemplate({
                       <div className={styles.borderBeamSpin} />
                       <Link href="/portfolio" className={styles.btnStartPrimary} style={{ padding: '13px 26px', fontSize: 13.5 }}>
                         <span className={styles.btnShimmer} />
-                        <span className={styles.btnGlassGloss} />
                         <span>Explore All Client Case Studies</span>
                         <span className={styles.btnArrow}>→</span>
                       </Link>

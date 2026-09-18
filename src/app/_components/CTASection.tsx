@@ -44,22 +44,8 @@ export default function CTASection() {
               </div>
             </div>
 
-            <div className={styles.proof}>
-              <div className={styles.proofItem}>
-                <span className={styles.proofNum}>50+</span>
-                <span className={styles.proofLabel}>Ambitious Brands</span>
-              </div>
-              <div className={styles.proofDot} />
-              <div className={styles.proofItem}>
-                <span className={styles.proofNum}>98%</span>
-                <span className={styles.proofLabel}>Retention Rate</span>
-              </div>
-              <div className={styles.proofDot} />
-              <div className={styles.proofItem}>
-                <span className={styles.proofNum}>24h</span>
-                <span className={styles.proofLabel}>Response SLA</span>
-              </div>
-            </div>
+
+
           </ScrollReveal>
         </div>
       </div>

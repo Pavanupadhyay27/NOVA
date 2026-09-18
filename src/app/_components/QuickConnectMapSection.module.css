@@ -643,14 +643,7 @@
 }
 
 .btnGlassGloss {
-  position: absolute;
-  top: 1px;
-  left: 8%;
-  right: 8%;
-  height: 48%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.05) 100%);
-  border-radius: 999px;
-  pointer-events: none;
+  display: none;
 }
 
 .arrowIcon {

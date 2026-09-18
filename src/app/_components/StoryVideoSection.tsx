@@ -173,28 +173,47 @@ export default function StoryVideoSection() {
                     preload="auto"
                   />
 
-                  {/* Sound Control Toggle Floating Button */}
+                  {/* Sleek Skeuomorphic Speaker Toggle Button (Icon Only) */}
                   <button
                     type="button"
                     onClick={toggleSound}
                     className={`${styles.soundControlBtn} ${!isMuted ? styles.soundActive : ''}`}
-                    aria-label={isMuted ? 'Enable video sound' : 'Mute video sound'}
-                    title={isMuted ? 'Click to play sound' : 'Click to mute sound'}
+                    aria-label={isMuted ? 'Unmute video sound' : 'Mute video sound'}
+                    title={isMuted ? 'Click to unmute' : 'Click to mute'}
                   >
+                    <span className={styles.soundGlassGloss} />
                     {!isMuted ? (
-                      <>
-                        <span className={styles.equalizer}>
-                          <span className={styles.eqBar} />
-                          <span className={styles.eqBar} />
-                          <span className={styles.eqBar} />
-                        </span>
-                        <span className={styles.soundLabel}>Sound On</span>
-                      </>
+                      <svg
+                        className={styles.speakerSvg}
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" fillOpacity="0.25" />
+                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07" className={styles.wave1} />
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14" className={styles.wave2} />
+                      </svg>
                     ) : (
-                      <>
-                        <span className={styles.muteIcon}>🔇</span>
-                        <span className={styles.soundLabel}>Sound Off · Tap for Audio</span>
-                      </>
+                      <svg
+                        className={styles.speakerSvg}
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" fillOpacity="0.2" />
+                        <line x1="22" y1="9" x2="16" y2="15" />
+                        <line x1="16" y1="9" x2="22" y2="15" />
+                      </svg>
                     )}
                   </button>
 

@@ -32,6 +32,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const dropdownTimerRef = useRef<NodeJS.Timeout | null>(null);
   const pathname = usePathname();
 
@@ -41,10 +42,13 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => {
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
     setMenuOpen(false);
     setServicesOpen(false);
-  }, [pathname]);
+    setMobileServicesOpen(false);
+  }
 
   const handleMouseEnter = () => {
     if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
@@ -163,13 +167,12 @@ export default function Header() {
           </Link>
         </nav>
 
-        {/* CTA Button with revolving border beam */}
+        {/* CTA Button with revolving border beam (Strictly hidden on mobile) */}
         <div className={styles.borderBeamWrapper}>
           <div className={styles.borderGlowAmbient} />
           <div className={styles.borderBeamSpin} />
           <Link href="/contact" className={styles.ctaBtn}>
             <span className={styles.btnShimmer} />
-            <span className={styles.btnGlassGloss} />
             <span>Let&apos;s Talk</span>
             <span className={styles.btnArrow}>→</span>
           </Link>
@@ -186,7 +189,7 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Tactile Skeuomorphic Mobile Menu Pop Card */}
       {menuOpen && (
         <>
           <div
@@ -195,9 +198,89 @@ export default function Header() {
             aria-hidden="true"
           />
           <div className={styles.mobileMenu}>
+            {/* Skeuomorphic Glass Lip */}
+            <span className={styles.menuGlassGloss} />
+
+            {/* Cute Card Header Bar */}
+            <div className={styles.mobileCardHeader}>
+              <div className={styles.mobileMenuBadge}>
+                <span className={styles.mobileBadgeDot} />
+                <span>EXPLORE COPILOT</span>
+              </div>
+              <button
+                type="button"
+                className={styles.mobileCloseBtn}
+                onClick={() => setMenuOpen(false)}
+                aria-label="Close navigation card"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Navigation Links */}
             <nav className={styles.mobileNav}>
               {mobileLinks.map((item) => {
                 const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href);
+
+                // Services Accordion Dropdown
+                if (item.href === '/services') {
+                  return (
+                    <div key="services-accordion" className={styles.mobileAccordionWrapper}>
+                      <button
+                        type="button"
+                        className={`${styles.mobileLink} ${styles.mobileAccordionBtn} ${isActive ? styles.mobileLinkActive : ''}`}
+                        onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                        aria-expanded={mobileServicesOpen}
+                      >
+                        <div className={styles.mobileLabelGroup}>
+                          <span className={styles.mobileLinkLabel}>Services</span>
+                          <span className={styles.servicesCountPill}>10 Services</span>
+                        </div>
+                        <span className={`${styles.mobileChevronIcon} ${mobileServicesOpen ? styles.mobileChevronRotated : ''}`}>
+                          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                            <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </span>
+                      </button>
+
+                      {/* Expandable Services Grid */}
+                      {mobileServicesOpen && (
+                        <div className={styles.mobileServicesSubmenu}>
+                          <div className={styles.mobileServicesList}>
+                            {services.map((s) => (
+                              <Link
+                                key={s.href}
+                                href={s.href}
+                                className={`${styles.mobileServiceItem} ${pathname === s.href ? styles.mobileServiceItemActive : ''}`}
+                                onClick={() => setMenuOpen(false)}
+                              >
+                                <span className={styles.serviceDotIndicator} />
+                                <div className={styles.serviceItemInfo}>
+                                  <span className={styles.serviceItemLabel}>{s.label}</span>
+                                  <span className={styles.serviceItemDesc}>{s.desc}</span>
+                                </div>
+                                <span className={styles.serviceSubArrow}>→</span>
+                              </Link>
+                            ))}
+                          </div>
+                          <Link
+                            href="/services"
+                            className={styles.mobileAllServicesBtn}
+                            onClick={() => setMenuOpen(false)}
+                          >
+                            <span>Explore all 10 services hub</span>
+                            <span>→</span>
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+
+                // Standard Nav Links
                 return (
                   <Link
                     key={item.href}
@@ -211,14 +294,18 @@ export default function Header() {
                 );
               })}
             </nav>
+
+            {/* Tactile Skeuomorphic CTA Card Footer */}
             <div className={styles.mobileCTA}>
               <Link
                 href="/contact"
-                className="btn btn-primary w-full"
-                style={{ justifyContent: 'center', width: '100%', padding: '13px 20px', fontSize: '14.5px' }}
+                className={styles.mobileTalkBtn}
                 onClick={() => setMenuOpen(false)}
               >
-                Start a Conversation →
+                <span className={styles.mobileBtnShimmer} />
+                <span className={styles.mobileBtnGlass} />
+                <span>Let&apos;s Talk — Free Consultation</span>
+                <span className={styles.mobileBtnArrow}>→</span>
               </Link>
             </div>
           </div>

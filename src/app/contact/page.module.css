@@ -532,14 +532,7 @@
 }
 
 .btnGlassGloss {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 48%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 100%);
-  border-radius: 9999px 9999px 0 0;
-  pointer-events: none;
+  display: none;
 }
 
 .btnShimmer {

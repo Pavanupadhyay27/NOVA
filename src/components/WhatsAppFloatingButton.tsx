@@ -30,8 +30,6 @@ export default function WhatsAppFloatingButton() {
 
         {/* Tactile Skeuomorphic Button Body */}
         <div className={styles.btnBody}>
-          {/* Glass Top Gloss Highlight */}
-          <span className={styles.btnGlassGloss} />
           {/* Ambient Glow Beam */}
           <span className={styles.btnShimmer} />
 

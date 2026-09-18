@@ -235,7 +235,7 @@
   display: block;
 }
 
-/* ── Floating Sound Control Button ── */
+/* ── Floating Tactile Skeuomorphic Sound Toggle Button (Icon Only) ── */
 .soundControlBtn {
   position: absolute;
   top: 16px;
@@ -243,67 +243,81 @@
   z-index: 5;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  border-radius: var(--radius-full);
-  background: rgba(15, 23, 42, 0.78);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  color: #FFFFFF;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.88) 0%, rgba(15, 23, 42, 0.92) 100%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.4),
+    inset 0 -1.5px 2px rgba(0, 0, 0, 0.4),
+    0 8px 24px rgba(0, 0, 0, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.2);
+  color: #F8FAFC;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   user-select: none;
+  overflow: hidden;
+}
+
+.soundGlassGloss {
+  display: none;
 }
 
 .soundControlBtn:hover {
-  background: rgba(15, 23, 42, 0.92);
-  transform: translateY(-2px) scale(1.03);
-  border-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-}
-
-.soundActive {
-  background: linear-gradient(135deg, rgba(11, 32, 147, 0.92) 0%, rgba(13, 0, 127, 0.95) 100%);
-  border-color: rgba(96, 165, 250, 0.6);
-  box-shadow: 0 0 22px rgba(11, 32, 147, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-}
-
-.soundLabel {
-  font-family: var(--font-display);
-  font-size: 11.5px;
-  font-weight: 700;
-  letter-spacing: 0.03em;
+  transform: translateY(-2px) scale(1.06);
+  background: linear-gradient(135deg, rgba(51, 65, 85, 0.94) 0%, rgba(15, 23, 42, 0.96) 100%);
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.6),
+    inset 0 -1.5px 2px rgba(0, 0, 0, 0.5),
+    0 12px 30px rgba(0, 0, 0, 0.45);
   color: #FFFFFF;
 }
 
-.muteIcon {
-  font-size: 13px;
+.soundControlBtn:active {
+  transform: translateY(0.5px) scale(0.95);
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.6),
+    0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Equalizer Bars Animation */
-.equalizer {
-  display: flex;
-  align-items: flex-end;
-  gap: 2.5px;
-  height: 12px;
+.soundActive {
+  background: linear-gradient(135deg, #1D4ED8 0%, #0B2093 50%, #0D007F 100%);
+  border-color: rgba(147, 197, 253, 0.7);
+  box-shadow: 
+    inset 0 1.5px 0.5px rgba(255, 255, 255, 0.55),
+    inset 0 -1.5px 2px rgba(0, 0, 0, 0.35),
+    0 0 24px rgba(29, 78, 216, 0.6),
+    0 8px 24px rgba(11, 32, 147, 0.45);
+  color: #FFFFFF;
 }
 
-.eqBar {
-  width: 2.5px;
-  background: #38BDF8;
-  border-radius: 1px;
-  animation: eqBounce 0.8s ease-in-out infinite alternate;
+.speakerSvg {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.2s ease;
 }
 
-.eqBar:nth-child(1) { height: 6px; animation-delay: 0.1s; }
-.eqBar:nth-child(2) { height: 12px; animation-delay: 0.3s; }
-.eqBar:nth-child(3) { height: 8px; animation-delay: 0.2s; }
+.soundControlBtn:hover .speakerSvg {
+  transform: scale(1.08);
+}
 
-@keyframes eqBounce {
-  0% { height: 3px; }
-  100% { height: 12px; }
+/* Sound Wave Pulse Animations */
+.wave1 {
+  animation: wavePulse 1.2s ease-in-out infinite alternate;
+}
+
+.wave2 {
+  animation: wavePulse 1.2s ease-in-out 0.25s infinite alternate;
+}
+
+@keyframes wavePulse {
+  0% { opacity: 0.35; }
+  100% { opacity: 1; }
 }
 
 /* ── Floating Minimal Founder Badge ── */
