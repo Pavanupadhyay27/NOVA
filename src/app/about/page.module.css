@@ -635,85 +635,252 @@
 }
 
 /* ═══════════════════════════════════════════════════════════
-   SECTION 4: THE FOUNDING STORY (SLIDING CHRONICLE CARDS)
+   SECTION 4: THE CHRONO-CHAMBER (ORIGIN SAGA INTERACTIVE HUD)
    ═══════════════════════════════════════════════════════════ */
-.foundingSliderSection {
-  padding: 92px 0 96px;
-  background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
+.chronoSection {
+  position: relative;
+  padding: 110px 0 120px;
+  background: #070D1E;
+  color: #FFFFFF;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.chronoAmbientGlow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: background 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0.85;
+}
+
+.chronoMesh {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.6;
+}
+
+.chronoEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #E2E8F0;
+  margin-bottom: 16px;
+}
+
+.chronoPulseDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px currentColor;
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+.chronoMainTitle {
+  color: #FFFFFF !important;
+  max-width: 900px;
+  margin: 0 auto 16px;
+  letter-spacing: -0.02em;
+}
+
+.chronoMainSub {
+  color: #94A3B8;
+  max-width: 680px;
+  margin: 0 auto 40px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Interactive HUD Scrubber Bar */
+.chronoHudBar {
+  background: rgba(15, 23, 42, 0.82);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 24px 28px 18px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  margin-bottom: 48px;
   position: relative;
 }
 
-.sliderControlsBar {
+.hudTrackLine {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  margin-bottom: 22px;
+  overflow: hidden;
+}
+
+.hudLaserFill {
+  height: 100%;
+  border-radius: 999px;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hudNodesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.hudNodeBtn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  color: #FFFFFF;
+}
+
+.hudNodeBtn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.hudNodeActive {
+  background: rgba(255, 255, 255, 0.08) !important;
+  transform: translateY(-2px);
+}
+
+.nodeIconRing {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: rgba(0, 0, 0, 0.3);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nodeDotCore {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  margin-bottom: 1px;
+}
+
+.nodeYearText {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1;
+}
+
+.nodeTextCol {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.nodeEpochTag {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  transition: color 0.3s ease;
+}
+
+.nodeEraTitle {
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hudControlsRow {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 36px;
-  margin-bottom: 24px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 12px;
 }
 
-.sliderPillTabs {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #F1F5F9;
-  padding: 4px;
-  border-radius: 999px;
-  border: 1px solid #E2E8F0;
-}
-
-.sliderPillTab {
+.hudTourBtn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 999px;
-  border: none;
-  background: transparent;
+  padding: 6px 16px;
+  color: #E2E8F0;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.sliderPillTab:hover {
-  background: rgba(255, 255, 255, 0.6);
+.hudTourBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
-.sliderPillActive {
-  background: #FFFFFF !important;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+.tourBtnActive {
+  background: rgba(16, 185, 129, 0.15) !important;
+  border-color: #10B981 !important;
+  color: #A7F3D0 !important;
 }
 
-.pillYear {
-  font-family: var(--font-display);
-  font-size: 12.5px;
-  font-weight: 800;
-  color: #0F172A;
+.tourPulseBeacon {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  animation: pulseDot 1.5s infinite;
 }
 
-.pillChapter {
-  font-size: 11px;
-  font-weight: 700;
-  color: #64748B;
-}
-
-.sliderArrowNav {
+.hudArrowGroup {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.sliderArrowBtn {
-  width: 38px;
-  height: 38px;
+.hudArrow {
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  background: #FFFFFF;
-  border: 1.5px solid #E2E8F0;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
-  font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 800;
-  color: #0F172A;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+  font-size: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -721,173 +888,813 @@
   transition: all 0.2s ease;
 }
 
-.sliderArrowBtn:hover:not(:disabled) {
-  border-color: #0B2093;
-  color: #0B2093;
-  transform: scale(1.05);
+.hudArrow:hover {
+  background: #0B2093;
+  border-color: #38BDF8;
+  transform: scale(1.06);
 }
 
-.sliderArrowBtn:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
-}
-
-.sliderIndexCount {
+.hudCounter {
   font-family: var(--font-display);
   font-size: 13px;
-  font-weight: 800;
-  color: #64748B;
-  min-width: 60px;
-  text-align: center;
+  font-weight: 700;
+  color: #94A3B8;
+  padding: 0 4px;
 }
 
-/* Horizontal Sliding Story Track */
-.slidingStoryTrack {
-  display: flex;
-  gap: 24px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 12px 4px 28px;
-  scrollbar-width: thin;
-  scrollbar-color: #CBD5E1 transparent;
-  -webkit-overflow-scrolling: touch;
+/* Chrono Stage Layout */
+.chronoStageContainer {
+  position: relative;
 }
 
-.slidingStoryTrack::-webkit-scrollbar {
-  height: 6px;
+.stageWatermarkYear {
+  position: absolute;
+  top: -60px;
+  right: -20px;
+  font-family: var(--font-display);
+  font-size: clamp(140px, 22vw, 280px);
+  font-weight: 900;
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+  opacity: 0.045;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  transition: color 0.5s ease;
 }
 
-.slidingStoryTrack::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
-  border-radius: 999px;
+.chronoStageGrid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 40px;
+  align-items: stretch;
 }
 
-.slidingStoryCard {
-  flex: 0 0 380px;
-  scroll-snap-align: start;
-  border-radius: 24px;
-  background: #FFFFFF;
-  border: 1.5px solid #E2E8F0;
-  box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.04);
-  padding: 32px 30px;
+/* Left Stage: Artifact Console */
+.stageArtifactCol {
   display: flex;
   flex-direction: column;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
+}
+
+.artifactConsoleCard {
+  background: #0A1124;
+  border: 1.5px solid;
+  border-radius: 24px;
   overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.slidingStoryCard:hover {
-  transform: translateY(-4px);
-  border-color: var(--card-accent, #0B2093);
-  box-shadow: 0 16px 36px -8px rgba(11, 32, 147, 0.12);
-}
-
-.storyCardActive {
-  border-color: var(--card-accent, #0B2093);
-  box-shadow: 0 12px 32px -6px rgba(11, 32, 147, 0.1);
-}
-
-.storyCardTop {
+.artifactConsoleHeader {
+  background: rgba(15, 23, 42, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 14px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
-  gap: 8px;
+  gap: 12px;
 }
 
-.storyYearTag {
-  font-family: var(--font-display);
-  font-size: 24px;
-  font-weight: 900;
-  color: #0F172A;
-  letter-spacing: -0.02em;
+.macPills {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.storyBadge {
+.macPills span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.artifactHeaderTitle {
+  font-family: 'JetBrains Mono', monospace, Consolas;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #94A3B8;
+  letter-spacing: 0.04em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.artifactEpochBadge {
   font-family: var(--font-display);
   font-size: 10px;
   font-weight: 800;
-  letter-spacing: 0.06em;
-  color: var(--card-accent, #0B2093);
-  background: rgba(11, 32, 147, 0.06);
+  letter-spacing: 0.08em;
   padding: 3px 10px;
   border-radius: 999px;
-  border: 1px solid rgba(11, 32, 147, 0.12);
+  border: 1px solid;
+  flex-shrink: 0;
 }
 
-.storyCardTitle {
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 800;
-  color: #0F172A;
-  margin: 0 0 14px;
-  line-height: 1.3;
-}
-
-.storyCardQuote {
-  font-family: Georgia, serif;
-  font-size: 14.5px;
-  font-style: italic;
-  line-height: 1.6;
-  color: #334155;
-  background: #F8FAFC;
-  border-left: 3px solid var(--card-accent, #0B2093);
-  padding: 14px 16px;
-  border-radius: 0 12px 12px 0;
-  margin: 0 0 20px;
+.artifactContentArea {
+  padding: 26px 24px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   flex: 1;
 }
 
-.storyCardFooter {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding-top: 16px;
-  border-top: 1px solid #E2E8F0;
+/* Autopsy View (2021) */
+.artifactAutopsyView {
+  position: relative;
+  background: rgba(220, 38, 38, 0.04);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  border-radius: 16px;
+  padding: 20px;
+  overflow: hidden;
 }
 
-.storyStatCol {
+.autopsyStampWrap {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.autopsyStampBadge {
+  border: 2px dashed #DC2626;
+  color: #DC2626;
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  padding: 4px 10px;
+  border-radius: 6px;
+  transform: rotate(-6deg);
+  background: rgba(220, 38, 38, 0.12);
+  text-shadow: 0 0 12px rgba(220, 38, 38, 0.5);
+}
+
+.autopsyNotice {
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.autopsyNoticeIcon {
+  font-size: 20px;
+}
+
+.autopsyNotice strong {
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: #F87171;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.autopsyNotice p {
+  font-size: 12px;
+  color: #94A3B8;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.autopsyLineItems {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.autopsyItem {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.itemHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.itemCross {
+  color: #EF4444;
+  font-weight: 900;
+  font-size: 13px;
+}
+
+.itemName {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #E2E8F0;
+  flex: 1;
+}
+
+.itemBilled {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  color: #EF4444;
+  text-decoration: line-through;
+}
+
+.itemDiagnosis {
+  font-size: 11.5px;
+  color: #94A3B8;
+  padding-left: 18px;
+  line-height: 1.35;
+}
+
+.itemDiagnosis strong {
+  color: #F87171;
+}
+
+/* Terminal View (2022) */
+.artifactTerminalView {
+  background: #050914;
+  border: 1px solid rgba(2, 132, 199, 0.25);
+  border-radius: 16px;
+  padding: 18px 20px;
+  font-family: 'JetBrains Mono', Consolas, monospace;
+}
+
+.terminalPromptBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 12px;
+}
+
+.terminalPrompt {
+  color: #0284C7;
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+.terminalCmd {
+  color: #38BDF8;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+.terminalLogs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+
+.logLine {
+  color: #94A3B8;
+}
+
+.logGreen {
+  color: #10B981;
+  font-weight: 700;
+}
+
+.logCyan {
+  color: #38BDF8;
+  font-weight: 700;
+}
+
+.logYellow {
+  color: #F59E0B;
+  font-weight: 700;
+}
+
+/* Soundstage View (2023) */
+.artifactSoundstageView {
+  background: rgba(236, 72, 153, 0.04);
+  border: 1px solid rgba(236, 72, 153, 0.25);
+  border-radius: 16px;
+  padding: 18px 20px;
+}
+
+.soundstageCamHud {
+  background: #060913;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 16px;
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.camHudTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.camRecDot {
+  color: #EF4444;
+  animation: pulseDot 1.2s infinite;
+}
+
+.camSpecs {
+  color: #EC4899;
+}
+
+.camBattery {
+  color: #10B981;
+}
+
+.camCrosshair {
+  position: relative;
+  height: 60px;
+  margin-bottom: 24px;
+}
+
+.camCornerTl, .camCornerTr, .camCornerBl, .camCornerBr {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.camCornerTl { top: 0; left: 25%; border-top: 1.5px solid; border-left: 1.5px solid; }
+.camCornerTr { top: 0; right: 25%; border-top: 1.5px solid; border-right: 1.5px solid; }
+.camCornerBl { bottom: 0; left: 25%; border-bottom: 1.5px solid; border-left: 1.5px solid; }
+.camCornerBr { bottom: 0; right: 25%; border-bottom: 1.5px solid; border-right: 1.5px solid; }
+
+.camReticle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid #EC4899;
+  transform: translate(-50%, -50%);
+}
+
+.camHudBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #94A3B8;
+}
+
+.audioWaveVisualizer {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 14px;
+}
+
+.waveBar {
+  width: 3px;
+  height: 100%;
+  background: #EC4899;
+  border-radius: 2px;
+  animation: eqBounce 1s infinite ease-in-out alternate;
+}
+
+@keyframes eqBounce {
+  0% { height: 20%; }
+  100% { height: 100%; }
+}
+
+.camAudioLevel {
+  color: #10B981;
+  font-weight: 700;
+}
+
+.soundstageDetails {
+  font-size: 12px;
+  color: #CBD5E1;
+  line-height: 1.5;
+}
+
+.soundstageDetails strong {
+  color: #F472B6;
+}
+
+/* Ledger View (2024+) */
+.artifactLedgerView {
+  background: rgba(16, 185, 129, 0.04);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 16px;
+  padding: 18px 20px;
+}
+
+.ledgerVaultBadge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.vaultShield {
+  font-size: 22px;
+}
+
+.ledgerVaultBadge strong {
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: #34D399;
+  display: block;
+}
+
+.ledgerVaultBadge p {
+  font-size: 11.5px;
+  color: #94A3B8;
+  margin: 0;
+  line-height: 1.35;
+}
+
+.ledgerSummaryTable {
+  display: flex;
+  flex-direction: column;
   gap: 8px;
 }
 
-.storyStatVal {
+.ledgerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.ledgerColLabel {
+  color: #CBD5E1;
+  font-weight: 500;
+}
+
+.ledgerColVal {
   font-family: var(--font-display);
-  font-size: 24px;
-  font-weight: 900;
-  line-height: 1;
+  font-weight: 800;
 }
 
-.storyStatLabel {
-  font-size: 11.5px;
-  font-weight: 700;
-  color: #64748B;
+/* Autopsy Grid Metrics */
+.autopsyGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
 }
 
-.storyTakeawayBox {
+.autopsyMetricCell {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.metricDanger {
+  background: rgba(220, 38, 38, 0.08) !important;
+  border-color: rgba(220, 38, 38, 0.25) !important;
+}
+
+.metricDanger .autopsyVal {
+  color: #F87171 !important;
+}
+
+.metricSuccess {
+  background: rgba(16, 185, 129, 0.08) !important;
+  border-color: rgba(16, 185, 129, 0.25) !important;
+}
+
+.metricSuccess .autopsyVal {
+  color: #34D399 !important;
+}
+
+.autopsyVal {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.autopsyLbl {
+  font-size: 11px;
+  color: #94A3B8;
+  font-weight: 500;
+}
+
+/* Resolution Box */
+.artifactResolutionBox {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 12px;
+  padding: 12px 14px;
   display: flex;
   align-items: flex-start;
-  gap: 7px;
-  background: rgba(16, 185, 129, 0.06);
-  border: 1px solid rgba(16, 185, 129, 0.18);
-  border-radius: 8px;
-  padding: 8px 10px;
+  gap: 10px;
 }
 
-.takeawayCheck {
+.resolutionCheck {
   color: #10B981;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 900;
   margin-top: 1px;
 }
 
-.takeawayText {
+.resolutionText {
+  font-size: 12px;
+  color: #D1FAE5;
+  margin: 0;
+  line-height: 1.45;
+}
+
+.resolutionText strong {
+  color: #FFFFFF;
+}
+
+/* Right Stage: Strategic Conviction & Founder Memo */
+.stageNarrativeCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.narrativeTagRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.narrativeChTag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.narrativeCodename {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 3px 8px;
+  border-radius: 4px;
+  color: #94A3B8;
+}
+
+.narrativeTitle {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.2vw, 36px);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.18;
+  margin: 0 0 10px;
+  letter-spacing: -0.02em;
+}
+
+.narrativeTagline {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin: 0 0 24px;
+  text-transform: uppercase;
+}
+
+/* Simulated Founder Voice Memo Player */
+.voiceNoteCard {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin-bottom: 24px;
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+
+.voiceNotePlaying {
+  box-shadow: 0 0 24px rgba(11, 32, 147, 0.35);
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.voiceAuthorWrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.voiceAvatarRing {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: visible;
+}
+
+.voiceAvatarImg {
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.voiceLiveBeacon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid #0B132B;
+  animation: pulseDot 1.5s infinite;
+}
+
+.voiceMeta {
+  display: flex;
+  flex-direction: column;
+}
+
+.voiceAuthorName {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.voiceAuthorRole {
   font-size: 11.5px;
+  color: #94A3B8;
+}
+
+.voicePlayerStrip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+
+.voicePlayBtn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  color: #FFFFFF;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.voicePlayBtn:hover {
+  transform: scale(1.08);
+}
+
+.voiceWaveBars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 24px;
+  flex: 1;
+}
+
+.voiceBar {
+  width: 3px;
+  border-radius: 2px;
+}
+
+.voiceTime {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #94A3B8;
   font-weight: 600;
-  color: #065F46;
+}
+
+/* Narrative Quote */
+.narrativeQuote {
+  font-family: Georgia, serif;
+  font-size: 15.5px;
+  font-style: italic;
+  line-height: 1.65;
+  color: #E2E8F0;
+  border-left: 3px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 0 10px 18px;
+  margin: 0 0 24px;
+}
+
+/* 3 Tactical Turning Points */
+.turningPointsBox {
+  margin-bottom: 24px;
+}
+
+.turningPointsTitle {
+  font-family: var(--font-display);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #94A3B8;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.turningPointsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.turningPointItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.tpCheckmark {
+  font-size: 13px;
+  font-weight: 900;
+  margin-top: 1px;
+}
+
+.tpText {
+  font-size: 13px;
+  color: #CBD5E1;
   line-height: 1.4;
+}
+
+/* Hero Metric Medallion */
+.heroMetricBox {
+  border: 1.5px solid;
+  border-radius: 16px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  backdrop-filter: blur(8px);
+}
+
+.heroMetricValue {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.heroMetricLabel {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #E2E8F0;
+  line-height: 1.35;
+}
+
+/* Responsive Breakpoints for Chrono-Chamber */
+@media (max-width: 1024px) {
+  .chronoStageGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .hudNodesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .hudNodesGrid {
+    grid-template-columns: 1fr;
+  }
+  .chronoHudBar {
+    padding: 18px 16px;
+  }
+  .autopsyGrid {
+    grid-template-columns: 1fr;
+  }
+  .hudControlsRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hudArrowGroup {
+    justify-content: space-between;
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════

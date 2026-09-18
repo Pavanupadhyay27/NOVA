@@ -8,55 +8,174 @@ import BeamButton from '@/components/BeamButton';
 import QuickConnectMapSection from '@/app/_components/QuickConnectMapSection';
 import styles from './page.module.css';
 
-// ─── Data: Founding Story Sliding Chronicle Cards ───
-const foundingStoryCards = [
+interface EpochMetric {
+  label: string;
+  val: string;
+  bad?: boolean;
+  good?: boolean;
+}
+
+interface FoundingStoryEpoch {
+  epoch: string;
+  year: string;
+  title: string;
+  codename: string;
+  tagline: string;
+  quote: string;
+  author: string;
+  authorRole: string;
+  authorAvatar: string;
+  color: string;
+  glow: string;
+  accentBg: string;
+  badgeLabel: string;
+  artifactType: 'autopsy' | 'terminal' | 'soundstage' | 'ledger';
+  artifactTitle: string;
+  artifactSubtitle: string;
+  artifactMetrics: EpochMetric[];
+  resolution: string;
+  turningPoints: string[];
+  metricHero: string;
+  metricLabel: string;
+}
+
+// ─── Data: Chrono-Chamber: The Founding Saga (Interactive First-Principles Evolution) ───
+const foundingStoryEpochs: FoundingStoryEpoch[] = [
   {
-    chapter: '01',
+    epoch: '01',
     year: '2021',
-    badge: 'GENESIS & THE PROBLEM',
-    title: 'The Broken Legacy Retainer Model',
+    title: 'The Retainer Autopsy',
+    codename: 'OPERATION REVENUE AUTOPSY',
+    tagline: 'THE GENESIS RAGE AGAINST TRADITIONAL AGENCY INERTIA',
     quote:
-      'We watched ambitious businesses across Odisha burn hundreds of thousands on vanity impressions and delayed monthly PDF reports from legacy agencies that took zero accountability for real cash flow.',
-    takeaway: 'Zero accountability. Fragmented execution. Handcuff contracts.',
-    stat: '0%',
-    statLabel: 'Agency Accountability in Old Model',
-    color: '#0B2093',
+      'We watched ambitious Odisha businesses burn lakhs on vanity impressions and delayed monthly PDFs from agencies that took zero responsibility for real cash flow.',
+    author: 'Shankarsan Nayak',
+    authorRole: 'Founder & CEO',
+    authorAvatar: '/images/team/exec_1.png',
+    color: '#DC2626',
+    glow: 'rgba(220, 38, 38, 0.22)',
+    accentBg: 'rgba(220, 38, 38, 0.08)',
+    badgeLabel: 'BREAKING POINT',
+    artifactType: 'autopsy',
+    artifactTitle: 'Legacy Retainer Audit vs Reality',
+    artifactSubtitle: 'Exhibit A: Real 2021 Agency Monthly Invoice Dissected',
+    artifactMetrics: [
+      { label: 'Agency Retainer Billed', val: '₹4,50,000 / mo', bad: true },
+      { label: 'Verified SQLs Delivered', val: '0 Leads', bad: true },
+      { label: 'Vanity Impressions', val: '1.4M Clicks', bad: true },
+      { label: 'Revenue Accountability', val: '0% Guarantee', bad: true },
+    ],
+    resolution:
+      'We took an unshakeable oath: Never bill a single rupee for vanity impressions. Every client campaign must be mathematically tied to audited revenue.',
+    turningPoints: [
+      'Refused traditional 12-month lock-in contract models forever',
+      'Discarded vanity reach metrics in favor of unit economics & CAC',
+      'Architected the first prototype of our 24/7 Looker Telemetry',
+    ],
+    metricHero: '0%',
+    metricLabel: 'Vanity Metrics Tolerated at Marketing Copilot',
   },
   {
-    chapter: '02',
+    epoch: '02',
     year: '2022',
-    badge: 'FIRST PRINCIPLES ENGINEERING',
-    title: 'The Quantitative Copilot Paradigm',
+    title: 'The First-Principles Code Stack',
+    codename: 'COMPUTATIONAL MARKETING',
+    tagline: 'REPLACING SUBJECTIVE SLIDE DECKS WITH SUB-SECOND NEXT.JS CODE',
     quote:
-      'We rebuilt marketing from first principles: sub-second Next.js web stacks, server-side Meta CAPI tracking, and algorithmic ad bidding. We treated client acquisition as an engineering discipline, not guesswork.',
-    takeaway: 'Sub-second speed + 100% attribution fidelity replaces subjective slides.',
-    stat: '<0.8s',
-    statLabel: 'Mobile Speed SLA Guarantee',
-    color: '#0D007F',
+      'Marketing is not an abstract art form—it is a computational physics problem. We replaced bloated WordPress templates with custom Next.js React code, server-side CAPI tracking, and algorithmic bid rebalancing.',
+    author: 'Pranjal Sharma',
+    authorRole: 'Founding Team Member & COO',
+    authorAvatar: '/images/team/exec_2.png',
+    color: '#0284C7',
+    glow: 'rgba(2, 132, 199, 0.22)',
+    accentBg: 'rgba(2, 132, 199, 0.08)',
+    badgeLabel: 'ARCHITECTURAL PIVOT',
+    artifactType: 'terminal',
+    artifactTitle: 'Next.js Edge Engine & Server CAPI',
+    artifactSubtitle: 'Production Compiler: Sub-800ms Mobile SLA Active',
+    artifactMetrics: [
+      { label: 'Google Core Web Vitals', val: '99 / 100', good: true },
+      { label: 'Mobile LCP Load Speed', val: '0.74s SLA', good: true },
+      { label: 'Meta Server CAPI Match Rate', val: '98.6%', good: true },
+      { label: 'Cookie Loss from iOS 14.5+', val: '0% Loss', good: true },
+    ],
+    resolution:
+      'Clients experienced an immediate 2.4X conversion rate lift simply by routing ad traffic through our custom-engineered sub-second landing infrastructure.',
+    turningPoints: [
+      'Migrated all client landing architectures to Next.js on Global Edge CDN',
+      'Deployed direct server-to-server Meta CAPI bypassing browser cookie loss',
+      'Automated 15-minute ad spend reallocation algorithms',
+    ],
+    metricHero: '<0.8s',
+    metricLabel: 'Audited Mobile Load Speed SLA Guarantee',
   },
   {
-    chapter: '03',
+    epoch: '03',
     year: '2023',
-    badge: 'REGIONAL ROOTS & CINEMA SOUNDSTAGE',
-    title: 'Hyperlocal Psychology & 4K Studio',
+    title: 'Hyperlocal Soundstage Hub',
+    codename: 'KHARVELA PRODUCTION LAB',
+    tagline: 'MERGING HOLLYWOOD 4K CINEMA WITH FORENSIC REGIONAL PSYCHOLOGY',
     quote:
-      'We established our physical studio & soundstage in Kharvela Nagar, Bhubaneswar. Combining forensic regional consumer psychology in Odisha with 4K commercial cinema production created instant market dominance.',
-    takeaway: 'In-house production soundstage + deep local cultural nuance.',
-    stat: '3.2X',
-    statLabel: 'Higher Regional Conversion Rate',
+      'Attention is earned in the first 1.8 seconds. We opened our physical soundstage in Kharvela Nagar, combining 4K commercial cinema production with deep Odia and Eastern India consumer psychology.',
+    author: 'Praveen Kumar',
+    authorRole: 'Founding Team Member & CGO',
+    authorAvatar: '/images/team/exec_3.png',
     color: '#EC4899',
+    glow: 'rgba(236, 72, 153, 0.22)',
+    accentBg: 'rgba(236, 72, 153, 0.08)',
+    badgeLabel: 'STUDIO SOUNDSTAGE',
+    artifactType: 'soundstage',
+    artifactTitle: '4K Commercial Soundstage Bay 01',
+    artifactSubtitle: 'Kharvela Nagar Hub · Multi-Camera Studio',
+    artifactMetrics: [
+      { label: 'In-House Soundstage Hub', val: 'Unit 3 Hub', good: true },
+      { label: 'Cinematic Camera Standard', val: 'Sony 4K/8K', good: true },
+      { label: 'Multivariate Reels Tested/Mo', val: '40+ Hooks', good: true },
+      { label: 'Regional Conversion Multiplier', val: '3.2X Lift', good: true },
+    ],
+    resolution:
+      'No recycled stock footage or generic templates. Our partners receive Hollywood-grade visual prestige that commands premium pricing in local and national markets.',
+    turningPoints: [
+      'Inaugurated dedicated production studio soundstage in Kharvela Nagar',
+      'Assembled specialized cinematography, aerial drone, and lighting crews',
+      'Launched high-velocity Odia and English multivariate creative lab',
+    ],
+    metricHero: '3.2X',
+    metricLabel: 'Higher Regional Conversion Rate vs Generic Agencies',
   },
   {
-    chapter: '04',
+    epoch: '04',
     year: '2024+',
-    badge: 'SCALE & PERFORMANCE FREEDOM',
-    title: '₹25Cr+ Deployed & Zero Handcuff Freedom',
+    title: 'The Sovereign Alpha Scale',
+    codename: 'COMPOUNDING CASH FLOW',
+    tagline: '₹25CR+ MEDIA DEPLOYED ON PURE ROLLING PERFORMANCE FREEDOM',
     quote:
-      'Today, we manage ₹25Cr+ in verified media spend with a 94% voluntary retention rate. We operate entirely on rolling month-to-month performance. We earn the right to scale your business every 30 days.',
-    takeaway: '100% skin in the game. Real bank deposits. Compounding equity.',
-    stat: '94%',
-    statLabel: 'Voluntary Month-Over-Month Retention',
+      'We manage ₹25Cr+ in verified media spend with a 94% retention rate on rolling month-to-month contracts. We operate as embedded co-owners: if we do not produce compounding bank deposits, fire us with 30 days notice.',
+    author: 'Shankarsan Nayak',
+    authorRole: 'Founder & CEO',
+    authorAvatar: '/images/team/exec_1.png',
     color: '#10B981',
+    glow: 'rgba(16, 185, 129, 0.22)',
+    accentBg: 'rgba(16, 185, 129, 0.08)',
+    badgeLabel: 'SOVEREIGN SCALE',
+    artifactType: 'ledger',
+    artifactTitle: 'Commercial Telemetry & Sovereign Ledger',
+    artifactSubtitle: 'Audited Multi-Channel Portfolio Results',
+    artifactMetrics: [
+      { label: 'Verified Ad Spend Scaled', val: '₹25Cr+', good: true },
+      { label: 'Average Blended ROAS', val: '4.8X Target', good: true },
+      { label: 'Voluntary Client Retention', val: '94% MoM', good: true },
+      { label: 'Long-Term Contract Lock-In', val: '0 Days', good: true },
+    ],
+    resolution:
+      'Today, Marketing Copilot is Eastern India’s premier quantitative growth partner, trusted by 50+ flagship brands across luxury real estate, healthcare, retail, and e-commerce.',
+    turningPoints: [
+      'Surpassed ₹25Cr+ in verified ad spend under quantitative management',
+      'Achieved 94% voluntary month-over-month partner retention rate',
+      'Ranked #1 quantitative performance marketing company in Bhubaneswar',
+    ],
+    metricHero: '₹25Cr+',
+    metricLabel: 'Total Capital Deployed With Audited ROI',
   },
 ];
 
@@ -455,12 +574,22 @@ const aboutFaqs = [
 export default function AboutPage() {
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
   const [activePhase, setActivePhase] = useState<number>(0);
-  const [activeStoryIdx, setActiveStoryIdx] = useState<number>(0);
+  const [activeEpoch, setActiveEpoch] = useState<number>(0);
+  const [isPlayingTour, setIsPlayingTour] = useState<boolean>(false);
+  const [isVoiceActive, setIsVoiceActive] = useState<boolean>(false);
   const [activePipelineStage, setActivePipelineStage] = useState<number>(0);
 
-  const storyTrackRef = useRef<HTMLDivElement>(null);
   const counterRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const countersStarted = useRef(false);
+
+  // Auto-tour timer for founding story saga
+  useEffect(() => {
+    if (!isPlayingTour) return;
+    const timer = setInterval(() => {
+      setActiveEpoch((prev) => (prev + 1) % foundingStoryEpochs.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [isPlayingTour]);
 
   // Counter animation on scroll
   useEffect(() => {
@@ -494,19 +623,6 @@ export default function AboutPage() {
     if (sectionEl) observer.observe(sectionEl);
     return () => observer.disconnect();
   }, []);
-
-  // Slide story cards
-  const slideStoryTo = (idx: number) => {
-    const validIdx = Math.max(0, Math.min(foundingStoryCards.length - 1, idx));
-    setActiveStoryIdx(validIdx);
-    if (storyTrackRef.current) {
-      const cardWidth = 420; // approx card + gap
-      storyTrackRef.current.scrollTo({
-        left: validIdx * cardWidth,
-        behavior: 'smooth',
-      });
-    }
-  };
 
   return (
     <div className={styles.aboutPageWrapper}>
@@ -690,109 +806,444 @@ export default function AboutPage() {
       <QuickConnectMapSection id="war-room-section" />
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 4: THE FOUNDING STORY (SLIDING CHRONICLE CARDS)
+          SECTION 4: THE CHRONO-CHAMBER (THE FOUNDING SAGA HUD)
          ══════════════════════════════════════════════════════ */}
-      <section className={styles.foundingSliderSection}>
-        <div className="container">
+      <section className={styles.chronoSection} id="founding-story-chamber">
+        {/* Dynamic ambient backdrop illumination matching active epoch */}
+        <div
+          className={styles.chronoAmbientGlow}
+          style={{
+            background: `radial-gradient(ellipse 65% 45% at 50% 25%, ${foundingStoryEpochs[activeEpoch].glow}, transparent 70%)`,
+          }}
+        />
+        <div className={styles.chronoMesh} />
+
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+          {/* Header */}
           <ScrollReveal className="text-center">
-            <div className="eyebrow" style={{ margin: '0 auto 12px' }}>
-              <span className="eyebrow-dot" />
-              <span>THE FOUNDING STORY</span>
+            <div className={styles.chronoEyebrow}>
+              <span className={styles.chronoPulseDot} style={{ background: foundingStoryEpochs[activeEpoch].color }} />
+              <span>THE CHRONO-CHAMBER · ORIGIN SAGA</span>
             </div>
-            <h2 className={`display-lg ${styles.sectionHeadline}`}>
-              The 4-Year Journey From Broken Retainers to{' '}
-              <span className="accent-gradient">Engineered Alpha</span>
+            <h2 className={`display-lg ${styles.chronoMainTitle}`}>
+              The 4-Year Architectural Evolution:{' '}
+              <span className="accent-gradient">From Broken Retainers to Engineered Alpha</span>
             </h2>
-            <p className={`body-lg ${styles.sectionSub}`}>
-              Built on the conviction that ambitious businesses in Odisha deserve a growth partner that acts like an owner. Slide through our evolution.
+            <p className={`body-lg ${styles.chronoMainSub}`}>
+              A forensic walk through the turning points, code pivots, and physical investments that forged Eastern India’s premier quantitative growth partner.
             </p>
           </ScrollReveal>
 
-          {/* Sliding Track Controls & Progress */}
-          <div className={styles.sliderControlsBar}>
-            <div className={styles.sliderPillTabs}>
-              {foundingStoryCards.map((card, i) => (
-                <button
-                  key={card.chapter}
-                  type="button"
-                  onClick={() => slideStoryTo(i)}
-                  className={`${styles.sliderPillTab} ${activeStoryIdx === i ? styles.sliderPillActive : ''}`}
-                >
-                  <span className={styles.pillYear}>{card.year}</span>
-                  <span className={styles.pillChapter}>Ch. {card.chapter}</span>
-                </button>
-              ))}
+          {/* Interactive HUD Epoch Controller (The Time Scrubber) */}
+          <div className={styles.chronoHudBar}>
+            {/* Background glowing laser track */}
+            <div className={styles.hudTrackLine}>
+              <div
+                className={styles.hudLaserFill}
+                style={{
+                  width: `${((activeEpoch + 1) / foundingStoryEpochs.length) * 100}%`,
+                  background: `linear-gradient(90deg, #0B2093, ${foundingStoryEpochs[activeEpoch].color})`,
+                  boxShadow: `0 0 16px ${foundingStoryEpochs[activeEpoch].color}`,
+                }}
+              />
             </div>
 
-            <div className={styles.sliderArrowNav}>
+            {/* 4 Interactive Epoch Trigger Buttons */}
+            <div className={styles.hudNodesGrid}>
+              {foundingStoryEpochs.map((ep, idx) => {
+                const isActive = activeEpoch === idx;
+                return (
+                  <button
+                    key={ep.epoch}
+                    type="button"
+                    onClick={() => {
+                      setActiveEpoch(idx);
+                      setIsPlayingTour(false);
+                    }}
+                    className={`${styles.hudNodeBtn} ${isActive ? styles.hudNodeActive : ''}`}
+                    style={
+                      isActive
+                        ? ({
+                            '--node-accent': ep.color,
+                            borderColor: ep.color,
+                            boxShadow: `0 0 24px ${ep.glow}, inset 0 0 16px ${ep.accentBg}`,
+                          } as React.CSSProperties)
+                        : undefined
+                    }
+                  >
+                    <div className={styles.nodeIconRing} style={{ borderColor: isActive ? ep.color : 'rgba(255,255,255,0.15)' }}>
+                      <span className={styles.nodeDotCore} style={{ background: isActive ? ep.color : 'rgba(255,255,255,0.4)' }} />
+                      <span className={styles.nodeYearText}>{ep.year}</span>
+                    </div>
+                    <div className={styles.nodeTextCol}>
+                      <span className={styles.nodeEpochTag} style={{ color: isActive ? ep.color : 'var(--text-muted)' }}>
+                        EPOCH {ep.epoch} · {ep.badgeLabel}
+                      </span>
+                      <strong className={styles.nodeEraTitle}>{ep.title}</strong>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Sub-HUD Controls Bar: Auto-Tour & Chrono Steppers */}
+            <div className={styles.hudControlsRow}>
               <button
                 type="button"
-                onClick={() => slideStoryTo(activeStoryIdx - 1)}
-                disabled={activeStoryIdx === 0}
-                className={styles.sliderArrowBtn}
-                aria-label="Previous Chapter"
+                onClick={() => setIsPlayingTour(!isPlayingTour)}
+                className={`${styles.hudTourBtn} ${isPlayingTour ? styles.tourBtnActive : ''}`}
+                title={isPlayingTour ? 'Pause automated 6s tour' : 'Start automated 6s tour across epochs'}
               >
-                ←
+                <span className={styles.tourPulseBeacon} style={{ background: isPlayingTour ? '#10B981' : '#64748B' }} />
+                <span>{isPlayingTour ? '❚❚ Auto-Tour Playing (6s / Epoch)' : '▶ Start Interactive Auto-Tour'}</span>
               </button>
-              <span className={styles.sliderIndexCount}>
-                0{activeStoryIdx + 1} / 0{foundingStoryCards.length}
-              </span>
-              <button
-                type="button"
-                onClick={() => slideStoryTo(activeStoryIdx + 1)}
-                disabled={activeStoryIdx === foundingStoryCards.length - 1}
-                className={styles.sliderArrowBtn}
-                aria-label="Next Chapter"
-              >
-                →
-              </button>
+
+              <div className={styles.hudArrowGroup}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveEpoch((prev) => (prev > 0 ? prev - 1 : foundingStoryEpochs.length - 1));
+                    setIsPlayingTour(false);
+                  }}
+                  className={styles.hudArrow}
+                  aria-label="Previous Epoch"
+                >
+                  ←
+                </button>
+                <span className={styles.hudCounter}>
+                  <strong style={{ color: foundingStoryEpochs[activeEpoch].color }}>0{activeEpoch + 1}</strong> / 0{foundingStoryEpochs.length}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveEpoch((prev) => (prev < foundingStoryEpochs.length - 1 ? prev + 1 : 0));
+                    setIsPlayingTour(false);
+                  }}
+                  className={styles.hudArrow}
+                  aria-label="Next Epoch"
+                >
+                  →
+                </button>
+              </div>
             </div>
           </div>
 
-          {/* Horizontal Sliding Track of Compact Editorial Cards */}
-          <div
-            ref={storyTrackRef}
-            className={styles.slidingStoryTrack}
-            onScroll={(e) => {
-              const target = e.currentTarget;
-              const cardWidth = 380;
-              const newIdx = Math.round(target.scrollLeft / cardWidth);
-              if (newIdx !== activeStoryIdx && newIdx >= 0 && newIdx < foundingStoryCards.length) {
-                setActiveStoryIdx(newIdx);
-              }
-            }}
-          >
-            {foundingStoryCards.map((card, idx) => (
-              <div
-                key={card.chapter}
-                className={`${styles.slidingStoryCard} ${activeStoryIdx === idx ? styles.storyCardActive : ''}`}
-                style={{ '--card-accent': card.color } as React.CSSProperties}
-              >
-                <div className={styles.storyCardTop}>
-                  <span className={styles.storyYearTag}>{card.year}</span>
-                  <span className={styles.storyBadge}>{card.badge}</span>
-                </div>
+          {/* The Chrono-Chamber Active Stage */}
+          <div className={styles.chronoStageContainer}>
+            {/* Watermark Year Behind Active Stage */}
+            <div className={styles.stageWatermarkYear} style={{ color: foundingStoryEpochs[activeEpoch].color }}>
+              {foundingStoryEpochs[activeEpoch].year}
+            </div>
 
-                <h3 className={styles.storyCardTitle}>{card.title}</h3>
-
-                <blockquote className={styles.storyCardQuote}>
-                  &ldquo;{card.quote}&rdquo;
-                </blockquote>
-
-                <div className={styles.storyCardFooter}>
-                  <div className={styles.storyStatCol}>
-                    <span className={styles.storyStatVal} style={{ color: card.color }}>
-                      {card.stat}
+            <div className={styles.chronoStageGrid}>
+              {/* LEFT STAGE: The Forensic Artifact Console */}
+              <div className={styles.stageArtifactCol}>
+                <div
+                  className={styles.artifactConsoleCard}
+                  style={{
+                    borderColor: `${foundingStoryEpochs[activeEpoch].color}44`,
+                    boxShadow: `0 20px 50px -10px rgba(0,0,0,0.5), 0 0 40px ${foundingStoryEpochs[activeEpoch].glow}`,
+                  }}
+                >
+                  {/* Console Mac Window Bar */}
+                  <div className={styles.artifactConsoleHeader}>
+                    <div className={styles.macPills}>
+                      <span style={{ background: '#EF4444' }} />
+                      <span style={{ background: '#F59E0B' }} />
+                      <span style={{ background: '#10B981' }} />
+                    </div>
+                    <span className={styles.artifactHeaderTitle}>
+                      EXHIBIT // {foundingStoryEpochs[activeEpoch].artifactTitle}
                     </span>
-                    <span className={styles.storyStatLabel}>{card.statLabel}</span>
+                    <span
+                      className={styles.artifactEpochBadge}
+                      style={{
+                        color: foundingStoryEpochs[activeEpoch].color,
+                        background: foundingStoryEpochs[activeEpoch].accentBg,
+                        borderColor: foundingStoryEpochs[activeEpoch].color,
+                      }}
+                    >
+                      {foundingStoryEpochs[activeEpoch].badgeLabel}
+                    </span>
                   </div>
-                  <div className={styles.storyTakeawayBox}>
-                    <span className={styles.takeawayCheck}>✓</span>
-                    <span className={styles.takeawayText}>{card.takeaway}</span>
+
+                  {/* Dynamic Artifact Core */}
+                  <div className={styles.artifactContentArea}>
+                    {/* TYPE 1: AUTOPSY (2021) */}
+                    {foundingStoryEpochs[activeEpoch].artifactType === 'autopsy' && (
+                      <div className={styles.artifactAutopsyView}>
+                        <div className={styles.autopsyStampWrap}>
+                          <div className={styles.autopsyStampBadge}>
+                            REJECTED · 0% REVENUE ATTRIBUTION
+                          </div>
+                        </div>
+
+                        <div className={styles.autopsyNotice}>
+                          <span className={styles.autopsyNoticeIcon}>⚠️</span>
+                          <div>
+                            <strong>Forensic Retainer Dissection</strong>
+                            <p>An authentic line-by-line autopsy of a ₹4,50,000 monthly agency invoice before our departure.</p>
+                          </div>
+                        </div>
+
+                        <div className={styles.autopsyLineItems}>
+                          <div className={styles.autopsyItem}>
+                            <div className={styles.itemHeader}>
+                              <span className={styles.itemCross}>✕</span>
+                              <span className={styles.itemName}>12x Social Media "Aesthetic Grid" Slides</span>
+                              <span className={styles.itemBilled}>₹1,50,000</span>
+                            </div>
+                            <div className={styles.itemDiagnosis}>
+                              Outcome: <strong>0 Qualified SQLs</strong> · Vanity engagement with zero purchase intent.
+                            </div>
+                          </div>
+
+                          <div className={styles.autopsyItem}>
+                            <div className={styles.itemHeader}>
+                              <span className={styles.itemCross}>✕</span>
+                              <span className={styles.itemName}>Monthly 45-Page PDF "Impressions" Deck</span>
+                              <span className={styles.itemBilled}>₹1,20,000</span>
+                            </div>
+                            <div className={styles.itemDiagnosis}>
+                              Outcome: <strong>1.4M Clicks, 0% Retention</strong> · Accidental bot clicks reported as growth.
+                            </div>
+                          </div>
+
+                          <div className={styles.autopsyItem}>
+                            <div className={styles.itemHeader}>
+                              <span className={styles.itemCross}>✕</span>
+                              <span className={styles.itemName}>Generic Stock Creative & Template Ad Copies</span>
+                              <span className={styles.itemBilled}>₹1,80,000</span>
+                            </div>
+                            <div className={styles.itemDiagnosis}>
+                              Outcome: <strong>Zero Regional Resonance</strong> · Disconnected from Odisha buyer behavior.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* TYPE 2: TERMINAL ENGINE (2022) */}
+                    {foundingStoryEpochs[activeEpoch].artifactType === 'terminal' && (
+                      <div className={styles.artifactTerminalView}>
+                        <div className={styles.terminalPromptBar}>
+                          <span className={styles.terminalPrompt}>copilot@edge-server:~$</span>
+                          <span className={styles.terminalCmd}>npm run deploy:sub-second-stack</span>
+                        </div>
+                        <div className={styles.terminalLogs}>
+                          <div className={styles.logLine}><span className={styles.logGreen}>✔</span> Compiled /landing-pages/performance-matrix in <span className={styles.logCyan}>142ms</span></div>
+                          <div className={styles.logLine}><span className={styles.logGreen}>✔</span> Next.js React Server Components deployed to <span className={styles.logYellow}>Global Edge CDN</span></div>
+                          <div className={styles.logLine}><span className={styles.logGreen}>✔</span> Meta Conversions API (CAPI) Server-to-Server handshake: <span className={styles.logGreen}>ACTIVE (98.6% match)</span></div>
+                          <div className={styles.logLine}><span className={styles.logGreen}>✔</span> Algorithmic Bid Arbitrage: Reallocated ₹85,000 from low-intent placements</div>
+                          <div className={styles.logLine}><span className={styles.logCyan}>⚡ AUDITED SLA:</span> Mobile First Contentful Paint: <span className={styles.logGreen}>0.74s</span> · Core Web Vitals: <span className={styles.logGreen}>99/100</span></div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* TYPE 3: 4K SOUNDSTAGE LAB (2023) */}
+                    {foundingStoryEpochs[activeEpoch].artifactType === 'soundstage' && (
+                      <div className={styles.artifactSoundstageView}>
+                        <div className={styles.soundstageCamHud}>
+                          <div className={styles.camHudTop}>
+                            <span className={styles.camRecDot}>● REC</span>
+                            <span className={styles.camSpecs}>4K UHD · 24FPS · RAW 12-BIT · 5600K</span>
+                            <span className={styles.camBattery}>98% BAT</span>
+                          </div>
+                          <div className={styles.camCrosshair}>
+                            <span className={styles.camCornerTl} />
+                            <span className={styles.camCornerTr} />
+                            <span className={styles.camCornerBl} />
+                            <span className={styles.camCornerBr} />
+                            <span className={styles.camReticle} />
+                          </div>
+                          <div className={styles.camHudBottom}>
+                            <span>BAY 01: KHARVELA NAGAR SOUNDSTAGE</span>
+                            <div className={styles.audioWaveVisualizer}>
+                              <span className={styles.waveBar} style={{ animationDelay: '0ms' }} />
+                              <span className={styles.waveBar} style={{ animationDelay: '150ms' }} />
+                              <span className={styles.waveBar} style={{ animationDelay: '300ms' }} />
+                              <span className={styles.waveBar} style={{ animationDelay: '75ms' }} />
+                              <span className={styles.waveBar} style={{ animationDelay: '220ms' }} />
+                              <span className={styles.waveBar} style={{ animationDelay: '180ms' }} />
+                              <span className={styles.waveBar} style={{ animationDelay: '350ms' }} />
+                            </div>
+                            <span className={styles.camAudioLevel}>-12dB OK</span>
+                          </div>
+                        </div>
+                        <div className={styles.soundstageDetails}>
+                          <strong>Physical Hub Features:</strong> Dedicated cinema multi-cam bay, professional lighting grid, soundproof acoustic treatment, and high-velocity Odia/English multivariate script testing.
+                        </div>
+                      </div>
+                    )}
+
+                    {/* TYPE 4: SOVEREIGN ALPHA LEDGER (2024+) */}
+                    {foundingStoryEpochs[activeEpoch].artifactType === 'ledger' && (
+                      <div className={styles.artifactLedgerView}>
+                        <div className={styles.ledgerVaultBadge}>
+                          <span className={styles.vaultShield}>🛡️</span>
+                          <div>
+                            <strong>SOVEREIGN PERFORMANCE PACT</strong>
+                            <p>Month-to-month rolling partnership. Zero legal lock-in. 100% transparent Looker telemetry.</p>
+                          </div>
+                        </div>
+
+                        <div className={styles.ledgerSummaryTable}>
+                          <div className={styles.ledgerRow}>
+                            <span className={styles.ledgerColLabel}>Managed Capital Deployed:</span>
+                            <span className={styles.ledgerColVal} style={{ color: '#10B981' }}>₹25,00,00,000+ Verified</span>
+                          </div>
+                          <div className={styles.ledgerRow}>
+                            <span className={styles.ledgerColLabel}>Audited Multi-Channel ROAS:</span>
+                            <span className={styles.ledgerColVal} style={{ color: '#10B981' }}>4.8X Blended Return</span>
+                          </div>
+                          <div className={styles.ledgerRow}>
+                            <span className={styles.ledgerColLabel}>Voluntary Client Retention:</span>
+                            <span className={styles.ledgerColVal} style={{ color: '#10B981' }}>94% MoM (Freedom Contract)</span>
+                          </div>
+                          <div className={styles.ledgerRow}>
+                            <span className={styles.ledgerColLabel}>Looker Studio Telemetry:</span>
+                            <span className={styles.ledgerColVal} style={{ color: '#0284C7' }}>24/7 Live Unfiltered Feed</span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* 4 Quantitative Telemetry Badges */}
+                    <div className={styles.autopsyGrid}>
+                      {foundingStoryEpochs[activeEpoch].artifactMetrics.map((m, mIdx) => (
+                        <div
+                          key={mIdx}
+                          className={`${styles.autopsyMetricCell} ${
+                            m.bad ? styles.metricDanger : m.good ? styles.metricSuccess : ''
+                          }`}
+                        >
+                          <span className={styles.autopsyVal}>{m.val}</span>
+                          <span className={styles.autopsyLbl}>{m.label}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Permanent Standard Resolution Box */}
+                    <div className={styles.artifactResolutionBox}>
+                      <span className={styles.resolutionCheck}>✓</span>
+                      <p className={styles.resolutionText}>
+                        <strong>Permanent Standard:</strong> {foundingStoryEpochs[activeEpoch].resolution}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            ))}
+
+              {/* RIGHT STAGE: Conviction, Founder Audio Note & Turning Points */}
+              <div className={styles.stageNarrativeCol}>
+                {/* Epoch Codename & Chapter */}
+                <div className={styles.narrativeTagRow}>
+                  <span className={styles.narrativeChTag} style={{ color: foundingStoryEpochs[activeEpoch].color }}>
+                    // CHAPTER 0{activeEpoch + 1} OF 04
+                  </span>
+                  <span className={styles.narrativeCodename}>{foundingStoryEpochs[activeEpoch].codename}</span>
+                </div>
+
+                <h3 className={styles.narrativeTitle}>{foundingStoryEpochs[activeEpoch].title}</h3>
+
+                <p className={styles.narrativeTagline} style={{ color: foundingStoryEpochs[activeEpoch].color }}>
+                  {foundingStoryEpochs[activeEpoch].tagline}
+                </p>
+
+                {/* Simulated Founder Voice Memo Player */}
+                <div
+                  className={`${styles.voiceNoteCard} ${isVoiceActive ? styles.voiceNotePlaying : ''}`}
+                  style={{ borderColor: isVoiceActive ? foundingStoryEpochs[activeEpoch].color : 'rgba(255,255,255,0.1)' }}
+                >
+                  <div className={styles.voiceAuthorWrap}>
+                    <div className={styles.voiceAvatarRing}>
+                      <Image
+                        src={foundingStoryEpochs[activeEpoch].authorAvatar}
+                        alt={foundingStoryEpochs[activeEpoch].author}
+                        width={46}
+                        height={46}
+                        className={styles.voiceAvatarImg}
+                      />
+                      <span
+                        className={styles.voiceLiveBeacon}
+                        style={{ background: isVoiceActive ? '#10B981' : foundingStoryEpochs[activeEpoch].color }}
+                      />
+                    </div>
+                    <div className={styles.voiceMeta}>
+                      <span className={styles.voiceAuthorName}>{foundingStoryEpochs[activeEpoch].author}</span>
+                      <span className={styles.voiceAuthorRole}>{foundingStoryEpochs[activeEpoch].authorRole}</span>
+                    </div>
+                  </div>
+
+                  <div className={styles.voicePlayerStrip}>
+                    <button
+                      type="button"
+                      onClick={() => setIsVoiceActive(!isVoiceActive)}
+                      className={styles.voicePlayBtn}
+                      style={{
+                        background: foundingStoryEpochs[activeEpoch].color,
+                        boxShadow: `0 0 16px ${foundingStoryEpochs[activeEpoch].glow}`,
+                      }}
+                      aria-label={isVoiceActive ? 'Pause founder memo' : 'Play founder memo'}
+                    >
+                      {isVoiceActive ? '❚❚' : '▶'}
+                    </button>
+
+                    <div className={styles.voiceWaveBars}>
+                      {[32, 60, 40, 85, 55, 95, 45, 75, 90, 60, 40, 70, 80, 50, 65, 85, 30].map((h, barIdx) => (
+                        <span
+                          key={barIdx}
+                          className={styles.voiceBar}
+                          style={{
+                            height: isVoiceActive ? `${Math.max(16, (h * ((barIdx % 3) + 1)) % 100)}%` : '20%',
+                            background: isVoiceActive ? foundingStoryEpochs[activeEpoch].color : 'rgba(255,255,255,0.25)',
+                            transition: 'height 0.2s ease',
+                          }}
+                        />
+                      ))}
+                    </div>
+
+                    <span className={styles.voiceTime}>
+                      {isVoiceActive ? '01:42' : '02:15'}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Founder Editorial Quote */}
+                <blockquote className={styles.narrativeQuote}>
+                  &ldquo;{foundingStoryEpochs[activeEpoch].quote}&rdquo;
+                </blockquote>
+
+                {/* 3 Tactical Turning Points Checklist */}
+                <div className={styles.turningPointsBox}>
+                  <span className={styles.turningPointsTitle}>TACTICAL INFLECTION POINTS:</span>
+                  <ul className={styles.turningPointsList}>
+                    {foundingStoryEpochs[activeEpoch].turningPoints.map((tp, tpIdx) => (
+                      <li key={tpIdx} className={styles.turningPointItem}>
+                        <span className={styles.tpCheckmark} style={{ color: foundingStoryEpochs[activeEpoch].color }}>
+                          ✓
+                        </span>
+                        <span className={styles.tpText}>{tp}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Hero Metric Medallion */}
+                <div
+                  className={styles.heroMetricBox}
+                  style={{
+                    borderColor: `${foundingStoryEpochs[activeEpoch].color}44`,
+                    background: foundingStoryEpochs[activeEpoch].accentBg,
+                  }}
+                >
+                  <div className={styles.heroMetricValue} style={{ color: foundingStoryEpochs[activeEpoch].color }}>
+                    {foundingStoryEpochs[activeEpoch].metricHero}
+                  </div>
+                  <div className={styles.heroMetricLabel}>{foundingStoryEpochs[activeEpoch].metricLabel}</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
