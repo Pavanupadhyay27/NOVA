@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import BeamButton from '@/components/BeamButton';
 import styles from './HeroSection.module.css';
 
 const heroSlides = [
@@ -71,29 +72,8 @@ export default function HeroSection() {
           </div>
 
           <div className={styles.actions}>
-            {/* CTA with Continuous Revolving Glowing Border Beam */}
-            <div className={styles.borderBeamWrapper}>
-              <div className={styles.borderGlowAmbient} />
-              <div className={styles.borderBeamSpin} />
-
-              <Link href="/contact" className={styles.btnStartPrimary}>
-                <span className={styles.btnShimmer} />
-                <span className={styles.btnGlassGloss} />
-                <span className={styles.btnLabel}>Claim Free Growth Audit</span>
-                <span className={styles.btnArrow}>→</span>
-              </Link>
-            </div>
-
-            {/* Explore Our Services CTA (Empty / Outline with revolving glowing border beam) */}
-            <div className={`${styles.borderBeamWrapper} ${styles.borderBeamWrapperSecondary}`}>
-              <div className={styles.borderGlowAmbientSecondary} />
-              <div className={styles.borderBeamSpin} />
-              <Link href="/services" className={styles.btnExploreWork}>
-                <span className={styles.exploreIcon}>✦</span>
-                <span className={styles.exploreLabel}>Explore Our Services</span>
-                <span className={styles.btnArrow}>→</span>
-              </Link>
-            </div>
+            <BeamButton href="/contact" label="Claim Free Growth Audit" size="lg" />
+            <BeamButton href="/services" label="Explore Our Services" size="lg" />
           </div>
 
           {/* Clean Skeuomorphic Trust Strip */}

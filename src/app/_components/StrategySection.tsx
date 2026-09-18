@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import ScrollReveal from '@/components/ScrollReveal';
+import BeamButton from '@/components/BeamButton';
 import styles from './StrategySection.module.css';
 
 interface StrategyStage {
@@ -477,6 +478,11 @@ export default function StrategySection() {
               </button>
             </div>
           </div>
+        </div>
+
+        {/* Center Bottom Action Runway */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: 44 }}>
+          <BeamButton href="/contact" label="Start Your 5-Phase Growth Plan" size="md" />
         </div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import BeamButton from '@/components/BeamButton';
 import ScrollReveal from '@/components/ScrollReveal';
 import styles from './FAQSection.module.css';
 
@@ -83,6 +84,12 @@ export default function FAQSection() {
               </div>
             </ScrollReveal>
           ))}
+        </div>
+
+        {/* Center Bottom FAQ Action */}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, marginTop: 44 }}>
+          <p style={{ color: '#64748B', fontSize: 15, margin: 0 }}>Still have questions about scaling your digital presence?</p>
+          <BeamButton href="/contact" label="Talk to Our Growth Team" size="md" />
         </div>
       </div>
     </section>

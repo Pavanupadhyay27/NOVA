@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import BeamButton from '@/components/BeamButton';
 import ScrollReveal from '@/components/ScrollReveal';
 import styles from './ServicesSection.module.css';
 
@@ -304,10 +305,7 @@ export default function ServicesSection() {
                       <div className={styles.statLabel}>{service.statLabel}</div>
                     </div>
 
-                    <Link href={service.href} className={styles.exploreBtn} style={{ color: service.color }}>
-                      <span>Explore Practice</span>
-                      <span className={styles.arrowIcon}>→</span>
-                    </Link>
+                    <BeamButton href={service.href} label="Explore Practice" size="sm" />
                   </div>
                 </div>
 
@@ -320,29 +318,20 @@ export default function ServicesSection() {
 
         {/* View More / View Less Toggle Button */}
         <div className={styles.toggleWrapper}>
-          <div className={styles.borderBeamWrapper}>
-            <div className={styles.borderGlowAmbient} />
-            <div className={styles.borderBeamSpin} />
-            <button
-              type="button"
-              onClick={() => {
-                if (showAll) {
-                  const sectionEl = document.getElementById('services-section');
-                  if (sectionEl) {
-                    sectionEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }
+          <BeamButton
+            onClick={() => {
+              if (showAll) {
+                const sectionEl = document.getElementById('services-section');
+                if (sectionEl) {
+                  sectionEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
-                setShowAll(prev => !prev);
-              }}
-              className={styles.toggleBtn}
-              aria-expanded={showAll}
-            >
-              <span className={styles.btnShimmer} />
-              <span className={styles.btnGlassGloss} />
-              <span>{showAll ? 'Show Fewer Practices' : `View All ${services.length} Practices`}</span>
-              <span className={styles.toggleCount}>{showAll ? '↑' : '↓'}</span>
-            </button>
-          </div>
+              }
+              setShowAll(prev => !prev);
+            }}
+            label={showAll ? 'Show Fewer Practices ↑' : `View All ${services.length} Practices ↓`}
+            arrow={false}
+            size="md"
+          />
         </div>
 
         {/* Centered High-Impact Skeuomorphic CTA Card */}
@@ -387,17 +376,8 @@ export default function ServicesSection() {
 
               {/* Centered Skeuomorphic Button & Trust Verification (At the Bottom of Card) */}
               <div className={styles.ctaBottomCenter}>
-                <div className={styles.borderBeamWrapper}>
-                  <div className={styles.borderGlowAmbient} />
-                  <div className={styles.borderBeamSpin} />
-
-                  <Link href="/contact" className={styles.btnCtaMain}>
-                    <span className={styles.btnShimmer} />
-                    <span className={styles.btnGlassGloss} />
-                    <span className={styles.btnLabel}>Claim Free Growth Audit</span>
-                    <span className={styles.btnArrow}>→</span>
-                  </Link>
-                </div>
+                <BeamButton href="/contact" label="Claim Free Growth Audit" size="md" />
+              </div>
 
                 <div className={styles.ctaTrustStrip}>
                   <div className={styles.trustItem}>
@@ -423,10 +403,9 @@ export default function ServicesSection() {
                   </Link>
                 </div>
               </div>
-            </div>
-          </ScrollReveal>
+            </ScrollReveal>
+          </div>
         </div>
-      </div>
-    </section>
-  );
-}
+      </section>
+    );
+  }

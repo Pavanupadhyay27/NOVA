@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import ScrollReveal from '@/components/ScrollReveal';
+import BeamButton from '@/components/BeamButton';
 import styles from './QuotesSection.module.css';
 
 const testimonials = [
@@ -230,6 +231,11 @@ export default function QuotesSection() {
               </div>
             </div>
           </ScrollReveal>
+        </div>
+
+        {/* Center Bottom Runway CTA */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}>
+          <BeamButton href="/contact" label="Join Our Growing Roster of Success Stories" size="md" />
         </div>
       </div>
     </section>

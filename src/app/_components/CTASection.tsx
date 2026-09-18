@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
+import BeamButton from '@/components/BeamButton';
 import styles from './CTASection.module.css';
 
 export default function CTASection() {
@@ -20,32 +21,9 @@ export default function CTASection() {
               Understand where your business stands online and find chances to grow.
             </p>
             <div className={styles.actions}>
-              {/* Primary CTA with Navbar Revolving Border Beam Style */}
-              <div className={styles.borderBeamWrapper}>
-                <div className={styles.borderGlowAmbient} />
-                <div className={styles.borderBeamSpin} />
-                <Link href="/contact" className={styles.btnStartPrimary}>
-                  <span className={styles.btnShimmer} />
-                  <span className={styles.btnGlassGloss} />
-                  <span>Claim Free Growth Audit</span>
-                  <span className={styles.btnArrow}>→</span>
-                </Link>
-              </div>
-
-              {/* Secondary CTA (Empty / White with Revolving Border Beam) */}
-              <div className={`${styles.borderBeamWrapper} ${styles.borderBeamWrapperSecondary}`}>
-                <div className={styles.borderGlowAmbientSecondary} />
-                <div className={styles.borderBeamSpin} />
-                <Link href="/portfolio" className={styles.btnExploreSecondary}>
-                  <span className={styles.exploreIcon}>✦</span>
-                  <span className={styles.exploreLabel}>View Our Work</span>
-                  <span className={styles.btnArrow}>→</span>
-                </Link>
-              </div>
+              <BeamButton href="/contact" label="Claim Free Growth Audit" size="lg" />
+              <BeamButton href="/portfolio" label="View Our Work" size="lg" />
             </div>
-
-
-
           </ScrollReveal>
         </div>
       </div>

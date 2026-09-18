@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import BeamButton from '@/components/BeamButton';
 import ScrollReveal from '@/components/ScrollReveal';
 import styles from './QuickConnectMapSection.module.css';
 
@@ -249,16 +250,7 @@ export default function QuickConnectMapSection() {
                   <span className={styles.footerDot} />
                   <span>In-person consultations available by appointment</span>
                 </div>
-                <div className={styles.borderBeamWrapper}>
-                  <div className={styles.borderGlowAmbient} />
-                  <div className={styles.borderBeamSpin} />
-                  <Link href="/contact" className={styles.footerActionBtn}>
-                    <span className={styles.btnShimmer} />
-                    <span className={styles.btnGlassGloss} />
-                    <span>Claim Free Growth Audit</span>
-                    <span className={styles.arrowIcon}>→</span>
-                  </Link>
-                </div>
+                <BeamButton href="/contact" label="Claim Free Growth Audit" size="md" />
               </div>
             </div>
           </ScrollReveal>

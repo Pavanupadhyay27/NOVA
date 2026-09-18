@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
+import BeamButton from '@/components/BeamButton';
 import styles from './Header.module.css';
 
 const services = [
@@ -168,15 +169,12 @@ export default function Header() {
         </nav>
 
         {/* CTA Button with revolving border beam (Strictly hidden on mobile) */}
-        <div className={styles.borderBeamWrapper}>
-          <div className={styles.borderGlowAmbient} />
-          <div className={styles.borderBeamSpin} />
-          <Link href="/contact" className={styles.ctaBtn}>
-            <span className={styles.btnShimmer} />
-            <span>Let&apos;s Talk</span>
-            <span className={styles.btnArrow}>→</span>
-          </Link>
-        </div>
+        <BeamButton
+          href="/contact"
+          label="Let's Talk"
+          size="md"
+          wrapperClassName={styles.borderBeamWrapper}
+        />
 
         {/* Mobile Hamburger */}
         <button
@@ -297,16 +295,13 @@ export default function Header() {
 
             {/* Tactile Skeuomorphic CTA Card Footer */}
             <div className={styles.mobileCTA}>
-              <Link
+              <BeamButton
                 href="/contact"
-                className={styles.mobileTalkBtn}
+                label="Let's Talk — Free Consultation"
+                size="md"
+                fullWidth
                 onClick={() => setMenuOpen(false)}
-              >
-                <span className={styles.mobileBtnShimmer} />
-                <span className={styles.mobileBtnGlass} />
-                <span>Let&apos;s Talk — Free Consultation</span>
-                <span className={styles.mobileBtnArrow}>→</span>
-              </Link>
+              />
             </div>
           </div>
         </>

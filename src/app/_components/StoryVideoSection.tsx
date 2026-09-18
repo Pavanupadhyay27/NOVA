@@ -1,6 +1,7 @@
 'use client';
 import { useRef, useEffect, useState, useCallback } from 'react';
 import ScrollReveal from '@/components/ScrollReveal';
+import BeamButton from '@/components/BeamButton';
 import styles from './StoryVideoSection.module.css';
 
 const storyPillars = [
@@ -233,6 +234,11 @@ export default function StoryVideoSection() {
               </div>
             </div>
           </ScrollReveal>
+        </div>
+
+        {/* Center Bottom Discovery CTA */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}>
+          <BeamButton href="/contact" label="Book a Strategic Discovery Session" size="md" />
         </div>
       </div>
     </section>

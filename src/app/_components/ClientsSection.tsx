@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import BeamButton from '@/components/BeamButton';
 import ScrollReveal from '@/components/ScrollReveal';
 import styles from './ClientsSection.module.css';
 
@@ -90,17 +91,7 @@ export default function ClientsSection() {
 
             {/* Centered Skeuomorphic Button & Trust Verification (At the Bottom of Card) */}
             <div className={styles.ctaBottomCenter}>
-              <div className={styles.borderBeamWrapper}>
-                <div className={styles.borderGlowAmbient} />
-                <div className={styles.borderBeamSpin} />
-                
-                <Link href="/contact" className={styles.btnClaimAudit}>
-                  <span className={styles.btnShimmer} />
-                  <span className={styles.btnGlassGloss} />
-                  <span className={styles.btnLabel}>Claim Free Growth Audit</span>
-                  <span className={styles.btnArrow}>→</span>
-                </Link>
-              </div>
+              <BeamButton href="/contact" label="Claim Free Growth Audit" size="md" />
 
               <div className={styles.ctaTrustCard}>
                 <div className={styles.trustItem}>

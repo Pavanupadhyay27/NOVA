@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import BeamButton from '@/components/BeamButton';
 import ScrollReveal from '@/components/ScrollReveal';
 import styles from './MetricsSection.module.css';
 
@@ -194,18 +195,7 @@ export default function MetricsSection() {
             </p>
 
             <div className={styles.ctaActionWrap}>
-              {/* Revolving Glowing Border CTA Button */}
-              <div className={styles.borderBeamWrapper}>
-                <div className={styles.borderGlowAmbient} />
-                <div className={styles.borderBeamSpin} />
-
-                <Link href="/contact" className={styles.ctaBtn}>
-                  <span className={styles.btnShimmer} />
-                  <span className={styles.btnGlassGloss} />
-                  <span className={styles.btnLabel}>Claim Free Growth Audit</span>
-                  <span className={styles.btnArrow}>→</span>
-                </Link>
-              </div>
+                <BeamButton href="/contact" label="Claim Free Growth Audit" size="md" />
               <span className={styles.ctaSubtext}>⚡ Average response time: &lt; 2 hours</span>
             </div>
 

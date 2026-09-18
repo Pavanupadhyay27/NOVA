@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import BeamButton from '@/components/BeamButton';
 import ScrollReveal from '@/components/ScrollReveal';
 import styles from './TeamPreview.module.css';
 
@@ -166,16 +167,7 @@ export default function TeamPreview() {
         {/* Center Bottom View Full Team CTA */}
         <div className={styles.bottomCtaRow}>
           <ScrollReveal delay={120} className={styles.ctaReveal}>
-            <div className={styles.borderBeamWrapper}>
-              <div className={styles.borderGlowAmbient} />
-              <div className={styles.borderBeamSpin} />
-              <Link href="/about/team" className={styles.btnTeam}>
-                <span className={styles.btnShimmer} />
-                <span className={styles.btnGlassGloss} />
-                <span>View Full Team</span>
-                <span className={styles.btnArrow}>→</span>
-              </Link>
-            </div>
+            <BeamButton href="/about/team" label="View Full Team" size="md" />
           </ScrollReveal>
         </div>
       </div>
