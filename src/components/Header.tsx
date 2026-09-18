@@ -34,7 +34,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(true);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const dropdownTimerRef = useRef<NodeJS.Timeout | null>(null);
   const pathname = usePathname();
@@ -199,11 +199,7 @@ export default function Header() {
         {/* Mobile Hamburger */}
         <button
           className={`${styles.hamburger} ${menuOpen ? styles.open : ''}`}
-          onClick={() => {
-            const next = !menuOpen;
-            setMenuOpen(next);
-            if (next) setMobileServicesOpen(true);
-          }}
+          onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
           aria-expanded={menuOpen}
         >
@@ -253,26 +249,36 @@ export default function Header() {
               {mobileLinks.map((item) => {
                 const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href);
 
-                // Services Accordion Dropdown
+                // Services Item with Direct Page Link + Accordion Toggle
                 if (item.href === '/services') {
                   return (
                     <div key="services-accordion" className={styles.mobileAccordionWrapper}>
-                      <button
-                        type="button"
-                        className={`${styles.mobileLink} ${styles.mobileAccordionBtn} ${isActive ? styles.mobileLinkActive : ''}`}
-                        onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                        aria-expanded={mobileServicesOpen}
-                      >
-                        <div className={styles.mobileLabelGroup}>
+                      <div className={`${styles.mobileServicesRow} ${isActive ? styles.mobileLinkActive : ''}`}>
+                        <Link
+                          href="/services"
+                          className={styles.mobileServicesDirectLink}
+                          onClick={() => setMenuOpen(false)}
+                        >
                           <span className={styles.mobileLinkLabel}>Services</span>
+                        </Link>
+                        <button
+                          type="button"
+                          className={styles.mobileServicesToggleBtn}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setMobileServicesOpen(!mobileServicesOpen);
+                          }}
+                          aria-label={mobileServicesOpen ? 'Collapse services list' : 'Expand services list'}
+                          aria-expanded={mobileServicesOpen}
+                        >
                           <span className={styles.servicesCountPill}>10 Practices</span>
-                        </div>
-                        <span className={`${styles.mobileChevronIcon} ${mobileServicesOpen ? styles.mobileChevronRotated : ''}`}>
-                          <svg width="10" height="10" viewBox="0 0 12 12" fill="currentColor">
-                            <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
-                        </span>
-                      </button>
+                          <span className={`${styles.mobileChevronIcon} ${mobileServicesOpen ? styles.mobileChevronRotated : ''}`}>
+                            <svg width="10" height="10" viewBox="0 0 12 12" fill="currentColor">
+                              <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </span>
+                        </button>
+                      </div>
 
                       {/* Cute 2-Column Compact Services Grid */}
                       {mobileServicesOpen && (
