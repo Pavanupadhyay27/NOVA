@@ -7,6 +7,58 @@ import ScrollReveal from '@/components/ScrollReveal';
 import BeamButton from '@/components/BeamButton';
 import styles from './page.module.css';
 
+// ─── Data: Founding Story Sliding Chronicle Cards ───
+const foundingStoryCards = [
+  {
+    chapter: '01',
+    year: '2021',
+    badge: 'GENESIS & THE PROBLEM',
+    title: 'The Broken Legacy Retainer Model',
+    quote:
+      'We watched ambitious businesses across Odisha burn hundreds of thousands on vanity impressions and delayed monthly PDF reports from legacy agencies that took zero accountability for real cash flow.',
+    takeaway: 'Zero accountability. Fragmented execution. Handcuff contracts.',
+    stat: '0%',
+    statLabel: 'Agency Accountability in Old Model',
+    color: '#0B2093',
+  },
+  {
+    chapter: '02',
+    year: '2022',
+    badge: 'FIRST PRINCIPLES ENGINEERING',
+    title: 'The Quantitative Copilot Paradigm',
+    quote:
+      'We rebuilt marketing from first principles: sub-second Next.js web stacks, server-side Meta CAPI tracking, and algorithmic ad bidding. We treated client acquisition as an engineering discipline, not guesswork.',
+    takeaway: 'Sub-second speed + 100% attribution fidelity replaces subjective slides.',
+    stat: '<0.8s',
+    statLabel: 'Mobile Speed SLA Guarantee',
+    color: '#0D007F',
+  },
+  {
+    chapter: '03',
+    year: '2023',
+    badge: 'REGIONAL ROOTS & CINEMA SOUNDSTAGE',
+    title: 'Hyperlocal Psychology & 4K Studio',
+    quote:
+      'We established our physical studio & soundstage in Kharvela Nagar, Bhubaneswar. Combining forensic regional consumer psychology in Odisha with 4K commercial cinema production created instant market dominance.',
+    takeaway: 'In-house production soundstage + deep local cultural nuance.',
+    stat: '3.2X',
+    statLabel: 'Higher Regional Conversion Rate',
+    color: '#EC4899',
+  },
+  {
+    chapter: '04',
+    year: '2024+',
+    badge: 'SCALE & PERFORMANCE FREEDOM',
+    title: '₹25Cr+ Deployed & Zero Handcuff Freedom',
+    quote:
+      'Today, we manage ₹25Cr+ in verified media spend with a 94% voluntary retention rate. We operate entirely on rolling month-to-month performance. We earn the right to scale your business every 30 days.',
+    takeaway: '100% skin in the game. Real bank deposits. Compounding equity.',
+    stat: '94%',
+    statLabel: 'Voluntary Month-Over-Month Retention',
+    color: '#10B981',
+  },
+];
+
 // ─── Data: Bedrock Pillars (Manifesto) ───
 const manifestoPillars = [
   {
@@ -47,126 +99,190 @@ const manifestoPillars = [
   },
 ];
 
-// ─── Data: Why Choose Us Bento Moats ───
-const whyChooseMoats = [
+// ─── Data: Why Choose Us — 4 Elevated Unfair Advantages ───
+const fourUnfairAdvantages = [
   {
     id: 'moat-local',
-    badge: 'HYPERLOCAL ROOTS',
-    title: 'Odisha Ground Reality & Regional Insight',
-    desc: 'We understand consumer behavior in Bhubaneswar, Cuttack, Puri, and Eastern India at a forensic level. From language nuances and local map pack intent to regional consumer psychology, our localized targeting outconverts generic national agencies by over 3.2X.',
+    index: '01',
+    badge: 'HYPERLOCAL DOMINANCE',
+    title: 'Odisha Ground Reality & Regional Nuance',
+    desc: 'We understand consumer behavior in Bhubaneswar, Cuttack, Puri, and Eastern India at a forensic psychological level. We eliminate generic national ad waste with pinpoint cultural resonance.',
+    deliverables: [
+      'Dual-language Odia & English creative hooks',
+      'Hyperlocal Google 3-Pack Map dominance',
+      'Regional competitor auction arbitrage',
+      'Local consumer trust triggers & social proof',
+    ],
     icon: '📍',
     metric: '3.2X',
     metricLabel: 'Higher Local Conversion Rate',
+    accentColor: '#0B2093',
+    glowColor: 'rgba(11, 32, 147, 0.15)',
   },
   {
     id: 'moat-speed',
-    badge: 'ENGINEERING EXCELLENCE',
+    index: '02',
+    badge: 'SOFTWARE ENGINEERING',
     title: 'Sub-Second Next.js Performance Stacks',
-    desc: 'Slow websites bleed revenue. Every digital experience we build is engineered on modern Next.js React frameworks with sub-900ms mobile load times, achieving 99/100 Google Core Web Vitals to maximize conversion rates and organic SERP ranks.',
+    desc: 'Slow websites bleed revenue. Every digital experience we build is engineered on modern Next.js React frameworks with sub-900ms mobile load times, achieving 99/100 Core Web Vitals to maximize conversion rates.',
+    deliverables: [
+      'Server-Side Rendering on Global Edge CDN',
+      'Zero bloated WordPress plugins or template bloat',
+      'Direct WhatsApp & CRM webhook lead routing',
+      'Flawless 99/100 Google Core Web Vitals score',
+    ],
     icon: '⚡',
     metric: '<0.8s',
-    metricLabel: 'Average Mobile LCP SLA',
+    metricLabel: 'Mobile LCP SLA Guarantee',
+    accentColor: '#0284C7',
+    glowColor: 'rgba(2, 132, 199, 0.15)',
   },
   {
     id: 'moat-creative',
-    badge: 'PRODUCTION STUDIO',
-    title: 'In-House Cinematic Creative & Videography',
-    desc: 'No generic stock footage or cookie-cutter templates. Our in-house production studio handles 4K cinematic commercial shoots, aerial drone cinematography, and high-converting viral reels that give your brand genuine prestige.',
+    index: '03',
+    badge: 'PRODUCTION SOUNDSTAGE',
+    title: 'In-House 4K/8K Cinematic Production',
+    desc: 'No generic Canva graphics or recycled stock footage. Our dedicated in-house production soundstage handles 4K cinematic commercials, luxury shoots, and high-retention viral reels.',
+    deliverables: [
+      '4K cinema cameras, pro lighting & audio bays',
+      'High-retention viral Instagram & YouTube hooks',
+      'Multi-variant video experimentation sprints',
+      'Brand prestige that commands premium pricing',
+    ],
     icon: '🎬',
     metric: '4K/8K',
     metricLabel: 'Cinema Studio Standards',
+    accentColor: '#D97706',
+    glowColor: 'rgba(217, 119, 6, 0.15)',
   },
   {
     id: 'moat-freedom',
-    badge: 'CONFIDENCE PROMISE',
+    index: '04',
+    badge: 'PERFORMANCE FREEDOM',
     title: 'Zero Binding Lock-In Contracts',
-    desc: 'Traditional agencies lock clients into 12-month punitive contracts because their retention is terrible. We operate entirely on mutual performance and rolling agreements. We earn the right to scale your business every single month.',
+    desc: 'Traditional agencies enforce 12-month punitive handcuffs because their client retention is terrible. We operate entirely on mutual performance and rolling agreements. If we don’t perform, fire us with zero penalty.',
+    deliverables: [
+      '100% mutual commercial alignment',
+      'Rolling month-to-month partnership terms',
+      'Direct senior architect sprint access',
+      'Zero cancellation penalties or exit fees',
+    ],
     icon: '🛡️',
     metric: '94%',
     metricLabel: 'Voluntary Client Retention',
+    accentColor: '#10B981',
+    glowColor: 'rgba(16, 185, 129, 0.15)',
   },
 ];
 
-// ─── Data: Comparison Matrix ───
+// ─── Data: Comparison Matrix (3D Evaluation) ───
 const comparisonRows = [
   {
     feature: 'Primary Metric Focus',
+    featureDesc: 'What the agency optimizes daily ad spend for',
     traditional: 'Impressions, Reach, Vanity Likes',
-    copilot: 'Revenue, Bank Deposits & Verified SQLs',
+    copilot: 'Net Bank Deposits & Verified SQLs',
     highlight: true,
   },
   {
     feature: 'Reporting Cadence',
-    traditional: 'Static monthly PDF decks (often delayed)',
+    featureDesc: 'How and when performance is communicated',
+    traditional: 'Delayed monthly PDF decks (often massaged)',
     copilot: 'Live 24/7 Looker Studio real-time telemetry',
     highlight: false,
   },
   {
     feature: 'Team Allocation',
+    featureDesc: 'Who actually works on your campaigns day-to-day',
     traditional: 'Pitched by directors, handed to junior interns',
-    copilot: 'Senior strategists and seasoned architects only',
+    copilot: 'Seasoned senior architects & founding strategists',
     highlight: true,
   },
   {
     feature: 'Execution Speed',
-    traditional: 'Weeks to approve simple ad creative changes',
-    copilot: 'Iterative testing cycles deployed within 48–72h',
+    featureDesc: 'Turnaround time for ad copy & creative changes',
+    traditional: 'Weeks of committee review & email delays',
+    copilot: 'Iterative testing deployed within 48–72h',
     highlight: false,
   },
   {
     feature: 'Contract Terms',
-    traditional: '6 to 12 months rigid lock-in agreements',
-    copilot: 'Performance-driven rolling terms (zero handcuffs)',
+    featureDesc: 'Legal obligations & partner flexibility',
+    traditional: '6 to 12 months rigid lock-in handcuffs',
+    copilot: 'Performance rolling terms (zero lock-in)',
     highlight: true,
   },
   {
-    feature: 'Tech & Tooling',
-    traditional: 'Basic WordPress templates & fragmented tools',
-    copilot: 'Sub-second Next.js web stacks & automated APIs',
+    feature: 'Web & Tech Stack',
+    featureDesc: 'Underlying infrastructure powering landing pages',
+    traditional: 'Heavy WordPress templates with slow load times',
+    copilot: 'Sub-second Next.js edge web architecture',
     highlight: false,
+  },
+  {
+    feature: 'Attribution Tracking',
+    featureDesc: 'How ad conversions are tracked and verified',
+    traditional: 'Basic browser pixels (40%+ cookie data loss)',
+    copilot: 'Server-Side Meta CAPI & Google Offline APIs',
+    highlight: true,
   },
 ];
 
-// ─── Data: Leadership Team ───
-const leadershipTeam = [
+// ─── Data: Real Executive Leadership Team ───
+const executiveArchitects = [
   {
-    name: 'Aarav Pattnaik',
-    role: 'Founder & Managing Director',
-    dept: 'GROWTH STRATEGY & UNIT ECONOMICS',
-    bio: 'Ex-consultant specializing in full-funnel customer acquisition, algorithmic bidding models, and enterprise conversion architecture. Scaled ₹25Cr+ in client ad spend across Odisha and Eastern India.',
-    quote: 'If your marketing agency cannot tell you the exact rupee return on your spend, they are gambling with your capital.',
-    image: '/images/ceo_aarav.jpg',
+    name: 'Shankarsan Nayak',
+    role: 'Founder & Chief Executive Officer',
+    dept: 'EXECUTIVE LEADERSHIP & VISION',
+    bio: 'Founder driving quantitative innovation, digital transformation, and sustainable business growth through mathematically rigorous strategy, creative prestige, and audited cash flow.',
+    quote: 'We drive innovation, digital transformation, and sustainable business growth through strategy, creativity, and measurable results.',
+    image: '/images/team/exec_1.png',
+    imagePosition: '50% 10%',
     color: '#0B2093',
     linkedin: 'https://linkedin.com',
   },
   {
-    name: 'Priya Mohapatra',
-    role: 'Co-Founder & Chief Operating Officer',
-    dept: 'CLIENT SUCCESS & PERFORMANCE PROTOCOLS',
-    bio: 'Oversees sprint delivery, media testing velocity, and multichannel client operations. Champions zero-leakage pipeline frameworks for B2B, retail, and real estate enterprises.',
-    quote: 'Predictable growth is not lucky inspiration—it is the direct mathematical consequence of disciplined execution.',
-    image: '/images/coo_priya.jpg',
-    color: '#0D007F',
+    name: 'Pranjal Sharma',
+    role: 'Founding Team Member & COO',
+    dept: 'OPERATIONS & SCALING PROTOCOLS',
+    bio: 'Leading digital marketing operations with 12+ years of experience, focused on seamless sprint execution, operational excellence, and delivering consistent client success across multi-channel campaigns.',
+    quote: 'Focused on seamless execution, operational excellence and delivering consistent client success.',
+    image: '/images/team/exec_2.png',
+    imagePosition: '50% 12%',
+    color: '#0284C7',
     linkedin: 'https://linkedin.com',
   },
   {
-    name: 'Debashis Mishra',
-    role: 'Head of Creative & Media Production',
-    dept: 'VISUAL PRESTIGE & VIRAL REELS',
-    bio: 'Cinematographer and creative director with 9+ years directing brand commercials, luxury product shoots, and viral social media campaigns that capture regional consumer imagination.',
-    quote: 'Attention is earned in the first 1.8 seconds. If your creative lacks soul, your media budget is subsidizing failure.',
+    name: 'Praveen Kumar',
+    role: 'Founding Team Member & CGO',
+    dept: 'GROWTH & STRATEGIC ENTERPRISE',
+    bio: 'Spearheading commercial growth, strategic enterprise partnerships, and high-value brand acquisitions to expand Marketing Copilot’s high-performance market footprint across India.',
+    quote: 'Building high-leverage growth partnerships that unlock compounding market valuation for ambitious brands.',
     image: '/images/team/exec_3.png',
-    color: '#EC4899',
+    imagePosition: '50% 12%',
+    color: '#D97706',
     linkedin: 'https://linkedin.com',
   },
   {
-    name: 'Rohan Senapati',
-    role: 'Principal Full-Stack & Technical SEO Architect',
-    dept: 'SUB-SECOND WEB & SEARCH MOATS',
-    bio: 'Full-stack software engineer and technical SEO veteran specializing in Next.js performance optimizations, structured data schemas, and high-converting conversion rate platforms.',
-    quote: 'A 1-second delay in page load time reduces conversions by 7%. Speed is not a luxury feature—it is your profit margin.',
+    name: 'Bikram Keshari Sahu',
+    role: 'Operation Executive',
+    dept: 'CAMPAIGN DELIVERY & ANALYTICS',
+    bio: 'Orchestrating campaign delivery pipelines, cross-channel technical infrastructure, and strict SLA compliance for predictable client ROI and operational excellence.',
+    quote: 'Operational rigor and precision delivery ensure every campaign produces audited business results.',
     image: '/images/team/exec_4.jpg',
+    imagePosition: '50% 10%',
     color: '#10B981',
+    linkedin: 'https://linkedin.com',
+  },
+  {
+    name: 'Sasmita Pal',
+    role: 'HR Admin Executive',
+    dept: 'PEOPLE, CULTURE & TALENT',
+    bio: 'Fostering high-performance agency culture, talent acquisition, people development, and seamless organizational administration across our Bhubaneswar studio and growth lab.',
+    quote: 'Empowering world-class creative and engineering talent to build the next generation of growth systems.',
+    image: '/images/team/exec_5.png',
+    imagePosition: '50% 2%',
+    color: '#8B5CF6',
     linkedin: 'https://linkedin.com',
   },
 ];
@@ -180,6 +296,14 @@ const operatingPhases = [
     focus: 'Diagnostic Moat',
     desc: 'Deep-dive audit of historical ad spend, Google Search Console telemetry, competitor SERP positioning, and conversion leakages.',
     color: '#0B2093',
+    deliverables: [
+      'Historical Ad Account Forensic Audit',
+      'Funnel Leakage & Blended CAC Analysis',
+      'Competitor SERP & Keyword Mapping',
+      'Unit Economics Benchmark Model',
+    ],
+    tools: ['Google Search Console', 'Meta Ads Library', 'SEMrush', 'GA4 Analytics'],
+    outcomeMetric: '100% Attribution & Waste Identification',
   },
   {
     num: '02',
@@ -187,7 +311,15 @@ const operatingPhases = [
     time: 'Days 8–14',
     focus: 'Attribution Tracking',
     desc: 'Server-side Meta Conversions API (CAPI), Google Enhanced Conversions, call tracking routing, and real-time Looker dashboards.',
-    color: '#0D007F',
+    color: '#0284C7',
+    deliverables: [
+      'Server-Side Meta CAPI Deployment',
+      'Google Enhanced Conversions Integration',
+      'Next.js High-Conversion Landing Pages',
+      'Real-Time Looker Telemetry Dashboard',
+    ],
+    tools: ['Meta CAPI', 'Google Tag Manager', 'Vercel Edge', 'Looker Studio'],
+    outcomeMetric: 'Zero Cookie Loss Data Fidelity',
   },
   {
     num: '03',
@@ -196,6 +328,14 @@ const operatingPhases = [
     focus: 'Offer Packaging',
     desc: 'Deployment of high-intent hooks, 4K cinematic commercial video assets, localized copy variations, and friction-free landing pages.',
     color: '#EC4899',
+    deliverables: [
+      '4K In-House Soundstage Production',
+      '15+ Multivariate Video & Static Hooks',
+      'High-Converting Offer & Copy Synthesis',
+      'Friction-Free WhatsApp Inbound Flow',
+    ],
+    tools: ['Sony Cinema 4K', 'Premiere Pro', 'After Effects', 'Figma Lab'],
+    outcomeMetric: '40+ Creative Hooks Deployed Monthly',
   },
   {
     num: '04',
@@ -204,6 +344,14 @@ const operatingPhases = [
     focus: 'Omnichannel Expansion',
     desc: 'Systematic scaling of winning cohorts across Meta Advantage+ and Google Performance Max, maintaining strict target CAC thresholds.',
     color: '#F59E0B',
+    deliverables: [
+      'Meta Advantage+ Cohort Scaling',
+      'Google Search & PMax Bid Rebalancing',
+      'Automated Dayparting & Budget Allocation',
+      'Strict ROAS Threshold Guardrails',
+    ],
+    tools: ['Meta Business Suite', 'Google Ads API', 'Looker Studio', 'Bid Rules'],
+    outcomeMetric: '4.8X Target Blended ROAS Reached',
   },
   {
     num: '05',
@@ -212,25 +360,71 @@ const operatingPhases = [
     focus: 'Organic Displaced CPC',
     desc: 'Continuous technical SEO velocity and local map pack dominance, systematically reducing dependency on paid ad auctions.',
     color: '#10B981',
+    deliverables: [
+      'Programmatic Technical SEO Architecture',
+      'Google Local 3-Pack Map Domination',
+      'Authoritative Backlink Asset Creation',
+      'Systematic Blended CAC Reduction',
+    ],
+    tools: ['Schema Pro', 'Next.js Edge CDN', 'Ahrefs Enterprise', 'GMB Suite'],
+    outcomeMetric: '-42% Blended CAC Reduction over 12 Months',
   },
 ];
 
-// ─── Data: MarTech Tools ───
-const martechEcosystem = [
-  { name: 'Google Marketing Platform', category: 'Search & Performance Max', status: 'Enterprise Partner' },
-  { name: 'Meta Business Suite & CAPI', category: 'Advantage+ & Audience Intelligence', status: 'Direct API Sync' },
-  { name: 'Next.js & Vercel React', category: 'Sub-Second Web Infrastructure', status: 'Global Edge CDN' },
-  { name: 'Looker Studio Telemetry', category: 'Real-Time Revenue Attribution', status: 'Live 24/7' },
-  { name: 'SEMrush & Ahrefs Enterprise', category: 'Competitor SERP & Keyword Moats', status: 'Daily Crawl' },
-  { name: 'HubSpot & WhatsApp APIs', category: 'Zero-Leakage Lead Automation', status: 'Instant Routing' },
+// ─── Data: Real-Time Revenue & Attribution Pipeline (Replaces Static Tooling) ───
+const revenuePipelineStages = [
+  {
+    id: 'stage-1',
+    num: '01',
+    title: 'Omnichannel Data Ingestion & CAPI',
+    category: 'DATA LAYER',
+    badge: '100% SERVER-SIDE',
+    desc: 'Bypasses iOS 14.5+ cookie blocking using direct server-to-server Meta Conversions API (CAPI) and Google Offline Conversion APIs.',
+    metrics: '<12ms Latency · 0% Cookie Loss',
+    tech: ['Meta CAPI Direct', 'Google Ads API', 'Stripe Webhooks', 'Next.js Server API'],
+    color: '#0B2093',
+  },
+  {
+    id: 'stage-2',
+    num: '02',
+    title: 'Algorithmic Attribution & Rebalancing',
+    category: 'INTELLIGENCE LAYER',
+    badge: 'REAL-TIME OPTIMIZATION',
+    desc: 'Automated 15-minute budget rebalancer systematically siphons ad spend from underperforming creatives to winning high-ROAS cohorts.',
+    metrics: '15-Min Budget Loop · Unit Economics First',
+    tech: ['Neural Attribution Engine', 'Looker Data Pipeline', 'BigQuery Warehousing'],
+    color: '#0284C7',
+  },
+  {
+    id: 'stage-3',
+    num: '03',
+    title: 'Creative Velocity & Soundstage Synthesis',
+    category: 'CREATIVE LAB',
+    badge: '4K CINEMA ASSETS',
+    desc: 'Continuous sprint creation of 4K cinematic commercial reels, localized Odia/English variants, and high-CTR static proof modules.',
+    metrics: '40+ Multivariate Variants / Mo',
+    tech: ['Kharvela Soundstage Studio', 'Cinema 4K Rig', 'After Effects Kinetic'],
+    color: '#EC4899',
+  },
+  {
+    id: 'stage-4',
+    num: '04',
+    title: 'Zero-Leakage Lead Dispatch & Telemetry',
+    category: 'CONVERSION LAYER',
+    badge: '<60S RESPONSE TIME',
+    desc: 'Instant lead handoff to sales reps via automated WhatsApp business APIs, paired with a 24/7 executive revenue telemetry portal.',
+    metrics: '<60s Lead Handoff · 24/7 Live Telemetry',
+    tech: ['Official WhatsApp API', 'HubSpot Enterprise', 'Looker 24/7 Console'],
+    color: '#10B981',
+  },
 ];
 
 // ─── Data: Live Telemetry Numbers ───
 const telemetryNumbers = [
-  { value: 25, suffix: 'Cr+', label: 'Media Managed', sub: 'Calculated in verified ad spend across client accounts', color: '#0B2093' },
-  { value: 4, suffix: '.8X', label: 'Average Blended ROAS', sub: 'Across e-commerce, D2C, and performance lead pipelines', color: '#10B981' },
-  { value: 94, suffix: '%', label: 'Client Retention Rate', sub: 'Voluntary month-over-month client partnership renewal', color: '#8B5CF6' },
-  { value: 50, suffix: '+', label: 'Brands Scaled', sub: 'Enterprises, clinics, retail flagships, and real estate groups', color: '#D97706' },
+  { value: 25, suffix: 'Cr+', label: 'Media Managed', sub: 'Verified ad spend managed across client portfolios', color: '#0B2093' },
+  { value: 4, suffix: '.8X', label: 'Average Blended ROAS', sub: 'Across e-commerce, D2C, real estate, and healthcare', color: '#10B981' },
+  { value: 94, suffix: '%', label: 'Client Retention Rate', sub: 'Voluntary month-over-month client partnership renewals', color: '#8B5CF6' },
+  { value: 50, suffix: '+', label: 'Brands Scaled', sub: 'Enterprises, flagship retail, clinics, and D2C brands', color: '#D97706' },
 ];
 
 // ─── Data: About Us FAQs ───
@@ -260,6 +454,10 @@ const aboutFaqs = [
 export default function AboutPage() {
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
   const [activePhase, setActivePhase] = useState<number>(0);
+  const [activeStoryIdx, setActiveStoryIdx] = useState<number>(0);
+  const [activePipelineStage, setActivePipelineStage] = useState<number>(0);
+
+  const storyTrackRef = useRef<HTMLDivElement>(null);
   const counterRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const countersStarted = useRef(false);
 
@@ -295,6 +493,19 @@ export default function AboutPage() {
     if (sectionEl) observer.observe(sectionEl);
     return () => observer.disconnect();
   }, []);
+
+  // Slide story cards
+  const slideStoryTo = (idx: number) => {
+    const validIdx = Math.max(0, Math.min(foundingStoryCards.length - 1, idx));
+    setActiveStoryIdx(validIdx);
+    if (storyTrackRef.current) {
+      const cardWidth = 420; // approx card + gap
+      storyTrackRef.current.scrollTo({
+        left: validIdx * cardWidth,
+        behavior: 'smooth',
+      });
+    }
+  };
 
   const mapsEmbedUrl =
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3742.757640242207!2d85.8456126759714!3d20.268884013444406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19a797c558c48f%3A0xe13ef479e0066bf2!2sMarketing%20Copilot!5e0!3m2!1sen!2sin!4v1741541000000!5m2!1sen!2sin';
@@ -334,8 +545,8 @@ export default function AboutPage() {
                 <div className={styles.heroActionsRow}>
                   <BeamButton href="/contact" label="Claim Free Growth Audit" size="lg" />
                   <BeamButton
-                    href="#leadership-team"
-                    label="Meet Our Leadership"
+                    href="#war-room-section"
+                    label="Visit Our War Room"
                     size="lg"
                     variant="outline"
                   />
@@ -435,10 +646,10 @@ export default function AboutPage() {
                       <span className={styles.uptimeLabel}>Live Sprint Uptime</span>
                       <span className={styles.uptimeVal}>99.98% SLA Compliance</span>
                     </div>
-                    <Link href="/contact" className={styles.cockpitExploreLink}>
+                    <a href="#war-room-section" className={styles.cockpitExploreLink}>
                       <span>Explore War Room</span>
                       <span>→</span>
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </ScrollReveal>
@@ -448,46 +659,285 @@ export default function AboutPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 2: FOUNDING NARRATIVE (EDITORIAL SPLIT-SCREEN)
+          SECTION 2: KINETIC VELOCITY PARTNER & CLIENT TICKER
          ══════════════════════════════════════════════════════ */}
-      <section className={styles.editorialSection}>
+      <section className={styles.marqueeSection}>
+        <div className={styles.marqueeHeader}>
+          <span className={styles.marqueeDot} />
+          <span className={styles.marqueeLabel}>TRUSTED BY INDUSTRY PACESETTERS &amp; CERTIFIED ENTERPRISE PARTNERS</span>
+        </div>
+        <div className={styles.marqueeTrack}>
+          <div className={styles.marqueeContent}>
+            <span className={styles.marqueeItem}>Google Premier Partner</span>
+            <span className={styles.marqueeSep}>✦</span>
+            <span className={styles.marqueeItem}>Meta Business Partner</span>
+            <span className={styles.marqueeSep}>✦</span>
+            <span className={styles.marqueeItem}>AWS Advanced Tier</span>
+            <span className={styles.marqueeSep}>✦</span>
+            <span className={styles.marqueeItem}>HubSpot Elite Certified</span>
+            <span className={styles.marqueeSep}>✦</span>
+            <span className={styles.marqueeItem}>Next.js Vercel Edge</span>
+            <span className={styles.marqueeSep}>✦</span>
+            <span className={styles.marqueeItem}>Looker Studio Telemetry</span>
+            <span className={styles.marqueeSep}>✦</span>
+            <span className={styles.marqueeItem}>SEMrush Enterprise</span>
+            <span className={styles.marqueeSep}>✦</span>
+            <span className={styles.marqueeItem}>Official WhatsApp Business API</span>
+            <span className={styles.marqueeSep}>✦</span>
+            <span className={styles.marqueeItem}>Google Premier Partner</span>
+            <span className={styles.marqueeSep}>✦</span>
+            <span className={styles.marqueeItem}>Meta Business Partner</span>
+            <span className={styles.marqueeSep}>✦</span>
+            <span className={styles.marqueeItem}>AWS Advanced Tier</span>
+            <span className={styles.marqueeSep}>✦</span>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════
+          SECTION 3: IN-PERSON WAR ROOM & STRATEGY LAB (THIRD SECTION)
+         ══════════════════════════════════════════════════════ */}
+      <section className={styles.studioSection} id="war-room-section">
+        <div className="container">
+          <ScrollReveal className="text-center">
+            <div className="eyebrow" style={{ margin: '0 auto 12px' }}>
+              <span className="eyebrow-dot" />
+              <span>IN-PERSON WAR ROOM</span>
+            </div>
+            <h2 className={`display-lg ${styles.sectionHeadline}`}>
+              Visit Our Bhubaneswar Studio{' '}
+              <span className="accent-gradient">&amp; Growth Hub</span>
+            </h2>
+            <p className={`body-lg ${styles.sectionSub}`}>
+              In-person collaboration creates clarity that zoom calls simply cannot replicate. Come brainstorm your roadmap at our Kharvela Nagar headquarters.
+            </p>
+          </ScrollReveal>
+
+          <div className={styles.studioDualGrid}>
+            {/* Left Column: Studio Details & Consultation Briefing */}
+            <ScrollReveal>
+              <div className={styles.studioDetailsCard}>
+                <div className={styles.studioCardHeader}>
+                  <span className={styles.studioLiveBadge}>🟢 Open For In-Person Briefings</span>
+                  <span className={styles.studioHours}>Mon – Sat · 9:30 AM – 7:30 PM</span>
+                </div>
+
+                <h3 className={styles.studioCardTitle}>
+                  Marketing Copilot Studio Headquarters
+                </h3>
+
+                <p className={styles.studioAddress}>
+                  Unit 3, Kharvela Nagar, Near Master Canteen Chowk,<br />
+                  Bhubaneswar, Odisha 751001, India
+                </p>
+
+                <div className={styles.studioFeatureList}>
+                  <div className={styles.studioFeature}>
+                    <span className={styles.featureIcon}>☕</span>
+                    <div>
+                      <h4 className={styles.featureTitle}>1-on-1 Growth Diagnostic Room</h4>
+                      <p className={styles.featureDesc}>Private strategy room equipped with live Looker telemetry projections and unit economics modeling.</p>
+                    </div>
+                  </div>
+
+                  <div className={styles.studioFeature}>
+                    <span className={styles.featureIcon}>🎬</span>
+                    <div>
+                      <h4 className={styles.featureTitle}>Commercial Production Soundstage</h4>
+                      <p className={styles.featureDesc}>In-house 4K/8K cinema video recording, high-production lighting arrays, and acoustic audio soundstage.</p>
+                    </div>
+                  </div>
+
+                  <div className={styles.studioFeature}>
+                    <span className={styles.featureIcon}>📊</span>
+                    <div>
+                      <h4 className={styles.featureTitle}>War Room Collaborative Floor</h4>
+                      <p className={styles.featureDesc}>Interactive whiteboard sessions to construct your omnichannel ad spend and technical SEO moat.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className={styles.studioActionRow}>
+                  <BeamButton href="/contact" label="Schedule In-Person Strategy Session" size="md" />
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Right Column: Interactive Map Preview */}
+            <ScrollReveal delay={120}>
+              <div className={styles.studioMapCard}>
+                <iframe
+                  title="Marketing Copilot Studio Headquarters Map"
+                  src={mapsEmbedUrl}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className={styles.mapIframe}
+                />
+
+                {/* 3D Location Marker Beacon */}
+                <div className={styles.mapBeaconOverlay}>
+                  <a
+                    href={mapsSearchUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.mapPinAnchor}
+                    title="Click to open directions on Google Maps"
+                  >
+                    <div className={styles.pulseRadar1} />
+                    <div className={styles.pulseRadar2} />
+                    <div className={styles.mapPinBadge}>
+                      <span className={styles.pinDot} />
+                      <span>Marketing Copilot Studio · Kharvela Nagar</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════
+          SECTION 4: THE FOUNDING STORY (SLIDING CHRONICLE CARDS)
+         ══════════════════════════════════════════════════════ */}
+      <section className={styles.foundingSliderSection}>
+        <div className="container">
+          <ScrollReveal className="text-center">
+            <div className="eyebrow" style={{ margin: '0 auto 12px' }}>
+              <span className="eyebrow-dot" />
+              <span>THE FOUNDING STORY</span>
+            </div>
+            <h2 className={`display-lg ${styles.sectionHeadline}`}>
+              The 4-Year Journey From Broken Retainers to{' '}
+              <span className="accent-gradient">Engineered Alpha</span>
+            </h2>
+            <p className={`body-lg ${styles.sectionSub}`}>
+              Built on the conviction that ambitious businesses in Odisha deserve a growth partner that acts like an owner. Slide through our evolution.
+            </p>
+          </ScrollReveal>
+
+          {/* Sliding Track Controls & Progress */}
+          <div className={styles.sliderControlsBar}>
+            <div className={styles.sliderPillTabs}>
+              {foundingStoryCards.map((card, i) => (
+                <button
+                  key={card.chapter}
+                  type="button"
+                  onClick={() => slideStoryTo(i)}
+                  className={`${styles.sliderPillTab} ${activeStoryIdx === i ? styles.sliderPillActive : ''}`}
+                >
+                  <span className={styles.pillYear}>{card.year}</span>
+                  <span className={styles.pillChapter}>Ch. {card.chapter}</span>
+                </button>
+              ))}
+            </div>
+
+            <div className={styles.sliderArrowNav}>
+              <button
+                type="button"
+                onClick={() => slideStoryTo(activeStoryIdx - 1)}
+                disabled={activeStoryIdx === 0}
+                className={styles.sliderArrowBtn}
+                aria-label="Previous Chapter"
+              >
+                ←
+              </button>
+              <span className={styles.sliderIndexCount}>
+                0{activeStoryIdx + 1} / 0{foundingStoryCards.length}
+              </span>
+              <button
+                type="button"
+                onClick={() => slideStoryTo(activeStoryIdx + 1)}
+                disabled={activeStoryIdx === foundingStoryCards.length - 1}
+                className={styles.sliderArrowBtn}
+                aria-label="Next Chapter"
+              >
+                →
+              </button>
+            </div>
+          </div>
+
+          {/* Horizontal Sliding Track of Compact Editorial Cards */}
+          <div
+            ref={storyTrackRef}
+            className={styles.slidingStoryTrack}
+            onScroll={(e) => {
+              const target = e.currentTarget;
+              const cardWidth = 380;
+              const newIdx = Math.round(target.scrollLeft / cardWidth);
+              if (newIdx !== activeStoryIdx && newIdx >= 0 && newIdx < foundingStoryCards.length) {
+                setActiveStoryIdx(newIdx);
+              }
+            }}
+          >
+            {foundingStoryCards.map((card, idx) => (
+              <div
+                key={card.chapter}
+                className={`${styles.slidingStoryCard} ${activeStoryIdx === idx ? styles.storyCardActive : ''}`}
+                style={{ '--card-accent': card.color } as React.CSSProperties}
+              >
+                <div className={styles.storyCardTop}>
+                  <span className={styles.storyYearTag}>{card.year}</span>
+                  <span className={styles.storyBadge}>{card.badge}</span>
+                </div>
+
+                <h3 className={styles.storyCardTitle}>{card.title}</h3>
+
+                <blockquote className={styles.storyCardQuote}>
+                  &ldquo;{card.quote}&rdquo;
+                </blockquote>
+
+                <div className={styles.storyCardFooter}>
+                  <div className={styles.storyStatCol}>
+                    <span className={styles.storyStatVal} style={{ color: card.color }}>
+                      {card.stat}
+                    </span>
+                    <span className={styles.storyStatLabel}>{card.statLabel}</span>
+                  </div>
+                  <div className={styles.storyTakeawayBox}>
+                    <span className={styles.takeawayCheck}>✓</span>
+                    <span className={styles.takeawayText}>{card.takeaway}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════
+          TRANSITIONAL HIGH-CONVERTING CTA ABOVE MANIFESTO
+         ══════════════════════════════════════════════════════ */}
+      <section className={styles.transitionalCtaSection}>
         <div className="container">
           <ScrollReveal>
-            <div className={styles.editorialCard}>
-              <div className={styles.editorialTopRow}>
-                <span className={styles.editorialBadge}>THE FOUNDING STORY</span>
-                <span className={styles.editorialDate}>Est. 2021 · Bhubaneswar, Odisha</span>
+            <div className={styles.transitionalCtaCard}>
+              <div className={styles.transCtaGlow} />
+              <div className={styles.transCtaLeft}>
+                <span className={styles.transCtaBadge}>⚡ FAST-TRACK YOUR REVENUE</span>
+                <h3 className={styles.transCtaTitle}>
+                  Tired of Agency Excuses &amp; Vanity Impressions?
+                </h3>
+                <p className={styles.transCtaSub}>
+                  Get a complimentary 30-minute forensic audit of your ad accounts, search rankings, and conversion funnels.
+                </p>
               </div>
 
-              <blockquote className={styles.editorialQuote}>
-                &ldquo;We watched countless ambitious businesses across Odisha burn hundreds of thousands on vanity impressions and delayed monthly PDF reports from legacy agencies that took zero responsibility for real cash flow. We built Marketing Copilot to be the exact growth partner we wished existed.&rdquo;
-              </blockquote>
-
-              <div className={styles.editorialColumns}>
-                <div className={styles.editorialCol}>
-                  <h3 className={styles.colTitle}>The Problem With Traditional Agencies</h3>
-                  <p className={styles.colText}>
-                    In the traditional agency model, high-ticket account directors pitch you an inspiring vision, only to hand your media budget to inexperienced junior interns the moment the contract is signed. Communication becomes a game of email ping-pong, metrics are massaged to look positive, and no one is accountable for genuine bank deposits.
-                  </p>
+              <div className={styles.transCtaRight}>
+                <div className={styles.transCtaButtons}>
+                  <BeamButton href="/contact" label="Claim Free Growth Audit" size="md" />
+                  <BeamButton href="#principles-section" label="Read Our Principles" size="md" variant="outline" />
                 </div>
-
-                <div className={styles.editorialCol}>
-                  <h3 className={styles.colTitle}>The Embedded Copilot Paradigm</h3>
-                  <p className={styles.colText}>
-                    Marketing Copilot was architected from day one as an embedded quantitative department. We combine mathematical attribution models, sub-second web software engineering, and Hollywood-grade cinema production into a single agile unit. We don’t just deliver ad clicks—we engineer compounding market hegemony.
-                  </p>
-                </div>
-              </div>
-
-              {/* Founder Sign-off Strip */}
-              <div className={styles.editorialSignatureRow}>
-                <div className={styles.signatureBlock}>
-                  <span className={styles.signatureText}>Marketing Copilot Directorate</span>
-                  <span className={styles.signatureRole}>Executive Strategy Board · Unit 3, Kharvela Nagar</span>
-                </div>
-                <div className={styles.verifiedStamp}>
-                  <span className={styles.stampSeal}>✦</span>
-                  <span>VERIFIED COMMERCIAL INTEGRITY</span>
+                <div className={styles.transCtaTrust}>
+                  <span>✓ 48-Hour Turnaround</span>
+                  <span>•</span>
+                  <span>✓ Zero Lock-In</span>
+                  <span>•</span>
+                  <span>✓ 100% Confidential</span>
                 </div>
               </div>
             </div>
@@ -496,9 +946,9 @@ export default function AboutPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 3: AGENCY MANIFESTO & CORE PILLARS (HORIZONTAL STREAM)
+          SECTION 5: THE COPILOT MANIFESTO & CORE PILLARS
          ══════════════════════════════════════════════════════ */}
-      <section className={styles.manifestoSection}>
+      <section className={styles.manifestoSection} id="principles-section">
         <div className="container">
           <ScrollReveal className="text-center">
             <div className="eyebrow" style={{ margin: '0 auto 12px' }}>
@@ -514,7 +964,7 @@ export default function AboutPage() {
             </p>
           </ScrollReveal>
 
-          {/* Horizontal Kinetic Stream of Principles (Not simple cards) */}
+          {/* Horizontal Kinetic Stream of Principles */}
           <div className={styles.manifestoStream}>
             {manifestoPillars.map((pillar, idx) => (
               <ScrollReveal key={pillar.num} delay={idx * 80}>
@@ -547,8 +997,8 @@ export default function AboutPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 4: WHY CHOOSE US — 5 UNFAIR GROWTH MOATS (BENTO GRID)
-         ══════════════════════════════════════════════════ */}
+          SECTION 6: 4 ELEVATED UNFAIR ADVANTAGES (WHY CHOOSE US)
+         ══════════════════════════════════════════════════════ */}
       <section className={styles.whyChooseSection}>
         <div className="container">
           <ScrollReveal className="text-center">
@@ -561,67 +1011,57 @@ export default function AboutPage() {
               <span className="accent-gradient">Marketing Copilot</span>
             </h2>
             <p className={`body-lg ${styles.sectionSub}`}>
-              Five structural moats that give our partners an unshakeable competitive edge across Google search, paid social, and customer acquisition.
+              Four proprietary structural moats that give our partners an unshakeable competitive edge in market positioning, unit economics, and client acquisition.
             </p>
           </ScrollReveal>
 
-          {/* Asymmetrical Tactile Bento Grid */}
-          <div className={styles.bentoGrid}>
-            {/* Bento Hero Spotlight (Spans 2 columns) */}
-            <ScrollReveal className={styles.bentoColSpan2}>
-              <div className={`${styles.bentoTile} ${styles.bentoTileHero}`}>
-                <div className={styles.bentoTileGlow} />
-                <div className={styles.bentoTileMesh} />
-
-                <div className={styles.bentoBadgeRow}>
-                  <span className={styles.bentoHeroBadge}>PROPRIETARY REVENUE ENGINE</span>
-                  <span className={styles.bentoLiveBadge}>⚡ Continuous Optimization</span>
-                </div>
-
-                <h3 className={styles.bentoHeroTitle}>
-                  The Full-Funnel Synergy Matrix
-                </h3>
-                <p className={styles.bentoHeroDesc}>
-                  Other agencies run isolated ads or isolated SEO. We connect all acquisition channels into a unified algorithmic loop: Google Search intent fuels Meta retargeting pools, which trigger high-intent WhatsApp automations, supported by sub-second Next.js conversion architecture.
-                </p>
-
-                <div className={styles.bentoHeroFeatures}>
-                  <div className={styles.heroFeaturePill}>
-                    <span>🎯 Omnichannel Attribution</span>
-                  </div>
-                  <div className={styles.heroFeaturePill}>
-                    <span>⚡ Sub-Second Landing Speeds</span>
-                  </div>
-                  <div className={styles.heroFeaturePill}>
-                    <span>📈 Zero Ad Spend Leakage</span>
-                  </div>
-                </div>
-
-                <div className={styles.bentoHeroFooter}>
-                  <div className={styles.heroMetricRow}>
-                    <span className={styles.heroMetricVal}>+320%</span>
-                    <span className={styles.heroMetricText}>Average Pipeline Lift in 90 Days</span>
-                  </div>
-                  <BeamButton href="/contact" label="Audit Your Funnel" size="md" />
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* 4 Specialized Bento Tiles */}
-            {whyChooseMoats.map((moat, i) => (
+          {/* 4 Luxury Architectural Advantage Cards */}
+          <div className={styles.fourAdvantagesGrid}>
+            {fourUnfairAdvantages.map((moat, i) => (
               <ScrollReveal key={moat.id} delay={i * 90}>
-                <div className={styles.bentoTile}>
-                  <div className={styles.bentoHeaderRow}>
-                    <span className={styles.bentoIconBox}>{moat.icon}</span>
-                    <span className={styles.bentoTag}>{moat.badge}</span>
+                <div
+                  className={styles.advantageLuxuryCard}
+                  style={
+                    {
+                      '--adv-accent': moat.accentColor,
+                      '--adv-glow': moat.glowColor,
+                    } as React.CSSProperties
+                  }
+                >
+                  <div className={styles.advCardGlow} />
+
+                  <div className={styles.advCardHeader}>
+                    <div className={styles.advIconMedallion}>
+                      <span>{moat.icon}</span>
+                    </div>
+                    <div className={styles.advBadgeRow}>
+                      <span className={styles.advIndexNum}>{moat.index}</span>
+                      <span className={styles.advBadge}>{moat.badge}</span>
+                    </div>
                   </div>
 
-                  <h4 className={styles.bentoTileTitle}>{moat.title}</h4>
-                  <p className={styles.bentoTileDesc}>{moat.desc}</p>
+                  <h3 className={styles.advTitle}>{moat.title}</h3>
+                  <p className={styles.advDesc}>{moat.desc}</p>
 
-                  <div className={styles.bentoFooter}>
-                    <span className={styles.bentoMetricVal}>{moat.metric}</span>
-                    <span className={styles.bentoMetricLabel}>{moat.metricLabel}</span>
+                  <div className={styles.advDeliverablesList}>
+                    <span className={styles.deliverablesLabel}>CORE ARCHITECTURAL PROOFS:</span>
+                    {moat.deliverables.map((item) => (
+                      <div key={item} className={styles.deliverableItem}>
+                        <span className={styles.checkIconBullet}>✦</span>
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className={styles.advCardFooter}>
+                    <div className={styles.advMetricBox}>
+                      <span className={styles.advMetricVal}>{moat.metric}</span>
+                      <span className={styles.advMetricLabel}>{moat.metricLabel}</span>
+                    </div>
+                    <Link href="/contact" className={styles.advAuditLink}>
+                      <span>Audit Moat</span>
+                      <span>→</span>
+                    </Link>
                   </div>
                 </div>
               </ScrollReveal>
@@ -631,8 +1071,8 @@ export default function AboutPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 5: COMPARISON MATRIX (TRADITIONAL VS COPILOT)
-         ══════════════════════════════════════════════════ */}
+          SECTION 7: TRANSPARENT EVALUATION (3D COMPARISON MATRIX)
+         ══════════════════════════════════════════════════════ */}
       <section className={styles.comparisonSection}>
         <div className="container">
           <ScrollReveal className="text-center">
@@ -645,7 +1085,7 @@ export default function AboutPage() {
               <span className="accent-gradient">vs. The Copilot Standard</span>
             </h2>
             <p className={`body-lg ${styles.sectionSub}`}>
-              Compare side-by-side. See why forward-thinking enterprises are leaving antiquated retainer retainers behind.
+              Compare side-by-side. See why forward-thinking enterprises are leaving antiquated retainer contracts behind.
             </p>
           </ScrollReveal>
 
@@ -653,8 +1093,14 @@ export default function AboutPage() {
             <div className={styles.matrixContainer}>
               <div className={styles.matrixHeader}>
                 <div className={styles.matrixColFeature}>CRITICAL PERFORMANCE CAPABILITY</div>
-                <div className={`${styles.matrixColAgency} ${styles.matrixBad}`}>TRADITIONAL AGENCIES</div>
-                <div className={`${styles.matrixColCopilot} ${styles.matrixGood}`}>MARKETING COPILOT</div>
+                <div className={`${styles.matrixColAgency} ${styles.matrixBad}`}>
+                  <span className={styles.tokenBadHeader}>✕</span>
+                  <span>TRADITIONAL AGENCIES</span>
+                </div>
+                <div className={`${styles.matrixColCopilot} ${styles.matrixGood}`}>
+                  <span className={styles.tokenGoodHeader}>✓</span>
+                  <span>MARKETING COPILOT ARCHITECTURE</span>
+                </div>
               </div>
 
               <div className={styles.matrixBody}>
@@ -664,21 +1110,36 @@ export default function AboutPage() {
                     className={`${styles.matrixRow} ${row.highlight ? styles.rowHighlight : ''} ${idx % 2 === 0 ? styles.rowEven : ''}`}
                   >
                     <div className={styles.cellFeature}>
-                      <span className={styles.featureBullet}>✦</span>
-                      <span>{row.feature}</span>
+                      <div className={styles.featureTitleWrap}>
+                        <span className={styles.featureBullet}>✦</span>
+                        <span className={styles.featureNameText}>{row.feature}</span>
+                      </div>
+                      <span className={styles.featureSubText}>{row.featureDesc}</span>
                     </div>
 
                     <div className={`${styles.cellAgency} ${styles.cellBad}`}>
-                      <span className={styles.crossIcon}>✕</span>
-                      <span>{row.traditional}</span>
+                      {/* 3D Skeuomorphic Cross Sign Token */}
+                      <span className={styles.token3dCross} title="Not Guaranteed / High Vulnerability">
+                        ✕
+                      </span>
+                      <span className={styles.agencyText}>{row.traditional}</span>
                     </div>
 
                     <div className={`${styles.cellCopilot} ${styles.cellGood}`}>
-                      <span className={styles.checkIcon}>✓</span>
-                      <span>{row.copilot}</span>
+                      {/* 3D Skeuomorphic Check Sign Token */}
+                      <span className={styles.token3dCheck} title="Verified Quantitative SLA">
+                        ✓
+                      </span>
+                      <span className={styles.copilotText}>{row.copilot}</span>
                     </div>
                   </div>
                 ))}
+              </div>
+
+              {/* Bottom Guarantee Badge */}
+              <div className={styles.matrixFooterBar}>
+                <span className={styles.matrixSealDot}>✦</span>
+                <span>100% of Marketing Copilot campaign workflows operate under verified, real-time Looker SLA telemetry.</span>
               </div>
             </div>
           </ScrollReveal>
@@ -686,75 +1147,8 @@ export default function AboutPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 6: LEADERSHIP SHOWCASE & MASTER STRATEGISTS
-         ══════════════════════════════════════════════════ */}
-      <section className={styles.leadershipSection} id="leadership-team">
-        <div className="container">
-          <ScrollReveal className="text-center">
-            <div className="eyebrow" style={{ margin: '0 auto 12px' }}>
-              <span className="eyebrow-dot" />
-              <span>EXECUTIVE ARCHITECTS</span>
-            </div>
-            <h2 className={`display-lg ${styles.sectionHeadline}`}>
-              The Minds Behind Your{' '}
-              <span className="accent-gradient">Commercial Velocity</span>
-            </h2>
-            <p className={`body-lg ${styles.sectionSub}`}>
-              No junior interns handling your ad spend. Meet the senior strategists and technical leaders who personally engineer your growth.
-            </p>
-          </ScrollReveal>
-
-          <div className={styles.leadershipGrid}>
-            {leadershipTeam.map((leader, idx) => (
-              <ScrollReveal key={leader.name} delay={idx * 100}>
-                <div className={styles.leaderCard}>
-                  <div className={styles.leaderPhotoWrap}>
-                    <Image
-                      src={leader.image}
-                      alt={leader.name}
-                      fill
-                      className={styles.leaderPhoto}
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                    <div className={styles.leaderOverlay} />
-                    <span className={styles.leaderDeptBadge} style={{ color: leader.color, borderColor: `${leader.color}40` }}>
-                      {leader.dept}
-                    </span>
-                  </div>
-
-                  <div className={styles.leaderInfo}>
-                    <div className={styles.leaderHeaderRow}>
-                      <div>
-                        <h3 className={styles.leaderName}>{leader.name}</h3>
-                        <p className={styles.leaderRole} style={{ color: leader.color }}>{leader.role}</p>
-                      </div>
-                      <a href={leader.linkedin} target="_blank" rel="noopener noreferrer" className={styles.leaderSocial} aria-label="LinkedIn profile">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.6a1.66 1.66 0 1 0 0 3.32 1.66 1.66 0 0 0 0-3.32z"/>
-                        </svg>
-                      </a>
-                    </div>
-
-                    <p className={styles.leaderBio}>{leader.bio}</p>
-
-                    <blockquote className={styles.leaderQuote}>
-                      &ldquo;{leader.quote}&rdquo;
-                    </blockquote>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <div className={styles.leadershipCtaRow}>
-            <BeamButton href="/about/team" label="View Complete 25+ Specialist Roster" size="md" variant="outline" />
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════
-          SECTION 7: 5-PHASE GROWTH OPERATING SYSTEM (SINE-WAVE ROADMAP)
-         ══════════════════════════════════════════════════ */}
+          SECTION 8: 5-PHASE GROWTH OS (INTERACTIVE SINUSOIDAL ROADMAP)
+         ══════════════════════════════════════════════════════ */}
       <section className={styles.roadmapSection}>
         <div className="container">
           <ScrollReveal className="text-center">
@@ -763,13 +1157,32 @@ export default function AboutPage() {
               <span>THE GROWTH OPERATING SYSTEM</span>
             </div>
             <h2 className={`display-lg ${styles.sectionHeadline}`}>
-              How We Take Brands From Diagnostic Audit to{' '}
+              How We Take Brands From Forensic Audit to{' '}
               <span className="accent-gradient">Compounding Scale</span>
             </h2>
             <p className={`body-lg ${styles.sectionSub}`}>
-              Our battle-tested 5-phase framework designed for rapid execution, mathematical validation, and exponential market leadership.
+              Our battle-tested 5-phase framework designed for rapid execution, mathematical validation, and exponential market leadership. Click any phase to inspect live deliverables.
             </p>
           </ScrollReveal>
+
+          {/* Interactive Phase Stepper Bar */}
+          <div className={styles.phaseStepperBar}>
+            {operatingPhases.map((phase, idx) => (
+              <button
+                key={phase.num}
+                type="button"
+                onClick={() => setActivePhase(idx)}
+                className={`${styles.stepperPhaseBtn} ${activePhase === idx ? styles.stepperPhaseActive : ''}`}
+                style={{ '--phase-color': phase.color } as React.CSSProperties}
+              >
+                <span className={styles.stepperNum}>{phase.num}</span>
+                <div className={styles.stepperTextCol}>
+                  <span className={styles.stepperName}>{phase.name}</span>
+                  <span className={styles.stepperTime}>{phase.time}</span>
+                </div>
+              </button>
+            ))}
+          </div>
 
           {/* Connected Sinusoidal Desktop Roadmap */}
           <div className={styles.roadmapDesktopWrap}>
@@ -777,22 +1190,23 @@ export default function AboutPage() {
               <svg viewBox="0 0 1200 120" fill="none" preserveAspectRatio="none" className={styles.roadmapSvg}>
                 <path
                   d="M 50,60 C 150,20 250,20 350,60 C 450,100 550,100 650,60 C 750,20 850,20 950,60 C 1050,100 1150,80 1180,60"
-                  stroke="rgba(11, 32, 147, 0.2)"
-                  strokeWidth="2.5"
+                  stroke="rgba(11, 32, 147, 0.15)"
+                  strokeWidth="3"
                   strokeDasharray="8 8"
                 />
                 <path
                   d="M 50,60 C 150,20 250,20 350,60 C 450,100 550,100 650,60 C 750,20 850,20 950,60 C 1050,100 1150,80 1180,60"
-                  stroke="url(#roadmapGrad)"
-                  strokeWidth="3.5"
-                  strokeDasharray="12 8"
+                  stroke="url(#roadmapGradLaser)"
+                  strokeWidth="4"
+                  strokeDasharray="20 10"
                   className={styles.animatedRoadmapPath}
                 />
                 <defs>
-                  <linearGradient id="roadmapGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <linearGradient id="roadmapGradLaser" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stopColor="#0B2093" />
-                    <stop offset="35%" stopColor="#0D007F" />
-                    <stop offset="70%" stopColor="#F59E0B" />
+                    <stop offset="25%" stopColor="#0284C7" />
+                    <stop offset="50%" stopColor="#EC4899" />
+                    <stop offset="75%" stopColor="#F59E0B" />
                     <stop offset="100%" stopColor="#10B981" />
                   </linearGradient>
                 </defs>
@@ -802,11 +1216,24 @@ export default function AboutPage() {
             <div className={styles.roadmapColumnsGrid}>
               {operatingPhases.map((phase, idx) => {
                 const isAbove = idx % 2 === 0;
+                const isSelected = activePhase === idx;
                 return (
-                  <div key={phase.num} className={`${styles.roadmapCol} ${isAbove ? styles.colTop : styles.colBottom}`}>
-                    <div className={styles.phaseCard}>
+                  <div
+                    key={phase.num}
+                    onClick={() => setActivePhase(idx)}
+                    className={`${styles.roadmapCol} ${isAbove ? styles.colTop : styles.colBottom} ${isSelected ? styles.roadmapColSelected : ''}`}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <div className={`${styles.phaseCard} ${isSelected ? styles.phaseCardActive : ''}`}>
                       <div className={styles.phaseHeaderRow}>
-                        <span className={styles.phaseBadge} style={{ color: phase.color, borderColor: `${phase.color}35`, background: `${phase.color}10` }}>
+                        <span
+                          className={styles.phaseBadge}
+                          style={{
+                            color: phase.color,
+                            borderColor: `${phase.color}35`,
+                            background: `${phase.color}12`,
+                          }}
+                        >
                           Phase {phase.num}
                         </span>
                         <span className={styles.phaseTime}>⏱ {phase.time}</span>
@@ -817,11 +1244,16 @@ export default function AboutPage() {
 
                       <div className={styles.phaseFocusRow}>
                         <span className={styles.focusDot} style={{ background: phase.color }} />
-                        <span className={styles.focusText} style={{ color: phase.color }}>{phase.focus}</span>
+                        <span className={styles.focusText} style={{ color: phase.color }}>
+                          {phase.focus}
+                        </span>
                       </div>
                     </div>
 
-                    <div className={styles.phaseNodeCircle} style={{ borderColor: phase.color }}>
+                    <div
+                      className={`${styles.phaseNodeCircle} ${isSelected ? styles.nodeCircleActive : ''}`}
+                      style={{ borderColor: phase.color }}
+                    >
                       <span className={styles.phaseNodeCore} style={{ background: phase.color }}>
                         {phase.num}
                       </span>
@@ -832,103 +1264,159 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Mobile Step Switcher */}
-          <div className={styles.roadmapMobileWrap}>
-            <div className={styles.mobilePhaseHeader}>
-              <span className={styles.mobilePhaseBadge} style={{ color: operatingPhases[activePhase].color }}>
-                Phase {operatingPhases[activePhase].num} · {operatingPhases[activePhase].time}
+          {/* Interactive Phase Live Telemetry Inspector */}
+          <div className={styles.phaseTelemetryInspector}>
+            <div className={styles.inspectorHeader}>
+              <div className={styles.inspectorLeftBadge}>
+                <span
+                  className={styles.inspectorDot}
+                  style={{ background: operatingPhases[activePhase].color }}
+                />
+                <span className={styles.inspectorTitle}>
+                  PHASE {operatingPhases[activePhase].num} DEEP INSPECTION: {operatingPhases[activePhase].name.toUpperCase()}
+                </span>
+              </div>
+              <span className={styles.inspectorTimelineTag}>
+                Cadence: {operatingPhases[activePhase].time}
               </span>
-              <span className={styles.mobilePhaseCounter}>{activePhase + 1} / {operatingPhases.length}</span>
             </div>
 
-            <h4 className={styles.mobilePhaseTitle}>{operatingPhases[activePhase].name}</h4>
-            <p className={styles.mobilePhaseDesc}>{operatingPhases[activePhase].desc}</p>
+            <div className={styles.inspectorBodyGrid}>
+              <div className={styles.inspectorDeliverablesCol}>
+                <h5 className={styles.inspectorColTitle}>KEY EXECUTION DELIVERABLES:</h5>
+                <div className={styles.inspectorItemsList}>
+                  {operatingPhases[activePhase].deliverables.map((item) => (
+                    <div key={item} className={styles.inspectorItemRow}>
+                      <span className={styles.itemCheck} style={{ color: operatingPhases[activePhase].color }}>✓</span>
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
-            <div className={styles.mobilePhaseControls}>
+              <div className={styles.inspectorToolsCol}>
+                <h5 className={styles.inspectorColTitle}>CORE TECHNOLOGIES DEPLOYED:</h5>
+                <div className={styles.inspectorToolsWrap}>
+                  {operatingPhases[activePhase].tools.map((tool) => (
+                    <span key={tool} className={styles.inspectorToolPill}>
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+
+                <div className={styles.inspectorMetricHighlight}>
+                  <span className={styles.metricHighlightLabel}>VERIFIED OUTCOME TARGET:</span>
+                  <span
+                    className={styles.metricHighlightVal}
+                    style={{ color: operatingPhases[activePhase].color }}
+                  >
+                    {operatingPhases[activePhase].outcomeMetric}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.inspectorFooterRow}>
               <button
                 type="button"
                 onClick={() => setActivePhase((p) => Math.max(0, p - 1))}
                 disabled={activePhase === 0}
-                className={styles.mobileArrowBtn}
+                className={styles.inspectorNavBtn}
               >
-                ← Prev
+                ← Previous Phase
               </button>
-              <div className={styles.mobileDots}>
-                {operatingPhases.map((st, i) => (
-                  <button
-                    key={st.num}
-                    type="button"
-                    onClick={() => setActivePhase(i)}
-                    className={`${styles.mobileDot} ${activePhase === i ? styles.mobileDotActive : ''}`}
-                    style={{ background: activePhase === i ? st.color : undefined }}
-                    aria-label={`Jump to phase ${i + 1}`}
-                  />
-                ))}
-              </div>
+              <BeamButton href="/contact" label={`Initialize Phase ${operatingPhases[activePhase].num} Audit`} size="md" />
               <button
                 type="button"
                 onClick={() => setActivePhase((p) => Math.min(operatingPhases.length - 1, p + 1))}
                 disabled={activePhase === operatingPhases.length - 1}
-                className={styles.mobileArrowBtn}
+                className={styles.inspectorNavBtn}
               >
-                Next →
+                Next Phase →
               </button>
             </div>
-          </div>
-
-          <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}>
-            <BeamButton href="/contact" label="Start Your 5-Phase Growth Plan" size="md" />
           </div>
         </div>
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 8: MARTECH ECOSYSTEM & PLATFORM INTEGRATIONS
-         ══════════════════════════════════════════════════ */}
-      <section className={styles.martechSection}>
+          SECTION 9: REAL-TIME REVENUE & ATTRIBUTION PIPELINE
+          (REPLACES BASIC TOOLING & AUTOMATION TECH STACK)
+         ══════════════════════════════════════════════════════ */}
+      <section className={styles.revenuePipelineSection}>
         <div className="container">
           <ScrollReveal className="text-center">
             <div className="eyebrow" style={{ margin: '0 auto 12px' }}>
               <span className="eyebrow-dot" />
-              <span>TOOLING &amp; AUTOMATION</span>
+              <span>THE COPILOT AUTOMATION ENGINE</span>
             </div>
             <h2 className={`display-lg ${styles.sectionHeadline}`}>
-              Enterprise Tech Stack.{' '}
-              <span className="accent-gradient">Zero Guesswork.</span>
+              Real-Time Intelligence &amp;{' '}
+              <span className="accent-gradient">Attribution Pipeline</span>
             </h2>
             <p className={`body-lg ${styles.sectionSub}`}>
-              Every partner is backed by institutional-grade tracking, automated bidding APIs, and real-time client telemetry.
+              How data travels from customer intent to ad platforms to bank deposit. Zero data leakage, sub-second latency, and algorithmic allocation.
             </p>
           </ScrollReveal>
 
-          <div className={styles.martechGrid}>
-            {martechEcosystem.map((tool, idx) => (
-              <ScrollReveal key={tool.name} delay={idx * 70}>
-                <div className={styles.martechCard}>
-                  <div className={styles.martechCardTop}>
-                    <span className={styles.martechIcon}>{idx + 1}</span>
-                    <span className={styles.martechStatusBadge}>
-                      <span className={styles.statusPulseDot} />
-                      {tool.status}
-                    </span>
+          {/* Interactive Pipeline Architecture */}
+          <div className={styles.pipelineStagesGrid}>
+            {revenuePipelineStages.map((stage, idx) => (
+              <ScrollReveal key={stage.id} delay={idx * 80}>
+                <div
+                  onClick={() => setActivePipelineStage(idx)}
+                  className={`${styles.pipelineCard} ${activePipelineStage === idx ? styles.pipelineCardActive : ''}`}
+                  style={{ '--stage-accent': stage.color } as React.CSSProperties}
+                >
+                  <div className={styles.pipelineCardTop}>
+                    <div className={styles.stageNumBadge}>
+                      <span>{stage.num}</span>
+                    </div>
+                    <span className={styles.stageCategoryTag}>{stage.category}</span>
                   </div>
-                  <h3 className={styles.martechName}>{tool.name}</h3>
-                  <p className={styles.martechCat}>{tool.category}</p>
+
+                  <h3 className={styles.stageTitle}>{stage.title}</h3>
+                  <p className={styles.stageDesc}>{stage.desc}</p>
+
+                  <div className={styles.stageTechRow}>
+                    {stage.tech.map((t) => (
+                      <span key={t} className={styles.stageTechBadge}>
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className={styles.stageFooter}>
+                    <span className={styles.stagePulseBeacon} style={{ background: stage.color }} />
+                    <span className={styles.stageMetricsText}>{stage.metrics}</span>
+                  </div>
                 </div>
               </ScrollReveal>
             ))}
+          </div>
+
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}>
+            <BeamButton href="/contact" label="Integrate Your Revenue Pipeline" size="md" />
           </div>
         </div>
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 9: NUMBERS THAT DEFINE OUR STANDARD (LIVE TELEMETRY)
-         ══════════════════════════════════════════════════ */}
+          SECTION 10: QUANTIFIED MILESTONES (LIVE NUMBERS COCKPIT)
+         ══════════════════════════════════════════════════════ */}
       <section className={styles.telemetrySection} id="about-telemetry-section">
         <div className={styles.telemetryMesh} />
         <div className="container">
           <ScrollReveal className="text-center">
-            <div className="eyebrow" style={{ margin: '0 auto 12px', background: 'rgba(255,255,255,0.1)', color: '#FFFFFF', borderColor: 'rgba(255,255,255,0.2)' }}>
+            <div
+              className="eyebrow"
+              style={{
+                margin: '0 auto 12px',
+                background: 'rgba(255,255,255,0.1)',
+                color: '#FFFFFF',
+                borderColor: 'rgba(255,255,255,0.2)',
+              }}
+            >
               <span className="eyebrow-dot" style={{ background: '#38BDF8' }} />
               <span>QUANTIFIED MILESTONES</span>
             </div>
@@ -969,115 +1457,88 @@ export default function AboutPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 10: IN-PERSON COLLABORATIVE STUDIO & HEADQUARTERS
-         ══════════════════════════════════════════════════ */}
-      <section className={styles.studioSection}>
+          SECTION 11: EXECUTIVE ARCHITECTS (REAL LEADERSHIP TEAM)
+         ══════════════════════════════════════════════════════ */}
+      <section className={styles.leadershipSection} id="leadership-team">
         <div className="container">
           <ScrollReveal className="text-center">
             <div className="eyebrow" style={{ margin: '0 auto 12px' }}>
               <span className="eyebrow-dot" />
-              <span>IN-PERSON WAR ROOM</span>
+              <span>EXECUTIVE ARCHITECTS</span>
             </div>
             <h2 className={`display-lg ${styles.sectionHeadline}`}>
-              Visit Our Bhubaneswar Studio{' '}
-              <span className="accent-gradient">&amp; Growth Hub</span>
+              The Minds Behind Your{' '}
+              <span className="accent-gradient">Commercial Velocity</span>
             </h2>
             <p className={`body-lg ${styles.sectionSub}`}>
-              In-person collaboration creates clarity that zoom calls simply cannot replicate. Come brainstorm your roadmap at our Kharvela Nagar headquarters.
+              No junior interns handling your ad spend. Meet the senior strategists and technical leaders who personally engineer your growth.
             </p>
           </ScrollReveal>
 
-          <div className={styles.studioDualGrid}>
-            {/* Left Column: Studio Details & Consultation Briefing */}
-            <ScrollReveal>
-              <div className={styles.studioDetailsCard}>
-                <div className={styles.studioCardHeader}>
-                  <span className={styles.studioLiveBadge}>🟢 Open For In-Person Briefings</span>
-                  <span className={styles.studioHours}>Mon – Sat · 9:30 AM – 7:30 PM</span>
-                </div>
-
-                <h3 className={styles.studioCardTitle}>
-                  Marketing Copilot Studio Headquarters
-                </h3>
-
-                <p className={styles.studioAddress}>
-                  Unit 3, Kharvela Nagar, Near Master Canteen Chowk,<br />
-                  Bhubaneswar, Odisha 751001, India
-                </p>
-
-                <div className={styles.studioFeatureList}>
-                  <div className={styles.studioFeature}>
-                    <span className={styles.featureIcon}>☕</span>
-                    <div>
-                      <h4 className={styles.featureTitle}>1-on-1 Growth Diagnostic Room</h4>
-                      <p className={styles.featureDesc}>Private strategy room equipped with live Looker telemetry projections.</p>
-                    </div>
+          {/* 5 Real Executive Cards */}
+          <div className={styles.leadershipGrid}>
+            {executiveArchitects.map((leader, idx) => (
+              <ScrollReveal key={leader.name} delay={idx * 80}>
+                <div className={styles.leaderCard}>
+                  <div className={styles.leaderPhotoWrap}>
+                    <Image
+                      src={leader.image}
+                      alt={leader.name}
+                      fill
+                      className={styles.leaderPhoto}
+                      style={{ objectPosition: leader.imagePosition }}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 20vw"
+                    />
+                    <div className={styles.leaderOverlay} />
+                    <span
+                      className={styles.leaderDeptBadge}
+                      style={{ color: leader.color, borderColor: `${leader.color}40` }}
+                    >
+                      {leader.dept}
+                    </span>
                   </div>
 
-                  <div className={styles.studioFeature}>
-                    <span className={styles.featureIcon}>🎬</span>
-                    <div>
-                      <h4 className={styles.featureTitle}>Commercial Production Soundstage</h4>
-                      <p className={styles.featureDesc}>In-house 4K video recording, high-production lighting, and audio recording bays.</p>
+                  <div className={styles.leaderInfo}>
+                    <div className={styles.leaderHeaderRow}>
+                      <div>
+                        <h3 className={styles.leaderName}>{leader.name}</h3>
+                        <p className={styles.leaderRole} style={{ color: leader.color }}>
+                          {leader.role}
+                        </p>
+                      </div>
+                      <a
+                        href={leader.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.leaderSocial}
+                        aria-label={`${leader.name} LinkedIn Profile`}
+                      >
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.6a1.66 1.66 0 1 0 0 3.32 1.66 1.66 0 0 0 0-3.32z" />
+                        </svg>
+                      </a>
                     </div>
+
+                    <p className={styles.leaderBio}>{leader.bio}</p>
+
+                    <blockquote className={styles.leaderQuote}>
+                      &ldquo;{leader.quote}&rdquo;
+                    </blockquote>
                   </div>
-
-                  <div className={styles.studioFeature}>
-                    <span className={styles.featureIcon}>📊</span>
-                    <div>
-                      <h4 className={styles.featureTitle}>War Room Collaborative Table</h4>
-                      <p className={styles.featureDesc}>Interactive whiteboard sessions to construct your omnichannel unit economics model.</p>
-                    </div>
-                  </div>
                 </div>
+              </ScrollReveal>
+            ))}
+          </div>
 
-                <div className={styles.studioActionRow}>
-                  <BeamButton href="/contact" label="Schedule In-Person Strategy Session" size="md" />
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Right Column: Interactive Map Preview */}
-            <ScrollReveal delay={120}>
-              <div className={styles.studioMapCard}>
-                <iframe
-                  title="Marketing Copilot Studio Headquarters Map"
-                  src={mapsEmbedUrl}
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className={styles.mapIframe}
-                />
-
-                {/* 3D Location Marker Beacon */}
-                <div className={styles.mapBeaconOverlay}>
-                  <a
-                    href={mapsSearchUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.mapPinAnchor}
-                    title="Click to open directions on Google Maps"
-                  >
-                    <div className={styles.pulseRadar1} />
-                    <div className={styles.pulseRadar2} />
-                    <div className={styles.mapPinBadge}>
-                      <span className={styles.pinDot} />
-                      <span>Marketing Copilot Studio</span>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </ScrollReveal>
+          <div className={styles.leadershipCtaRow}>
+            <BeamButton href="/about/team" label="View Complete 25+ Specialist Roster" size="md" variant="outline" />
           </div>
         </div>
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 11: TRANSPARENT FAQS ACCORDION
-         ══════════════════════════════════════════════════ */}
+          SECTION 12: TRANSPARENT FAQS ACCORDION
+         ══════════════════════════════════════════════════════ */}
       <section className={styles.faqSection}>
         <div className="container">
           <ScrollReveal className="text-center">
@@ -1124,8 +1585,8 @@ export default function AboutPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 12: GRAND FINALE CTA COMMAND CARD
-         ══════════════════════════════════════════════════ */}
+          SECTION 13: GRAND FINALE CTA COMMAND CARD
+         ══════════════════════════════════════════════════════ */}
       <section className={styles.ctaFinaleSection}>
         <div className="container">
           <ScrollReveal className="text-center">
