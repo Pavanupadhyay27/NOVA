@@ -5,7 +5,7 @@ import BeamButton from '@/components/BeamButton';
 import ScrollReveal from '@/components/ScrollReveal';
 import styles from './QuickConnectMapSection.module.css';
 
-export default function QuickConnectMapSection() {
+export default function QuickConnectMapSection({ id = 'direct-connect' }: { id?: string } = {}) {
   const [copiedField, setCopiedField] = useState<string | null>(null);
 
   const phone = '+91 82807 88689';
@@ -27,7 +27,8 @@ export default function QuickConnectMapSection() {
   };
 
   return (
-    <section className={styles.section} id="direct-connect">
+    <section className={styles.section} id={id}>
+      <div id="war-room-section" style={{ position: 'relative', top: '-100px', visibility: 'hidden' }} />
       {/* Ambient background glows for 3D depth */}
       <div className={styles.ambientGlowLeft} />
       <div className={styles.ambientGlowRight} />

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import BeamButton from '@/components/BeamButton';
+import QuickConnectMapSection from '@/app/_components/QuickConnectMapSection';
 import styles from './page.module.css';
 
 // ─── Data: Founding Story Sliding Chronicle Cards ───
@@ -507,12 +508,6 @@ export default function AboutPage() {
     }
   };
 
-  const mapsEmbedUrl =
-    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3742.757640242207!2d85.8456126759714!3d20.268884013444406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19a797c558c48f%3A0xe13ef479e0066bf2!2sMarketing%20Copilot!5e0!3m2!1sen!2sin!4v1741541000000!5m2!1sen!2sin';
-
-  const mapsSearchUrl =
-    'https://www.google.com/maps/search/?api=1&query=Marketing+Copilot+Bhubaneswar';
-
   return (
     <div className={styles.aboutPageWrapper}>
       {/* ══════════════════════════════════════════════════════
@@ -690,111 +685,9 @@ export default function AboutPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 3: IN-PERSON WAR ROOM & STRATEGY LAB (THIRD SECTION)
+          SECTION 3: HOME MAP SECTION (YOUR TRUSTED DIGITAL MARKETING COMPANY IN BHUBANESWAR)
          ══════════════════════════════════════════════════════ */}
-      <section className={styles.studioSection} id="war-room-section">
-        <div className="container">
-          <ScrollReveal className="text-center">
-            <div className="eyebrow" style={{ margin: '0 auto 12px' }}>
-              <span className="eyebrow-dot" />
-              <span>IN-PERSON WAR ROOM</span>
-            </div>
-            <h2 className={`display-lg ${styles.sectionHeadline}`}>
-              Visit Our Bhubaneswar Studio{' '}
-              <span className="accent-gradient">&amp; Growth Hub</span>
-            </h2>
-            <p className={`body-lg ${styles.sectionSub}`}>
-              In-person collaboration creates clarity that zoom calls simply cannot replicate. Come brainstorm your roadmap at our Kharvela Nagar headquarters.
-            </p>
-          </ScrollReveal>
-
-          <div className={styles.studioDualGrid}>
-            {/* Left Column: Studio Details & Consultation Briefing */}
-            <ScrollReveal>
-              <div className={styles.studioDetailsCard}>
-                <div className={styles.studioCardHeader}>
-                  <span className={styles.studioLiveBadge}>🟢 Open For In-Person Briefings</span>
-                  <span className={styles.studioHours}>Mon – Sat · 9:30 AM – 7:30 PM</span>
-                </div>
-
-                <h3 className={styles.studioCardTitle}>
-                  Marketing Copilot Studio Headquarters
-                </h3>
-
-                <p className={styles.studioAddress}>
-                  Unit 3, Kharvela Nagar, Near Master Canteen Chowk,<br />
-                  Bhubaneswar, Odisha 751001, India
-                </p>
-
-                <div className={styles.studioFeatureList}>
-                  <div className={styles.studioFeature}>
-                    <span className={styles.featureIcon}>☕</span>
-                    <div>
-                      <h4 className={styles.featureTitle}>1-on-1 Growth Diagnostic Room</h4>
-                      <p className={styles.featureDesc}>Private strategy room equipped with live Looker telemetry projections and unit economics modeling.</p>
-                    </div>
-                  </div>
-
-                  <div className={styles.studioFeature}>
-                    <span className={styles.featureIcon}>🎬</span>
-                    <div>
-                      <h4 className={styles.featureTitle}>Commercial Production Soundstage</h4>
-                      <p className={styles.featureDesc}>In-house 4K/8K cinema video recording, high-production lighting arrays, and acoustic audio soundstage.</p>
-                    </div>
-                  </div>
-
-                  <div className={styles.studioFeature}>
-                    <span className={styles.featureIcon}>📊</span>
-                    <div>
-                      <h4 className={styles.featureTitle}>War Room Collaborative Floor</h4>
-                      <p className={styles.featureDesc}>Interactive whiteboard sessions to construct your omnichannel ad spend and technical SEO moat.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className={styles.studioActionRow}>
-                  <BeamButton href="/contact" label="Schedule In-Person Strategy Session" size="md" />
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Right Column: Interactive Map Preview */}
-            <ScrollReveal delay={120}>
-              <div className={styles.studioMapCard}>
-                <iframe
-                  title="Marketing Copilot Studio Headquarters Map"
-                  src={mapsEmbedUrl}
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className={styles.mapIframe}
-                />
-
-                {/* 3D Location Marker Beacon */}
-                <div className={styles.mapBeaconOverlay}>
-                  <a
-                    href={mapsSearchUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.mapPinAnchor}
-                    title="Click to open directions on Google Maps"
-                  >
-                    <div className={styles.pulseRadar1} />
-                    <div className={styles.pulseRadar2} />
-                    <div className={styles.mapPinBadge}>
-                      <span className={styles.pinDot} />
-                      <span>Marketing Copilot Studio · Kharvela Nagar</span>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
+      <QuickConnectMapSection id="war-room-section" />
 
       {/* ══════════════════════════════════════════════════════
           SECTION 4: THE FOUNDING STORY (SLIDING CHRONICLE CARDS)
