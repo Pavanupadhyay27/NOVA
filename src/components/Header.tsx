@@ -7,16 +7,16 @@ import BeamButton from '@/components/BeamButton';
 import styles from './Header.module.css';
 
 const services = [
-  { href: '/services/seo', label: 'SEO Services', desc: 'Rank #1 on Google in Bhubaneswar' },
-  { href: '/services/google-ads', label: 'Google Ads / PPC', desc: 'High-ROI paid search campaigns' },
-  { href: '/services/meta-ads', label: 'Meta Ads', desc: 'Facebook & Instagram growth ads' },
-  { href: '/services/social-media', label: 'Social Media Marketing', desc: 'Build community & brand presence' },
-  { href: '/services/web-development', label: 'Website Development', desc: 'Conversion-engineered websites' },
-  { href: '/services/creative-branding', label: 'Branding & Creative Services', desc: 'Make your brand unforgettable' },
-  { href: '/services/local-seo', label: 'Local SEO', desc: 'Dominate Bhubaneswar local search' },
-  { href: '/services/ecommerce-marketing', label: 'E-commerce Marketing', desc: 'Scale your online store revenue' },
-  { href: '/services/performance-marketing', label: 'Performance Marketing', desc: 'Turn ad spend into predictable revenue' },
-  { href: '/services/ai-automation', label: 'Content Marketing', desc: 'Content that ranks and converts' },
+  { href: '/services/seo', label: 'SEO Services', shortLabel: 'SEO', icon: '⚡', desc: 'Rank #1 on Google in Bhubaneswar' },
+  { href: '/services/google-ads', label: 'Google Ads / PPC', shortLabel: 'Google Ads', icon: '🎯', desc: 'High-ROI paid search campaigns' },
+  { href: '/services/meta-ads', label: 'Meta Ads', shortLabel: 'Meta Ads', icon: '🚀', desc: 'Facebook & Instagram growth ads' },
+  { href: '/services/social-media', label: 'Social Media Marketing', shortLabel: 'Social Media', icon: '📱', desc: 'Build community & brand presence' },
+  { href: '/services/web-development', label: 'Website Development', shortLabel: 'Web Platform', icon: '💻', desc: 'Conversion-engineered websites' },
+  { href: '/services/creative-branding', label: 'Branding & Creative Services', shortLabel: 'Creative Brand', icon: '🎨', desc: 'Make your brand unforgettable' },
+  { href: '/services/local-seo', label: 'Local SEO', shortLabel: 'Local SEO', icon: '📍', desc: 'Dominate Bhubaneswar local search' },
+  { href: '/services/ecommerce-marketing', label: 'E-commerce Marketing', shortLabel: 'E-Commerce', icon: '🛍️', desc: 'Scale your online store revenue' },
+  { href: '/services/performance-marketing', label: 'Performance Marketing', shortLabel: 'Performance', icon: '📈', desc: 'Turn ad spend into predictable revenue' },
+  { href: '/services/ai-automation', label: 'Content Marketing', shortLabel: 'Content Copy', icon: '✍️', desc: 'Content that ranks and converts' },
 ];
 
 const mobileLinks = [
@@ -197,7 +197,7 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Tactile Skeuomorphic Mobile Menu Pop Card */}
+      {/* Cute & Minimal Mobile Side Card Drawer */}
       {menuOpen && (
         <>
           <div
@@ -205,15 +205,21 @@ export default function Header() {
             onClick={() => setMenuOpen(false)}
             aria-hidden="true"
           />
-          <div className={styles.mobileMenu}>
-            {/* Skeuomorphic Glass Lip */}
-            <span className={styles.menuGlassGloss} />
-
-            {/* Cute Card Header Bar */}
+          <div className={styles.mobileMenu} role="dialog" aria-modal="true">
+            {/* Cute Card Header */}
             <div className={styles.mobileCardHeader}>
-              <div className={styles.mobileMenuBadge}>
-                <span className={styles.mobileBadgeDot} />
-                <span>EXPLORE COPILOT</span>
+              <div className={styles.mobileBrandBadge}>
+                <Image
+                  src="/icon.png"
+                  alt="Marketing Copilot"
+                  width={22}
+                  height={22}
+                  className={styles.mobileBrandIcon}
+                />
+                <div className={styles.mobileBrandText}>
+                  <span className={styles.mobileBrandTitle}>Marketing Copilot</span>
+                  <span className={styles.mobileBrandSubtitle}>Growth Architecture</span>
+                </div>
               </div>
               <button
                 type="button"
@@ -221,7 +227,7 @@ export default function Header() {
                 onClick={() => setMenuOpen(false)}
                 aria-label="Close navigation card"
               >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="18" y1="6" x2="6" y2="18" />
                   <line x1="6" y1="6" x2="18" y2="18" />
                 </svg>
@@ -245,32 +251,28 @@ export default function Header() {
                       >
                         <div className={styles.mobileLabelGroup}>
                           <span className={styles.mobileLinkLabel}>Services</span>
-                          <span className={styles.servicesCountPill}>10 Services</span>
+                          <span className={styles.servicesCountPill}>10 Practices</span>
                         </div>
                         <span className={`${styles.mobileChevronIcon} ${mobileServicesOpen ? styles.mobileChevronRotated : ''}`}>
-                          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                          <svg width="10" height="10" viewBox="0 0 12 12" fill="currentColor">
                             <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" />
                           </svg>
                         </span>
                       </button>
 
-                      {/* Expandable Services Grid */}
+                      {/* Cute 2-Column Compact Services Grid */}
                       {mobileServicesOpen && (
                         <div className={styles.mobileServicesSubmenu}>
-                          <div className={styles.mobileServicesList}>
+                          <div className={styles.mobileServicesGrid}>
                             {services.map((s) => (
                               <Link
                                 key={s.href}
                                 href={s.href}
-                                className={`${styles.mobileServiceItem} ${pathname === s.href ? styles.mobileServiceItemActive : ''}`}
+                                className={`${styles.mobileServiceChip} ${pathname === s.href ? styles.mobileServiceChipActive : ''}`}
                                 onClick={() => setMenuOpen(false)}
                               >
-                                <span className={styles.serviceDotIndicator} />
-                                <div className={styles.serviceItemInfo}>
-                                  <span className={styles.serviceItemLabel}>{s.label}</span>
-                                  <span className={styles.serviceItemDesc}>{s.desc}</span>
-                                </div>
-                                <span className={styles.serviceSubArrow}>→</span>
+                                <span className={styles.chipIcon}>{s.icon}</span>
+                                <span className={styles.chipLabel}>{s.shortLabel}</span>
                               </Link>
                             ))}
                           </div>
@@ -279,7 +281,7 @@ export default function Header() {
                             className={styles.mobileAllServicesBtn}
                             onClick={() => setMenuOpen(false)}
                           >
-                            <span>Explore all 10 services hub</span>
+                            <span>Explore all 10 services</span>
                             <span>→</span>
                           </Link>
                         </div>
@@ -303,15 +305,20 @@ export default function Header() {
               })}
             </nav>
 
-            {/* Tactile Skeuomorphic CTA Card Footer */}
+            {/* Cute Minimal CTA & Contact strip */}
             <div className={styles.mobileCTA}>
               <BeamButton
                 href="/contact"
-                label="Let's Talk — Free Consultation"
-                size="md"
+                label="Let's Talk — Free Audit"
+                size="sm"
                 fullWidth
                 onClick={() => setMenuOpen(false)}
               />
+              <div className={styles.mobileContactMini}>
+                <span>📍 Bhubaneswar</span>
+                <span className={styles.contactMiniDot}>•</span>
+                <a href="tel:+919439638484" className={styles.contactMiniPhone}>Call Direct</a>
+              </div>
             </div>
           </div>
         </>
