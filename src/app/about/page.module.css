@@ -635,14 +635,14 @@
 }
 
 /* ═══════════════════════════════════════════════════════════
-   SECTION 4: THE FOUNDING STORY (SKEUOMORPHIC SLIDING CHRONICLE)
+   SECTION 4: THE FOUNDING STORY (LIVING DOCUMENTARY TIMELINE)
    ═══════════════════════════════════════════════════════════ */
-.cleanStorySection {
-  padding: 96px 0 108px;
-  background: radial-gradient(100% 60% at 50% 0%, rgba(11, 32, 147, 0.025) 0%, #F8FAFC 60%, #F1F5F9 100%);
+.documentaryStorySection {
+  position: relative;
+  padding: 104px 0 120px;
+  background: radial-gradient(80% 50% at 50% 10%, rgba(11, 32, 147, 0.02) 0%, #FFFFFF 70%, #F8FAFC 100%);
   border-top: 1px solid #E2E8F0;
   border-bottom: 1px solid #E2E8F0;
-  position: relative;
   overflow: hidden;
 }
 
@@ -656,410 +656,357 @@
 .cleanStorySub {
   color: #475569;
   max-width: 680px;
-  margin: 0 auto 36px;
+  margin: 0 auto 42px;
   line-height: 1.6;
 }
 
-/* Skeuomorphic Stepper Timeline Scrubber */
-.storyTimelineScrubberWrap {
+/* Minimalist Floating Quick-Jump Chronology HUD */
+.timelineQuickJumpWrap {
   display: flex;
   justify-content: center;
-  margin-bottom: 38px;
-  width: 100%;
+  margin-bottom: 72px;
+  position: sticky;
+  top: 88px;
+  z-index: 25;
 }
 
-.storyTimelineScrubber {
+.timelineQuickJumpBar {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: #FFFFFF;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1.5px solid #E2E8F0;
-  padding: 6px;
+  padding: 6px 16px;
   border-radius: 999px;
-  box-shadow: inset 0 2px 4px rgba(15, 23, 42, 0.04), 0 4px 14px rgba(15, 23, 42, 0.03);
-  max-width: 900px;
-  width: 100%;
+  box-shadow: 0 10px 28px -6px rgba(15, 23, 42, 0.08), inset 0 1.5px 0 #FFFFFF;
+  max-width: 840px;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 }
 
-.storyTabBtn {
-  position: relative;
+.quickJumpLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 800;
+  color: #64748B;
+  letter-spacing: 0.1em;
+  margin-right: 4px;
+}
+
+.quickJumpBtn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 9px 18px;
+  padding: 7px 16px;
   border-radius: 999px;
   border: 1px solid transparent;
   background: transparent;
   color: #475569;
-  font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 700;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.storyTabBtn:hover {
+.quickJumpBtn:hover {
   background: #F1F5F9;
   color: #0B2093;
   border-color: #E2E8F0;
 }
 
-.storyTabActive {
+.quickJumpActive {
   background: #0B2093 !important;
   color: #FFFFFF !important;
   border-color: #0B2093;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 4px 14px rgba(11, 32, 147, 0.3);
+  box-shadow: 0 4px 14px rgba(11, 32, 147, 0.25);
   transform: translateY(-1px);
 }
 
-.tabStepNum {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  opacity: 0.65;
-  font-weight: 800;
-}
-
-.tabYearBadge {
+.quickJumpYear {
+  font-family: var(--font-display);
+  font-size: 13px;
   font-weight: 900;
-  letter-spacing: -0.01em;
 }
 
-.storyTabActive .tabYearBadge {
+.quickJumpActive .quickJumpYear {
   color: #FFB800;
 }
 
-.tabTitleText {
-  font-size: 12.5px;
+.quickJumpTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: inherit;
+  opacity: 0.9;
 }
 
-.activeTabGlowLine {
+/* Living Documentary Track with Central Liquid Spine */
+.documentaryTrackContainer {
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.documentarySpineWrap {
   position: absolute;
+  top: 0;
   bottom: 0;
   left: 50%;
+  width: 3px;
   transform: translateX(-50%);
-  width: 24px;
-  height: 2px;
-  background: #FFB800;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.documentarySpineLine {
+  position: absolute;
+  top: 40px;
+  bottom: 40px;
+  left: 0;
+  width: 100%;
+  background: #E2E8F0;
   border-radius: 999px;
 }
 
-/* 3D Skeuomorphic Stage Wrapper with Auto-Elevation */
-.storyStageWrapper {
-  max-width: 1140px;
-  margin: 0 auto;
-  perspective: 1200px;
-  transform: translateY(50px) scale(0.965);
-  opacity: 0;
-  filter: blur(4px);
-  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, opacity;
-}
-
-.storyStageElevated {
-  transform: translateY(0) scale(1);
-  opacity: 1;
-  filter: blur(0);
-}
-
-/* Sliding Viewport & Track */
-.storyDeckViewport {
+.documentarySpineProgress {
+  position: absolute;
+  top: 40px;
+  left: 0;
   width: 100%;
-  overflow: hidden;
-  border-radius: 28px;
-  position: relative;
-  cursor: grab;
-  user-select: none;
-}
-
-.storyDeckViewport:active {
-  cursor: grabbing;
-}
-
-.storyDeckTrack {
-  display: flex;
-  width: 100%;
-  transition: transform 0.72s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
-}
-
-.storySlideWrap {
-  flex: 0 0 100%;
-  width: 100%;
-  min-width: 100%;
-  box-sizing: border-box;
-  padding: 2px 2px 8px;
-}
-
-/* Skeuomorphic Story Card */
-.skeuoStoryCard {
-  background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFE 50%, #F5F8FC 100%);
-  border: 1px solid rgba(226, 232, 240, 0.95);
-  border-radius: 26px;
-  box-shadow: 
-    inset 0 2.5px 0 #FFFFFF,
-    inset 0 1px 1.5px rgba(255, 255, 255, 0.95),
-    inset 0 -2.5px 4px rgba(15, 23, 42, 0.04),
-    inset 1px 0 0 rgba(255, 255, 255, 0.7),
-    inset -1px 0 0 rgba(255, 255, 255, 0.7),
-    0 24px 54px -12px rgba(11, 32, 147, 0.08),
-    0 8px 20px -4px rgba(15, 23, 42, 0.04),
-    0 2px 6px rgba(0, 0, 0, 0.02);
-  padding: 40px 44px 34px;
-  position: relative;
-  box-sizing: border-box;
-  transition: all 0.3s ease;
-}
-
-/* Top Skeuomorphic Bevel Edge & Bar */
-.cardSkeuoTopBar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 22px;
-  border-bottom: 1.5px solid #E2E8F0;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.cardTopLeft {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-.embossedYearBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
-  border: 1.5px solid #CBD5E1;
+  background: linear-gradient(180deg, #0B2093 0%, #FFB800 100%);
   border-radius: 999px;
-  padding: 5px 14px;
-  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 2px 5px rgba(15, 23, 42, 0.06);
+  transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 10px rgba(11, 32, 147, 0.4);
 }
 
-.embossedYearDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+/* Chapters Flow */
+.chaptersFlowList {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
 }
 
-.embossedYearText {
+.chapterBlock {
+  position: relative;
+  z-index: 2;
+  scroll-margin-top: 150px;
+}
+
+/* Giant Ghost Watermark Year */
+.ghostYearWatermark {
+  position: absolute;
+  top: -40px;
   font-family: var(--font-display);
-  font-size: 13.5px;
+  font-size: clamp(90px, 14vw, 170px);
   font-weight: 900;
-  color: #0F172A;
-  letter-spacing: -0.01em;
+  color: rgba(15, 23, 42, 0.035);
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+  letter-spacing: -0.05em;
+  line-height: 1;
 }
 
-.cardActIndicator {
+.chapterOdd .ghostYearWatermark {
+  left: -20px;
+}
+
+.chapterEven .ghostYearWatermark {
+  right: -20px;
+  text-align: right;
+}
+
+/* Central Milestone Beacon Node */
+.chapterBeaconWrap {
+  position: absolute;
+  left: 50%;
+  top: 16px;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.beaconOuterRing {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 2.5px solid #0B2093;
+  box-shadow: 0 0 14px rgba(11, 32, 147, 0.25), inset 0 1px 2px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.beaconCoreDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+.beaconYearLabel {
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
   font-weight: 800;
   color: #0B2093;
-  letter-spacing: 0.1em;
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  padding: 2px 8px;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
 }
 
-.cardCodenameBadge {
+/* Chapter Dual-Pane Grid: Alternating Zigzag Layout */
+.chapterInnerGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 88px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.chapterEven .chapterInnerGrid {
+  direction: rtl;
+}
+
+.chapterEven .chapterInnerGrid > * {
+  direction: ltr;
+}
+
+/* Narrative Column */
+.chapterNarrativeColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.chapterMetaBadgeRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.chapterActPill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 800;
+  color: #0B2093;
+  letter-spacing: 0.08em;
+}
+
+.chapterCodenamePill {
   font-family: var(--font-display);
   font-size: 10.5px;
   font-weight: 800;
   letter-spacing: 0.08em;
-  color: #B45309;
-  background: rgba(245, 158, 11, 0.08);
-  border: 1px solid rgba(245, 158, 11, 0.25);
-  padding: 3px 10px;
+  padding: 2px 10px;
   border-radius: 999px;
+  border: 1px solid;
+  background: #FFFFFF;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
 }
 
-.cardTopRight {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.cardReadingTime {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 700;
-  color: #64748B;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.readingIcon {
-  font-size: 12px;
-}
-
-.cardProgressMiniBar {
-  width: 80px;
-  height: 6px;
-  background: #E2E8F0;
-  border-radius: 999px;
-  overflow: hidden;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
-}
-
-.progressMiniFill {
-  height: 100%;
-  background: linear-gradient(90deg, #0B2093 0%, #FFB800 100%);
-  border-radius: 999px;
-  transition: width 0.4s ease;
-}
-
-/* Dual-Column Storytelling Grid */
-.cardStoryGrid {
-  display: grid;
-  grid-template-columns: 1.18fr 1fr;
-  gap: 44px;
-  align-items: stretch;
-  margin-bottom: 32px;
-}
-
-/* Left Column: Narrative Soul */
-.storyNarrativeCol {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.chapterTitleBlock {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.chapterTaglineText {
+.chapterEditorialTitle {
   font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.storyMainTitle {
-  font-family: var(--font-display);
-  font-size: clamp(25px, 2.6vw, 33px);
+  font-size: clamp(26px, 2.6vw, 34px);
   font-weight: 800;
   color: #0F172A;
-  line-height: 1.22;
-  margin: 0;
+  line-height: 1.25;
+  margin: 0 0 6px;
   letter-spacing: -0.02em;
 }
 
-/* Debossed Parchment Quote */
-.quoteSkeuoPanel {
-  position: relative;
-  background: linear-gradient(180deg, #FAFAF9 0%, #F5F5F4 100%);
-  border: 1px solid #E7E5E4;
-  border-left: 4px solid #0B2093;
-  border-radius: 0 16px 16px 0;
-  box-shadow: inset 0 1.5px 3px rgba(0, 0, 0, 0.04), 0 1px 0 #FFFFFF;
-  padding: 18px 22px 18px 26px;
+.chapterTaglineNotice {
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 20px;
 }
 
-.quoteMarkGlow {
+.chapterEditorialQuoteBlock {
+  position: relative;
+  background: #F8FAFC;
+  border-left: 4px solid #0B2093;
+  border-radius: 0 14px 14px 0;
+  padding: 18px 24px 18px 26px;
+  margin-bottom: 22px;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.02);
+}
+
+.quoteOpeningGlyph {
   position: absolute;
-  top: -4px;
+  top: -6px;
   left: 10px;
   font-family: Georgia, serif;
   font-size: 38px;
-  line-height: 1;
-  color: rgba(11, 32, 147, 0.18);
+  color: rgba(11, 32, 147, 0.15);
   pointer-events: none;
 }
 
-.quoteText {
+.quoteProseText {
   font-family: Georgia, serif;
   font-size: 15.5px;
   font-style: italic;
   line-height: 1.65;
-  color: #1C1917;
+  color: #1E293B;
   margin: 0;
 }
 
-/* Founder Credential Strip */
-.founderIdStrip {
+.chapterAuthorStrip {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 12px 16px;
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-radius: 14px;
-  box-shadow: inset 0 1px 0 #FFFFFF, 0 2px 6px rgba(15, 23, 42, 0.03);
+  padding-bottom: 20px;
+  border-bottom: 1px solid #E2E8F0;
+  margin-bottom: 20px;
 }
 
-.founderAvatarEmbossed {
+.chapterAuthorAvatarWrap {
   width: 46px;
   height: 46px;
   border-radius: 50%;
   overflow: hidden;
   border: 2px solid #FFFFFF;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.14);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12);
   flex-shrink: 0;
 }
 
-.founderAvatarImg {
+.chapterAuthorImg {
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
 
-.founderTextInfo {
+.chapterAuthorMeta {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
-.founderNameRow {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.founderNameText {
+.chapterAuthorName {
   font-family: var(--font-display);
   font-size: 14.5px;
   font-weight: 800;
   color: #0F172A;
 }
 
-.founderVerifiedPill {
-  font-size: 11px;
-  font-weight: 700;
-  color: #059669;
-  background: rgba(16, 185, 129, 0.08);
-  padding: 2px 8px;
-  border-radius: 999px;
-  border: 1px solid rgba(16, 185, 129, 0.2);
-}
-
-.founderRoleSubtitle {
+.chapterAuthorRole {
   font-size: 12px;
   color: #64748B;
   font-weight: 600;
 }
 
-/* Turning Points Checklist */
-.turningPointsCard {
+.chapterTurningPointsWrap {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-radius: 16px;
-  padding: 16px 20px;
-  box-shadow: inset 0 1px 0 #FFFFFF, 0 2px 6px rgba(15, 23, 42, 0.02);
 }
 
 .turningPointsEyebrow {
@@ -1071,7 +1018,7 @@
   text-transform: uppercase;
 }
 
-.turningPointsList {
+.turningPointsBulletList {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -1080,13 +1027,17 @@
   gap: 8px;
 }
 
-.turningPointItem {
+.turningPointBulletItem {
   display: flex;
   align-items: flex-start;
   gap: 10px;
+  font-size: 13.5px;
+  color: #334155;
+  line-height: 1.45;
+  font-weight: 500;
 }
 
-.turningCheckmarkPill {
+.turningBulletIcon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1102,377 +1053,527 @@
   margin-top: 2px;
 }
 
-.turningPointText {
-  font-size: 13.5px;
-  color: #334155;
-  line-height: 1.45;
-  font-weight: 500;
-}
-
-/* Right Column: Precision Machined Telemetry Plate */
-.storyImpactCol {
+/* Visual Artifact Column */
+.chapterVisualColumn {
   display: flex;
   flex-direction: column;
 }
 
-.telemetrySkeuoPlate {
-  background: linear-gradient(180deg, #F8FAFC 0%, #EEF2F6 100%);
+/* 2021 Artifact: Dissected Retainer Autopsy */
+.autopsyArtifactSheet {
+  background: #FFFFFF;
   border: 1.5px solid #E2E8F0;
   border-radius: 20px;
-  box-shadow: inset 0 2px 4px rgba(15, 23, 42, 0.05), inset 0 -1px 0 #FFFFFF, 0 1px 0 #FFFFFF;
-  padding: 26px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  height: 100%;
-  box-sizing: border-box;
+  padding: 30px;
+  box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.08), inset 0 2px 0 #FFFFFF;
+  position: relative;
+  overflow: hidden;
 }
 
-.telemetryPlateHeader {
+.artifactTopStripe {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #CBD5E1;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #E2E8F0;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.plateHeaderLeft {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.telemetryDotLive {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #10B981;
-  box-shadow: 0 0 6px #10B981;
-  animation: pulseLive 2s infinite;
-}
-
-@keyframes pulseLive {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.85); }
-}
-
-.telemetryEyebrow {
-  font-family: var(--font-display);
+.artifactDocTag {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 10.5px;
   font-weight: 800;
-  letter-spacing: 0.1em;
-  color: #0B2093;
-  text-transform: uppercase;
-}
-
-.telemetryYearBadge {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11.5px;
-  font-weight: 800;
   color: #64748B;
+  letter-spacing: 0.08em;
 }
 
-/* Hero Metric Medallion */
-.heroMetricMedallion {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 20px;
-  background: #FFFFFF;
-  border: 1.5px solid #E2E8F0;
-  border-radius: 16px;
-  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 3px 10px rgba(15, 23, 42, 0.04);
-}
-
-.heroMetricNumber {
-  font-family: var(--font-display);
-  font-size: clamp(34px, 3.6vw, 46px);
+.autopsyStampBadge {
+  background: rgba(220, 38, 38, 0.08);
+  color: #DC2626;
+  border: 1.5px dashed #DC2626;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
   font-weight: 900;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  flex-shrink: 0;
+  padding: 4px 10px;
+  border-radius: 6px;
+  transform: rotate(-2deg);
+  letter-spacing: 0.05em;
 }
 
-.heroMetricLabelWrap {
+.artifactSheetTitle {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 0 0 4px;
+}
+
+.artifactSheetSub {
+  font-size: 12.5px;
+  color: #64748B;
+  margin: 0 0 20px;
+}
+
+.autopsyDataRows {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 10px;
+  margin-bottom: 22px;
 }
 
-.heroMetricBadgePill {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  color: #0B2093;
-  background: rgba(11, 32, 147, 0.07);
-  padding: 2px 7px;
-  border-radius: 4px;
-  width: fit-content;
+.autopsyItemRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
 }
 
-.heroMetricLabelText {
+.autopsyItemLabel {
   font-size: 12.5px;
+  color: #475569;
   font-weight: 600;
+}
+
+.autopsyItemVal {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 800;
+  color: #DC2626;
+}
+
+.autopsyVerdictBanner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(220, 38, 38, 0.04);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+.verdictIcon {
+  font-size: 16px;
+  margin-top: 1px;
+}
+
+.verdictProse {
+  font-size: 12px;
   color: #334155;
-  line-height: 1.35;
+  line-height: 1.45;
   margin: 0;
 }
 
-/* Quadrant Grid */
-.quadrantGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+/* 2022 Artifact: High-Tech Next.js Compiler Terminal */
+.terminalArtifactWindow {
+  background: #0B1120;
+  border: 1.5px solid #1E293B;
+  border-radius: 20px;
+  box-shadow: 0 20px 44px -10px rgba(11, 32, 147, 0.25);
+  overflow: hidden;
 }
 
-.quadrantCell {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-radius: 12px;
-  padding: 12px 14px;
+.terminalWindowBar {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-  box-shadow: inset 0 1px 0 #FFFFFF, 0 2px 6px rgba(15, 23, 42, 0.02);
-  transition: all 0.2s ease;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  background: #070B14;
+  border-bottom: 1px solid #1E293B;
 }
 
-.cellHeader {
+.terminalDots {
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
-.cellStatusDot {
-  width: 6px;
-  height: 6px;
+.termDotRed, .termDotYellow, .termDotGreen {
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: #94A3B8;
 }
 
-.cellBad {
-  border-color: rgba(220, 38, 38, 0.28);
-  background: rgba(220, 38, 38, 0.025);
-}
+.termDotRed { background: #EF4444; }
+.termDotYellow { background: #F59E0B; }
+.termDotGreen { background: #10B981; }
 
-.cellBad .cellStatusDot {
-  background: #DC2626;
-  box-shadow: 0 0 5px rgba(220, 38, 38, 0.4);
-}
-
-.cellBad .quadrantVal {
-  color: #DC2626 !important;
-}
-
-.cellGood {
-  border-color: rgba(16, 185, 129, 0.28);
-  background: rgba(16, 185, 129, 0.025);
-}
-
-.cellGood .cellStatusDot {
-  background: #10B981;
-  box-shadow: 0 0 5px rgba(16, 185, 129, 0.4);
-}
-
-.cellGood .quadrantVal {
-  color: #059669 !important;
-}
-
-.quadrantVal {
-  font-family: var(--font-display);
-  font-size: 14.5px;
-  font-weight: 800;
-  color: #0F172A;
-  line-height: 1.2;
-}
-
-.quadrantLbl {
+.terminalTitleBar {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
   color: #64748B;
-  font-weight: 500;
-  line-height: 1.3;
 }
 
-/* Sovereign Takeaway Box */
-.sovereignTakeawayBox {
-  background: rgba(16, 185, 129, 0.08);
-  border: 1px solid rgba(16, 185, 129, 0.24);
-  border-radius: 12px;
-  padding: 13px 16px;
+.terminalBody {
+  padding: 24px;
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+}
+
+.terminalCodeLine {
+  color: #CBD5E1;
+}
+
+.termPrompt {
+  color: #38BDF8;
+  font-weight: 800;
+  margin-right: 6px;
+}
+
+.terminalCodeLineGood {
+  color: #34D399;
+  font-weight: 600;
+  padding-left: 14px;
+}
+
+.terminalMetricsPills {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
-  margin-top: auto;
+  margin-top: 10px;
 }
 
-.sovereignShield {
-  font-size: 16px;
-  margin-top: 1px;
-}
-
-.sovereignTextCol {
+.termMetricPill {
+  background: #111827;
+  border: 1px solid #1F2937;
+  border-radius: 10px;
+  padding: 10px 12px;
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
-.sovereignTextCol strong {
-  font-size: 12px;
-  font-weight: 800;
-  color: #065F46;
+.termMetricNum {
   font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 800;
+  color: #38BDF8;
 }
 
-.sovereignTextCol p {
-  font-size: 12px;
-  color: #1E293B;
-  margin: 0;
-  line-height: 1.45;
+.termMetricTxt {
+  font-size: 10.5px;
+  color: #94A3B8;
 }
 
-/* Skeuomorphic Bottom Control Footer */
-.cardSkeuoFooter {
+/* 2023 Artifact: Kharvela Soundstage 4K Viewfinder */
+.soundstageViewfinder {
+  background: linear-gradient(180deg, #18181B 0%, #09090B 100%);
+  border: 1.5px solid #27272A;
+  border-radius: 20px;
+  padding: 26px;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.35);
+  color: #FFFFFF;
+}
+
+.viewfinderHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 24px;
-  border-top: 1.5px solid #E2E8F0;
-  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #27272A;
+  margin-bottom: 18px;
   flex-wrap: wrap;
+  gap: 8px;
 }
 
-.skeuoNavBtn {
-  display: inline-flex;
+.recIndicatorRow {
+  display: flex;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
-  border: 1.5px solid #CBD5E1;
-  border-radius: 999px;
-  padding: 10px 22px;
-  font-family: var(--font-display);
-  font-size: 13px;
+}
+
+.recBlinkDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #EF4444;
+  box-shadow: 0 0 8px #EF4444;
+  animation: recBlink 1.5s infinite;
+}
+
+@keyframes recBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.recText {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
   font-weight: 800;
-  color: #0F172A;
-  cursor: pointer;
-  box-shadow: 
-    inset 0 1.5px 0 #FFFFFF,
-    0 3px 0 #CBD5E1,
-    0 6px 14px rgba(15, 23, 42, 0.05);
-  transition: all 0.16s ease;
+  color: #EF4444;
+  letter-spacing: 0.08em;
 }
 
-.skeuoNavBtn:hover {
-  border-color: #0B2093;
-  color: #0B2093;
-  transform: translateY(-1.5px);
-  box-shadow: 
-    inset 0 1.5px 0 #FFFFFF,
-    0 4px 0 #94A3B8,
-    0 8px 18px rgba(11, 32, 147, 0.1);
+.soundstageLocationTag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #A1A1AA;
 }
 
-.skeuoNavBtn:active {
-  transform: translateY(2px);
-  box-shadow: 
-    inset 0 1px 0 #FFFFFF,
-    0 1px 0 #CBD5E1,
-    0 2px 4px rgba(15, 23, 42, 0.05);
-}
-
-.navBtnArrow {
-  font-size: 15px;
-  transition: transform 0.2s ease;
-}
-
-.skeuoNavBtn:hover .navBtnArrow {
-  transform: scale(1.15);
-}
-
-.footerCenterControls {
+.viewfinderLensArea {
+  position: relative;
+  background: #141416;
+  border: 1px dashed #3F3F46;
+  border-radius: 14px;
+  padding: 34px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  margin-bottom: 18px;
 }
 
-.stepperPillsRow {
+.viewfinderReticle {
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.viewfinderReticle::before, .viewfinderReticle::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.viewfinderReticle::before {
+  top: 50%; left: -6px; right: -6px; height: 1px; transform: translateY(-50%);
+}
+
+.viewfinderReticle::after {
+  left: 50%; top: -6px; bottom: -6px; width: 1px; transform: translateX(-50%);
+}
+
+.viewfinderSpecs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  color: #A1A1AA;
+  letter-spacing: 0.06em;
+}
+
+.soundstageStatsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.soundstageStatCell {
+  background: #18181B;
+  border: 1px solid #27272A;
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.soundstageStatVal {
+  font-family: var(--font-display);
+  font-size: 14.5px;
+  font-weight: 800;
+  color: #EC4899;
+}
+
+.soundstageStatLbl {
+  font-size: 10.5px;
+  color: #A1A1AA;
+}
+
+/* 2024+ Artifact: Sovereign Capital Ledger & Alpha Medal */
+.sovereignLedgerCard {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1.5px solid #E2E8F0;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 44px -8px rgba(16, 185, 129, 0.12), inset 0 2.5px 0 #FFFFFF;
+}
+
+.ledgerHeader {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #E2E8F0;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
   gap: 8px;
-  background: #F1F5F9;
-  padding: 4px 8px;
-  border-radius: 999px;
-  border: 1px solid #E2E8F0;
 }
 
-.stepperPillItem {
-  border: none;
-  background: transparent;
-  padding: 5px 12px;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: all 0.2s ease;
+.ledgerCrownIcon {
+  font-size: 18px;
 }
 
-.stepperPillYear {
+.ledgerTitleText {
   font-family: var(--font-display);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 800;
+  color: #0B2093;
+  letter-spacing: 0.08em;
+}
+
+.ledgerStatusPill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #059669;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.ledgerHeroStatRow {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 20px;
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 14px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+}
+
+.ledgerHeroDigit {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 3.5vw, 44px);
+  font-weight: 900;
+  color: #10B981;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.ledgerHeroCaption {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.ledgerGridFour {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.ledgerQuadCell {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ledgerQuadNum {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 800;
+  color: #0F172A;
+}
+
+.ledgerQuadLbl {
+  font-size: 10.5px;
   color: #64748B;
 }
 
-.stepperPillItem:hover .stepperPillYear {
-  color: #0B2093;
+.ledgerResolutionBar {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(16, 185, 129, 0.07);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 12px;
+  color: #1E293B;
+  line-height: 1.45;
 }
 
-.stepperPillActive {
-  background: #0B2093;
-  box-shadow: 0 2px 6px rgba(11, 32, 147, 0.3);
-}
-
-.stepperPillActive .stepperPillYear {
-  color: #FFFFFF;
-  font-weight: 900;
-}
-
-.swipeHintText {
-  font-size: 11px;
-  color: #94A3B8;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+.resolutionShield {
+  font-size: 16px;
+  margin-top: 1px;
 }
 
 /* Responsive Breakpoints */
-@media (max-width: 1024px) {
-  .cardStoryGrid {
-    grid-template-columns: 1fr;
-    gap: 32px;
+@media (max-width: 960px) {
+  .documentarySpineWrap {
+    left: 20px;
+    transform: none;
   }
-  .skeuoStoryCard {
-    padding: 32px 24px;
+
+  .chapterBeaconWrap {
+    left: 20px;
+    transform: translateX(-50%);
+  }
+
+  .chapterInnerGrid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding-left: 48px;
+  }
+
+  .chapterEven .chapterInnerGrid {
+    direction: ltr;
+  }
+
+  .ghostYearWatermark {
+    font-size: 80px;
+    top: -20px;
+  }
+
+  .chapterOdd .ghostYearWatermark,
+  .chapterEven .ghostYearWatermark {
+    left: 48px;
+    right: auto;
+    text-align: left;
+  }
+
+  .timelineQuickJumpBar {
+    border-radius: 18px;
+    padding: 8px 12px;
+  }
+
+  .quickJumpBtn {
+    padding: 6px 12px;
+    font-size: 12px;
   }
 }
 
 @media (max-width: 640px) {
-  .storyTimelineScrubber {
-    border-radius: 18px;
-    padding: 6px;
+  .documentaryStorySection {
+    padding: 72px 0 80px;
   }
-  .storyTabBtn {
+
+  .timelineQuickJumpBar {
     width: 100%;
-    justify-content: center;
+    justify-content: flex-start;
   }
-  .quadrantGrid {
+
+  .quickJumpBtn {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .terminalMetricsPills,
+  .soundstageStatsGrid,
+  .ledgerGridFour {
     grid-template-columns: 1fr;
-  }
-  .cardSkeuoFooter {
-    flex-direction: column;
-    gap: 16px;
-  }
-  .skeuoNavBtn {
-    width: 100%;
-    justify-content: center;
   }
 }
 

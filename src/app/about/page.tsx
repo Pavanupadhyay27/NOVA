@@ -576,59 +576,40 @@ export default function AboutPage() {
   const [activePhase, setActivePhase] = useState<number>(0);
   const [activeEpoch, setActiveEpoch] = useState<number>(0);
   const [activePipelineStage, setActivePipelineStage] = useState<number>(0);
-  const [isStoryAutoElevated, setIsStoryAutoElevated] = useState<boolean>(false);
 
   const counterRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const countersStarted = useRef(false);
   const storySectionRef = useRef<HTMLElement | null>(null);
-  const touchStartXRef = useRef<number>(0);
-  const lastWheelTimeRef = useRef<number>(0);
 
-  // Auto-elevate skeuomorphic card when scrolling down into view
+  // Track active chapter as user scrolls through the living timeline
   useEffect(() => {
-    const el = document.getElementById('founding-story');
-    if (!el) return;
+    const chapters = document.querySelectorAll('[data-epoch-index]');
+    if (!chapters.length) return;
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsStoryAutoElevated(true);
-        }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = Number(entry.target.getAttribute('data-epoch-index'));
+            if (!isNaN(idx)) {
+              setActiveEpoch(idx);
+            }
+          }
+        });
       },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.35, rootMargin: '-10% 0px -40% 0px' }
     );
 
-    observer.observe(el);
+    chapters.forEach((ch) => observer.observe(ch));
     return () => observer.disconnect();
   }, []);
 
-  // Touch and wheel slide gesture handlers for the founding story deck
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartXRef.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    const diff = touchStartXRef.current - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 45) {
-      if (diff > 0) {
-        setActiveEpoch((prev) => (prev < foundingStoryEpochs.length - 1 ? prev + 1 : 0));
-      } else {
-        setActiveEpoch((prev) => (prev > 0 ? prev - 1 : foundingStoryEpochs.length - 1));
-      }
-    }
-  };
-
-  const handleDeckWheel = (e: React.WheelEvent) => {
-    if (Math.abs(e.deltaX) > 25) {
-      const now = Date.now();
-      if (now - lastWheelTimeRef.current > 450) {
-        lastWheelTimeRef.current = now;
-        if (e.deltaX > 0) {
-          setActiveEpoch((prev) => (prev < foundingStoryEpochs.length - 1 ? prev + 1 : prev));
-        } else {
-          setActiveEpoch((prev) => (prev > 0 ? prev - 1 : prev));
-        }
-      }
+  const scrollToChapter = (idx: number, year: string) => {
+    setActiveEpoch(idx);
+    const targetId = `chapter-${year}`;
+    const el = document.getElementById(targetId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   };
 
@@ -847,248 +828,265 @@ export default function AboutPage() {
       <QuickConnectMapSection id="war-room-section" />
 
       {/* ══════════════════════════════════════════════════════
-          SECTION 4: THE FOUNDING STORY (SKEUOMORPHIC SLIDING CHRONICLE)
+          SECTION 4: THE FOUNDING STORY (LIVING DOCUMENTARY TIMELINE)
          ══════════════════════════════════════════════════════ */}
-      <section className={styles.cleanStorySection} id="founding-story" ref={storySectionRef}>
+      <section className={styles.documentaryStorySection} id="founding-story" ref={storySectionRef}>
         <div className="container">
           <ScrollReveal className="text-center">
             <div className="eyebrow" style={{ margin: '0 auto 12px' }}>
               <span className="eyebrow-dot" />
-              <span>THE FOUNDING STORY</span>
+              <span>THE FOUNDING STORY · DOCUMENTARY CHRONICLE</span>
             </div>
             <h2 className={`display-lg ${styles.cleanStoryHeadline}`}>
               Why We Built Marketing Copilot:{' '}
-              <span className="accent-gradient">From Broken Retainers to Engineered Growth</span>
+              <span className="accent-gradient">From Broken Retainers to Sovereign Growth</span>
             </h2>
             <p className={`body-lg ${styles.cleanStorySub}`}>
-              Built on the conviction that ambitious businesses in Odisha deserve a growth partner that acts like an equity owner. Explore our 4-year evolution.
+              The 4-year chronological journey of how three operators rejected vanity agency retainers to engineer Eastern India’s premier quantitative growth copilot.
             </p>
           </ScrollReveal>
 
-          {/* Skeuomorphic Stepper Timeline Scrubber */}
-          <div className={styles.storyTimelineScrubberWrap}>
-            <div className={styles.storyTimelineScrubber}>
+          {/* Minimalist Floating Quick-Jump Chronology HUD */}
+          <div className={styles.timelineQuickJumpWrap}>
+            <div className={styles.timelineQuickJumpBar}>
+              <span className={styles.quickJumpLabel}>CHRONOLOGY:</span>
               {foundingStoryEpochs.map((item, idx) => {
                 const isActive = activeEpoch === idx;
-                const isPast = activeEpoch > idx;
                 return (
                   <button
                     key={item.epoch}
                     type="button"
-                    onClick={() => setActiveEpoch(idx)}
-                    className={`${styles.storyTabBtn} ${isActive ? styles.storyTabActive : ''} ${isPast ? styles.storyTabPast : ''}`}
-                    aria-label={`Jump to ${item.year}: ${item.title}`}
+                    onClick={() => scrollToChapter(idx, item.year)}
+                    className={`${styles.quickJumpBtn} ${isActive ? styles.quickJumpActive : ''}`}
+                    aria-label={`Jump to Year ${item.year}: ${item.title}`}
                   >
-                    <span className={styles.tabStepNum}>0{idx + 1}</span>
-                    <span className={styles.tabYearBadge}>{item.year}</span>
-                    <span className={styles.tabTitleText}>{item.title}</span>
-                    {isActive && <span className={styles.activeTabGlowLine} />}
+                    <span className={styles.quickJumpYear}>{item.year}</span>
+                    <span className={styles.quickJumpTitle}>{item.title}</span>
                   </button>
                 );
               })}
             </div>
           </div>
 
-          {/* 3D Skeuomorphic Stage Wrapper with Auto-Elevation on Scroll */}
-          <div
-            className={`${styles.storyStageWrapper} ${
-              isStoryAutoElevated ? styles.storyStageElevated : ''
-            }`}
-          >
-            {/* Sliding Viewport Container with Touch & Wheel Sliding Interaction */}
-            <div
-              className={styles.storyDeckViewport}
-              onTouchStart={handleTouchStart}
-              onTouchEnd={handleTouchEnd}
-              onWheel={handleDeckWheel}
-            >
+          {/* Living Documentary Track with Central Liquid Spine */}
+          <div className={styles.documentaryTrackContainer}>
+            {/* Luminous Liquid Progress Spine */}
+            <div className={styles.documentarySpineWrap}>
+              <div className={styles.documentarySpineLine} />
               <div
-                className={styles.storyDeckTrack}
-                style={{ transform: `translateX(-${activeEpoch * 100}%)` }}
-              >
-                {foundingStoryEpochs.map((item, idx) => {
-                  const isCurrent = activeEpoch === idx;
-                  return (
-                    <div key={item.epoch} className={styles.storySlideWrap}>
-                      <div className={`${styles.skeuoStoryCard} ${isCurrent ? styles.skeuoCardActive : ''}`}>
-                        {/* Top Skeuomorphic Bevel Edge & Metadata Strip */}
-                        <div className={styles.cardSkeuoTopBar}>
-                          <div className={styles.cardTopLeft}>
-                            <div className={styles.embossedYearBadge}>
-                              <span className={styles.embossedYearDot} style={{ backgroundColor: item.color }} />
-                              <span className={styles.embossedYearText}>{item.year}</span>
-                            </div>
-                            <span className={styles.cardActIndicator}>ACT 0{idx + 1} OF 04</span>
-                            <span className={styles.cardCodenameBadge}>{item.badgeLabel}</span>
-                          </div>
+                className={styles.documentarySpineProgress}
+                style={{ height: `${((activeEpoch + 0.8) / foundingStoryEpochs.length) * 100}%` }}
+              />
+            </div>
 
-                          <div className={styles.cardTopRight}>
-                            <span className={styles.cardReadingTime}>
-                              <span className={styles.readingIcon}>⏱</span> 2 MIN CHAPTER
-                            </span>
-                            <div className={styles.cardProgressMiniBar}>
-                              <div
-                                className={styles.progressMiniFill}
-                                style={{ width: `${((idx + 1) / foundingStoryEpochs.length) * 100}%` }}
-                              />
-                            </div>
+            {/* Chapters Flow (Alternating Zigzag Layout) */}
+            <div className={styles.chaptersFlowList}>
+              {foundingStoryEpochs.map((item, idx) => {
+                const isEven = idx % 2 === 1;
+                const chapterId = `chapter-${item.year}`;
+                return (
+                  <div
+                    key={item.epoch}
+                    id={chapterId}
+                    data-epoch-index={idx}
+                    className={`${styles.chapterBlock} ${isEven ? styles.chapterEven : styles.chapterOdd}`}
+                  >
+                    {/* Giant Ghost Watermark Year */}
+                    <div className={styles.ghostYearWatermark}>{item.year}</div>
+
+                    {/* Central Milestone Beacon Node */}
+                    <div className={styles.chapterBeaconWrap}>
+                      <div className={styles.beaconOuterRing}>
+                        <div className={styles.beaconCoreDot} style={{ backgroundColor: item.color }} />
+                      </div>
+                      <span className={styles.beaconYearLabel}>{item.year}</span>
+                    </div>
+
+                    {/* Chapter Dual-Pane Grid: Narrative vs Visual Artifact */}
+                    <div className={styles.chapterInnerGrid}>
+                      {/* Narrative Column */}
+                      <div className={styles.chapterNarrativeColumn}>
+                        <div className={styles.chapterMetaBadgeRow}>
+                          <span className={styles.chapterActPill}>ACT 0{idx + 1} OF 04</span>
+                          <span className={styles.chapterCodenamePill} style={{ borderColor: item.color, color: item.color }}>
+                            {item.badgeLabel}
+                          </span>
+                        </div>
+
+                        <h3 className={styles.chapterEditorialTitle}>{item.title}</h3>
+                        <p className={styles.chapterTaglineNotice} style={{ color: item.color }}>
+                          {item.tagline}
+                        </p>
+
+                        {/* Editorial Pull Quote */}
+                        <div className={styles.chapterEditorialQuoteBlock}>
+                          <span className={styles.quoteOpeningGlyph}>“</span>
+                          <p className={styles.quoteProseText}>{item.quote}</p>
+                        </div>
+
+                        {/* Founder Signature strip */}
+                        <div className={styles.chapterAuthorStrip}>
+                          <div className={styles.chapterAuthorAvatarWrap}>
+                            <Image
+                              src={item.authorAvatar}
+                              alt={item.author}
+                              width={46}
+                              height={46}
+                              className={styles.chapterAuthorImg}
+                            />
+                          </div>
+                          <div className={styles.chapterAuthorMeta}>
+                            <span className={styles.chapterAuthorName}>{item.author}</span>
+                            <span className={styles.chapterAuthorRole}>{item.authorRole} · Marketing Copilot</span>
                           </div>
                         </div>
 
-                        {/* Dual-Column Storytelling Grid */}
-                        <div className={styles.cardStoryGrid}>
-                          {/* Left Column: Narrative Soul & Founder Conviction */}
-                          <div className={styles.storyNarrativeCol}>
-                            <div className={styles.chapterTitleBlock}>
-                              <span className={styles.chapterTaglineText} style={{ color: item.color }}>
-                                {item.tagline}
-                              </span>
-                              <h3 className={styles.storyMainTitle}>{item.title}</h3>
-                            </div>
+                        {/* Turning Points List */}
+                        <div className={styles.chapterTurningPointsWrap}>
+                          <span className={styles.turningPointsEyebrow}>PIVOTAL TURNING POINTS:</span>
+                          <ul className={styles.turningPointsBulletList}>
+                            {item.turningPoints.map((pt, pIdx) => (
+                              <li key={pIdx} className={styles.turningPointBulletItem}>
+                                <span className={styles.turningBulletIcon}>✓</span>
+                                <span>{pt}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
 
-                            {/* Skeuomorphic Debossed Parchment Quote */}
-                            <div className={styles.quoteSkeuoPanel}>
-                              <div className={styles.quoteMarkGlow}>&ldquo;</div>
-                              <blockquote className={styles.quoteText}>
-                                {item.quote}
-                              </blockquote>
+                      {/* Visual Artifact Column */}
+                      <div className={styles.chapterVisualColumn}>
+                        {/* 2021 Artifact: Dissected Retainer Autopsy */}
+                        {item.artifactType === 'autopsy' && (
+                          <div className={styles.autopsyArtifactSheet}>
+                            <div className={styles.artifactTopStripe}>
+                              <span className={styles.artifactDocTag}>FORENSIC ARCHIVE · 2021</span>
+                              <span className={styles.autopsyStampBadge}>REJECTED: VANITY METRICS</span>
                             </div>
+                            <h4 className={styles.artifactSheetTitle}>{item.artifactTitle}</h4>
+                            <p className={styles.artifactSheetSub}>{item.artifactSubtitle}</p>
 
-                            {/* Founder Physical ID Credential Strip */}
-                            <div className={styles.founderIdStrip}>
-                              <div className={styles.founderAvatarEmbossed}>
-                                <Image
-                                  src={item.authorAvatar}
-                                  alt={item.author}
-                                  width={48}
-                                  height={48}
-                                  className={styles.founderAvatarImg}
-                                />
-                              </div>
-                              <div className={styles.founderTextInfo}>
-                                <div className={styles.founderNameRow}>
-                                  <span className={styles.founderNameText}>{item.author}</span>
-                                  <span className={styles.founderVerifiedPill}>✓ Co-Owner Accountability</span>
+                            <div className={styles.autopsyDataRows}>
+                              {item.artifactMetrics.map((m, mIdx) => (
+                                <div key={mIdx} className={styles.autopsyItemRow}>
+                                  <span className={styles.autopsyItemLabel}>{m.label}</span>
+                                  <span className={styles.autopsyItemVal}>{m.val}</span>
                                 </div>
-                                <span className={styles.founderRoleSubtitle}>{item.authorRole} · Marketing Copilot</span>
-                              </div>
+                              ))}
                             </div>
 
-                            {/* Strategic Turning Points Checklist */}
-                            <div className={styles.turningPointsCard}>
-                              <div className={styles.turningPointsHeader}>
-                                <span className={styles.turningPointsEyebrow}>STRATEGIC TURNING POINTS IN THIS CHAPTER:</span>
-                              </div>
-                              <ul className={styles.turningPointsList}>
-                                {item.turningPoints.map((point, pIdx) => (
-                                  <li key={pIdx} className={styles.turningPointItem}>
-                                    <span className={styles.turningCheckmarkPill}>✓</span>
-                                    <span className={styles.turningPointText}>{point}</span>
-                                  </li>
-                                ))}
-                              </ul>
+                            <div className={styles.autopsyVerdictBanner}>
+                              <span className={styles.verdictIcon}>⚠️</span>
+                              <p className={styles.verdictProse}>
+                                <strong>The 2021 Awakening:</strong> Ambitious businesses were paying lakhs for clicks and impressions while bank balance growth was zero. We took an oath to never bill for vanity metrics.
+                              </p>
                             </div>
                           </div>
+                        )}
 
-                          {/* Right Column: Precision Machined Telemetry Plate */}
-                          <div className={styles.storyImpactCol}>
-                            <div className={styles.telemetrySkeuoPlate}>
-                              <div className={styles.telemetryPlateHeader}>
-                                <div className={styles.plateHeaderLeft}>
-                                  <span className={styles.telemetryDotLive} />
-                                  <span className={styles.telemetryEyebrow}>AUDITED CHAPTER BENCHMARK</span>
-                                </div>
-                                <span className={styles.telemetryYearBadge}>EST. {item.year}</span>
+                        {/* 2022 Artifact: High-Tech Next.js Compiler Terminal */}
+                        {item.artifactType === 'terminal' && (
+                          <div className={styles.terminalArtifactWindow}>
+                            <div className={styles.terminalWindowBar}>
+                              <div className={styles.terminalDots}>
+                                <span className={styles.termDotRed} />
+                                <span className={styles.termDotYellow} />
+                                <span className={styles.termDotGreen} />
+                              </div>
+                              <span className={styles.terminalTitleBar}>edge-compiler@copilot: ~/next-engine</span>
+                            </div>
+
+                            <div className={styles.terminalBody}>
+                              <div className={styles.terminalCodeLine}>
+                                <span className={styles.termPrompt}>$</span> next build --profile --optimize-edge
+                              </div>
+                              <div className={styles.terminalCodeLineGood}>
+                                ✓ Compiled 28 routes in 0.74s SLA (Global Edge CDN active)
+                              </div>
+                              <div className={styles.terminalCodeLine}>
+                                <span className={styles.termPrompt}>$</span> meta-capi --verify-server-handshake
+                              </div>
+                              <div className={styles.terminalCodeLineGood}>
+                                ✓ 98.6% Event Match Rate (iOS 14.5+ Cookie Loss bypassed)
                               </div>
 
-                              {/* Hero Metric Medallion */}
-                              <div className={styles.heroMetricMedallion}>
-                                <div className={styles.heroMetricNumber} style={{ color: item.color }}>
-                                  {item.metricHero}
-                                </div>
-                                <div className={styles.heroMetricLabelWrap}>
-                                  <span className={styles.heroMetricBadgePill}>FORENSIC TELEMETRY</span>
-                                  <p className={styles.heroMetricLabelText}>{item.metricLabel}</p>
-                                </div>
-                              </div>
-
-                              {/* 4 Quantitative Telemetry Quadrants */}
-                              <div className={styles.quadrantGrid}>
-                                {item.artifactMetrics.map((metric, mIdx) => (
-                                  <div
-                                    key={mIdx}
-                                    className={`${styles.quadrantCell} ${
-                                      metric.bad ? styles.cellBad : metric.good ? styles.cellGood : ''
-                                    }`}
-                                  >
-                                    <div className={styles.cellHeader}>
-                                      <span className={styles.cellStatusDot} />
-                                      <span className={styles.quadrantVal}>{metric.val}</span>
-                                    </div>
-                                    <span className={styles.quadrantLbl}>{metric.label}</span>
+                              <div className={styles.terminalMetricsPills}>
+                                {item.artifactMetrics.map((m, mIdx) => (
+                                  <div key={mIdx} className={styles.termMetricPill}>
+                                    <span className={styles.termMetricNum}>{m.val}</span>
+                                    <span className={styles.termMetricTxt}>{m.label}</span>
                                   </div>
                                 ))}
                               </div>
+                            </div>
+                          </div>
+                        )}
 
-                              {/* Sovereign Takeaway Box */}
-                              <div className={styles.sovereignTakeawayBox}>
-                                <span className={styles.sovereignShield}>🛡️</span>
-                                <div className={styles.sovereignTextCol}>
-                                  <strong>The Sovereign Standard:</strong>
-                                  <p>{item.resolution}</p>
-                                </div>
+                        {/* 2023 Artifact: Kharvela Soundstage 4K Viewfinder */}
+                        {item.artifactType === 'soundstage' && (
+                          <div className={styles.soundstageViewfinder}>
+                            <div className={styles.viewfinderHeader}>
+                              <div className={styles.recIndicatorRow}>
+                                <span className={styles.recBlinkDot} />
+                                <span className={styles.recText}>REC · 4K HDR 60FPS</span>
+                              </div>
+                              <span className={styles.soundstageLocationTag}>KHARVELA NAGAR · UNIT 3</span>
+                            </div>
+
+                            <div className={styles.viewfinderLensArea}>
+                              <div className={styles.viewfinderReticle} />
+                              <div className={styles.viewfinderSpecs}>
+                                <span>SONY FX6 · 24-70MM G-MASTER</span>
+                                <span>SHUTTER 1/120 · ISO 800</span>
                               </div>
                             </div>
-                          </div>
-                        </div>
 
-                        {/* Skeuomorphic Bottom Control Footer */}
-                        <div className={styles.cardSkeuoFooter}>
-                          <button
-                            type="button"
-                            onClick={() => setActiveEpoch((prev) => (prev > 0 ? prev - 1 : foundingStoryEpochs.length - 1))}
-                            className={styles.skeuoNavBtn}
-                            aria-label="Previous story chapter"
-                          >
-                            <span className={styles.navBtnArrow}>←</span>
-                            <span>Previous Chapter</span>
-                          </button>
-
-                          <div className={styles.footerCenterControls}>
-                            <div className={styles.stepperPillsRow}>
-                              {foundingStoryEpochs.map((ep, dotIdx) => (
-                                <button
-                                  key={dotIdx}
-                                  type="button"
-                                  onClick={() => setActiveEpoch(dotIdx)}
-                                  className={`${styles.stepperPillItem} ${activeEpoch === dotIdx ? styles.stepperPillActive : ''}`}
-                                  title={`${ep.year}: ${ep.title}`}
-                                  aria-label={`Slide to Chapter ${dotIdx + 1}: ${ep.year}`}
-                                >
-                                  <span className={styles.stepperPillYear}>{ep.year}</span>
-                                </button>
+                            <div className={styles.soundstageStatsGrid}>
+                              {item.artifactMetrics.map((m, mIdx) => (
+                                <div key={mIdx} className={styles.soundstageStatCell}>
+                                  <span className={styles.soundstageStatVal}>{m.val}</span>
+                                  <span className={styles.soundstageStatLbl}>{m.label}</span>
+                                </div>
                               ))}
                             </div>
-                            <span className={styles.swipeHintText}>
-                              ⟷ Drag, scroll, or use arrows to slide chapters
-                            </span>
                           </div>
+                        )}
 
-                          <button
-                            type="button"
-                            onClick={() => setActiveEpoch((prev) => (prev < foundingStoryEpochs.length - 1 ? prev + 1 : 0))}
-                            className={styles.skeuoNavBtn}
-                            aria-label="Next story chapter"
-                          >
-                            <span>Next Chapter</span>
-                            <span className={styles.navBtnArrow}>→</span>
-                          </button>
-                        </div>
+                        {/* 2024+ Artifact: Sovereign Capital Ledger & Alpha Medal */}
+                        {item.artifactType === 'ledger' && (
+                          <div className={styles.sovereignLedgerCard}>
+                            <div className={styles.ledgerHeader}>
+                              <span className={styles.ledgerCrownIcon}>👑</span>
+                              <span className={styles.ledgerTitleText}>SOVEREIGN CAPITAL &amp; ALPHA LEDGER</span>
+                              <span className={styles.ledgerStatusPill}>AUDITED 2024+</span>
+                            </div>
+
+                            <div className={styles.ledgerHeroStatRow}>
+                              <span className={styles.ledgerHeroDigit}>₹25Cr+</span>
+                              <span className={styles.ledgerHeroCaption}>Media Capital Deployed Under Quantitative Management</span>
+                            </div>
+
+                            <div className={styles.ledgerGridFour}>
+                              {item.artifactMetrics.map((m, mIdx) => (
+                                <div key={mIdx} className={styles.ledgerQuadCell}>
+                                  <span className={styles.ledgerQuadNum}>{m.val}</span>
+                                  <span className={styles.ledgerQuadLbl}>{m.label}</span>
+                                </div>
+                              ))}
+                            </div>
+
+                            <div className={styles.ledgerResolutionBar}>
+                              <span className={styles.resolutionShield}>🛡️</span>
+                              <span><strong>Our Permanent Standard:</strong> Rolling month-to-month contracts. If we do not compound your cash flow, fire us with 30 days notice.</span>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
-                  );
-                })}
-              </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
