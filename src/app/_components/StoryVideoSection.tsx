@@ -25,67 +25,62 @@ const storyPillars = [
 export default function StoryVideoSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
-  const [userInteracted, setUserInteracted] = useState(false);
 
-  // Toggle sound manually
-  const toggleSound = useCallback(() => {
-    if (!videoRef.current) return;
-    setUserInteracted(true);
-    if (isMuted) {
-      videoRef.current.muted = false;
-      videoRef.current.volume = 0.85;
-      videoRef.current.play().catch(() => {});
-      setIsMuted(false);
+  // 3D Play/Pause & Audio Toggle Handler
+  const handlePlayToggle = useCallback(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (video.paused) {
+      video.muted = false;
+      video.volume = 0.85;
+      video.play().then(() => {
+        setIsPlaying(true);
+        setIsMuted(false);
+      }).catch(() => {
+        // Fallback if browser requires muted gesture
+        video.muted = true;
+        video.play().catch(() => {});
+        setIsPlaying(true);
+      });
     } else {
-      videoRef.current.muted = true;
-      setIsMuted(true);
+      if (isMuted) {
+        // Was running silently -> activate full unmuted sound
+        video.muted = false;
+        video.volume = 0.85;
+        setIsMuted(false);
+        setIsPlaying(true);
+      } else {
+        // Was playing with audio -> pause playback
+        video.pause();
+        setIsPlaying(false);
+      }
     }
   }, [isMuted]);
 
-  // Scroll into view detection for scroll-triggered video sound
+  // Scroll into view detection: Pause video when scrolled far away to save resources
   useEffect(() => {
     const el = sectionRef.current;
     const video = videoRef.current;
     if (!el || !video) return;
 
-    // Detect user gesture to enable unmuted playback according to browser autoplay policy
-    const handleFirstGesture = () => {
-      setUserInteracted(true);
-      window.removeEventListener('click', handleFirstGesture);
-      window.removeEventListener('touchstart', handleFirstGesture);
-      window.removeEventListener('scroll', handleFirstGesture);
-    };
-    window.addEventListener('click', handleFirstGesture, { passive: true });
-    window.addEventListener('touchstart', handleFirstGesture, { passive: true });
-    window.addEventListener('scroll', handleFirstGesture, { passive: true });
-
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          video.play().catch(() => {});
-          // If user has interacted, un-mute sound automatically when scrolled into section
-          if (userInteracted && !isMuted) {
-            video.muted = false;
-            video.volume = 0.85;
+        if (!entry.isIntersecting) {
+          if (!video.paused) {
+            video.pause();
+            setIsPlaying(false);
           }
-        } else {
-          // Auto-mute and pause audio when scrolled away
-          video.muted = true;
         }
       },
-      { threshold: 0.35 }
+      { threshold: 0.2 }
     );
 
     observer.observe(el);
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener('click', handleFirstGesture);
-      window.removeEventListener('touchstart', handleFirstGesture);
-      window.removeEventListener('scroll', handleFirstGesture);
-    };
-  }, [userInteracted, isMuted]);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section className={styles.section} id="company-story" ref={sectionRef}>
@@ -162,7 +157,19 @@ export default function StoryVideoSection() {
               <div className={styles.videoContainer}>
                 <div className={styles.videoBackdrop} />
 
-                <div className={styles.videoWrapper}>
+                <div
+                  className={styles.videoWrapper}
+                  onClick={handlePlayToggle}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === ' ' || e.key === 'Enter') {
+                      e.preventDefault();
+                      handlePlayToggle();
+                    }
+                  }}
+                  aria-label={isPlaying && !isMuted ? 'Pause commercial film' : 'Play film with sound'}
+                >
                   <video
                     ref={videoRef}
                     className={styles.videoPlayer}
@@ -172,51 +179,84 @@ export default function StoryVideoSection() {
                     muted={isMuted}
                     playsInline
                     preload="auto"
+                    onPlay={() => setIsPlaying(true)}
+                    onPause={() => setIsPlaying(false)}
                   />
 
-                  {/* Sleek Skeuomorphic Speaker Toggle Button (Icon Only) */}
-                  <button
-                    type="button"
-                    onClick={toggleSound}
-                    className={`${styles.soundControlBtn} ${!isMuted ? styles.soundActive : ''}`}
-                    aria-label={isMuted ? 'Unmute video sound' : 'Mute video sound'}
-                    title={isMuted ? 'Click to unmute' : 'Click to mute'}
+                  {/* 3D Tactile Play / Pause Controller (Neo-Skeuomorphic Glassmorphic Center Stage) */}
+                  <div
+                    className={`${styles.playOverlay3D} ${
+                      isPlaying && !isMuted ? styles.overlayPlaying : styles.overlayVisible
+                    }`}
                   >
-                    <span className={styles.soundGlassGloss} />
-                    {!isMuted ? (
-                      <svg
-                        className={styles.speakerSvg}
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" fillOpacity="0.25" />
-                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07" className={styles.wave1} />
-                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14" className={styles.wave2} />
-                      </svg>
-                    ) : (
-                      <svg
-                        className={styles.speakerSvg}
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" fillOpacity="0.2" />
-                        <line x1="22" y1="9" x2="16" y2="15" />
-                        <line x1="16" y1="9" x2="22" y2="15" />
-                      </svg>
+                    {/* Concentric 3D Acoustic Resonance Radar Waves (active when paused or muted) */}
+                    {(!isPlaying || isMuted) && (
+                      <div className={styles.radarWavesWrapper}>
+                        <span className={styles.radarRing1} />
+                        <span className={styles.radarRing2} />
+                        <span className={styles.radarRing3} />
+                      </div>
                     )}
-                  </button>
+
+                    <div className={styles.buttonAndPillWrap}>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handlePlayToggle();
+                        }}
+                        className={`${styles.playBtn3D} ${
+                          isPlaying && !isMuted ? styles.playBtn3DActive : ''
+                        }`}
+                        aria-label={isPlaying && !isMuted ? 'Pause commercial film' : 'Play film with audio'}
+                        title={isPlaying && !isMuted ? 'Click to pause film' : 'Click to play film with sound'}
+                      >
+                        {/* 3D Curved Specular Glass Glare Arc */}
+                        <span className={styles.specularGlareArc} />
+                        {/* 3D Deep Rim Chamfer Glow */}
+                        <span className={styles.bevelRimGlow} />
+
+                        {/* Sculpted 3D Icon Glyphs */}
+                        {isPlaying && !isMuted ? (
+                          /* 3D Pause Glyph */
+                          <div className={styles.glyph3DPause}>
+                            <span className={styles.pauseBar3D} />
+                            <span className={styles.pauseBar3D} />
+                          </div>
+                        ) : (
+                          /* 3D Play Triangle Glyph (Optically Centered) */
+                          <div className={styles.glyph3DPlay}>
+                            <svg
+                              width="32"
+                              height="32"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                              className={styles.playSvg3D}
+                            >
+                              <defs>
+                                <linearGradient id="playGrad3D" x1="0%" y1="0%" x2="0%" y2="100%">
+                                  <stop offset="0%" stopColor="#FFFFFF" />
+                                  <stop offset="45%" stopColor="#F1F5F9" />
+                                  <stop offset="100%" stopColor="#CBD5E1" />
+                                </linearGradient>
+                                <filter id="playShadow3D" x="-30%" y="-30%" width="160%" height="160%">
+                                  <feDropShadow dx="1" dy="3" stdDeviation="2.5" floodColor="#000000" floodOpacity="0.7" />
+                                </filter>
+                              </defs>
+                              <path
+                                d="M8 5.14V18.86C8 19.64 8.86 20.12 9.53 19.71L20.47 12.85C21.1 12.45 21.1 11.55 20.47 11.15L9.53 4.29C8.86 3.88 8 4.36 8 5.14Z"
+                                fill="url(#playGrad3D)"
+                                stroke="#FFFFFF"
+                                strokeWidth="0.8"
+                                filter="url(#playShadow3D)"
+                              />
+                            </svg>
+                          </div>
+                        )}
+                      </button>
+                    </div>
+                  </div>
 
                   {/* Floating Minimal Founder Badge */}
                   <div className={styles.founderBadge}>
