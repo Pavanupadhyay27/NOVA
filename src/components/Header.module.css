@@ -555,53 +555,27 @@
   }
 }
 
-/* Cute Header Bar inside Mobile Card */
+/* Clean Top Bar inside Mobile Card */
 .mobileCardHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2px 2px 10px;
-  margin-bottom: 6px;
+  padding: 0 0 8px;
+  margin-bottom: 4px;
   border-bottom: 1px solid rgba(226, 232, 240, 0.85);
 }
 
-.mobileBrandBadge {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.mobileBrandIcon {
-  width: 22px;
-  height: 22px;
-  object-fit: contain;
-  border-radius: 6px;
-  flex-shrink: 0;
-}
-
-.mobileBrandText {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  line-height: 1.1;
-}
-
-.mobileBrandTitle {
+.mobileMenuBadge {
   font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 850;
-  color: #0F172A;
-  letter-spacing: -0.01em;
-}
-
-.mobileBrandSubtitle {
-  font-family: var(--font-display);
-  font-size: 8.5px;
-  font-weight: 750;
+  font-size: 9.5px;
+  font-weight: 800;
   color: #0B2093;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-top: 1px;
+  background: #EEF2FF;
+  padding: 2px 7px;
+  border-radius: 999px;
+  border: 1px solid rgba(11, 32, 147, 0.12);
 }
 
 .mobileCloseBtn {
@@ -879,33 +853,6 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-}
-
-.mobileContactMini {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  font-family: var(--font-display);
-  font-size: 11px;
-  color: #64748B;
-  font-weight: 600;
-}
-
-.contactMiniDot {
-  color: #CBD5E1;
-}
-
-.contactMiniPhone {
-  color: #0B2093;
-  font-weight: 700;
-  text-decoration: none;
-  transition: color 0.15s ease;
-}
-
-.contactMiniPhone:hover {
-  text-decoration: underline;
-  color: #081870;
 }
 
 /* ══════════════════════════════════════════════════

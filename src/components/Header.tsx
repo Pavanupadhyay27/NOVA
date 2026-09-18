@@ -216,21 +216,9 @@ export default function Header() {
             aria-hidden="true"
           />
           <div className={styles.mobileMenu} role="dialog" aria-modal="true">
-            {/* Cute Card Header */}
+            {/* Clean Card Header */}
             <div className={styles.mobileCardHeader}>
-              <div className={styles.mobileBrandBadge}>
-                <Image
-                  src="/icon.png"
-                  alt="Marketing Copilot"
-                  width={22}
-                  height={22}
-                  className={styles.mobileBrandIcon}
-                />
-                <div className={styles.mobileBrandText}>
-                  <span className={styles.mobileBrandTitle}>Marketing Copilot</span>
-                  <span className={styles.mobileBrandSubtitle}>Growth Architecture</span>
-                </div>
-              </div>
+              <span className={styles.mobileMenuBadge}>NAVIGATION</span>
               <button
                 type="button"
                 className={styles.mobileCloseBtn}
@@ -334,11 +322,6 @@ export default function Header() {
                 fullWidth
                 onClick={() => setMenuOpen(false)}
               />
-              <div className={styles.mobileContactMini}>
-                <span>📍 Bhubaneswar</span>
-                <span className={styles.contactMiniDot}>•</span>
-                <a href="tel:+919439638484" className={styles.contactMiniPhone}>Call Direct</a>
-              </div>
             </div>
           </div>
         </>,
