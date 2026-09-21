@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import BeamButton from '@/components/BeamButton';
@@ -13,14 +13,89 @@ import {
 } from './data';
 import styles from './page.module.css';
 
+// Industry Icons Map
+const sectorIcons: Record<string, string> = {
+  'real-estate': '🏢',
+  'healthcare': '🏥',
+  'education': '🎓',
+  'retail-ecom': '🛍️',
+  'hospitality': '🍽️',
+  'construction': '🏗️',
+  'professional-services': '⚖️',
+  'manufacturing': '🏭',
+  'automotive': '🏎️',
+  'tech-saas': '💻',
+  'agriculture-food': '🌾',
+  'logistics-supply': '🚚',
+};
+
+// Corridor Deep Dive Intelligence Data
+const corridorDetails: Record<string, {
+  pinCodes: string[];
+  hotspots: string[];
+  queries: string[];
+  purchasingPower: string;
+  conversionSpeed: string;
+  demographics: string;
+}> = {
+  'Patia & Infocity': {
+    pinCodes: ['751024', '751016'],
+    hotspots: ['Infocity Tech Park', 'KIIT Road', 'DLF Cybercity', 'Silicon Hills', 'Magnetic Square'],
+    queries: ['3 BHK Luxury Flats in Patia', 'Best Cafes near Infocity', 'IT Company Office Space Bhubaneswar'],
+    purchasingPower: 'High (IT Executives, Tech Founders, Doctors)',
+    conversionSpeed: '< 72 Hours (High Digital Adoption)',
+    demographics: 'Tech Workforce, High-Net-Worth Young Families, University Students',
+  },
+  'Saheed Nagar': {
+    pinCodes: ['751007'],
+    hotspots: ['Bhawani Mall', 'RD Women’s College Road', 'Metro House', 'Janpath Commercial Strip'],
+    queries: ['Specialist Dental Clinic Saheed Nagar', 'Best CA Firm Bhubaneswar', 'Diagnostics Centre Saheed Nagar'],
+    purchasingPower: 'High (Established Business Families, Senior Professionals)',
+    conversionSpeed: '< 24 Hours (Immediate Medical & Legal Need)',
+    demographics: 'Business Owners, Senior Doctors, Legacy Residents',
+  },
+  'Chandrasekharpur': {
+    pinCodes: ['751016', '751023'],
+    hotspots: ['Damana Square', 'Sailashree Vihar', 'Kanan Vihar', 'BDA Colony'],
+    queries: ['NEET Coaching Institute Bhubaneswar', 'PEB Industrial Contractors Odisha', 'CBSE School Admissions'],
+    purchasingPower: 'Upper Middle Class (Corporate Officers, Edu Founders)',
+    conversionSpeed: '3 - 7 Days (Evaluation Cycle)',
+    demographics: 'Aspirant Families, Corporate Engineers, Academic Leaders',
+  },
+  'Khandagiri & Nayapalli': {
+    pinCodes: ['751030', '751012'],
+    hotspots: ['IRC Village', 'Baramunda Bus Terminal Node', 'Khandagiri Square', 'National Highway Belt'],
+    queries: ['Electric Scooter Showroom Bhubaneswar', 'Luxury Villa Projects Nayapalli', 'Car Service Center'],
+    purchasingPower: 'Upper Middle to High (Commercial Traders, Contractors)',
+    conversionSpeed: '2 - 4 Days (Test Drive to Booking)',
+    demographics: 'Showroom Shoppers, Commuters, Property Investors',
+  },
+  'Mancheswar & Rasulgarh': {
+    pinCodes: ['751010'],
+    hotspots: ['Mancheswar Industrial Estate Sector A & B', 'Rasulgarh Flyover Hub', 'NH-16 Logistics Spine'],
+    queries: ['Warehouse for Lease Bhubaneswar', 'CNC Precision Machining Odisha', 'Industrial Steel Fabricators'],
+    purchasingPower: 'Enterprise B2B (Factory Owners, Export Procurement Heads)',
+    conversionSpeed: '7 - 14 Days (Commercial Tender / RFQ)',
+    demographics: 'Industrialists, Freight Operators, Supply Chain Directors',
+  },
+  'Puri Circuit & Cuttack Road': {
+    pinCodes: ['751006', '752002'],
+    hotspots: ['Cuttack-Puri Bypass', 'Samantarapur', 'Old Town Heritage Hub', 'NH-316 Gateway'],
+    queries: ['Heritage Boutique Resort near Puri', 'Fresh Dairy Milk Delivery Bhubaneswar', 'Odisha Seafood Restaurant'],
+    purchasingPower: 'High Weekend & Tourism Spend',
+    conversionSpeed: '< 4 Hours (Dining & Tourism Reservations)',
+    demographics: 'Pilgrims, Weekend Travelers, Regional Food Lovers',
+  },
+};
+
 // Diagnostic Tool Options
 const diagnosticSectors = [
-  { id: 'real-estate', name: 'Real Estate & Builders', defaultStack: 'Sub-second 3D Virtual Tour Portal + Google Search Ads with Negative Shield + WhatsApp Lead Routing' },
-  { id: 'healthcare', name: 'Healthcare & Clinics', defaultStack: 'Google Maps 3-Pack SEO + Verified Doctor Schema + Automated WhatsApp Appointment Bot' },
-  { id: 'education', name: 'Education & Coaching', defaultStack: 'Scholarship Aptitude Test Lead Magnet + Meta Video Ads + Automated Counselor CRM' },
-  { id: 'retail-ecom', name: 'Retail & E-commerce', defaultStack: 'Google Shopping / PMax Feeds + Meta Advantage+ Catalog + WhatsApp 3-Stage Cart Recovery' },
-  { id: 'b2b-industrial', name: 'B2B & Industrial Infra', defaultStack: 'B2B Technical SEO Schema + LinkedIn Account-Based Marketing + Interactive RFQ Estimator' },
-  { id: 'tech-saas', name: 'Tech, IT & SaaS', defaultStack: 'SaaS Interactive Product Tour + Technical Topic Cluster SEO + Automated Trial Activation Engine' },
+  { id: 'real-estate', icon: '🏢', name: 'Real Estate & Builders', defaultStack: 'Sub-second 3D Virtual Tour Portal + Google Search Ads with Negative Shield + WhatsApp Lead Routing', sampleLead: '4 BHK Villa Buyer in Patia (Verified OTP)' },
+  { id: 'healthcare', icon: '🏥', name: 'Healthcare & Clinics', defaultStack: 'Google Maps 3-Pack SEO + Verified Doctor Schema + Automated WhatsApp Appointment Bot', sampleLead: 'Specialist Consultation in Saheed Nagar' },
+  { id: 'education', icon: '🎓', name: 'Education & Coaching', defaultStack: 'Scholarship Aptitude Test Lead Magnet + Meta Video Ads + Automated Counselor CRM', sampleLead: 'NEET Batch Enrollment from Cuttack' },
+  { id: 'retail-ecom', icon: '🛍️', name: 'Retail & E-commerce', defaultStack: 'Google Shopping / PMax Feeds + Meta Advantage+ Catalog + WhatsApp 3-Stage Cart Recovery', sampleLead: 'D2C Handloom Repeat Order (UPI Paid)' },
+  { id: 'b2b-industrial', icon: '🏗️', name: 'B2B & Industrial Infra', defaultStack: 'B2B Technical SEO Schema + LinkedIn Account-Based Marketing + Interactive RFQ Estimator', sampleLead: '₹1.2Cr Industrial PEB Structure RFQ' },
+  { id: 'tech-saas', icon: '💻', name: 'Tech, IT & SaaS', defaultStack: 'SaaS Interactive Product Tour + Technical Topic Cluster SEO + Automated Trial Activation Engine', sampleLead: 'Enterprise Software Demo Booking' },
 ];
 
 const diagnosticBottlenecks = [
@@ -31,9 +106,9 @@ const diagnosticBottlenecks = [
 ];
 
 const diagnosticBudgets = [
-  { id: 'starter', label: '₹30,000 – ₹50,000 / mo', leadsRange: '45 – 70 Leads', timeline: 'First Leads in 72 Hours' },
-  { id: 'growth', label: '₹50,000 – ₹1,00,000 / mo', leadsRange: '110 – 190 Leads', timeline: 'Full-Funnel Scale in 14 Days' },
-  { id: 'scale', label: '₹1,00,000+ / mo', leadsRange: '250+ Verified Leads', timeline: 'Multi-Location Market Dominance' },
+  { id: 'starter', label: '₹30,000 – ₹50,000 / mo', leadsRange: '45 – 70 Leads', targetCpl: '₹350 – ₹450', timeline: 'First Leads in 72 Hours' },
+  { id: 'growth', label: '₹50,000 – ₹1,00,000 / mo', leadsRange: '110 – 190 Leads', targetCpl: '₹220 – ₹320', timeline: 'Full-Funnel Scale in 14 Days' },
+  { id: 'scale', label: '₹1,00,000+ / mo', leadsRange: '250+ Verified Leads', targetCpl: '₹140 – ₹240', timeline: 'Multi-Location Market Dominance' },
 ];
 
 // Engagement Models (Tabbed Console)
@@ -46,7 +121,7 @@ const engagementTiers = [
     period: '/ month',
     tagline: 'Rapid market entry for single-location businesses ready to capture immediate demand in Bhubaneswar.',
     deliverables: [
-      'Complete Google Maps 3-Pack Dominance & Verification',
+      'Complete Google Maps 3-Pack Dominance & Pin Verification',
       'Hyperlocal Google Search Campaign (15km radius around clinic/store)',
       'Sub-second Next.js Lead Landing Page with WhatsApp Bot',
       'Negative Keyword Shielding to eliminate wasted ad clicks',
@@ -136,6 +211,10 @@ export default function IndustriesPage() {
     return engagementTiers.find(t => t.id === activeTierId) || engagementTiers[1];
   }, [activeTierId]);
 
+  // Active Corridor Details
+  const activeCorridorName = sectorCorridorMatrix[activeCorridorIdx].corridor;
+  const currentCorridorInfo = corridorDetails[activeCorridorName] || corridorDetails['Patia & Infocity'];
+
   return (
     <div className={styles.page}>
       {/* ══════════════════════════════════════════════════════════
@@ -175,21 +254,24 @@ export default function IndustriesPage() {
                 <div className={styles.heroTagsStrip}>
                   <span className={styles.heroTagsLabel}>DIRECT ACCESS:</span>
                   <div className={styles.heroTagsList}>
-                    {industryCatalog.slice(0, 6).map(ind => (
-                      <button
-                        key={ind.id}
-                        type="button"
-                        className={styles.heroTagBtn}
-                        onClick={() => {
-                          setSelectedIndustryId(ind.id);
-                          const el = document.getElementById('sector-workstation');
-                          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        }}
-                      >
-                        {ind.shortTitle}
-                      </button>
-                    ))}
-                    <span className={styles.heroMoreTag}>+6 More</span>
+                    {industryCatalog.map(ind => {
+                      const isSelected = ind.id === selectedIndustryId;
+                      return (
+                        <button
+                          key={ind.id}
+                          type="button"
+                          className={`${styles.heroTagBtn} ${isSelected ? styles.heroTagBtnActive : ''}`}
+                          onClick={() => {
+                            setSelectedIndustryId(ind.id);
+                            const el = document.getElementById('sector-workstation');
+                            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          }}
+                        >
+                          <span style={{ marginRight: 4 }}>{sectorIcons[ind.id] || '⚡'}</span>
+                          {ind.shortTitle}
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
               </ScrollReveal>
@@ -215,10 +297,22 @@ export default function IndustriesPage() {
                   </div>
 
                   <div className={styles.terminalBody}>
-                    <div className={styles.terminalRow}>
-                      <span className={styles.terminalPrompt}>&gt;</span>
-                      <span className={styles.terminalText}>Auditing local commercial search intent...</span>
-                      <span className={styles.terminalTagSuccess}>ACTIVE</span>
+                    <div className={styles.terminalLogBox}>
+                      <div className={styles.terminalLogRow}>
+                        <span className={styles.logTime}>[14:24:02]</span>
+                        <span className={styles.logScope}>REAL ESTATE // PATIA:</span>
+                        <span className={styles.logText}>3 BHK buyer site visit booked via WhatsApp</span>
+                      </div>
+                      <div className={styles.terminalLogRow}>
+                        <span className={styles.logTime}>[14:23:45]</span>
+                        <span className={styles.logScope}>CLINIC // SAHEED NGR:</span>
+                        <span className={styles.logText}>Google Maps #1 position locked (24 calls/day)</span>
+                      </div>
+                      <div className={styles.terminalLogRow}>
+                        <span className={styles.logTime}>[14:22:18]</span>
+                        <span className={styles.logScope}>EDUCATION // CUTTACK:</span>
+                        <span className={styles.logText}>400th student admission verified at ₹140 CPL</span>
+                      </div>
                     </div>
 
                     <div className={styles.terminalStatsGrid}>
@@ -249,7 +343,7 @@ export default function IndustriesPage() {
                         <div className={styles.terminalBarFill} />
                       </div>
                       <div className={styles.terminalBarLabels}>
-                        <span>12 Sectors Active</span>
+                        <span>12 Sectors Active in Odisha</span>
                         <span>₹25Cr+ Attributed Pipeline</span>
                       </div>
                     </div>
@@ -262,41 +356,41 @@ export default function IndustriesPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════
-          SECTION 2: BORDERLESS MINIMALIST DATA STRIP
+          SECTION 2: ELEVATED MARQUEE PROOF STRIP
          ══════════════════════════════════════════════════════════ */}
       <section className={styles.dataStripSection}>
         <div className="container">
-          <div className={styles.dataStripContent}>
+          <div className={styles.dataStripGlassPlate}>
             <div className={styles.dataStripItem}>
               <span className={styles.dataStripVal}>₹25Cr+</span>
-              <span className={styles.dataStripLabel}>Attributed Revenue in Odisha</span>
+              <span className={styles.dataStripLabel}>Attributed Client Revenue in Odisha</span>
             </div>
-            <span className={styles.dataStripDot}>•</span>
+            <div className={styles.stripDivider} />
             <div className={styles.dataStripItem}>
               <span className={styles.dataStripVal}>150+</span>
               <span className={styles.dataStripLabel}>Bhubaneswar Businesses Scaled</span>
             </div>
-            <span className={styles.dataStripDot}>•</span>
+            <div className={styles.stripDivider} />
             <div className={styles.dataStripItem}>
               <span className={styles.dataStripVal}>12</span>
               <span className={styles.dataStripLabel}>Specialized Sector Playbooks</span>
             </div>
-            <span className={styles.dataStripDot}>•</span>
+            <div className={styles.stripDivider} />
             <div className={styles.dataStripItem}>
               <span className={styles.dataStripVal}>&lt; 0.8s</span>
-              <span className={styles.dataStripLabel}>Next.js Web Load Speed</span>
+              <span className={styles.dataStripLabel}>Next.js High-Speed Web Infrastructure</span>
             </div>
-            <span className={styles.dataStripDot}>•</span>
+            <div className={styles.stripDivider} />
             <div className={styles.dataStripItem}>
               <span className={styles.dataStripVal}>98%</span>
-              <span className={styles.dataStripLabel}>Long-Term Client Retention</span>
+              <span className={styles.dataStripLabel}>Annual Client Retention Rate</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* ══════════════════════════════════════════════════════════
-          SECTION 3: THE MASTER-DETAIL SECTOR WORKSTATION (REPLACES 12 CARDS)
+          SECTION 3: THE MASTER-DETAIL SECTOR WORKSTATION (NO CARDS!)
          ══════════════════════════════════════════════════════════ */}
       <section className={styles.workstationSection} id="sector-workstation">
         <div className="container">
@@ -318,8 +412,8 @@ export default function IndustriesPage() {
             {/* Left Column: Vertical Industry Selector Strip */}
             <div className={styles.workstationNav}>
               <div className={styles.workstationNavHeader}>
-                <span>SELECT INDUSTRY SECTOR</span>
-                <span className={styles.navCountBadge}>12 VERTICALS</span>
+                <span>SELECT INDUSTRY VERTICAL</span>
+                <span className={styles.navCountBadge}>12 SECTORS</span>
               </div>
               <div className={styles.workstationNavList}>
                 {industryCatalog.map((ind) => {
@@ -332,6 +426,7 @@ export default function IndustriesPage() {
                       onClick={() => setSelectedIndustryId(ind.id)}
                     >
                       <div className={styles.navItemIndicator} style={{ backgroundColor: isActive ? '#FFB800' : 'transparent' }} />
+                      <span className={styles.navItemIcon}>{sectorIcons[ind.id] || '⚡'}</span>
                       <div className={styles.navItemText}>
                         <div className={styles.navItemNum}>SECTOR {ind.num}</div>
                         <div className={styles.navItemTitle}>{ind.title}</div>
@@ -365,7 +460,10 @@ export default function IndustriesPage() {
                   </span>
                 </div>
                 <div className={styles.cockpitTitleWrap}>
-                  <h3 className={styles.cockpitTitle}>{activeIndustry.title}</h3>
+                  <div className={styles.cockpitIconTitle}>
+                    <span className={styles.cockpitBigIcon}>{sectorIcons[activeIndustry.id] || '⚡'}</span>
+                    <h3 className={styles.cockpitTitle}>{activeIndustry.title}</h3>
+                  </div>
                   <p className={styles.cockpitTagline}>{activeIndustry.tagline}</p>
                 </div>
               </div>
@@ -375,7 +473,7 @@ export default function IndustriesPage() {
                 {/* Bottlenecks Column */}
                 <div className={styles.cockpitColBad}>
                   <div className={styles.cockpitColHeaderBad}>
-                    ⚠️ COMMON SECTOR BOTTLENECK
+                    ⚠️ COMMON SECTOR BOTTLENECK (The Problem)
                   </div>
                   <ul className={styles.cockpitList}>
                     {activeIndustry.playbook.bottlenecks.map((b, idx) => (
@@ -390,7 +488,7 @@ export default function IndustriesPage() {
                 {/* Solutions Column */}
                 <div className={styles.cockpitColGood}>
                   <div className={styles.cockpitColHeaderGood}>
-                    ⚡ OUR BESPOKE ARCHITECTURE
+                    ⚡ OUR BESPOKE ARCHITECTURE (The Solution)
                   </div>
                   <ul className={styles.cockpitList}>
                     {activeIndustry.playbook.solutions.map((s, idx) => (
@@ -406,7 +504,8 @@ export default function IndustriesPage() {
               {/* Cockpit 3-Step Customer Acquisition Journey */}
               <div className={styles.cockpitJourneyBox}>
                 <div className={styles.journeyHeader}>
-                  PROVEN 3-STEP ACQUISITION FUNNEL
+                  <span>PROVEN 3-STEP ACQUISITION PIPELINE</span>
+                  <span className={styles.journeyTagline}>Turn cold searches into verified appointments</span>
                 </div>
                 <div className={styles.journeyStepsRow}>
                   {activeIndustry.playbook.funnelSteps.map((step, idx) => (
@@ -482,9 +581,13 @@ export default function IndustriesPage() {
                 </thead>
                 <tbody>
                   {industryCatalog.map((ind) => (
-                    <tr key={ind.id} onClick={() => setSelectedIndustryId(ind.id)}>
+                    <tr key={ind.id} onClick={() => {
+                      setSelectedIndustryId(ind.id);
+                      const el = document.getElementById('sector-workstation');
+                      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }}>
                       <td className={styles.tableSectorCell}>
-                        <span className={styles.tableColorDot} style={{ backgroundColor: ind.color }} />
+                        <span className={styles.tableSectorIcon}>{sectorIcons[ind.id] || '⚡'}</span>
                         <span className={styles.tableSectorTitle}>{ind.title}</span>
                       </td>
                       <td className={styles.tableMetricCell}>
@@ -567,10 +670,10 @@ export default function IndustriesPage() {
                     📍 ACTIVE CORRIDOR NODE
                   </div>
                   <h3 className={styles.corridorDetailTitle}>
-                    {sectorCorridorMatrix[activeCorridorIdx].corridor}
+                    {activeCorridorName}
                   </h3>
                   <p className={styles.corridorDetailSub}>
-                    Dominant Commercial Focus: {sectorCorridorMatrix[activeCorridorIdx].focus}
+                    <strong>Dominant Focus:</strong> {sectorCorridorMatrix[activeCorridorIdx].focus}
                   </p>
                 </div>
 
@@ -583,23 +686,51 @@ export default function IndustriesPage() {
                   </div>
                   <div className={styles.corridorStatWell}>
                     <span className={styles.corridorStatVal}>
-                      {sectorCorridorMatrix[activeCorridorIdx].anchor}
+                      {currentCorridorInfo.purchasingPower.split('(')[0]}
                     </span>
-                    <span className={styles.corridorStatLabel}>Verified Lead Anchor</span>
+                    <span className={styles.corridorStatLabel}>Buyer Purchasing Power</span>
+                  </div>
+                  <div className={styles.corridorStatWell}>
+                    <span className={styles.corridorStatVal}>
+                      {currentCorridorInfo.conversionSpeed.split('(')[0]}
+                    </span>
+                    <span className={styles.corridorStatLabel}>Decision Turnaround Speed</span>
                   </div>
                 </div>
 
-                <div className={styles.corridorStrategyBox}>
-                  <div className={styles.strategyBoxTitle}>Hyperlocal Geo-Targeting Strategy:</div>
-                  <p className={styles.strategyBoxDesc}>
-                    Precision pin-code geo-fencing targeting high-income residential societies, IT tech parks, and commercial retail corridors with sub-kilometer ad delivery and 1-click WhatsApp routing.
-                  </p>
+                {/* Hotspots & Target Pin-Codes */}
+                <div className={styles.corridorInfoGrid}>
+                  <div className={styles.corridorInfoCard}>
+                    <span className={styles.infoCardLabel}>TARGET PIN CODES & NODES:</span>
+                    <div className={styles.pinCodeTags}>
+                      {currentCorridorInfo.pinCodes.map(pin => (
+                        <span key={pin} className={styles.pinTag}>PIN: {pin}</span>
+                      ))}
+                      {currentCorridorInfo.hotspots.slice(0, 3).map(h => (
+                        <span key={h} className={styles.hotspotTag}>• {h}</span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className={styles.corridorInfoCard}>
+                    <span className={styles.infoCardLabel}>TOP COMMERCIAL SEARCH QUERIES:</span>
+                    <div className={styles.queryList}>
+                      {currentCorridorInfo.queries.map(q => (
+                        <span key={q} className={styles.queryTag}>&ldquo;{q}&rdquo;</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className={styles.corridorClientRow}>
+                  <span className={styles.corridorClientLabel}>VERIFIED CLIENT ANCHOR:</span>
+                  <span className={styles.corridorClientVal}>{sectorCorridorMatrix[activeCorridorIdx].anchor}</span>
                 </div>
 
                 <div style={{ marginTop: 24 }}>
                   <BeamButton
                     href="/contact"
-                    label={`Dominate ${sectorCorridorMatrix[activeCorridorIdx].corridor} Market →`}
+                    label={`Dominate ${activeCorridorName} Market →`}
                     size="md"
                   />
                 </div>
@@ -637,16 +768,20 @@ export default function IndustriesPage() {
                   <span className={styles.diagStepTitle}>SELECT YOUR INDUSTRY SECTOR:</span>
                 </div>
                 <div className={styles.diagOptionsGrid}>
-                  {diagnosticSectors.map(s => (
-                    <button
-                      key={s.id}
-                      type="button"
-                      className={`${styles.diagOptionBtn} ${diagSector === s.id ? styles.diagOptionBtnActive : ''}`}
-                      onClick={() => setDiagSector(s.id)}
-                    >
-                      {s.name}
-                    </button>
-                  ))}
+                  {diagnosticSectors.map(s => {
+                    const isSelected = diagSector === s.id;
+                    return (
+                      <button
+                        key={s.id}
+                        type="button"
+                        className={`${styles.diagOptionBtn} ${isSelected ? styles.diagOptionBtnActive : ''}`}
+                        onClick={() => setDiagSector(s.id)}
+                      >
+                        <span className={styles.diagBtnIcon}>{s.icon}</span>
+                        <span>{s.name}</span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
@@ -656,17 +791,21 @@ export default function IndustriesPage() {
                   <span className={styles.diagStepNum}>02</span>
                   <span className={styles.diagStepTitle}>IDENTIFY YOUR PRIMARY BOTTLENECK:</span>
                 </div>
-                <div className={styles.diagOptionsGrid}>
-                  {diagnosticBottlenecks.map(b => (
-                    <button
-                      key={b.id}
-                      type="button"
-                      className={`${styles.diagOptionBtn} ${diagBottleneck === b.id ? styles.diagOptionBtnActive : ''}`}
-                      onClick={() => setDiagBottleneck(b.id)}
-                    >
-                      {b.label}
-                    </button>
-                  ))}
+                <div className={styles.diagBottleneckGrid}>
+                  {diagnosticBottlenecks.map(b => {
+                    const isSelected = diagBottleneck === b.id;
+                    return (
+                      <button
+                        key={b.id}
+                        type="button"
+                        className={`${styles.diagBottleneckBtn} ${isSelected ? styles.diagBottleneckBtnActive : ''}`}
+                        onClick={() => setDiagBottleneck(b.id)}
+                      >
+                        <div className={styles.bottleneckLabel}>{b.label}</div>
+                        <div className={styles.bottleneckImpact}>{b.impact}</div>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
@@ -677,16 +816,20 @@ export default function IndustriesPage() {
                   <span className={styles.diagStepTitle}>MONTHLY MARKETING SPEND RANGE:</span>
                 </div>
                 <div className={styles.diagBudgetGrid}>
-                  {diagnosticBudgets.map(bg => (
-                    <button
-                      key={bg.id}
-                      type="button"
-                      className={`${styles.diagOptionBtn} ${diagBudget === bg.id ? styles.diagOptionBtnActive : ''}`}
-                      onClick={() => setDiagBudget(bg.id)}
-                    >
-                      {bg.label}
-                    </button>
-                  ))}
+                  {diagnosticBudgets.map(bg => {
+                    const isSelected = diagBudget === bg.id;
+                    return (
+                      <button
+                        key={bg.id}
+                        type="button"
+                        className={`${styles.diagBudgetBtn} ${isSelected ? styles.diagBudgetBtnActive : ''}`}
+                        onClick={() => setDiagBudget(bg.id)}
+                      >
+                        <div className={styles.budgetAmount}>{bg.label}</div>
+                        <div className={styles.budgetYield}>{bg.leadsRange}</div>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
@@ -702,7 +845,7 @@ export default function IndustriesPage() {
                 </div>
 
                 <div className={styles.diagStackBox}>
-                  <span className={styles.stackLabel}>RECOMMENDED CORE STACK:</span>
+                  <span className={styles.stackLabel}>RECOMMENDED CORE TECH & FUNNEL STACK:</span>
                   <p className={styles.stackDesc}>{activeDiagSector.defaultStack}</p>
                 </div>
 
@@ -712,15 +855,20 @@ export default function IndustriesPage() {
                     <span className={styles.diagMetricLabel}>Estimated Monthly Inbound Inquiries</span>
                   </div>
                   <div className={styles.diagMetricWell}>
+                    <span className={styles.diagMetricVal}>{activeDiagBudget.targetCpl}</span>
+                    <span className={styles.diagMetricLabel}>Target Cost Per Verified Lead</span>
+                  </div>
+                  <div className={styles.diagMetricWell}>
                     <span className={styles.diagMetricVal}>
                       <SmoothCounter value="45%" duration={600} /> – 62%
                     </span>
-                    <span className={styles.diagMetricLabel}>Target CPL Reduction</span>
+                    <span className={styles.diagMetricLabel}>Average CPL Reduction vs Benchmarks</span>
                   </div>
-                  <div className={styles.diagMetricWell}>
-                    <span className={styles.diagMetricVal}>100%</span>
-                    <span className={styles.diagMetricLabel}>Attribution-Verified CRM Routing</span>
-                  </div>
+                </div>
+
+                <div className={styles.diagSampleLeadBox}>
+                  <span className={styles.sampleLeadLabel}>SAMPLE VERIFIED LEAD PROFILE:</span>
+                  <span className={styles.sampleLeadVal}>&ldquo;{activeDiagSector.sampleLead}&rdquo;</span>
                 </div>
 
                 <div style={{ textAlign: 'center', marginTop: 24 }}>

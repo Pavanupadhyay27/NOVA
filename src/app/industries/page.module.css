@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════════════════
-   MARKETING COPILOT — REDESIGNED INDUSTRIES PAGE
-   Anti-Card-Fatigue Architecture: Split Hero, Workstation, Matrix Table,
-   Corridor Console, Strategy Diagnostic, and Tier Terminal
+   MARKETING COPILOT — ELEVATED INDUSTRIES MASTERCLASS STYLES
+   Anti-Card-Fatigue Architecture: Split Hero HUD, Workstation Cockpit,
+   Matrix Table, Corridor Console, Strategy Diagnostic, Tier Terminal
    Strict Global Palette: White, Deep Blue (#0B2093), Golden Spark (#F59E0B)
    ═══════════════════════════════════════════════════════════ */
 
@@ -17,8 +17,8 @@
    ───────────────────────────────────────────────────────────── */
 .heroSection {
   position: relative;
-  padding: 72px 0 64px;
-  background: radial-gradient(circle at 80% -20%, rgba(245, 158, 11, 0.1) 0%, rgba(11, 32, 147, 0.04) 50%, transparent 80%), #FFFFFF;
+  padding: 80px 0 68px;
+  background: radial-gradient(circle at 85% -20%, rgba(245, 158, 11, 0.12) 0%, rgba(11, 32, 147, 0.05) 50%, transparent 80%), #FFFFFF;
   border-bottom: 1px solid var(--border-subtle);
   overflow: hidden;
 }
@@ -26,13 +26,13 @@
 .heroGlowOverlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 70% 40% at 50% 0%, rgba(11, 32, 147, 0.05) 0%, transparent 70%);
+  background: radial-gradient(ellipse 70% 40% at 50% 0%, rgba(11, 32, 147, 0.06) 0%, transparent 70%);
   pointer-events: none;
 }
 
 .heroSplitGrid {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 1.1fr 0.9fr;
   align-items: center;
   gap: 48px;
   position: relative;
@@ -45,7 +45,7 @@
 }
 
 .heroTitle {
-  margin: 16px 0 20px;
+  margin: 18px 0 20px;
   line-height: 1.15;
   color: #000000;
   font-weight: 800;
@@ -55,6 +55,7 @@
   color: #334155;
   line-height: 1.7;
   margin-bottom: 32px;
+  max-width: 600px;
 }
 
 .heroCtaRow {
@@ -90,9 +91,8 @@
 
 .heroTagsStrip {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 10px;
-  flex-wrap: wrap;
 }
 
 .heroTagsLabel {
@@ -111,7 +111,9 @@
 }
 
 .heroTagBtn {
-  padding: 4px 12px;
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
   border-radius: var(--radius-full);
   background: #F8FAFC;
   border: 1px solid var(--border);
@@ -127,32 +129,34 @@
   border-color: #0B2093;
   color: #0B2093;
   background: #FFFFFF;
+  transform: translateY(-1px);
 }
 
-.heroMoreTag {
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 700;
-  color: #D97706;
+.heroTagBtnActive {
+  background: #0B2093 !important;
+  border-color: #0B2093 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 12px rgba(11, 32, 147, 0.25);
 }
 
 /* Terminal HUD (Right Column) */
 .terminalContainer {
-  background: #0B2093;
-  border-radius: var(--radius-xl);
-  border: 1.5px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 24px 60px -12px rgba(11, 32, 147, 0.4), inset 0 1.5px 0 rgba(255, 255, 255, 0.2);
+  background: linear-gradient(145deg, #0B2093 0%, #0D007F 100%);
+  border-radius: var(--radius-2xl);
+  border: 1.5px solid rgba(255, 184, 0, 0.35);
+  box-shadow: 0 28px 72px -12px rgba(11, 32, 147, 0.45), inset 0 1.5px 0 rgba(255, 255, 255, 0.25);
   overflow: hidden;
   color: #FFFFFF;
+  position: relative;
 }
 
 .terminalHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 18px;
-  background: rgba(13, 0, 127, 0.6);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 14px 20px;
+  background: rgba(13, 0, 127, 0.65);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .terminalControls {
@@ -195,30 +199,43 @@
   padding: 24px;
 }
 
-.terminalRow {
+.terminalLogBox {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: monospace;
+  font-size: 11px;
+}
+
+.terminalLogRow {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: monospace;
-  font-size: 12px;
-  margin-bottom: 20px;
-  color: #E2E8F0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.terminalPrompt {
-  color: #FFB800;
-  font-weight: 800;
-}
-
-.terminalTagSuccess {
-  margin-left: auto;
-  padding: 2px 8px;
-  border-radius: 4px;
-  background: rgba(16, 185, 129, 0.2);
-  border: 1px solid rgba(16, 185, 129, 0.4);
-  color: #34D399;
+.logTime {
+  color: #94A3B8;
   font-size: 10px;
-  font-weight: 800;
+}
+
+.logScope {
+  color: #FFB800;
+  font-weight: 700;
+  font-size: 10px;
+}
+
+.logText {
+  color: #E2E8F0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .terminalStatsGrid {
@@ -230,16 +247,16 @@
 
 .terminalStatBox {
   padding: 14px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   flex-direction: column;
 }
 
 .terminalStatNum {
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 900;
   color: #FFB800;
   line-height: 1.1;
@@ -265,7 +282,7 @@
 
 .terminalBarTrack {
   height: 6px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
   border-radius: 3px;
   overflow: hidden;
   margin-bottom: 8px;
@@ -273,7 +290,7 @@
 
 .terminalBarFill {
   height: 100%;
-  width: 92%;
+  width: 94%;
   background: linear-gradient(90deg, #FFB800, #F59E0B);
   border-radius: 3px;
 }
@@ -283,57 +300,66 @@
   justify-content: space-between;
   font-family: monospace;
   font-size: 11px;
-  color: #94A3B8;
+  color: #CBD5E1;
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 2: BORDERLESS MINIMALIST DATA STRIP
+   SECTION 2: ELEVATED MARQUEE PROOF STRIP
    ───────────────────────────────────────────────────────────── */
 .dataStripSection {
-  background: #F8FAFC;
-  padding: 24px 0;
+  background: #FFFFFF;
+  padding: 28px 0;
   border-bottom: 1px solid var(--border-subtle);
 }
 
-.dataStripContent {
+.dataStripGlassPlate {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
+  padding: 20px 36px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-skeuo-card);
+  gap: 20px;
 }
 
 .dataStripItem {
   display: flex;
-  align-items: baseline;
-  gap: 8px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2px;
 }
 
 .dataStripVal {
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 900;
   color: #0B2093;
-  line-height: 1;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
 }
 
 .dataStripLabel {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   color: #64748B;
 }
 
-.dataStripDot {
-  color: #CBD5E1;
-  font-size: 14px;
+.stripDivider {
+  width: 1px;
+  height: 36px;
+  background: var(--border);
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 3: THE MASTER-DETAIL SECTOR WORKSTATION (REPLACES 12 CARDS)
+   SECTION 3: THE MASTER-DETAIL SECTOR WORKSTATION
    ───────────────────────────────────────────────────────────── */
 .workstationSection {
   padding: 96px 0;
-  background: #FFFFFF;
+  background: #F8FAFC;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .sectionHeading {
@@ -352,13 +378,13 @@
 
 .workstationConsole {
   display: grid;
-  grid-template-columns: 320px 1fr;
+  grid-template-columns: 340px 1fr;
   border-radius: var(--radius-2xl);
   background: #FFFFFF;
   border: 1.5px solid var(--border);
   box-shadow: var(--shadow-skeuo-card);
   overflow: hidden;
-  min-height: 720px;
+  min-height: 740px;
 }
 
 /* Workstation Left Column: Vertical Nav */
@@ -370,7 +396,7 @@
 }
 
 .workstationNavHeader {
-  padding: 20px;
+  padding: 18px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -394,7 +420,7 @@
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  max-height: 680px;
+  max-height: 700px;
 }
 
 .workstationNavItem {
@@ -409,6 +435,7 @@
   position: relative;
   transition: all var(--transition-fast);
   width: 100%;
+  gap: 8px;
 }
 
 .workstationNavItem:hover {
@@ -421,10 +448,14 @@
 }
 
 .navItemIndicator {
-  width: 3px;
+  width: 3.5px;
   height: 32px;
   border-radius: 2px;
-  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.navItemIcon {
+  font-size: 18px;
   flex-shrink: 0;
 }
 
@@ -442,7 +473,7 @@
 
 .navItemTitle {
   font-family: var(--font-display);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   color: #000000;
   line-height: 1.25;
@@ -453,6 +484,7 @@
   font-size: 12px;
   font-weight: 800;
   font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
 }
 
 /* Workstation Right Column: Cockpit Plane */
@@ -465,7 +497,7 @@
 .cockpitVisualBar {
   position: relative;
   width: 100%;
-  height: 220px;
+  height: 260px;
   overflow: hidden;
 }
 
@@ -476,7 +508,7 @@
 .cockpitOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.2) 0%, rgba(15, 23, 42, 0.88) 100%);
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.25) 0%, rgba(15, 23, 42, 0.9) 100%);
 }
 
 .cockpitBadgeRow {
@@ -509,7 +541,7 @@
   gap: 6px;
   padding: 4px 12px;
   border-radius: var(--radius-full);
-  background: rgba(5, 150, 105, 0.85);
+  background: rgba(5, 150, 105, 0.9);
   backdrop-filter: blur(8px);
   font-family: var(--font-display);
   font-size: 10px;
@@ -534,12 +566,22 @@
   z-index: 1;
 }
 
+.cockpitIconTitle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.cockpitBigIcon {
+  font-size: 28px;
+}
+
 .cockpitTitle {
   font-family: var(--font-display);
   font-size: 26px;
   font-weight: 900;
   color: #FFFFFF;
-  margin-bottom: 4px;
 }
 
 .cockpitTagline {
@@ -557,10 +599,11 @@
 }
 
 .cockpitColBad {
-  padding: 20px;
-  border-radius: var(--radius-lg);
-  background: rgba(239, 68, 68, 0.02);
-  border: 1px solid rgba(239, 68, 68, 0.18);
+  padding: 22px;
+  border-radius: var(--radius-xl);
+  background: rgba(239, 68, 68, 0.03);
+  border: 1.5px solid rgba(239, 68, 68, 0.2);
+  box-shadow: inset 0 2px 4px rgba(239, 68, 68, 0.03);
 }
 
 .cockpitColHeaderBad {
@@ -569,14 +612,15 @@
   font-weight: 800;
   letter-spacing: 0.06em;
   color: #DC2626;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .cockpitColGood {
-  padding: 20px;
-  border-radius: var(--radius-lg);
-  background: rgba(16, 185, 129, 0.02);
-  border: 1px solid rgba(16, 185, 129, 0.18);
+  padding: 22px;
+  border-radius: var(--radius-xl);
+  background: rgba(16, 185, 129, 0.03);
+  border: 1.5px solid rgba(16, 185, 129, 0.22);
+  box-shadow: inset 0 2px 4px rgba(16, 185, 129, 0.03);
 }
 
 .cockpitColHeaderGood {
@@ -585,35 +629,37 @@
   font-weight: 800;
   letter-spacing: 0.06em;
   color: #059669;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .cockpitList {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .cockpitListItem {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 10px;
   font-size: 13px;
   color: #334155;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 .badCross {
   color: #DC2626;
   font-weight: 800;
   flex-shrink: 0;
+  margin-top: 1px;
 }
 
 .goodCheck {
   color: #059669;
   font-weight: 800;
   flex-shrink: 0;
+  margin-top: 1px;
 }
 
 .cockpitJourneyBox {
@@ -622,12 +668,22 @@
 }
 
 .journeyHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-family: var(--font-display);
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: #0B2093;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
+}
+
+.journeyTagline {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748B;
+  text-transform: none;
 }
 
 .journeyStepsRow {
@@ -637,10 +693,11 @@
 }
 
 .journeyStepCard {
-  padding: 14px;
-  border-radius: var(--radius-md);
+  padding: 16px;
+  border-radius: var(--radius-lg);
   background: #F8FAFC;
   border: 1px solid var(--border);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
   display: flex;
   flex-direction: column;
 }
@@ -649,12 +706,12 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .stepNumCircle {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: #0B2093;
   color: #FFFFFF;
@@ -669,15 +726,15 @@
 
 .stepTitle {
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 800;
   color: #000000;
 }
 
 .stepDesc {
-  font-size: 11px;
+  font-size: 12px;
   color: #64748B;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
 .cockpitFooterBar {
@@ -696,7 +753,7 @@
 }
 
 .cockpitBenchmarkWell {
-  padding: 10px 14px;
+  padding: 10px 16px;
   border-radius: var(--radius-md);
   background: #FFFFFF;
   border: 1px solid var(--border);
@@ -705,7 +762,7 @@
 
 .benchmarkVal {
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 900;
   color: #0B2093;
 }
@@ -734,14 +791,13 @@
    ───────────────────────────────────────────────────────────── */
 .tableSection {
   padding: 96px 0;
-  background: #F8FAFC;
-  border-top: 1px solid var(--border-subtle);
+  background: #FFFFFF;
   border-bottom: 1px solid var(--border-subtle);
 }
 
 .tableContainer {
   background: #FFFFFF;
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-2xl);
   border: 1.5px solid var(--border);
   box-shadow: var(--shadow-skeuo-card);
   overflow-x: auto;
@@ -755,8 +811,8 @@
 }
 
 .matrixTable thead tr {
-  background: #F1F5F9;
-  border-bottom: 1.5px solid var(--border);
+  background: #0B2093;
+  color: #FFFFFF;
 }
 
 .matrixTable th {
@@ -765,18 +821,18 @@
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.06em;
-  color: #475569;
+  color: #FFFFFF;
   white-space: nowrap;
 }
 
 .matrixTable tbody tr {
   border-bottom: 1px solid var(--border-subtle);
   cursor: pointer;
-  transition: background var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 .matrixTable tbody tr:hover {
-  background: rgba(11, 32, 147, 0.02);
+  background: rgba(11, 32, 147, 0.03);
 }
 
 .matrixTable td {
@@ -794,11 +850,8 @@
   color: #000000;
 }
 
-.tableColorDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  flex-shrink: 0;
+.tableSectorIcon {
+  font-size: 18px;
 }
 
 .tableSectorTitle {
@@ -823,10 +876,10 @@
 }
 
 .badgePill {
-  padding: 4px 8px;
+  padding: 4px 10px;
   border-radius: var(--radius-full);
   background: rgba(245, 158, 11, 0.1);
-  border: 1px solid rgba(245, 158, 11, 0.25);
+  border: 1px solid rgba(245, 158, 11, 0.3);
   color: #D97706;
   font-size: 10px;
   font-weight: 800;
@@ -847,7 +900,8 @@
    ───────────────────────────────────────────────────────────── */
 .corridorSection {
   padding: 96px 0;
-  background: #FFFFFF;
+  background: #F8FAFC;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .corridorConsole {
@@ -868,7 +922,7 @@
 }
 
 .corridorListHeader {
-  padding: 16px 20px;
+  padding: 18px 20px;
   display: flex;
   justify-content: space-between;
   font-family: var(--font-display);
@@ -952,7 +1006,6 @@
   padding: 44px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .corridorDetailBadge {
@@ -971,7 +1024,7 @@
 
 .corridorDetailTitle {
   font-family: var(--font-display);
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 900;
   color: #000000;
   margin-bottom: 6px;
@@ -981,18 +1034,18 @@
   font-size: 14px;
   color: #475569;
   line-height: 1.5;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .corridorMetricsRow {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
   margin-bottom: 24px;
 }
 
 .corridorStatWell {
-  padding: 16px 20px;
+  padding: 16px;
   border-radius: var(--radius-lg);
   background: #F8FAFC;
   border: 1px solid var(--border);
@@ -1002,7 +1055,7 @@
 .corridorStatVal {
   display: block;
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 900;
   color: #0B2093;
   margin-bottom: 4px;
@@ -1014,25 +1067,84 @@
   color: #64748B;
 }
 
-.corridorStrategyBox {
-  padding: 18px 20px;
-  border-radius: var(--radius-lg);
-  background: rgba(245, 158, 11, 0.04);
-  border: 1px solid rgba(245, 158, 11, 0.2);
+.corridorInfoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
 }
 
-.strategyBoxTitle {
+.corridorInfoCard {
+  padding: 18px;
+  border-radius: var(--radius-lg);
+  background: #FAFCFE;
+  border: 1px solid var(--border);
+}
+
+.infoCardLabel {
   font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #0B2093;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.pinCodeTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pinTag {
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  background: rgba(11, 32, 147, 0.08);
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: #0B2093;
+}
+
+.hotspotTag {
   font-size: 12px;
+  color: #475569;
+  font-weight: 600;
+}
+
+.queryList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.queryTag {
+  font-size: 12px;
+  font-style: italic;
+  color: #334155;
+}
+
+.corridorClientRow {
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.corridorClientLabel {
+  font-family: var(--font-display);
   font-weight: 800;
   color: #D97706;
-  margin-bottom: 6px;
 }
 
-.strategyBoxDesc {
-  font-size: 13px;
-  color: #334155;
-  line-height: 1.6;
+.corridorClientVal {
+  color: #000000;
+  font-weight: 700;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -1040,13 +1152,12 @@
    ───────────────────────────────────────────────────────────── */
 .diagnosticSection {
   padding: 96px 0;
-  background: #F8FAFC;
-  border-top: 1px solid var(--border-subtle);
+  background: #FFFFFF;
   border-bottom: 1px solid var(--border-subtle);
 }
 
 .diagnosticConsole {
-  max-width: 900px;
+  max-width: 920px;
   margin: 0 auto;
   padding: 44px;
   border-radius: var(--radius-2xl);
@@ -1056,24 +1167,24 @@
 }
 
 .diagStep {
-  margin-bottom: 28px;
+  margin-bottom: 30px;
 }
 
 .diagStepHeader {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .diagStepNum {
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   background: #0B2093;
   color: #FFFFFF;
   font-family: var(--font-display);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   display: flex;
   align-items: center;
@@ -1094,14 +1205,11 @@
   gap: 10px;
 }
 
-.diagBudgetGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-
 .diagOptionBtn {
-  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
   border-radius: var(--radius-md);
   background: #F8FAFC;
   border: 1.5px solid var(--border);
@@ -1111,7 +1219,11 @@
   color: #334155;
   cursor: pointer;
   transition: all var(--transition-fast);
-  text-align: center;
+  text-align: left;
+}
+
+.diagBtnIcon {
+  font-size: 16px;
 }
 
 .diagOptionBtn:hover {
@@ -1126,9 +1238,101 @@
   box-shadow: 0 4px 14px rgba(11, 32, 147, 0.25) !important;
 }
 
+.diagBottleneckGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.diagBottleneckBtn {
+  padding: 14px 18px;
+  border-radius: var(--radius-lg);
+  background: #F8FAFC;
+  border: 1.5px solid var(--border);
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--transition-fast);
+}
+
+.bottleneckLabel {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 800;
+  color: #000000;
+  margin-bottom: 4px;
+}
+
+.bottleneckImpact {
+  font-size: 11px;
+  color: #64748B;
+  line-height: 1.4;
+}
+
+.diagBottleneckBtn:hover {
+  border-color: #0B2093;
+}
+
+.diagBottleneckBtnActive {
+  background: #FFFFFF !important;
+  border-color: #0B2093 !important;
+  box-shadow: 0 4px 16px rgba(11, 32, 147, 0.15) !important;
+}
+
+.diagBottleneckBtnActive .bottleneckLabel {
+  color: #0B2093 !important;
+}
+
+.diagBudgetGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.diagBudgetBtn {
+  padding: 14px;
+  border-radius: var(--radius-lg);
+  background: #F8FAFC;
+  border: 1.5px solid var(--border);
+  cursor: pointer;
+  text-align: center;
+  transition: all var(--transition-fast);
+}
+
+.budgetAmount {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 800;
+  color: #000000;
+  margin-bottom: 2px;
+}
+
+.budgetYield {
+  font-size: 11px;
+  font-weight: 700;
+  color: #059669;
+}
+
+.diagBudgetBtn:hover {
+  border-color: #0B2093;
+}
+
+.diagBudgetBtnActive {
+  background: #0B2093 !important;
+  border-color: #0B2093 !important;
+  box-shadow: 0 4px 14px rgba(11, 32, 147, 0.25) !important;
+}
+
+.diagBudgetBtnActive .budgetAmount {
+  color: #FFFFFF !important;
+}
+
+.diagBudgetBtnActive .budgetYield {
+  color: #FFB800 !important;
+}
+
 .diagOutputPlane {
   margin-top: 36px;
-  padding: 28px;
+  padding: 32px;
   border-radius: var(--radius-xl);
   background: linear-gradient(180deg, #FAFCFE 0%, #F1F5F9 100%);
   border: 1.5px solid var(--border);
@@ -1161,14 +1365,14 @@
 
 .diagOutputHeadline {
   font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 800;
+  font-size: 20px;
+  font-weight: 900;
   color: #000000;
   margin-bottom: 16px;
 }
 
 .diagStackBox {
-  padding: 14px 18px;
+  padding: 16px 20px;
   border-radius: var(--radius-md);
   background: #FFFFFF;
   border: 1px solid var(--border);
@@ -1188,7 +1392,7 @@
 .stackDesc {
   font-size: 13px;
   color: #334155;
-  line-height: 1.5;
+  line-height: 1.55;
   font-weight: 600;
 }
 
@@ -1196,10 +1400,11 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
+  margin-bottom: 16px;
 }
 
 .diagMetricWell {
-  padding: 14px;
+  padding: 16px;
   border-radius: var(--radius-md);
   background: #FFFFFF;
   border: 1px solid var(--border);
@@ -1221,6 +1426,28 @@
   font-weight: 600;
 }
 
+.diagSampleLeadBox {
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.sampleLeadLabel {
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: #059669;
+}
+
+.sampleLeadVal {
+  color: #000000;
+  font-weight: 700;
+}
+
 /* ─────────────────────────────────────────────────────────────
    SECTION 7: EDITORIAL-GRADE FLAGSHIP TRANSFORMATION
    ───────────────────────────────────────────────────────────── */
@@ -1231,7 +1458,7 @@
 
 .editorialSpread {
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
+  grid-template-columns: 1fr 1.15fr;
   gap: 48px;
   align-items: center;
 }
@@ -1281,7 +1508,7 @@
   right: 20px;
   padding: 6px 14px;
   border-radius: var(--radius-full);
-  background: rgba(15, 23, 42, 0.7);
+  background: rgba(15, 23, 42, 0.75);
   backdrop-filter: blur(8px);
   color: #FFFFFF;
   font-family: var(--font-display);
@@ -1350,7 +1577,7 @@
 
 .editorialMetricsStrip {
   display: flex;
-  gap: 20px;
+  gap: 24px;
   padding-top: 20px;
   border-top: 1px solid var(--border-subtle);
 }
@@ -1664,6 +1891,11 @@
     grid-template-columns: 1fr;
     gap: 36px;
   }
+  .dataStripGlassPlate {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
   .workstationConsole {
     grid-template-columns: 1fr;
   }
@@ -1689,6 +1921,12 @@
     border-right: none;
     border-bottom: 1.5px solid var(--border);
   }
+  .corridorMetricsRow {
+    grid-template-columns: 1fr;
+  }
+  .corridorInfoGrid {
+    grid-template-columns: 1fr;
+  }
   .editorialSpread {
     grid-template-columns: 1fr;
   }
@@ -1698,6 +1936,9 @@
   .diagOptionsGrid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .diagBottleneckGrid {
+    grid-template-columns: 1fr;
+  }
   .diagBudgetGrid {
     grid-template-columns: 1fr;
   }
@@ -1706,6 +1947,14 @@
 @media (max-width: 768px) {
   .heroSection {
     padding: 48px 0 36px;
+  }
+  .dataStripGlassPlate {
+    flex-direction: column;
+    padding: 20px;
+  }
+  .stripDivider {
+    width: 80%;
+    height: 1px;
   }
   .cockpitGrid {
     grid-template-columns: 1fr;
@@ -1722,9 +1971,6 @@
   }
   .corridorDetailPane {
     padding: 24px;
-  }
-  .corridorMetricsRow {
-    grid-template-columns: 1fr;
   }
   .diagnosticConsole {
     padding: 24px 16px;
