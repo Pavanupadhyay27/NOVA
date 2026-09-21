@@ -1200,100 +1200,403 @@
   transform: translateY(-1px);
 }
 
+/* Question Header Meta & Actions */
+.questionMetaWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  flex: 1;
+}
+
+.questionCategoryMicroBadge {
+  font-family: var(--font-display);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #0B2093;
+  background: rgba(11, 32, 147, 0.06);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+.answerActionRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 14px;
+  margin-top: 6px;
+  border-top: 1px dashed var(--border);
+  flex-wrap: wrap;
+}
+
+.answerActionBtn {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #0B2093;
+  text-decoration: none;
+  background: linear-gradient(180deg, #FFFFFF 0%, #EEF2FF 100%);
+  border: 1.5px solid rgba(11, 32, 147, 0.2);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 2px 6px rgba(11, 32, 147, 0.08);
+  transition: all 0.2s ease;
+}
+
+.answerActionBtn:hover {
+  background: #0B2093;
+  color: #FFFFFF;
+  border-color: #06114F;
+  transform: translateY(-1px);
+}
+
+.answerVerifiedBadge {
+  font-size: 11px;
+  font-weight: 700;
+  color: #059669;
+}
+
 /* ─────────────────────────────────────────────────────────────
-   SECTION 4: MINIMAL BUT ATTRACTIVE DIRECT QUESTION FORM
+   SECTION 4: DUAL-PANE EXECUTIVE STRATEGIST DISPATCH COCKPIT
    ───────────────────────────────────────────────────────────── */
 .directFormSection {
   padding: 96px 0 100px;
-  background: #FFFFFF;
+  background: radial-gradient(circle at 50% 10%, rgba(11, 32, 147, 0.04) 0%, transparent 60%), #FFFFFF;
   border-bottom: 1px solid var(--border-subtle);
   scroll-margin-top: calc(var(--nav-height, 78px) + 36px);
 }
 
-.formContainer {
-  max-width: 820px;
-  margin: 0 auto;
-  border-radius: var(--radius-2xl);
-  background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFF 70%, #F8FAFC 100%);
-  border: 1.5px solid rgba(11, 32, 147, 0.14);
-  border-top: 2px solid rgba(255, 255, 255, 0.95);
+.dispatchCockpit {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  border-radius: 24px;
+  background: #FFFFFF;
+  border: 1.5px solid rgba(11, 32, 147, 0.16);
+  border-top: 2px solid #FFFFFF;
   box-shadow: 
     inset 0 2px 0 #FFFFFF, 
-    inset 0 -2px 0 rgba(11, 32, 147, 0.04), 
-    0 24px 64px -12px rgba(11, 32, 147, 0.12), 
+    0 24px 64px -12px rgba(11, 32, 147, 0.14), 
     0 4px 16px rgba(0, 0, 0, 0.03);
-  padding: 48px;
+  overflow: hidden;
+  max-width: 1040px;
+  margin: 0 auto;
 }
 
-.formHeader {
-  text-align: center;
-  margin-bottom: 36px;
+/* Left Pane: Strategist Desk */
+.strategistDeskPane {
+  background: linear-gradient(180deg, #09196E 0%, #0B2093 50%, #06104F 100%);
+  padding: 36px 28px;
+  color: #FFFFFF;
   display: flex;
   flex-direction: column;
+  position: relative;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.strategistDeskHeader {
+  margin-bottom: 20px;
+}
+
+.liveStatusPill {
+  display: inline-flex;
   align-items: center;
-}
-
-.formEmblemWrap {
-  margin-bottom: 12px;
-}
-
-.formQuestionEmblem {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #0E29B5 0%, #0B2093 100%);
-  border: 2px solid #FFFFFF;
-  box-shadow: 0 6px 18px rgba(11, 32, 147, 0.35);
-  color: #FFFFFF;
+  gap: 8px;
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #A7F3D0;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+
+.liveDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 8px #10B981;
+  animation: liveDotPulse 2s infinite ease-in-out;
+}
+
+@keyframes liveDotPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.7;
+  }
+}
+
+.strategistProfileCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  margin-bottom: 18px;
+}
+
+.strategistAvatarWrap {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  overflow: visible;
+  flex-shrink: 0;
+}
+
+.strategistAvatarImg {
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #FFFFFF;
+}
+
+.verifiedCheckBadge {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #10B981;
+  color: #FFFFFF;
+  border: 1.5px solid #FFFFFF;
+  font-size: 10px;
   font-weight: 900;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.formTitle {
+.strategistMeta {
+  display: flex;
+  flex-direction: column;
+}
+
+.strategistName {
   font-family: var(--font-display);
-  font-size: clamp(24px, 2.6vw, 32px);
+  font-size: 16px;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.strategistRole {
+  font-size: 11.5px;
+  color: #93C5FD;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.strategistCorridor {
+  font-size: 10.5px;
+  color: #CBD5E1;
+  margin-top: 3px;
+}
+
+.strategistBioQuote {
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: #E2E8F0;
+  font-style: italic;
+  margin: 0 0 22px;
+  border-left: 2px solid #F59E0B;
+  padding-left: 12px;
+}
+
+.strategistPillarsList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.pillarItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.pillarIcon {
+  font-size: 16px;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.pillarText strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.pillarText span {
+  font-size: 11px;
+  color: #93C5FD;
+  line-height: 1.4;
+}
+
+.deskWhatsappCallout {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.deskWhatsappBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(180deg, #10B981 0%, #059669 100%);
+  border: 1px solid #047857;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 4px 14px rgba(5, 150, 105, 0.4);
+  transition: all 0.2s ease;
+}
+
+.deskWhatsappBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 6px 18px rgba(5, 150, 105, 0.5);
+}
+
+.deskAvgTime {
+  font-size: 10.5px;
+  color: #93C5FD;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Right Pane: Form Ingestion */
+.formIntakePane {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFF 100%);
+  padding: 40px 38px 34px;
+  display: flex;
+  flex-direction: column;
+}
+
+.intakeHeader {
+  margin-bottom: 22px;
+}
+
+.intakeTitle {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.4vw, 28px);
   font-weight: 900;
   color: #000000;
-  line-height: 1.25;
-  margin: 0 0 12px;
+  line-height: 1.2;
+  margin: 0 0 8px;
   letter-spacing: -0.02em;
 }
 
-.formSub {
-  font-size: 14.5px;
+.intakeSub {
+  font-size: 13.5px;
   color: #475569;
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.6;
+  line-height: 1.55;
+  margin: 0;
 }
 
-.minimalForm {
+/* Topic Selector Chips */
+.topicSelectorWrap {
+  margin-bottom: 20px;
+}
+
+.topicSelectLabel {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #64748B;
+  margin-bottom: 8px;
+}
+
+.topicChipsGrid {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.topicChip {
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1.5px solid var(--border);
+  border-top: 1.5px solid #FFFFFF;
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #334155;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 1px 3px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.topicChip:hover {
+  border-color: #0B2093;
+  color: #0B2093;
+  transform: translateY(-1px);
+}
+
+.topicChipActive {
+  background: linear-gradient(180deg, #0E29B5 0%, #0B2093 100%) !important;
+  border-color: #0B2093 !important;
+  border-top-color: rgba(255, 255, 255, 0.4) !important;
+  color: #FFFFFF !important;
+  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.35), 0 3px 10px rgba(11, 32, 147, 0.3) !important;
+}
+
+/* Form Fields */
+.cockpitForm {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
-.formGrid {
+.formFieldsGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
+  gap: 14px;
 }
 
-.inputFullWidth {
+.fieldFullWidth {
   grid-column: 1 / -1;
 }
 
-.inputGroup {
+.fieldGroup {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.inputLabel {
+.fieldLabel {
   font-family: var(--font-display);
   font-size: 10px;
   font-weight: 800;
@@ -1302,209 +1605,181 @@
   text-transform: uppercase;
 }
 
-.reqStar {
-  color: #DC2626;
-}
-
-.formInput,
-.formTextarea {
-  width: 100%;
-  border-radius: var(--radius-md);
-  background: #FFFFFF;
-  border: 1.5px solid var(--border);
-  border-top: 1.5px solid #FFFFFF;
-  padding: 12px 14px;
-  font-family: var(--font-body);
-  font-size: 14.5px;
-  color: #000000;
-  outline: none;
-  box-shadow: inset 0 1.5px 3px rgba(0, 0, 0, 0.03), 0 1px 0 #FFFFFF;
-  transition: all var(--transition-fast);
-  box-sizing: border-box;
-}
-
-.formInput:focus,
-.formTextarea:focus {
-  border-color: #0B2093;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04), 0 0 0 3px rgba(11, 32, 147, 0.12);
-}
-
-.phoneInputWrap {
+.fieldInputWrap {
   display: flex;
   align-items: center;
   border-radius: var(--radius-md);
   background: #FFFFFF;
-  border: 1.5px solid var(--border);
+  border: 1.5px solid #CBD5E1;
   border-top: 1.5px solid #FFFFFF;
-  box-shadow: inset 0 1.5px 3px rgba(0, 0, 0, 0.03), 0 1px 0 #FFFFFF;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
   overflow: hidden;
-  transition: all var(--transition-fast);
 }
 
-.phoneInputWrap:focus-within {
+.fieldInputWrap:focus-within {
   border-color: #0B2093;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04), 0 0 0 3px rgba(11, 32, 147, 0.12);
+  box-shadow: inset 0 1.5px 3px rgba(11, 32, 147, 0.06), 0 0 0 3px rgba(11, 32, 147, 0.12);
 }
 
-.countryCode {
-  padding: 0 12px;
+.fieldIcon {
+  padding-left: 12px;
+  font-size: 14px;
+  color: #64748B;
+  user-select: none;
+}
+
+.countryFlagPill {
+  padding: 0 10px;
   font-family: var(--font-display);
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 700;
   color: #334155;
-  background: #F8FAFC;
-  border-right: 1.5px solid var(--border);
+  background: #F1F5F9;
+  border-right: 1.5px solid #CBD5E1;
   height: 100%;
   display: flex;
   align-items: center;
   user-select: none;
 }
 
-.phoneInput {
+.cockpitInput {
   flex: 1;
   border: none;
-  outline: none;
-  padding: 12px 14px;
-  font-family: var(--font-body);
-  font-size: 14.5px;
-  color: #000000;
   background: transparent;
+  outline: none;
+  padding: 10px 12px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: #000000;
 }
 
-.formTextarea {
+.fieldTextareaWrap {
+  border-radius: var(--radius-md);
+  background: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  border-top: 1.5px solid #FFFFFF;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+
+.fieldTextareaWrap:focus-within {
+  border-color: #0B2093;
+  box-shadow: inset 0 1.5px 3px rgba(11, 32, 147, 0.06), 0 0 0 3px rgba(11, 32, 147, 0.12);
+}
+
+.cockpitTextarea {
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 10px 12px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: #000000;
   resize: vertical;
-  min-height: 90px;
+  min-height: 80px;
+  box-sizing: border-box;
 }
 
-.formActionRow {
+/* Submit & Trust */
+.cockpitActionBar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.cockpitSubmitBtn {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin-top: 8px;
-  flex-wrap: wrap;
-}
-
-.formSubmitBtn {
-  display: inline-flex;
-  align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 14px 28px;
+  padding: 14px 24px;
   border-radius: var(--radius-full);
-  background: linear-gradient(180deg, #0E29B5 0%, #0B2093 50%, #081666 100%);
+  background: linear-gradient(180deg, #0E29B5 0%, #0B2093 100%);
   border: 1px solid #06114F;
-  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  border-top: 1px solid rgba(255, 255, 255, 0.45);
   box-shadow: 
     inset 0 1.5px 0 rgba(255, 255, 255, 0.4), 
-    inset 0 -1.5px 0 rgba(0, 0, 0, 0.25), 
     0 4px 16px rgba(11, 32, 147, 0.35);
   color: #FFFFFF;
   font-family: var(--font-display);
   font-size: 13.5px;
   font-weight: 800;
   cursor: pointer;
-  transition: all var(--transition-fast);
-  white-space: nowrap;
+  transition: all 0.2s ease;
 }
 
-.formSubmitBtn:hover:not(:disabled) {
-  background: linear-gradient(180deg, #1235D1 0%, #0E29B5 50%, #0B2093 100%);
+.cockpitSubmitBtn:hover:not(:disabled) {
+  background: linear-gradient(180deg, #1235D1 0%, #0E29B5 100%);
   transform: translateY(-1px);
-  box-shadow: 
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.55), 
-    0 6px 22px rgba(11, 32, 147, 0.45);
+  box-shadow: 0 6px 20px rgba(11, 32, 147, 0.45);
 }
 
-.formSubmitBtn:active:not(:disabled) {
+.cockpitSubmitBtn:active:not(:disabled) {
   transform: translateY(1px);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35), 0 2px 6px rgba(11, 32, 147, 0.25);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.formSubmitBtn:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-.formWhatsappBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 12px 20px;
-  border-radius: var(--radius-full);
-  background: linear-gradient(180deg, #F0FDF4 0%, #DCFCE7 100%);
-  border: 1.5px solid #86EFAC;
-  border-top: 1.5px solid #BBF7D0;
-  box-shadow: inset 0 1px 0 #FFFFFF, 0 2px 6px rgba(16, 185, 129, 0.1);
-  color: #065F46;
-  font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 800;
-  text-decoration: none;
-  transition: all var(--transition-fast);
-}
-
-.formWhatsappBtn:hover {
-  border-color: #059669;
-  transform: translateY(-1px);
-  box-shadow: inset 0 1px 0 #FFFFFF, 0 4px 12px rgba(16, 185, 129, 0.2);
-}
-
-.formTrustBar {
+.trustMiniRow {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  font-size: 11.5px;
+  gap: 10px;
+  font-size: 11px;
   color: #64748B;
   font-weight: 600;
-  margin-top: 12px;
   flex-wrap: wrap;
 }
 
-/* Form Success State */
-.successBox {
-  padding: 36px 24px;
-  border-radius: var(--radius-xl);
+/* Success Ticket Box */
+.cockpitSuccessBox {
+  padding: 32px 24px;
+  border-radius: 20px;
   background: linear-gradient(180deg, #F0FDF4 0%, #DCFCE7 100%);
   border: 1.5px solid #86EFAC;
-  border-top: 1.5px solid #BBF7D0;
-  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 4px 16px rgba(16, 185, 129, 0.1);
-  text-align: center;
+  border-top: 2px solid #BBF7D0;
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 8px 24px rgba(16, 185, 129, 0.12);
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 12px;
 }
 
-.successIcon {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: #059669;
-  color: #FFFFFF;
+.successTicketTop {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  font-weight: 900;
-  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+  justify-content: space-between;
 }
 
-.successTitle {
+.successBadge {
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: 11px;
   font-weight: 900;
-  color: #065F46;
-  margin: 0;
+  color: #059669;
+  letter-spacing: 0.05em;
 }
 
-.successText {
-  font-size: 14.5px;
-  line-height: 1.6;
-  color: #047857;
-  max-width: 520px;
-  margin: 0;
+.ticketId {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  color: #065F46;
+  background: rgba(16, 185, 129, 0.2);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.successMetaStrip {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  font-size: 12px;
+  color: #065F46;
 }
 
 .newQuestionBtn {
@@ -1550,6 +1825,13 @@
   }
   .chapterNodeWrap {
     left: -56px;
+  }
+  .dispatchCockpit {
+    grid-template-columns: 1fr;
+  }
+  .strategistDeskPane {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
 }
 
@@ -1720,39 +2002,54 @@
     flex-direction: column;
     gap: 4px;
   }
-
-  /* Form Mobile Layout */
-  .directFormSection {
-    padding: 64px 0 60px;
-  }
-  .formContainer {
-    padding: 24px 16px;
-    border-radius: 20px;
-  }
-  .formTitle {
-    font-size: 22px;
-  }
-  .formSub {
-    font-size: 13px;
-  }
-  .formGrid {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-  .formInput,
-  .phoneInput,
-  .formTextarea {
-    font-size: 16px; /* Prevents auto-zoom on iOS */
-  }
-  .formActionRow {
+  .answerActionRow {
     flex-direction: column;
-    width: 100%;
-    gap: 10px;
+    align-items: flex-start;
+    gap: 8px;
   }
-  .formSubmitBtn,
-  .formWhatsappBtn {
+  .answerActionBtn {
     width: 100%;
     justify-content: center;
     box-sizing: border-box;
+  }
+
+  /* Dual-Pane Cockpit Mobile Layout */
+  .directFormSection {
+    padding: 64px 0 60px;
+  }
+  .dispatchCockpit {
+    grid-template-columns: 1fr;
+    border-radius: 20px;
+  }
+  .strategistDeskPane {
+    padding: 28px 20px;
+  }
+  .formIntakePane {
+    padding: 28px 20px;
+  }
+  .intakeTitle {
+    font-size: 21px;
+  }
+  .intakeSub {
+    font-size: 13px;
+  }
+  .topicChipsGrid {
+    gap: 6px;
+  }
+  .topicChip {
+    font-size: 11px;
+    padding: 5px 11px;
+  }
+  .formFieldsGrid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .cockpitInput,
+  .cockpitTextarea {
+    font-size: 16px; /* Prevents auto-zoom on iOS */
+  }
+  .cockpitSubmitBtn {
+    width: 100%;
+    justify-content: center;
   }
 }

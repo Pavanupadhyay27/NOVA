@@ -236,6 +236,7 @@ export default function FAQPage() {
   const [openItem, setOpenItem] = useState<string | null>('general-0');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedTopic, setSelectedTopic] = useState<string>('🎯 Google & Meta Ads');
 
   // Direct Inquiry Form State
   const [formState, setFormState] = useState({
@@ -721,7 +722,10 @@ export default function FAQPage() {
                                 <span className={styles.questionPillMedallion}>
                                   <span className={styles.qNumeral}>{questionNum}</span>
                                 </span>
-                                <span className={styles.questionText}>{faq.q}</span>
+                                <div className={styles.questionMetaWrap}>
+                                  <span className={styles.questionCategoryMicroBadge}>{group.badge}</span>
+                                  <span className={styles.questionText}>{faq.q}</span>
+                                </div>
                               </div>
                               <div className={styles.questionIconWrap}>
                                 <span className={styles.questionIcon}>{isOpen ? '−' : '+'}</span>
@@ -749,6 +753,13 @@ export default function FAQPage() {
                                     <span className={styles.takeawayText}>{faq.takeaway}</span>
                                   </div>
                                 )}
+
+                                <div className={styles.answerActionRow}>
+                                  <a href="#ask-question" className={styles.answerActionBtn}>
+                                    <span>Have a question about this? Ask Strategist →</span>
+                                  </a>
+                                  <span className={styles.answerVerifiedBadge}>✓ Verified Odisha SLA</span>
+                                </div>
                               </div>
                             )}
                           </div>
@@ -764,152 +775,249 @@ export default function FAQPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════
-          SECTION 4: MINIMAL BUT ATTRACTIVE DIRECT QUESTION FORM
+          SECTION 4: DUAL-PANE EXECUTIVE STRATEGIST DISPATCH COCKPIT
          ══════════════════════════════════════════════════════════ */}
       <section className={styles.directFormSection} id="ask-question">
         <div className="container">
           <ScrollReveal>
-            <div className={styles.formContainer}>
-              <div className={styles.formHeader}>
-                <div className={styles.formEmblemWrap}>
-                  <span className={styles.formQuestionEmblem}>💬</span>
+            <div className={styles.dispatchCockpit}>
+              {/* Left Pane: Strategist Desk & Trust Deck */}
+              <div className={styles.strategistDeskPane}>
+                <div className={styles.strategistDeskHeader}>
+                  <span className={styles.liveStatusPill}>
+                    <span className={styles.liveDot} />
+                    STRATEGIST ON-DUTY &bull; BHUBANESWAR
+                  </span>
                 </div>
-                <div className="eyebrow" style={{ marginBottom: 8 }}>
-                  <span className="eyebrow-dot" />
-                  DIRECT STRATEGIST INBOX &bull; RAPID 4-HOUR RESPONSE
+
+                {/* Strategist Profile Card */}
+                <div className={styles.strategistProfileCard}>
+                  <div className={styles.strategistAvatarWrap}>
+                    <Image
+                      src="/images/ceo_aarav.jpg"
+                      alt="Aarav Sharma - Principal Revenue Architect"
+                      fill
+                      className={styles.strategistAvatarImg}
+                    />
+                    <span className={styles.verifiedCheckBadge}>✓</span>
+                  </div>
+                  <div className={styles.strategistMeta}>
+                    <h3 className={styles.strategistName}>Aarav Sharma</h3>
+                    <span className={styles.strategistRole}>Principal Revenue Architect</span>
+                    <span className={styles.strategistCorridor}>📍 Patia IT Corridor &bull; Bhubaneswar</span>
+                  </div>
                 </div>
-                <h2 className={styles.formTitle}>
-                  Didn&apos;t Find Your Exact Answer?<br />
-                  <span className="accent-gradient">Ask Our Senior Revenue Engineers Directly.</span>
-                </h2>
-                <p className={styles.formSub}>
-                  Have a specific question about your industry, monthly budget, or competitor in Bhubaneswar? Drop it below. A senior strategist will review your business and reply directly within 4 hours.
+
+                <p className={styles.strategistBioQuote}>
+                  &ldquo;Every business in Odisha has a unique commercial bottleneck. Share your numbers, ad spend, or competitor challenge—I personally audit your setup within 4 hours.&rdquo;
                 </p>
+
+                {/* Tactical Value Grid */}
+                <div className={styles.strategistPillarsList}>
+                  <div className={styles.pillarItem}>
+                    <span className={styles.pillarIcon}>⚡</span>
+                    <div className={styles.pillarText}>
+                      <strong>4-Hour Written SLA</strong>
+                      <span>Direct WhatsApp or confidential diagnostic breakdown</span>
+                    </div>
+                  </div>
+                  <div className={styles.pillarItem}>
+                    <span className={styles.pillarIcon}>🔒</span>
+                    <div className={styles.pillarText}>
+                      <strong>100% Confidential NDA</strong>
+                      <span>Your revenue, ad budgets &amp; lead data stay protected</span>
+                    </div>
+                  </div>
+                  <div className={styles.pillarItem}>
+                    <span className={styles.pillarIcon}>📊</span>
+                    <div className={styles.pillarText}>
+                      <strong>Competitor Tear-Down Included</strong>
+                      <span>We analyze your top 3 Odisha competitors</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Direct WhatsApp Callout */}
+                <div className={styles.deskWhatsappCallout}>
+                  <a
+                    href={`https://wa.me/918763570630?text=${encodeURIComponent(
+                      'Hi Aarav, I have a strategic digital marketing question regarding my business in Bhubaneswar.'
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.deskWhatsappBtn}
+                  >
+                    <span className={styles.whatsappIcon}>💬</span>
+                    <span>Chat Directly with Aarav on WhatsApp ↗</span>
+                  </a>
+                  <span className={styles.deskAvgTime}>Typical WhatsApp response: &lt; 20 mins</span>
+                </div>
               </div>
 
-              {isSubmitted ? (
-                <div className={styles.successBox}>
-                  <div className={styles.successIcon}>✓</div>
-                  <h3 className={styles.successTitle}>Question Received Successfully</h3>
-                  <p className={styles.successText}>
-                    Thank you, <strong>{formState.fullName}</strong>. Our senior revenue strategist has received your inquiry regarding <strong>{formState.businessName || 'your business'}</strong> and is already preparing your breakdown. Expect a direct response on <strong>+91 {formState.phone}</strong> shortly.
+              {/* Right Pane: Interactive Strategy Ingestion Form */}
+              <div className={styles.formIntakePane}>
+                <div className={styles.intakeHeader}>
+                  <div className="eyebrow" style={{ marginBottom: 6 }}>
+                    <span className="eyebrow-dot" />
+                    CONFIDENTIAL STRATEGY DISPATCH &bull; NO PRESSURE
+                  </div>
+                  <h2 className={styles.intakeTitle}>
+                    Ask Our Revenue Engineers Directly.
+                  </h2>
+                  <p className={styles.intakeSub}>
+                    Select your topic and submit your specific bottleneck. A senior strategist will review your business and reply within 4 hours.
                   </p>
-                  <button
-                    type="button"
-                    className={styles.newQuestionBtn}
-                    onClick={() => {
-                      setIsSubmitted(false);
-                      setFormState({ fullName: '', businessName: '', phone: '', question: '' });
-                    }}
-                  >
-                    Ask Another Question →
-                  </button>
                 </div>
-              ) : (
-                <form onSubmit={handleFormSubmit} className={styles.minimalForm}>
-                  <div className={styles.formGrid}>
-                    {/* Full Name */}
-                    <div className={styles.inputGroup}>
-                      <label htmlFor="faq-name" className={styles.inputLabel}>
-                        YOUR FULL NAME <span className={styles.reqStar}>*</span>
-                      </label>
-                      <input
-                        id="faq-name"
-                        type="text"
-                        required
-                        placeholder="e.g. Rajesh Mohapatra"
-                        value={formState.fullName}
-                        onChange={(e) => setFormState({ ...formState, fullName: e.target.value })}
-                        className={styles.formInput}
-                      />
-                    </div>
 
-                    {/* Business Name & Sector */}
-                    <div className={styles.inputGroup}>
-                      <label htmlFor="faq-business" className={styles.inputLabel}>
-                        BUSINESS NAME &amp; INDUSTRY
-                      </label>
-                      <input
-                        id="faq-business"
-                        type="text"
-                        placeholder="e.g. Utkal Dental Clinic (Saheed Nagar)"
-                        value={formState.businessName}
-                        onChange={(e) => setFormState({ ...formState, businessName: e.target.value })}
-                        className={styles.formInput}
-                      />
-                    </div>
+                {/* Topic Selector Chips */}
+                <div className={styles.topicSelectorWrap}>
+                  <label className={styles.topicSelectLabel}>SELECT INQUIRY TOPIC:</label>
+                  <div className={styles.topicChipsGrid}>
+                    {[
+                      '🎯 Google & Meta Ads',
+                      '📍 Local SEO 3-Pack',
+                      '⚡ Next.js Web Speed',
+                      '💰 Retainer & Pricing',
+                      '❓ Custom Challenge',
+                    ].map((topic) => (
+                      <button
+                        key={topic}
+                        type="button"
+                        className={`${styles.topicChip} ${selectedTopic === topic ? styles.topicChipActive : ''}`}
+                        onClick={() => setSelectedTopic(topic)}
+                      >
+                        {topic}
+                      </button>
+                    ))}
+                  </div>
+                </div>
 
-                    {/* Phone / WhatsApp */}
-                    <div className={styles.inputGroup}>
-                      <label htmlFor="faq-phone" className={styles.inputLabel}>
-                        PHONE / WHATSAPP NUMBER <span className={styles.reqStar}>*</span>
-                      </label>
-                      <div className={styles.phoneInputWrap}>
-                        <span className={styles.countryCode}>🇮🇳 +91</span>
-                        <input
-                          id="faq-phone"
-                          type="tel"
-                          required
-                          placeholder="98765 43210"
-                          value={formState.phone}
-                          onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
-                          className={styles.phoneInput}
-                        />
+                {isSubmitted ? (
+                  <div className={styles.cockpitSuccessBox}>
+                    <div className={styles.successTicketTop}>
+                      <span className={styles.successBadge}>✓ INTAKE DISPATCHED TO STRATEGIST</span>
+                      <span className={styles.ticketId}>ID: MC-8492</span>
+                    </div>
+                    <h3 className={styles.successTitle}>Diagnostic Request Received</h3>
+                    <p className={styles.successText}>
+                      Thank you, <strong>{formState.fullName}</strong>. Your inquiry regarding <strong>{formState.businessName || 'your business'}</strong> under <strong>{selectedTopic}</strong> has been routed directly to Aarav Sharma&apos;s desk.
+                    </p>
+                    <div className={styles.successMetaStrip}>
+                      <span>📱 Callback / WhatsApp: <strong>+91 {formState.phone}</strong></span>
+                      <span>⏱ Guaranteed Turnaround: <strong>Within 4 Hours</strong></span>
+                    </div>
+                    <button
+                      type="button"
+                      className={styles.newQuestionBtn}
+                      onClick={() => {
+                        setIsSubmitted(false);
+                        setFormState({ fullName: '', businessName: '', phone: '', question: '' });
+                      }}
+                    >
+                      Submit Another Question →
+                    </button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleFormSubmit} className={styles.cockpitForm}>
+                    <div className={styles.formFieldsGrid}>
+                      {/* Full Name */}
+                      <div className={styles.fieldGroup}>
+                        <label htmlFor="faq-name" className={styles.fieldLabel}>
+                          YOUR FULL NAME <span className={styles.reqStar}>*</span>
+                        </label>
+                        <div className={styles.fieldInputWrap}>
+                          <span className={styles.fieldIcon}>👤</span>
+                          <input
+                            id="faq-name"
+                            type="text"
+                            required
+                            placeholder="e.g. Rajesh Mohapatra"
+                            value={formState.fullName}
+                            onChange={(e) => setFormState({ ...formState, fullName: e.target.value })}
+                            className={styles.cockpitInput}
+                          />
+                        </div>
+                      </div>
+
+                      {/* Business Name */}
+                      <div className={styles.fieldGroup}>
+                        <label htmlFor="faq-business" className={styles.fieldLabel}>
+                          BUSINESS NAME &amp; SECTOR
+                        </label>
+                        <div className={styles.fieldInputWrap}>
+                          <span className={styles.fieldIcon}>🏢</span>
+                          <input
+                            id="faq-business"
+                            type="text"
+                            placeholder="e.g. Utkal Dental Clinic (Saheed Nagar)"
+                            value={formState.businessName}
+                            onChange={(e) => setFormState({ ...formState, businessName: e.target.value })}
+                            className={styles.cockpitInput}
+                          />
+                        </div>
+                      </div>
+
+                      {/* Phone / WhatsApp */}
+                      <div className={`${styles.fieldGroup} ${styles.fieldFullWidth}`}>
+                        <label htmlFor="faq-phone" className={styles.fieldLabel}>
+                          PHONE / WHATSAPP NUMBER <span className={styles.reqStar}>*</span>
+                        </label>
+                        <div className={styles.fieldInputWrap}>
+                          <span className={styles.countryFlagPill}>🇮🇳 +91</span>
+                          <input
+                            id="faq-phone"
+                            type="tel"
+                            required
+                            placeholder="98765 43210"
+                            value={formState.phone}
+                            onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
+                            className={styles.cockpitInput}
+                          />
+                        </div>
+                      </div>
+
+                      {/* Question / Bottleneck */}
+                      <div className={`${styles.fieldGroup} ${styles.fieldFullWidth}`}>
+                        <label htmlFor="faq-question" className={styles.fieldLabel}>
+                          YOUR QUESTION OR AD SPEND BOTTLENECK <span className={styles.reqStar}>*</span>
+                        </label>
+                        <div className={styles.fieldTextareaWrap}>
+                          <textarea
+                            id="faq-question"
+                            required
+                            rows={3}
+                            placeholder={`e.g. We are spending ₹40,000 on ${selectedTopic} in Patia but getting duplicate leads. Can you audit our setup?`}
+                            value={formState.question}
+                            onChange={(e) => setFormState({ ...formState, question: e.target.value })}
+                            className={styles.cockpitTextarea}
+                          />
+                        </div>
                       </div>
                     </div>
 
-                    {/* Question / Challenge */}
-                    <div className={`${styles.inputGroup} ${styles.inputFullWidth}`}>
-                      <label htmlFor="faq-question" className={styles.inputLabel}>
-                        YOUR QUESTION OR GROWTH BOTTLENECK <span className={styles.reqStar}>*</span>
-                      </label>
-                      <textarea
-                        id="faq-question"
-                        required
-                        rows={3}
-                        placeholder="e.g. We are spending ₹40,000 on Google Ads for our clinic in Patia but getting duplicate leads. Can you audit our negative keyword list?"
-                        value={formState.question}
-                        onChange={(e) => setFormState({ ...formState, question: e.target.value })}
-                        className={styles.formTextarea}
-                      />
+                    {/* Action Bar */}
+                    <div className={styles.cockpitActionBar}>
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className={styles.cockpitSubmitBtn}
+                      >
+                        <span className={styles.submitBtnText}>
+                          {isSubmitting ? 'Transmitting to Desk...' : 'Dispatch Question to Strategists →'}
+                        </span>
+                      </button>
+
+                      <div className={styles.trustMiniRow}>
+                        <span>🔒 100% Confidential</span>
+                        <span>&bull;</span>
+                        <span>⚡ 4-Hour Response</span>
+                        <span>&bull;</span>
+                        <span>🚫 Zero Spam or Sales Pressure</span>
+                      </div>
                     </div>
-                  </div>
-
-                  {/* Form Action Row */}
-                  <div className={styles.formActionRow}>
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className={styles.formSubmitBtn}
-                    >
-                      {isSubmitting ? (
-                        <span>Transmitting to Strategists...</span>
-                      ) : (
-                        <span>Dispatch Question to Strategists →</span>
-                      )}
-                    </button>
-
-                    <a
-                      href={`https://wa.me/918763570630?text=${encodeURIComponent(
-                        'Hi Marketing Copilot, I have a strategic digital marketing question about my business in Bhubaneswar.'
-                      )}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.formWhatsappBtn}
-                    >
-                      <span>💬 Prefer WhatsApp? Chat Now ↗</span>
-                    </a>
-                  </div>
-
-                  <div className={styles.formTrustBar}>
-                    <span>🔒 100% Confidential</span>
-                    <span>&bull;</span>
-                    <span>⚡ Direct response in &lt; 4 Hours</span>
-                    <span>&bull;</span>
-                    <span>🚫 Zero Spam or Sales Pressure</span>
-                  </div>
-                </form>
-              )}
+                  </form>
+                )}
+              </div>
             </div>
           </ScrollReveal>
         </div>
