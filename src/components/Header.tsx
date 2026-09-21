@@ -115,7 +115,7 @@ export default function Header() {
           >
             <Link
               href="/services"
-              className={`${styles.navLink} ${pathname.startsWith('/services') ? styles.engravedActive : ''}`}
+              className={`${styles.navLink} ${pathname.startsWith('/services') || pathname.toLowerCase().includes('digital-marketing-company-services') ? styles.engravedActive : ''}`}
             >
               Services
               <svg width="9" height="9" viewBox="0 0 12 12" fill="currentColor" style={{ marginLeft: 4 }}>
@@ -149,7 +149,7 @@ export default function Header() {
           {/* About Us */}
           <Link
             href="/about"
-            className={`${styles.navLink} ${pathname.startsWith('/about') ? styles.engravedActive : ''}`}
+            className={`${styles.navLink} ${pathname.startsWith('/about') || pathname.toLowerCase().includes('about-digital-marketing-company') ? styles.engravedActive : ''}`}
           >
             About Us
           </Link>
@@ -157,7 +157,7 @@ export default function Header() {
           {/* Portfolio */}
           <Link
             href="/portfolio"
-            className={`${styles.navLink} ${pathname.startsWith('/portfolio') ? styles.engravedActive : ''}`}
+            className={`${styles.navLink} ${pathname.startsWith('/portfolio') || pathname.toLowerCase().includes('digital-marketing-portfolio') ? styles.engravedActive : ''}`}
           >
             Portfolio
           </Link>
@@ -165,7 +165,7 @@ export default function Header() {
           {/* Industries */}
           <Link
             href="/industries"
-            className={`${styles.navLink} ${pathname.startsWith('/industries') ? styles.engravedActive : ''}`}
+            className={`${styles.navLink} ${pathname.startsWith('/industries') || pathname.toLowerCase().includes('digital-marketing-services-industries') ? styles.engravedActive : ''}`}
           >
             Industries
           </Link>
@@ -173,7 +173,7 @@ export default function Header() {
           {/* FAQ */}
           <Link
             href="/faq"
-            className={`${styles.navLink} ${pathname === '/faq' ? styles.engravedActive : ''}`}
+            className={`${styles.navLink} ${pathname === '/faq' || pathname.toLowerCase().includes('faq-digital-marketing') ? styles.engravedActive : ''}`}
           >
             FAQ
           </Link>
