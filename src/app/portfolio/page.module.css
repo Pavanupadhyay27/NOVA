@@ -1179,227 +1179,204 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 7: REGIONAL FOOTPRINT — HIGH-TECH TERRITORY BLUEPRINT
+   SECTION 7: REGIONAL FOOTPRINT — EXECUTIVE TERRITORY COMMAND CENTER
    ───────────────────────────────────────────────────────────── */
 .geoSection {
   padding: 104px 0 88px;
   scroll-margin-top: 130px;
 }
 
-.transitBlueprintContainer {
+.territoryConsole {
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 24px;
 }
 
-.routeTrack {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  padding: 0 16px;
-  overflow-x: auto;
+/* Executive Segmented Territory Dock - Fixed 6-Column Grid (Zero Layout Shift) */
+.territoryDock {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
   gap: 12px;
 }
 
-.routeTrack::before {
-  content: '';
-  position: absolute;
-  left: 36px;
-  right: 36px;
-  top: 36px;
-  height: 3px;
-  background: linear-gradient(90deg, #CBD5E1 0%, #0B2093 50%, #CBD5E1 100%);
-  z-index: 1;
-  border-radius: 2px;
-}
-
-.routeStationBtn {
-  position: relative;
-  z-index: 2;
+.territoryDockBtn {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1px solid #CBD5E1;
+  border-top: 3px solid transparent;
+  border-radius: var(--radius-xl);
+  padding: 12px 14px;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 8px 12px;
-  border-radius: var(--radius-xl);
+  gap: 4px;
+  text-align: left;
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 1px 3px rgba(0, 0, 0, 0.04);
   transition: all var(--transition-fast);
 }
 
-.routeStationBtn:hover {
+.territoryDockBtn:hover {
+  transform: translateY(-2px);
+  background: #FFFFFF;
+  border-color: #94A3B8;
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 6px 14px rgba(11, 32, 147, 0.08);
+}
+
+.territoryDockBtnActive {
+  background: #FFFFFF !important;
+  border-top: 3px solid var(--accent-blue) !important;
+  border-color: rgba(11, 32, 147, 0.25) !important;
+  box-shadow: inset 0 2px 0 #FFFFFF, 0 8px 24px -4px rgba(11, 32, 147, 0.16) !important;
   transform: translateY(-2px);
 }
 
-.stationNodeWrap {
+.dockHeader {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 4px;
+  justify-content: space-between;
 }
 
-.stationZoneTag {
+.dockZoneTag {
   font-size: 10px;
   font-weight: 800;
-  letter-spacing: 0.08em;
   color: #64748B;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
-.routeStationBtnActive .stationZoneTag {
+.territoryDockBtnActive .dockZoneTag {
   color: var(--accent-blue);
-  font-weight: 900;
 }
 
-.stationDot {
-  width: 38px;
-  height: 38px;
+.dockDot {
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
-  border: 2px solid #CBD5E1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 800;
-  color: #0F172A;
-  transition: all var(--transition-fast);
-  box-shadow: inset 0 2px 0 #FFFFFF, 0 3px 8px rgba(0, 0, 0, 0.08);
+  background: #CBD5E1;
   position: relative;
 }
 
-.routeStationBtnActive .stationDot {
-  background: linear-gradient(135deg, #0B2093 0%, #0D007F 100%);
-  border-color: #F59E0B;
-  color: #FFFFFF;
-  box-shadow: 0 0 0 4px rgba(11, 32, 147, 0.2), 0 6px 20px rgba(11, 32, 147, 0.4);
-  transform: scale(1.12);
+.territoryDockBtnActive .dockDot {
+  background: #10B981;
 }
 
-.stationLivePulse {
+.dockPulse {
   position: absolute;
-  top: -2px;
-  right: -2px;
-  width: 10px;
-  height: 10px;
+  inset: -3px;
   border-radius: 50%;
-  background: #10B981;
-  border: 2px solid #FFFFFF;
-  box-shadow: 0 0 8px #10B981;
+  background: rgba(16, 185, 129, 0.4);
   animation: pulseGlow 1.5s infinite;
 }
 
-.stationLabel {
+.dockAreaName {
   font-family: var(--font-display);
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 700;
-  color: #475569;
+  color: #0F172A;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.stationSub {
-  font-size: 10.5px;
-  color: #94A3B8;
-  white-space: nowrap;
-}
-
-.routeStationBtnActive .stationLabel {
+.territoryDockBtnActive .dockAreaName {
   color: var(--accent-blue);
-  font-weight: 800;
 }
 
-.routeStationBtnActive .stationSub {
-  color: #64748B;
+.dockVerticalTag {
+  font-size: 10px;
   font-weight: 600;
+  color: #64748B;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* High-Tech Blueprint Pane with Grid Texture (STABLE HEIGHT - ZERO VIBRATION) */
-.blueprintPane {
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 1px, transparent 1px) 0 0 / 22px 22px,
-              linear-gradient(135deg, #0B2093 0%, #0D007F 55%, #060045 100%);
+/* Pristine Skeuomorphic Command Center (LOCKED STABLE HEIGHT - ZERO VIBRATION) */
+.territoryCommandCenter {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFE 100%);
   border-radius: var(--radius-2xl);
-  padding: 44px;
-  color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: inset 0 2.5px 0 #FFFFFF, inset 0 -1.5px 0 rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.04), 0 24px 56px -12px rgba(11, 32, 147, 0.14);
+  padding: 38px 44px;
+  min-height: 480px;
   display: flex;
   flex-direction: column;
-  gap: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.35), 0 24px 60px -12px rgba(11, 32, 147, 0.45);
-  position: relative;
-  overflow: hidden;
-  min-height: 480px;
+  justify-content: space-between;
+  gap: 20px;
 }
 
-.blueprintHeaderRow {
+.commandHeaderRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  padding-bottom: 18px;
+  border-bottom: 1px solid #F1F5F9;
 }
 
-.blueprintCodeArea {
+.commandAreaIdentity {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
 }
 
-.blueprintCodeBadge {
+.zoneMetallicBadge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(11, 32, 147, 0.3) 100%);
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(11, 32, 147, 0.08) 100%);
   border: 1.5px solid #F59E0B;
   padding: 6px 14px;
   border-radius: var(--radius-md);
-  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.4), 0 4px 14px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 2px 8px rgba(245, 158, 11, 0.15);
 }
 
-.blueprintCodeTag {
+.zoneMetallicTag {
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.12em;
-  color: #FFB800;
+  color: #D97706;
   text-transform: uppercase;
 }
 
-.blueprintCodeNum {
+.zoneMetallicNum {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--accent-blue);
+  line-height: 1;
+}
+
+.commandAreaTitle {
   font-family: var(--font-display);
   font-size: 22px;
-  font-weight: 900;
-  color: #FFFFFF;
-  line-height: 1;
-  text-shadow: 0 0 12px rgba(245, 158, 11, 0.6);
-}
-
-.blueprintAreaName {
-  font-family: var(--font-display);
-  font-size: 26px;
   font-weight: 800;
-  color: #FFFFFF;
+  color: #0F172A;
+  line-height: 1.2;
 }
 
-.blueprintCoordsWrap {
+.commandAreaCoords {
+  font-size: 12px;
+  color: #64748B;
+  font-weight: 600;
+  margin-top: 3px;
+}
+
+.commandStatusWrap {
   display: flex;
   align-items: center;
   gap: 12px;
-  flex-wrap: wrap;
 }
 
-.blueprintStatusPill {
+.commandStatusPill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   font-size: 11px;
   font-weight: 700;
-  color: #10B981;
-  background: rgba(16, 185, 129, 0.15);
-  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #059669;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
   padding: 5px 12px;
   border-radius: var(--radius-full);
 }
@@ -1413,106 +1390,135 @@
   animation: pulseGlow 1.5s infinite;
 }
 
-.blueprintCoords {
-  font-family: monospace;
-  font-size: 12px;
-  color: #CBD5E1;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 5px 12px;
-  border-radius: var(--radius-full);
-}
-
-/* 4 Skeuomorphic Metric Wells */
-.blueprintMetricsGrid {
+/* 4 Debossed Skeuomorphic Metric Wells (Clean Numbers & Labels) */
+.commandMetricsGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
+  gap: 16px;
 }
 
-.blueprintMetricItem {
+.commandMetricWell {
+  background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-xl);
+  padding: 18px 20px;
+  box-shadow: inset 0 1.5px 0 #FFFFFF, inset 0 -1px 0 rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.03);
   display: flex;
   flex-direction: column;
   gap: 4px;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.18);
-  padding: 18px 20px;
-  border-radius: var(--radius-xl);
   transition: all var(--transition-fast);
 }
 
-.blueprintMetricItem:hover {
-  background: rgba(255, 255, 255, 0.1);
+.commandMetricWell:hover {
   transform: translateY(-2px);
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 6px 16px rgba(11, 32, 147, 0.08);
+  border-color: rgba(11, 32, 147, 0.2);
 }
 
-.blueprintMetricVal {
+.commandMetricNum {
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 800;
-  color: #FFB800;
-  line-height: 1.1;
+  color: var(--accent-blue);
+  line-height: 1;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
 }
 
-.blueprintMetricLabel {
+.commandMetricLabel {
   font-size: 11px;
-  color: #CBD5E1;
   font-weight: 600;
+  color: #64748B;
   text-transform: uppercase;
   letter-spacing: 0.04em;
+  margin-top: 4px;
 }
 
-/* Corridor Landmark Hubs Strip with stable height */
-.blueprintLandmarksStrip {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--radius-lg);
-  padding: 12px 20px;
+/* Corridor Commercial Landmarks Strip */
+.commandLandmarksRow {
   display: flex;
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
-  min-height: 48px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-lg);
+  padding: 10px 18px;
+  min-height: 46px;
 }
 
-.landmarkPill {
-  font-size: 12px;
-  color: #F1F5F9;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 4px 10px;
-  border-radius: var(--radius-md);
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
+.landmarksHeading {
+  font-size: 11px;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.blueprintFooterRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.blueprintKeywords {
+.landmarkPillsWrap {
   display: flex;
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
 }
 
-.keywordChip {
+.commandLandmarkPill {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #0F172A;
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  padding: 3px 10px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+/* Footer Intelligence Strip & Centered CTA */
+.commandFooterRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #F1F5F9;
+}
+
+.commandKeywordsWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.keywordsLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.commandKeywordChip {
   font-size: 11px;
   font-family: monospace;
-  color: #E2E8F0;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
+  color: var(--accent-blue);
+  background: rgba(11, 32, 147, 0.06);
+  border: 1px solid rgba(11, 32, 147, 0.14);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+}
+
+.commandClientBadge {
+  font-size: 12px;
+  color: #475569;
+  font-weight: 500;
+}
+
+.commandClientBadge strong {
+  color: var(--accent-gold-dark);
+  font-weight: 700;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -2146,7 +2152,10 @@
   .pipelineRoadmap {
     grid-template-columns: repeat(2, 1fr);
   }
-  .blueprintMetricsGrid {
+  .territoryDock {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .commandMetricsGrid {
     grid-template-columns: repeat(2, 1fr);
   }
   .industryBentoGrid {
@@ -2165,10 +2174,14 @@
   .panoramicRibbon {
     grid-template-columns: repeat(2, 1fr);
   }
-  .blueprintPane {
-    padding: 24px;
+  .territoryDock {
+    grid-template-columns: repeat(2, 1fr);
   }
-  .blueprintMetricsGrid {
+  .territoryCommandCenter {
+    padding: 24px;
+    min-height: auto;
+  }
+  .commandMetricsGrid {
     grid-template-columns: 1fr;
   }
   .testimonialGrid {

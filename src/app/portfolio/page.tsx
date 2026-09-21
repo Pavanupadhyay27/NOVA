@@ -651,112 +651,116 @@ export default function PortfolioPage() {
 
           <ScrollReveal>
             <div
-              className={styles.transitBlueprintContainer}
+              className={styles.territoryConsole}
               onMouseEnter={() => setIsGeoPaused(true)}
               onMouseLeave={() => setIsGeoPaused(false)}
             >
-              {/* Interconnected Horizontal Corridor Route with High-Tech Zone Nodes */}
-              <div className={styles.routeTrack}>
+              {/* Executive Segmented Territory Dock - Fixed 6-Column Grid (Zero Layout Shift) */}
+              <div className={styles.territoryDock}>
                 {geoImpactLocations.map((geo, idx) => (
                   <button
-                    key={geo.area}
-                    className={`${styles.routeStationBtn} ${activeGeoIndex === idx ? styles.routeStationBtnActive : ''}`}
+                    key={geo.code}
+                    className={`${styles.territoryDockBtn} ${activeGeoIndex === idx ? styles.territoryDockBtnActive : ''}`}
                     onClick={() => setActiveGeoIndex(idx)}
+                    type="button"
                   >
-                    <div className={styles.stationNodeWrap}>
-                      <span className={styles.stationZoneTag}>ZONE {geo.code}</span>
-                      <div className={styles.stationDot}>
-                        <span>{geo.code}</span>
-                        {activeGeoIndex === idx && <span className={styles.stationLivePulse} />}
+                    <div className={styles.dockHeader}>
+                      <span className={styles.dockZoneTag}>ZONE {geo.code}</span>
+                      <div className={styles.dockDot}>
+                        {activeGeoIndex === idx && <span className={styles.dockPulse} />}
                       </div>
                     </div>
-                    <span className={styles.stationLabel}>{geo.area.split('/')[0].trim()}</span>
-                    <span className={styles.stationSub}>{geo.vertical.split('&')[0].trim()}</span>
+                    <span className={styles.dockAreaName}>{geo.shortArea}</span>
+                    <span className={styles.dockVerticalTag}>{geo.shortVertical}</span>
                   </button>
                 ))}
               </div>
 
-              {/* Panoramic Territory Blueprint Pane - STABLE CONTAINER (NO REMOUNT KEY) */}
-              <div className={styles.blueprintPane}>
-                <div className={styles.blueprintHeaderRow}>
-                  <div className={styles.blueprintCodeArea}>
-                    <div className={styles.blueprintCodeBadge}>
-                      <span className={styles.blueprintCodeTag}>ZONE</span>
-                      <span className={styles.blueprintCodeNum}>{currentGeo.code}</span>
+              {/* Pristine Skeuomorphic Command Center (LOCKED STABLE HEIGHT - ZERO VIBRATION) */}
+              <div className={styles.territoryCommandCenter}>
+                {/* Header Row */}
+                <div className={styles.commandHeaderRow}>
+                  <div className={styles.commandAreaIdentity}>
+                    <div className={styles.zoneMetallicBadge}>
+                      <span className={styles.zoneMetallicTag}>ZONE</span>
+                      <span className={styles.zoneMetallicNum}>{currentGeo.code}</span>
                     </div>
-                    <h3 className={styles.blueprintAreaName}>{currentGeo.area}</h3>
+                    <div>
+                      <h3 className={styles.commandAreaTitle}>{currentGeo.area} Commercial Corridor</h3>
+                      <p className={styles.commandAreaCoords}>{currentGeo.coords} • {currentGeo.vertical}</p>
+                    </div>
                   </div>
-                  <div className={styles.blueprintCoordsWrap}>
-                    <span className={styles.blueprintStatusPill}>
+
+                  <div className={styles.commandStatusWrap}>
+                    <span className={styles.commandStatusPill}>
                       <span className={styles.liveRadarDot} />
-                      <span>LIVE CORRIDOR MONITORED • #1 SERP DOMINATED</span>
+                      <span>SERP #1 DOMINANCE VERIFIED</span>
                     </span>
-                    <span className={styles.blueprintCoords}>{currentGeo.coords}</span>
                   </div>
                 </div>
 
-                {/* 4 Skeuomorphic Metric Wells with SmoothCounter */}
-                <div className={styles.blueprintMetricsGrid}>
-                  <div className={styles.blueprintMetricItem}>
-                    <span className={styles.blueprintMetricVal}>
-                      <SmoothCounter value={currentGeo.searches} />
+                {/* 4 Debossed Skeuomorphic Metric Wells (Clean Numbers & Labels) */}
+                <div className={styles.commandMetricsGrid}>
+                  <div className={styles.commandMetricWell}>
+                    <span className={styles.commandMetricNum}>
+                      <SmoothCounter value={currentGeo.searchesVal} />
                     </span>
-                    <span className={styles.blueprintMetricLabel}>Monthly Local Searches</span>
+                    <span className={styles.commandMetricLabel}>{currentGeo.searchesLabel}</span>
                   </div>
-                  <div className={styles.blueprintMetricItem}>
-                    <span className={styles.blueprintMetricVal}>
-                      <SmoothCounter value={currentGeo.cpl} />
+
+                  <div className={styles.commandMetricWell}>
+                    <span className={styles.commandMetricNum}>
+                      <SmoothCounter value={currentGeo.cplVal} />
                     </span>
-                    <span className={styles.blueprintMetricLabel}>Average Qualified CPL</span>
+                    <span className={styles.commandMetricLabel}>{currentGeo.cplLabel}</span>
                   </div>
-                  <div className={styles.blueprintMetricItem}>
-                    <span className={styles.blueprintMetricVal}>
-                      <SmoothCounter value={currentGeo.leadShare} />
+
+                  <div className={styles.commandMetricWell}>
+                    <span className={styles.commandMetricNum}>
+                      <SmoothCounter value={currentGeo.leadShareVal} />
                     </span>
-                    <span className={styles.blueprintMetricLabel}>SERP Impression Share</span>
+                    <span className={styles.commandMetricLabel}>{currentGeo.leadShareLabel}</span>
                   </div>
-                  <div className={styles.blueprintMetricItem}>
-                    <span className={styles.blueprintMetricVal} style={{ color: '#10B981' }}>
-                      <SmoothCounter value={currentGeo.stat} />
+
+                  <div className={styles.commandMetricWell}>
+                    <span className={styles.commandMetricNum} style={{ color: '#10B981' }}>
+                      <SmoothCounter value={currentGeo.liftVal} />
                     </span>
-                    <span className={styles.blueprintMetricLabel}>Verified Growth Lift</span>
+                    <span className={styles.commandMetricLabel}>{currentGeo.liftLabel}</span>
                   </div>
                 </div>
 
-                {/* Corridor Landmark Hubs Strip with Stable Min-Height */}
-                {currentGeo.landmarks && (
-                  <div className={styles.blueprintLandmarksStrip}>
-                    <span style={{ fontSize: 11, color: '#CBD5E1', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                      Commercial Landmarks:
-                    </span>
+                {/* Corridor Commercial Landmarks Strip */}
+                <div className={styles.commandLandmarksRow}>
+                  <span className={styles.landmarksHeading}>Commercial Hubs:</span>
+                  <div className={styles.landmarkPillsWrap}>
                     {currentGeo.landmarks.map((lm) => (
-                      <span key={lm} className={styles.landmarkPill}>
+                      <span key={lm} className={styles.commandLandmarkPill}>
                         📍 {lm}
                       </span>
                     ))}
                   </div>
-                )}
+                </div>
 
-                <div className={styles.blueprintFooterRow}>
-                  <div className={styles.blueprintKeywords}>
-                    <span style={{ fontSize: 11, color: '#94A3B8', fontWeight: 600, textTransform: 'uppercase' }}>
-                      Top Target Queries:
-                    </span>
+                {/* Footer Intelligence Strip & Centered CTA */}
+                <div className={styles.commandFooterRow}>
+                  <div className={styles.commandKeywordsWrap}>
+                    <span className={styles.keywordsLabel}>Target Queries:</span>
                     {currentGeo.dominantKeywords.map((kw) => (
-                      <span key={kw} className={styles.keywordChip}>
-                        {kw}
+                      <span key={kw} className={styles.commandKeywordChip}>
+                        #{kw}
                       </span>
                     ))}
                   </div>
 
-                  <div style={{ fontSize: 12, color: '#CBD5E1' }}>
-                    Active Client: <strong style={{ color: '#FFB800' }}>{currentGeo.clientSnippet}</strong>
+                  <div className={styles.commandClientBadge}>
+                    Active Client: <strong>{currentGeo.clientSnippet}</strong>
                   </div>
                 </div>
 
                 {/* Centered CTA Button */}
-                <div className={styles.centerCtaWrap} style={{ paddingTop: 8 }}>
-                  <BeamButton href="/contact" label={`Dominate ${currentGeo.area} Market →`} size="md" />
+                <div className={styles.centerCtaWrap} style={{ paddingTop: 6 }}>
+                  <BeamButton href="/contact" label={`Dominate ${currentGeo.shortArea} Market →`} size="md" />
                 </div>
               </div>
             </div>

@@ -251,17 +251,52 @@ export const revenueProcessSteps = [
   },
 ];
 
-export const geoImpactLocations = [
+export interface GeoLocationItem {
+  code: string;
+  area: string;
+  shortArea: string;
+  coords: string;
+  vertical: string;
+  shortVertical: string;
+  stat: string;
+  tag: string;
+  searches: string;
+  searchesVal: string;
+  searchesLabel: string;
+  cpl: string;
+  cplVal: string;
+  cplLabel: string;
+  leadShare: string;
+  leadShareVal: string;
+  leadShareLabel: string;
+  liftVal: string;
+  liftLabel: string;
+  landmarks: string[];
+  clientSnippet: string;
+  dominantKeywords: string[];
+}
+
+export const geoImpactLocations: GeoLocationItem[] = [
   {
     code: '01',
     area: 'Patia / Infocity',
+    shortArea: 'Patia',
     coords: '20.3533° N, 85.8197° E',
     vertical: 'Real Estate & Tech Startups',
+    shortVertical: 'Real Estate & Tech',
     stat: '+320% Leads',
     tag: 'High-Intent Search',
     searches: '48,000+ monthly searches',
+    searchesVal: '48,000+',
+    searchesLabel: 'Monthly Search Queries',
     cpl: '₹140 CPL avg',
+    cplVal: '₹140',
+    cplLabel: 'Average Qualified CPL',
     leadShare: '94% Top-of-Page Share',
+    leadShareVal: '94%',
+    leadShareLabel: 'Top-of-Page SERP Share',
+    liftVal: '+320%',
+    liftLabel: 'Verified Inbound Leads',
     landmarks: ['Infocity IT Hub', 'KIIT Square', 'Silicon Corridor', 'Patia Station Road'],
     clientSnippet: 'Utkal Heights & 3 Tech Brands Active',
     dominantKeywords: ['flats in patia', 'it offices bhubaneswar', 'luxury villas patia'],
@@ -269,13 +304,23 @@ export const geoImpactLocations = [
   {
     code: '02',
     area: 'Saheed Nagar',
+    shortArea: 'Saheed Nagar',
     coords: '20.2917° N, 85.8453° E',
     vertical: 'Healthcare & Specialized Clinics',
+    shortVertical: 'Healthcare & Clinics',
     stat: '#1 Google Pack',
     tag: 'Local Maps SEO',
     searches: '36,000+ medical queries',
+    searchesVal: '36,000+',
+    searchesLabel: 'Medical Queries / mo',
     cpl: '₹190 per appointment',
+    cplVal: '₹190',
+    cplLabel: 'Per Appointment Booking',
     leadShare: '#1 Across 14 Keywords',
+    leadShareVal: '#1 Rank',
+    leadShareLabel: 'Across 14 Specialties',
+    liftVal: '5.0★',
+    liftLabel: 'Google 3-Pack Verified',
     landmarks: ['Janpath Corridor', 'Vani Vihar Rd', 'Bhawani Mall', 'Hospital Row'],
     clientSnippet: 'CareFirst Multi-Speciality Clinic',
     dominantKeywords: ['clinic saheed nagar', 'best doctor bhubaneswar', 'diagnostic centre'],
@@ -283,13 +328,23 @@ export const geoImpactLocations = [
   {
     code: '03',
     area: 'Chandrasekharpur',
+    shortArea: 'CS Pur',
     coords: '20.3241° N, 85.8169° E',
     vertical: 'B2B & Commercial Infrastructure',
+    shortVertical: 'B2B & Infrastructure',
     stat: '+180% RFQ Lift',
     tag: 'Next.js Web & B2B SEO',
     searches: '22,000+ B2B contract queries',
+    searchesVal: '22,000+',
+    searchesLabel: 'B2B Contract Inquiries',
     cpl: '₹420 B2B RFQ lead',
+    cplVal: '₹420',
+    cplLabel: 'Verified B2B RFQ Lead',
     leadShare: 'Top 3 Commercial Results',
+    leadShareVal: 'Top 3',
+    leadShareLabel: 'Commercial SERP Results',
+    liftVal: '+180%',
+    liftLabel: 'Verified RFQ Deal Lift',
     landmarks: ['Damana Square', 'CS Pur Housing', 'Sailashree Vihar', 'Industrial Area'],
     clientSnippet: 'Kalinga Steel & Infrastructure',
     dominantKeywords: ['steel supplier odisha', 'commercial contractor', 'b2b infrastructure'],
@@ -297,13 +352,23 @@ export const geoImpactLocations = [
   {
     code: '04',
     area: 'Khandagiri & Cuttack Rd',
+    shortArea: 'Khandagiri',
     coords: '20.2588° N, 85.7869° E',
     vertical: 'Education, Academies & Colleges',
+    shortVertical: 'Education & Academies',
     stat: '400+ Admissions',
     tag: 'Meta & WhatsApp Ads',
     searches: '54,000+ student searches',
+    searchesVal: '54,000+',
+    searchesLabel: 'Student & Parent Searches',
     cpl: '₹140 per enrolled lead',
+    cplVal: '₹140',
+    cplLabel: 'Per Enrolled Academy Lead',
     leadShare: '88% Parent Reach',
+    leadShareVal: '88%',
+    leadShareLabel: 'Parent Cohort Reach',
+    liftVal: '400+',
+    liftLabel: 'Verified Admissions',
     landmarks: ['Khandagiri Square', 'Baramunda Bus Stand', 'Jagannath Temple Rd', 'Cuttack Highway'],
     clientSnippet: 'Apex National Academy',
     dominantKeywords: ['coaching institute bhubaneswar', 'competitive exam batch', 'jee coaching'],
@@ -311,13 +376,23 @@ export const geoImpactLocations = [
   {
     code: '05',
     area: 'Jaydev Vihar & Nayapalli',
+    shortArea: 'Jaydev Vihar',
     coords: '20.2974° N, 85.8249° E',
     vertical: 'Events, Luxury Decor & Retail',
+    shortVertical: 'Events & Luxury Retail',
     stat: '5X View Velocity',
     tag: 'Social Media & Branding',
     searches: '28,000+ event searches',
+    searchesVal: '28,000+',
+    searchesLabel: 'Luxury Event Searches',
     cpl: '₹250 per booking inquiry',
+    cplVal: '₹250',
+    cplLabel: 'Per Booking Inquiry',
     leadShare: '72% Video Reel Viral Share',
+    leadShareVal: '72%',
+    leadShareLabel: 'Video Reel Viral Reach',
+    liftVal: '5X',
+    liftLabel: 'Inquiry View Velocity',
     landmarks: ['Jaydev Vihar Overbridge', 'IRC Village', 'Pal Heights Area', 'Mayfair Circle'],
     clientSnippet: 'Ekatraa Bespoke Events',
     dominantKeywords: ['wedding decorator bhubaneswar', 'event planner odisha', 'luxury decor'],
@@ -325,13 +400,23 @@ export const geoImpactLocations = [
   {
     code: '06',
     area: 'Puri & Konark Highway',
+    shortArea: 'Puri Circuit',
     coords: '19.8135° N, 85.8312° E',
     vertical: 'Tourism, Resorts & Hospitality',
+    shortVertical: 'Tourism & Resorts',
     stat: '100% Bookings',
     tag: 'Google Travel & Retargeting',
     searches: '65,000+ tourist queries',
+    searchesVal: '65,000+',
+    searchesLabel: 'Tourist Circuit Searches',
     cpl: '₹28 per tour booking lead',
+    cplVal: '₹28',
+    cplLabel: 'Per Tour Booking Lead',
     leadShare: '92% Weekend Occupancy',
+    leadShareVal: '92%',
+    leadShareLabel: 'Weekend Occupancy Share',
+    liftVal: '100%',
+    liftLabel: 'Tour Circuit Bookings',
     landmarks: ['Marine Drive Puri', 'Golden Beach', 'Konark Sun Temple Corridor', 'Pipili Bypass'],
     clientSnippet: 'Weekend Bhraman Tour Planner',
     dominantKeywords: ['puri tour package', 'resort in puri', 'weekend trips from bhubaneswar'],
