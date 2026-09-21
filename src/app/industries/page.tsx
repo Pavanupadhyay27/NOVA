@@ -186,10 +186,22 @@ export default function IndustriesPage() {
   // Engagement Tier State
   const [activeTierId, setActiveTierId] = useState<string>('retainer');
 
-  // Active Industry Item for Workstation
-  const activeIndustry = useMemo(() => {
-    return industryCatalog.find(i => i.id === selectedIndustryId) || industryCatalog[0];
-  }, [selectedIndustryId]);
+  // Category filter for the 12-Sector Bento Grid
+  const [activeSectorGroup, setActiveSectorGroup] = useState<string>('all');
+
+  const sectorGroups = [
+    { id: 'all', label: 'All 12 Sectors' },
+    { id: 'property', label: '🏢 Property & Living' },
+    { id: 'health_edu', label: '🏥 Healthcare & Education' },
+    { id: 'retail_food', label: '🛍️ Retail & Food' },
+    { id: 'b2b_industrial', label: '🏗️ B2B & Industrial' },
+    { id: 'tech_logistics', label: '💻 Tech & Professional' },
+  ];
+
+  const filteredIndustries = useMemo(() => {
+    if (activeSectorGroup === 'all') return industryCatalog;
+    return industryCatalog.filter(i => i.group === activeSectorGroup);
+  }, [activeSectorGroup]);
 
   // Selected Diagnostic Sector Item
   const activeDiagSector = useMemo(() => {
@@ -218,19 +230,25 @@ export default function IndustriesPage() {
   return (
     <div className={styles.page}>
       {/* ══════════════════════════════════════════════════════════
-          SECTION 1: HERO COMMAND CENTER (DUAL PANE)
+          SECTION 1: HERO COMMAND CENTER (FITS SINGLE WINDOW, CENTERED EYEBROW)
          ══════════════════════════════════════════════════════════ */}
       <section className={styles.heroSection}>
         <div className={styles.heroGlowOverlay} />
         <div className="container">
+          {/* Centered Eyebrow */}
+          <div className={styles.heroEyebrowCenter}>
+            <ScrollReveal>
+              <div className="eyebrow eyebrow-center">
+                <span className="eyebrow-dot" />
+                12 SPECIALIZED SECTORS IN BHUBANESWAR & ODISHA
+              </div>
+            </ScrollReveal>
+          </div>
+
           <div className={styles.heroDualPane}>
             {/* Left Pane: Strategic Positioning & Sector Launcher */}
             <div className={styles.heroLeftPane}>
               <ScrollReveal>
-                <div className="eyebrow" style={{ marginBottom: 16 }}>
-                  <span className="eyebrow-dot" />
-                  12 SPECIALIZED SECTORS IN BHUBANESWAR & ODISHA
-                </div>
                 <h1 className={`display-xl ${styles.heroTitle}`}>
                   Bhubaneswar Digital Marketing<br />
                   <span className="accent-gradient">Built for Your Specific Industry.</span>
@@ -241,9 +259,9 @@ export default function IndustriesPage() {
 
                 <div className={styles.heroCtaRow}>
                   <BeamButton
-                    href="#sector-workstation"
-                    label="Explore Sector Workstation ↓"
-                    size="lg"
+                    href="#sector-showcase"
+                    label="Explore Sector Playbooks ↓"
+                    size="md"
                   />
                   <Link href="/contact" className={styles.heroSecondaryBtn}>
                     Claim Sector Growth Blueprint <span>→</span>
@@ -263,8 +281,12 @@ export default function IndustriesPage() {
                           className={`${styles.heroTagBtn} ${isSelected ? styles.heroTagBtnActive : ''}`}
                           onClick={() => {
                             setSelectedIndustryId(ind.id);
-                            const el = document.getElementById('sector-workstation');
-                            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            const el = document.getElementById(`sector-card-${ind.id}`);
+                            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            else {
+                              const s = document.getElementById('sector-showcase');
+                              if (s) s.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
                           }}
                         >
                           <span style={{ marginRight: 4 }}>{sectorIcons[ind.id] || '⚡'}</span>
@@ -293,36 +315,20 @@ export default function IndustriesPage() {
                     <div className={styles.heroCornerTL} />
                     <div className={styles.heroCornerBR} />
 
-                    {/* Floating Frosted Glass KPI Badges */}
+                    {/* Floating Frosted Glass KPI Badges - Non-colliding */}
                     <div className={`${styles.floatingKpiBadge} ${styles.kpiTopLeft}`}>
                       <span className={styles.kpiIcon}>🏢</span>
                       <div className={styles.kpiContent}>
                         <div className={styles.kpiValue}>90+ Inbound Buyers / Mo</div>
-                        <div className={styles.kpiSub}>Real Estate • Patia & Khandagiri</div>
-                      </div>
-                    </div>
-
-                    <div className={`${styles.floatingKpiBadge} ${styles.kpiTopRight}`}>
-                      <span className={styles.kpiIcon}>🏥</span>
-                      <div className={styles.kpiContent}>
-                        <div className={styles.kpiValue}>+190% Patient Calls</div>
-                        <div className={styles.kpiSub}>Healthcare • Saheed Nagar 3-Pack</div>
-                      </div>
-                    </div>
-
-                    <div className={`${styles.floatingKpiBadge} ${styles.kpiBottomLeft}`}>
-                      <span className={styles.kpiIcon}>🎓</span>
-                      <div className={styles.kpiContent}>
-                        <div className={styles.kpiValue}>₹140 Verified CPL</div>
-                        <div className={styles.kpiSub}>Education • 400+ Batch Admissions</div>
+                        <div className={styles.kpiSub}>Real Estate • Patia Corridor</div>
                       </div>
                     </div>
 
                     <div className={`${styles.floatingKpiBadge} ${styles.kpiBottomRight}`}>
-                      <span className={styles.kpiIcon}>🛍️</span>
+                      <span className={styles.kpiIcon}>🏥</span>
                       <div className={styles.kpiContent}>
-                        <div className={styles.kpiValue}>7.1X Attributed ROAS</div>
-                        <div className={styles.kpiSub}>D2C E-commerce • Janpath Corridor</div>
+                        <div className={styles.kpiValue}>+190% Patient Calls</div>
+                        <div className={styles.kpiSub}>Healthcare • Saheed Nagar 3-Pack</div>
                       </div>
                     </div>
 
@@ -374,159 +380,114 @@ export default function IndustriesPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════
-          SECTION 3: THE MASTER-DETAIL SECTOR WORKSTATION (NO CARDS!)
+          SECTION 3: THE 12-SECTOR BENTO SHOWCASE (REPLACES OLD WORKSTATION)
          ══════════════════════════════════════════════════════════ */}
-      <section className={styles.workstationSection} id="sector-workstation">
+      <section className={styles.sectorShowcaseSection} id="sector-showcase">
         <div className="container">
           <ScrollReveal>
             <div className="eyebrow" style={{ margin: '0 auto 16px', textAlign: 'center' }}>
               <span className="eyebrow-dot" />
-              THE INTERACTIVE SECTOR WORKSTATION
+              THE 12 SPECIALIZED SECTOR ARCHITECTURES
             </div>
             <h2 className={`display-md ${styles.sectionHeading}`}>
-              One Unified Cockpit.<br />
-              <span className="accent-gradient">12 Tailored Industry Architectures.</span>
+              Bespoke Industry Acquisition Engines.<br />
+              <span className="accent-gradient">Engineered for Bhubaneswar Commercial Growth.</span>
             </h2>
             <p className={styles.sectionSub}>
-              Select any industry from the left to inspect its custom growth architecture, common sector bottlenecks, proven funnel flow, and audited commercial benchmarks deployed in Bhubaneswar.
+              Generic marketing burns budgets because every industry has distinct customer psychology, sales velocity, and pricing dynamics in Odisha. Explore our audited playbooks below.
             </p>
+
+            {/* Interactive Category Filter Pills */}
+            <div className={styles.sectorFilterRow}>
+              {sectorGroups.map(grp => (
+                <button
+                  key={grp.id}
+                  type="button"
+                  className={`${styles.sectorFilterBtn} ${activeSectorGroup === grp.id ? styles.sectorFilterBtnActive : ''}`}
+                  onClick={() => setActiveSectorGroup(grp.id)}
+                >
+                  {grp.label}
+                </button>
+              ))}
+            </div>
           </ScrollReveal>
 
-          <div className={styles.workstationConsole}>
-            {/* Left Column: Vertical Industry Selector Strip */}
-            <div className={styles.workstationNav}>
-              <div className={styles.workstationNavHeader}>
-                <span>SELECT INDUSTRY VERTICAL</span>
-                <span className={styles.navCountBadge}>12 SECTORS</span>
-              </div>
-              <div className={styles.workstationNavList}>
-                {industryCatalog.map((ind) => {
-                  const isActive = ind.id === selectedIndustryId;
-                  return (
-                    <button
-                      key={ind.id}
-                      type="button"
-                      className={`${styles.workstationNavItem} ${isActive ? styles.workstationNavItemActive : ''}`}
-                      onClick={() => setSelectedIndustryId(ind.id)}
-                    >
-                      <div className={styles.navItemIndicator} style={{ backgroundColor: isActive ? '#FFB800' : 'transparent' }} />
-                      <span className={styles.navItemIcon}>{sectorIcons[ind.id] || '⚡'}</span>
-                      <div className={styles.navItemText}>
-                        <div className={styles.navItemNum}>SECTOR {ind.num}</div>
-                        <div className={styles.navItemTitle}>{ind.title}</div>
-                      </div>
-                      <div className={styles.navItemMetricBadge} style={{ color: isActive ? '#0B2093' : '#64748B' }}>
-                        {ind.metric}
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Right Column: Expansive Sector Cockpit Plane */}
-            <div className={styles.workstationCockpit}>
-              {/* Cockpit Hero Visual Bar */}
-              <div className={styles.cockpitVisualBar}>
-                <Image
-                  src={activeIndustry.image}
-                  alt={activeIndustry.title}
-                  fill
-                  className={styles.cockpitImg}
-                  priority
-                />
-                <div className={styles.cockpitOverlay} />
-                <div className={styles.cockpitBadgeRow}>
-                  <span className={styles.cockpitCategoryPill}>{activeIndustry.category}</span>
-                  <span className={styles.cockpitLiveBadge}>
-                    <span className={styles.pulseDotGreen} />
-                    AUDITED ARCHITECTURE
-                  </span>
-                </div>
-                <div className={styles.cockpitTitleWrap}>
-                  <div className={styles.cockpitIconTitle}>
-                    <span className={styles.cockpitBigIcon}>{sectorIcons[activeIndustry.id] || '⚡'}</span>
-                    <h3 className={styles.cockpitTitle}>{activeIndustry.title}</h3>
+          {/* Sector Bento Grid */}
+          <div className={styles.sectorBentoGrid}>
+            {filteredIndustries.map((ind) => (
+              <div key={ind.id} id={`sector-card-${ind.id}`} className={styles.sectorBentoCard}>
+                {/* Top Badge & Metric Row */}
+                <div className={styles.cardTopRow}>
+                  <div className={styles.cardSectorNumBadge}>
+                    <span className={styles.cardNum}>SECTOR {ind.num}</span>
+                    <span className={styles.cardCategoryTag}>{ind.category}</span>
                   </div>
-                  <p className={styles.cockpitTagline}>{activeIndustry.tagline}</p>
-                </div>
-              </div>
-
-              {/* Cockpit Strategic Analysis: Bottlenecks vs Solutions */}
-              <div className={styles.cockpitGrid}>
-                {/* Bottlenecks Column */}
-                <div className={styles.cockpitColBad}>
-                  <div className={styles.cockpitColHeaderBad}>
-                    ⚠️ COMMON SECTOR BOTTLENECK (The Problem)
+                  <div className={styles.cardMetricPill}>
+                    <span className={styles.cardMetricVal}>{ind.metric}</span>
+                    <span className={styles.cardMetricLabel}>{ind.metricLabel.split(' ')[0]}</span>
                   </div>
-                  <ul className={styles.cockpitList}>
-                    {activeIndustry.playbook.bottlenecks.map((b, idx) => (
-                      <li key={idx} className={styles.cockpitListItem}>
-                        <span className={styles.badCross}>✕</span>
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
 
-                {/* Solutions Column */}
-                <div className={styles.cockpitColGood}>
-                  <div className={styles.cockpitColHeaderGood}>
-                    ⚡ OUR BESPOKE ARCHITECTURE (The Solution)
+                {/* Sector Title & Tagline */}
+                <div className={styles.cardHeader}>
+                  <span className={styles.cardSectorIcon}>{sectorIcons[ind.id] || '⚡'}</span>
+                  <div className={styles.cardTitleWrap}>
+                    <h3 className={styles.cardTitle}>{ind.title}</h3>
+                    <p className={styles.cardTagline}>{ind.tagline}</p>
                   </div>
-                  <ul className={styles.cockpitList}>
-                    {activeIndustry.playbook.solutions.map((s, idx) => (
-                      <li key={idx} className={styles.cockpitListItem}>
-                        <span className={styles.goodCheck}>✓</span>
-                        <span>{s}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              {/* Cockpit 3-Step Customer Acquisition Journey */}
-              <div className={styles.cockpitJourneyBox}>
-                <div className={styles.journeyHeader}>
-                  <span>PROVEN 3-STEP ACQUISITION PIPELINE</span>
-                  <span className={styles.journeyTagline}>Turn cold searches into verified appointments</span>
-                </div>
-                <div className={styles.journeyStepsRow}>
-                  {activeIndustry.playbook.funnelSteps.map((step, idx) => (
-                    <div key={idx} className={styles.journeyStepCard}>
-                      <div className={styles.journeyStepTop}>
-                        <span className={styles.stepNumCircle}>0{idx + 1}</span>
-                        <span className={styles.stepTitle}>{step.title}</span>
-                      </div>
-                      <p className={styles.stepDesc}>{step.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Cockpit Footer: Benchmarks & Direct Action */}
-              <div className={styles.cockpitFooterBar}>
-                <div className={styles.cockpitBenchmarks}>
-                  {activeIndustry.playbook.benchmarks.map((bm, idx) => (
-                    <div key={idx} className={styles.cockpitBenchmarkWell}>
-                      <div className={styles.benchmarkVal}>{bm.val}</div>
-                      <div className={styles.benchmarkLabel}>{bm.label}</div>
-                    </div>
-                  ))}
                 </div>
 
-                <div className={styles.cockpitActionWrap}>
-                  <BeamButton
-                    href="/contact"
-                    label={`Deploy ${activeIndustry.shortTitle} Playbook →`}
-                    size="md"
+                {/* Image Window */}
+                <div className={styles.cardImageFrame}>
+                  <Image
+                    src={ind.image}
+                    alt={ind.title}
+                    fill
+                    className={styles.cardImg}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
-                  <div className={styles.cockpitAnchorText}>
-                    📍 {activeIndustry.playbook.clientAnchor} • {activeIndustry.playbook.clientLocation}
+                  <div className={styles.cardImgOverlay} />
+                  <div className={styles.cardLocationTag}>
+                    📍 {ind.playbook.clientLocation}
+                  </div>
+                  <div className={styles.cardAnchorTag}>
+                    ✓ {ind.playbook.clientAnchor.split('&')[0]}
                   </div>
                 </div>
+
+                {/* Strategic Comparison: Problem vs Solution */}
+                <div className={styles.cardStrategyBox}>
+                  <div className={styles.cardProblemPill}>
+                    <span className={styles.problemTag}>⚠️ BOTTLENECK</span>
+                    <p className={styles.problemText}>{ind.playbook.bottlenecks[0]}</p>
+                  </div>
+                  <div className={styles.cardSolutionPill}>
+                    <span className={styles.solutionTag}>⚡ OUR MOAT</span>
+                    <p className={styles.solutionText}>{ind.playbook.solutions[0]}</p>
+                  </div>
+                </div>
+
+                {/* Channels Micro Badges */}
+                <div className={styles.cardServicesStrip}>
+                  {ind.services.slice(0, 3).map((srv, idx) => (
+                    <span key={idx} className={styles.serviceMicroTag}>
+                      {srv}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Card Footer: Benchmark & Direct Action */}
+                <div className={styles.cardFooter}>
+                  <div className={styles.cardBenchmarkWell}>
+                    <span className={styles.benchVal}>{ind.playbook.benchmarks[0]?.val}</span>
+                    <span className={styles.benchLabel}>{ind.playbook.benchmarks[0]?.label}</span>
+                  </div>
+                  <Link href="/contact" className={styles.cardDeployBtn}>
+                    Deploy Playbook <span>→</span>
+                  </Link>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -567,8 +528,8 @@ export default function IndustriesPage() {
                   {industryCatalog.map((ind) => (
                     <tr key={ind.id} onClick={() => {
                       setSelectedIndustryId(ind.id);
-                      const el = document.getElementById('sector-workstation');
-                      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      const el = document.getElementById(`sector-card-${ind.id}`) || document.getElementById('sector-showcase');
+                      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     }}>
                       <td className={styles.tableSectorCell}>
                         <span className={styles.tableSectorIcon}>{sectorIcons[ind.id] || '⚡'}</span>
