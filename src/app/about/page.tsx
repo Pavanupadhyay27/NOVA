@@ -680,19 +680,21 @@ export default function AboutPage() {
             {/* Left Pane: Narrative, Title, CTAs, Trust Strip */}
             <div className={styles.heroLeftCol}>
               <ScrollReveal direction="up">
-                <div className={styles.eyebrowBadge}>
-                  <span className={styles.eyebrowPulse} />
-                  <span>ABOUT MARKETING COPILOT · BHUBANESWAR</span>
+                <div className={styles.heroEyebrow}>
+                  <span className={styles.heroEyebrowDot} />
+                  <span>ABOUT MARKETING COPILOT &bull; BHUBANESWAR</span>
                 </div>
 
-                <h1 className={styles.heroMainTitle}>
+                <h1 className={`display-hero ${styles.heroTitle}`}>
                   Engineering Compounding Growth for{' '}
-                  <span className="accent-gradient">Odisha’s Ambitious Brands.</span>
+                  <span className={`accent-gradient ${styles.heroAccent}`}>Odisha’s Ambitious Brands.</span>
                 </h1>
 
-                <p className={styles.heroLeadText}>
-                  We founded Marketing Copilot with one mission: to replace sluggish legacy marketing retainers with high-velocity, quantitative growth engineering. We build automated client acquisition systems that turn attention into predictable revenue.
-                </p>
+                <div className={styles.heroSub}>
+                  <p>
+                    We founded Marketing Copilot with one mission: to replace sluggish legacy marketing retainers with high-velocity, quantitative growth engineering. We build automated client acquisition systems that turn attention into predictable revenue.
+                  </p>
+                </div>
 
                 <div className={styles.heroActionsRow}>
                   <BeamButton href="/contact" label="Claim Free Growth Audit" size="lg" />
@@ -724,22 +726,27 @@ export default function AboutPage() {
               </ScrollReveal>
             </div>
 
-            {/* Right Pane: Hero Visual Frame */}
-            <div className={styles.heroRightCol}>
+            {/* Right Pane: Clean Photography Showcase (Exact same as Home Hero) */}
+            <div className={styles.visual}>
               <ScrollReveal delay={120} direction="up">
-                <div className={styles.cockpitConsole}>
-                  <span className={styles.cockpitGlassLip} />
-
-                  {/* Primary Visual Frame */}
-                  <div className={styles.cockpitVisualFrame}>
+                <div className={styles.imageCard}>
+                  <div className={styles.imageViewport}>
                     <Image
                       src="/images/about_hero.jpg"
                       alt="Marketing Copilot Studio & Leadership Hub"
                       fill
                       priority
-                      className={styles.cockpitImg}
-                      sizes="(max-width: 900px) 100vw, 540px"
+                      sizes="(max-width: 900px) 100vw, 680px"
+                      quality={95}
+                      className={styles.slideImage}
                     />
+                    <div className={styles.slideOverlay} />
+
+                    {/* Minimalist Floating Status Badge */}
+                    <div className={styles.floatingBadge}>
+                      <span className={styles.badgePulse} />
+                      <span className={styles.badgeText}>Executive Studio &bull; Bhubaneswar</span>
+                    </div>
                   </div>
                 </div>
               </ScrollReveal>

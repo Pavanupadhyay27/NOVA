@@ -72,23 +72,91 @@
   height: 100%;
 }
 
+.heroEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  width: fit-content;
+  max-width: 100%;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFBEB 100%);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  box-shadow: 
+    inset 0 1.5px 0 #FFFFFF,
+    0 2px 8px rgba(245, 158, 11, 0.1),
+    0 1px 2px rgba(0, 0, 0, 0.03);
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #B45309;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+}
+
+.heroEyebrow:hover {
+  border-color: rgba(245, 158, 11, 0.5);
+  box-shadow: 
+    inset 0 1.5px 0 #FFFFFF,
+    0 4px 14px rgba(245, 158, 11, 0.2);
+  transform: translateY(-1px);
+}
+
+.heroEyebrowDot {
+  width: 6.5px;
+  height: 6.5px;
+  border-radius: 50%;
+  background: #F59E0B;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.9), 0 0 2px #F59E0B;
+  animation: heroPulseDot 2s infinite ease-in-out;
+  flex-shrink: 0;
+}
+
+@keyframes heroPulseDot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.75;
+  }
+}
+
 .heroTitle {
   margin: 0 0 16px;
   text-align: left;
   color: #000000;
   font-weight: 800;
-  line-height: 1.12;
-  letter-spacing: -0.025em;
-  font-size: clamp(34px, 3.8vw, 48px);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  font-size: clamp(38px, 4.3vw, 60px) !important;
+  font-family: var(--font-display);
+}
+
+.heroAccent {
+  background: linear-gradient(135deg, #EA580C 0%, #D97706 45%, #B45309 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  display: inline-block;
 }
 
 .heroSub {
-  color: #334155;
+  color: #475569;
   line-height: 1.62;
   margin: 0 0 24px;
-  max-width: 550px;
+  max-width: 630px;
   text-align: left;
-  font-size: 16px;
+  font-size: clamp(15px, 1.05vw, 16.5px);
+}
+
+.heroSub p {
+  margin: 0;
 }
 
 .heroCtaRow {
@@ -203,83 +271,153 @@
   box-shadow: 0 4px 12px rgba(11, 32, 147, 0.2);
 }
 
-/* Right Pane: Visual Operations Cockpit */
-.heroRightPane {
-  position: relative;
-  width: 100%;
-  height: 100%;
+/* Right Pane: Clean Real Photography Showcase (Exact same as Home Hero) */
+.visual {
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  width: 100%;
+  position: relative;
 }
 
-.heroVisualCockpit {
+.imageCard {
   position: relative;
   width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-radius: var(--radius-2xl);
-  padding: 8px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(241, 245, 249, 0.85));
-  border: 1.5px solid rgba(11, 32, 147, 0.16);
-  box-shadow: 0 24px 60px -12px rgba(11, 32, 147, 0.2), 0 8px 24px -6px rgba(0, 0, 0, 0.06), inset 0 1.5px 0 #FFFFFF;
-  overflow: visible;
+  max-width: 730px;
+  border-radius: 28px;
+  padding: 3px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(226, 232, 240, 0.6) 50%, rgba(14, 165, 233, 0.25) 100%);
+  box-shadow: 
+    inset 0 2px 0 #FFFFFF,
+    inset 0 -1.5px 2px rgba(15, 23, 42, 0.08),
+    0 24px 60px -12px rgba(11, 32, 147, 0.16),
+    0 10px 24px -4px rgba(15, 23, 42, 0.06);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
 }
 
-.heroVisualInner {
+.imageCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    inset 0 2px 0 #FFFFFF,
+    0 32px 75px -12px rgba(11, 32, 147, 0.22),
+    0 14px 32px -4px rgba(15, 23, 42, 0.1);
+}
+
+.imageViewport {
   position: relative;
   width: 100%;
-  height: 100%;
-  min-height: 440px;
-  border-radius: 14px;
+  height: clamp(480px, 64vh, 610px);
+  background: #0B132B;
+  border-radius: 26px;
   overflow: hidden;
-  background: #0B2093;
 }
 
-.heroImg {
-  object-fit: cover;
-  object-position: center top;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.heroVisualCockpit:hover .heroImg {
-  transform: scale(1.02);
-}
-
-.heroImgOverlay {
+.slideItem {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(11, 32, 147, 0.2) 0%, rgba(13, 0, 127, 0.32) 50%, rgba(8, 14, 56, 0.88) 100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease-in-out, transform 8s ease-out;
+  transform: scale(1.04);
+  will-change: opacity, transform;
+}
+
+.slideActive {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.slideImage {
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+.slideOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 23, 42, 0.2) 0%,
+    rgba(15, 23, 42, 0.05) 40%,
+    rgba(11, 19, 43, 0.75) 100%
+  );
   pointer-events: none;
 }
 
-/* HUD Tech Corner Accents */
-.heroCornerTL {
+.floatingBadge {
   position: absolute;
-  top: 14px;
-  left: 14px;
-  width: 24px;
-  height: 24px;
-  border-top: 2.5px solid #FFB800;
-  border-left: 2.5px solid #FFB800;
-  border-top-left-radius: 6px;
-  pointer-events: none;
-  z-index: 3;
+  top: 20px;
+  left: 20px;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
-.heroCornerBR {
+.badgePulse {
+  width: 6.5px;
+  height: 6.5px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 8px #10B981;
+  animation: badgePulseDot 2s infinite ease-in-out;
+}
+
+@keyframes badgePulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.75; }
+}
+
+.badgeText {
+  font-size: 11px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.dotsWrap {
   position: absolute;
-  bottom: 14px;
-  right: 14px;
-  width: 24px;
-  height: 24px;
-  border-bottom: 2.5px solid #FFB800;
-  border-right: 2.5px solid #FFB800;
-  border-bottom-right-radius: 6px;
-  pointer-events: none;
-  z-index: 3;
+  bottom: 20px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 4;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 6px 10px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.dotActive {
+  width: 20px;
+  border-radius: 9999px;
+  background: #FFB800;
 }
 
 /* Floating Frosted Glass KPI Badges - Non-colliding */

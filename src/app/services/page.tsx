@@ -662,19 +662,21 @@ export default function ServicesPage() {
               {/* Left Pane: Headline, Subtitle, CTA & Trust Strip */}
               <div className={styles.heroLeftCol}>
                 <ScrollReveal>
-                  <div className={styles.eyebrowBadge}>
+                  <div className={styles.heroEyebrow}>
                     <span className={styles.heroEyebrowDot} />
-                    <span>INTEGRATED REVENUE ENGINE</span>
+                    <span>INTEGRATED REVENUE ENGINE &bull; BHUBANESWAR GROWTH ARCHITECTURE</span>
                   </div>
 
-                  <h1 className={`display-xl ${styles.heroTitle}`}>
-                    Every Discipline Connected.<br />
-                    <span className="accent-gradient">Compounding Every Rupee.</span>
+                  <h1 className={`display-hero ${styles.heroTitle}`}>
+                    Every Discipline Connected.{' '}
+                    <span className={`accent-gradient ${styles.heroAccent}`}>Compounding Every Rupee.</span>
                   </h1>
 
-                  <p className={styles.heroSub}>
-                    Most agencies sell disconnected tactics. We combine search dominance, sub-second web engineering, commercial videography, and paid media into an automated growth system that multiplies your pipeline.
-                  </p>
+                  <div className={styles.heroSub}>
+                    <p>
+                      Most agencies sell disconnected tactics. We combine search dominance, sub-second web engineering, commercial videography, and paid media into an automated growth system that multiplies your pipeline.
+                    </p>
+                  </div>
 
                   {/* Revolving Glowing Border Beam CTA Buttons */}
                   <div className={styles.heroCtaWrapper}>
@@ -705,13 +707,11 @@ export default function ServicesPage() {
                 </ScrollReveal>
               </div>
 
-              {/* Right Pane: 3D Skeuomorphic Frame with 3-Slide Image Carousel */}
-              <div className={styles.heroRightCol}>
+              {/* Right Pane: Clean Photography Showcase (Exact same as Home Hero) */}
+              <div className={styles.visual}>
                 <ScrollReveal delay={120}>
-                  <div className={styles.heroSliderCard}>
-                    <span className={styles.sliderGlassLip} />
-
-                    <div className={styles.sliderViewport}>
+                  <div className={styles.imageCard}>
+                    <div className={styles.imageViewport}>
                       {heroSlides.map((slide, idx) => (
                         <div
                           key={slide.id}
@@ -722,31 +722,32 @@ export default function ServicesPage() {
                             alt={slide.alt}
                             fill
                             priority={idx === 0}
-                            sizes="(max-width: 768px) 100vw, 640px"
-                            className={styles.slideImg}
+                            sizes="(max-width: 900px) 100vw, 680px"
+                            quality={95}
+                            className={styles.slideImage}
                           />
-                          <div className={styles.slideOverlayGradient} />
-
-                          {/* Single Minimal Skewmorphic Live Status Tag */}
-                          <div className={styles.heroCleanStudioPill}>
-                            <span className={styles.pulseLiveDot} />
-                            <span>Live Studio Feed • Bhubaneswar</span>
-                          </div>
+                          <div className={styles.slideOverlay} />
                         </div>
                       ))}
-                    </div>
 
-                    {/* Slide Navigation Dots */}
-                    <div className={styles.sliderDotsRow}>
-                      {heroSlides.map((_, idx) => (
-                        <button
-                          key={idx}
-                          type="button"
-                          onClick={() => setCurrentHeroSlide(idx)}
-                          className={`${styles.dotIndicator} ${idx === currentHeroSlide ? styles.dotActive : ''}`}
-                          aria-label={`Go to slide ${idx + 1}`}
-                        />
-                      ))}
+                      {/* Minimalist Floating Status Badge */}
+                      <div className={styles.floatingBadge}>
+                        <span className={styles.badgePulse} />
+                        <span className={styles.badgeText}>Live Studio Feed • Bhubaneswar</span>
+                      </div>
+
+                      {/* Minimalist Tactile Dot Indicators */}
+                      <div className={styles.dotsWrap}>
+                        {heroSlides.map((_, idx) => (
+                          <button
+                            key={idx}
+                            type="button"
+                            className={`${styles.dot} ${idx === currentHeroSlide ? styles.dotActive : ''}`}
+                            onClick={() => setCurrentHeroSlide(idx)}
+                            aria-label={`Switch to slide ${idx + 1}`}
+                          />
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </ScrollReveal>

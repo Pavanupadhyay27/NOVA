@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import BeamButton from '@/components/BeamButton';
@@ -12,6 +12,27 @@ import {
   IndustryItem,
 } from './data';
 import styles from './page.module.css';
+
+const heroSlides = [
+  {
+    id: 'slide-1',
+    src: '/images/Slide 1.jpg',
+    alt: 'Marketing Copilot digital marketing company strategy and campaigns in Bhubaneswar',
+    caption: 'Strategic Growth & Execution',
+  },
+  {
+    id: 'slide-2',
+    src: '/images/slide 3.webp',
+    alt: 'Marketing Copilot marketing performance data and digital solutions',
+    caption: 'Performance & 10x ROI',
+  },
+  {
+    id: 'slide-3',
+    src: '/images/Slide 2.jpg',
+    alt: 'Creative marketing professionals planning growth strategies and digital solutions',
+    caption: 'Creative & Performance Marketing',
+  },
+];
 
 // Industry Icons Map
 const sectorIcons: Record<string, string> = {
@@ -307,6 +328,20 @@ function formatInr(val: number): string {
 }
 
 export default function IndustriesPage() {
+  // Hero slide carousel state (matching Home hero)
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slideTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    slideTimerRef.current = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 3500);
+
+    return () => {
+      if (slideTimerRef.current) clearInterval(slideTimerRef.current);
+    };
+  }, []);
+
   // Master-Detail Sector Workstation State
   const [selectedIndustryId, setSelectedIndustryId] = useState<string>('real-estate');
 
@@ -393,23 +428,25 @@ export default function IndustriesPage() {
             {/* Left Pane: Strategic Positioning & Sector Launcher */}
             <div className={styles.heroLeftPane}>
               <ScrollReveal>
-                <div className="eyebrow" style={{ marginBottom: 12 }}>
-                  <span className="eyebrow-dot" />
-                  SPECIALIZED INDUSTRY ARCHITECTURES &bull; BHUBANESWAR &amp; ODISHA
+                <div className={styles.heroEyebrow}>
+                  <span className={styles.heroEyebrowDot} />
+                  <span>SPECIALIZED INDUSTRY ARCHITECTURES &bull; BHUBANESWAR &amp; ODISHA</span>
                 </div>
-                <h1 className={`display-xl ${styles.heroTitle}`}>
-                  Bhubaneswar Digital Marketing<br />
-                  <span className="accent-gradient">Built for Your Specific Industry.</span>
+                <h1 className={`display-hero ${styles.heroTitle}`}>
+                  Bhubaneswar Digital Marketing{' '}
+                  <span className={`accent-gradient ${styles.heroAccent}`}>Built for Your Specific Industry.</span>
                 </h1>
-                <p className={`body-lg ${styles.heroSub}`}>
-                  Generic marketing fails because every industry has unique customer psychology, sales cycles, and pricing dynamics. We build bespoke acquisition engines tailored specifically to your sector in Bhubaneswar.
-                </p>
+                <div className={styles.heroSub}>
+                  <p>
+                    Generic marketing fails because every industry has unique customer psychology, sales cycles, and pricing dynamics. We build bespoke acquisition engines tailored specifically to your sector in Bhubaneswar.
+                  </p>
+                </div>
 
                 <div className={styles.heroCtaRow}>
                   <BeamButton
                     href="#sector-showcase"
                     label="Explore Sector Playbooks ↓"
-                    size="md"
+                    size="lg"
                   />
                   <Link href="/contact" className={styles.heroSecondaryBtn}>
                     Claim Sector Growth Blueprint <span>→</span>
@@ -450,21 +487,47 @@ export default function IndustriesPage() {
               </ScrollReveal>
             </div>
 
-            {/* Right Pane: Clean Visual Operations Cockpit (No numbers/overlapping badges) */}
-            <div className={styles.heroRightPane}>
+            {/* Right Pane: Clean Real Photography Showcase (Exact same as Home Hero) */}
+            <div className={styles.visual}>
               <ScrollReveal delay={120}>
-                <div className={styles.heroVisualCockpit}>
-                  <div className={styles.heroVisualInner}>
-                    <Image
-                      src="/images/dashboard_hero.jpg"
-                      alt="Marketing Copilot Sector Operations Command Center"
-                      fill
-                      priority
-                      className={styles.heroImg}
-                    />
-                    <div className={styles.heroImgOverlay} />
-                    <div className={styles.heroCornerTL} />
-                    <div className={styles.heroCornerBR} />
+                <div className={styles.imageCard}>
+                  <div className={styles.imageViewport}>
+                    {heroSlides.map((slide, idx) => (
+                      <div
+                        key={slide.id}
+                        className={`${styles.slideItem} ${idx === currentSlide ? styles.slideActive : ''}`}
+                      >
+                        <Image
+                          src={slide.src}
+                          alt={slide.alt}
+                          fill
+                          priority={idx === 0}
+                          sizes="(max-width: 900px) 100vw, 680px"
+                          quality={95}
+                          className={styles.slideImage}
+                        />
+                        <div className={styles.slideOverlay} />
+                      </div>
+                    ))}
+
+                    {/* Minimalist Floating Status Badge */}
+                    <div className={styles.floatingBadge}>
+                      <span className={styles.badgePulse} />
+                      <span className={styles.badgeText}>12 Specialized Sectors</span>
+                    </div>
+
+                    {/* Minimalist Tactile Dot Indicators */}
+                    <div className={styles.dotsWrap}>
+                      {heroSlides.map((_, idx) => (
+                        <button
+                          key={idx}
+                          type="button"
+                          className={`${styles.dot} ${idx === currentSlide ? styles.dotActive : ''}`}
+                          onClick={() => setCurrentSlide(idx)}
+                          aria-label={`Switch to slide ${idx + 1}`}
+                        />
+                      ))}
+                    </div>
                   </div>
                 </div>
               </ScrollReveal>

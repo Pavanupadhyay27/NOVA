@@ -1,12 +1,33 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import BeamButton from '@/components/BeamButton';
 import ScrollReveal from '@/components/ScrollReveal';
 import CTASection from '../_components/CTASection';
 import styles from './page.module.css';
+
+const heroSlides = [
+  {
+    id: 'slide-1',
+    src: '/images/Slide 1.jpg',
+    alt: 'Marketing Copilot digital marketing company strategy and campaigns in Bhubaneswar',
+    caption: 'Strategic Growth & Execution',
+  },
+  {
+    id: 'slide-2',
+    src: '/images/slide 3.webp',
+    alt: 'Marketing Copilot marketing performance data and digital solutions',
+    caption: 'Performance & 10x ROI',
+  },
+  {
+    id: 'slide-3',
+    src: '/images/Slide 2.jpg',
+    alt: 'Creative marketing professionals planning growth strategies and digital solutions',
+    caption: 'Creative & Performance Marketing',
+  },
+];
 
 interface FAQItem {
   q: string;
@@ -247,6 +268,19 @@ export default function FAQPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slideTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Smooth auto-slide interval (3.5 seconds per slide for faster transition)
+  useEffect(() => {
+    slideTimerRef.current = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 3500);
+
+    return () => {
+      if (slideTimerRef.current) clearInterval(slideTimerRef.current);
+    };
+  }, []);
 
   const toggle = (key: string) => {
     setOpenItem((prev) => (prev === key ? null : key));
@@ -309,7 +343,7 @@ export default function FAQPage() {
   return (
     <div className={styles.page}>
       {/* ══════════════════════════════════════════════════════════
-          SECTION 1: HERO COMMAND CENTER WITH SKEUOMORPHIC (?) MEDALLION
+          SECTION 1: HERO COMMAND CENTER (EXACT SAME AS HOME HERO)
          ══════════════════════════════════════════════════════════ */}
       <section className={styles.heroSection}>
         <div className={styles.heroGlow} />
@@ -319,17 +353,19 @@ export default function FAQPage() {
             {/* Left Content Column */}
             <div className={styles.heroLeftCol}>
               <ScrollReveal>
-                <div className="eyebrow" style={{ marginBottom: 12 }}>
-                  <span className="eyebrow-dot" />
-                  FREQUENTLY ASKED QUESTIONS &bull; ODISHA GROWTH INTELLIGENCE
+                <div className={styles.heroEyebrow}>
+                  <span className={styles.heroEyebrowDot} />
+                  <span>FREQUENTLY ASKED QUESTIONS &bull; ODISHA GROWTH INTELLIGENCE</span>
                 </div>
-                <h1 className={`display-xl ${styles.heroTitle}`}>
-                  Everything You Need to Know About<br />
-                  <span className="accent-gradient">Scaling in Bhubaneswar.</span>
+                <h1 className={`display-hero ${styles.heroTitle}`}>
+                  Everything You Need to Know About{' '}
+                  <span className={`accent-gradient ${styles.heroAccent}`}>Scaling in Bhubaneswar.</span>
                 </h1>
-                <p className={`body-lg ${styles.heroSub}`}>
-                  Clear, transparent answers to commercial, technical, and strategic questions about digital marketing, Google &amp; Meta Ads, Local SEO, and Next.js web infrastructure in Odisha.
-                </p>
+                <div className={styles.heroSub}>
+                  <p>
+                    Clear, transparent answers to commercial, technical, and strategic questions about digital marketing, Google &amp; Meta Ads, Local SEO, and Next.js web infrastructure in Odisha.
+                  </p>
+                </div>
 
                 {/* Minimal Interactive Search Console */}
                 <div className={styles.searchConsoleWrap}>
@@ -423,46 +459,48 @@ export default function FAQPage() {
               </ScrollReveal>
             </div>
 
-            {/* Right Skeuomorphic Visual Anchor */}
-            <div className={styles.heroRightCol}>
+            {/* Right Pane: Clean Real Photography Showcase (Exact same as Home Hero) */}
+            <div className={styles.visual}>
               <ScrollReveal delay={120}>
-                <div className={styles.heroVisualMedallionFrame}>
-                  {/* Floating Skeuomorphic Emblem */}
-                  <div className={styles.floatingQuestionEmblem}>
-                    <div className={styles.emblemOuterRing}>
-                      <div className={styles.emblemInnerPlate}>
-                        <span className={styles.emblemQuestionGlyph}>✦</span>
+                <div className={styles.imageCard}>
+                  <div className={styles.imageViewport}>
+                    {heroSlides.map((slide, idx) => (
+                      <div
+                        key={slide.id}
+                        className={`${styles.slideItem} ${idx === currentSlide ? styles.slideActive : ''}`}
+                      >
+                        <Image
+                          src={slide.src}
+                          alt={slide.alt}
+                          fill
+                          priority={idx === 0}
+                          sizes="(max-width: 900px) 100vw, 680px"
+                          quality={95}
+                          className={styles.slideImage}
+                        />
+                        <div className={styles.slideOverlay} />
                       </div>
-                    </div>
-                    <div className={styles.emblemLivePulse} />
-                  </div>
+                    ))}
 
-                  {/* Curated Strategic Collage Backdrop */}
-                  <div className={styles.heroCollageBackdrop}>
-                    <div className={styles.collageLayerMain}>
-                      <Image
-                        src="/images/dashboard_hero.jpg"
-                        alt="Marketing Copilot Analytics Terminal"
-                        fill
-                        priority
-                        className={styles.collageImgCover}
-                      />
-                      <div className={styles.collageImgOverlay} />
+                    {/* Minimalist Floating Status Badge */}
+                    <div className={styles.floatingBadge}>
+                      <span className={styles.badgePulse} />
+                      <span className={styles.badgeText}>Verified Growth Intelligence</span>
                     </div>
-                    <div className={styles.collageLayerFloating}>
-                      <Image
-                        src="/images/team_office.jpg"
-                        alt="Bhubaneswar Marketing Team Strategy Session"
-                        fill
-                        className={styles.collageImgCover}
-                      />
-                      <div className={styles.collageImgOverlaySubtle} />
-                      <div className={styles.floatingTagPill}>
-                        📍 DLF Cybercity &bull; Bhubaneswar
-                      </div>
+
+                    {/* Minimalist Tactile Dot Indicators */}
+                    <div className={styles.dotsWrap}>
+                      {heroSlides.map((_, idx) => (
+                        <button
+                          key={idx}
+                          type="button"
+                          className={`${styles.dot} ${idx === currentSlide ? styles.dotActive : ''}`}
+                          onClick={() => setCurrentSlide(idx)}
+                          aria-label={`Switch to slide ${idx + 1}`}
+                        />
+                      ))}
                     </div>
                   </div>
-
                 </div>
               </ScrollReveal>
             </div>
