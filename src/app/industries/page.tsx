@@ -1175,7 +1175,7 @@ export default function IndustriesPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════
-          SECTION 8: SEGMENTED PARTNERSHIP TIER TERMINAL (NO 3-CARD FATIGUE)
+          SECTION 8: SEGMENTED PARTNERSHIP TIER TERMINAL (MINIMAL & ATTRACTIVE)
          ══════════════════════════════════════════════════════════ */}
       <section className={styles.tierTerminalSection} id="sector-tiers">
         <div className="container">
@@ -1183,53 +1183,33 @@ export default function IndustriesPage() {
             <div className={styles.sectionEyebrowCenter}>
               <div className="eyebrow eyebrow-center">
                 <span className="eyebrow-dot" />
-                PARTNERSHIP ARCHITECTURE &bull; COMMERCIAL ENGAGEMENT MODELS
+                PARTNERSHIP ARCHITECTURE
               </div>
             </div>
             <h2 className={`display-md ${styles.sectionHeading}`}>
-              Commercial Partnership Architectures<br />
-              <span className="accent-gradient">Calibrated for Guaranteed ROI in Odisha.</span>
+              Outcome-Oriented Engagement Models<br />
+              <span className="accent-gradient">Transparent. Measurable. Guaranteed.</span>
             </h2>
             <p className={styles.sectionSub}>
-              Choose the exact engagement model calibrated to your business scale and commercial ambitions. Every tier includes guaranteed CPL ceilings, audited attribution, and dedicated revenue pods in Bhubaneswar.
+              Select an engagement model below to inspect its deliverables, turnaround timelines, and commercial SLA commitments in Bhubaneswar.
             </p>
-
-            {/* Executive Trust Badges in Section Header */}
-            <div className={styles.tierHeaderTrustStrip}>
-              <span className={styles.tierTrustPill}>
-                <span className={styles.tierTrustDot} />
-                🔒 Written CPL Ceiling Guarantee
-              </span>
-              <span className={styles.tierTrustPill}>
-                <span className={styles.tierTrustDot} />
-                ⚡ Live in 72 Hours
-              </span>
-              <span className={styles.tierTrustPill}>
-                <span className={styles.tierTrustDot} />
-                📊 Weekly Audited Attribution
-              </span>
-              <span className={styles.tierTrustPill}>
-                <span className={styles.tierTrustDot} />
-                🚫 Zero Long-Term Lock-in
-              </span>
-            </div>
           </ScrollReveal>
 
           <ScrollReveal delay={80}>
             <div className={styles.tierConsole}>
-              {/* Segmented Top Tab Bar */}
-              <div className={styles.tierTabBar}>
+              {/* Minimal Tactile Segmented Bar */}
+              <div className={styles.tierSegmentedBar}>
                 {engagementTiers.map(t => {
                   const isActive = t.id === activeTierId;
                   return (
                     <button
                       key={t.id}
                       type="button"
-                      className={`${styles.tierTabBtn} ${isActive ? styles.tierTabBtnActive : ''}`}
+                      className={`${styles.tierSegmentBtn} ${isActive ? styles.tierSegmentBtnActive : ''}`}
                       onClick={() => setActiveTierId(t.id)}
                     >
-                      <span className={styles.tierTabBadge}>{t.badge}</span>
-                      <span className={styles.tierTabName}>{t.name}</span>
+                      <span className={styles.segmentBadge}>{t.badge}</span>
+                      <span className={styles.segmentTitle}>{t.name}</span>
                     </button>
                   );
                 })}
@@ -1237,19 +1217,35 @@ export default function IndustriesPage() {
 
               {/* Tier Comprehensive Detail Plane */}
               <div className={styles.tierDetailPlane}>
-                <div className={styles.tierDetailHeader}>
-                  <div>
+                {/* Elevated Minimal Card Header */}
+                <div className={styles.tierCardHeader}>
+                  <div className={styles.tierHeaderMeta}>
+                    <div className={styles.tierHeaderBadgeRow}>
+                      <span className={styles.tierHeaderBadge}>
+                        <span className={styles.tierBadgeDot} />
+                        {activeTier.badge}
+                      </span>
+                      {activeTier.id === 'retainer' && (
+                        <span className={styles.tierPopularBadge}>⭐ MOST POPULAR</span>
+                      )}
+                    </div>
                     <h3 className={styles.tierDetailTitle}>{activeTier.name}</h3>
                     <p className={styles.tierDetailTagline}>{activeTier.tagline}</p>
                   </div>
-                  <div className={styles.tierPriceBox}>
-                    <span className={styles.tierPriceVal}>{activeTier.price}</span>
-                    <span className={styles.tierPricePeriod}>{activeTier.period}</span>
+
+                  <div className={styles.tierPriceDisplay}>
+                    <div className={styles.priceRow}>
+                      <span className={styles.tierPriceVal}>{activeTier.price}</span>
+                      {activeTier.period && <span className={styles.tierPricePeriod}>{activeTier.period}</span>}
+                    </div>
+                    <span className={styles.priceGuaranteePill}>
+                      🔒 {activeTier.guarantee}
+                    </span>
                   </div>
                 </div>
 
                 <div className={styles.tierBodyGrid}>
-                  {/* Deliverables Column */}
+                  {/* Left Column: Deliverables */}
                   <div className={styles.tierDeliverablesCol}>
                     <div className={styles.tierColTitle}>INCLUDED REVENUE DELIVERABLES:</div>
                     <ul className={styles.tierCheckList}>
@@ -1262,27 +1258,32 @@ export default function IndustriesPage() {
                     </ul>
                   </div>
 
-                  {/* Commitments & Target Fit Column */}
+                  {/* Right Column: SLA Specs & Action */}
                   <div className={styles.tierCommitmentsCol}>
-                    <div className={styles.tierCommitmentBox}>
-                      <div className={styles.commitmentLabel}>DEPLOYMENT TIMELINE:</div>
-                      <div className={styles.commitmentVal}>⚡ {activeTier.timeline}</div>
-                    </div>
-                    <div className={styles.tierCommitmentBox}>
-                      <div className={styles.commitmentLabel}>COMMERCIAL GUARANTEE:</div>
-                      <div className={styles.commitmentVal}>🔒 {activeTier.guarantee}</div>
-                    </div>
-                    <div className={styles.tierCommitmentBox}>
-                      <div className={styles.commitmentLabel}>RECOMMENDED SECTOR FIT:</div>
-                      <div className={styles.commitmentVal}>{activeTier.targetSectors}</div>
+                    <div className={styles.tierSpecsBox}>
+                      <div className={styles.tierSpecRow}>
+                        <span className={styles.specLabel}>DEPLOYMENT TIMELINE</span>
+                        <span className={styles.specVal}>⚡ {activeTier.timeline}</span>
+                      </div>
+                      <div className={styles.tierSpecRow}>
+                        <span className={styles.specLabel}>COMMERCIAL GUARANTEE</span>
+                        <span className={styles.specVal}>🔒 {activeTier.guarantee}</span>
+                      </div>
+                      <div className={styles.tierSpecRow}>
+                        <span className={styles.specLabel}>RECOMMENDED SECTOR FIT</span>
+                        <span className={styles.specVal}>{activeTier.targetSectors}</span>
+                      </div>
                     </div>
 
-                    <div style={{ marginTop: 24 }}>
+                    <div className={styles.tierActionWrap}>
                       <BeamButton
                         href="/contact"
-                        label={`Initiate ${activeTier.name} →`}
+                        label={activeTier.id === 'enterprise' ? 'Request Bespoke Proposal →' : `Deploy ${activeTier.name} →`}
                         size="lg"
                       />
+                      <span className={styles.tierAssuranceText}>
+                        ⚡ Rapid 72h Onboarding &bull; Strict NDA Protected
+                      </span>
                     </div>
                   </div>
                 </div>

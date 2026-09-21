@@ -2091,55 +2091,14 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 8: SEGMENTED PARTNERSHIP TIER TERMINAL
+   SECTION 8: SEGMENTED PARTNERSHIP TIER TERMINAL (MINIMAL & ATTRACTIVE)
    ───────────────────────────────────────────────────────────── */
 .tierTerminalSection {
-  padding: 110px 0 96px;
+  padding: 100px 0 96px;
   background: #F8FAFC;
   border-top: 1px solid var(--border-subtle);
   border-bottom: 1px solid var(--border-subtle);
   scroll-margin-top: calc(var(--nav-height, 78px) + 36px);
-}
-
-/* Executive Trust Badges in Section Header */
-.tierHeaderTrustStrip {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 20px;
-  margin-bottom: 36px;
-}
-
-.tierTrustPill {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 7px 16px;
-  border-radius: var(--radius-full);
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
-  border: 1.5px solid rgba(11, 32, 147, 0.12);
-  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 2px 8px rgba(0, 0, 0, 0.04);
-  font-family: var(--font-display);
-  font-size: 12px;
-  font-weight: 700;
-  color: #0B2093;
-  transition: all var(--transition-fast);
-}
-
-.tierTrustPill:hover {
-  transform: translateY(-1px);
-  border-color: #0B2093;
-  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 4px 12px rgba(11, 32, 147, 0.12);
-}
-
-.tierTrustDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #10B981;
-  box-shadow: 0 0 6px #10B981;
 }
 
 .tierConsole {
@@ -2147,109 +2106,188 @@
   margin: 0 auto;
   border-radius: var(--radius-2xl);
   background: #FFFFFF;
-  border: 1.5px solid rgba(11, 32, 147, 0.15);
-  box-shadow: inset 0 2px 0 #FFFFFF, 0 28px 72px -12px rgba(11, 32, 147, 0.14), 0 4px 16px rgba(0, 0, 0, 0.04);
+  border: 1.5px solid rgba(11, 32, 147, 0.12);
+  box-shadow: inset 0 2px 0 #FFFFFF, 0 24px 60px -12px rgba(11, 32, 147, 0.1), 0 4px 16px rgba(0, 0, 0, 0.03);
   overflow: hidden;
 }
 
-.tierTabBar {
+/* Minimal Tactile Segmented Bar */
+.tierSegmentedBar {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  background: #F1F5F9;
+  background: #F8FAFC;
   border-bottom: 1.5px solid var(--border);
+  padding: 8px;
+  gap: 8px;
 }
 
-.tierTabBtn {
-  padding: 20px 24px;
+.tierSegmentBtn {
+  padding: 14px 16px;
+  border-radius: var(--radius-lg);
   background: transparent;
-  border: none;
-  border-right: 1px solid var(--border);
+  border: 1.5px solid transparent;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   transition: all var(--transition-fast);
+  text-align: center;
 }
 
-.tierTabBtn:last-child {
-  border-right: none;
+.tierSegmentBtn:hover {
+  background: rgba(11, 32, 147, 0.03);
+  border-color: rgba(11, 32, 147, 0.08);
 }
 
-.tierTabBtn:hover {
-  background: rgba(11, 32, 147, 0.04);
+.tierSegmentBtnActive {
+  background: #FFFFFF !important;
+  border-color: rgba(11, 32, 147, 0.14) !important;
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 4px 14px rgba(11, 32, 147, 0.08) !important;
 }
 
-.tierTabBtnActive {
-  background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFF 100%) !important;
-  border-bottom: 3.5px solid #0B2093;
-  box-shadow: inset 0 2px 0 #FFB800, 0 4px 14px rgba(11, 32, 147, 0.08);
+.segmentBadge {
+  font-family: var(--font-display);
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #B45309;
 }
 
-.tierTabBadge {
+.segmentTitle {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 800;
+  color: #000000;
+  transition: color var(--transition-fast);
+}
+
+.tierSegmentBtnActive .segmentTitle {
+  color: #0B2093;
+}
+
+.tierDetailPlane {
+  padding: 40px;
+}
+
+/* Elevated Minimal Card Header */
+.tierCardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1.5px solid var(--border-subtle);
+  padding-bottom: 26px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.tierHeaderMeta {
+  flex: 1;
+  min-width: 280px;
+}
+
+.tierHeaderBadgeRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.tierHeaderBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(11, 32, 147, 0.06);
+  border: 1px solid rgba(11, 32, 147, 0.12);
   font-family: var(--font-display);
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.08em;
-  color: #D97706;
+  color: #0B2093;
 }
 
-.tierTabName {
+.tierBadgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #0B2093;
+}
+
+.tierPopularBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(180deg, #FFFBEB 0%, #FEF3C7 100%);
+  border: 1px solid rgba(245, 158, 11, 0.35);
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: 10px;
   font-weight: 800;
-  color: #000000;
-}
-
-.tierDetailPlane {
-  padding: 44px;
-}
-
-.tierDetailHeader {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 20px;
-  border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 24px;
-  margin-bottom: 32px;
+  color: #B45309;
+  box-shadow: inset 0 1px 0 #FFFFFF;
 }
 
 .tierDetailTitle {
   font-family: var(--font-display);
-  font-size: 26px;
-  font-weight: 800;
+  font-size: clamp(24px, 2.2vw, 30px);
+  font-weight: 900;
   color: #000000;
-  margin-bottom: 4px;
+  line-height: 1.2;
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
 }
 
 .tierDetailTagline {
   font-size: 14px;
   color: #475569;
+  line-height: 1.55;
   max-width: 520px;
 }
 
-.tierPriceBox {
-  text-align: right;
+.tierPriceDisplay {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
   flex-shrink: 0;
   padding: 14px 22px;
-  border-radius: 16px;
+  border-radius: 18px;
   background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
-  border: 1.5px solid rgba(11, 32, 147, 0.13);
-  box-shadow: inset 0 2px 0 #FFFFFF, 0 6px 18px rgba(11, 32, 147, 0.08);
+  border: 1.5px solid rgba(11, 32, 147, 0.12);
+  box-shadow: inset 0 2px 0 #FFFFFF, 0 4px 16px rgba(11, 32, 147, 0.05);
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
 }
 
 .tierPriceVal {
   font-family: var(--font-display);
-  font-size: 30px;
+  font-size: 32px;
   font-weight: 900;
   color: #0B2093;
+  line-height: 1;
 }
 
 .tierPricePeriod {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   color: #64748B;
+}
+
+.priceGuaranteePill {
+  font-size: 11px;
+  font-weight: 700;
+  color: #059669;
+  background: #ECFDF5;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  border: 1px solid #A7F3D0;
 }
 
 .tierBodyGrid {
@@ -2292,36 +2330,55 @@
 .tierCommitmentsCol {
   display: flex;
   flex-direction: column;
+  gap: 16px;
+}
+
+.tierSpecsBox {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1.5px solid rgba(11, 32, 147, 0.1);
+  border-radius: var(--radius-xl);
+  padding: 20px;
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 4px 14px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
   gap: 14px;
 }
 
-.tierCommitmentBox {
-  padding: 16px 20px;
-  border-radius: var(--radius-xl);
-  background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
-  border: 1.5px solid var(--border);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-  transition: all var(--transition-fast);
+.tierSpecRow {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.tierCommitmentBox:hover {
-  border-color: #0B2093;
-  box-shadow: 0 6px 18px rgba(11, 32, 147, 0.06);
-}
-
-.commitmentLabel {
+.specLabel {
   font-family: var(--font-display);
-  font-size: 10px;
+  font-size: 9.5px;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: #64748B;
-  margin-bottom: 4px;
+  text-transform: uppercase;
 }
 
-.commitmentVal {
+.specVal {
   font-size: 13px;
   font-weight: 700;
-  color: #000000;
+  color: #0F172A;
+  line-height: 1.4;
+}
+
+.tierActionWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.tierAssuranceText {
+  font-size: 11px;
+  color: #64748B;
+  text-align: center;
+  font-weight: 600;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -2619,24 +2676,30 @@
   .diagMetricsRow {
     grid-template-columns: 1fr;
   }
-  .tierSection {
+  .tierTerminalSection {
     padding: 64px 0 56px;
   }
-  .tierDetailPlane {
-    padding: 20px 14px;
-  }
-  .tierDetailHeader {
-    flex-direction: column;
-  }
-  .tierPriceBox {
-    text-align: left;
-  }
-  .tierTabBar {
+  .tierSegmentedBar {
     grid-template-columns: 1fr;
+    gap: 4px;
   }
-  .tierTabBtn {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
+  .tierCardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+  }
+  .tierPriceDisplay {
+    align-items: flex-start;
+    width: 100%;
+  }
+  .tierBodyGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .tierDetailPlane {
+    padding: 24px 16px;
   }
   .bespokeBannerCard {
     padding: 36px 18px;
