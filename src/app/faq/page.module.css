@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════════════════
    MARKETING COPILOT — ELEVATED FAQ & STORYTELLING MANIFESTO
-   Card-Free Architectural Story Spine, Best-in-Class Accordion UI,
-   Minimal High-Conversion Question Form
+   Visual Section Collages, Stylized (?) Design Motifs,
+   Card-Free Story Spine, Best-in-Class Accordion UI & Direct Form
    Global Palette: White, Deep Blue (#0B2093), Golden Spark (#F59E0B)
    ═══════════════════════════════════════════════════════════ */
 
@@ -13,12 +13,12 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 1: HERO & LIVE SEARCH CONSOLE
+   SECTION 1: HERO COMMAND CENTER WITH SKEUOMORPHIC (?) MEDALLION
    ───────────────────────────────────────────────────────────── */
 .heroSection {
   position: relative;
-  padding: 60px 0 54px;
-  background: radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.08) 0%, rgba(11, 32, 147, 0.04) 45%, transparent 75%), #FFFFFF;
+  padding: 64px 0 60px;
+  background: radial-gradient(circle at 75% 20%, rgba(245, 158, 11, 0.1) 0%, rgba(11, 32, 147, 0.05) 50%, transparent 80%), #FFFFFF;
   border-bottom: 1px solid var(--border-subtle);
   overflow: hidden;
 }
@@ -28,50 +28,73 @@
   top: -120px;
   left: 50%;
   transform: translateX(-50%);
-  width: 750px;
-  height: 380px;
+  width: 850px;
+  height: 420px;
   background: radial-gradient(ellipse, rgba(11, 32, 147, 0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 
-.heroInner {
-  max-width: 820px;
-  margin: 0 auto;
+/* Subtle Watermark Glyph */
+.watermarkGlyph {
+  position: absolute;
+  top: -40px;
+  right: -20px;
+  font-family: var(--font-display);
+  font-size: 360px;
+  font-weight: 900;
+  color: rgba(11, 32, 147, 0.025);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.heroDualLayout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 48px;
+  align-items: center;
   position: relative;
   z-index: 2;
-  text-align: center;
+}
+
+.heroLeftCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .heroTitle {
-  margin: 16px 0 18px;
+  margin: 14px 0 16px;
   color: #000000;
   font-weight: 800;
   letter-spacing: -0.025em;
-  line-height: 1.15;
+  line-height: 1.14;
   font-size: clamp(32px, 3.8vw, 48px);
 }
 
 .heroSub {
-  max-width: 680px;
-  margin: 0 auto 36px;
+  max-width: 580px;
+  margin: 0 0 32px;
   color: #475569;
   line-height: 1.65;
-  font-size: 16px;
+  font-size: 15.5px;
 }
 
 /* Live Search Console */
 .searchConsoleWrap {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 18px;
+  align-items: flex-start;
+  gap: 16px;
   width: 100%;
 }
 
 .searchConsole {
   position: relative;
   width: 100%;
-  max-width: 680px;
+  max-width: 600px;
   display: flex;
   align-items: center;
   background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFF 100%);
@@ -83,7 +106,7 @@
     inset 0 -1px 0 rgba(11, 32, 147, 0.04), 
     0 8px 24px -4px rgba(11, 32, 147, 0.08), 
     0 2px 6px rgba(0, 0, 0, 0.03);
-  padding: 6px 10px 6px 20px;
+  padding: 6px 10px 6px 18px;
   transition: all 0.25s ease;
 }
 
@@ -97,7 +120,7 @@
 
 .searchIcon {
   font-size: 16px;
-  margin-right: 12px;
+  margin-right: 10px;
   opacity: 0.8;
   flex-shrink: 0;
 }
@@ -115,7 +138,7 @@
 
 .searchInput::placeholder {
   color: #94A3B8;
-  font-size: 14px;
+  font-size: 13.5px;
 }
 
 .clearSearchBtn {
@@ -157,20 +180,20 @@
 .categoryPillsRow {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 8px;
   flex-wrap: wrap;
   max-width: 100%;
 }
 
 .categoryPill {
-  padding: 7px 16px;
+  padding: 6px 14px;
   border-radius: var(--radius-full);
   background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
   border: 1.5px solid var(--border);
   border-top: 1.5px solid #FFFFFF;
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 700;
   color: #475569;
   cursor: pointer;
@@ -197,6 +220,186 @@
   box-shadow: 
     inset 0 1.5px 0 rgba(255, 255, 255, 0.35), 
     0 4px 12px rgba(11, 32, 147, 0.3) !important;
+}
+
+/* Right Column: Hero Visual Frame with (?) Emblem & Collage */
+.heroRightCol {
+  position: relative;
+  width: 100%;
+}
+
+.heroVisualMedallionFrame {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-2xl);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1.5px solid rgba(11, 32, 147, 0.14);
+  border-top: 2px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    inset 0 2px 0 #FFFFFF, 
+    0 24px 64px -12px rgba(11, 32, 147, 0.15), 
+    0 4px 16px rgba(0, 0, 0, 0.03);
+  padding: 12px;
+}
+
+/* Floating Skeuomorphic (?) Emblem */
+.floatingQuestionEmblem {
+  position: absolute;
+  top: -24px;
+  right: -16px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emblemOuterRing {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFB800 0%, #F59E0B 50%, #B45309 100%);
+  padding: 3px;
+  box-shadow: 
+    0 12px 28px -4px rgba(245, 158, 11, 0.45), 
+    0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emblemInnerPlate {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #0E29B5 0%, #0B2093 50%, #081666 100%);
+  border: 2px solid #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4), inset 0 -2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.emblemQuestionGlyph {
+  font-family: var(--font-display);
+  font-size: 34px;
+  font-weight: 900;
+  color: #FFFFFF;
+  line-height: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transform: translateY(-1px);
+}
+
+.emblemLivePulse {
+  position: absolute;
+  bottom: 0;
+  right: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #10B981;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.35);
+  animation: emblemPulse 2s infinite ease-in-out;
+}
+
+@keyframes emblemPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.18);
+  }
+}
+
+/* Multi-Layer Hero Collage */
+.heroCollageBackdrop {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.collageLayerMain {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.collageLayerFloating {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 55%;
+  height: 55%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.collageImgCover {
+  object-fit: cover;
+}
+
+.collageImgOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 32, 147, 0.1) 0%, rgba(11, 32, 147, 0.55) 100%);
+}
+
+.collageImgOverlaySubtle {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.05) 0%, rgba(15, 23, 42, 0.6) 100%);
+}
+
+.floatingTagPill {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  font-size: 9.5px;
+  font-weight: 700;
+}
+
+/* Tactile KPI Pill */
+.heroTactileKpiBadge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  margin-top: 10px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFF 100%);
+  border: 1.5px solid rgba(11, 32, 147, 0.1);
+  box-shadow: inset 0 1px 0 #FFFFFF;
+}
+
+.kpiBadgeIcon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.kpiBadgeMeta strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #0B2093;
+}
+
+.kpiBadgeMeta span {
+  font-size: 11px;
+  color: #64748B;
+  font-weight: 600;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -278,7 +481,7 @@
 }
 
 .chapterNumeral {
-  display: none; /* Accessible in DOM if needed, visual focus on dot & typography */
+  display: none;
 }
 
 .chapterContent {
@@ -362,7 +565,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 3: RE-ENGINEERED FAQ ACCORDION CONSOLE
+   SECTION 3: RE-ENGINEERED FAQ ACCORDION CONSOLE WITH COLLAGES
    ───────────────────────────────────────────────────────────── */
 .faqSection {
   padding: 96px 0 100px;
@@ -496,13 +699,32 @@
   box-shadow: inset 0 1px 0 #FFFFFF;
 }
 
+.sideHelpTop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.sideHelpQuestionIcon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #F59E0B;
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .sideHelpTitle {
   font-family: var(--font-display);
   font-size: 12px;
   font-weight: 800;
   color: #B45309;
-  display: block;
-  margin-bottom: 4px;
 }
 
 .sideHelpText {
@@ -533,54 +755,134 @@
 .groups {
   display: flex;
   flex-direction: column;
-  gap: 44px;
+  gap: 48px;
 }
 
 .group {
   scroll-margin-top: calc(var(--nav-height, 78px) + 36px);
 }
 
-.groupHeader {
+/* ─────────────────────────────────────────────────────────────
+   NEW: VISUAL SECTION COLLAGE BANNER PER CATEGORY
+   ───────────────────────────────────────────────────────────── */
+.sectionCollageBanner {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 20px;
+  align-items: center;
+  padding: 16px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFF 100%);
+  border: 1.5px solid rgba(11, 32, 147, 0.12);
+  border-top: 1.5px solid #FFFFFF;
+  box-shadow: 
+    inset 0 1.5px 0 #FFFFFF, 
+    0 10px 28px -6px rgba(11, 32, 147, 0.06), 
+    0 2px 6px rgba(0, 0, 0, 0.02);
+  margin-bottom: 18px;
+}
+
+.collageBannerMedia {
+  position: relative;
+  width: 100%;
+  height: 140px;
+  border-radius: 14px;
+  overflow: visible;
+}
+
+.collageBannerMain {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(11, 32, 147, 0.12);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.collageBannerSub {
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 6px 18px rgba(11, 32, 147, 0.25);
+  z-index: 2;
+}
+
+.collageBadgeTag {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.collageBannerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.collageInfoTop {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 12px;
-  border-bottom: 1.5px solid var(--border);
-  margin-bottom: 16px;
-}
-
-.groupHeaderLeft {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.groupTitleDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #F59E0B;
-  box-shadow: 0 0 8px #F59E0B;
-}
-
-.groupTitleText {
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 900;
-  color: #000000;
-  letter-spacing: -0.01em;
-  margin: 0;
 }
 
 .groupBadge {
   font-family: var(--font-display);
-  font-size: 10px;
+  font-size: 9.5px;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: #0B2093;
   background: rgba(11, 32, 147, 0.07);
-  padding: 4px 10px;
+  padding: 3px 10px;
   border-radius: var(--radius-full);
+  width: fit-content;
+}
+
+.collageQuestionMark {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 900;
+  color: #F59E0B;
+  opacity: 0.85;
+}
+
+.collageGroupTitle {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 900;
+  color: #000000;
+  letter-spacing: -0.015em;
+  margin: 2px 0 0;
+}
+
+.collageGroupHighlight {
+  font-size: 13px;
+  color: #475569;
+  font-weight: 600;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.collageCaptionText {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #64748B;
+  margin-top: 4px;
 }
 
 /* Accordion Item Styling */
@@ -639,13 +941,38 @@
   flex: 1;
 }
 
-.questionNumber {
+/* Tactile (?) Pill Medallion */
+.questionPillMedallion {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(180deg, #FFFBEB 0%, #FEF3C7 100%);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-top: 1px solid #FFFFFF;
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
   color: #B45309;
   letter-spacing: 0.04em;
   flex-shrink: 0;
+  box-shadow: inset 0 1px 0 #FFFFFF;
+}
+
+.qMarkSmall {
+  color: #D97706;
+  font-weight: 900;
+}
+
+.itemOpen .questionPillMedallion {
+  background: linear-gradient(180deg, #EEF2FF 0%, #E0E7FF 100%);
+  border-color: rgba(11, 32, 147, 0.2);
+  color: #0B2093;
+}
+
+.itemOpen .qMarkSmall {
+  color: #0B2093;
 }
 
 .questionText {
@@ -848,6 +1175,29 @@
 .formHeader {
   text-align: center;
   margin-bottom: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formEmblemWrap {
+  margin-bottom: 12px;
+}
+
+.formQuestionEmblem {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #0E29B5 0%, #0B2093 100%);
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 6px 18px rgba(11, 32, 147, 0.35);
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .formTitle {
@@ -1127,6 +1477,14 @@
    MOBILE RESPONSIVE BREAKPOINTS (STRICT MOBILE OPTIMIZATION)
    ───────────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
+  .heroDualLayout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .heroRightCol {
+    max-width: 520px;
+    margin: 0 auto;
+  }
   .layout {
     grid-template-columns: 1fr;
     gap: 36px;
@@ -1144,15 +1502,24 @@
 
 @media (max-width: 768px) {
   .heroSection {
-    padding: 40px 0 36px;
+    padding: 36px 0 32px;
+  }
+  .heroLeftCol {
+    align-items: center;
+    text-align: center;
   }
   .heroTitle {
+    text-align: center;
     font-size: clamp(24px, 6.2vw, 30px);
     margin-bottom: 12px;
   }
   .heroSub {
+    text-align: center;
     font-size: 13.5px;
     margin-bottom: 24px;
+  }
+  .searchConsoleWrap {
+    align-items: center;
   }
   .searchConsole {
     padding: 4px 8px 4px 14px;
@@ -1165,7 +1532,7 @@
     font-size: 12.5px;
   }
   .searchCountBadge {
-    display: none; /* Keep clean on small screens */
+    display: none;
   }
   .categoryPillsRow {
     overflow-x: auto;
@@ -1182,6 +1549,28 @@
     padding: 6px 12px;
     font-size: 11px;
     flex-shrink: 0;
+  }
+
+  /* Hero Visual Collage Mobile */
+  .heroRightCol {
+    max-width: 100%;
+  }
+  .heroVisualMedallionFrame {
+    padding: 8px;
+  }
+  .heroCollageBackdrop {
+    height: 220px;
+  }
+  .floatingQuestionEmblem {
+    top: -18px;
+    right: -8px;
+  }
+  .emblemOuterRing {
+    width: 54px;
+    height: 54px;
+  }
+  .emblemQuestionGlyph {
+    font-size: 26px;
   }
 
   /* Storytelling Mobile Layout */
@@ -1224,6 +1613,23 @@
     width: 100%;
   }
 
+  /* Section Collage Banners Mobile */
+  .sectionCollageBanner {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 12px;
+    border-radius: 16px;
+  }
+  .collageBannerMedia {
+    height: 150px;
+  }
+  .collageGroupTitle {
+    font-size: 17px;
+  }
+  .collageGroupHighlight {
+    font-size: 12.5px;
+  }
+
   /* FAQ Accordion Mobile Layout */
   .faqSection {
     padding: 64px 0 60px;
@@ -1233,9 +1639,6 @@
   }
   .faqSectionSub {
     font-size: 13.5px;
-  }
-  .groupTitleText {
-    font-size: 16px;
   }
   .question {
     padding: 14px 16px;

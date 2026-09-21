@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import BeamButton from '@/components/BeamButton';
 import ScrollReveal from '@/components/ScrollReveal';
 import CTASection from '../_components/CTASection';
@@ -18,6 +19,13 @@ interface FAQGroup {
   id: string;
   title: string;
   badge: string;
+  highlight: string;
+  collage: {
+    mainImage: string;
+    subImage: string;
+    caption: string;
+    tag: string;
+  };
   faqs: FAQItem[];
 }
 
@@ -26,6 +34,13 @@ const faqGroups: FAQGroup[] = [
     id: 'general',
     title: 'General Questions',
     badge: 'AGENCY & SCOPE',
+    highlight: 'Hyperlocal Bhubaneswar Intelligence + Silicon Valley Technical Architecture',
+    collage: {
+      mainImage: '/images/team_office.jpg',
+      subImage: '/images/about_hero.jpg',
+      caption: 'Strategy Command Center • DLF Cybercity & Patia',
+      tag: '🏢 LOCAL EXECUTIVE TEAM',
+    },
     faqs: [
       {
         q: 'What digital marketing services does Marketing Copilot offer in Bhubaneswar?',
@@ -59,6 +74,13 @@ const faqGroups: FAQGroup[] = [
     id: 'seo',
     title: 'SEO & Local Search',
     badge: 'ORGANIC DOMINANCE',
+    highlight: 'Rank #1 in Bhubaneswar Maps Across 12 Geo-Fenced Pin Codes',
+    collage: {
+      mainImage: 'https://images.unsplash.com/photo-1572021335469-31706a17aaef?auto=format&fit=crop&w=800&q=80',
+      subImage: '/images/work_realestate.jpg',
+      caption: 'Local 3-Pack Dominance • Patia & Saheed Nagar',
+      tag: '📍 GEO-FENCED SEO ENGINE',
+    },
     faqs: [
       {
         q: 'How long does SEO take to work for a Bhubaneswar business?',
@@ -91,6 +113,13 @@ const faqGroups: FAQGroup[] = [
     id: 'ads',
     title: 'Google Ads & Meta Ads',
     badge: 'PAID PERFORMANCE',
+    highlight: '6X–8X Average ROAS with Negative Keyword Ad Shielding',
+    collage: {
+      mainImage: '/images/dashboard_hero.jpg',
+      subImage: '/images/hero_performance_scale.jpg',
+      caption: 'Live CPL & Revenue Attribution Terminal',
+      tag: '⚡ NEGATIVE KEYWORD SHIELD',
+    },
     faqs: [
       {
         q: 'What monthly ad spend is required to start Google Ads in Bhubaneswar?',
@@ -118,6 +147,13 @@ const faqGroups: FAQGroup[] = [
     id: 'social',
     title: 'Social Media Marketing',
     badge: 'BRAND REPUTATION',
+    highlight: 'On-Location 4K Video Production for Real Bhubaneswar Audiences',
+    collage: {
+      mainImage: '/images/soundstage_studio.jpg',
+      subImage: '/images/work_fashion.jpg',
+      caption: 'Creative Soundstage & Reels Production Pod',
+      tag: '🎬 4K CREATIVE PRODUCTION',
+    },
     faqs: [
       {
         q: 'Which social media platforms should my Bhubaneswar business prioritize?',
@@ -140,6 +176,13 @@ const faqGroups: FAQGroup[] = [
     id: 'web',
     title: 'Website Development',
     badge: 'INFRASTRUCTURE',
+    highlight: '< 0.8s Load Speeds to Double Ad Visitor Conversion',
+    collage: {
+      mainImage: '/images/hero_growth_mastery.jpg',
+      subImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
+      caption: 'Sub-Second Next.js 15 Web Architecture',
+      tag: '💻 NEXT.JS 15 ENGINE',
+    },
     faqs: [
       {
         q: 'How much does a commercial business website cost in Bhubaneswar?',
@@ -162,6 +205,13 @@ const faqGroups: FAQGroup[] = [
     id: 'pricing',
     title: 'Pricing & Engagement Process',
     badge: 'COMMERCIAL SLA',
+    highlight: 'Zero Long-Term Lock-Ins. 100% Attribution Verified Every Week',
+    collage: {
+      mainImage: '/images/about_hero.jpg',
+      subImage: '/images/ceo_aarav.jpg',
+      caption: 'Executive Boardroom Strategy & Reporting',
+      tag: '🔒 AUDITED REVENUE SLA',
+    },
     faqs: [
       {
         q: 'How do we get started with Marketing Copilot in Bhubaneswar?',
@@ -244,74 +294,131 @@ export default function FAQPage() {
   return (
     <div className={styles.page}>
       {/* ══════════════════════════════════════════════════════════
-          SECTION 1: MINIMAL ARCHITECTURAL HERO & LIVE SEARCH
+          SECTION 1: HERO COMMAND CENTER WITH SKEUOMORPHIC (?) MEDALLION
          ══════════════════════════════════════════════════════════ */}
       <section className={styles.heroSection}>
         <div className={styles.heroGlow} />
+        <div className={styles.watermarkGlyph}>?</div>
+
         <div className="container">
-          <div className={styles.heroInner}>
-            <ScrollReveal className="text-center">
-              <div className="eyebrow" style={{ margin: '0 auto 16px' }}>
-                <span className="eyebrow-dot" />
-                FREQUENTLY ASKED QUESTIONS &bull; ODISHA GROWTH INTELLIGENCE
-              </div>
-              <h1 className={`display-xl ${styles.heroTitle}`}>
-                Everything You Need to Know About<br />
-                <span className="accent-gradient">Scaling Your Business in Bhubaneswar.</span>
-              </h1>
-              <p className={`body-lg ${styles.heroSub}`}>
-                Direct, transparent answers to commercial, technical, and strategic questions about digital marketing, Google &amp; Meta Ads, SEO, and Next.js web infrastructure in Odisha.
-              </p>
+          <div className={styles.heroDualLayout}>
+            {/* Left Content Column */}
+            <div className={styles.heroLeftCol}>
+              <ScrollReveal>
+                <div className="eyebrow" style={{ marginBottom: 12 }}>
+                  <span className="eyebrow-dot" />
+                  FREQUENTLY ASKED QUESTIONS &bull; ODISHA GROWTH INTELLIGENCE
+                </div>
+                <h1 className={`display-xl ${styles.heroTitle}`}>
+                  Everything You Need to Know About<br />
+                  <span className="accent-gradient">Scaling in Bhubaneswar.</span>
+                </h1>
+                <p className={`body-lg ${styles.heroSub}`}>
+                  Clear, transparent answers to commercial, technical, and strategic questions about digital marketing, Google &amp; Meta Ads, Local SEO, and Next.js web infrastructure in Odisha.
+                </p>
 
-              {/* Minimal Interactive Search Console */}
-              <div className={styles.searchConsoleWrap}>
-                <div className={styles.searchConsole}>
-                  <span className={styles.searchIcon}>🔍</span>
-                  <input
-                    type="text"
-                    placeholder="Search any question (e.g. Google Ads budget, Local SEO, pricing, Next.js)..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className={styles.searchInput}
-                    aria-label="Search frequently asked questions"
-                  />
-                  {searchQuery && (
+                {/* Minimal Interactive Search Console */}
+                <div className={styles.searchConsoleWrap}>
+                  <div className={styles.searchConsole}>
+                    <span className={styles.searchIcon}>🔍</span>
+                    <input
+                      type="text"
+                      placeholder="Search any question (e.g. Google Ads budget, Local SEO, pricing)..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className={styles.searchInput}
+                      aria-label="Search frequently asked questions"
+                    />
+                    {searchQuery && (
+                      <button
+                        type="button"
+                        className={styles.clearSearchBtn}
+                        onClick={() => setSearchQuery('')}
+                        aria-label="Clear search"
+                      >
+                        ✕
+                      </button>
+                    )}
+                    <span className={styles.searchCountBadge}>
+                      {totalFilteredCount} {totalFilteredCount === 1 ? 'Answer' : 'Answers'}
+                    </span>
+                  </div>
+
+                  {/* Category Quick-Filter Pills */}
+                  <div className={styles.categoryPillsRow}>
                     <button
                       type="button"
-                      className={styles.clearSearchBtn}
-                      onClick={() => setSearchQuery('')}
-                      aria-label="Clear search"
+                      className={`${styles.categoryPill} ${selectedCategory === 'all' ? styles.categoryPillActive : ''}`}
+                      onClick={() => setSelectedCategory('all')}
                     >
-                      ✕
+                      All Questions (24)
                     </button>
-                  )}
-                  <span className={styles.searchCountBadge}>
-                    {totalFilteredCount} {totalFilteredCount === 1 ? 'Answer' : 'Answers'}
-                  </span>
+                    {faqGroups.map((g) => (
+                      <button
+                        key={g.id}
+                        type="button"
+                        className={`${styles.categoryPill} ${selectedCategory === g.id ? styles.categoryPillActive : ''}`}
+                        onClick={() => setSelectedCategory(g.id)}
+                      >
+                        {g.title} ({g.faqs.length})
+                      </button>
+                    ))}
+                  </div>
                 </div>
+              </ScrollReveal>
+            </div>
 
-                {/* Category Pill Switchers */}
-                <div className={styles.categoryPillsRow}>
-                  <button
-                    type="button"
-                    className={`${styles.categoryPill} ${selectedCategory === 'all' ? styles.categoryPillActive : ''}`}
-                    onClick={() => setSelectedCategory('all')}
-                  >
-                    All Questions (24)
-                  </button>
-                  {faqGroups.map((g) => (
-                    <button
-                      key={g.id}
-                      type="button"
-                      className={`${styles.categoryPill} ${selectedCategory === g.id ? styles.categoryPillActive : ''}`}
-                      onClick={() => setSelectedCategory(g.id)}
-                    >
-                      {g.title} ({g.faqs.length})
-                    </button>
-                  ))}
+            {/* Right Skeuomorphic (?) Medallion & Visual Anchor */}
+            <div className={styles.heroRightCol}>
+              <ScrollReveal delay={120}>
+                <div className={styles.heroVisualMedallionFrame}>
+                  {/* Floating Skeuomorphic (?) Emblem */}
+                  <div className={styles.floatingQuestionEmblem}>
+                    <div className={styles.emblemOuterRing}>
+                      <div className={styles.emblemInnerPlate}>
+                        <span className={styles.emblemQuestionGlyph}>?</span>
+                      </div>
+                    </div>
+                    <div className={styles.emblemLivePulse} />
+                  </div>
+
+                  {/* Curated Strategic Collage Backdrop */}
+                  <div className={styles.heroCollageBackdrop}>
+                    <div className={styles.collageLayerMain}>
+                      <Image
+                        src="/images/dashboard_hero.jpg"
+                        alt="Marketing Copilot Analytics Terminal"
+                        fill
+                        priority
+                        className={styles.collageImgCover}
+                      />
+                      <div className={styles.collageImgOverlay} />
+                    </div>
+                    <div className={styles.collageLayerFloating}>
+                      <Image
+                        src="/images/team_office.jpg"
+                        alt="Bhubaneswar Marketing Team Strategy Session"
+                        fill
+                        className={styles.collageImgCover}
+                      />
+                      <div className={styles.collageImgOverlaySubtle} />
+                      <div className={styles.floatingTagPill}>
+                        📍 DLF Cybercity &bull; Bhubaneswar
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Tactical KPI Tag */}
+                  <div className={styles.heroTactileKpiBadge}>
+                    <span className={styles.kpiBadgeIcon}>🔒</span>
+                    <div className={styles.kpiBadgeMeta}>
+                      <strong>100% Written Attribution SLA</strong>
+                      <span>Direct CPL ceilings &amp; zero long-term lock-in</span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </ScrollReveal>
+              </ScrollReveal>
+            </div>
           </div>
         </div>
       </section>
@@ -337,9 +444,8 @@ export default function FAQPage() {
             </div>
           </ScrollReveal>
 
-          {/* Continuous Architectural Story Spine (No Cards) */}
+          {/* Continuous Architectural Story Spine (Card-Free) */}
           <div className={styles.storySpineContainer}>
-            {/* Ambient Spine Line */}
             <div className={styles.storyVerticalSpine} />
 
             {/* Chapter 01 */}
@@ -416,7 +522,7 @@ export default function FAQPage() {
                 </h3>
                 <div className={styles.chapterNarrative}>
                   <p>
-                    Traditional marketing agencies celebrate "impressions" and "likes" that never pay salaries or fund business expansion. In the real world, leads decay exponentially with every passing minute.
+                    Traditional marketing agencies celebrate &ldquo;impressions&rdquo; and &ldquo;likes&rdquo; that never pay salaries or fund business expansion. In the real world, leads decay exponentially with every passing minute.
                   </p>
                   <p>
                     We engineer bi-directional WhatsApp CRM automations. When a prospective home buyer or clinical patient requests information, an automated WhatsApp sequence confirms their booking and delivers an executive dossier within 90 seconds—locking in appointments before competitors even open their email inbox.
@@ -462,7 +568,7 @@ export default function FAQPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════
-          SECTION 3: RE-ENGINEERED FAQ ACCORDION CONSOLE
+          SECTION 3: RE-ENGINEERED FAQ ACCORDION CONSOLE WITH SECTION COLLAGES
          ══════════════════════════════════════════════════════════ */}
       <section className={styles.faqSection} id="faq-directory">
         <div className="container">
@@ -477,7 +583,7 @@ export default function FAQPage() {
                 <span className="accent-gradient">Unfiltered Answers from Our Revenue Engineers.</span>
               </h2>
               <p className={styles.faqSectionSub}>
-                Browse answers organized by service discipline, or use the search bar above to instantly find the exact guidance you need.
+                Browse answers organized by service discipline, complete with verified sector collages and technical takeaways.
               </p>
             </div>
           </ScrollReveal>
@@ -518,7 +624,10 @@ export default function FAQPage() {
                 </nav>
 
                 <div className={styles.sideHelpBox}>
-                  <span className={styles.sideHelpTitle}>Need an urgent audit?</span>
+                  <div className={styles.sideHelpTop}>
+                    <span className={styles.sideHelpQuestionIcon}>?</span>
+                    <span className={styles.sideHelpTitle}>Need an urgent audit?</span>
+                  </div>
                   <p className={styles.sideHelpText}>
                     Our senior revenue engineers review your current digital footprint and deliver custom benchmarks in 48 hours.
                   </p>
@@ -529,7 +638,7 @@ export default function FAQPage() {
               </div>
             </aside>
 
-            {/* Accordion List Container */}
+            {/* Accordion List & Section Collages */}
             <div className={styles.groups}>
               {filteredGroups.length === 0 ? (
                 <div className={styles.emptyStateBox}>
@@ -550,16 +659,53 @@ export default function FAQPage() {
                   </button>
                 </div>
               ) : (
-                filteredGroups.map((group, gi) => (
+                filteredGroups.map((group) => (
                   <div key={group.id} id={`faq-group-${group.id}`} className={styles.group}>
-                    <div className={styles.groupHeader}>
-                      <div className={styles.groupHeaderLeft}>
-                        <span className={styles.groupTitleDot} />
-                        <h3 className={styles.groupTitleText}>{group.title}</h3>
+                    {/* Visual Collage Header Banner per Section */}
+                    <div className={styles.sectionCollageBanner}>
+                      <div className={styles.collageBannerMedia}>
+                        <div className={styles.collageBannerMain}>
+                          <Image
+                            src={group.collage.mainImage}
+                            alt={group.title}
+                            fill
+                            className={styles.collageImgCover}
+                            sizes="(max-width: 768px) 100vw, 600px"
+                          />
+                          <div className={styles.collageImgOverlay} />
+                          <div className={styles.collageBadgeTag}>
+                            {group.collage.tag}
+                          </div>
+                        </div>
+                        <div className={styles.collageBannerSub}>
+                          <Image
+                            src={group.collage.subImage}
+                            alt={`${group.title} preview`}
+                            fill
+                            className={styles.collageImgCover}
+                            sizes="(max-width: 768px) 40vw, 200px"
+                          />
+                          <div className={styles.collageImgOverlaySubtle} />
+                        </div>
                       </div>
-                      <span className={styles.groupBadge}>{group.badge}</span>
+
+                      {/* Collage Text & Question Mark Accents */}
+                      <div className={styles.collageBannerInfo}>
+                        <div className={styles.collageInfoTop}>
+                          <span className={styles.groupBadge}>{group.badge}</span>
+                          <span className={styles.collageQuestionMark}>?</span>
+                        </div>
+                        <h3 className={styles.collageGroupTitle}>{group.title}</h3>
+                        <p className={styles.collageGroupHighlight}>
+                          {group.highlight}
+                        </p>
+                        <span className={styles.collageCaptionText}>
+                          📍 {group.collage.caption}
+                        </span>
+                      </div>
                     </div>
 
+                    {/* Accordion Questions List */}
                     <div className={styles.accordion}>
                       {group.faqs.map((faq, fi) => {
                         const key = `${group.id}-${fi}`;
@@ -578,7 +724,10 @@ export default function FAQPage() {
                               aria-expanded={isOpen}
                             >
                               <div className={styles.questionLeft}>
-                                <span className={styles.questionNumber}>Q.{questionNum}</span>
+                                <span className={styles.questionPillMedallion}>
+                                  <span className={styles.qMarkSmall}>?</span>
+                                  <span>{questionNum}</span>
+                                </span>
                                 <span className={styles.questionText}>{faq.q}</span>
                               </div>
                               <div className={styles.questionIconWrap}>
@@ -629,9 +778,12 @@ export default function FAQPage() {
           <ScrollReveal>
             <div className={styles.formContainer}>
               <div className={styles.formHeader}>
-                <div className="eyebrow" style={{ marginBottom: 10 }}>
+                <div className={styles.formEmblemWrap}>
+                  <span className={styles.formQuestionEmblem}>?</span>
+                </div>
+                <div className="eyebrow" style={{ marginBottom: 8 }}>
                   <span className="eyebrow-dot" />
-                  DIRECT STRATEGIST INBOX &bull; RAPID RESPONSE
+                  DIRECT STRATEGIST INBOX &bull; RAPID 4-HOUR RESPONSE
                 </div>
                 <h2 className={styles.formTitle}>
                   Didn&apos;t Find Your Exact Answer?<br />
