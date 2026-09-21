@@ -6,6 +6,7 @@ import Image from 'next/image';
 import BeamButton from '@/components/BeamButton';
 import ScrollReveal from '@/components/ScrollReveal';
 import FAQSection from '@/app/_components/FAQSection';
+import SmoothCounter from '@/components/SmoothCounter';
 import {
   spotlightProject,
   caseStudiesList,
@@ -124,20 +125,26 @@ export default function PortfolioPage() {
                 We don&apos;t sell vanity metrics or vague promises. Browse our portfolio of audited client campaigns with verified commercial outcomes across Bhubaneswar, Odisha, and nationwide markets.
               </p>
 
-              {/* Quick Trust Strip */}
+              {/* Quick Trust Strip with Smooth Counter */}
               <div className={styles.heroTrustStrip}>
                 <div className={styles.heroTrustItem}>
-                  <span className={styles.heroTrustVal}>₹65Cr+</span>
+                  <span className={styles.heroTrustVal}>
+                    <SmoothCounter value="₹65Cr+" />
+                  </span>
                   <span className={styles.heroTrustLabel}>Client Revenue</span>
                 </div>
                 <div className={styles.heroTrustDivider} />
                 <div className={styles.heroTrustItem}>
-                  <span className={styles.heroTrustVal}>5.8X</span>
+                  <span className={styles.heroTrustVal}>
+                    <SmoothCounter value="5.8X" />
+                  </span>
                   <span className={styles.heroTrustLabel}>Average ROAS</span>
                 </div>
                 <div className={styles.heroTrustDivider} />
                 <div className={styles.heroTrustItem}>
-                  <span className={styles.heroTrustVal}>85+</span>
+                  <span className={styles.heroTrustVal}>
+                    <SmoothCounter value="85+" />
+                  </span>
                   <span className={styles.heroTrustLabel}>#1 Google Rankings</span>
                 </div>
               </div>
@@ -202,7 +209,9 @@ export default function PortfolioPage() {
                     if (e.key === 'Enter') setActiveRibbonIndex(idx);
                   }}
                 >
-                  <span className={styles.ribbonVal}>{m.val}</span>
+                  <span className={styles.ribbonVal}>
+                    <SmoothCounter value={m.val} />
+                  </span>
                   <span className={styles.ribbonLabel}>{m.label}</span>
                   <span className={styles.ribbonSub}>{m.sub}</span>
                 </div>
@@ -213,19 +222,20 @@ export default function PortfolioPage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 3: FEATURED COMMERCIAL MILESTONE (UNZOOMED & UNOBSTRUCTED IMAGE)
+          SECTION 3: FEATURED COMMERCIAL MILESTONE (COMPACT SKEUOMORPHIC CARD)
           ───────────────────────────────────────────────────────────── */}
       <section className={styles.spotlightSection}>
         <div className="container">
           <div className={styles.sectionHeaderCenter}>
             <ScrollReveal>
-              <div className={styles.eyebrowBadge} style={{ margin: '0 auto 12px' }}>
+              <div className={styles.eyebrowBadge}>
                 <span className={styles.sparkleDot} />
                 <span>Featured Commercial Milestone</span>
               </div>
               <h2 className={styles.sectionTitle}>
                 Luxury Real Estate: <span className="accent-gradient">3X Lead Volume in 90 Days</span>
               </h2>
+              <div className={styles.sectionHeaderBar} />
               <p className={styles.sectionSub}>
                 How we helped a premier builder dominate organic Google search in Bhubaneswar and generate 90+ verified buyer leads monthly without portal dependency.
               </p>
@@ -234,13 +244,13 @@ export default function PortfolioPage() {
 
           <ScrollReveal delay={100}>
             <div className={styles.spotlightCard}>
-              {/* Unobstructed, natural framing photo container - Zero text/stats overlapping */}
+              {/* Compact, natural framing photo container - Zero text/stats overlapping */}
               <div className={styles.spotlightVisualFrame}>
                 <Image
                   src={spotlightProject.image}
                   alt={spotlightProject.client}
                   fill
-                  sizes="(max-width: 900px) 100vw, 600px"
+                  sizes="(max-width: 900px) 100vw, 500px"
                   className={styles.spotlightVisualImg}
                 />
                 <div className={styles.spotlightLocationBadge}>
@@ -248,27 +258,26 @@ export default function PortfolioPage() {
                 </div>
               </div>
 
-              {/* Content Side with Clean Debossed Metrics Row */}
+              {/* Content Side with Compact Debossed Metrics Row */}
               <div className={styles.spotlightContent}>
                 <span className={styles.spotlightClient}>{spotlightProject.client}</span>
                 <h3 className={styles.spotlightHeadline}>{spotlightProject.headline}</h3>
                 <p className={styles.spotlightDesc}>{spotlightProject.desc}</p>
 
-                {/* Clean metrics row inside content side - NOT on top of image */}
+                {/* Compact metrics row inside content side with SmoothCounter */}
                 <div className={styles.spotlightStatsRowClean}>
                   {spotlightProject.stats.map((s) => (
                     <div key={s.label} className={styles.spotlightStatPillClean}>
-                      <div className={styles.spotlightStatValClean}>{s.val}</div>
+                      <div className={styles.spotlightStatValClean}>
+                        <SmoothCounter value={s.val} />
+                      </div>
                       <div className={styles.spotlightStatLabelClean}>{s.label}</div>
                     </div>
                   ))}
                 </div>
 
                 <div className={styles.spotlightDeliverables}>
-                  <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase' }}>
-                    Key Deliverables Executed:
-                  </span>
-                  {spotlightProject.deliverables.map((item) => (
+                  {spotlightProject.deliverables.slice(0, 2).map((item) => (
                     <div key={item} className={styles.deliverableItem}>
                       <span className={styles.checkDot}>✓</span>
                       <span>{item}</span>
@@ -281,7 +290,7 @@ export default function PortfolioPage() {
                   <BeamButton
                     onClick={() => setSelectedCase(spotlightProject)}
                     label="View Full Strategic Breakdown →"
-                    size="md"
+                    size="sm"
                   />
                 </div>
               </div>
@@ -297,13 +306,14 @@ export default function PortfolioPage() {
         <div className="container">
           <div className={styles.sectionHeaderCenter}>
             <ScrollReveal>
-              <div className={styles.eyebrowBadge} style={{ margin: '0 auto 12px' }}>
+              <div className={styles.eyebrowBadge}>
                 <span className={styles.sparkleDot} />
                 <span>Verified Client Portfolio</span>
               </div>
               <h2 className={styles.sectionTitle}>
                 Curated Results Across <span className="accent-gradient">Key Channels</span>
               </h2>
+              <div className={styles.sectionHeaderBar} />
               <p className={styles.sectionSub}>
                 Auto-sliding showcase of client campaigns across Odisha. Hover to pause, click arrows to browse, or click any card to inspect the full case study.
               </p>
@@ -389,7 +399,9 @@ export default function PortfolioPage() {
                     <div className={styles.cardStatsRow}>
                       {c.stats.map((s) => (
                         <div key={s.label} className={styles.cardStat}>
-                          <span className={styles.cardStatVal} style={{ color: c.color }}>{s.val}</span>
+                          <span className={styles.cardStatVal} style={{ color: c.color }}>
+                            <SmoothCounter value={s.val} />
+                          </span>
                           <span className={styles.cardStatLabel}>{s.label}</span>
                         </div>
                       ))}
@@ -442,7 +454,7 @@ export default function PortfolioPage() {
               {selectedCase.stats.map((s) => (
                 <div key={s.label} style={{ background: 'var(--bg-surface)', padding: '12px 16px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
                   <div style={{ fontFamily: 'var(--font-display)', fontSize: 20, fontWeight: 800, color: selectedCase.color }}>
-                    {s.val}
+                    <SmoothCounter value={s.val} />
                   </div>
                   <div style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 600 }}>{s.label}</div>
                 </div>
@@ -482,19 +494,20 @@ export default function PortfolioPage() {
       )}
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 5: AUDITED COMMERCIAL DELTAS (AUTO-ANIMATED VELOCITY COCKPIT)
+          SECTION 5: AUDITED COMMERCIAL DELTAS (ELEVATED VELOCITY COCKPIT)
           ───────────────────────────────────────────────────────────── */}
       <section className={styles.transformSection}>
         <div className="container">
           <div className={styles.sectionHeaderCenter}>
             <ScrollReveal>
-              <div className={styles.eyebrowBadge} style={{ margin: '0 auto 12px' }}>
+              <div className={styles.eyebrowBadge}>
                 <span className={styles.sparkleDot} />
                 <span>Audited Commercial Deltas</span>
               </div>
               <h2 className={styles.sectionTitle}>
                 Before vs. After <span className="accent-gradient">Marketing Copilot</span>
               </h2>
+              <div className={styles.sectionHeaderBar} />
               <p className={styles.sectionSub}>
                 Select any benchmark to inspect the tangible shift from legacy agency retainers to revenue engineering. Auto-advances every 3.5 seconds.
               </p>
@@ -526,20 +539,26 @@ export default function PortfolioPage() {
                   {/* Left: Before Card */}
                   <div className={styles.velocityCardBefore}>
                     <span className={styles.velocityTagBefore}>Legacy Agency Retainer (Before)</span>
-                    <div className={styles.velocityBigNum}>{currentHud.before}</div>
+                    <div className={styles.velocityBigNum}>
+                      <SmoothCounter value={currentHud.before} />
+                    </div>
                     <p className={styles.velocityStateDesc}>Low intent traffic, high bounce rates, and broad untargeted ad spend.</p>
                   </div>
 
                   {/* Center: Growth Vector Badge */}
                   <div className={styles.velocityCenterBadge}>
-                    <span className={styles.velocityGainText}>{currentHud.gain}</span>
+                    <span className={styles.velocityGainText}>
+                      <SmoothCounter value={currentHud.gain} />
+                    </span>
                     <span className={styles.velocityTimeText}>{currentHud.timeframe}</span>
                   </div>
 
                   {/* Right: After Card */}
                   <div className={styles.velocityCardAfter}>
                     <span className={styles.velocityTagAfter}>Marketing Copilot Revenue Engine (After)</span>
-                    <div className={styles.velocityBigNum}>{currentHud.after}</div>
+                    <div className={styles.velocityBigNum}>
+                      <SmoothCounter value={currentHud.after} />
+                    </div>
                     <p className={styles.velocityStateDesc}>{currentHud.desc}</p>
                   </div>
                 </div>
@@ -571,13 +590,14 @@ export default function PortfolioPage() {
         <div className="container">
           <div className={styles.sectionHeaderCenter}>
             <ScrollReveal>
-              <div className={styles.eyebrowBadge} style={{ margin: '0 auto 12px' }}>
+              <div className={styles.eyebrowBadge}>
                 <span className={styles.sparkleDot} />
                 <span>Our Scientific Methodology</span>
               </div>
               <h2 className={styles.sectionTitle}>
                 How We Engineer <span className="accent-gradient">Predictable Growth</span>
               </h2>
+              <div className={styles.sectionHeaderBar} />
               <p className={styles.sectionSub}>
                 A connected, audit-backed execution pipeline designed to eliminate ad spend waste and scale conversion speed systematically.
               </p>
@@ -602,19 +622,20 @@ export default function PortfolioPage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 7: REGIONAL FOOTPRINT — AUTO-ANIMATED TRANSIT BLUEPRINT
+          SECTION 7: REGIONAL FOOTPRINT — HIGH-TECH TERRITORY BLUEPRINT
           ───────────────────────────────────────────────────────────── */}
       <section className={styles.geoSection}>
         <div className="container">
           <div className={styles.sectionHeaderCenter}>
             <ScrollReveal>
-              <div className={styles.eyebrowBadge} style={{ margin: '0 auto 12px' }}>
+              <div className={styles.eyebrowBadge}>
                 <span className={styles.sparkleDot} />
                 <span>Regional Footprint</span>
               </div>
               <h2 className={styles.sectionTitle}>
                 Hyperlocal Dominance Across <span className="accent-gradient">Bhubaneswar &amp; Odisha</span>
               </h2>
+              <div className={styles.sectionHeaderBar} />
               <p className={styles.sectionSub}>
                 Explore our live search dominance and lead generation metrics across major commercial corridors. Auto-advances across transit stations.
               </p>
@@ -648,27 +669,56 @@ export default function PortfolioPage() {
                     <span className={styles.blueprintCodeBadge}>{currentGeo.code}</span>
                     <h3 className={styles.blueprintAreaName}>{currentGeo.area}</h3>
                   </div>
-                  <span className={styles.blueprintCoords}>{currentGeo.coords}</span>
+                  <div className={styles.blueprintCoordsWrap}>
+                    <span className={styles.blueprintStatusPill}>
+                      <span className={styles.liveRadarDot} />
+                      <span>LIVE CORRIDOR MONITORED • #1 SERP DOMINATED</span>
+                    </span>
+                    <span className={styles.blueprintCoords}>{currentGeo.coords}</span>
+                  </div>
                 </div>
 
+                {/* 4 Skeuomorphic Metric Wells with SmoothCounter */}
                 <div className={styles.blueprintMetricsGrid}>
                   <div className={styles.blueprintMetricItem}>
-                    <span className={styles.blueprintMetricVal}>{currentGeo.searches}</span>
+                    <span className={styles.blueprintMetricVal}>
+                      <SmoothCounter value={currentGeo.searches} />
+                    </span>
                     <span className={styles.blueprintMetricLabel}>Monthly Local Searches</span>
                   </div>
                   <div className={styles.blueprintMetricItem}>
-                    <span className={styles.blueprintMetricVal}>{currentGeo.cpl}</span>
+                    <span className={styles.blueprintMetricVal}>
+                      <SmoothCounter value={currentGeo.cpl} />
+                    </span>
                     <span className={styles.blueprintMetricLabel}>Average Qualified CPL</span>
                   </div>
                   <div className={styles.blueprintMetricItem}>
-                    <span className={styles.blueprintMetricVal}>{currentGeo.leadShare}</span>
+                    <span className={styles.blueprintMetricVal}>
+                      <SmoothCounter value={currentGeo.leadShare} />
+                    </span>
                     <span className={styles.blueprintMetricLabel}>SERP Impression Share</span>
                   </div>
                   <div className={styles.blueprintMetricItem}>
-                    <span className={styles.blueprintMetricVal} style={{ color: '#10B981' }}>{currentGeo.stat}</span>
+                    <span className={styles.blueprintMetricVal} style={{ color: '#10B981' }}>
+                      <SmoothCounter value={currentGeo.stat} />
+                    </span>
                     <span className={styles.blueprintMetricLabel}>Verified Growth Lift</span>
                   </div>
                 </div>
+
+                {/* Corridor Landmark Hubs Strip */}
+                {currentGeo.landmarks && (
+                  <div className={styles.blueprintLandmarksStrip}>
+                    <span style={{ fontSize: 11, color: '#CBD5E1', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                      Commercial Landmarks:
+                    </span>
+                    {currentGeo.landmarks.map((lm) => (
+                      <span key={lm} className={styles.landmarkPill}>
+                        📍 {lm}
+                      </span>
+                    ))}
+                  </div>
+                )}
 
                 <div className={styles.blueprintFooterRow}>
                   <div className={styles.blueprintKeywords}>
@@ -704,13 +754,14 @@ export default function PortfolioPage() {
         <div className="container">
           <div className={styles.sectionHeaderCenter}>
             <ScrollReveal>
-              <div className={styles.eyebrowBadge} style={{ margin: '0 auto 12px' }}>
+              <div className={styles.eyebrowBadge}>
                 <span className={styles.sparkleDot} />
                 <span>Tailored Vertical Playbooks</span>
               </div>
               <h2 className={styles.sectionTitle}>
                 Strategies Built for <span className="accent-gradient">Your Industry</span>
               </h2>
+              <div className={styles.sectionHeaderBar} />
               <p className={styles.sectionSub}>
                 Digital marketing isn&apos;t one-size-fits-all. Select your sector to explore our dedicated playbook, commercial benchmarks, and verified client outcomes.
               </p>
@@ -757,7 +808,9 @@ export default function PortfolioPage() {
                   {currentIndustryData.benchmarks.map((b) => (
                     <div key={b.label} className={styles.bentoBenchmarkRow}>
                       <span className={styles.bentoBenchLabel}>{b.label}</span>
-                      <span className={styles.bentoBenchVal}>{b.val}</span>
+                      <span className={styles.bentoBenchVal}>
+                        <SmoothCounter value={b.val} />
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -800,19 +853,20 @@ export default function PortfolioPage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 9: FOUNDER TESTIMONIALS (REAL IMAGES & BOTTOM-ALIGNED)
+          SECTION 9: FOUNDER TESTIMONIALS (REAL IMAGES & SKEUOMORPHISM)
           ───────────────────────────────────────────────────────────── */}
       <section className={styles.testimonialSection}>
         <div className="container">
           <div className={styles.sectionHeaderCenter}>
             <ScrollReveal>
-              <div className={styles.eyebrowBadge} style={{ margin: '0 auto 12px' }}>
+              <div className={styles.eyebrowBadge}>
                 <span className={styles.sparkleDot} />
                 <span>Verified Client Endorsements</span>
               </div>
               <h2 className={styles.sectionTitle}>
                 What Odisha Founders <span className="accent-gradient">Say About Us</span>
               </h2>
+              <div className={styles.sectionHeaderBar} />
               <p className={styles.sectionSub}>
                 Unfiltered feedback from business owners who trusted us with their core growth and revenue infrastructure.
               </p>
@@ -845,7 +899,9 @@ export default function PortfolioPage() {
                     <div className={styles.authorMeta}>
                       <span className={styles.authorName}>{t.author}</span>
                       <span className={styles.authorRole}>{t.role} • {t.company}</span>
-                      <span style={{ fontSize: 11, color: '#10B981', fontWeight: 700, marginTop: 2 }}>{t.stat}</span>
+                      <span style={{ fontSize: 11, color: '#10B981', fontWeight: 700, marginTop: 2 }}>
+                        <SmoothCounter value={t.stat} />
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -868,13 +924,14 @@ export default function PortfolioPage() {
         <div className="container">
           <div className={styles.sectionHeaderCenter}>
             <ScrollReveal>
-              <div className={styles.eyebrowBadge} style={{ margin: '0 auto 12px' }}>
+              <div className={styles.eyebrowBadge}>
                 <span className={styles.sparkleDot} />
                 <span>Growth Projection Calculator</span>
               </div>
               <h2 className={styles.sectionTitle}>
                 Estimate Your <span className="accent-gradient">Revenue &amp; Lead Growth</span>
               </h2>
+              <div className={styles.sectionHeaderBar} />
               <p className={styles.sectionSub}>
                 Select your targeted monthly marketing budget to view verified lead volumes, revenue projections, and channel allocations based on our audited benchmarks.
               </p>
@@ -896,11 +953,13 @@ export default function PortfolioPage() {
                 ))}
               </div>
 
-              {/* Results Grid - 3D Tactile Skeuomorphic Dials */}
+              {/* Results Grid - 3D Tactile Skeuomorphic Dials with SmoothCounter */}
               <div className={styles.roiResultsGrid}>
                 <div className={styles.roiResultDial}>
                   <span className={styles.roiCardLabel}>Estimated Qualified Leads</span>
-                  <span className={styles.roiBigNumber}>{currentRoi.projectedLeads}</span>
+                  <span className={styles.roiBigNumber}>
+                    <SmoothCounter value={currentRoi.projectedLeads} />
+                  </span>
                   <div className={styles.roiDialMeter}>
                     <div
                       className={styles.roiDialFill}
@@ -912,7 +971,9 @@ export default function PortfolioPage() {
 
                 <div className={styles.roiResultDial}>
                   <span className={styles.roiCardLabel}>Projected Revenue Output</span>
-                  <span className={styles.roiBigNumber} style={{ color: '#10B981' }}>{currentRoi.projectedRevenue}</span>
+                  <span className={styles.roiBigNumber} style={{ color: '#10B981' }}>
+                    <SmoothCounter value={currentRoi.projectedRevenue} />
+                  </span>
                   <div className={styles.roiDialMeter}>
                     <div
                       className={styles.roiDialFill}
@@ -927,7 +988,9 @@ export default function PortfolioPage() {
 
                 <div className={styles.roiResultDial}>
                   <span className={styles.roiCardLabel}>Expected Return on Ad Spend</span>
-                  <span className={styles.roiBigNumber} style={{ color: '#D97706' }}>{currentRoi.roas}</span>
+                  <span className={styles.roiBigNumber} style={{ color: '#D97706' }}>
+                    <SmoothCounter value={currentRoi.roas} />
+                  </span>
                   <div className={styles.roiDialMeter}>
                     <div
                       className={styles.roiDialFill}
@@ -944,7 +1007,7 @@ export default function PortfolioPage() {
               {/* Blueprint & Turnaround Strip */}
               <div className={styles.roiBlueprintStrip}>
                 <div>
-                  <span style={{ fontWeight: 700, color: 'var(--text-primary)', marginRight: 6 }}>Channel Blueprint:</span>
+                  <span style={{ fontWeight: 700, color: '#0F172A', marginRight: 6 }}>Channel Blueprint:</span>
                   <span>{currentRoi.channels}</span>
                 </div>
                 <div style={{ fontWeight: 700, color: 'var(--accent-blue)' }}>
@@ -972,13 +1035,14 @@ export default function PortfolioPage() {
         <div className="container">
           <div className={styles.sectionHeaderCenter}>
             <ScrollReveal>
-              <div className={styles.eyebrowBadge} style={{ margin: '0 auto 12px' }}>
+              <div className={styles.eyebrowBadge}>
                 <span className={styles.sparkleDot} />
                 <span>Partnership Structure</span>
               </div>
               <h2 className={styles.sectionTitle}>
                 How We Partner with <span className="accent-gradient">Growing Brands</span>
               </h2>
+              <div className={styles.sectionHeaderBar} />
               <p className={styles.sectionSub}>
                 Simple, transparent, performance-focused agreements without restrictive annual contracts.
               </p>
