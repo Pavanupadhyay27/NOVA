@@ -298,7 +298,6 @@ export default function FAQPage() {
          ══════════════════════════════════════════════════════════ */}
       <section className={styles.heroSection}>
         <div className={styles.heroGlow} />
-        <div className={styles.watermarkGlyph}>?</div>
 
         <div className="container">
           <div className={styles.heroDualLayout}>
@@ -368,15 +367,15 @@ export default function FAQPage() {
               </ScrollReveal>
             </div>
 
-            {/* Right Skeuomorphic (?) Medallion & Visual Anchor */}
+            {/* Right Skeuomorphic Visual Anchor */}
             <div className={styles.heroRightCol}>
               <ScrollReveal delay={120}>
                 <div className={styles.heroVisualMedallionFrame}>
-                  {/* Floating Skeuomorphic (?) Emblem */}
+                  {/* Floating Skeuomorphic Emblem */}
                   <div className={styles.floatingQuestionEmblem}>
                     <div className={styles.emblemOuterRing}>
                       <div className={styles.emblemInnerPlate}>
-                        <span className={styles.emblemQuestionGlyph}>?</span>
+                        <span className={styles.emblemQuestionGlyph}>✦</span>
                       </div>
                     </div>
                     <div className={styles.emblemLivePulse} />
@@ -436,7 +435,7 @@ export default function FAQPage() {
             </div>
           </ScrollReveal>
 
-          {/* Continuous Architectural Story Spine (Card-Free) */}
+          {/* Continuous Architectural Story Spine / Ladder */}
           <div className={styles.storySpineContainer}>
             <div className={styles.storyVerticalSpine} />
 
@@ -446,7 +445,8 @@ export default function FAQPage() {
                 <div className={styles.chapterNodePulse} />
                 <span className={styles.chapterNumeral}>01</span>
               </div>
-              <div className={styles.chapterContent}>
+              <div className={styles.chapterRungLine} />
+              <div className={styles.chapterCardPlate}>
                 <div className={styles.chapterMeta}>
                   <span className={styles.chapterPhaseBadge}>PHASE 01: THE BLIND SPOT</span>
                   <span className={styles.chapterAnchorTag}>📍 Patia, Saheed Nagar &amp; Nayapalli Corridors</span>
@@ -475,7 +475,8 @@ export default function FAQPage() {
                 <div className={styles.chapterNodePulse} />
                 <span className={styles.chapterNumeral}>02</span>
               </div>
-              <div className={styles.chapterContent}>
+              <div className={styles.chapterRungLine} />
+              <div className={styles.chapterCardPlate}>
                 <div className={styles.chapterMeta}>
                   <span className={styles.chapterPhaseBadge}>PHASE 02: THE ARCHITECTURAL SHIFT</span>
                   <span className={styles.chapterAnchorTag}>⚡ Sub-Second Next.js Infrastructure</span>
@@ -504,7 +505,8 @@ export default function FAQPage() {
                 <div className={styles.chapterNodePulse} />
                 <span className={styles.chapterNumeral}>03</span>
               </div>
-              <div className={styles.chapterContent}>
+              <div className={styles.chapterRungLine} />
+              <div className={styles.chapterCardPlate}>
                 <div className={styles.chapterMeta}>
                   <span className={styles.chapterPhaseBadge}>PHASE 03: THE COMPOUND FLYWHEEL</span>
                   <span className={styles.chapterAnchorTag}>🔄 Multi-Stage Behavioral Retargeting</span>
@@ -533,7 +535,8 @@ export default function FAQPage() {
                 <div className={styles.chapterNodePulse} />
                 <span className={styles.chapterNumeral}>04</span>
               </div>
-              <div className={styles.chapterContent}>
+              <div className={styles.chapterRungLine} />
+              <div className={styles.chapterCardPlate}>
                 <div className={styles.chapterMeta}>
                   <span className={styles.chapterPhaseBadge}>PHASE 04: SECTOR MONOPOLIZATION</span>
                   <span className={styles.chapterAnchorTag}>🏆 Audited Boardroom Attribution</span>
@@ -617,7 +620,7 @@ export default function FAQPage() {
 
                 <div className={styles.sideHelpBox}>
                   <div className={styles.sideHelpTop}>
-                    <span className={styles.sideHelpQuestionIcon}>?</span>
+                    <span className={styles.sideHelpQuestionIcon}>⚡</span>
                     <span className={styles.sideHelpTitle}>Need an urgent audit?</span>
                   </div>
                   <p className={styles.sideHelpText}>
@@ -681,11 +684,10 @@ export default function FAQPage() {
                         </div>
                       </div>
 
-                      {/* Collage Text & Question Mark Accents */}
+                      {/* Collage Text & Details */}
                       <div className={styles.collageBannerInfo}>
                         <div className={styles.collageInfoTop}>
                           <span className={styles.groupBadge}>{group.badge}</span>
-                          <span className={styles.collageQuestionMark}>?</span>
                         </div>
                         <h3 className={styles.collageGroupTitle}>{group.title}</h3>
                         <p className={styles.collageGroupHighlight}>
@@ -717,8 +719,7 @@ export default function FAQPage() {
                             >
                               <div className={styles.questionLeft}>
                                 <span className={styles.questionPillMedallion}>
-                                  <span className={styles.qMarkSmall}>?</span>
-                                  <span>{questionNum}</span>
+                                  <span className={styles.qNumeral}>{questionNum}</span>
                                 </span>
                                 <span className={styles.questionText}>{faq.q}</span>
                               </div>
@@ -771,7 +772,7 @@ export default function FAQPage() {
             <div className={styles.formContainer}>
               <div className={styles.formHeader}>
                 <div className={styles.formEmblemWrap}>
-                  <span className={styles.formQuestionEmblem}>?</span>
+                  <span className={styles.formQuestionEmblem}>💬</span>
                 </div>
                 <div className="eyebrow" style={{ marginBottom: 8 }}>
                   <span className="eyebrow-dot" />
