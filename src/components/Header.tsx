@@ -26,7 +26,6 @@ const mobileLinks = [
   { href: '/about', label: 'About Us' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/industries', label: 'Industries' },
-  { href: '/blog', label: 'Blog' },
   { href: '/faq', label: 'FAQ' },
 ];
 
@@ -169,14 +168,6 @@ export default function Header() {
             className={`${styles.navLink} ${pathname.startsWith('/industries') ? styles.engravedActive : ''}`}
           >
             Industries
-          </Link>
-
-          {/* Blog */}
-          <Link
-            href="/blog"
-            className={`${styles.navLink} ${pathname.startsWith('/blog') ? styles.engravedActive : ''}`}
-          >
-            Blog
           </Link>
 
           {/* FAQ */}
