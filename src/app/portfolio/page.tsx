@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import BeamButton from '@/components/BeamButton';
@@ -24,23 +24,46 @@ const filterCategories = ['All', 'SEO', 'Paid Ads', 'Web Development', 'E-commer
 
 export default function PortfolioPage() {
   const [activeFilter, setActiveFilter] = useState('All');
-  const [searchQuery, setSearchQuery] = useState('');
   const [selectedCase, setSelectedCase] = useState<CaseStudyItem | null>(null);
+  const [activeHudIndex, setActiveHudIndex] = useState(0);
+  const [activeGeoIndex, setActiveGeoIndex] = useState(0);
   const [activeIndustry, setActiveIndustry] = useState(industryVerticals[0].id);
   const [openedAudits, setOpenedAudits] = useState<Record<string, boolean>>({ q1: true, q2: false, q3: false, q4: false });
+  const [isPaused, setIsPaused] = useState(false);
 
-  // Filter & Search Logic
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  // Filtered case studies
   const filteredCases = caseStudiesList.filter((item) => {
-    const matchesCategory = activeFilter === 'All' || item.category === activeFilter;
-    const matchesSearch =
-      searchQuery.trim() === '' ||
-      item.client.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.industry.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.service.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.location.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
+    return activeFilter === 'All' || item.category === activeFilter;
   });
 
+  // Auto-sliding cards mechanism
+  useEffect(() => {
+    const el = sliderRef.current;
+    if (!el) return;
+
+    const interval = setInterval(() => {
+      if (!isPaused && el) {
+        if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 10) {
+          el.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          el.scrollBy({ left: 360, behavior: 'smooth' });
+        }
+      }
+    }, 2800);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  const slideManual = (direction: 'left' | 'right') => {
+    if (!sliderRef.current) return;
+    const offset = direction === 'left' ? -380 : 380;
+    sliderRef.current.scrollBy({ left: offset, behavior: 'smooth' });
+  };
+
+  const currentHud = transformationData[activeHudIndex] || transformationData[0];
+  const currentGeo = geoImpactLocations[activeGeoIndex] || geoImpactLocations[0];
   const currentIndustryData = industryVerticals.find((v) => v.id === activeIndustry) || industryVerticals[0];
 
   const toggleAudit = (id: string) => {
@@ -50,84 +73,80 @@ export default function PortfolioPage() {
   return (
     <div className={styles.page}>
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 1: DUAL-PANE HERO
+          SECTION 1: DUAL-PANE HERO WITH GUARANTEED IMAGE
           ───────────────────────────────────────────────────────────── */}
       <section className={styles.heroSection}>
         <div className="container">
           <div className={styles.heroGrid}>
             {/* Left Pane: High-Converting Text */}
             <div className={styles.heroTextPane}>
-              <ScrollReveal>
-                <div className={styles.eyebrowBadge}>
-                  <span className={styles.sparkleDot} />
-                  <span>Verified Client Outcomes • 12 Proof Pillars</span>
+              <div className={styles.eyebrowBadge}>
+                <span className={styles.sparkleDot} />
+                <span>Verified Client Outcomes • 12 Proof Pillars</span>
+              </div>
+
+              <h1 className={styles.heroTitle}>
+                Engineering Compounding{' '}
+                <span className="accent-gradient">Revenue &amp; Growth</span>{' '}
+                for Ambitious Brands.
+              </h1>
+
+              <p className={styles.heroDesc}>
+                We don&apos;t sell vanity metrics or vague promises. Browse our portfolio of audited client campaigns with verified commercial outcomes across Bhubaneswar, Odisha, and nationwide markets.
+              </p>
+
+              {/* Quick Trust Strip */}
+              <div className={styles.heroTrustStrip}>
+                <div className={styles.heroTrustItem}>
+                  <span className={styles.heroTrustVal}>₹65Cr+</span>
+                  <span className={styles.heroTrustLabel}>Client Revenue</span>
                 </div>
-
-                <h1 className={styles.heroTitle}>
-                  Engineering Compounding{' '}
-                  <span className="accent-gradient">Revenue &amp; Growth</span>{' '}
-                  for Ambitious Brands.
-                </h1>
-
-                <p className={styles.heroDesc}>
-                  We don&apos;t sell vanity metrics or vague promises. Browse our portfolio of audited client campaigns with verified commercial outcomes across Bhubaneswar, Odisha, and nationwide markets.
-                </p>
-
-                {/* Quick Trust Strip */}
-                <div className={styles.heroTrustStrip}>
-                  <div className={styles.heroTrustItem}>
-                    <span className={styles.heroTrustVal}>₹65Cr+</span>
-                    <span className={styles.heroTrustLabel}>Client Revenue</span>
-                  </div>
-                  <div className={styles.heroTrustDivider} />
-                  <div className={styles.heroTrustItem}>
-                    <span className={styles.heroTrustVal}>5.8X</span>
-                    <span className={styles.heroTrustLabel}>Average ROAS</span>
-                  </div>
-                  <div className={styles.heroTrustDivider} />
-                  <div className={styles.heroTrustItem}>
-                    <span className={styles.heroTrustVal}>85+</span>
-                    <span className={styles.heroTrustLabel}>#1 Google Rankings</span>
-                  </div>
+                <div className={styles.heroTrustDivider} />
+                <div className={styles.heroTrustItem}>
+                  <span className={styles.heroTrustVal}>5.8X</span>
+                  <span className={styles.heroTrustLabel}>Average ROAS</span>
                 </div>
-
-                {/* Action Buttons */}
-                <div className={styles.heroActions}>
-                  <BeamButton href="#showcase" label="Explore Case Studies ↓" size="md" />
-                  <Link href="/contact" className={styles.secondaryBtn}>
-                    <span>Request Custom Audit</span>
-                    <span>→</span>
-                  </Link>
+                <div className={styles.heroTrustDivider} />
+                <div className={styles.heroTrustItem}>
+                  <span className={styles.heroTrustVal}>85+</span>
+                  <span className={styles.heroTrustLabel}>#1 Google Rankings</span>
                 </div>
-              </ScrollReveal>
+              </div>
+
+              {/* Action Buttons */}
+              <div className={styles.heroActions}>
+                <BeamButton href="#showcase" label="Explore Case Studies ↓" size="md" />
+                <Link href="/contact" className={styles.secondaryBtn}>
+                  <span>Request Custom Audit</span>
+                  <span>→</span>
+                </Link>
+              </div>
             </div>
 
-            {/* Right Pane: High-Impact Visual Showcase */}
+            {/* Right Pane: High-Impact Visual Showcase (Guaranteed Render) */}
             <div className={styles.heroVisualPane}>
-              <ScrollReveal direction="right" delay={150}>
-                <div className={styles.heroVisualFrame}>
-                  <Image
-                    src="/images/dashboard_hero.jpg"
-                    alt="Marketing Copilot Verified Campaign Analytics Dashboard"
-                    fill
-                    priority
-                    sizes="(max-width: 900px) 100vw, 550px"
-                    className={styles.heroVisualImg}
-                  />
-                  <div className={styles.heroVisualOverlay} />
+              <div className={styles.heroVisualFrame}>
+                <Image
+                  src="/images/hero_growth_mastery.jpg"
+                  alt="Marketing Copilot Verified Campaign Analytics Dashboard"
+                  fill
+                  priority
+                  sizes="(max-width: 900px) 100vw, 550px"
+                  className={styles.heroVisualImg}
+                />
+                <div className={styles.heroVisualOverlay} />
 
-                  {/* Floating Micro-Badges */}
-                  <div className={styles.heroVisualBadgeTop}>
-                    <span>📍</span>
-                    <span>Patia, Bhubaneswar — #1 Local SERP</span>
-                  </div>
-
-                  <div className={styles.heroVisualBadgeBottom}>
-                    <span className={styles.floatingVal}>+320% Inbound Leads</span>
-                    <span className={styles.floatingLabel}>Verified Commercial Return</span>
-                  </div>
+                {/* Floating Micro-Badges */}
+                <div className={styles.heroVisualBadgeTop}>
+                  <span>📍</span>
+                  <span>Patia &amp; Saheed Nagar — #1 SERP Dominated</span>
                 </div>
-              </ScrollReveal>
+
+                <div className={styles.heroVisualBadgeBottom}>
+                  <span className={styles.floatingVal}>+320% Inbound Leads</span>
+                  <span className={styles.floatingLabel}>Verified Commercial Return • 6.2X ROAS</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -153,7 +172,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 3: FLAGSHIP SPOTLIGHT CASE STUDY
+          SECTION 3: FEATURED COMMERCIAL MILESTONE (SPOTLIGHT CASE STUDY)
           ───────────────────────────────────────────────────────────── */}
       <section className={styles.spotlightSection}>
         <div className="container">
@@ -164,7 +183,7 @@ export default function PortfolioPage() {
                 <span>Featured Commercial Milestone</span>
               </div>
               <h2 className={styles.sectionTitle}>
-                Flagship Case Study: <span className="accent-gradient">Luxury Real Estate</span>
+                Luxury Real Estate: <span className="accent-gradient">3X Lead Volume in 90 Days</span>
               </h2>
               <p className={styles.sectionSub}>
                 How we helped a premier builder dominate organic Google search in Bhubaneswar and generate 90+ verified buyer leads monthly without portal dependency.
@@ -232,7 +251,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 4: CURATED FILTERABLE CASE STUDIES & QUICK DETAIL DRAWER
+          SECTION 4: AUTO-SLIDING CASE STUDIES SHOWCASE
           ───────────────────────────────────────────────────────────── */}
       <section id="showcase" className={styles.showcaseSection}>
         <div className="container">
@@ -246,12 +265,12 @@ export default function PortfolioPage() {
                 Curated Results Across <span className="accent-gradient">Key Channels</span>
               </h2>
               <p className={styles.sectionSub}>
-                Filter by practice area or search by industry. Click any case study to inspect the challenge, execution timeline, and verified outcomes.
+                Auto-sliding showcase of client campaigns across Odisha. Hover to pause, click arrows to browse, or click any card to inspect the full case study.
               </p>
             </ScrollReveal>
           </div>
 
-          {/* Filter Bar & Search */}
+          {/* Filter Bar & Carousel Controls */}
           <div className={styles.filterBar}>
             <div className={styles.filters}>
               {filterCategories.map((f) => (
@@ -265,24 +284,36 @@ export default function PortfolioPage() {
               ))}
             </div>
 
-            <div className={styles.searchBox}>
-              <span className={styles.searchIcon}>🔍</span>
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search by industry or keyword..."
-                className={styles.searchInput}
-              />
+            <div className={styles.carouselControls}>
+              <button
+                className={styles.carouselArrowBtn}
+                onClick={() => slideManual('left')}
+                aria-label="Previous case studies"
+              >
+                ←
+              </button>
+              <button
+                className={styles.carouselArrowBtn}
+                onClick={() => slideManual('right')}
+                aria-label="Next case studies"
+              >
+                →
+              </button>
             </div>
           </div>
 
-          {/* Curated Grid */}
-          <div className={styles.curatedGrid}>
-            {filteredCases.map((c, i) => (
-              <ScrollReveal key={c.id} delay={i * 60}>
+          {/* Auto-Sliding Track Container */}
+          <div
+            className={styles.sliderTrackContainer}
+            ref={sliderRef}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            <div className={styles.sliderTrack}>
+              {filteredCases.map((c) => (
                 <div
-                  className={styles.caseCard}
+                  key={c.id}
+                  className={styles.slidingCard}
                   onClick={() => setSelectedCase(c)}
                   role="button"
                   tabIndex={0}
@@ -295,7 +326,7 @@ export default function PortfolioPage() {
                       src={c.image}
                       alt={c.headline}
                       fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      sizes="(max-width: 640px) 100vw, 380px"
                       className={styles.cardImg}
                     />
                     <div className={styles.cardImgOverlay} />
@@ -329,8 +360,8 @@ export default function PortfolioPage() {
                     </div>
                   </div>
                 </div>
-              </ScrollReveal>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -411,7 +442,7 @@ export default function PortfolioPage() {
       )}
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 5: BEFORE & AFTER TRANSFORMATION MATRIX
+          SECTION 5: AUDITED COMMERCIAL DELTAS (INTERACTIVE HUD COCKPIT)
           ───────────────────────────────────────────────────────────── */}
       <section className={styles.transformSection}>
         <div className="container">
@@ -425,42 +456,60 @@ export default function PortfolioPage() {
                 Before vs. After <span className="accent-gradient">Marketing Copilot</span>
               </h2>
               <p className={styles.sectionSub}>
-                Real performance benchmarks demonstrating the tangible shift from legacy agency retainers to revenue engineering.
+                Select any benchmark to inspect the tangible shift from legacy agency retainers to revenue engineering.
               </p>
             </ScrollReveal>
           </div>
 
-          <div className={styles.transformGrid}>
-            {transformationData.map((t, idx) => (
-              <ScrollReveal key={t.metric} delay={idx * 70}>
-                <div className={styles.transformCard}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span className={styles.transformMetricTitle}>{t.metric}</span>
-                    <span className={styles.transformGainPill}>{t.gain}</span>
+          <ScrollReveal>
+            <div className={styles.hudCockpit}>
+              {/* Metric Selector Tabs */}
+              <div className={styles.hudTabs}>
+                {transformationData.map((t, idx) => (
+                  <button
+                    key={t.metric}
+                    className={`${styles.hudTabBtn} ${activeHudIndex === idx ? styles.hudTabBtnActive : ''}`}
+                    onClick={() => setActiveHudIndex(idx)}
+                  >
+                    <span>✦</span>
+                    <span>{t.metric}</span>
+                  </button>
+                ))}
+              </div>
+
+              {/* HUD Content Display */}
+              <div className={styles.hudContent}>
+                <div className={styles.hudComparisonBox}>
+                  <div className={styles.hudGaugeBefore}>
+                    <span className={styles.hudTagRed}>❌ Legacy Agency Retainer (Before)</span>
+                    <span className={styles.hudBigVal}>{currentHud.before}</span>
                   </div>
 
-                  <div className={styles.comparisonRow}>
-                    <div className={styles.beforeBox}>
-                      <span className={styles.compTagRed}>❌ Before Copilot</span>
-                      <span className={styles.compVal}>{t.before}</span>
-                    </div>
-
-                    <div className={styles.afterBox}>
-                      <span className={styles.compTagGreen}>✅ After Copilot</span>
-                      <span className={styles.compVal}>{t.after}</span>
-                    </div>
+                  <div className={styles.hudGaugeAfter}>
+                    <span className={styles.hudTagGreen}>✅ Marketing Copilot Revenue Engine (After)</span>
+                    <span className={styles.hudBigVal}>{currentHud.after}</span>
                   </div>
-
-                  <p className={styles.transformDesc}>{t.desc}</p>
                 </div>
-              </ScrollReveal>
-            ))}
-          </div>
+
+                <div className={styles.hudExplanation}>
+                  <span className={styles.hudGainPill}>
+                    <span>📈</span>
+                    <span>{currentHud.gain} Performance Leap</span>
+                  </span>
+                  <h3 className={styles.hudMetricHeading}>{currentHud.metric}</h3>
+                  <p className={styles.hudDetailText}>{currentHud.desc}</p>
+                  <div style={{ paddingTop: 8 }}>
+                    <BeamButton href="/contact" label="Audit Your Business Benchmarks →" size="sm" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 6: 4-STAGE REVENUE ENGINEERING PROCESS
+          SECTION 6: OUR SCIENTIFIC METHODOLOGY (CONNECTED ROADMAP)
           ───────────────────────────────────────────────────────────── */}
       <section className={styles.processSection}>
         <div className="container">
@@ -474,31 +523,31 @@ export default function PortfolioPage() {
                 How We Engineer <span className="accent-gradient">Predictable Growth</span>
               </h2>
               <p className={styles.sectionSub}>
-                Every successful campaign follows our disciplined, audit-backed framework designed to eliminate ad waste and maximize conversion speed.
+                A connected, audit-backed execution pipeline designed to eliminate ad spend waste and scale conversion speed systematically.
               </p>
             </ScrollReveal>
           </div>
 
-          <div className={styles.processGrid}>
-            {revenueProcessSteps.map((step, idx) => (
-              <ScrollReveal key={step.num} delay={idx * 70}>
-                <div className={styles.processCard}>
-                  <div className={styles.processHeader}>
-                    <span className={styles.processNum}>{step.num}</span>
-                    <span className={styles.processBadge}>{step.badge}</span>
+          <ScrollReveal>
+            <div className={styles.pipelineRoadmap}>
+              {revenueProcessSteps.map((step) => (
+                <div key={step.num} className={styles.pipelineStep}>
+                  <div className={styles.pipelineStepHeader}>
+                    <span className={styles.pipelineNumBadge}>{step.num}</span>
+                    <span className={styles.pipelineDuration}>{step.badge}</span>
                   </div>
-                  <div className={styles.processIcon}>{step.icon}</div>
-                  <h3 className={styles.processTitle}>{step.title}</h3>
-                  <p className={styles.processDesc}>{step.desc}</p>
+                  <div className={styles.pipelineIcon}>{step.icon}</div>
+                  <h3 className={styles.pipelineTitle}>{step.title}</h3>
+                  <p className={styles.pipelineDesc}>{step.desc}</p>
                 </div>
-              </ScrollReveal>
-            ))}
-          </div>
+              ))}
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 7: GEO-IMPACT LOCAL DOMINATION MAP
+          SECTION 7: REGIONAL FOOTPRINT (TERRITORY RADAR & COMMAND CENTER)
           ───────────────────────────────────────────────────────────── */}
       <section className={styles.geoSection}>
         <div className="container">
@@ -512,25 +561,63 @@ export default function PortfolioPage() {
                 Hyperlocal Dominance Across <span className="accent-gradient">Bhubaneswar &amp; Odisha</span>
               </h2>
               <p className={styles.sectionSub}>
-                From Patia tech hubs to Saheed Nagar medical corridors, explore our localized campaign results in high-intent micro-markets.
+                Click any key commercial cluster to inspect our live search dominance and lead generation metrics in that micro-market.
               </p>
             </ScrollReveal>
           </div>
 
-          <div className={styles.geoGrid}>
-            {geoImpactLocations.map((geo, idx) => (
-              <ScrollReveal key={geo.area} delay={idx * 60}>
-                <div className={styles.geoCard}>
-                  <div className={styles.geoTop}>
-                    <span className={styles.geoArea}>{geo.area}</span>
-                    <span className={styles.geoStat}>{geo.stat}</span>
-                  </div>
-                  <span className={styles.geoVertical}>{geo.vertical}</span>
-                  <span className={styles.geoTag}>{geo.tag}</span>
+          <ScrollReveal>
+            <div className={styles.radarCockpit}>
+              {/* Left Side: Territory Selector & Live Data */}
+              <div className={styles.radarLeft}>
+                <div className={styles.radarAreaSelector}>
+                  {geoImpactLocations.map((geo, idx) => (
+                    <button
+                      key={geo.area}
+                      className={`${styles.radarAreaChip} ${activeGeoIndex === idx ? styles.radarAreaChipActive : ''}`}
+                      onClick={() => setActiveGeoIndex(idx)}
+                    >
+                      {geo.area}
+                    </button>
+                  ))}
                 </div>
-              </ScrollReveal>
-            ))}
-          </div>
+
+                <div className={styles.radarLiveStats}>
+                  <div className={styles.radarStatRow}>
+                    <span className={styles.radarStatLabel}>Primary Commercial Vertical</span>
+                    <span style={{ fontWeight: 700, color: 'var(--text-primary)' }}>{currentGeo.vertical}</span>
+                  </div>
+                  <div className={styles.radarStatRow}>
+                    <span className={styles.radarStatLabel}>Search &amp; Funnel Tactic</span>
+                    <span style={{ fontWeight: 700, color: 'var(--accent-blue)' }}>{currentGeo.tag}</span>
+                  </div>
+                  <div className={styles.radarStatRow}>
+                    <span className={styles.radarStatLabel}>Verified Lead Lift</span>
+                    <span className={styles.radarStatVal}>{currentGeo.stat}</span>
+                  </div>
+                </div>
+
+                <div>
+                  <BeamButton href="/contact" label={`Dominate ${currentGeo.area} Market →`} size="sm" />
+                </div>
+              </div>
+
+              {/* Right Side: Interactive Radar Visual */}
+              <div className={styles.radarRight}>
+                <div className={styles.radarGraphic}>
+                  <div className={styles.radarInnerCircle}>
+                    <div className={styles.radarCenterDot} />
+                  </div>
+                  <div className={styles.radarSweep} />
+                </div>
+
+                <div className={styles.radarOverlayBadge}>
+                  <span>📍 Active Radar: {currentGeo.area}</span>
+                  <span style={{ color: '#10B981', fontWeight: 800 }}>LIVE DOMINANCE</span>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
