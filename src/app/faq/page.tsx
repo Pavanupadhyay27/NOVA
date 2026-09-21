@@ -282,6 +282,20 @@ export default function FAQPage() {
     return filteredGroups.reduce((acc, curr) => acc + curr.faqs.length, 0);
   }, [filteredGroups]);
 
+  const directToQuestionCard = (queryText?: string) => {
+    const q = (queryText !== undefined ? queryText : searchQuery).trim();
+    if (q && !formState.question) {
+      setFormState((prev) => ({
+        ...prev,
+        question: prev.question || q,
+      }));
+    }
+    const target = document.getElementById('still-have-questions');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
+
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formState.fullName || !formState.phone) return;
@@ -319,13 +333,32 @@ export default function FAQPage() {
 
                 {/* Minimal Interactive Search Console */}
                 <div className={styles.searchConsoleWrap}>
-                  <div className={styles.searchConsole}>
-                    <span className={styles.searchIcon}>🔍</span>
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      directToQuestionCard();
+                    }}
+                    className={styles.searchConsole}
+                  >
+                    <button
+                      type="submit"
+                      className={styles.searchIconBtn}
+                      aria-label="Search and direct to card"
+                      title="Direct to question card"
+                    >
+                      🔍
+                    </button>
                     <input
                       type="text"
                       placeholder="Search any question (e.g. Google Ads budget, Local SEO, pricing)..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          e.preventDefault();
+                          directToQuestionCard();
+                        }
+                      }}
                       className={styles.searchInput}
                       aria-label="Search frequently asked questions"
                     />
@@ -339,10 +372,32 @@ export default function FAQPage() {
                         ✕
                       </button>
                     )}
-                    <span className={styles.searchCountBadge}>
+
+                    {/* Direct to Card Action Button */}
+                    <button
+                      type="submit"
+                      className={styles.searchDirectActionBtn}
+                      title="Direct to question card"
+                    >
+                      <span>Direct to Card ↓</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className={styles.searchCountBadgeBtn}
+                      onClick={() => {
+                        const target = document.getElementById(
+                          totalFilteredCount > 0 ? 'faq-directory' : 'still-have-questions'
+                        );
+                        if (target) {
+                          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                      }}
+                      title={totalFilteredCount > 0 ? 'View matching answers in directory' : 'Direct to question card'}
+                    >
                       {totalFilteredCount} {totalFilteredCount === 1 ? 'Answer' : 'Answers'}
-                    </span>
-                  </div>
+                    </button>
+                  </form>
 
                   {/* Category Quick-Filter Pills */}
                   <div className={styles.categoryPillsRow}>
@@ -776,7 +831,7 @@ export default function FAQPage() {
               CTA CARD: STILL HAVE A QUESTION? (CENTERED & MINIMAL)
              ══════════════════════════════════════════════════════════ */}
           <ScrollReveal delay={80}>
-            <div className={styles.stillHaveQuestionCard}>
+            <div className={styles.stillHaveQuestionCard} id="still-have-questions">
               <div className={styles.stillQuestionGlow} />
 
               <div className={styles.stillQuestionContentCentered}>
@@ -788,7 +843,11 @@ export default function FAQPage() {
                 </div>
 
                 <h3 className={styles.stillQuestionTitle}>
-                  Still Have Questions?
+                  {searchQuery.trim() ? (
+                    <>Still Have Questions about &ldquo;{searchQuery.trim()}&rdquo;?</>
+                  ) : (
+                    <>Still Have Questions?</>
+                  )}
                 </h3>
 
                 <p className={styles.stillQuestionSub}>
@@ -801,6 +860,12 @@ export default function FAQPage() {
                     className={styles.dispatchRedirectBtn}
                     onClick={(e) => {
                       e.preventDefault();
+                      if (searchQuery.trim() && !formState.question) {
+                        setFormState((prev) => ({
+                          ...prev,
+                          question: prev.question || searchQuery.trim(),
+                        }));
+                      }
                       const el = document.getElementById('ask-question');
                       if (el) {
                         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
