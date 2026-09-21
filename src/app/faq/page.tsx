@@ -253,11 +253,77 @@ const faqGroups: FAQGroup[] = [
   },
 ];
 
+// Levenshtein distance helper for typo tolerance
+function levenshtein(a: string, b: string): number {
+  const an = a ? a.length : 0;
+  const bn = b ? b.length : 0;
+  if (an === 0) return bn;
+  if (bn === 0) return an;
+  const matrix = Array.from({ length: bn + 1 }, (_, i) => [i]);
+  for (let j = 0; j <= an; j++) matrix[0][j] = j;
+  for (let i = 1; i <= bn; i++) {
+    for (let j = 1; j <= an; j++) {
+      if (b.charAt(i - 1) === a.charAt(j - 1)) {
+        matrix[i][j] = matrix[i - 1][j - 1];
+      } else {
+        matrix[i][j] = Math.min(
+          matrix[i - 1][j - 1] + 1,
+          matrix[i][j - 1] + 1,
+          matrix[i - 1][j] + 1
+        );
+      }
+    }
+  }
+  return matrix[bn][an];
+}
+
+const CATEGORY_ALIASES: Record<string, string[]> = {
+  general: ['general', 'genaral', 'genral', 'basic', 'intro', 'company', 'agency', 'start', 'odisha', 'bhubaneswar'],
+  seo: ['seo', 'seoo', 'local', 'gmb', 'google map', 'maps', 'rank', 'ranking', 'organic', 'search'],
+  ads: ['ads', 'ad', 'google ads', 'meta ads', 'facebook', 'fb', 'ppc', 'cpl', 'leads', 'paid', 'instagram ads'],
+  social: ['social', 'social media', 'instagram', 'insta', 'reels', 'content', 'followers', 'branding'],
+  web: ['web', 'website', 'development', 'nextjs', 'next.js', 'site', 'speed', 'code', 'pages', 'developer'],
+  pricing: ['pricing', 'price', 'cost', 'retainer', 'budget', 'fees', 'charges', 'packages', 'sla', 'contract'],
+};
+
+function matchesFuzzy(text: string, query: string): boolean {
+  if (!query) return true;
+  const qClean = query.toLowerCase().trim();
+  const textClean = text.toLowerCase();
+
+  if (textClean.includes(qClean)) return true;
+
+  const qWords = qClean.split(/\s+/).filter(Boolean);
+  const textWords = textClean.split(/[\s,.-]+/).filter(Boolean);
+
+  return qWords.every((qw) => {
+    if (textClean.includes(qw)) return true;
+
+    for (const [key, aliases] of Object.entries(CATEGORY_ALIASES)) {
+      if (aliases.some((a) => a === qw || a.startsWith(qw) || levenshtein(a, qw) <= (qw.length > 4 ? 2 : 1))) {
+        if (textClean.includes(key)) return true;
+      }
+    }
+
+    if (qw.length >= 3) {
+      const maxDist = qw.length <= 4 ? 1 : 2;
+      return textWords.some((tw) => {
+        if (Math.abs(tw.length - qw.length) > maxDist) return false;
+        return levenshtein(tw, qw) <= maxDist;
+      });
+    }
+    return false;
+  });
+}
+
 export default function FAQPage() {
   const [openItem, setOpenItem] = useState<string | null>('general-0');
+  const [highlightedItem, setHighlightedItem] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [showSuggestions, setShowSuggestions] = useState<boolean>(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedTopic, setSelectedTopic] = useState<string>('🎯 Google & Meta Ads');
+  const searchContainerRef = useRef<HTMLDivElement>(null);
 
   // Direct Inquiry Form State
   const [formState, setFormState] = useState({
@@ -282,13 +348,29 @@ export default function FAQPage() {
     };
   }, []);
 
+  // Close suggestions on outside click
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        searchContainerRef.current &&
+        !searchContainerRef.current.contains(event.target as Node)
+      ) {
+        setShowSuggestions(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   const toggle = (key: string) => {
     setOpenItem((prev) => (prev === key ? null : key));
   };
 
-  // Filtered FAQs based on live search & category filter
+  // Filtered FAQs based on live search & category filter with fuzzy matching
   const filteredGroups = useMemo(() => {
-    const q = searchQuery.toLowerCase().trim();
+    const q = searchQuery.trim();
     return faqGroups
       .filter((group) => {
         if (selectedCategory !== 'all' && group.id !== selectedCategory) {
@@ -300,9 +382,10 @@ export default function FAQPage() {
         if (!q) return group;
         const matchingFaqs = group.faqs.filter(
           (faq) =>
-            faq.q.toLowerCase().includes(q) ||
-            faq.a.toLowerCase().includes(q) ||
-            faq.takeaway?.toLowerCase().includes(q)
+            matchesFuzzy(faq.q, q) ||
+            matchesFuzzy(faq.a, q) ||
+            (faq.takeaway && matchesFuzzy(faq.takeaway, q)) ||
+            matchesFuzzy(group.title, q)
         );
         return {
           ...group,
@@ -315,6 +398,109 @@ export default function FAQPage() {
   const totalFilteredCount = useMemo(() => {
     return filteredGroups.reduce((acc, curr) => acc + curr.faqs.length, 0);
   }, [filteredGroups]);
+
+  // Matching Categories for Auto-Suggestions
+  const matchingCategories = useMemo(() => {
+    const q = searchQuery.trim();
+    if (!q) return [];
+    return faqGroups.filter(
+      (group) =>
+        matchesFuzzy(group.title, q) ||
+        matchesFuzzy(group.id, q) ||
+        matchesFuzzy(group.badge, q) ||
+        matchesFuzzy(group.highlight, q)
+    );
+  }, [searchQuery]);
+
+  // Matching Questions for Auto-Suggestions
+  const matchingQuestions = useMemo(() => {
+    const q = searchQuery.trim();
+    if (!q) return [];
+    const list: {
+      groupId: string;
+      groupTitle: string;
+      groupBadge: string;
+      index: number;
+      question: string;
+      takeaway?: string;
+    }[] = [];
+
+    for (const group of faqGroups) {
+      group.faqs.forEach((faq, fi) => {
+        if (
+          matchesFuzzy(faq.q, q) ||
+          matchesFuzzy(faq.a, q) ||
+          (faq.takeaway && matchesFuzzy(faq.takeaway, q))
+        ) {
+          list.push({
+            groupId: group.id,
+            groupTitle: group.title,
+            groupBadge: group.badge,
+            index: fi,
+            question: faq.q,
+            takeaway: faq.takeaway,
+          });
+        }
+      });
+    }
+    return list.slice(0, 5);
+  }, [searchQuery]);
+
+  // Navigate to Section/Category and place the user right there
+  const navigateToCategory = (groupId: string) => {
+    setShowSuggestions(false);
+    if (selectedCategory !== 'all' && selectedCategory !== groupId) {
+      setSelectedCategory('all');
+    }
+    setTimeout(() => {
+      const el = document.getElementById(`faq-group-${groupId}`);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
+  };
+
+  // Navigate to Question Card, expand it, place user right at the card, and pulse highlight
+  const navigateToQuestion = (groupId: string, fi: number) => {
+    setShowSuggestions(false);
+    const key = `${groupId}-${fi}`;
+    if (selectedCategory !== 'all' && selectedCategory !== groupId) {
+      setSelectedCategory('all');
+    }
+    setOpenItem(key);
+    setHighlightedItem(key);
+
+    setTimeout(() => {
+      const el = document.getElementById(`faq-item-${key}`);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 120);
+
+    setTimeout(() => {
+      setHighlightedItem((curr) => (curr === key ? null : curr));
+    }, 3000);
+  };
+
+  const handleSearchSubmit = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    setShowSuggestions(false);
+
+    if (matchingCategories.length > 0) {
+      navigateToCategory(matchingCategories[0].id);
+      return;
+    }
+    if (matchingQuestions.length > 0) {
+      navigateToQuestion(matchingQuestions[0].groupId, matchingQuestions[0].index);
+      return;
+    }
+    const target = document.getElementById(
+      totalFilteredCount > 0 ? 'faq-directory' : 'still-have-questions'
+    );
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   const directToQuestionCard = (queryText?: string) => {
     const q = (queryText !== undefined ? queryText : searchQuery).trim();
@@ -367,73 +553,161 @@ export default function FAQPage() {
                   </p>
                 </div>
 
-                {/* Minimal Interactive Search Console */}
+                {/* Minimal Interactive Search Console with Auto-Suggestions */}
                 <div className={styles.searchConsoleWrap}>
-                  <form
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      directToQuestionCard();
-                    }}
-                    className={styles.searchConsole}
-                  >
-                    <button
-                      type="submit"
-                      className={styles.searchIconBtn}
-                      aria-label="Search and direct to card"
-                      title="Direct to question card"
+                  <div className={styles.searchBarContainer} ref={searchContainerRef}>
+                    <form
+                      onSubmit={handleSearchSubmit}
+                      className={styles.searchConsole}
                     >
-                      🔍
-                    </button>
-                    <input
-                      type="text"
-                      placeholder="Search any question (e.g. Google Ads budget, Local SEO, pricing)..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter') {
-                          e.preventDefault();
-                          directToQuestionCard();
-                        }
-                      }}
-                      className={styles.searchInput}
-                      aria-label="Search frequently asked questions"
-                    />
-                    {searchQuery && (
+                      <button
+                        type="submit"
+                        className={styles.searchIconBtn}
+                        aria-label="Search FAQ"
+                        title="Search"
+                      >
+                        🔍
+                      </button>
+                      <input
+                        type="text"
+                        placeholder="Search any question (e.g. Google Ads budget, Local SEO, pricing)..."
+                        value={searchQuery}
+                        onChange={(e) => {
+                          setSearchQuery(e.target.value);
+                          setShowSuggestions(true);
+                        }}
+                        onFocus={() => {
+                          if (searchQuery.trim().length > 0) setShowSuggestions(true);
+                        }}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Escape') {
+                            setShowSuggestions(false);
+                          } else if (e.key === 'Enter') {
+                            e.preventDefault();
+                            handleSearchSubmit();
+                          }
+                        }}
+                        className={styles.searchInput}
+                        aria-label="Search frequently asked questions"
+                      />
+                      {searchQuery && (
+                        <button
+                          type="button"
+                          className={styles.clearSearchBtn}
+                          onClick={() => {
+                            setSearchQuery('');
+                            setShowSuggestions(false);
+                          }}
+                          aria-label="Clear search"
+                        >
+                          ✕
+                        </button>
+                      )}
+
                       <button
                         type="button"
-                        className={styles.clearSearchBtn}
-                        onClick={() => setSearchQuery('')}
-                        aria-label="Clear search"
+                        className={styles.searchCountBadgeBtn}
+                        onClick={() => {
+                          const target = document.getElementById(
+                            totalFilteredCount > 0 ? 'faq-directory' : 'still-have-questions'
+                          );
+                          if (target) {
+                            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          }
+                        }}
+                        title={totalFilteredCount > 0 ? 'View matching answers in directory' : 'Direct to question card'}
                       >
-                        ✕
+                        {totalFilteredCount} {totalFilteredCount === 1 ? 'Answer' : 'Answers'}
                       </button>
+                    </form>
+
+                    {/* Auto-Suggestions Dropdown */}
+                    {showSuggestions && searchQuery.trim().length > 0 && (
+                      <div className={styles.suggestionsDropdown}>
+                        {matchingCategories.length > 0 && (
+                          <div className={styles.suggestionSection}>
+                            <div className={styles.suggestionHeader}>
+                              <span>Matching Sections</span>
+                              <span className={styles.suggestionHeaderBadge}>
+                                {matchingCategories.length} {matchingCategories.length === 1 ? 'Section' : 'Sections'}
+                              </span>
+                            </div>
+                            {matchingCategories.map((cat) => (
+                              <button
+                                key={cat.id}
+                                type="button"
+                                className={styles.suggestionItem}
+                                onClick={() => navigateToCategory(cat.id)}
+                              >
+                                <div className={styles.suggestionItemLeft}>
+                                  <span className={styles.suggestionItemIcon}>📁</span>
+                                  <div className={styles.suggestionItemContent}>
+                                    <span className={styles.suggestionItemTitle}>{cat.title}</span>
+                                    <span className={styles.suggestionItemSubtitle}>
+                                      {cat.faqs.length} Questions &bull; {cat.badge}
+                                    </span>
+                                  </div>
+                                </div>
+                                <span className={styles.suggestionItemAction}>
+                                  Jump to Section &darr;
+                                </span>
+                              </button>
+                            ))}
+                          </div>
+                        )}
+
+                        {matchingQuestions.length > 0 && (
+                          <div className={styles.suggestionSection}>
+                            <div className={styles.suggestionHeader}>
+                              <span>Matching Questions</span>
+                              <span className={styles.suggestionHeaderBadge}>
+                                {matchingQuestions.length} Found
+                              </span>
+                            </div>
+                            {matchingQuestions.map((mq) => (
+                              <button
+                                key={`${mq.groupId}-${mq.index}`}
+                                type="button"
+                                className={styles.suggestionItem}
+                                onClick={() => navigateToQuestion(mq.groupId, mq.index)}
+                              >
+                                <div className={styles.suggestionItemLeft}>
+                                  <span className={`${styles.suggestionItemIcon} ${styles.suggestionItemIconQuestion}`}>💡</span>
+                                  <div className={styles.suggestionItemContent}>
+                                    <span className={styles.suggestionItemTitle}>{mq.question}</span>
+                                    <span className={styles.suggestionItemSubtitle}>
+                                      {mq.groupTitle} &bull; Q#{(mq.index + 1).toString().padStart(2, '0')}
+                                    </span>
+                                  </div>
+                                </div>
+                                <span className={styles.suggestionItemAction}>
+                                  Open Card &rarr;
+                                </span>
+                              </button>
+                            ))}
+                          </div>
+                        )}
+
+                        {matchingCategories.length === 0 && matchingQuestions.length === 0 && (
+                          <div className={styles.noSuggestionsWrap}>
+                            <p className={styles.noSuggestionsText}>
+                              No direct match found for &ldquo;<strong>{searchQuery}</strong>&rdquo;
+                            </p>
+                            <button
+                              type="button"
+                              className={styles.noSuggestionsAction}
+                              onClick={() => {
+                                setShowSuggestions(false);
+                                directToQuestionCard(searchQuery);
+                              }}
+                            >
+                              Ask Strategist in 1-Click &rarr;
+                            </button>
+                          </div>
+                        )}
+                      </div>
                     )}
-
-                    {/* Direct to Card Action Button */}
-                    <button
-                      type="submit"
-                      className={styles.searchDirectActionBtn}
-                      title="Direct to question card"
-                    >
-                      <span>Direct to Card ↓</span>
-                    </button>
-
-                    <button
-                      type="button"
-                      className={styles.searchCountBadgeBtn}
-                      onClick={() => {
-                        const target = document.getElementById(
-                          totalFilteredCount > 0 ? 'faq-directory' : 'still-have-questions'
-                        );
-                        if (target) {
-                          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        }
-                      }}
-                      title={totalFilteredCount > 0 ? 'View matching answers in directory' : 'Direct to question card'}
-                    >
-                      {totalFilteredCount} {totalFilteredCount === 1 ? 'Answer' : 'Answers'}
-                    </button>
-                  </form>
+                  </div>
 
                   {/* Category Quick-Filter Pills */}
                   <div className={styles.categoryPillsRow}>
@@ -803,7 +1077,8 @@ export default function FAQPage() {
                         return (
                           <div
                             key={key}
-                            className={`${styles.item} ${isOpen ? styles.itemOpen : ''}`}
+                            id={`faq-item-${key}`}
+                            className={`${styles.item} ${isOpen ? styles.itemOpen : ''} ${highlightedItem === key ? styles.itemHighlighted : ''}`}
                           >
                             <button
                               type="button"
