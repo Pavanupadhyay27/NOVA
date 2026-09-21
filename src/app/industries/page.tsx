@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import BeamButton from '@/components/BeamButton';
@@ -218,140 +218,120 @@ export default function IndustriesPage() {
   return (
     <div className={styles.page}>
       {/* ══════════════════════════════════════════════════════════
-          SECTION 1: ASYMMETRIC SPLIT HERO WITH LIVE TERMINAL HUD
+          SECTION 1: HERO COMMAND CENTER (TEXT ABOVE, HERO IMAGE BELOW)
          ══════════════════════════════════════════════════════════ */}
       <section className={styles.heroSection}>
         <div className={styles.heroGlowOverlay} />
         <div className="container">
-          <div className={styles.heroSplitGrid}>
-            {/* Left Column: Typography & Intent */}
-            <div className={styles.heroLeftCol}>
-              <ScrollReveal>
-                <div className="eyebrow" style={{ margin: '0 0 16px' }}>
-                  <span className="eyebrow-dot" />
-                  12 SPECIALIZED SECTORS IN BHUBANESWAR & ODISHA
+          {/* Text Content ABOVE the Hero Image */}
+          <div className={styles.heroTopContent}>
+            <ScrollReveal>
+              <div className="eyebrow" style={{ margin: '0 auto 16px' }}>
+                <span className="eyebrow-dot" />
+                12 SPECIALIZED SECTORS IN BHUBANESWAR & ODISHA
+              </div>
+              <h1 className={`display-xl ${styles.heroTitle}`}>
+                Bhubaneswar Digital Marketing<br />
+                <span className="accent-gradient">Built for Your Specific Industry.</span>
+              </h1>
+              <p className={`body-lg ${styles.heroSub}`}>
+                Generic marketing fails because every industry has unique customer psychology, sales cycles, and pricing dynamics. We build bespoke acquisition engines tailored specifically to your sector in Bhubaneswar.
+              </p>
+
+              <div className={styles.heroCtaRow}>
+                <BeamButton
+                  href="#sector-workstation"
+                  label="Explore Sector Workstation ↓"
+                  size="lg"
+                />
+                <Link href="/contact" className={styles.heroSecondaryBtn}>
+                  Claim Sector Growth Blueprint <span>→</span>
+                </Link>
+              </div>
+
+              {/* Direct Access Quick Sector Chips */}
+              <div className={styles.heroTagsStrip}>
+                <span className={styles.heroTagsLabel}>DIRECT SECTOR ACCESS:</span>
+                <div className={styles.heroTagsList}>
+                  {industryCatalog.map(ind => {
+                    const isSelected = ind.id === selectedIndustryId;
+                    return (
+                      <button
+                        key={ind.id}
+                        type="button"
+                        className={`${styles.heroTagBtn} ${isSelected ? styles.heroTagBtnActive : ''}`}
+                        onClick={() => {
+                          setSelectedIndustryId(ind.id);
+                          const el = document.getElementById('sector-workstation');
+                          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }}
+                      >
+                        <span style={{ marginRight: 4 }}>{sectorIcons[ind.id] || '⚡'}</span>
+                        {ind.shortTitle}
+                      </button>
+                    );
+                  })}
                 </div>
-                <h1 className={`display-xl ${styles.heroTitle}`}>
-                  Bhubaneswar Digital Marketing<br />
-                  <span className="accent-gradient">Built for Your Specific Industry.</span>
-                </h1>
-                <p className={`body-lg ${styles.heroSub}`}>
-                  Generic marketing fails because every industry has unique customer psychology, sales cycles, and pricing dynamics. We build bespoke acquisition engines tailored specifically to your sector in Bhubaneswar.
-                </p>
-
-                <div className={styles.heroCtaRow}>
-                  <BeamButton
-                    href="#sector-workstation"
-                    label="Explore Sector Workstation ↓"
-                    size="lg"
-                  />
-                  <Link href="/contact" className={styles.heroSecondaryBtn}>
-                    Claim Growth Blueprint <span>→</span>
-                  </Link>
-                </div>
-
-                {/* Quick Sector Tags Strip */}
-                <div className={styles.heroTagsStrip}>
-                  <span className={styles.heroTagsLabel}>DIRECT ACCESS:</span>
-                  <div className={styles.heroTagsList}>
-                    {industryCatalog.map(ind => {
-                      const isSelected = ind.id === selectedIndustryId;
-                      return (
-                        <button
-                          key={ind.id}
-                          type="button"
-                          className={`${styles.heroTagBtn} ${isSelected ? styles.heroTagBtnActive : ''}`}
-                          onClick={() => {
-                            setSelectedIndustryId(ind.id);
-                            const el = document.getElementById('sector-workstation');
-                            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                          }}
-                        >
-                          <span style={{ marginRight: 4 }}>{sectorIcons[ind.id] || '⚡'}</span>
-                          {ind.shortTitle}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              </ScrollReveal>
-            </div>
-
-            {/* Right Column: Live Sector Intelligence Terminal HUD */}
-            <div className={styles.heroRightCol}>
-              <ScrollReveal delay={120}>
-                <div className={styles.terminalContainer}>
-                  <div className={styles.terminalHeader}>
-                    <div className={styles.terminalControls}>
-                      <span className={styles.terminalDotRed} />
-                      <span className={styles.terminalDotYellow} />
-                      <span className={styles.terminalDotGreen} />
-                    </div>
-                    <div className={styles.terminalTitle}>
-                      MARKET_INTELLIGENCE // BHUBANESWAR_SECTORS.v2
-                    </div>
-                    <div className={styles.terminalLiveBadge}>
-                      <span className={styles.pulseDot} />
-                      LIVE FEED
-                    </div>
-                  </div>
-
-                  <div className={styles.terminalBody}>
-                    <div className={styles.terminalLogBox}>
-                      <div className={styles.terminalLogRow}>
-                        <span className={styles.logTime}>[14:24:02]</span>
-                        <span className={styles.logScope}>REAL ESTATE // PATIA:</span>
-                        <span className={styles.logText}>3 BHK buyer site visit booked via WhatsApp</span>
-                      </div>
-                      <div className={styles.terminalLogRow}>
-                        <span className={styles.logTime}>[14:23:45]</span>
-                        <span className={styles.logScope}>CLINIC // SAHEED NGR:</span>
-                        <span className={styles.logText}>Google Maps #1 position locked (24 calls/day)</span>
-                      </div>
-                      <div className={styles.terminalLogRow}>
-                        <span className={styles.logTime}>[14:22:18]</span>
-                        <span className={styles.logScope}>EDUCATION // CUTTACK:</span>
-                        <span className={styles.logText}>400th student admission verified at ₹140 CPL</span>
-                      </div>
-                    </div>
-
-                    <div className={styles.terminalStatsGrid}>
-                      <div className={styles.terminalStatBox}>
-                        <span className={styles.terminalStatNum}>90+</span>
-                        <span className={styles.terminalStatLabel}>Monthly Inbound Buyers</span>
-                        <span className={styles.terminalStatSub}>Real Estate • Patia</span>
-                      </div>
-                      <div className={styles.terminalStatBox}>
-                        <span className={styles.terminalStatNum}>+190%</span>
-                        <span className={styles.terminalStatLabel}>Direct Patient Calls</span>
-                        <span className={styles.terminalStatSub}>Clinics • Saheed Nagar</span>
-                      </div>
-                      <div className={styles.terminalStatBox}>
-                        <span className={styles.terminalStatNum}>₹140</span>
-                        <span className={styles.terminalStatLabel}>Cost Per Student Admission</span>
-                        <span className={styles.terminalStatSub}>Education • Acharya Vihar</span>
-                      </div>
-                      <div className={styles.terminalStatBox}>
-                        <span className={styles.terminalStatNum}>7.1X</span>
-                        <span className={styles.terminalStatLabel}>Verified ROAS Multiplier</span>
-                        <span className={styles.terminalStatSub}>D2C • Janpath Corridor</span>
-                      </div>
-                    </div>
-
-                    <div className={styles.terminalTerminalBar}>
-                      <div className={styles.terminalBarTrack}>
-                        <div className={styles.terminalBarFill} />
-                      </div>
-                      <div className={styles.terminalBarLabels}>
-                        <span>12 Sectors Active in Odisha</span>
-                        <span>₹25Cr+ Attributed Pipeline</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            </div>
+              </div>
+            </ScrollReveal>
           </div>
+
+          {/* Hero Image Showcase Frame BELOW the Text */}
+          <ScrollReveal delay={140}>
+            <div className={styles.heroShowcaseFrame}>
+              <div className={styles.heroVisualInner}>
+                <Image
+                  src="/images/dashboard_hero.jpg"
+                  alt="Marketing Copilot Sector Operations Command Center"
+                  fill
+                  priority
+                  className={styles.heroImg}
+                />
+                <div className={styles.heroImgOverlay} />
+                <div className={styles.heroCornerTL} />
+                <div className={styles.heroCornerBR} />
+
+                {/* Floating Frosted Glass KPI Badges */}
+                <div className={`${styles.floatingKpiBadge} ${styles.kpiTopLeft}`}>
+                  <span className={styles.kpiIcon}>🏢</span>
+                  <div className={styles.kpiContent}>
+                    <div className={styles.kpiValue}>90+ Inbound Buyers / Mo</div>
+                    <div className={styles.kpiSub}>Real Estate • Patia & Khandagiri</div>
+                  </div>
+                </div>
+
+                <div className={`${styles.floatingKpiBadge} ${styles.kpiTopRight}`}>
+                  <span className={styles.kpiIcon}>🏥</span>
+                  <div className={styles.kpiContent}>
+                    <div className={styles.kpiValue}>+190% Direct Patient Calls</div>
+                    <div className={styles.kpiSub}>Healthcare • Saheed Nagar 3-Pack</div>
+                  </div>
+                </div>
+
+                <div className={`${styles.floatingKpiBadge} ${styles.kpiBottomLeft}`}>
+                  <span className={styles.kpiIcon}>🎓</span>
+                  <div className={styles.kpiContent}>
+                    <div className={styles.kpiValue}>₹140 Verified CPL</div>
+                    <div className={styles.kpiSub}>Education • 400+ Batch Admissions</div>
+                  </div>
+                </div>
+
+                <div className={`${styles.floatingKpiBadge} ${styles.kpiBottomRight}`}>
+                  <span className={styles.kpiIcon}>🛍️</span>
+                  <div className={styles.kpiContent}>
+                    <div className={styles.kpiValue}>7.1X Attributed ROAS</div>
+                    <div className={styles.kpiSub}>D2C E-commerce • Janpath Corridor</div>
+                  </div>
+                </div>
+
+                {/* Center Bottom Live Intelligence Pill */}
+                <div className={styles.heroLiveCenterPill}>
+                  <span className={styles.pulseDotGreen} />
+                  <span>LIVE ODISHA SECTOR INTELLIGENCE • 12 VERTICALS MONITORED</span>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

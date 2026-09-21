@@ -15,10 +15,13 @@
 /* ─────────────────────────────────────────────────────────────
    SECTION 1: ASYMMETRIC SPLIT HERO WITH TERMINAL HUD
    ───────────────────────────────────────────────────────────── */
+/* ─────────────────────────────────────────────────────────────
+   SECTION 1: HERO COMMAND CENTER (TEXT ABOVE, SHOWCASE IMAGE BELOW)
+   ───────────────────────────────────────────────────────────── */
 .heroSection {
   position: relative;
-  padding: 80px 0 68px;
-  background: radial-gradient(circle at 85% -20%, rgba(245, 158, 11, 0.12) 0%, rgba(11, 32, 147, 0.05) 50%, transparent 80%), #FFFFFF;
+  padding: 80px 0 72px;
+  background: radial-gradient(circle at 50% -20%, rgba(245, 158, 11, 0.12) 0%, rgba(11, 32, 147, 0.05) 50%, transparent 80%), #FFFFFF;
   border-bottom: 1px solid var(--border-subtle);
   overflow: hidden;
 }
@@ -30,40 +33,43 @@
   pointer-events: none;
 }
 
-.heroSplitGrid {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  align-items: center;
-  gap: 48px;
-  position: relative;
-  z-index: 1;
-}
-
-.heroLeftCol {
+/* Text Content ABOVE the Hero Image */
+.heroTopContent {
+  text-align: center;
+  margin: 0 auto 52px;
+  max-width: 920px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
 }
 
 .heroTitle {
-  margin: 18px 0 20px;
-  line-height: 1.15;
+  margin: 20px auto 22px;
+  max-width: 900px;
+  text-align: center;
   color: #000000;
   font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
 
 .heroSub {
   color: #334155;
   line-height: 1.7;
-  margin-bottom: 32px;
-  max-width: 600px;
+  margin: 0 auto 36px;
+  max-width: 720px;
+  text-align: center;
 }
 
 .heroCtaRow {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
 
 .heroSecondaryBtn {
@@ -92,7 +98,11 @@
 .heroTagsStrip {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .heroTagsLabel {
@@ -106,14 +116,15 @@
 .heroTagsList {
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
 .heroTagBtn {
   display: inline-flex;
   align-items: center;
-  padding: 5px 12px;
+  padding: 6px 14px;
   border-radius: var(--radius-full);
   background: #F8FAFC;
   border: 1px solid var(--border);
@@ -139,168 +150,165 @@
   box-shadow: 0 4px 12px rgba(11, 32, 147, 0.25);
 }
 
-/* Terminal HUD (Right Column) */
-.terminalContainer {
-  background: linear-gradient(145deg, #0B2093 0%, #0D007F 100%);
-  border-radius: var(--radius-2xl);
-  border: 1.5px solid rgba(255, 184, 0, 0.35);
-  box-shadow: 0 28px 72px -12px rgba(11, 32, 147, 0.45), inset 0 1.5px 0 rgba(255, 255, 255, 0.25);
-  overflow: hidden;
-  color: #FFFFFF;
+/* Hero Image Showcase Frame BELOW the Text */
+.heroShowcaseFrame {
   position: relative;
+  max-width: 1160px;
+  margin: 0 auto;
+  border-radius: var(--radius-2xl);
+  padding: 12px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(241, 245, 249, 0.85));
+  border: 1.5px solid rgba(11, 32, 147, 0.16);
+  box-shadow: 0 32px 80px -16px rgba(11, 32, 147, 0.22), 0 12px 32px -8px rgba(0, 0, 0, 0.06), inset 0 1.5px 0 #FFFFFF;
+  overflow: visible;
+  z-index: 2;
 }
 
-.terminalHeader {
+.heroVisualInner {
+  position: relative;
+  width: 100%;
+  height: 560px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #0B2093;
+}
+
+.heroImg {
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.heroShowcaseFrame:hover .heroImg {
+  transform: scale(1.02);
+}
+
+.heroImgOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 32, 147, 0.2) 0%, rgba(13, 0, 127, 0.32) 50%, rgba(8, 14, 56, 0.88) 100%);
+  pointer-events: none;
+}
+
+/* HUD Tech Corner Accents */
+.heroCornerTL {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  width: 28px;
+  height: 28px;
+  border-top: 3px solid #FFB800;
+  border-left: 3px solid #FFB800;
+  border-top-left-radius: 8px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.heroCornerBR {
+  position: absolute;
+  bottom: 18px;
+  right: 18px;
+  width: 28px;
+  height: 28px;
+  border-bottom: 3px solid #FFB800;
+  border-right: 3px solid #FFB800;
+  border-bottom-right-radius: 8px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Floating Frosted Glass KPI Badges */
+.floatingKpiBadge {
+  position: absolute;
+  z-index: 4;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 14px;
   padding: 14px 20px;
-  background: rgba(13, 0, 127, 0.65);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  box-shadow: 0 16px 36px -6px rgba(11, 32, 147, 0.22), 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.terminalControls {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+.floatingKpiBadge:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 48px -6px rgba(11, 32, 147, 0.32);
+  border-color: #FFB800;
 }
 
-.terminalDotRed { width: 10px; height: 10px; border-radius: 50%; background: #EF4444; }
-.terminalDotYellow { width: 10px; height: 10px; border-radius: 50%; background: #F59E0B; }
-.terminalDotGreen { width: 10px; height: 10px; border-radius: 50%; background: #10B981; }
-
-.terminalTitle {
-  font-family: monospace;
-  font-size: 11px;
-  font-weight: 700;
-  color: #CBD5E1;
-  letter-spacing: 0.05em;
+.kpiTopLeft {
+  top: 28px;
+  left: 28px;
 }
 
-.terminalLiveBadge {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: monospace;
-  font-size: 10px;
-  font-weight: 800;
-  color: #10B981;
+.kpiTopRight {
+  top: 28px;
+  right: 28px;
 }
 
-.pulseDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #10B981;
-  box-shadow: 0 0 8px #10B981;
+.kpiBottomLeft {
+  bottom: 40px;
+  left: 28px;
 }
 
-.terminalBody {
-  padding: 24px;
+.kpiBottomRight {
+  bottom: 40px;
+  right: 28px;
 }
 
-.terminalLogBox {
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-md);
-  padding: 12px 14px;
-  margin-bottom: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  font-family: monospace;
-  font-size: 11px;
+.kpiIcon {
+  font-size: 26px;
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
-.terminalLogRow {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.logTime {
-  color: #94A3B8;
-  font-size: 10px;
-}
-
-.logScope {
-  color: #FFB800;
-  font-weight: 700;
-  font-size: 10px;
-}
-
-.logText {
-  color: #E2E8F0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.terminalStatsGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
-.terminalStatBox {
-  padding: 14px;
-  border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+.kpiContent {
   display: flex;
   flex-direction: column;
 }
 
-.terminalStatNum {
+.kpiValue {
   font-family: var(--font-display);
-  font-size: 24px;
-  font-weight: 900;
-  color: #FFB800;
-  line-height: 1.1;
-  margin-bottom: 2px;
+  font-size: 15px;
+  font-weight: 800;
+  color: #0B2093;
+  letter-spacing: -0.01em;
 }
 
-.terminalStatLabel {
+.kpiSub {
   font-size: 11px;
-  font-weight: 700;
-  color: #FFFFFF;
-}
-
-.terminalStatSub {
-  font-size: 10px;
-  color: #94A3B8;
+  font-weight: 600;
+  color: #475569;
   margin-top: 2px;
 }
 
-.terminalTerminalBar {
-  padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.terminalBarTrack {
-  height: 6px;
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 3px;
-  overflow: hidden;
-  margin-bottom: 8px;
-}
-
-.terminalBarFill {
-  height: 100%;
-  width: 94%;
-  background: linear-gradient(90deg, #FFB800, #F59E0B);
-  border-radius: 3px;
-}
-
-.terminalBarLabels {
-  display: flex;
-  justify-content: space-between;
+/* Center Bottom Live Intelligence Pill */
+.heroLiveCenterPill {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 20px;
+  border-radius: 9999px;
+  background: rgba(11, 32, 147, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(255, 184, 0, 0.45);
+  color: #FFFFFF;
   font-family: monospace;
   font-size: 11px;
-  color: #CBD5E1;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -1887,9 +1895,21 @@
    MOBILE RESPONSIVE BREAKPOINTS (STRICT MOBILE OPTIMIZATION)
    ───────────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .heroSplitGrid {
-    grid-template-columns: 1fr;
-    gap: 36px;
+  .heroVisualInner {
+    height: 460px;
+  }
+  .floatingKpiBadge {
+    padding: 10px 14px;
+    gap: 10px;
+  }
+  .kpiValue {
+    font-size: 13px;
+  }
+  .kpiSub {
+    font-size: 10px;
+  }
+  .kpiIcon {
+    font-size: 20px;
   }
   .dataStripGlassPlate {
     flex-wrap: wrap;
@@ -1947,6 +1967,37 @@
 @media (max-width: 768px) {
   .heroSection {
     padding: 48px 0 36px;
+  }
+  .heroTopContent {
+    margin-bottom: 28px;
+  }
+  .heroCtaRow {
+    flex-direction: column;
+    width: 100%;
+  }
+  .heroSecondaryBtn {
+    width: 100%;
+    justify-content: center;
+  }
+  .heroShowcaseFrame {
+    padding: 6px;
+    border-radius: 16px;
+  }
+  .heroVisualInner {
+    height: 260px;
+    border-radius: 12px;
+  }
+  .floatingKpiBadge {
+    display: none;
+  }
+  .heroLiveCenterPill {
+    font-size: 9px;
+    padding: 6px 12px;
+    bottom: 12px;
+    max-width: 90%;
+    text-align: center;
+    white-space: normal;
+    line-height: 1.3;
   }
   .dataStripGlassPlate {
     flex-direction: column;
