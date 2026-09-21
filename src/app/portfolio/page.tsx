@@ -494,7 +494,7 @@ export default function PortfolioPage() {
       )}
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 5: AUDITED COMMERCIAL DELTAS (ELEVATED VELOCITY COCKPIT)
+          SECTION 5: AUDITED COMMERCIAL DELTAS (EXECUTIVE SEGMENTED CONTROLLER)
           ───────────────────────────────────────────────────────────── */}
       <section className={styles.transformSection}>
         <div className="container">
@@ -520,7 +520,7 @@ export default function PortfolioPage() {
               onMouseEnter={() => setIsHudPaused(true)}
               onMouseLeave={() => setIsHudPaused(false)}
             >
-              {/* Metric Selector Tabs */}
+              {/* Executive Segmented Controller Tray */}
               <div className={styles.velocityTabsRow}>
                 {transformationData.map((t, idx) => (
                   <button
@@ -528,13 +528,15 @@ export default function PortfolioPage() {
                     className={`${styles.velocityTabBtn} ${activeHudIndex === idx ? styles.velocityTabBtnActive : ''}`}
                     onClick={() => setActiveHudIndex(idx)}
                   >
+                    <span className={styles.tabBadge}>0{idx + 1}</span>
                     <span>{t.shortLabel}</span>
+                    {activeHudIndex === idx && <span className={styles.tabActivePulse} />}
                   </button>
                 ))}
               </div>
 
-              {/* Velocity Display Area with Smooth Animation */}
-              <div key={activeHudIndex} className={styles.velocityDisplayArea}>
+              {/* Rock-solid display area - NO remounting key to eliminate layout vibration */}
+              <div className={styles.velocityDisplayArea}>
                 <div className={styles.velocityComparisonGrid}>
                   {/* Left: Before Card */}
                   <div className={styles.velocityCardBefore}>
@@ -648,7 +650,7 @@ export default function PortfolioPage() {
               onMouseEnter={() => setIsGeoPaused(true)}
               onMouseLeave={() => setIsGeoPaused(false)}
             >
-              {/* Interconnected Horizontal Corridor Route */}
+              {/* Interconnected Horizontal Corridor Route with High-Tech Zone Nodes */}
               <div className={styles.routeTrack}>
                 {geoImpactLocations.map((geo, idx) => (
                   <button
@@ -656,17 +658,27 @@ export default function PortfolioPage() {
                     className={`${styles.routeStationBtn} ${activeGeoIndex === idx ? styles.routeStationBtnActive : ''}`}
                     onClick={() => setActiveGeoIndex(idx)}
                   >
-                    <div className={styles.stationDot}>{geo.code}</div>
+                    <div className={styles.stationNodeWrap}>
+                      <span className={styles.stationZoneTag}>ZONE {geo.code}</span>
+                      <div className={styles.stationDot}>
+                        <span>{geo.code}</span>
+                        {activeGeoIndex === idx && <span className={styles.stationLivePulse} />}
+                      </div>
+                    </div>
                     <span className={styles.stationLabel}>{geo.area.split('/')[0].trim()}</span>
+                    <span className={styles.stationSub}>{geo.vertical.split('&')[0].trim()}</span>
                   </button>
                 ))}
               </div>
 
-              {/* Panoramic Territory Blueprint Pane with Smooth Transition */}
-              <div key={activeGeoIndex} className={styles.blueprintPane}>
+              {/* Panoramic Territory Blueprint Pane - STABLE CONTAINER (NO REMOUNT KEY) */}
+              <div className={styles.blueprintPane}>
                 <div className={styles.blueprintHeaderRow}>
                   <div className={styles.blueprintCodeArea}>
-                    <span className={styles.blueprintCodeBadge}>{currentGeo.code}</span>
+                    <div className={styles.blueprintCodeBadge}>
+                      <span className={styles.blueprintCodeTag}>ZONE</span>
+                      <span className={styles.blueprintCodeNum}>{currentGeo.code}</span>
+                    </div>
                     <h3 className={styles.blueprintAreaName}>{currentGeo.area}</h3>
                   </div>
                   <div className={styles.blueprintCoordsWrap}>
@@ -706,7 +718,7 @@ export default function PortfolioPage() {
                   </div>
                 </div>
 
-                {/* Corridor Landmark Hubs Strip */}
+                {/* Corridor Landmark Hubs Strip with Stable Min-Height */}
                 {currentGeo.landmarks && (
                   <div className={styles.blueprintLandmarksStrip}>
                     <span style={{ fontSize: 11, color: '#CBD5E1', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>

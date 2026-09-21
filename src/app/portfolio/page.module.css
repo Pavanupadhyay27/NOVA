@@ -3,9 +3,10 @@
    Key Enhancements:
    - Elevated Section Headers with glowing beacon pills, gradient underline bars, and zero navbar overlap
    - Compact, smaller, and sleek Featured Commercial Milestone card with deep skeuomorphism
-   - High-Tech Territorial Regional Footprint with radar grid, live corridor monitoring, and landmark hubs
+   - Executive Segmented Switcher for Audited Commercial Deltas (no boring flat tabs)
+   - Zero-Vibration Rock-Solid Containers: smooth word & number transitions without layout jumping
+   - High-Tech Regional Footprint Territory Console with Zone Badges, Live Pulse Beacons, and Landmark Hubs
    - Deep tactile skeuomorphism across ALL cards (inset specular highlights, debossed wells, multi-layer shadows)
-   - Smooth counting numbers integration and fluid auto-transitions
    - Strict mobile responsiveness and centered CTAs
    ═══════════════════════════════════════════════════════════ */
 
@@ -841,7 +842,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 5: AUDITED COMMERCIAL DELTAS (ELEVATED VELOCITY COCKPIT)
+   SECTION 5: AUDITED COMMERCIAL DELTAS (EXECUTIVE SEGMENTED CONTROLLER)
    ───────────────────────────────────────────────────────────── */
 .transformSection {
   padding: 104px 0 88px;
@@ -858,50 +859,77 @@
   flex-direction: column;
 }
 
+/* Executive Segmented Controller Tray */
 .velocityTabsRow {
   display: flex;
-  background: #F8FAFC;
-  border-bottom: 1px solid #E2E8F0;
+  background: linear-gradient(180deg, #F1F5F9 0%, #E2E8F0 100%);
+  padding: 10px 14px;
+  border-bottom: 1px solid #CBD5E1;
+  gap: 10px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
   overflow-x: auto;
 }
 
 .velocityTabBtn {
   flex: 1;
-  min-width: 180px;
-  padding: 16px 20px;
+  min-width: 170px;
+  padding: 12px 18px;
+  border-radius: var(--radius-lg);
   font-family: var(--font-display);
   font-size: 13px;
   font-weight: 700;
-  color: #64748B;
-  border: none;
-  background: transparent;
+  color: #475569;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.55);
   cursor: pointer;
   transition: all var(--transition-fast);
-  border-bottom: 3px solid transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .velocityTabBtn:hover {
   color: var(--accent-blue);
-  background: rgba(11, 32, 147, 0.03);
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-1px);
 }
 
 .velocityTabBtnActive {
   color: var(--accent-blue) !important;
   background: #FFFFFF !important;
-  border-bottom-color: var(--accent-blue) !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(11, 32, 147, 0.18) !important;
+  box-shadow: inset 0 2px 0 #FFFFFF, 0 4px 14px rgba(11, 32, 147, 0.14), 0 1px 3px rgba(0, 0, 0, 0.06) !important;
+  transform: translateY(-2px);
 }
 
+.tabBadge {
+  font-size: 10.5px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+  background: rgba(11, 32, 147, 0.08);
+  color: var(--accent-blue);
+  letter-spacing: 0.04em;
+}
+
+.tabActivePulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 8px #10B981;
+  animation: pulseGlow 1.5s infinite;
+}
+
+/* Rock-solid display area with zero vibration/layout shifts */
 .velocityDisplayArea {
   padding: 44px;
   display: flex;
   flex-direction: column;
   gap: 28px;
-  animation: hudTransition 0.4s ease-out;
+  min-height: 380px;
 }
 
 .velocityComparisonGrid {
@@ -961,6 +989,7 @@
   font-size: 13px;
   color: #475569;
   line-height: 1.5;
+  min-height: 40px;
 }
 
 .velocityCenterBadge {
@@ -1009,6 +1038,7 @@
   font-size: 14px;
   color: #475569;
   line-height: 1.6;
+  min-height: 24px;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -1120,9 +1150,9 @@
 .routeTrack::before {
   content: '';
   position: absolute;
-  left: 24px;
-  right: 24px;
-  top: 50%;
+  left: 36px;
+  right: 36px;
+  top: 36px;
   height: 3px;
   background: linear-gradient(90deg, #CBD5E1 0%, #0B2093 50%, #CBD5E1 100%);
   z-index: 1;
@@ -1139,41 +1169,85 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 6px 12px;
-  border-radius: var(--radius-lg);
+  padding: 8px 12px;
+  border-radius: var(--radius-xl);
   transition: all var(--transition-fast);
 }
 
+.routeStationBtn:hover {
+  transform: translateY(-2px);
+}
+
+.stationNodeWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stationZoneTag {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #64748B;
+  text-transform: uppercase;
+}
+
+.routeStationBtnActive .stationZoneTag {
+  color: var(--accent-blue);
+  font-weight: 900;
+}
+
 .stationDot {
-  width: 32px;
-  height: 32px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  background: #FFFFFF;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
   border: 2px solid #CBD5E1;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 11px;
+  font-family: var(--font-display);
+  font-size: 13px;
   font-weight: 800;
-  color: #64748B;
+  color: #0F172A;
   transition: all var(--transition-fast);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), inset 0 1px 0 #FFFFFF;
+  box-shadow: inset 0 2px 0 #FFFFFF, 0 3px 8px rgba(0, 0, 0, 0.08);
+  position: relative;
 }
 
 .routeStationBtnActive .stationDot {
-  background: var(--accent-blue);
-  border-color: #FFFFFF;
+  background: linear-gradient(135deg, #0B2093 0%, #0D007F 100%);
+  border-color: #F59E0B;
   color: #FFFFFF;
-  box-shadow: 0 0 0 4px rgba(11, 32, 147, 0.25), 0 4px 16px rgba(11, 32, 147, 0.4);
-  transform: scale(1.18);
-  animation: radarPing 2.5s infinite;
+  box-shadow: 0 0 0 4px rgba(11, 32, 147, 0.2), 0 6px 20px rgba(11, 32, 147, 0.4);
+  transform: scale(1.12);
+}
+
+.stationLivePulse {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #10B981;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 0 8px #10B981;
+  animation: pulseGlow 1.5s infinite;
 }
 
 .stationLabel {
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   color: #475569;
+  white-space: nowrap;
+}
+
+.stationSub {
+  font-size: 10.5px;
+  color: #94A3B8;
   white-space: nowrap;
 }
 
@@ -1182,7 +1256,12 @@
   font-weight: 800;
 }
 
-/* High-Tech Blueprint Pane with Grid Texture */
+.routeStationBtnActive .stationSub {
+  color: #64748B;
+  font-weight: 600;
+}
+
+/* High-Tech Blueprint Pane with Grid Texture (STABLE HEIGHT - ZERO VIBRATION) */
 .blueprintPane {
   background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 1px, transparent 1px) 0 0 / 22px 22px,
               linear-gradient(135deg, #0B2093 0%, #0D007F 55%, #060045 100%);
@@ -1196,7 +1275,7 @@
   box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.35), 0 24px 60px -12px rgba(11, 32, 147, 0.45);
   position: relative;
   overflow: hidden;
-  animation: blueprintTransition 0.4s ease-out;
+  min-height: 480px;
 }
 
 .blueprintHeaderRow {
@@ -1212,19 +1291,35 @@
 .blueprintCodeArea {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .blueprintCodeBadge {
-  font-family: var(--font-display);
-  font-size: 17px;
-  font-weight: 800;
-  color: #FFB800;
-  background: rgba(255, 184, 0, 0.18);
-  border: 1px solid rgba(255, 184, 0, 0.35);
-  padding: 4px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(11, 32, 147, 0.3) 100%);
+  border: 1.5px solid #F59E0B;
+  padding: 6px 14px;
   border-radius: var(--radius-md);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.4), 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.blueprintCodeTag {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #FFB800;
+  text-transform: uppercase;
+}
+
+.blueprintCodeNum {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 900;
+  color: #FFFFFF;
+  line-height: 1;
+  text-shadow: 0 0 12px rgba(245, 158, 11, 0.6);
 }
 
 .blueprintAreaName {
@@ -1313,16 +1408,17 @@
   letter-spacing: 0.04em;
 }
 
-/* Corridor Landmark Hubs Strip */
+/* Corridor Landmark Hubs Strip with stable height */
 .blueprintLandmarksStrip {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-lg);
-  padding: 14px 20px;
+  padding: 12px 20px;
   display: flex;
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
+  min-height: 48px;
 }
 
 .landmarkPill {
@@ -1960,12 +2056,6 @@
   50% { opacity: 0.55; transform: scale(0.85); }
 }
 
-@keyframes radarPing {
-  0% { box-shadow: 0 0 0 0 rgba(11, 32, 147, 0.5); }
-  70% { box-shadow: 0 0 0 10px rgba(11, 32, 147, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(11, 32, 147, 0); }
-}
-
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -1974,16 +2064,6 @@
 @keyframes slideInRight {
   from { transform: translateX(100%); }
   to { transform: translateX(0); }
-}
-
-@keyframes hudTransition {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes blueprintTransition {
-  from { opacity: 0; transform: scale(0.99); }
-  to { opacity: 1; transform: scale(1); }
 }
 
 /* ─────────────────────────────────────────────────────────────
