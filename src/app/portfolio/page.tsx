@@ -1024,7 +1024,7 @@ export default function PortfolioPage() {
                       style={{ width: `${Math.min(100, 32 + (activeRoiIndex + 1) * 17)}%` }}
                     />
                   </div>
-                  <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>Verified buyer inquiries</span>
+                  <span className={styles.roiCardSub}>Verified buyer inquiries</span>
                 </div>
 
                 <div className={styles.roiResultDial}>
@@ -1041,7 +1041,7 @@ export default function PortfolioPage() {
                       }}
                     />
                   </div>
-                  <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>Compounding return estimate</span>
+                  <span className={styles.roiCardSub}>Compounding return estimate</span>
                 </div>
 
                 <div className={styles.roiResultDial}>
@@ -1058,7 +1058,7 @@ export default function PortfolioPage() {
                       }}
                     />
                   </div>
-                  <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>Blended search + social</span>
+                  <span className={styles.roiCardSub}>Blended search + social</span>
                 </div>
               </div>
 
