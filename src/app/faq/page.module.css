@@ -1263,47 +1263,54 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   CTA CARD: STILL HAVE A QUESTION? (BELOW DETAILED KNOWLEDGE ARCHIVE)
+   CTA CARD: STILL HAVE A QUESTION? (CENTERED & MINIMAL)
    ───────────────────────────────────────────────────────────── */
 .stillHaveQuestionCard {
-  margin-top: 60px;
+  margin: 56px auto 0;
+  max-width: 840px;
   position: relative;
   border-radius: 24px;
-  background: linear-gradient(135deg, #071558 0%, #0B2093 45%, #050D38 100%);
+  background: linear-gradient(180deg, #09196E 0%, #0B2093 55%, #06114F 100%);
   border: 1.5px solid rgba(255, 255, 255, 0.2);
-  border-top: 2px solid rgba(255, 255, 255, 0.5);
+  border-top: 2px solid rgba(255, 255, 255, 0.55);
   box-shadow: 
-    inset 0 2px 0 rgba(255, 255, 255, 0.25), 
-    0 24px 60px -12px rgba(11, 32, 147, 0.35);
-  padding: 40px 48px;
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.35), 
+    0 24px 60px -12px rgba(11, 32, 147, 0.4),
+    0 4px 16px rgba(0, 0, 0, 0.15);
+  padding: 46px 36px 40px;
   overflow: hidden;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 .stillQuestionGlow {
   position: absolute;
-  top: -60px;
-  right: -60px;
-  width: 340px;
-  height: 340px;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, transparent 70%);
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 280px;
+  background: radial-gradient(ellipse, rgba(245, 158, 11, 0.22) 0%, rgba(11, 32, 147, 0.35) 50%, transparent 70%);
   pointer-events: none;
 }
 
-.stillQuestionContent {
+.stillQuestionContentCentered {
   position: relative;
   z-index: 2;
-  display: grid;
-  grid-template-columns: 1.3fr 0.7fr;
-  gap: 36px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
 }
 
 .stillQuestionBadgeRow {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
-  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 16px;
 }
 
 .stillQuestionBadge {
@@ -1311,14 +1318,15 @@
   align-items: center;
   gap: 8px;
   font-family: var(--font-display);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: #FDE68A;
-  background: rgba(245, 158, 11, 0.18);
-  border: 1px solid rgba(245, 158, 11, 0.4);
-  padding: 4px 12px;
+  background: rgba(245, 158, 11, 0.16);
+  border: 1px solid rgba(245, 158, 11, 0.38);
+  padding: 5px 14px;
   border-radius: var(--radius-full);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .badgePulseDot {
@@ -1330,87 +1338,68 @@
   animation: liveDotPulse 2s infinite ease-in-out;
 }
 
-.stillSlaTag {
-  font-size: 11px;
-  font-weight: 700;
-  color: #A7F3D0;
-}
-
 .stillQuestionTitle {
   font-family: var(--font-display);
-  font-size: clamp(22px, 2.3vw, 28px);
+  font-size: clamp(26px, 3.2vw, 36px);
   font-weight: 900;
   color: #FFFFFF;
-  line-height: 1.25;
-  margin: 0 0 10px;
-  letter-spacing: -0.015em;
-}
-
-.stillQuestionHighlight {
-  color: #FCD34D;
+  line-height: 1.2;
+  margin: 0 auto 10px;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .stillQuestionSub {
-  font-size: 13.5px;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.5;
   color: #CBD5E1;
-  margin: 0 0 18px;
-  max-width: 580px;
+  margin: 0 auto 26px;
+  max-width: 520px;
 }
 
-.stillTrustRow {
+.stillActionsCenteredRow {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 11px;
-  font-weight: 600;
-  color: #93C5FD;
-  flex-wrap: wrap;
-}
-
-.stillQuestionRight {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: flex-end;
   justify-content: center;
+  width: 100%;
+  margin-bottom: 14px;
 }
 
 .dispatchRedirectBtn {
-  position: relative;
-  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 15px 26px;
+  gap: 8px;
+  padding: 15px 36px;
   border-radius: var(--radius-full);
-  background: linear-gradient(180deg, #FFB800 0%, #F59E0B 50%, #D97706 100%);
+  background: linear-gradient(180deg, #FFBE1A 0%, #F59E0B 50%, #D97706 100%);
   border: 1px solid #B45309;
-  border-top: 1px solid rgba(255, 255, 255, 0.6);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.75);
   box-shadow: 
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.6), 
-    0 6px 20px rgba(245, 158, 11, 0.45);
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.75), 
+    0 10px 28px -4px rgba(245, 158, 11, 0.5),
+    0 4px 12px rgba(0, 0, 0, 0.18);
   color: #000000;
   font-family: var(--font-display);
-  font-size: 13.5px;
+  font-size: 14.5px;
   font-weight: 900;
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
-  text-align: center;
 }
 
 .dispatchRedirectBtn:hover {
   transform: translateY(-2px);
   box-shadow: 
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.7), 
-    0 10px 28px rgba(245, 158, 11, 0.55);
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.9), 
+    0 14px 34px -4px rgba(245, 158, 11, 0.65),
+    0 6px 16px rgba(0, 0, 0, 0.22);
 }
 
 .dispatchRedirectBtn:active {
   transform: translateY(1px);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35);
 }
 
 .quickWhatsappLink {
@@ -1418,20 +1407,38 @@
   align-items: center;
   gap: 6px;
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 700;
-  color: #A7F3D0;
+  color: #6EE7B7;
   text-decoration: none;
   padding: 6px 14px;
   border-radius: var(--radius-full);
-  background: rgba(16, 185, 129, 0.14);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
   transition: all 0.2s ease;
+  margin-bottom: 22px;
 }
 
 .quickWhatsappLink:hover {
-  background: rgba(16, 185, 129, 0.24);
+  background: rgba(16, 185, 129, 0.2);
   border-color: #10B981;
+  color: #A7F3D0;
+  transform: translateY(-1px);
+}
+
+.stillTrustRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #94A3B8;
+  flex-wrap: wrap;
+}
+
+.trustDivider {
+  color: rgba(255, 255, 255, 0.2);
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -2006,14 +2013,7 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
   .stillHaveQuestionCard {
-    padding: 34px 28px;
-  }
-  .stillQuestionContent {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  .stillQuestionRight {
-    align-items: flex-start;
+    padding: 38px 24px 32px;
   }
 }
 
@@ -2198,31 +2198,30 @@
   /* Still Have Question CTA Mobile */
   .stillHaveQuestionCard {
     margin-top: 36px;
-    padding: 24px 18px;
+    padding: 28px 18px 24px;
     border-radius: 20px;
   }
-  .stillQuestionContent {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
   .stillQuestionTitle {
-    font-size: 20px;
+    font-size: 22px;
   }
   .stillQuestionSub {
-    font-size: 13px;
-  }
-  .stillQuestionRight {
-    align-items: stretch;
-    width: 100%;
+    font-size: 13.5px;
+    margin-bottom: 22px;
   }
   .dispatchRedirectBtn {
     width: 100%;
     white-space: normal;
-    font-size: 13px;
-    padding: 14px 18px;
+    font-size: 14px;
+    padding: 14px 20px;
   }
   .quickWhatsappLink {
+    width: 100%;
     justify-content: center;
+    box-sizing: border-box;
+  }
+  .stillTrustRow {
+    gap: 8px;
+    font-size: 11px;
   }
 
   /* Dual-Pane Cockpit Mobile Layout */

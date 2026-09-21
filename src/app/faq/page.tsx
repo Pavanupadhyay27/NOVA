@@ -773,41 +773,29 @@ export default function FAQPage() {
           </div>
 
           {/* ══════════════════════════════════════════════════════════
-              CTA CARD: STILL HAVE A QUESTION? (REDIRECTS TO STRATEGY DISPATCH)
+              CTA CARD: STILL HAVE A QUESTION? (CENTERED & MINIMAL)
              ══════════════════════════════════════════════════════════ */}
           <ScrollReveal delay={80}>
             <div className={styles.stillHaveQuestionCard}>
               <div className={styles.stillQuestionGlow} />
 
-              <div className={styles.stillQuestionContent}>
-                <div className={styles.stillQuestionLeft}>
-                  <div className={styles.stillQuestionBadgeRow}>
-                    <span className={styles.stillQuestionBadge}>
-                      <span className={styles.badgePulseDot} />
-                      STILL HAVE AN UNANSWERED QUESTION?
-                    </span>
-                    <span className={styles.stillSlaTag}>⚡ 4-Hour Response SLA</span>
-                  </div>
-
-                  <h3 className={styles.stillQuestionTitle}>
-                    Can&apos;t Find Your Exact Commercial Scenario?<br />
-                    <span className={styles.stillQuestionHighlight}>Our Senior Strategists Will Audit It For Free.</span>
-                  </h3>
-
-                  <p className={styles.stillQuestionSub}>
-                    Whether it&apos;s competitor search loss in Patia, negative keyword bleeding on Google Ads, or sub-second Next.js architecture, send your exact question to our confidential strategy desk.
-                  </p>
-
-                  <div className={styles.stillTrustRow}>
-                    <span>🔒 100% Confidential NDA</span>
-                    <span>&bull;</span>
-                    <span>📊 Free Competitor Breakdown</span>
-                    <span>&bull;</span>
-                    <span>🚫 Zero Sales Pressure</span>
-                  </div>
+              <div className={styles.stillQuestionContentCentered}>
+                <div className={styles.stillQuestionBadgeRow}>
+                  <span className={styles.stillQuestionBadge}>
+                    <span className={styles.badgePulseDot} />
+                    ⚡ 4-HOUR RESPONSE SLA
+                  </span>
                 </div>
 
-                <div className={styles.stillQuestionRight}>
+                <h3 className={styles.stillQuestionTitle}>
+                  Still Have Questions?
+                </h3>
+
+                <p className={styles.stillQuestionSub}>
+                  Ask our senior strategists directly. We&apos;ll audit your scenario confidentially within 4 hours.
+                </p>
+
+                <div className={styles.stillActionsCenteredRow}>
                   <a
                     href="#ask-question"
                     className={styles.dispatchRedirectBtn}
@@ -819,22 +807,27 @@ export default function FAQPage() {
                       }
                     }}
                   >
-                    <span className={styles.redirectBtnShimmer} />
-                    <span className={styles.redirectBtnText}>
-                      Go to Confidential Strategy Dispatch ↓
-                    </span>
+                    <span>Ask Our Strategists Directly ↓</span>
                   </a>
+                </div>
 
-                  <a
-                    href={`https://wa.me/918763570630?text=${encodeURIComponent(
-                      'Hi Marketing Copilot, I still have an unanswered question about my digital marketing in Bhubaneswar.'
-                    )}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.quickWhatsappLink}
-                  >
-                    <span>💬 Prefer WhatsApp? Chat Now (Avg. 18m) ↗</span>
-                  </a>
+                <a
+                  href={`https://wa.me/918763570630?text=${encodeURIComponent(
+                    'Hi Marketing Copilot, I have an unanswered question about digital marketing in Bhubaneswar.'
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.quickWhatsappLink}
+                >
+                  <span>💬 Prefer WhatsApp? Chat Now (Avg. 18m) ↗</span>
+                </a>
+
+                <div className={styles.stillTrustRow}>
+                  <span>🔒 100% Confidential NDA</span>
+                  <span className={styles.trustDivider}>&bull;</span>
+                  <span>📊 Free Audit</span>
+                  <span className={styles.trustDivider}>&bull;</span>
+                  <span>🚫 Zero Sales Pressure</span>
                 </div>
               </div>
             </div>
