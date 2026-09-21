@@ -17,7 +17,12 @@
    ───────────────────────────────────────────────────────────── */
 .heroSection {
   position: relative;
-  padding: 16px 0 20px;
+  min-height: calc(100vh - var(--nav-height, 78px));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 0;
+  box-sizing: border-box;
   background: radial-gradient(circle at 75% 20%, rgba(245, 158, 11, 0.12) 0%, rgba(11, 32, 147, 0.05) 50%, transparent 80%), #FFFFFF;
   border-bottom: 1px solid var(--border-subtle);
   overflow: hidden;
@@ -51,12 +56,11 @@
 .heroDualPane {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
-  gap: 32px;
+  gap: 36px;
   align-items: center;
   position: relative;
   z-index: 2;
-  min-height: auto;
-  max-height: none;
+  width: 100%;
 }
 
 .heroLeftPane {
@@ -67,31 +71,31 @@
 }
 
 .heroTitle {
-  margin: 0 0 10px;
+  margin: 0 0 12px;
   text-align: left;
   color: #000000;
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.02em;
-  font-size: clamp(24px, 2.3vw, 34px);
+  font-size: clamp(26px, 2.4vw, 36px);
 }
 
 .heroSub {
   color: #334155;
-  line-height: 1.5;
-  margin: 0 0 14px;
-  max-width: 520px;
+  line-height: 1.55;
+  margin: 0 0 18px;
+  max-width: 530px;
   text-align: left;
-  font-size: 13.5px;
+  font-size: 14.5px;
 }
 
 .heroCtaRow {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
-  margin-bottom: 14px;
+  margin-bottom: 20px;
 }
 
 .heroSecondaryBtn {
@@ -217,7 +221,7 @@
 .heroVisualInner {
   position: relative;
   width: 100%;
-  height: 350px;
+  height: clamp(380px, 48vh, 500px);
   border-radius: 14px;
   overflow: hidden;
   background: #0B2093;
@@ -771,25 +775,25 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 4: CROSS-SECTOR BENCHMARK MATRIX TABLE
+   SECTION 4: INTERACTIVE SECTOR REVENUE & ROI SIMULATOR
    ───────────────────────────────────────────────────────────── */
-.tableSection {
+.simulatorSection {
   padding: 100px 0 96px;
   background: #FFFFFF;
   border-bottom: 1px solid var(--border-subtle);
   scroll-margin-top: calc(var(--nav-height, 78px) + 36px);
 }
 
-.matrixDeckCard {
-  background: #FFFFFF;
+.simulatorCard {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFF 100%);
   border-radius: var(--radius-2xl);
   border: 1.5px solid rgba(11, 32, 147, 0.12);
-  box-shadow: 0 24px 64px -12px rgba(11, 32, 147, 0.1), 0 4px 16px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 24px 64px -12px rgba(11, 32, 147, 0.1), inset 0 2px 0 #FFFFFF, 0 4px 16px rgba(0, 0, 0, 0.03);
   overflow: hidden;
   width: 100%;
 }
 
-.matrixCardTopBar {
+.simTopBar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -800,166 +804,375 @@
   flex-wrap: wrap;
 }
 
-.matrixCardHeaderInfo {
+.simTopBarTitleWrap {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  align-items: center;
+  gap: 8px;
 }
 
-.matrixCardTitle {
+.simLivePulse {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.25);
+  animation: simPulse 2s infinite ease-in-out;
+}
+
+@keyframes simPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.25);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 7px rgba(16, 185, 129, 0.1);
+  }
+}
+
+.simTopBarTitle {
   font-family: var(--font-display);
-  font-size: 13px;
+  font-size: 11.5px;
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   color: #0B2093;
 }
 
-.matrixCardSub {
-  font-size: 11px;
-  color: #64748B;
-  font-weight: 600;
-}
-
-.matrixFilterPills {
+.simSectorTabs {
   display: flex;
   align-items: center;
   gap: 6px;
   flex-wrap: wrap;
 }
 
-.matrixFilterPillBtn {
-  padding: 5px 12px;
+.simSectorTabBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
   border-radius: var(--radius-full);
   background: #FFFFFF;
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--border);
   font-family: var(--font-display);
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 700;
   color: #334155;
   cursor: pointer;
   transition: all var(--transition-fast);
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
-.matrixFilterPillBtn:hover {
+.simSectorTabBtn:hover {
   border-color: #0B2093;
   color: #0B2093;
+  transform: translateY(-1px);
 }
 
-.matrixFilterPillActive {
+.simSectorTabBtnActive {
   background: #0B2093 !important;
   border-color: #0B2093 !important;
   color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(11, 32, 147, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
 }
 
-.matrixGridHeader {
+.simTabIcon {
+  font-size: 13px;
+  line-height: 1;
+}
+
+.simTabName {
+  font-weight: 700;
+}
+
+.simBodyGrid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1.6fr 1fr 1fr 1.4fr;
-  padding: 14px 24px;
-  background: #0B2093;
-  color: #FFFFFF;
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  align-items: center;
+  grid-template-columns: 430px 1fr;
+  gap: 0;
+  min-height: 520px;
 }
 
-.matrixRowsList {
+/* Left Column: Simulator Controls */
+.simControlsCol {
+  padding: 28px;
+  background: #F8FAFC;
+  border-right: 1.5px solid var(--border);
   display: flex;
   flex-direction: column;
+  gap: 20px;
 }
 
-.matrixRowItem {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1.6fr 1fr 1fr 1.4fr;
-  padding: 16px 24px;
-  border-bottom: 1px solid var(--border-subtle);
+.simControlCard {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  border: 1.5px solid rgba(11, 32, 147, 0.08);
+  padding: 20px;
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 4px 14px rgba(0, 0, 0, 0.03);
+}
+
+.simControlHeader {
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.simControlLabel {
+  font-family: var(--font-display);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #64748B;
+  text-transform: uppercase;
+}
+
+.simSpendBadge {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 900;
+  color: #0B2093;
+  background: rgba(11, 32, 147, 0.07);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(11, 32, 147, 0.12);
+}
+
+.simSpendBadge small {
+  font-size: 11px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.simSliderWrap {
+  position: relative;
+  margin: 16px 0 10px;
+}
+
+.simRangeInput {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: #E2E8F0;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12);
+  outline: none;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.simRangeInput::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
+  border: 3.5px solid #0B2093;
+  box-shadow: 0 4px 10px rgba(11, 32, 147, 0.35), inset 0 1px 0 #FFFFFF;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.simRangeInput::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+  box-shadow: 0 6px 16px rgba(11, 32, 147, 0.45);
+}
+
+.simRangeInput::-moz-range-thumb {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
+  border: 3.5px solid #0B2093;
+  box-shadow: 0 4px 10px rgba(11, 32, 147, 0.35), inset 0 1px 0 #FFFFFF;
+  cursor: pointer;
+}
+
+.simSliderTicks {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  font-weight: 700;
+  color: #94A3B8;
+  margin-top: 6px;
+}
+
+.simPresetsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.simPresetBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 4px;
+  border-radius: var(--radius-md);
+  background: #F8FAFC;
+  border: 1.5px solid var(--border);
   cursor: pointer;
   transition: all var(--transition-fast);
+  box-shadow: inset 0 1px 0 #FFFFFF;
+}
+
+.simPresetBtn:hover {
+  border-color: #0B2093;
   background: #FFFFFF;
 }
 
-.matrixRowItem:last-child {
-  border-bottom: none;
+.simPresetBtnActive {
+  background: #0B2093 !important;
+  border-color: #0B2093 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 10px rgba(11, 32, 147, 0.25) !important;
 }
 
-.matrixRowItem:hover {
-  background: rgba(11, 32, 147, 0.035);
-  transform: translateX(2px);
+.simPresetLabel {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
 }
 
-.matrixSectorCell {
+.simPresetTag {
+  font-size: 9px;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.simCorridorCurrent {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  color: #0B2093;
+}
+
+.simCorridorChips {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
 }
 
-.matrixSectorIcon {
+.simCorridorChip {
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  background: #F8FAFC;
+  border: 1px solid var(--border);
+  font-size: 11px;
+  font-weight: 700;
+  color: #475569;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: inset 0 1px 0 #FFFFFF;
+}
+
+.simCorridorChip:hover {
+  border-color: #0B2093;
+  color: #0B2093;
+  background: #FFFFFF;
+}
+
+.simCorridorChipActive {
+  background: #0B2093 !important;
+  border-color: #0B2093 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 8px rgba(11, 32, 147, 0.2) !important;
+}
+
+.simGuaranteeBox {
+  display: flex;
+  gap: 12px;
+  padding: 14px;
+  border-radius: var(--radius-lg);
+  background: #F0FDF4;
+  border: 1.5px solid #86EFAC;
+  box-shadow: inset 0 1px 0 #FFFFFF;
+  align-items: flex-start;
+}
+
+.simGuaranteeIcon {
   font-size: 20px;
   line-height: 1;
-  flex-shrink: 0;
 }
 
-.matrixSectorMeta {
+.simGuaranteeMeta strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  color: #065F46;
+  margin-bottom: 2px;
+}
+
+.simGuaranteeMeta p {
+  margin: 0;
+  font-size: 11px;
+  color: #047857;
+  line-height: 1.4;
+}
+
+/* Right Column: Dynamic Output Cockpit */
+.simResultsCol {
+  padding: 28px;
   display: flex;
   flex-direction: column;
+  gap: 20px;
+  background: #FFFFFF;
 }
 
-.matrixSectorName {
+.simResultHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 18px;
+  border-bottom: 1.5px solid var(--border-subtle);
+  flex-wrap: wrap;
+}
+
+.simResultIconWrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(11, 32, 147, 0.08);
+  border: 1px solid rgba(11, 32, 147, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 1px 0 #FFFFFF;
+}
+
+.simResultIcon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.simResultMeta {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 200px;
+}
+
+.simResultSectorTitle {
   font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 800;
+  font-size: 18px;
+  font-weight: 900;
   color: #000000;
-  line-height: 1.25;
+  line-height: 1.2;
 }
 
-.matrixSectorCategory {
-  font-size: 10px;
+.simResultSectorTagline {
+  font-size: 12px;
   color: #64748B;
   font-weight: 600;
 }
 
-.mobileColLabel {
-  display: none;
-}
-
-.matrixCplCell {
-  display: flex;
-  align-items: center;
-}
-
-.matrixCplBadge {
-  display: inline-flex;
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  background: rgba(11, 32, 147, 0.08);
-  color: #0B2093;
-  font-family: var(--font-display);
-  font-size: 12px;
-  font-weight: 800;
-}
-
-.matrixEngineCell {
-  display: flex;
-  align-items: center;
-}
-
-.matrixEngineText {
-  font-size: 12px;
-  color: #334155;
-  font-weight: 600;
-  line-height: 1.35;
-}
-
-.matrixYieldCell {
-  display: flex;
-  align-items: center;
-}
-
-.matrixYieldBadge {
-  display: inline-flex;
-  padding: 4px 10px;
+.simVerifiedBadge {
+  padding: 5px 12px;
   border-radius: var(--radius-full);
   background: #ECFDF5;
   border: 1px solid #A7F3D0;
@@ -969,24 +1182,173 @@
   font-weight: 800;
 }
 
-.matrixVelocityCell {
-  display: flex;
-  align-items: center;
+.simStatGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
 }
 
-.matrixVelocityText {
+.simStatCard {
+  padding: 16px 18px;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1.5px solid rgba(11, 32, 147, 0.09);
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 4px 14px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.simStatLabel {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #64748B;
+  text-transform: uppercase;
+}
+
+.simStatValWrap {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 2px 0;
+}
+
+.simStatValHighlight {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 900;
+  color: #0B2093;
+  line-height: 1.1;
+}
+
+.simStatVal {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 900;
+  color: #000000;
+  line-height: 1.1;
+}
+
+.simStatUnit {
   font-size: 12px;
   font-weight: 700;
-  color: #475569;
+  color: #64748B;
 }
 
-.matrixAnchorCell {
+.simStatMicro {
+  font-size: 11px;
+  color: #64748B;
+  font-weight: 600;
+}
+
+.simStatMicroPositive {
+  font-size: 11px;
+  color: #059669;
+  font-weight: 700;
+}
+
+.simStagesBox {
+  padding: 18px 20px;
+  border-radius: var(--radius-xl);
+  background: #F8FAFC;
+  border: 1.5px solid var(--border);
+  box-shadow: inset 0 1px 0 #FFFFFF;
+}
+
+.simStagesHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #64748B;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 8px;
+}
+
+.simStagesList {
+  display: flex;
+  flex-direction: column;
+}
+
+.simStageItem {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.simStageItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.simStageStepBadge {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #0B2093;
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(11, 32, 147, 0.3);
 }
 
-.matrixAnchorText {
+.simStageContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.simStageTitle {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 800;
+  color: #000000;
+}
+
+.simStageDesc {
   font-size: 12px;
+  color: #475569;
+  line-height: 1.4;
+}
+
+.simActionRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 14px;
+  border-top: 1.5px solid var(--border-subtle);
+  flex-wrap: wrap;
+}
+
+.simActionLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.simActionNote {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 800;
+  color: #000000;
+}
+
+.simActionSub {
+  font-size: 11px;
   color: #64748B;
   font-weight: 600;
 }
@@ -2052,32 +2414,12 @@
   .diagBudgetGrid {
     grid-template-columns: 1fr;
   }
-  .matrixGridHeader {
-    display: none;
+  .simBodyGrid {
+    grid-template-columns: 1fr;
   }
-  .matrixRowItem {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    padding: 16px 20px;
-  }
-  .matrixSectorCell {
-    grid-column: 1 / -1;
-  }
-  .mobileColLabel {
-    display: block;
-    font-size: 9px;
-    font-weight: 800;
-    color: #64748B;
-    margin-bottom: 2px;
-    letter-spacing: 0.04em;
-  }
-  .matrixCplCell,
-  .matrixEngineCell,
-  .matrixYieldCell,
-  .matrixVelocityCell,
-  .matrixAnchorCell {
-    flex-direction: column;
-    align-items: flex-start;
+  .simControlsCol {
+    border-right: none;
+    border-bottom: 1.5px solid var(--border);
   }
 }
 
@@ -2147,33 +2489,43 @@
     font-size: 13px;
     padding: 12px 18px;
   }
-  .tableSection {
+  .simulatorSection {
     padding: 64px 0 56px;
   }
-  .matrixCardTopBar {
+  .simTopBar {
     padding: 14px 16px;
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
   }
-  .matrixFilterPills {
+  .simSectorTabs {
     overflow-x: auto;
     width: 100%;
     flex-wrap: nowrap;
     padding-bottom: 4px;
     scrollbar-width: none;
   }
-  .matrixFilterPills::-webkit-scrollbar {
+  .simSectorTabs::-webkit-scrollbar {
     display: none;
   }
-  .matrixRowItem {
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    padding: 14px 16px;
+  .simControlsCol,
+  .simResultsCol {
+    padding: 20px 16px;
   }
-  .matrixEngineCell,
-  .matrixAnchorCell {
-    grid-column: 1 / -1;
+  .simStatGrid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .simPresetsRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .simActionRow {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  .simActionLeft {
+    text-align: center;
   }
   .corridorSection {
     padding: 64px 0 56px;

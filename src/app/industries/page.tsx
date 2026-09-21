@@ -171,6 +171,141 @@ const engagementTiers = [
   },
 ];
 
+// Interactive Sector Revenue & ROI Simulator Models
+const sectorSimulations: Record<string, {
+  name: string;
+  icon: string;
+  category: string;
+  tagline: string;
+  baseCpl: number;
+  closeRate: string;
+  avgDealValue: string;
+  typicalRoas: string;
+  pipelineMultiplier: number;
+  primaryChannels: string[];
+  stages: { step: string; title: string; desc: string }[];
+  verifiedAnchor: string;
+}> = {
+  'real-estate': {
+    name: 'Real Estate & Builders',
+    icon: '🏢',
+    category: 'Property & Living',
+    tagline: 'High-ticket luxury apartment & villa buyers across Patia, Nayapalli & Pahala',
+    baseCpl: 380,
+    closeRate: '4% – 7%',
+    avgDealValue: '₹65L – ₹2.5Cr',
+    typicalRoas: '12X – 24X Pipeline',
+    pipelineMultiplier: 85000,
+    primaryChannels: ['Google Search (Exact-Match)', 'Meta 3D Tour Retargeting', 'WhatsApp OTP Routing'],
+    stages: [
+      { step: '01', title: 'High-Intent Search Shield', desc: 'Capture active Bhubaneswar buyers searching "3 BHK in Patia" while negative keywords block brokers.' },
+      { step: '02', title: 'Sub-Second Virtual Tour', desc: 'Next.js 15 interactive 3D floor plan loads in 0.7s, collecting verified OTP phone numbers.' },
+      { step: '03', title: 'Instant Sales Concierge', desc: 'Direct WhatsApp CRM bridge sends site visit calendar invite within 90 seconds of inquiry.' },
+    ],
+    verifiedAnchor: 'Utkal Heights & DN Homes Corridors',
+  },
+  'healthcare': {
+    name: 'Healthcare & Clinics',
+    icon: '🏥',
+    category: 'Healthcare & Wellness',
+    tagline: 'Patient footfall & specialist OP consultations across Saheed Nagar & Khandagiri',
+    baseCpl: 210,
+    closeRate: '22% – 35%',
+    avgDealValue: '₹1,500 – ₹45,000',
+    typicalRoas: '5.2X – 8.6X',
+    pipelineMultiplier: 12000,
+    primaryChannels: ['Google Maps 3-Pack SEO', 'Doctor Video Ads', 'Automated Slot Booking Bot'],
+    stages: [
+      { step: '01', title: 'Local Maps Dominance', desc: 'Rank #1 in Google Local 3-Pack across 12 Bhubaneswar pin codes for "Best Clinic near me".' },
+      { step: '02', title: 'Doctor Trust Architecture', desc: 'Video case-studies & patient recovery proof build instant clinical authority.' },
+      { step: '03', title: 'Automated OP Scheduler', desc: 'WhatsApp bot confirms appointment slot, sends location pin, and eliminates no-shows.' },
+    ],
+    verifiedAnchor: 'Sparsh & Apollo Doctor Clusters',
+  },
+  'education': {
+    name: 'Education & Coaching',
+    icon: '🎓',
+    category: 'EdTech & Institutes',
+    tagline: 'NEET, JEE, CBSE & university admissions across Chandrasekharpur & KIIT Road',
+    baseCpl: 260,
+    closeRate: '12% – 18%',
+    avgDealValue: '₹45,000 – ₹1,80,000',
+    typicalRoas: '6.8X – 10.5X',
+    pipelineMultiplier: 28000,
+    primaryChannels: ['Aptitude Lead Magnet', 'Meta Video Testimonials', 'Counselor Telecalling Bridge'],
+    stages: [
+      { step: '01', title: 'Scholarship Lead Magnet', desc: 'Attract students with free online mock tests and syllabus blueprints.' },
+      { step: '02', title: 'Parent Video Proof', desc: 'Rankers testimonials and faculty credentials delivered via Instagram & YouTube Shorts.' },
+      { step: '03', title: 'Counselor CRM Routing', desc: 'Instant counselor callback and campus visit scheduling via automated WhatsApp workflow.' },
+    ],
+    verifiedAnchor: 'Chandrasekharpur & KIIT Road Hub',
+  },
+  'retail-ecom': {
+    name: 'Retail & E-commerce',
+    icon: '🛍️',
+    category: 'Retail & Consumer',
+    tagline: 'High-AOV retail footfall & Odisha handloom/D2C pan-India shipping',
+    baseCpl: 140,
+    closeRate: '28% – 42%',
+    avgDealValue: '₹1,200 – ₹15,000',
+    typicalRoas: '4.5X – 7.8X Direct ROAS',
+    pipelineMultiplier: 8500,
+    primaryChannels: ['Google Shopping / PMax', 'Meta Catalog Ads', '3-Stage Abandoned Cart Recovery'],
+    stages: [
+      { step: '01', title: 'Hyperlocal & Pan-India Feeds', desc: 'Automated product sync to Google Shopping and Meta Catalog with real-time stock.' },
+      { step: '02', title: 'Sub-Second Checkout UI', desc: 'Frictionless Next.js checkout with 1-click UPI and dynamic pin code delivery check.' },
+      { step: '03', title: 'WhatsApp Cart Recovery', desc: '3-stage automated reminder recovering 24% of abandoned checkouts with exclusive perks.' },
+    ],
+    verifiedAnchor: 'Bhawani Mall & Janpath Retail Strip',
+  },
+  'construction': {
+    name: 'B2B & Industrial Infra',
+    icon: '🏗️',
+    category: 'B2B & Manufacturing',
+    tagline: 'High-value PEB, structural steel, warehousing & commercial tender RFQs',
+    baseCpl: 620,
+    closeRate: '6% – 11%',
+    avgDealValue: '₹8.5L – ₹1.5Cr',
+    typicalRoas: '14X – 32X Pipeline',
+    pipelineMultiplier: 240000,
+    primaryChannels: ['Technical B2B SEO', 'LinkedIn Account-Based Ads', 'Interactive RFQ Estimator'],
+    stages: [
+      { step: '01', title: 'Engineering Topic Clusters', desc: 'Rank for high-intent B2B terms like "PEB industrial sheds Odisha" and "warehouse fabrication".' },
+      { step: '02', title: 'Interactive RFQ Estimator', desc: 'Allow procurement managers to calculate square-footage estimates and submit tender specs.' },
+      { step: '03', title: 'Director-Level Routing', desc: 'Lead dossier with project specs immediately sent to MD/Sales Director email & WhatsApp.' },
+    ],
+    verifiedAnchor: 'Mancheswar & Rasulgarh Industrial Belt',
+  },
+  'tech-saas': {
+    name: 'Tech, IT & SaaS',
+    icon: '💻',
+    category: 'Technology',
+    tagline: 'Enterprise software demos, IT staffing contracts & global SaaS trials',
+    baseCpl: 480,
+    closeRate: '10% – 16%',
+    avgDealValue: '₹1.2L – ₹25L ARR',
+    typicalRoas: '8X – 15X Pipeline',
+    pipelineMultiplier: 110000,
+    primaryChannels: ['Interactive Product Demo', 'Google Search Intent', 'LinkedIn Retargeting'],
+    stages: [
+      { step: '01', title: 'Intent Search & Comparison', desc: 'Capture buyers searching for enterprise software alternatives and IT solutions.' },
+      { step: '02', title: 'Interactive Product Tour', desc: 'Self-guided interactive product tour that delivers the "aha!" moment in under 60 seconds.' },
+      { step: '03', title: 'Automated Demo Booking', desc: 'Frictionless calendar scheduling synced with Zoom and enterprise sales reps.' },
+    ],
+    verifiedAnchor: 'Infocity & DLF Cybercity Corridor',
+  },
+};
+
+function formatInr(val: number): string {
+  if (val >= 10000000) {
+    return `₹${(val / 10000000).toFixed(1)} Cr`;
+  }
+  if (val >= 100000) {
+    return `₹${(val / 100000).toFixed(1)} L`;
+  }
+  return `₹${val.toLocaleString('en-IN')}`;
+}
+
 export default function IndustriesPage() {
   // Master-Detail Sector Workstation State
   const [selectedIndustryId, setSelectedIndustryId] = useState<string>('real-estate');
@@ -234,6 +369,17 @@ export default function IndustriesPage() {
   // Active Corridor Details
   const activeCorridorName = sectorCorridorMatrix[activeCorridorIdx].corridor;
   const currentCorridorInfo = corridorDetails[activeCorridorName] || corridorDetails['Patia & Infocity'];
+
+  // Simulator State
+  const [simSector, setSimSector] = useState<string>('real-estate');
+  const [simSpend, setSimSpend] = useState<number>(75000);
+  const [simCorridor, setSimCorridor] = useState<string>('Patia & Infocity');
+
+  const activeSim = sectorSimulations[simSector] || sectorSimulations['real-estate'];
+  const simLeadsMin = Math.max(1, Math.round((simSpend / activeSim.baseCpl) * 0.85));
+  const simLeadsMax = Math.max(1, Math.round((simSpend / activeSim.baseCpl) * 1.25));
+  const simPipelineMin = simLeadsMin * activeSim.pipelineMultiplier;
+  const simPipelineMax = simLeadsMax * activeSim.pipelineMultiplier;
 
   return (
     <div className={styles.page}>
@@ -456,121 +602,236 @@ export default function IndustriesPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════
-          SECTION 4: CROSS-SECTOR COMMERCIAL BENCHMARK MATRIX (NO HORIZONTAL SCROLL)
+          SECTION 4: INTERACTIVE SECTOR REVENUE & ROI SIMULATOR
          ══════════════════════════════════════════════════════════ */}
-      <section className={styles.tableSection} id="sector-matrix">
+      <section className={styles.simulatorSection} id="sector-calculator">
         <div className="container">
           <ScrollReveal>
             <div className={styles.sectionEyebrowCenter}>
               <div className="eyebrow eyebrow-center">
                 <span className="eyebrow-dot" />
-                EXECUTIVE COMPARISON MATRIX
+                SECTOR ROI &amp; REVENUE SIMULATOR
               </div>
             </div>
             <h2 className={`display-md ${styles.sectionHeading}`}>
-              Cross-Sector Performance Benchmarks<br />
-              <span className="accent-gradient">Audited Across Bhubaneswar Markets.</span>
+              Estimate Your Sector Acquisition Yield.<br />
+              <span className="accent-gradient">Live CPL &amp; Pipeline Projection Engine.</span>
             </h2>
             <p className={styles.sectionSub}>
-              A comprehensive data matrix comparing customer acquisition cost, conversion velocity, primary channels, and proven client anchors across all 12 commercial sectors in Odisha.
+              Select your commercial vertical, adjust your monthly ad spend, and instantly model your verified inbound lead volume, target CPL ceiling, and pipeline value in Bhubaneswar.
             </p>
           </ScrollReveal>
 
           <ScrollReveal delay={80}>
-            <div className={styles.matrixDeckCard}>
-              {/* Matrix Card Header Strip with Category Filter */}
-              <div className={styles.matrixCardTopBar}>
-                <div className={styles.matrixCardHeaderInfo}>
-                  <span className={styles.matrixCardTitle}>ALL 12 COMMERCIAL VERTICALS</span>
-                  <span className={styles.matrixCardSub}>Audited CPL, Yield & Acquisition Velocity in Odisha</span>
+            <div className={styles.simulatorCard}>
+              {/* Top Bar: Sector Tabs Selector */}
+              <div className={styles.simTopBar}>
+                <div className={styles.simTopBarTitleWrap}>
+                  <span className={styles.simLivePulse} />
+                  <span className={styles.simTopBarTitle}>ODISHA SECTOR SIMULATOR v2.4</span>
                 </div>
-                <div className={styles.matrixFilterPills}>
-                  {sectorGroups.map(grp => (
-                    <button
-                      key={grp.id}
-                      type="button"
-                      className={`${styles.matrixFilterPillBtn} ${activeSectorGroup === grp.id ? styles.matrixFilterPillActive : ''}`}
-                      onClick={() => setActiveSectorGroup(grp.id)}
-                    >
-                      {grp.label}
-                    </button>
-                  ))}
+                <div className={styles.simSectorTabs}>
+                  {Object.entries(sectorSimulations).map(([secKey, secData]) => {
+                    const isSelected = simSector === secKey;
+                    return (
+                      <button
+                        key={secKey}
+                        type="button"
+                        className={`${styles.simSectorTabBtn} ${isSelected ? styles.simSectorTabBtnActive : ''}`}
+                        onClick={() => setSimSector(secKey)}
+                      >
+                        <span className={styles.simTabIcon}>{secData.icon}</span>
+                        <span className={styles.simTabName}>{secData.name.split('&')[0]}</span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
-              {/* Desktop Grid Header (Hidden on Mobile/Tablet) */}
-              <div className={styles.matrixGridHeader}>
-                <div>SECTOR VERTICAL</div>
-                <div>TYPICAL CPL</div>
-                <div>PRIMARY ENGINE</div>
-                <div>TARGET YIELD</div>
-                <div>CONVERSION SPEED</div>
-                <div>CLIENT ANCHOR</div>
-              </div>
+              {/* Main Dual-Pane Simulator Console */}
+              <div className={styles.simBodyGrid}>
+                {/* Left Column: Investment Sliders & Configuration */}
+                <div className={styles.simControlsCol}>
+                  {/* Spend Slider Box */}
+                  <div className={styles.simControlCard}>
+                    <div className={styles.simControlHeader}>
+                      <span className={styles.simControlLabel}>MONTHLY AD INVESTMENT</span>
+                      <span className={styles.simSpendBadge}>
+                        ₹{simSpend.toLocaleString('en-IN')} <small>/ month</small>
+                      </span>
+                    </div>
 
-              {/* Matrix Rows List — 100% visible inside the card without horizontal scroll */}
-              <div className={styles.matrixRowsList}>
-                {filteredIndustries.map((ind) => (
-                  <div
-                    key={ind.id}
-                    className={styles.matrixRowItem}
-                    onClick={() => {
-                      setSelectedIndustryId(ind.id);
-                      const el = document.getElementById(`sector-card-${ind.id}`) || document.getElementById('sector-showcase');
-                      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }}
-                  >
-                    {/* Column 1: Sector Info */}
-                    <div className={styles.matrixSectorCell}>
-                      <span className={styles.matrixSectorIcon}>{sectorIcons[ind.id] || '⚡'}</span>
-                      <div className={styles.matrixSectorMeta}>
-                        <span className={styles.matrixSectorName}>{ind.title}</span>
-                        <span className={styles.matrixSectorCategory}>{ind.category}</span>
+                    {/* Tactile Skeuomorphic Range Slider */}
+                    <div className={styles.simSliderWrap}>
+                      <input
+                        type="range"
+                        min="25000"
+                        max="300000"
+                        step="5000"
+                        value={simSpend}
+                        onChange={(e) => setSimSpend(Number(e.target.value))}
+                        className={styles.simRangeInput}
+                        aria-label="Monthly Marketing Spend Range"
+                      />
+                      <div className={styles.simSliderTicks}>
+                        <span>₹25K (Starter)</span>
+                        <span>₹1.5L (Scale)</span>
+                        <span>₹3L+ (Monopolize)</span>
                       </div>
                     </div>
 
-                    {/* Column 2: Typical CPL */}
-                    <div className={styles.matrixCplCell}>
-                      <span className={styles.mobileColLabel}>TYPICAL CPL</span>
-                      <span className={styles.matrixCplBadge}>{ind.metric}</span>
-                    </div>
-
-                    {/* Column 3: Primary Engine */}
-                    <div className={styles.matrixEngineCell}>
-                      <span className={styles.mobileColLabel}>PRIMARY ENGINE</span>
-                      <span className={styles.matrixEngineText}>
-                        {ind.services[0]} &bull; {ind.services[1]}
-                      </span>
-                    </div>
-
-                    {/* Column 4: Target Yield */}
-                    <div className={styles.matrixYieldCell}>
-                      <span className={styles.mobileColLabel}>TARGET YIELD</span>
-                      <span className={styles.matrixYieldBadge}>{ind.badge}</span>
-                    </div>
-
-                    {/* Column 5: Velocity */}
-                    <div className={styles.matrixVelocityCell}>
-                      <span className={styles.mobileColLabel}>VELOCITY</span>
-                      <span className={styles.matrixVelocityText}>
-                        ⏱️ {ind.playbook.benchmarks[0]?.val || 'Verified'}
-                      </span>
-                    </div>
-
-                    {/* Column 6: Client Anchor */}
-                    <div className={styles.matrixAnchorCell}>
-                      <span className={styles.mobileColLabel}>CLIENT ANCHOR</span>
-                      <span className={styles.matrixAnchorText}>
-                        📍 {ind.playbook.clientAnchor.split('&')[0]}
-                      </span>
+                    {/* Quick Preset Buttons */}
+                    <div className={styles.simPresetsRow}>
+                      {[
+                        { label: '₹35K', val: 35000, tag: 'Starter' },
+                        { label: '₹75K', val: 75000, tag: 'Growth' },
+                        { label: '₹1.5L', val: 150000, tag: 'Scale' },
+                        { label: '₹2.5L', val: 250000, tag: 'Monopolize' },
+                      ].map(preset => (
+                        <button
+                          key={preset.val}
+                          type="button"
+                          className={`${styles.simPresetBtn} ${simSpend === preset.val ? styles.simPresetBtnActive : ''}`}
+                          onClick={() => setSimSpend(preset.val)}
+                        >
+                          <span className={styles.simPresetLabel}>{preset.label}</span>
+                          <span className={styles.simPresetTag}>{preset.tag}</span>
+                        </button>
+                      ))}
                     </div>
                   </div>
-                ))}
+
+                  {/* Target Corridor Picker */}
+                  <div className={styles.simControlCard}>
+                    <div className={styles.simControlHeader}>
+                      <span className={styles.simControlLabel}>TARGET BHUBANESWAR CORRIDOR</span>
+                      <span className={styles.simCorridorCurrent}>📍 {simCorridor}</span>
+                    </div>
+                    <div className={styles.simCorridorChips}>
+                      {[
+                        'Patia & Infocity',
+                        'Saheed Nagar',
+                        'Chandrasekharpur',
+                        'Khandagiri & Nayapalli',
+                        'All Bhubaneswar & Cuttack',
+                      ].map(corridor => (
+                        <button
+                          key={corridor}
+                          type="button"
+                          className={`${styles.simCorridorChip} ${simCorridor === corridor ? styles.simCorridorChipActive : ''}`}
+                          onClick={() => setSimCorridor(corridor)}
+                        >
+                          {corridor}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Commercial SLA Guarantee Pill */}
+                  <div className={styles.simGuaranteeBox}>
+                    <div className={styles.simGuaranteeIcon}>🔒</div>
+                    <div className={styles.simGuaranteeMeta}>
+                      <strong>100% Attribution &amp; CPL Ceiling Guarantee</strong>
+                      <p>We lock in your maximum cost-per-verified-lead in writing before campaign launch. Zero duplicate or tire-kicker leads.</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column: Live Calculated Output Cockpit */}
+                <div className={styles.simResultsCol}>
+                  {/* Selected Sector Top Banner */}
+                  <div className={styles.simResultHeader}>
+                    <div className={styles.simResultIconWrap}>
+                      <span className={styles.simResultIcon}>{activeSim.icon}</span>
+                    </div>
+                    <div className={styles.simResultMeta}>
+                      <div className={styles.simResultSectorTitle}>{activeSim.name}</div>
+                      <div className={styles.simResultSectorTagline}>{activeSim.tagline}</div>
+                    </div>
+                    <div className={styles.simVerifiedBadge}>
+                      ✓ {activeSim.verifiedAnchor}
+                    </div>
+                  </div>
+
+                  {/* 4-Stat Live Metrics Grid */}
+                  <div className={styles.simStatGrid}>
+                    {/* Stat 1: Verified Leads */}
+                    <div className={styles.simStatCard}>
+                      <span className={styles.simStatLabel}>ESTIMATED INBOUND LEADS</span>
+                      <div className={styles.simStatValWrap}>
+                        <span className={styles.simStatValHighlight}>{simLeadsMin} – {simLeadsMax}</span>
+                        <span className={styles.simStatUnit}>Leads / Mo</span>
+                      </div>
+                      <span className={styles.simStatMicro}>OTP &amp; Phone Verified</span>
+                    </div>
+
+                    {/* Stat 2: Target CPL Ceiling */}
+                    <div className={styles.simStatCard}>
+                      <span className={styles.simStatLabel}>TARGET CPL CEILING</span>
+                      <div className={styles.simStatValWrap}>
+                        <span className={styles.simStatVal}>₹{activeSim.baseCpl}</span>
+                        <span className={styles.simStatUnit}>max / lead</span>
+                      </div>
+                      <span className={styles.simStatMicroPositive}>↓ 48% vs Agency Avg</span>
+                    </div>
+
+                    {/* Stat 3: Pipeline Gross Yield */}
+                    <div className={styles.simStatCard}>
+                      <span className={styles.simStatLabel}>PROJECTED PIPELINE VALUE</span>
+                      <div className={styles.simStatValWrap}>
+                        <span className={styles.simStatValHighlight}>{formatInr(simPipelineMin)} – {formatInr(simPipelineMax)}</span>
+                      </div>
+                      <span className={styles.simStatMicro}>Based on {activeSim.avgDealValue} AOV</span>
+                    </div>
+
+                    {/* Stat 4: Acquisition Multiplier */}
+                    <div className={styles.simStatCard}>
+                      <span className={styles.simStatLabel}>PROJECTED ACQUISITION YIELD</span>
+                      <div className={styles.simStatValWrap}>
+                        <span className={styles.simStatVal}>{activeSim.typicalRoas}</span>
+                      </div>
+                      <span className={styles.simStatMicroPositive}>Close Rate: {activeSim.closeRate}</span>
+                    </div>
+                  </div>
+
+                  {/* 3-Stage Acquisition Architecture Steps */}
+                  <div className={styles.simStagesBox}>
+                    <div className={styles.simStagesHeader}>
+                      <span>3-STAGE {activeSim.name.toUpperCase()} ACQUISITION ENGINE</span>
+                      <span>DEPLOYED IN 72 HOURS</span>
+                    </div>
+                    <div className={styles.simStagesList}>
+                      {activeSim.stages.map((stg) => (
+                        <div key={stg.step} className={styles.simStageItem}>
+                          <div className={styles.simStageStepBadge}>{stg.step}</div>
+                          <div className={styles.simStageContent}>
+                            <div className={styles.simStageTitle}>{stg.title}</div>
+                            <div className={styles.simStageDesc}>{stg.desc}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Direct Action Bottom Bar */}
+                  <div className={styles.simActionRow}>
+                    <div className={styles.simActionLeft}>
+                      <span className={styles.simActionNote}>Ready to deploy this exact engine for {activeSim.name}?</span>
+                      <span className={styles.simActionSub}>Custom commercial roadmap prepared for your specific location in Odisha.</span>
+                    </div>
+                    <BeamButton
+                      href="/contact"
+                      label={`Lock In ₹${activeSim.baseCpl} CPL Ceiling →`}
+                      size="md"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </ScrollReveal>
         </div>
       </section>
+
 
       {/* ══════════════════════════════════════════════════════════
           SECTION 5: HYPERLOCAL CORRIDOR DISTRIBUTION CONSOLE
