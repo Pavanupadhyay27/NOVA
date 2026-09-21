@@ -31,8 +31,6 @@ export default function PortfolioPage() {
   const [isRibbonPaused, setIsRibbonPaused] = useState(false);
   const [activeHudIndex, setActiveHudIndex] = useState(0);
   const [isHudPaused, setIsHudPaused] = useState(false);
-  const [activeGeoIndex, setActiveGeoIndex] = useState(0);
-  const [isGeoPaused, setIsGeoPaused] = useState(false);
   const [activeIndustry, setActiveIndustry] = useState(industryVerticals[0].id);
   const [activeRoiIndex, setActiveRoiIndex] = useState(1); // Default to Growth tier
   const [isPaused, setIsPaused] = useState(false);
@@ -80,15 +78,6 @@ export default function PortfolioPage() {
     return () => clearInterval(interval);
   }, [isHudPaused]);
 
-  // Auto-cycling Regional Footprint (every 3.5s)
-  useEffect(() => {
-    if (isGeoPaused) return;
-    const interval = setInterval(() => {
-      setActiveGeoIndex((prev) => (prev + 1) % geoImpactLocations.length);
-    }, 3500);
-    return () => clearInterval(interval);
-  }, [isGeoPaused]);
-
   const slideManual = (direction: 'left' | 'right') => {
     if (!sliderRef.current) return;
     const offset = direction === 'left' ? -380 : 380;
@@ -96,7 +85,6 @@ export default function PortfolioPage() {
   };
 
   const currentHud = transformationData[activeHudIndex] || transformationData[0];
-  const currentGeo = geoImpactLocations[activeGeoIndex] || geoImpactLocations[0];
   const currentIndustryData = industryVerticals.find((v) => v.id === activeIndustry) || industryVerticals[0];
   const currentRoi = roiTiers[activeRoiIndex] || roiTiers[1];
 
@@ -688,132 +676,113 @@ export default function PortfolioPage() {
             <ScrollReveal>
               <div className={styles.eyebrowBadge}>
                 <span className={styles.sparkleDot} />
-                <span>Regional Footprint</span>
+                <span>Regional Footprint • Hyperlocal SERP Authority</span>
               </div>
               <h2 className={styles.sectionTitle}>
-                Hyperlocal Dominance Across <span className="accent-gradient">Bhubaneswar &amp; Odisha</span>
+                Dominating Commercial Search Across <span className="accent-gradient">Bhubaneswar &amp; Odisha</span>
               </h2>
               <div className={styles.sectionHeaderBar} />
               <p className={styles.sectionSub}>
-                Explore our live search dominance and lead generation metrics across major commercial corridors. Auto-advances across transit stations.
+                Verified search volumes, qualified acquisition benchmarks, and keyword rankings across 6 key transit corridors.
               </p>
             </ScrollReveal>
           </div>
 
           <ScrollReveal>
-            <div
-              className={styles.territoryConsole}
-              onMouseEnter={() => setIsGeoPaused(true)}
-              onMouseLeave={() => setIsGeoPaused(false)}
-            >
-              {/* Executive Segmented Territory Dock - Fixed 6-Column Grid (Zero Layout Shift) */}
-              <div className={styles.territoryDock}>
-                {geoImpactLocations.map((geo, idx) => (
-                  <button
-                    key={geo.code}
-                    className={`${styles.territoryDockBtn} ${activeGeoIndex === idx ? styles.territoryDockBtnActive : ''}`}
-                    onClick={() => setActiveGeoIndex(idx)}
-                    type="button"
-                  >
-                    <div className={styles.dockHeader}>
-                      <span className={styles.dockZoneTag}>ZONE {geo.code}</span>
-                      <div className={styles.dockDot}>
-                        {activeGeoIndex === idx && <span className={styles.dockPulse} />}
-                      </div>
+            {/* 6-Card Territory Matrix Grid (All 6 Corridors Visible Simultaneously - Zero Shaking) */}
+            <div className={styles.territoryMatrixGrid}>
+              {geoImpactLocations.map((geo) => (
+                <div key={geo.code} className={styles.territoryCard}>
+                  {/* Top Bar: Zone Badge & Live Verified Status */}
+                  <div className={styles.territoryCardTop}>
+                    <div className={styles.territoryZonePill}>
+                      <span className={styles.territoryZoneTag}>ZONE</span>
+                      <span className={styles.territoryZoneNum}>{geo.code}</span>
                     </div>
-                    <span className={styles.dockAreaName}>{geo.shortArea}</span>
-                    <span className={styles.dockVerticalTag}>{geo.shortVertical}</span>
-                  </button>
-                ))}
-              </div>
+                    <span className={styles.territoryStatusPill}>
+                      <span className={styles.territoryStatusDot} />
+                      <span>{geo.tag}</span>
+                    </span>
+                  </div>
 
-              {/* Pristine Skeuomorphic Command Center (LOCKED STABLE HEIGHT - ZERO VIBRATION) */}
-              <div className={styles.territoryCommandCenter}>
-                {/* Header Row */}
-                <div className={styles.commandHeaderRow}>
-                  <div className={styles.commandAreaIdentity}>
-                    <div className={styles.zoneMetallicBadge}>
-                      <span className={styles.zoneMetallicTag}>ZONE</span>
-                      <span className={styles.zoneMetallicNum}>{currentGeo.code}</span>
+                  {/* Corridor Area & Sub-vertical */}
+                  <div className={styles.territoryIdentity}>
+                    <h3 className={styles.territoryAreaName}>
+                      <span className={styles.territoryPinIcon}>📍</span>
+                      <span>{geo.area}</span>
+                    </h3>
+                    <p className={styles.territoryVerticalName}>{geo.vertical}</p>
+                  </div>
+
+                  {/* Dual Core Metrics Box */}
+                  <div className={styles.territoryMetricsRow}>
+                    <div className={styles.territoryMetricBox}>
+                      <span className={styles.territoryMetricVal}>{geo.searchesVal}</span>
+                      <span className={styles.territoryMetricLabel}>{geo.searchesLabel}</span>
                     </div>
-                    <div>
-                      <h3 className={styles.commandAreaTitle}>{currentGeo.area} Commercial Corridor</h3>
-                      <p className={styles.commandAreaCoords}>{currentGeo.coords} • {currentGeo.vertical}</p>
-                    </div>
-                  </div>
-
-                  <div className={styles.commandStatusWrap}>
-                    <span className={styles.commandStatusPill}>
-                      <span className={styles.liveRadarDot} />
-                      <span>SERP #1 DOMINANCE VERIFIED</span>
-                    </span>
-                  </div>
-                </div>
-
-                {/* 4 Debossed Skeuomorphic Metric Wells (Clean Numbers & Labels) */}
-                <div className={styles.commandMetricsGrid}>
-                  <div className={styles.commandMetricWell}>
-                    <span className={styles.commandMetricNum}>
-                      <SmoothCounter value={currentGeo.searchesVal} />
-                    </span>
-                    <span className={styles.commandMetricLabel}>{currentGeo.searchesLabel}</span>
-                  </div>
-
-                  <div className={styles.commandMetricWell}>
-                    <span className={styles.commandMetricNum}>
-                      <SmoothCounter value={currentGeo.cplVal} />
-                    </span>
-                    <span className={styles.commandMetricLabel}>{currentGeo.cplLabel}</span>
-                  </div>
-
-                  <div className={styles.commandMetricWell}>
-                    <span className={styles.commandMetricNum}>
-                      <SmoothCounter value={currentGeo.leadShareVal} />
-                    </span>
-                    <span className={styles.commandMetricLabel}>{currentGeo.leadShareLabel}</span>
-                  </div>
-
-                  <div className={styles.commandMetricWell}>
-                    <span className={styles.commandMetricNum} style={{ color: '#10B981' }}>
-                      <SmoothCounter value={currentGeo.liftVal} />
-                    </span>
-                    <span className={styles.commandMetricLabel}>{currentGeo.liftLabel}</span>
-                  </div>
-                </div>
-
-                {/* Corridor Commercial Landmarks Strip */}
-                <div className={styles.commandLandmarksRow}>
-                  <span className={styles.landmarksHeading}>Commercial Hubs:</span>
-                  <div className={styles.landmarkPillsWrap}>
-                    {currentGeo.landmarks.map((lm) => (
-                      <span key={lm} className={styles.commandLandmarkPill}>
-                        📍 {lm}
+                    <div className={styles.territoryMetricBox}>
+                      <span className={styles.territoryMetricVal} style={{ color: '#059669' }}>
+                        {geo.cplVal}
                       </span>
-                    ))}
+                      <span className={styles.territoryMetricLabel}>{geo.cplLabel}</span>
+                    </div>
                   </div>
-                </div>
 
-                {/* Footer Intelligence Strip & Centered CTA */}
-                <div className={styles.commandFooterRow}>
-                  <div className={styles.commandKeywordsWrap}>
-                    <span className={styles.keywordsLabel}>Target Queries:</span>
-                    {currentGeo.dominantKeywords.map((kw) => (
-                      <span key={kw} className={styles.commandKeywordChip}>
+                  {/* Commercial Hubs Anchor Strip */}
+                  <div className={styles.territoryHubsRow}>
+                    <span className={styles.territoryHubsLabel}>Commercial Hubs:</span>
+                    <div className={styles.territoryHubsWrap}>
+                      {geo.landmarks.slice(0, 3).map((lm) => (
+                        <span key={lm} className={styles.territoryHubChip}>
+                          {lm}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* High-Intent Search Queries Strip */}
+                  <div className={styles.territoryQueriesRow}>
+                    {geo.dominantKeywords.slice(0, 3).map((kw) => (
+                      <span key={kw} className={styles.territoryQueryChip}>
                         #{kw}
                       </span>
                     ))}
                   </div>
 
-                  <div className={styles.commandClientBadge}>
-                    Active Client: <strong>{currentGeo.clientSnippet}</strong>
+                  {/* Card Footer: Active Client Anchor */}
+                  <div className={styles.territoryCardFooter}>
+                    <span className={styles.territoryClientLabel}>Client Anchor:</span>
+                    <strong className={styles.territoryClientName}>{geo.clientSnippet}</strong>
                   </div>
                 </div>
+              ))}
+            </div>
 
-                {/* Centered CTA Button */}
-                <div className={styles.centerCtaWrap} style={{ paddingTop: 6 }}>
-                  <BeamButton href="/contact" label="Dominate Your Commercial Corridor →" size="md" />
-                </div>
+            {/* Aggregate Territory Dominance Banner */}
+            <div className={styles.territoryAggregateBanner}>
+              <div className={styles.aggregateStatItem}>
+                <span className={styles.aggregateStatVal}>2,50,000+</span>
+                <span className={styles.aggregateStatLabel}>Monthly In-Market Searches Dominated</span>
               </div>
+              <div className={styles.aggregateDivider} />
+              <div className={styles.aggregateStatItem}>
+                <span className={styles.aggregateStatVal} style={{ color: '#10B981' }}>-62%</span>
+                <span className={styles.aggregateStatLabel}>Average CPL vs. Regional Benchmarks</span>
+              </div>
+              <div className={styles.aggregateDivider} />
+              <div className={styles.aggregateStatItem}>
+                <span className={styles.aggregateStatVal} style={{ color: 'var(--accent-blue)' }}>100%</span>
+                <span className={styles.aggregateStatLabel}>Attribution Verified Lead Pipelines</span>
+              </div>
+            </div>
+
+            {/* Centered CTA Button */}
+            <div className={styles.centerCtaWrap} style={{ paddingTop: 28 }}>
+              <BeamButton
+                href="/contact"
+                label="Schedule Territory Strategy Session in Bhubaneswar →"
+                size="md"
+              />
             </div>
           </ScrollReveal>
         </div>

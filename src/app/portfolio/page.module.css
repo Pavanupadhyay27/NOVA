@@ -1535,383 +1535,284 @@
 /* ─────────────────────────────────────────────────────────────
    SECTION 7: REGIONAL FOOTPRINT — EXECUTIVE TERRITORY COMMAND CENTER
    ───────────────────────────────────────────────────────────── */
+/* ─────────────────────────────────────────────────────────────
+   SECTION 7: ODISHA COMMERCIAL TERRITORY MATRIX (ZERO-VIBRATION STATIC GRID)
+   ───────────────────────────────────────────────────────────── */
 .geoSection {
   padding: 104px 0 88px;
   scroll-margin-top: 130px;
-}
-
-.territoryConsole {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-/* Executive Segmented Territory Dock - Fixed 6-Column Grid (Zero Layout Shift) */
-.territoryDock {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 12px;
-}
-
-.territoryDockBtn {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
-  border: 1px solid #CBD5E1;
-  border-top: 3px solid transparent;
-  border-radius: var(--radius-xl);
-  padding: 12px 14px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 4px;
-  text-align: left;
-  box-shadow: inset 0 1px 0 #FFFFFF, 0 1px 3px rgba(0, 0, 0, 0.04);
-  transition: background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
-  min-height: 76px;
-  transform: none !important;
-}
-
-.territoryDockBtn:hover {
-  background: #FFFFFF;
-  border-color: #94A3B8;
-  box-shadow: inset 0 1px 0 #FFFFFF, 0 4px 12px rgba(11, 32, 147, 0.08);
-  transform: none !important;
-}
-
-.territoryDockBtnActive {
-  background: #FFFFFF !important;
-  border-top: 3px solid var(--accent-blue) !important;
-  border-color: rgba(11, 32, 147, 0.25) !important;
-  box-shadow: inset 0 2px 0 #FFFFFF, 0 4px 16px rgba(11, 32, 147, 0.12) !important;
-  transform: none !important;
-}
-
-.dockHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.dockZoneTag {
-  font-size: 10px;
-  font-weight: 800;
-  color: #64748B;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.territoryDockBtnActive .dockZoneTag {
-  color: var(--accent-blue);
-}
-
-.dockDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #CBD5E1;
   position: relative;
 }
 
-.territoryDockBtnActive .dockDot {
-  background: #10B981;
+/* 6-Card Territory Matrix Grid (3 Columns on Desktop, 2 on Tablet, 1 on Mobile) */
+.territoryMatrixGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
 
-.dockPulse {
-  position: absolute;
-  inset: -3px;
-  border-radius: 50%;
-  background: rgba(16, 185, 129, 0.4);
-  animation: pulseGlow 1.5s infinite;
-}
-
-.dockAreaName {
-  font-family: var(--font-display);
-  font-size: 13.5px;
-  font-weight: 700;
-  color: #0F172A;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.territoryDockBtnActive .dockAreaName {
-  color: var(--accent-blue);
-}
-
-.dockVerticalTag {
-  font-size: 10px;
-  font-weight: 600;
-  color: #64748B;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Pristine Skeuomorphic Command Center (LOCKED STABLE HEIGHT - ZERO VIBRATION) */
-.territoryCommandCenter {
+.territoryCard {
   background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFE 100%);
+  border: 1.5px solid #E2E8F0;
   border-radius: var(--radius-2xl);
-  border: 1px solid #E2E8F0;
-  box-shadow: inset 0 2.5px 0 #FFFFFF, inset 0 -1.5px 0 rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.04), 0 24px 56px -12px rgba(11, 32, 147, 0.14);
-  padding: 34px 44px;
-  height: 480px;
-  min-height: 480px;
-  max-height: 480px;
-  overflow: hidden;
+  padding: 28px 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-sizing: border-box;
-}
-
-.commandHeaderRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #F1F5F9;
-  height: 64px;
-  min-height: 64px;
-  max-height: 64px;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-
-.commandAreaIdentity {
-  display: flex;
-  align-items: center;
   gap: 16px;
+  box-shadow: inset 0 2px 0 #FFFFFF, 
+              inset 0 -1px 0 rgba(0, 0, 0, 0.03), 
+              0 1px 3px rgba(0, 0, 0, 0.04), 
+              0 10px 24px -4px rgba(11, 32, 147, 0.07);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  position: relative;
 }
 
-.zoneMetallicBadge {
+.territoryCard:hover {
+  border-color: rgba(11, 32, 147, 0.25);
+  box-shadow: inset 0 2px 0 #FFFFFF, 
+              0 14px 32px -4px rgba(11, 32, 147, 0.12);
+}
+
+.territoryCardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.territoryZonePill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(11, 32, 147, 0.08) 100%);
-  border: 1.5px solid #F59E0B;
-  padding: 6px 14px;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  padding: 4px 10px;
   border-radius: var(--radius-md);
-  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 2px 8px rgba(245, 158, 11, 0.15);
+  box-shadow: inset 0 1px 0 #FFFFFF;
 }
 
-.zoneMetallicTag {
-  font-size: 10px;
+.territoryZoneTag {
+  font-size: 9.5px;
   font-weight: 800;
   letter-spacing: 0.12em;
   color: #D97706;
   text-transform: uppercase;
 }
 
-.zoneMetallicNum {
+.territoryZoneNum {
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 900;
   color: var(--accent-blue);
   line-height: 1;
 }
 
-.commandAreaTitle {
-  font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 800;
-  color: #0F172A;
-  line-height: 1.2;
-}
-
-.commandAreaCoords {
-  font-size: 12px;
-  color: #64748B;
-  font-weight: 600;
-  margin-top: 3px;
-}
-
-.commandStatusWrap {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.commandStatusPill {
+.territoryStatusPill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
   color: #059669;
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.25);
-  padding: 5px 12px;
+  background: rgba(16, 185, 129, 0.09);
+  border: 1px solid rgba(16, 185, 129, 0.22);
+  padding: 4px 10px;
   border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
-.liveRadarDot {
+.territoryStatusDot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: #10B981;
-  box-shadow: 0 0 8px #10B981;
-  animation: pulseGlow 1.5s infinite;
+  box-shadow: 0 0 6px #10B981;
 }
 
-/* 4 Debossed Skeuomorphic Metric Wells (Clean Numbers & Labels) */
-.commandMetricsGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  height: 94px;
-  min-height: 94px;
-  max-height: 94px;
-  box-sizing: border-box;
-}
-
-.commandMetricWell {
-  background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
-  border: 1px solid #E2E8F0;
-  border-radius: var(--radius-xl);
-  padding: 14px 20px;
-  box-shadow: inset 0 1.5px 0 #FFFFFF, inset 0 -1px 0 rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.03);
+.territoryIdentity {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 4px;
-  height: 94px;
-  min-height: 94px;
-  max-height: 94px;
-  overflow: hidden;
-  box-sizing: border-box;
-  transform: none !important;
 }
 
-.commandMetricNum {
+.territoryAreaName {
   font-family: var(--font-display);
-  font-size: 26px;
+  font-size: 18px;
   font-weight: 800;
-  color: var(--accent-blue);
-  line-height: 1;
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-  height: 28px;
-  min-height: 28px;
+  color: #0F172A;
+  line-height: 1.25;
   display: flex;
   align-items: center;
+  gap: 6px;
 }
 
-.commandMetricLabel {
-  font-size: 11px;
+.territoryPinIcon {
+  font-size: 14px;
+}
+
+.territoryVerticalName {
+  font-size: 12px;
+  color: #64748B;
+  font-weight: 600;
+}
+
+/* Dual Core Metrics Box */
+.territoryMetricsRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.territoryMetricBox {
+  background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-lg);
+  padding: 12px 14px;
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 1px 3px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.territoryMetricVal {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--accent-blue);
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.territoryMetricLabel {
+  font-size: 10.5px;
   font-weight: 600;
   color: #64748B;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  height: 24px;
-  min-height: 24px;
-  max-height: 24px;
-  display: flex;
-  align-items: center;
+  letter-spacing: 0.03em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* Corridor Commercial Landmarks Strip */
-.commandLandmarksRow {
+/* Commercial Hubs Anchor Strip */
+.territoryHubsRow {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: nowrap;
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
-  border-radius: var(--radius-lg);
-  padding: 0 18px;
-  height: 48px;
-  min-height: 48px;
-  max-height: 48px;
-  overflow: hidden;
-  box-sizing: border-box;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.landmarksHeading {
-  font-size: 11px;
-  font-weight: 700;
-  color: #475569;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.landmarkPillsWrap {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: nowrap;
-  overflow: hidden;
-}
-
-.commandLandmarkPill {
-  font-size: 11.5px;
-  font-weight: 600;
-  color: #0F172A;
-  background: #FFFFFF;
-  border: 1px solid #CBD5E1;
-  padding: 4px 10px;
-  border-radius: var(--radius-md);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-/* Footer Intelligence Strip & Centered CTA */
-.commandFooterRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: nowrap;
-  gap: 14px;
-  padding-top: 14px;
-  border-top: 1px solid #F1F5F9;
-  height: 48px;
-  min-height: 48px;
-  max-height: 48px;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-
-.commandKeywordsWrap {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: nowrap;
-  overflow: hidden;
-}
-
-.keywordsLabel {
-  font-size: 11px;
+.territoryHubsLabel {
+  font-size: 10.5px;
   font-weight: 700;
   color: #64748B;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
-.commandKeywordChip {
+.territoryHubsWrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.territoryHubChip {
   font-size: 11px;
+  font-weight: 600;
+  color: #334155;
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+/* High-Intent Search Queries Strip */
+.territoryQueriesRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.territoryQueryChip {
+  font-size: 10.5px;
   font-family: monospace;
   color: var(--accent-blue);
   background: rgba(11, 32, 147, 0.06);
   border: 1px solid rgba(11, 32, 147, 0.14);
-  padding: 3px 8px;
+  padding: 2px 7px;
   border-radius: var(--radius-sm);
   font-weight: 600;
 }
 
-.commandClientBadge {
-  font-size: 12px;
-  color: #475569;
-  font-weight: 500;
+/* Card Footer: Active Client Anchor */
+.territoryCardFooter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-top: 10px;
+  border-top: 1px solid #F1F5F9;
+  font-size: 11.5px;
 }
 
-.commandClientBadge strong {
+.territoryClientLabel {
+  color: #64748B;
+  font-weight: 600;
+}
+
+.territoryClientName {
   color: var(--accent-gold-dark);
   font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Aggregate Territory Dominance Banner */
+.territoryAggregateBanner {
+  margin-top: 36px;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1.5px solid rgba(11, 32, 147, 0.15);
+  border-radius: var(--radius-2xl);
+  padding: 22px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: inset 0 2px 0 #FFFFFF, 0 8px 24px -4px rgba(11, 32, 147, 0.08);
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.aggregateStatItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 3px;
+}
+
+.aggregateStatVal {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.2vw, 32px);
+  font-weight: 800;
+  color: var(--accent-blue);
+  line-height: 1;
+}
+
+.aggregateStatLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748B;
+}
+
+.aggregateDivider {
+  width: 1px;
+  height: 36px;
+  background: #E2E8F0;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -2584,10 +2485,7 @@
   .pipelineRoadmap {
     grid-template-columns: repeat(2, 1fr);
   }
-  .territoryDock {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .commandMetricsGrid {
+  .territoryMatrixGrid {
     grid-template-columns: repeat(2, 1fr);
   }
   .industryBentoGrid {
@@ -2632,10 +2530,7 @@
   .pipelineRoadmap {
     grid-template-columns: repeat(2, 1fr);
   }
-  .territoryDock {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .commandMetricsGrid {
+  .territoryMatrixGrid {
     grid-template-columns: repeat(2, 1fr);
   }
   .industryBentoGrid {
@@ -2724,15 +2619,17 @@
   .panoramicRibbon {
     grid-template-columns: repeat(2, 1fr);
   }
-  .territoryDock {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .territoryCommandCenter {
-    padding: 22px 18px;
-    min-height: auto;
-  }
-  .commandMetricsGrid {
+  .territoryMatrixGrid {
     grid-template-columns: 1fr;
+  }
+  .territoryAggregateBanner {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    padding: 20px 16px;
+  }
+  .aggregateDivider {
+    display: none;
   }
   .testimonialGrid {
     grid-template-columns: 1fr;
