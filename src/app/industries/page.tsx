@@ -203,6 +203,14 @@ export default function IndustriesPage() {
     return industryCatalog.filter(i => i.group === activeSectorGroup);
   }, [activeSectorGroup]);
 
+  // Controls 4 cards vs all 12 cards in Section 3
+  const [showAllCards, setShowAllCards] = useState<boolean>(false);
+
+  const visibleIndustries = useMemo(() => {
+    if (showAllCards) return filteredIndustries;
+    return filteredIndustries.slice(0, 4);
+  }, [filteredIndustries, showAllCards]);
+
   // Selected Diagnostic Sector Item
   const activeDiagSector = useMemo(() => {
     return diagnosticSectors.find(s => s.id === diagSector) || diagnosticSectors[0];
@@ -320,41 +328,7 @@ export default function IndustriesPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════
-          SECTION 2: ELEVATED MARQUEE PROOF STRIP
-         ══════════════════════════════════════════════════════════ */}
-      <section className={styles.dataStripSection}>
-        <div className="container">
-          <div className={styles.dataStripGlassPlate}>
-            <div className={styles.dataStripItem}>
-              <span className={styles.dataStripVal}>₹25Cr+</span>
-              <span className={styles.dataStripLabel}>Attributed Client Revenue in Odisha</span>
-            </div>
-            <div className={styles.stripDivider} />
-            <div className={styles.dataStripItem}>
-              <span className={styles.dataStripVal}>150+</span>
-              <span className={styles.dataStripLabel}>Bhubaneswar Businesses Scaled</span>
-            </div>
-            <div className={styles.stripDivider} />
-            <div className={styles.dataStripItem}>
-              <span className={styles.dataStripVal}>12</span>
-              <span className={styles.dataStripLabel}>Specialized Sector Playbooks</span>
-            </div>
-            <div className={styles.stripDivider} />
-            <div className={styles.dataStripItem}>
-              <span className={styles.dataStripVal}>&lt; 0.8s</span>
-              <span className={styles.dataStripLabel}>Next.js High-Speed Web Infrastructure</span>
-            </div>
-            <div className={styles.stripDivider} />
-            <div className={styles.dataStripItem}>
-              <span className={styles.dataStripVal}>98%</span>
-              <span className={styles.dataStripLabel}>Annual Client Retention Rate</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════
-          SECTION 3: THE 12-SECTOR BENTO SHOWCASE (REPLACES OLD WORKSTATION)
+          SECTION 2: THE 12-SECTOR BENTO SHOWCASE (4 VISIBLE + SEE MORE)
          ══════════════════════════════════════════════════════════ */}
       <section className={styles.sectorShowcaseSection} id="sector-showcase">
         <div className="container">
@@ -388,9 +362,9 @@ export default function IndustriesPage() {
             </div>
           </ScrollReveal>
 
-          {/* Sector Bento Grid */}
+          {/* Sector Bento Grid (4 Visible by Default) */}
           <div className={styles.sectorBentoGrid}>
-            {filteredIndustries.map((ind) => (
+            {visibleIndustries.map((ind) => (
               <div key={ind.id} id={`sector-card-${ind.id}`} className={styles.sectorBentoCard}>
                 {/* Top Badge & Metric Row */}
                 <div className={styles.cardTopRow}>
@@ -465,6 +439,19 @@ export default function IndustriesPage() {
               </div>
             ))}
           </div>
+
+          {/* Load More / Show Less Sectors Toggle Button */}
+          {filteredIndustries.length > 4 && (
+            <div className={styles.bentoShowMoreWrap}>
+              <button
+                type="button"
+                className={styles.bentoShowMoreBtn}
+                onClick={() => setShowAllCards(prev => !prev)}
+              >
+                <span>{showAllCards ? 'Show Less Sectors ↑' : `Explore All 12 Sectors (+${filteredIndustries.length - 4} More) ↓`}</span>
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
