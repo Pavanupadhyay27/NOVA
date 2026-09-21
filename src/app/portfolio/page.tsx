@@ -244,17 +244,22 @@ export default function PortfolioPage() {
 
           <ScrollReveal delay={100}>
             <div className={styles.spotlightCard}>
-              {/* Compact, natural framing photo container - Zero text/stats overlapping */}
+              {/* Full-Bleed Image Frame - Completely filled up edge-to-edge */}
               <div className={styles.spotlightVisualFrame}>
                 <Image
                   src={spotlightProject.image}
                   alt={spotlightProject.client}
                   fill
-                  sizes="(max-width: 900px) 100vw, 500px"
+                  priority
+                  sizes="(max-width: 900px) 100vw, 550px"
                   className={styles.spotlightVisualImg}
                 />
+                <div className={styles.spotlightVisualOverlay} />
                 <div className={styles.spotlightLocationBadge}>
                   <span>{spotlightProject.service} • {spotlightProject.location}</span>
+                </div>
+                <div className={styles.spotlightVisualBottomPill}>
+                  <span>Audited Strategic Deployment • 90 Days</span>
                 </div>
               </div>
 

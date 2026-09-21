@@ -1,12 +1,12 @@
 /* ═══════════════════════════════════════════════════════════
    PORTFOLIO PAGE — 12 BESPOKE SECTIONS STYLESHEET
    Key Enhancements:
-   - Elevated Section Headers with glowing beacon pills, gradient underline bars, and zero navbar overlap
-   - Compact, smaller, and sleek Featured Commercial Milestone card with deep skeuomorphism
-   - Executive Segmented Switcher for Audited Commercial Deltas (no boring flat tabs)
+   - Full-bleed Left Visual Pane in Featured Commercial Milestone (image completely fills top-to-bottom edge)
+   - Deep tactile skeuomorphism across ALL cards (inset specular highlights, debossed wells, multi-layer shadows)
+   - Elevated Section Headers with glowing beacon pills, gradient underline bars, and generous navbar clearance
+   - Executive Segmented Switcher for Audited Commercial Deltas
    - Zero-Vibration Rock-Solid Containers: smooth word & number transitions without layout jumping
    - High-Tech Regional Footprint Territory Console with Zone Badges, Live Pulse Beacons, and Landmark Hubs
-   - Deep tactile skeuomorphism across ALL cards (inset specular highlights, debossed wells, multi-layer shadows)
    - Strict mobile responsiveness and centered CTAs
    ═══════════════════════════════════════════════════════════ */
 
@@ -130,7 +130,7 @@
   background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
   border-radius: var(--radius-xl);
   border: 1px solid #E2E8F0;
-  box-shadow: inset 0 2px 0 #FFFFFF, 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: inset 0 2.5px 0 #FFFFFF, inset 0 -1px 0 rgba(0, 0, 0, 0.04), 0 4px 14px rgba(0, 0, 0, 0.05);
   flex-wrap: wrap;
   width: fit-content;
 }
@@ -212,7 +212,7 @@
   border-radius: var(--radius-2xl);
   overflow: hidden;
   border: 1px solid #E2E8F0;
-  box-shadow: inset 0 2.5px 0 #FFFFFF, inset 0 -1.5px 0 rgba(0, 0, 0, 0.05), 0 20px 48px -12px rgba(11, 32, 147, 0.18);
+  box-shadow: inset 0 2.5px 0 #FFFFFF, inset 0 -1.5px 0 rgba(0, 0, 0, 0.05), 0 24px 50px -10px rgba(11, 32, 147, 0.2);
   background: #0F172A;
 }
 
@@ -298,7 +298,7 @@
   background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFE 100%);
   border: 1px solid #E2E8F0;
   border-radius: var(--radius-2xl);
-  box-shadow: inset 0 2.5px 0 #FFFFFF, inset 0 -1.5px 0 rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.04), 0 10px 24px -4px rgba(11, 32, 147, 0.08);
+  box-shadow: inset 0 2.5px 0 #FFFFFF, inset 0 -1.5px 0 rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.04), 0 12px 28px -4px rgba(11, 32, 147, 0.08);
   padding: 20px 28px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -360,39 +360,40 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 3: FEATURED COMMERCIAL MILESTONE (COMPACT SKEUOMORPHIC CARD)
+   SECTION 3: FEATURED COMMERCIAL MILESTONE (FULL-BLEED IMAGE CARD)
    ───────────────────────────────────────────────────────────── */
 .spotlightSection {
-  padding: 104px 0 88px;
-  scroll-margin-top: 130px;
+  padding: 120px 0 88px;
+  scroll-margin-top: 140px;
   position: relative;
 }
 
 .spotlightCard {
-  max-width: 980px;
+  max-width: 1040px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-columns: 1fr 1.15fr;
   border-radius: var(--radius-2xl);
   overflow: hidden;
-  background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFE 100%);
+  background: #FFFFFF;
   border: 1px solid #E2E8F0;
-  box-shadow: inset 0 2.5px 0 #FFFFFF, inset 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.04), 0 14px 32px -6px rgba(11, 32, 147, 0.1);
+  box-shadow: inset 0 2.5px 0 #FFFFFF, inset 0 -1.5px 0 rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.04), 0 24px 56px -12px rgba(11, 32, 147, 0.16);
   transition: all var(--transition-md);
-  align-items: center;
+  align-items: stretch; /* FULL BLEED: image completely fills the entire left pane edge-to-edge */
 }
 
 .spotlightCard:hover {
-  box-shadow: inset 0 2.5px 0 #FFFFFF, 0 20px 42px -8px rgba(11, 32, 147, 0.16);
-  border-color: rgba(11, 32, 147, 0.25);
+  transform: translateY(-3px);
+  box-shadow: inset 0 2.5px 0 #FFFFFF, 0 32px 64px -12px rgba(11, 32, 147, 0.22);
+  border-color: rgba(11, 32, 147, 0.28);
 }
 
-/* Compact, natural framing photo container */
+/* Full-bleed left image pane - completely filled up edge-to-edge with no padding */
 .spotlightVisualFrame {
   position: relative;
   width: 100%;
-  height: 320px;
-  min-height: 320px;
+  height: 100%;
+  min-height: 440px;
   overflow: hidden;
   background: #0F172A;
 }
@@ -404,77 +405,126 @@
 }
 
 .spotlightCard:hover .spotlightVisualImg {
-  transform: scale(1.03);
+  transform: scale(1.04);
+}
+
+.spotlightVisualOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.2) 0%, transparent 35%, rgba(15, 23, 42, 0.55) 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .spotlightLocationBadge {
   position: absolute;
-  top: 14px;
-  left: 14px;
-  padding: 5px 12px;
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(8px);
+  top: 18px;
+  left: 18px;
+  padding: 6px 14px;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(10px);
   border-radius: var(--radius-full);
   font-size: 11px;
   font-weight: 700;
   color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
   z-index: 2;
 }
 
+.spotlightVisualBottomPill {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  padding: 6px 14px;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 700;
+  color: #E2E8F0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.spotlightVisualBottomPill::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 8px #10B981;
+}
+
 .spotlightContent {
-  padding: 26px 30px;
+  padding: 40px 44px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
   justify-content: center;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFE 100%);
+  border-left: 1px solid #F1F5F9;
 }
 
 .spotlightClient {
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 800;
   color: var(--accent-gold-dark);
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .spotlightHeadline {
   font-family: var(--font-display);
-  font-size: clamp(18px, 1.7vw, 22px);
+  font-size: clamp(20px, 1.9vw, 25px);
   font-weight: 800;
-  line-height: 1.25;
+  line-height: 1.28;
   letter-spacing: -0.015em;
   color: #0F172A;
 }
 
 .spotlightDesc {
-  font-size: 13px;
-  line-height: 1.55;
+  font-size: 13.5px;
+  line-height: 1.65;
   color: #475569;
 }
 
-/* Compact debossed metrics row inside content side */
+/* Debossed 3D metrics row inside content side */
 .spotlightStatsRowClean {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
+  gap: 12px;
   padding: 6px 0;
 }
 
 .spotlightStatPillClean {
-  background: #F8FAFC;
+  background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
   border: 1px solid #E2E8F0;
-  border-radius: var(--radius-md);
-  padding: 8px 12px;
-  box-shadow: inset 0 1.5px 3px rgba(0, 0, 0, 0.04);
+  border-radius: var(--radius-lg);
+  padding: 14px 18px;
+  box-shadow: inset 0 1.5px 0 #FFFFFF, inset 0 -1px 0 rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.03);
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
+  transition: all var(--transition-fast);
+}
+
+.spotlightStatPillClean:hover {
+  transform: translateY(-2px);
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 8px 18px rgba(11, 32, 147, 0.1);
+  border-color: rgba(11, 32, 147, 0.25);
 }
 
 .spotlightStatValClean {
   font-family: var(--font-display);
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 800;
   color: var(--accent-blue);
   line-height: 1;
@@ -489,30 +539,30 @@
 .spotlightDeliverables {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding-top: 8px;
+  gap: 8px;
+  padding-top: 10px;
   border-top: 1px solid var(--border-subtle);
 }
 
 .deliverableItem {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 12.5px;
+  gap: 10px;
+  font-size: 13px;
   font-weight: 600;
   color: #475569;
 }
 
 .checkDot {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: rgba(16, 185, 129, 0.12);
+  background: rgba(16, 185, 129, 0.14);
   color: #10B981;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 800;
   flex-shrink: 0;
 }
@@ -635,14 +685,14 @@
   overflow: hidden;
   background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFE 100%);
   border: 1px solid #E2E8F0;
-  box-shadow: inset 0 2.5px 0 #FFFFFF, inset 0 -1.5px 0 rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.04), 0 10px 24px -4px rgba(11, 32, 147, 0.08);
+  box-shadow: inset 0 2.5px 0 #FFFFFF, inset 0 -1.5px 0 rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.04), 0 12px 28px -6px rgba(11, 32, 147, 0.09);
   transition: all var(--transition-md);
   cursor: pointer;
 }
 
 .slidingCard:hover {
   transform: translateY(-6px);
-  box-shadow: inset 0 2.5px 0 #FFFFFF, 0 20px 40px -8px rgba(11, 32, 147, 0.18);
+  box-shadow: inset 0 2.5px 0 #FFFFFF, 0 20px 42px -8px rgba(11, 32, 147, 0.18);
   border-color: rgba(11, 32, 147, 0.3);
 }
 
@@ -744,17 +794,22 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
+  background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
+  border: 1px solid #E2E8F0;
+  padding: 8px 14px;
+  border-radius: var(--radius-lg);
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 1px 3px rgba(0, 0, 0, 0.03);
 }
 
 .cardStatVal {
   font-family: var(--font-display);
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 800;
   line-height: 1;
 }
 
 .cardStatLabel {
-  font-size: 11px;
+  font-size: 10.5px;
   color: #64748B;
   font-weight: 600;
 }
@@ -947,7 +1002,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  box-shadow: inset 0 2.5px 4px rgba(220, 38, 38, 0.08), inset 0 1px 0 #FFFFFF, 0 4px 12px rgba(220, 38, 38, 0.04);
+  box-shadow: inset 0 2.5px 4px rgba(220, 38, 38, 0.08), inset 0 1px 0 #FFFFFF, 0 6px 16px rgba(220, 38, 38, 0.05);
 }
 
 .velocityCardAfter {
@@ -958,7 +1013,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  box-shadow: inset 0 2.5px 4px rgba(16, 185, 129, 0.08), inset 0 1px 0 #FFFFFF, 0 4px 12px rgba(16, 185, 129, 0.04);
+  box-shadow: inset 0 2.5px 4px rgba(16, 185, 129, 0.08), inset 0 1px 0 #FFFFFF, 0 6px 16px rgba(16, 185, 129, 0.06);
 }
 
 .velocityTagBefore {
@@ -1001,7 +1056,7 @@
   background: linear-gradient(135deg, #0B2093 0%, #0D007F 100%);
   color: #FFFFFF;
   border-radius: var(--radius-xl);
-  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.35), 0 10px 24px rgba(11, 32, 147, 0.35);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.35), 0 12px 28px rgba(11, 32, 147, 0.35);
   text-align: center;
 }
 
@@ -1068,14 +1123,14 @@
   flex-direction: column;
   gap: 14px;
   position: relative;
-  box-shadow: inset 0 2.5px 0 #FFFFFF, inset 0 -1.5px 0 rgba(0, 0, 0, 0.04), 0 8px 22px -4px rgba(11, 32, 147, 0.08);
+  box-shadow: inset 0 2.5px 0 #FFFFFF, inset 0 -1.5px 0 rgba(0, 0, 0, 0.04), 0 10px 24px -4px rgba(11, 32, 147, 0.08);
   transition: all var(--transition-fast);
 }
 
 .pipelineStep:hover {
   transform: translateY(-5px);
   border-color: var(--accent-gold);
-  box-shadow: inset 0 2.5px 0 #FFFFFF, 0 16px 32px -6px rgba(11, 32, 147, 0.16);
+  box-shadow: inset 0 2.5px 0 #FFFFFF, 0 18px 36px -6px rgba(11, 32, 147, 0.16);
 }
 
 .pipelineStepHeader {
@@ -1514,7 +1569,7 @@
   border-radius: var(--radius-2xl);
   border: 1px solid #E2E8F0;
   padding: 32px;
-  box-shadow: inset 0 2.5px 0 #FFFFFF, inset 0 -1.5px 0 rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.04), 0 10px 26px -4px rgba(11, 32, 147, 0.08);
+  box-shadow: inset 0 2.5px 0 #FFFFFF, inset 0 -1.5px 0 rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.04), 0 12px 28px -6px rgba(11, 32, 147, 0.09);
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -1523,7 +1578,7 @@
 
 .bentoCard:hover {
   transform: translateY(-4px);
-  box-shadow: inset 0 2.5px 0 #FFFFFF, 0 18px 36px -6px rgba(11, 32, 147, 0.16);
+  box-shadow: inset 0 2.5px 0 #FFFFFF, 0 20px 40px -6px rgba(11, 32, 147, 0.16);
   border-color: rgba(11, 32, 147, 0.25);
 }
 
@@ -1728,7 +1783,7 @@
   background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFE 100%);
   border-radius: var(--radius-2xl);
   border: 1px solid #E2E8F0;
-  box-shadow: inset 0 2.5px 0 #FFFFFF, inset 0 -1.5px 0 rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.04), 0 14px 36px -6px rgba(11, 32, 147, 0.12);
+  box-shadow: inset 0 2.5px 0 #FFFFFF, inset 0 -1.5px 0 rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.04), 0 16px 36px -6px rgba(11, 32, 147, 0.12);
   padding: 44px;
   display: flex;
   flex-direction: column;
@@ -1781,7 +1836,7 @@
   gap: 10px;
   text-align: center;
   box-shadow: inset 0 2.5px 0 #FFFFFF,
-              inset 0 1px 2px rgba(255, 255, 255, 0.9),
+              inset 0 1px 2px rgba(255, 255, 255, 0.95),
               inset 0 -2px 4px rgba(0, 0, 0, 0.04),
               0 12px 28px -4px rgba(11, 32, 147, 0.08);
   position: relative;
@@ -1863,7 +1918,7 @@
   border-radius: var(--radius-2xl);
   border: 1px solid #E2E8F0;
   padding: 38px;
-  box-shadow: inset 0 2.5px 0 #FFFFFF, inset 0 -1.5px 0 rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.04), 0 12px 28px -6px rgba(11, 32, 147, 0.09);
+  box-shadow: inset 0 2.5px 0 #FFFFFF, inset 0 -1.5px 0 rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.04), 0 14px 32px -6px rgba(11, 32, 147, 0.1);
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -1873,12 +1928,12 @@
 
 .engagementCardHighlight {
   border-color: rgba(245, 158, 11, 0.5);
-  box-shadow: inset 0 2.5px 0 #FFFFFF, 0 16px 40px -8px rgba(245, 158, 11, 0.2);
+  box-shadow: inset 0 2.5px 0 #FFFFFF, 0 18px 44px -8px rgba(245, 158, 11, 0.22);
 }
 
 .engagementCard:hover {
   transform: translateY(-4px);
-  box-shadow: inset 0 2.5px 0 #FFFFFF, 0 20px 42px -8px rgba(11, 32, 147, 0.16);
+  box-shadow: inset 0 2.5px 0 #FFFFFF, 0 22px 46px -8px rgba(11, 32, 147, 0.18);
   border-color: rgba(11, 32, 147, 0.3);
 }
 
@@ -1976,7 +2031,7 @@
   align-items: center;
   text-align: center;
   gap: 20px;
-  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.35), 0 30px 70px -15px rgba(11, 32, 147, 0.45);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.35), 0 32px 72px -15px rgba(11, 32, 147, 0.45);
   border: 1px solid rgba(255, 255, 255, 0.2);
   position: relative;
   overflow: hidden;
@@ -2084,6 +2139,10 @@
   .spotlightCard {
     grid-template-columns: 1fr;
   }
+  .spotlightVisualFrame {
+    height: 300px;
+    min-height: 280px;
+  }
   .pipelineRoadmap {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -2151,11 +2210,11 @@
     width: 300px;
   }
   .spotlightContent {
-    padding: 20px;
+    padding: 24px 20px;
   }
   .spotlightVisualFrame {
-    height: 260px;
-    min-height: 240px;
+    height: 240px;
+    min-height: 220px;
   }
   .velocityDisplayArea {
     padding: 20px;
