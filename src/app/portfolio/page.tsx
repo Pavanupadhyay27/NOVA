@@ -15,7 +15,7 @@ import {
   geoImpactLocations,
   industryVerticals,
   clientTestimonials,
-  auditChecklist,
+  roiTiers,
   engagementModels,
   CaseStudyItem,
 } from './data';
@@ -29,7 +29,7 @@ export default function PortfolioPage() {
   const [activeHudIndex, setActiveHudIndex] = useState(0);
   const [activeGeoIndex, setActiveGeoIndex] = useState(0);
   const [activeIndustry, setActiveIndustry] = useState(industryVerticals[0].id);
-  const [openedAudits, setOpenedAudits] = useState<Record<string, boolean>>({ q1: true, q2: false, q3: false, q4: false });
+  const [activeRoiIndex, setActiveRoiIndex] = useState(1); // Default to Growth tier
   const [isPaused, setIsPaused] = useState(false);
 
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -66,10 +66,7 @@ export default function PortfolioPage() {
   const currentHud = transformationData[activeHudIndex] || transformationData[0];
   const currentGeo = geoImpactLocations[activeGeoIndex] || geoImpactLocations[0];
   const currentIndustryData = industryVerticals.find((v) => v.id === activeIndustry) || industryVerticals[0];
-
-  const toggleAudit = (id: string) => {
-    setOpenedAudits((prev) => ({ ...prev, [id]: !prev[id] }));
-  };
+  const currentRoi = roiTiers[activeRoiIndex] || roiTiers[1];
 
   return (
     <div className={styles.page}>
@@ -139,7 +136,6 @@ export default function PortfolioPage() {
 
                 {/* Floating Micro-Badges */}
                 <div className={styles.heroVisualBadgeTop}>
-                  <span>📍</span>
                   <span>Patia &amp; Saheed Nagar — #1 SERP Dominated</span>
                 </div>
 
@@ -154,21 +150,21 @@ export default function PortfolioPage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 2: LIVE PROOF METRICS STRIP
+          SECTION 2: PANORAMIC STATS RIBBON (NO BOXY CARDS)
           ───────────────────────────────────────────────────────────── */}
       <section className={styles.proofSection}>
         <div className="container">
-          <div className={styles.proofGrid}>
-            {proofMetrics.map((m, idx) => (
-              <ScrollReveal key={m.label} delay={idx * 60}>
-                <div className={styles.proofCard}>
-                  <span className={styles.proofVal}>{m.val}</span>
-                  <span className={styles.proofLabel}>{m.label}</span>
-                  <span className={styles.proofSub}>{m.sub}</span>
+          <ScrollReveal>
+            <div className={styles.panoramicRibbon}>
+              {proofMetrics.map((m) => (
+                <div key={m.label} className={styles.ribbonItem}>
+                  <span className={styles.ribbonVal}>{m.val}</span>
+                  <span className={styles.ribbonLabel}>{m.label}</span>
+                  <span className={styles.ribbonSub}>{m.sub}</span>
                 </div>
-              </ScrollReveal>
-            ))}
-          </div>
+              ))}
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -412,17 +408,17 @@ export default function PortfolioPage() {
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: 15, fontWeight: 800 }}>⚡ The Challenge</h4>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: 15, fontWeight: 800 }}>The Challenge</h4>
               <p style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--text-secondary)' }}>{selectedCase.challenge}</p>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: 15, fontWeight: 800 }}>🚀 Marketing Copilot Solution</h4>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: 15, fontWeight: 800 }}>Marketing Copilot Solution</h4>
               <p style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--text-secondary)' }}>{selectedCase.solution}</p>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: 15, fontWeight: 800 }}>🛠️ Deliverables Executed</h4>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: 15, fontWeight: 800 }}>Deliverables Executed</h4>
               {selectedCase.deliverables.map((d) => (
                 <div key={d} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--text-secondary)' }}>
                   <span style={{ color: '#10B981', fontWeight: 800 }}>✓</span>
@@ -473,8 +469,7 @@ export default function PortfolioPage() {
                     className={`${styles.velocityTabBtn} ${activeHudIndex === idx ? styles.velocityTabBtnActive : ''}`}
                     onClick={() => setActiveHudIndex(idx)}
                   >
-                    <span>{t.icon}</span>
-                    <span>{t.metric}</span>
+                    <span>{t.shortLabel}</span>
                   </button>
                 ))}
               </div>
@@ -484,7 +479,7 @@ export default function PortfolioPage() {
                 <div className={styles.velocityComparisonGrid}>
                   {/* Left: Before Card */}
                   <div className={styles.velocityCardBefore}>
-                    <span className={styles.velocityTagBefore}>❌ Legacy Agency Retainer (Before)</span>
+                    <span className={styles.velocityTagBefore}>Legacy Agency Retainer (Before)</span>
                     <div className={styles.velocityBigNum}>{currentHud.before}</div>
                     <p className={styles.velocityStateDesc}>Low intent traffic, high bounce rates, and broad untargeted ad spend.</p>
                   </div>
@@ -497,7 +492,7 @@ export default function PortfolioPage() {
 
                   {/* Right: After Card */}
                   <div className={styles.velocityCardAfter}>
-                    <span className={styles.velocityTagAfter}>✅ Marketing Copilot Revenue Engine (After)</span>
+                    <span className={styles.velocityTagAfter}>Marketing Copilot Revenue Engine (After)</span>
                     <div className={styles.velocityBigNum}>{currentHud.after}</div>
                     <p className={styles.velocityStateDesc}>{currentHud.desc}</p>
                   </div>
@@ -505,14 +500,11 @@ export default function PortfolioPage() {
 
                 {/* Tactical Lever Banner */}
                 <div className={styles.velocityLeverStrip}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <span style={{ fontSize: 18 }}>🛠️</span>
-                    <div>
-                      <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase' }}>
-                        Strategic Growth Lever Applied:
-                      </span>
-                      <p className={styles.velocityLeverText}>{currentHud.lever}</p>
-                    </div>
+                  <div>
+                    <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase' }}>
+                      Strategic Growth Lever Applied:
+                    </span>
+                    <p className={styles.velocityLeverText}>{currentHud.lever}</p>
                   </div>
                 </div>
 
@@ -554,7 +546,6 @@ export default function PortfolioPage() {
                     <span className={styles.pipelineNumBadge}>{step.num}</span>
                     <span className={styles.pipelineDuration}>{step.badge}</span>
                   </div>
-                  <div className={styles.pipelineIcon}>{step.icon}</div>
                   <h3 className={styles.pipelineTitle}>{step.title}</h3>
                   <p className={styles.pipelineDesc}>{step.desc}</p>
                 </div>
@@ -565,7 +556,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 7: REGIONAL FOOTPRINT (TERRITORY COMMAND MATRIX)
+          SECTION 7: REGIONAL FOOTPRINT — NON-CARD TRANSIT BLUEPRINT
           ───────────────────────────────────────────────────────────── */}
       <section className={styles.geoSection}>
         <div className="container">
@@ -579,91 +570,76 @@ export default function PortfolioPage() {
                 Hyperlocal Dominance Across <span className="accent-gradient">Bhubaneswar &amp; Odisha</span>
               </h2>
               <p className={styles.sectionSub}>
-                Click any key commercial cluster to inspect our live search dominance and lead generation metrics in that micro-market.
+                Explore our live search dominance and lead generation metrics across major commercial corridors.
               </p>
             </ScrollReveal>
           </div>
 
           <ScrollReveal>
-            <div className={styles.commandCockpit}>
-              {/* Left Side: Territory Selector & Data Rows */}
-              <div className={styles.commandLeft}>
-                <div className={styles.commandAreaSelector}>
-                  {geoImpactLocations.map((geo, idx) => (
-                    <button
-                      key={geo.area}
-                      className={`${styles.commandAreaChip} ${activeGeoIndex === idx ? styles.commandAreaChipActive : ''}`}
-                      onClick={() => setActiveGeoIndex(idx)}
-                    >
-                      {geo.area}
-                    </button>
-                  ))}
-                </div>
-
-                <div className={styles.commandDataRows}>
-                  <div className={styles.commandDataRow}>
-                    <span className={styles.commandDataLabel}>Primary Commercial Focus</span>
-                    <span className={styles.commandDataVal}>{currentGeo.vertical}</span>
-                  </div>
-                  <div className={styles.commandDataRow}>
-                    <span className={styles.commandDataLabel}>Active Tactical Channel</span>
-                    <span style={{ fontWeight: 700, color: 'var(--accent-blue)', fontSize: 14 }}>{currentGeo.tag}</span>
-                  </div>
-                  <div className={styles.commandDataRow}>
-                    <span className={styles.commandDataLabel}>Estimated Monthly Local Search</span>
-                    <span className={styles.commandDataVal}>{currentGeo.searches}</span>
-                  </div>
-                  <div className={styles.commandDataRow}>
-                    <span className={styles.commandDataLabel}>Verified Lead Acquisition Lift</span>
-                    <span style={{ color: '#10B981', fontWeight: 800, fontSize: 16 }}>{currentGeo.stat}</span>
-                  </div>
-                </div>
-
-                {/* Centered Action Button */}
-                <div className={styles.centerCtaWrap}>
-                  <BeamButton href="/contact" label={`Dominate ${currentGeo.area} Market →`} size="md" />
-                </div>
+            <div className={styles.transitBlueprintContainer}>
+              {/* Interconnected Horizontal Corridor Route */}
+              <div className={styles.routeTrack}>
+                {geoImpactLocations.map((geo, idx) => (
+                  <button
+                    key={geo.area}
+                    className={`${styles.routeStationBtn} ${activeGeoIndex === idx ? styles.routeStationBtnActive : ''}`}
+                    onClick={() => setActiveGeoIndex(idx)}
+                  >
+                    <div className={styles.stationDot}>{geo.code}</div>
+                    <span className={styles.stationLabel}>{geo.area.split('/')[0].trim()}</span>
+                  </button>
+                ))}
               </div>
 
-              {/* Right Side: High-Tech Territory Terminal Card */}
-              <div className={styles.commandRightTerminal}>
-                <div className={styles.terminalTopHeader}>
-                  <div className={styles.terminalSignalBadge}>
-                    <div className={styles.terminalSignalDot} />
-                    <span>Live Signal • {currentGeo.area}</span>
+              {/* Panoramic Territory Blueprint Pane (Non-Card) */}
+              <div className={styles.blueprintPane}>
+                <div className={styles.blueprintHeaderRow}>
+                  <div className={styles.blueprintCodeArea}>
+                    <span className={styles.blueprintCodeBadge}>{currentGeo.code}</span>
+                    <h3 className={styles.blueprintAreaName}>{currentGeo.area}</h3>
                   </div>
-                  <span className={styles.terminalCoords}>{currentGeo.coords}</span>
+                  <span className={styles.blueprintCoords}>{currentGeo.coords}</span>
                 </div>
 
-                <div className={styles.terminalMainInfo}>
-                  <h3 className={styles.terminalAreaTitle}>{currentGeo.area}</h3>
-                  <div className={styles.terminalGridStats}>
-                    <div className={styles.terminalStatBox}>
-                      <span className={styles.terminalStatVal}>{currentGeo.cpl}</span>
-                      <span className={styles.terminalStatLabel}>Average Qualified CPL</span>
-                    </div>
-                    <div className={styles.terminalStatBox}>
-                      <span className={styles.terminalStatVal}>{currentGeo.leadShare}</span>
-                      <span className={styles.terminalStatLabel}>SERP Impression Share</span>
-                    </div>
+                <div className={styles.blueprintMetricsGrid}>
+                  <div className={styles.blueprintMetricItem}>
+                    <span className={styles.blueprintMetricVal}>{currentGeo.searches}</span>
+                    <span className={styles.blueprintMetricLabel}>Monthly Local Searches</span>
                   </div>
+                  <div className={styles.blueprintMetricItem}>
+                    <span className={styles.blueprintMetricVal}>{currentGeo.cpl}</span>
+                    <span className={styles.blueprintMetricLabel}>Average Qualified CPL</span>
+                  </div>
+                  <div className={styles.blueprintMetricItem}>
+                    <span className={styles.blueprintMetricVal}>{currentGeo.leadShare}</span>
+                    <span className={styles.blueprintMetricLabel}>SERP Impression Share</span>
+                  </div>
+                  <div className={styles.blueprintMetricItem}>
+                    <span className={styles.blueprintMetricVal} style={{ color: '#10B981' }}>{currentGeo.stat}</span>
+                    <span className={styles.blueprintMetricLabel}>Verified Growth Lift</span>
+                  </div>
+                </div>
 
-                  <div>
-                    <span style={{ fontSize: 11, color: '#94A3B8', fontWeight: 600, display: 'block', marginBottom: 6 }}>
-                      Key Commercial Landmarks:
+                <div className={styles.blueprintFooterRow}>
+                  <div className={styles.blueprintKeywords}>
+                    <span style={{ fontSize: 11, color: '#94A3B8', fontWeight: 600, textTransform: 'uppercase' }}>
+                      Top Target Queries:
                     </span>
-                    <div className={styles.terminalLandmarksList}>
-                      {currentGeo.landmarks.map((lm) => (
-                        <span key={lm} className={styles.terminalLandmarkTag}>
-                          📍 {lm}
-                        </span>
-                      ))}
-                    </div>
+                    {currentGeo.dominantKeywords.map((kw) => (
+                      <span key={kw} className={styles.keywordChip}>
+                        {kw}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div style={{ fontSize: 12, color: '#CBD5E1' }}>
+                    Active Client: <strong style={{ color: '#FFB800' }}>{currentGeo.clientSnippet}</strong>
                   </div>
                 </div>
 
-                <div style={{ background: 'rgba(255,255,255,0.06)', padding: '12px 16px', borderRadius: 'var(--radius-md)', fontSize: 12, color: '#E2E8F0' }}>
-                  🏆 Active Client: <strong style={{ color: '#FFB800' }}>{currentGeo.clientSnippet}</strong>
+                {/* Centered CTA Button */}
+                <div className={styles.centerCtaWrap} style={{ paddingTop: 8 }}>
+                  <BeamButton href="/contact" label={`Dominate ${currentGeo.area} Market →`} size="md" />
                 </div>
               </div>
             </div>
@@ -698,7 +674,6 @@ export default function PortfolioPage() {
                 onClick={() => setActiveIndustry(v.id)}
                 className={`${styles.industryTabBtn} ${activeIndustry === v.id ? styles.industryTabBtnActive : ''}`}
               >
-                <span>{v.icon}</span>
                 <span>{v.name}</span>
               </button>
             ))}
@@ -709,7 +684,6 @@ export default function PortfolioPage() {
               {/* Card 1: Core Strategy & Channels */}
               <div className={styles.bentoCard}>
                 <div className={styles.bentoCardHeader}>
-                  <span>🎯</span>
                   <span>Strategic Playbook</span>
                 </div>
                 <h3 className={styles.bentoTitle}>{currentIndustryData.headline}</h3>
@@ -727,7 +701,6 @@ export default function PortfolioPage() {
               {/* Card 2: Commercial Performance Benchmarks */}
               <div className={styles.bentoCard}>
                 <div className={styles.bentoCardHeader}>
-                  <span>📊</span>
                   <span>Industry Benchmarks</span>
                 </div>
                 <div className={styles.bentoBenchmarkList}>
@@ -746,7 +719,6 @@ export default function PortfolioPage() {
               {/* Card 3: Verified Client Case in This Vertical */}
               <div className={styles.bentoCard}>
                 <div className={styles.bentoCardHeader}>
-                  <span>🏆</span>
                   <span>Verified Client Case</span>
                 </div>
                 <div className={styles.bentoProofBox}>
@@ -811,11 +783,10 @@ export default function PortfolioPage() {
 
                   {/* Bottom-Aligned Author Row */}
                   <div className={styles.authorRow}>
-                    <div className={styles.avatarIcon}>{t.avatar}</div>
                     <div className={styles.authorMeta}>
                       <span className={styles.authorName}>{t.author}</span>
-                      <span className={styles.authorRole}>{t.role}</span>
-                      <span style={{ fontSize: 10, color: '#10B981', fontWeight: 700 }}>{t.stat}</span>
+                      <span className={styles.authorRole}>{t.role} • {t.location}</span>
+                      <span style={{ fontSize: 11, color: '#10B981', fontWeight: 700, marginTop: 2 }}>{t.stat}</span>
                     </div>
                   </div>
                 </div>
@@ -832,57 +803,82 @@ export default function PortfolioPage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 10: MARKETING HEALTH & LEAKAGE AUDIT CHECKLIST
+          SECTION 10: INTERACTIVE ROI GROWTH CALCULATOR (REPLACING SELF-CHECK)
           ───────────────────────────────────────────────────────────── */}
-      <section className={styles.auditSection}>
+      <section className={styles.calculatorSection}>
         <div className="container">
           <div className={styles.sectionHeaderCenter}>
             <ScrollReveal>
               <div className={styles.eyebrowBadge} style={{ margin: '0 auto 12px' }}>
                 <span className={styles.sparkleDot} />
-                <span>Diagnostic Self-Check</span>
+                <span>Growth Projection Calculator</span>
               </div>
               <h2 className={styles.sectionTitle}>
-                Is Your Marketing <span className="accent-gradient">Leaking Revenue?</span>
+                Estimate Your <span className="accent-gradient">Revenue &amp; Lead Growth</span>
               </h2>
               <p className={styles.sectionSub}>
-                Click each checkpoint to discover the 4 most common blindspots where Bhubaneswar businesses lose qualified leads.
+                Select your targeted monthly marketing budget to view verified lead volumes, revenue projections, and channel allocations based on our audited benchmarks.
               </p>
             </ScrollReveal>
           </div>
 
-          <div className={styles.auditBox}>
-            {auditChecklist.map((item) => {
-              const isOpen = !!openedAudits[item.id];
-              return (
-                <div
-                  key={item.id}
-                  className={styles.auditItem}
-                  onClick={() => toggleAudit(item.id)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') toggleAudit(item.id);
-                  }}
-                >
-                  <div className={styles.auditItemTitle}>
-                    <span>{isOpen ? '▼' : '▶'}</span>
-                    <span>{item.title}</span>
-                  </div>
-                  {isOpen && <div className={styles.auditWarning}>⚠️ Risk: {item.warning}</div>}
-                </div>
-              );
-            })}
+          <ScrollReveal>
+            <div className={styles.roiCalculatorBox}>
+              {/* Spend Selector Pills */}
+              <div className={styles.roiSpendSelector}>
+                {roiTiers.map((tier, idx) => (
+                  <button
+                    key={tier.id}
+                    className={`${styles.roiSpendBtn} ${activeRoiIndex === idx ? styles.roiSpendBtnActive : ''}`}
+                    onClick={() => setActiveRoiIndex(idx)}
+                  >
+                    <span>{tier.spendLabel}</span>
+                  </button>
+                ))}
+              </div>
 
-            {/* Centered CTA Button */}
-            <div className={styles.centerCtaWrap}>
-              <BeamButton
-                href="/contact"
-                label="Request a Free Forensic Marketing Audit →"
-                size="md"
-              />
+              {/* Results Grid */}
+              <div className={styles.roiResultsGrid}>
+                <div className={styles.roiResultCard}>
+                  <span className={styles.roiBigNumber}>{currentRoi.projectedLeads}</span>
+                  <span className={styles.roiCardLabel}>Estimated Qualified Leads</span>
+                  <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>Verified buyer inquiries</span>
+                </div>
+
+                <div className={styles.roiResultCard}>
+                  <span className={styles.roiBigNumber} style={{ color: '#10B981' }}>{currentRoi.projectedRevenue}</span>
+                  <span className={styles.roiCardLabel}>Projected Revenue Output</span>
+                  <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>Compounding return estimate</span>
+                </div>
+
+                <div className={styles.roiResultCard}>
+                  <span className={styles.roiBigNumber} style={{ color: '#D97706' }}>{currentRoi.roas}</span>
+                  <span className={styles.roiCardLabel}>Expected Return on Ad Spend</span>
+                  <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>Blended search + social</span>
+                </div>
+              </div>
+
+              {/* Blueprint & Turnaround Strip */}
+              <div className={styles.roiBlueprintStrip}>
+                <div>
+                  <span style={{ fontWeight: 700, color: 'var(--text-primary)', marginRight: 6 }}>Channel Blueprint:</span>
+                  <span>{currentRoi.channels}</span>
+                </div>
+                <div style={{ fontWeight: 700, color: 'var(--accent-blue)' }}>
+                  ⚡ {currentRoi.turnaround}
+                </div>
+              </div>
+
+              {/* Centered CTA Button */}
+              <div className={styles.centerCtaWrap}>
+                <BeamButton
+                  href="/contact"
+                  label={`Unlock Custom Growth Plan for ${currentRoi.spendLabel} →`}
+                  size="md"
+                />
+              </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -918,7 +914,7 @@ export default function PortfolioPage() {
                   <div className={styles.engagementFeatures}>
                     {m.features.map((f) => (
                       <div key={f} className={styles.featureItem}>
-                        <span style={{ color: idx === 0 ? '#B45309' : '#0B2093', fontWeight: 800 }}>✦</span>
+                        <span style={{ color: idx === 0 ? '#B45309' : '#0B2093', fontWeight: 800 }}>✓</span>
                         <span>{f}</span>
                       </div>
                     ))}
@@ -959,15 +955,15 @@ export default function PortfolioPage() {
       <FAQSection />
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 12: BESPOKE BOTTOM CTA CARD (CENTERED & POLISHED)
+          SECTION 12: BESPOKE BOTTOM CTA CARD (GLOBAL PALETTE BLUE #0B2093)
           ───────────────────────────────────────────────────────────── */}
       <section className={styles.bespokeCtaSection}>
         <div className="container">
           <div className={styles.bespokeCtaCardCentered}>
             <div className={styles.ctaGlowCircle} />
 
-            <div className={styles.eyebrowBadge} style={{ background: 'rgba(255,255,255,0.1)', color: '#FFB800', borderColor: 'rgba(255,255,255,0.2)' }}>
-              <span>✨ NEXT SUCCESS STORY</span>
+            <div className={styles.eyebrowBadge} style={{ background: 'rgba(255,255,255,0.12)', color: '#FFB800', borderColor: 'rgba(255,255,255,0.25)' }}>
+              <span>NEXT SUCCESS STORY</span>
             </div>
 
             <h2 className={styles.bespokeCtaTitleCentered}>
@@ -1006,14 +1002,14 @@ export default function PortfolioPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.secondaryBtn}
-                style={{ background: 'rgba(255,255,255,0.1)', color: '#FFFFFF', borderColor: 'rgba(255,255,255,0.2)' }}
+                style={{ background: 'rgba(255,255,255,0.12)', color: '#FFFFFF', borderColor: 'rgba(255,255,255,0.25)' }}
               >
-                <span>💬 Direct WhatsApp Connect</span>
+                <span>Direct WhatsApp Connect</span>
               </a>
             </div>
 
-            <div style={{ fontSize: 12, color: '#94A3B8', marginTop: 4 }}>
-              ⚡ No obligation • Direct strategy session with senior lead • 100% confidential
+            <div style={{ fontSize: 12, color: '#CBD5E1', marginTop: 4 }}>
+              No obligation • Direct strategy session with senior lead • 100% confidential
             </div>
           </div>
         </div>

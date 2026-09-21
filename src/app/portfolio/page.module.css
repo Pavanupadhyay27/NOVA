@@ -1,13 +1,13 @@
 /* ═══════════════════════════════════════════════════════════
    PORTFOLIO PAGE — 12 BESPOKE SECTIONS STYLESHEET
-   UI/UX Refinements:
-   - Centered CTA buttons in all sections
-   - Bottom-aligned testimonial cards
-   - Bento style for Tailored Vertical Playbooks
-   - Territory Command Matrix replacing radar in Regional Footprint
-   - Enhanced Audited Commercial Deltas HUD
-   - Elevated Partnership Structure
-   - Centered & polished bottom CTA card with FAQSection integrated
+   Refinements:
+   - Panoramic stats ribbon replacing boxy number cards
+   - Non-card Geographic Transit Blueprint for Regional Footprint
+   - Interactive ROI & Revenue Growth Calculator replacing Diagnostic Self-Check
+   - Global Palette Navy Blue (#0B2093 / #0D007F) for bottom CTA card
+   - Centered CTA buttons across every section
+   - Bottom-aligned testimonials
+   - Clean professional typography (no emoji clutter)
    ═══════════════════════════════════════════════════════════ */
 
 .page {
@@ -243,48 +243,55 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 2: LIVE PROOF METRICS STRIP
+   SECTION 2: PANORAMIC STATS RIBBON (REPLACING BOXY NUMBER CARDS)
    ───────────────────────────────────────────────────────────── */
 .proofSection {
-  padding: 32px 0;
+  padding: 28px 0;
   background: var(--bg-surface);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
 
-.proofGrid {
+.panoramicRibbon {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-skeuo-card);
+  padding: 24px 32px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 16px;
+  align-items: center;
 }
 
-.proofCard {
+.ribbonItem {
   display: flex;
   flex-direction: column;
-  padding: 16px 20px;
-  background: var(--bg-card);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-xs);
-  transition: all var(--transition-fast);
+  align-items: center;
+  text-align: center;
+  position: relative;
 }
 
-.proofCard:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-sm);
-  border-color: rgba(11, 32, 147, 0.2);
+.ribbonItem:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -8px;
+  top: 15%;
+  height: 70%;
+  width: 1px;
+  background: var(--border);
 }
 
-.proofVal {
+.ribbonVal {
   font-family: var(--font-display);
-  font-size: 26px;
+  font-size: clamp(24px, 2.2vw, 32px);
   font-weight: 800;
   color: var(--accent-blue);
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
 
-.proofLabel {
+.ribbonLabel {
   font-family: var(--font-display);
   font-size: 12px;
   font-weight: 700;
@@ -292,7 +299,7 @@
   margin-top: 4px;
 }
 
-.proofSub {
+.ribbonSub {
   font-size: 11px;
   color: var(--text-muted);
   margin-top: 2px;
@@ -503,7 +510,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding-top: 16px;
+  padding-top: 20px;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -845,8 +852,8 @@
 
 .velocityTabBtn {
   flex: 1;
-  min-width: 200px;
-  padding: 18px 24px;
+  min-width: 180px;
+  padding: 16px 20px;
   font-family: var(--font-display);
   font-size: 13px;
   font-weight: 700;
@@ -859,7 +866,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .velocityTabBtn:hover {
@@ -878,7 +885,7 @@
   padding: 44px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 28px;
 }
 
 .velocityComparisonGrid {
@@ -895,7 +902,7 @@
   padding: 28px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   box-shadow: var(--shadow-xs);
 }
 
@@ -906,7 +913,7 @@
   padding: 28px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   box-shadow: var(--shadow-xs);
 }
 
@@ -973,7 +980,7 @@
   background: var(--bg-surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 20px 24px;
+  padding: 18px 24px;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -1031,12 +1038,12 @@
 
 .pipelineNumBadge {
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
   color: #B45309;
   background: rgba(245, 158, 11, 0.12);
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1051,10 +1058,6 @@
   border: 1px solid var(--border);
   padding: 3px 10px;
   border-radius: var(--radius-full);
-}
-
-.pipelineIcon {
-  font-size: 26px;
 }
 
 .pipelineTitle {
@@ -1072,201 +1075,205 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 7: REGIONAL FOOTPRINT — TERRITORY COMMAND MATRIX (NO RADAR)
+   SECTION 7: REGIONAL FOOTPRINT — NON-CARD TRANSIT BLUEPRINT
    ───────────────────────────────────────────────────────────── */
 .geoSection {
   padding: 88px 0;
 }
 
-.commandCockpit {
-  background: var(--bg-card);
-  border-radius: var(--radius-2xl);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-skeuo-card);
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.commandLeft {
-  padding: 44px;
+.transitBlueprintContainer {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  justify-content: center;
+  gap: 36px;
 }
 
-.commandAreaSelector {
+/* Horizontal Connected Route Strip */
+.routeTrack {
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 0 16px;
+  overflow-x: auto;
+  gap: 12px;
 }
 
-.commandAreaChip {
-  padding: 8px 16px;
-  border-radius: var(--radius-full);
-  font-family: var(--font-display);
-  font-size: 12px;
-  font-weight: 700;
-  background: var(--bg-surface);
-  border: 1px solid var(--border);
-  color: var(--text-secondary);
+.routeTrack::before {
+  content: '';
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  top: 50%;
+  height: 2px;
+  background: var(--border);
+  z-index: 1;
+}
+
+.routeStationBtn {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
   cursor: pointer;
+  padding: 6px 12px;
+  border-radius: var(--radius-lg);
   transition: all var(--transition-fast);
 }
 
-.commandAreaChip:hover,
-.commandAreaChipActive {
-  background: var(--accent-blue);
-  color: #FFFFFF !important;
-  border-color: var(--accent-blue);
-  box-shadow: 0 4px 12px rgba(11, 32, 147, 0.25);
-}
-
-.commandDataRows {
-  background: var(--bg-surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  padding: 24px;
+.stationDot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid var(--border);
   display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.commandDataRow {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.commandDataRow:last-child {
-  padding-bottom: 0;
-  border-bottom: none;
-}
-
-.commandDataLabel {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-muted);
-}
-
-.commandDataVal {
-  font-family: var(--font-display);
-  font-size: 15px;
+  justify-content: center;
+  font-size: 11px;
   font-weight: 800;
-  color: var(--text-primary);
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-xs);
 }
 
-/* Right Side: High-Tech Territory Terminal Card */
-.commandRightTerminal {
-  background: linear-gradient(145deg, #0F172A 0%, #0A1128 100%);
-  padding: 40px;
+.routeStationBtnActive .stationDot {
+  background: var(--accent-blue);
+  border-color: var(--accent-blue);
+  color: #FFFFFF;
+  box-shadow: 0 0 14px rgba(11, 32, 147, 0.4);
+  transform: scale(1.15);
+}
+
+.stationLabel {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.routeStationBtnActive .stationLabel {
+  color: var(--accent-blue);
+}
+
+/* Panoramic Blueprint Pane (Non-Card Design) */
+.blueprintPane {
+  background: linear-gradient(135deg, #0B2093 0%, #0D007F 60%, #060045 100%);
+  border-radius: var(--radius-2xl);
+  padding: 44px;
+  color: #FFFFFF;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  color: #FFFFFF;
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 32px;
+  box-shadow: 0 20px 48px -12px rgba(11, 32, 147, 0.3);
   position: relative;
   overflow: hidden;
 }
 
-.terminalTopHeader {
+.blueprintHeaderRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 18px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.terminalSignalBadge {
+.blueprintCodeArea {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  font-weight: 700;
-  color: #10B981;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  gap: 12px;
 }
 
-.terminalSignalDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #10B981;
-  box-shadow: 0 0 10px #10B981;
-  animation: pulseGlow 1.8s infinite;
+.blueprintCodeBadge {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  color: #FFB800;
+  background: rgba(255, 184, 0, 0.15);
+  padding: 4px 12px;
+  border-radius: var(--radius-md);
 }
 
-.terminalCoords {
-  font-family: monospace;
-  font-size: 11px;
-  color: #94A3B8;
-}
-
-.terminalMainInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  padding: 24px 0;
-}
-
-.terminalAreaTitle {
+.blueprintAreaName {
   font-family: var(--font-display);
   font-size: 26px;
   font-weight: 800;
   color: #FFFFFF;
 }
 
-.terminalGridStats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
+.blueprintCoords {
+  font-family: monospace;
+  font-size: 12px;
+  color: #94A3B8;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
 }
 
-.terminalStatBox {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--radius-md);
-  padding: 12px 14px;
+.blueprintMetricsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.blueprintMetricItem {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px 20px;
+  border-radius: var(--radius-lg);
 }
 
-.terminalStatVal {
+.blueprintMetricVal {
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 800;
   color: #FFB800;
 }
 
-.terminalStatLabel {
+.blueprintMetricLabel {
   font-size: 11px;
-  color: #94A3B8;
+  color: #CBD5E1;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
-.terminalLandmarksList {
+.blueprintFooterRow {
   display: flex;
-  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
+  gap: 16px;
   padding-top: 12px;
 }
 
-.terminalLandmarkTag {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+.blueprintKeywords {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.keywordChip {
+  font-size: 11px;
+  font-family: monospace;
+  color: #E2E8F0;
+  background: rgba(255, 255, 255, 0.1);
   padding: 4px 10px;
   border-radius: var(--radius-full);
-  font-size: 11px;
-  color: #E2E8F0;
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 8: TAILORED VERTICAL PLAYBOOKS — 3-COLUMN BENTO STYLE
+   SECTION 8: TAILORED VERTICAL PLAYBOOKS (3-COLUMN BENTO STYLE)
    ───────────────────────────────────────────────────────────── */
 .industrySection {
   padding: 88px 0;
@@ -1284,9 +1291,6 @@
 }
 
 .industryTabBtn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
   padding: 10px 20px;
   border-radius: var(--radius-full);
   background: var(--bg-card);
@@ -1336,14 +1340,11 @@
 }
 
 .bentoCardHeader {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
   color: var(--accent-blue);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
 }
 
 .bentoTitle {
@@ -1413,11 +1414,11 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 9: FOUNDER TESTIMONIALS — EQUAL-HEIGHT & BOTTOM-ALIGNED
+   SECTION 9: FOUNDER TESTIMONIALS (BOTTOM-ALIGNED)
    ───────────────────────────────────────────────────────────── */
 .testimonialSection {
   padding: 88px 0;
@@ -1458,7 +1459,7 @@
 
 .starsText {
   color: #F59E0B;
-  font-size: 16px;
+  font-size: 15px;
   letter-spacing: 2px;
 }
 
@@ -1487,19 +1488,6 @@
   margin-top: auto;
 }
 
-.avatarIcon {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--bg-surface);
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  flex-shrink: 0;
-}
-
 .authorMeta {
   display: flex;
   flex-direction: column;
@@ -1518,62 +1506,101 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 10: MARKETING HEALTH & LEAKAGE AUDIT CHECKLIST
+   SECTION 10: INTERACTIVE ROI GROWTH CALCULATOR (REPLACING SELF-CHECK)
    ───────────────────────────────────────────────────────────── */
-.auditSection {
+.calculatorSection {
   padding: 88px 0;
   background: var(--bg-surface);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
 
-.auditBox {
-  max-width: 820px;
+.roiCalculatorBox {
+  max-width: 960px;
   margin: 0 auto;
   background: var(--bg-card);
   border-radius: var(--radius-2xl);
   border: 1px solid var(--border);
-  padding: 44px;
   box-shadow: var(--shadow-skeuo-card);
+  padding: 44px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 32px;
 }
 
-.auditItem {
-  padding: 18px 20px;
-  border-radius: var(--radius-lg);
+.roiSpendSelector {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.roiSpendBtn {
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
   border: 1px solid var(--border);
   background: var(--bg-surface);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-secondary);
   cursor: pointer;
   transition: all var(--transition-fast);
 }
 
-.auditItem:hover {
-  border-color: rgba(11, 32, 147, 0.3);
-  background: #FFFFFF;
+.roiSpendBtn:hover,
+.roiSpendBtnActive {
+  background: var(--accent-blue);
+  color: #FFFFFF !important;
+  border-color: var(--accent-blue);
+  box-shadow: 0 4px 14px rgba(11, 32, 147, 0.3);
 }
 
-.auditItemTitle {
+.roiResultsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.roiResultCard {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: center;
+}
+
+.roiBigNumber {
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--accent-blue);
+  line-height: 1.1;
+}
+
+.roiCardLabel {
+  font-size: 12px;
   font-weight: 700;
   color: var(--text-primary);
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
-.auditWarning {
-  font-size: 12px;
-  line-height: 1.5;
-  color: #B45309;
-  background: rgba(245, 158, 11, 0.08);
-  padding: 6px 12px;
-  border-radius: var(--radius-sm);
+.roiBlueprintStrip {
+  background: rgba(11, 32, 147, 0.04);
+  border: 1px solid rgba(11, 32, 147, 0.15);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--text-secondary);
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -1689,7 +1716,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 12: BESPOKE BOTTOM CTA CARD (CENTERED & POLISHED)
+   SECTION 12: BESPOKE BOTTOM CTA CARD (GLOBAL PALETTE BLUE)
    ───────────────────────────────────────────────────────────── */
 .bespokeCtaSection {
   padding: 80px 0 100px;
@@ -1698,7 +1725,8 @@
 }
 
 .bespokeCtaCardCentered {
-  background: linear-gradient(135deg, #0F172A 0%, #0A1128 100%);
+  /* Strict Global Color Palette Blue: #0B2093 to #0D007F */
+  background: linear-gradient(135deg, #0B2093 0%, #0D007F 50%, #060045 100%);
   border-radius: var(--radius-2xl);
   padding: clamp(40px, 6vw, 72px);
   color: #FFFFFF;
@@ -1707,8 +1735,8 @@
   align-items: center;
   text-align: center;
   gap: 28px;
-  box-shadow: 0 30px 70px -15px rgba(11, 32, 147, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 30px 70px -15px rgba(11, 32, 147, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   position: relative;
   overflow: hidden;
   max-width: 1040px;
@@ -1722,7 +1750,7 @@
   width: 340px;
   height: 340px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.22) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -1739,7 +1767,7 @@
 .bespokeCtaDescCentered {
   font-size: 16px;
   line-height: 1.65;
-  color: #94A3B8;
+  color: #E2E8F0;
   max-width: 680px;
 }
 
@@ -1749,11 +1777,11 @@
   justify-content: center;
   gap: 24px;
   flex-wrap: wrap;
-  padding: 16px 24px;
-  background: rgba(255, 255, 255, 0.05);
+  padding: 16px 28px;
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(12px);
   border-radius: var(--radius-full);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .ctaPerkItem {
@@ -1762,7 +1790,7 @@
   gap: 8px;
   font-size: 13px;
   font-weight: 600;
-  color: #E2E8F0;
+  color: #FFFFFF;
 }
 
 .ctaCenteredActions {
@@ -1805,8 +1833,12 @@
     grid-template-columns: 1fr;
     gap: 40px;
   }
-  .proofGrid {
+  .panoramicRibbon {
     grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .ribbonItem:not(:last-child)::after {
+    display: none;
   }
   .spotlightCard {
     grid-template-columns: 1fr;
@@ -1814,8 +1846,8 @@
   .pipelineRoadmap {
     grid-template-columns: repeat(2, 1fr);
   }
-  .commandCockpit {
-    grid-template-columns: 1fr;
+  .blueprintMetricsGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
   .industryBentoGrid {
     grid-template-columns: 1fr;
@@ -1830,13 +1862,22 @@
 }
 
 @media (max-width: 768px) {
-  .proofGrid {
+  .panoramicRibbon {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .blueprintPane {
+    padding: 28px;
+  }
+  .blueprintMetricsGrid {
+    grid-template-columns: 1fr;
   }
   .testimonialGrid {
     grid-template-columns: 1fr;
   }
   .engagementGrid {
+    grid-template-columns: 1fr;
+  }
+  .roiResultsGrid {
     grid-template-columns: 1fr;
   }
   .filterBar {
@@ -1858,8 +1899,9 @@
     height: 320px;
     min-height: 300px;
   }
-  .proofGrid {
+  .panoramicRibbon {
     grid-template-columns: 1fr;
+    padding: 20px;
   }
   .pipelineRoadmap {
     grid-template-columns: 1fr;
@@ -1870,16 +1912,10 @@
   .spotlightContent {
     padding: 24px;
   }
-  .commandLeft {
-    padding: 24px;
-  }
-  .commandRightTerminal {
-    padding: 24px;
-  }
   .velocityDisplayArea {
     padding: 24px;
   }
-  .auditBox {
+  .roiCalculatorBox {
     padding: 24px;
   }
   .drawerModal {
