@@ -218,120 +218,124 @@ export default function IndustriesPage() {
   return (
     <div className={styles.page}>
       {/* ══════════════════════════════════════════════════════════
-          SECTION 1: HERO COMMAND CENTER (TEXT ABOVE, HERO IMAGE BELOW)
+          SECTION 1: HERO COMMAND CENTER (DUAL PANE)
          ══════════════════════════════════════════════════════════ */}
       <section className={styles.heroSection}>
         <div className={styles.heroGlowOverlay} />
         <div className="container">
-          {/* Text Content ABOVE the Hero Image */}
-          <div className={styles.heroTopContent}>
-            <ScrollReveal>
-              <div className="eyebrow" style={{ margin: '0 auto 16px' }}>
-                <span className="eyebrow-dot" />
-                12 SPECIALIZED SECTORS IN BHUBANESWAR & ODISHA
-              </div>
-              <h1 className={`display-xl ${styles.heroTitle}`}>
-                Bhubaneswar Digital Marketing<br />
-                <span className="accent-gradient">Built for Your Specific Industry.</span>
-              </h1>
-              <p className={`body-lg ${styles.heroSub}`}>
-                Generic marketing fails because every industry has unique customer psychology, sales cycles, and pricing dynamics. We build bespoke acquisition engines tailored specifically to your sector in Bhubaneswar.
-              </p>
-
-              <div className={styles.heroCtaRow}>
-                <BeamButton
-                  href="#sector-workstation"
-                  label="Explore Sector Workstation ↓"
-                  size="lg"
-                />
-                <Link href="/contact" className={styles.heroSecondaryBtn}>
-                  Claim Sector Growth Blueprint <span>→</span>
-                </Link>
-              </div>
-
-              {/* Direct Access Quick Sector Chips */}
-              <div className={styles.heroTagsStrip}>
-                <span className={styles.heroTagsLabel}>DIRECT SECTOR ACCESS:</span>
-                <div className={styles.heroTagsList}>
-                  {industryCatalog.map(ind => {
-                    const isSelected = ind.id === selectedIndustryId;
-                    return (
-                      <button
-                        key={ind.id}
-                        type="button"
-                        className={`${styles.heroTagBtn} ${isSelected ? styles.heroTagBtnActive : ''}`}
-                        onClick={() => {
-                          setSelectedIndustryId(ind.id);
-                          const el = document.getElementById('sector-workstation');
-                          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        }}
-                      >
-                        <span style={{ marginRight: 4 }}>{sectorIcons[ind.id] || '⚡'}</span>
-                        {ind.shortTitle}
-                      </button>
-                    );
-                  })}
+          <div className={styles.heroDualPane}>
+            {/* Left Pane: Strategic Positioning & Sector Launcher */}
+            <div className={styles.heroLeftPane}>
+              <ScrollReveal>
+                <div className="eyebrow" style={{ marginBottom: 16 }}>
+                  <span className="eyebrow-dot" />
+                  12 SPECIALIZED SECTORS IN BHUBANESWAR & ODISHA
                 </div>
-              </div>
-            </ScrollReveal>
-          </div>
+                <h1 className={`display-xl ${styles.heroTitle}`}>
+                  Bhubaneswar Digital Marketing<br />
+                  <span className="accent-gradient">Built for Your Specific Industry.</span>
+                </h1>
+                <p className={`body-lg ${styles.heroSub}`}>
+                  Generic marketing fails because every industry has unique customer psychology, sales cycles, and pricing dynamics. We build bespoke acquisition engines tailored specifically to your sector in Bhubaneswar.
+                </p>
 
-          {/* Hero Image Showcase Frame BELOW the Text */}
-          <ScrollReveal delay={140}>
-            <div className={styles.heroShowcaseFrame}>
-              <div className={styles.heroVisualInner}>
-                <Image
-                  src="/images/dashboard_hero.jpg"
-                  alt="Marketing Copilot Sector Operations Command Center"
-                  fill
-                  priority
-                  className={styles.heroImg}
-                />
-                <div className={styles.heroImgOverlay} />
-                <div className={styles.heroCornerTL} />
-                <div className={styles.heroCornerBR} />
+                <div className={styles.heroCtaRow}>
+                  <BeamButton
+                    href="#sector-workstation"
+                    label="Explore Sector Workstation ↓"
+                    size="lg"
+                  />
+                  <Link href="/contact" className={styles.heroSecondaryBtn}>
+                    Claim Sector Growth Blueprint <span>→</span>
+                  </Link>
+                </div>
 
-                {/* Floating Frosted Glass KPI Badges */}
-                <div className={`${styles.floatingKpiBadge} ${styles.kpiTopLeft}`}>
-                  <span className={styles.kpiIcon}>🏢</span>
-                  <div className={styles.kpiContent}>
-                    <div className={styles.kpiValue}>90+ Inbound Buyers / Mo</div>
-                    <div className={styles.kpiSub}>Real Estate • Patia & Khandagiri</div>
+                {/* Direct Access Quick Sector Chips */}
+                <div className={styles.heroTagsStrip}>
+                  <span className={styles.heroTagsLabel}>DIRECT SECTOR ACCESS:</span>
+                  <div className={styles.heroTagsList}>
+                    {industryCatalog.map(ind => {
+                      const isSelected = ind.id === selectedIndustryId;
+                      return (
+                        <button
+                          key={ind.id}
+                          type="button"
+                          className={`${styles.heroTagBtn} ${isSelected ? styles.heroTagBtnActive : ''}`}
+                          onClick={() => {
+                            setSelectedIndustryId(ind.id);
+                            const el = document.getElementById('sector-workstation');
+                            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          }}
+                        >
+                          <span style={{ marginRight: 4 }}>{sectorIcons[ind.id] || '⚡'}</span>
+                          {ind.shortTitle}
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
-
-                <div className={`${styles.floatingKpiBadge} ${styles.kpiTopRight}`}>
-                  <span className={styles.kpiIcon}>🏥</span>
-                  <div className={styles.kpiContent}>
-                    <div className={styles.kpiValue}>+190% Direct Patient Calls</div>
-                    <div className={styles.kpiSub}>Healthcare • Saheed Nagar 3-Pack</div>
-                  </div>
-                </div>
-
-                <div className={`${styles.floatingKpiBadge} ${styles.kpiBottomLeft}`}>
-                  <span className={styles.kpiIcon}>🎓</span>
-                  <div className={styles.kpiContent}>
-                    <div className={styles.kpiValue}>₹140 Verified CPL</div>
-                    <div className={styles.kpiSub}>Education • 400+ Batch Admissions</div>
-                  </div>
-                </div>
-
-                <div className={`${styles.floatingKpiBadge} ${styles.kpiBottomRight}`}>
-                  <span className={styles.kpiIcon}>🛍️</span>
-                  <div className={styles.kpiContent}>
-                    <div className={styles.kpiValue}>7.1X Attributed ROAS</div>
-                    <div className={styles.kpiSub}>D2C E-commerce • Janpath Corridor</div>
-                  </div>
-                </div>
-
-                {/* Center Bottom Live Intelligence Pill */}
-                <div className={styles.heroLiveCenterPill}>
-                  <span className={styles.pulseDotGreen} />
-                  <span>LIVE ODISHA SECTOR INTELLIGENCE • 12 VERTICALS MONITORED</span>
-                </div>
-              </div>
+              </ScrollReveal>
             </div>
-          </ScrollReveal>
+
+            {/* Right Pane: Visual Operations Cockpit */}
+            <div className={styles.heroRightPane}>
+              <ScrollReveal delay={120}>
+                <div className={styles.heroVisualCockpit}>
+                  <div className={styles.heroVisualInner}>
+                    <Image
+                      src="/images/dashboard_hero.jpg"
+                      alt="Marketing Copilot Sector Operations Command Center"
+                      fill
+                      priority
+                      className={styles.heroImg}
+                    />
+                    <div className={styles.heroImgOverlay} />
+                    <div className={styles.heroCornerTL} />
+                    <div className={styles.heroCornerBR} />
+
+                    {/* Floating Frosted Glass KPI Badges */}
+                    <div className={`${styles.floatingKpiBadge} ${styles.kpiTopLeft}`}>
+                      <span className={styles.kpiIcon}>🏢</span>
+                      <div className={styles.kpiContent}>
+                        <div className={styles.kpiValue}>90+ Inbound Buyers / Mo</div>
+                        <div className={styles.kpiSub}>Real Estate • Patia & Khandagiri</div>
+                      </div>
+                    </div>
+
+                    <div className={`${styles.floatingKpiBadge} ${styles.kpiTopRight}`}>
+                      <span className={styles.kpiIcon}>🏥</span>
+                      <div className={styles.kpiContent}>
+                        <div className={styles.kpiValue}>+190% Patient Calls</div>
+                        <div className={styles.kpiSub}>Healthcare • Saheed Nagar 3-Pack</div>
+                      </div>
+                    </div>
+
+                    <div className={`${styles.floatingKpiBadge} ${styles.kpiBottomLeft}`}>
+                      <span className={styles.kpiIcon}>🎓</span>
+                      <div className={styles.kpiContent}>
+                        <div className={styles.kpiValue}>₹140 Verified CPL</div>
+                        <div className={styles.kpiSub}>Education • 400+ Batch Admissions</div>
+                      </div>
+                    </div>
+
+                    <div className={`${styles.floatingKpiBadge} ${styles.kpiBottomRight}`}>
+                      <span className={styles.kpiIcon}>🛍️</span>
+                      <div className={styles.kpiContent}>
+                        <div className={styles.kpiValue}>7.1X Attributed ROAS</div>
+                        <div className={styles.kpiSub}>D2C E-commerce • Janpath Corridor</div>
+                      </div>
+                    </div>
+
+                    {/* Center Bottom Live Intelligence Pill */}
+                    <div className={styles.heroLiveCenterPill}>
+                      <span className={styles.pulseDotGreen} />
+                      <span>LIVE ODISHA SECTOR INTELLIGENCE • 12 VERTICALS MONITORED</span>
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -530,7 +534,7 @@ export default function IndustriesPage() {
       {/* ══════════════════════════════════════════════════════════
           SECTION 4: CROSS-SECTOR COMMERCIAL BENCHMARK MATRIX TABLE
          ══════════════════════════════════════════════════════════ */}
-      <section className={styles.tableSection}>
+      <section className={styles.tableSection} id="sector-matrix">
         <div className="container">
           <ScrollReveal>
             <div className="eyebrow" style={{ margin: '0 auto 16px', textAlign: 'center' }}>
@@ -597,7 +601,7 @@ export default function IndustriesPage() {
       {/* ══════════════════════════════════════════════════════════
           SECTION 5: HYPERLOCAL CORRIDOR DISTRIBUTION CONSOLE
          ══════════════════════════════════════════════════════════ */}
-      <section className={styles.corridorSection}>
+      <section className={styles.corridorSection} id="sector-corridors">
         <div className="container">
           <ScrollReveal>
             <div className="eyebrow" style={{ margin: '0 auto 16px', textAlign: 'center' }}>
@@ -723,7 +727,7 @@ export default function IndustriesPage() {
       {/* ══════════════════════════════════════════════════════════
           SECTION 6: INTERACTIVE GROWTH DIAGNOSTIC (STRATEGY FINDER)
          ══════════════════════════════════════════════════════════ */}
-      <section className={styles.diagnosticSection}>
+      <section className={styles.diagnosticSection} id="sector-diagnostic">
         <div className="container">
           <ScrollReveal>
             <div className="eyebrow" style={{ margin: '0 auto 16px', textAlign: 'center' }}>
@@ -934,7 +938,7 @@ export default function IndustriesPage() {
       {/* ══════════════════════════════════════════════════════════
           SECTION 8: SEGMENTED PARTNERSHIP TIER TERMINAL (NO 3-CARD FATIGUE)
          ══════════════════════════════════════════════════════════ */}
-      <section className={styles.tierTerminalSection}>
+      <section className={styles.tierTerminalSection} id="sector-tiers">
         <div className="container">
           <ScrollReveal>
             <div className="eyebrow" style={{ margin: '0 auto 16px', textAlign: 'center' }}>

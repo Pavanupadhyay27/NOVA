@@ -16,14 +16,15 @@
    SECTION 1: ASYMMETRIC SPLIT HERO WITH TERMINAL HUD
    ───────────────────────────────────────────────────────────── */
 /* ─────────────────────────────────────────────────────────────
-   SECTION 1: HERO COMMAND CENTER (TEXT ABOVE, SHOWCASE IMAGE BELOW)
+   SECTION 1: HERO COMMAND CENTER (DUAL PANE LAYOUT)
    ───────────────────────────────────────────────────────────── */
 .heroSection {
   position: relative;
-  padding: 80px 0 72px;
-  background: radial-gradient(circle at 50% -20%, rgba(245, 158, 11, 0.12) 0%, rgba(11, 32, 147, 0.05) 50%, transparent 80%), #FFFFFF;
+  padding: 84px 0 76px;
+  background: radial-gradient(circle at 75% 20%, rgba(245, 158, 11, 0.12) 0%, rgba(11, 32, 147, 0.05) 50%, transparent 80%), #FFFFFF;
   border-bottom: 1px solid var(--border-subtle);
   overflow: hidden;
+  scroll-margin-top: calc(var(--nav-height, 78px) + 36px);
 }
 
 .heroGlowOverlay {
@@ -33,22 +34,26 @@
   pointer-events: none;
 }
 
-/* Text Content ABOVE the Hero Image */
-.heroTopContent {
-  text-align: center;
-  margin: 0 auto 52px;
-  max-width: 920px;
-  display: flex;
-  flex-direction: column;
+/* Dual Pane Grid: Content on Left, Operations Cockpit on Right */
+.heroDualPane {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 48px;
   align-items: center;
   position: relative;
   z-index: 2;
 }
 
+.heroLeftPane {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
 .heroTitle {
-  margin: 20px auto 22px;
-  max-width: 900px;
-  text-align: center;
+  margin: 18px 0 20px;
+  text-align: left;
   color: #000000;
   font-weight: 800;
   line-height: 1.15;
@@ -58,18 +63,18 @@
 .heroSub {
   color: #334155;
   line-height: 1.7;
-  margin: 0 auto 36px;
-  max-width: 720px;
-  text-align: center;
+  margin: 0 0 32px;
+  max-width: 580px;
+  text-align: left;
 }
 
 .heroCtaRow {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 36px;
+  margin-bottom: 32px;
 }
 
 .heroSecondaryBtn {
@@ -98,11 +103,10 @@
 .heroTagsStrip {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
+  max-width: 100%;
+  text-align: left;
 }
 
 .heroTagsLabel {
@@ -116,7 +120,7 @@
 .heroTagsList {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 8px;
   flex-wrap: wrap;
 }
@@ -150,24 +154,27 @@
   box-shadow: 0 4px 12px rgba(11, 32, 147, 0.25);
 }
 
-/* Hero Image Showcase Frame BELOW the Text */
-.heroShowcaseFrame {
+/* Right Pane: Visual Operations Cockpit */
+.heroRightPane {
   position: relative;
-  max-width: 1160px;
-  margin: 0 auto;
+  width: 100%;
+}
+
+.heroVisualCockpit {
+  position: relative;
+  width: 100%;
   border-radius: var(--radius-2xl);
-  padding: 12px;
+  padding: 10px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(241, 245, 249, 0.85));
   border: 1.5px solid rgba(11, 32, 147, 0.16);
-  box-shadow: 0 32px 80px -16px rgba(11, 32, 147, 0.22), 0 12px 32px -8px rgba(0, 0, 0, 0.06), inset 0 1.5px 0 #FFFFFF;
+  box-shadow: 0 28px 72px -12px rgba(11, 32, 147, 0.22), 0 10px 28px -6px rgba(0, 0, 0, 0.06), inset 0 1.5px 0 #FFFFFF;
   overflow: visible;
-  z-index: 2;
 }
 
 .heroVisualInner {
   position: relative;
   width: 100%;
-  height: 560px;
+  height: 510px;
   border-radius: 18px;
   overflow: hidden;
   background: #0B2093;
@@ -179,7 +186,7 @@
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.heroShowcaseFrame:hover .heroImg {
+.heroVisualCockpit:hover .heroImg {
   transform: scale(1.02);
 }
 
@@ -223,8 +230,8 @@
   z-index: 4;
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 14px 20px;
+  gap: 12px;
+  padding: 12px 18px;
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -241,27 +248,27 @@
 }
 
 .kpiTopLeft {
-  top: 28px;
-  left: 28px;
+  top: 24px;
+  left: 20px;
 }
 
 .kpiTopRight {
-  top: 28px;
-  right: 28px;
+  top: 24px;
+  right: 20px;
 }
 
 .kpiBottomLeft {
-  bottom: 40px;
-  left: 28px;
+  bottom: 36px;
+  left: 20px;
 }
 
 .kpiBottomRight {
-  bottom: 40px;
-  right: 28px;
+  bottom: 36px;
+  right: 20px;
 }
 
 .kpiIcon {
-  font-size: 26px;
+  font-size: 24px;
   line-height: 1;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
@@ -273,14 +280,14 @@
 
 .kpiValue {
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 800;
   color: #0B2093;
   letter-spacing: -0.01em;
 }
 
 .kpiSub {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
   color: #475569;
   margin-top: 2px;
@@ -289,14 +296,14 @@
 /* Center Bottom Live Intelligence Pill */
 .heroLiveCenterPill {
   position: absolute;
-  bottom: 28px;
+  bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 4;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 9px 20px;
+  padding: 8px 18px;
   border-radius: 9999px;
   background: rgba(11, 32, 147, 0.9);
   backdrop-filter: blur(12px);
@@ -304,7 +311,7 @@
   border: 1.5px solid rgba(255, 184, 0, 0.45);
   color: #FFFFFF;
   font-family: monospace;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.06em;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
@@ -365,15 +372,18 @@
    SECTION 3: THE MASTER-DETAIL SECTOR WORKSTATION
    ───────────────────────────────────────────────────────────── */
 .workstationSection {
-  padding: 96px 0;
+  padding: 110px 0 96px;
   background: #F8FAFC;
   border-bottom: 1px solid var(--border-subtle);
+  scroll-margin-top: calc(var(--nav-height, 78px) + 36px);
 }
 
 .sectionHeading {
   text-align: center;
   margin: 16px 0 20px;
   color: #000000;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 .sectionSub {
@@ -389,8 +399,8 @@
   grid-template-columns: 340px 1fr;
   border-radius: var(--radius-2xl);
   background: #FFFFFF;
-  border: 1.5px solid var(--border);
-  box-shadow: var(--shadow-skeuo-card);
+  border: 1.5px solid rgba(11, 32, 147, 0.14);
+  box-shadow: 0 24px 64px -12px rgba(11, 32, 147, 0.1), 0 4px 16px rgba(0, 0, 0, 0.04);
   overflow: hidden;
   min-height: 740px;
 }
@@ -417,11 +427,12 @@
 }
 
 .navCountBadge {
-  padding: 2px 8px;
+  padding: 3px 10px;
   border-radius: var(--radius-full);
   background: rgba(11, 32, 147, 0.08);
   color: #0B2093;
   font-size: 10px;
+  font-weight: 800;
 }
 
 .workstationNavList {
@@ -443,7 +454,7 @@
   position: relative;
   transition: all var(--transition-fast);
   width: 100%;
-  gap: 8px;
+  gap: 10px;
 }
 
 .workstationNavItem:hover {
@@ -452,7 +463,8 @@
 
 .workstationNavItemActive {
   background: #FFFFFF !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 14px rgba(11, 32, 147, 0.08);
+  border-left: 3.5px solid #FFB800;
 }
 
 .navItemIndicator {
@@ -607,11 +619,11 @@
 }
 
 .cockpitColBad {
-  padding: 22px;
+  padding: 24px;
   border-radius: var(--radius-xl);
-  background: rgba(239, 68, 68, 0.03);
-  border: 1.5px solid rgba(239, 68, 68, 0.2);
-  box-shadow: inset 0 2px 4px rgba(239, 68, 68, 0.03);
+  background: linear-gradient(180deg, #FEF2F2 0%, #FFF5F5 100%);
+  border: 1.5px solid #FCA5A5;
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.04);
 }
 
 .cockpitColHeaderBad {
@@ -624,11 +636,11 @@
 }
 
 .cockpitColGood {
-  padding: 22px;
+  padding: 24px;
   border-radius: var(--radius-xl);
-  background: rgba(16, 185, 129, 0.03);
-  border: 1.5px solid rgba(16, 185, 129, 0.22);
-  box-shadow: inset 0 2px 4px rgba(16, 185, 129, 0.03);
+  background: linear-gradient(180deg, #ECFDF5 0%, #F0FDF4 100%);
+  border: 1.5px solid #6EE7B7;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.04);
 }
 
 .cockpitColHeaderGood {
@@ -701,25 +713,32 @@
 }
 
 .journeyStepCard {
-  padding: 16px;
-  border-radius: var(--radius-lg);
-  background: #F8FAFC;
-  border: 1px solid var(--border);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+  padding: 18px;
+  border-radius: var(--radius-xl);
+  background: #FFFFFF;
+  border: 1.5px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
   display: flex;
   flex-direction: column;
+  transition: all var(--transition-fast);
+}
+
+.journeyStepCard:hover {
+  border-color: #0B2093;
+  box-shadow: 0 8px 24px rgba(11, 32, 147, 0.08);
+  transform: translateY(-2px);
 }
 
 .journeyStepTop {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   margin-bottom: 8px;
 }
 
 .stepNumCircle {
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   background: #0B2093;
   color: #FFFFFF;
@@ -761,11 +780,11 @@
 }
 
 .cockpitBenchmarkWell {
-  padding: 10px 16px;
-  border-radius: var(--radius-md);
+  padding: 12px 18px;
+  border-radius: var(--radius-lg);
   background: #FFFFFF;
-  border: 1px solid var(--border);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
 .benchmarkVal {
@@ -798,16 +817,17 @@
    SECTION 4: CROSS-SECTOR BENCHMARK MATRIX TABLE
    ───────────────────────────────────────────────────────────── */
 .tableSection {
-  padding: 96px 0;
+  padding: 110px 0 96px;
   background: #FFFFFF;
   border-bottom: 1px solid var(--border-subtle);
+  scroll-margin-top: calc(var(--nav-height, 78px) + 36px);
 }
 
 .tableContainer {
   background: #FFFFFF;
   border-radius: var(--radius-2xl);
-  border: 1.5px solid var(--border);
-  box-shadow: var(--shadow-skeuo-card);
+  border: 1.5px solid rgba(11, 32, 147, 0.12);
+  box-shadow: 0 24px 64px -12px rgba(11, 32, 147, 0.1), 0 4px 16px rgba(0, 0, 0, 0.04);
   overflow-x: auto;
 }
 
@@ -907,9 +927,10 @@
    SECTION 5: HYPERLOCAL CORRIDOR DISTRIBUTION CONSOLE
    ───────────────────────────────────────────────────────────── */
 .corridorSection {
-  padding: 96px 0;
+  padding: 110px 0 96px;
   background: #F8FAFC;
   border-bottom: 1px solid var(--border-subtle);
+  scroll-margin-top: calc(var(--nav-height, 78px) + 36px);
 }
 
 .corridorConsole {
@@ -917,8 +938,8 @@
   grid-template-columns: 360px 1fr;
   border-radius: var(--radius-2xl);
   background: #FFFFFF;
-  border: 1.5px solid var(--border);
-  box-shadow: var(--shadow-skeuo-card);
+  border: 1.5px solid rgba(11, 32, 147, 0.12);
+  box-shadow: 0 24px 64px -12px rgba(11, 32, 147, 0.1), 0 4px 16px rgba(0, 0, 0, 0.04);
   overflow: hidden;
 }
 
@@ -1056,8 +1077,8 @@
   padding: 16px;
   border-radius: var(--radius-lg);
   background: #F8FAFC;
-  border: 1px solid var(--border);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
+  border: 1.5px solid var(--border);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
 .corridorStatVal {
@@ -1086,7 +1107,7 @@
   padding: 18px;
   border-radius: var(--radius-lg);
   background: #FAFCFE;
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--border);
 }
 
 .infoCardLabel {
@@ -1137,7 +1158,7 @@
   padding: 12px 16px;
   border-radius: var(--radius-md);
   background: rgba(245, 158, 11, 0.08);
-  border: 1px solid rgba(245, 158, 11, 0.25);
+  border: 1.5px solid rgba(245, 158, 11, 0.25);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1159,9 +1180,10 @@
    SECTION 6: INTERACTIVE GROWTH DIAGNOSTIC
    ───────────────────────────────────────────────────────────── */
 .diagnosticSection {
-  padding: 96px 0;
+  padding: 110px 0 96px;
   background: #FFFFFF;
   border-bottom: 1px solid var(--border-subtle);
+  scroll-margin-top: calc(var(--nav-height, 78px) + 36px);
 }
 
 .diagnosticConsole {
@@ -1170,8 +1192,8 @@
   padding: 44px;
   border-radius: var(--radius-2xl);
   background: #FFFFFF;
-  border: 1.5px solid var(--border);
-  box-shadow: var(--shadow-skeuo-card);
+  border: 1.5px solid rgba(11, 32, 147, 0.12);
+  box-shadow: 0 24px 64px -12px rgba(11, 32, 147, 0.1), 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
 .diagStep {
@@ -1383,7 +1405,7 @@
   padding: 16px 20px;
   border-radius: var(--radius-md);
   background: #FFFFFF;
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--border);
   margin-bottom: 20px;
 }
 
@@ -1415,7 +1437,7 @@
   padding: 16px;
   border-radius: var(--radius-md);
   background: #FFFFFF;
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--border);
   text-align: center;
 }
 
@@ -1438,7 +1460,7 @@
   padding: 12px 18px;
   border-radius: var(--radius-md);
   background: rgba(16, 185, 129, 0.08);
-  border: 1px solid rgba(16, 185, 129, 0.25);
+  border: 1.5px solid rgba(16, 185, 129, 0.25);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1460,8 +1482,10 @@
    SECTION 7: EDITORIAL-GRADE FLAGSHIP TRANSFORMATION
    ───────────────────────────────────────────────────────────── */
 .editorialSection {
-  padding: 96px 0;
+  padding: 110px 0 96px;
   background: #FFFFFF;
+  border-bottom: 1px solid var(--border-subtle);
+  scroll-margin-top: calc(var(--nav-height, 78px) + 36px);
 }
 
 .editorialSpread {
@@ -1476,7 +1500,7 @@
   height: 480px;
   border-radius: var(--radius-2xl);
   overflow: hidden;
-  box-shadow: var(--shadow-skeuo-card);
+  box-shadow: 0 24px 64px -12px rgba(11, 32, 147, 0.12);
   border: 1.5px solid var(--border);
 }
 
@@ -1612,19 +1636,20 @@
    SECTION 8: SEGMENTED PARTNERSHIP TIER TERMINAL
    ───────────────────────────────────────────────────────────── */
 .tierTerminalSection {
-  padding: 96px 0;
+  padding: 110px 0 96px;
   background: #F8FAFC;
   border-top: 1px solid var(--border-subtle);
   border-bottom: 1px solid var(--border-subtle);
+  scroll-margin-top: calc(var(--nav-height, 78px) + 36px);
 }
 
 .tierConsole {
-  max-width: 960px;
+  max-width: 980px;
   margin: 0 auto;
   border-radius: var(--radius-2xl);
   background: #FFFFFF;
-  border: 1.5px solid var(--border);
-  box-shadow: var(--shadow-skeuo-card);
+  border: 1.5px solid rgba(11, 32, 147, 0.15);
+  box-shadow: 0 28px 72px -12px rgba(11, 32, 147, 0.12), 0 4px 16px rgba(0, 0, 0, 0.04);
   overflow: hidden;
 }
 
@@ -1636,7 +1661,7 @@
 }
 
 .tierTabBtn {
-  padding: 18px 20px;
+  padding: 20px 24px;
   background: transparent;
   border: none;
   border-right: 1px solid var(--border);
@@ -1644,7 +1669,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   transition: all var(--transition-fast);
 }
 
@@ -1658,7 +1683,8 @@
 
 .tierTabBtnActive {
   background: #FFFFFF !important;
-  border-bottom: 3px solid #0B2093;
+  border-bottom: 3.5px solid #0B2093;
+  box-shadow: inset 0 2px 0 #FFB800;
 }
 
 .tierTabBadge {
@@ -1692,7 +1718,7 @@
 
 .tierDetailTitle {
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 800;
   color: #000000;
   margin-bottom: 4px;
@@ -1711,7 +1737,7 @@
 
 .tierPriceVal {
   font-family: var(--font-display);
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 900;
   color: #0B2093;
 }
@@ -1766,10 +1792,17 @@
 }
 
 .tierCommitmentBox {
-  padding: 14px 18px;
-  border-radius: var(--radius-md);
-  background: #F8FAFC;
-  border: 1px solid var(--border);
+  padding: 16px 20px;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  transition: all var(--transition-fast);
+}
+
+.tierCommitmentBox:hover {
+  border-color: #0B2093;
+  box-shadow: 0 6px 18px rgba(11, 32, 147, 0.06);
 }
 
 .commitmentLabel {
@@ -1791,8 +1824,9 @@
    SECTION 9: EXECUTIVE BESPOKE BOTTOM CONSULTATION BANNER
    ───────────────────────────────────────────────────────────── */
 .bottomBannerSection {
-  padding: 96px 0 110px;
+  padding: 100px 0 110px;
   background: #FFFFFF;
+  scroll-margin-top: calc(var(--nav-height, 78px) + 36px);
 }
 
 .bespokeBannerCard {
@@ -1895,8 +1929,12 @@
    MOBILE RESPONSIVE BREAKPOINTS (STRICT MOBILE OPTIMIZATION)
    ───────────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
+  .heroDualPane {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
   .heroVisualInner {
-    height: 460px;
+    height: 420px;
   }
   .floatingKpiBadge {
     padding: 10px 14px;
@@ -1968,8 +2006,13 @@
   .heroSection {
     padding: 48px 0 36px;
   }
-  .heroTopContent {
-    margin-bottom: 28px;
+  .heroDualPane {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .heroLeftPane {
+    align-items: flex-start;
+    text-align: left;
   }
   .heroCtaRow {
     flex-direction: column;
@@ -1979,12 +2022,12 @@
     width: 100%;
     justify-content: center;
   }
-  .heroShowcaseFrame {
+  .heroVisualCockpit {
     padding: 6px;
     border-radius: 16px;
   }
   .heroVisualInner {
-    height: 260px;
+    height: 280px;
     border-radius: 12px;
   }
   .floatingKpiBadge {
