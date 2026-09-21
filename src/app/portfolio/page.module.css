@@ -1,7 +1,13 @@
 /* ═══════════════════════════════════════════════════════════
    PORTFOLIO PAGE — 12 BESPOKE SECTIONS STYLESHEET
-   UI/UX Refinements: Auto-sliding cards, HUD comparisons,
-   Connected Methodology Pipeline, Regional Radar, and Hero Image
+   UI/UX Refinements:
+   - Centered CTA buttons in all sections
+   - Bottom-aligned testimonial cards
+   - Bento style for Tailored Vertical Playbooks
+   - Territory Command Matrix replacing radar in Regional Footprint
+   - Enhanced Audited Commercial Deltas HUD
+   - Elevated Partnership Structure
+   - Centered & polished bottom CTA card with FAQSection integrated
    ═══════════════════════════════════════════════════════════ */
 
 .page {
@@ -12,7 +18,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 1: DUAL-PANE HERO WITH GUARANTEED IMAGE
+   SECTION 1: DUAL-PANE HERO
    ───────────────────────────────────────────────────────────── */
 .heroSection {
   position: relative;
@@ -147,7 +153,7 @@
   transform: translateY(-2px);
 }
 
-/* Hero Right Visual Pane (Guaranteed Display - No hidden opacity) */
+/* Hero Right Visual Pane */
 .heroVisualPane {
   position: relative;
   display: flex;
@@ -491,6 +497,15 @@
   flex-shrink: 0;
 }
 
+/* Centered Button Wrapper */
+.centerCtaWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 16px;
+}
+
 /* ─────────────────────────────────────────────────────────────
    SECTION 4: AUTO-SLIDING CASE STUDIES SHOWCASE
    ───────────────────────────────────────────────────────────── */
@@ -575,13 +590,13 @@
   width: 100%;
   overflow-x: auto;
   scroll-behavior: smooth;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   padding: 12px 4px 32px;
 }
 
 .sliderTrackContainer::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
+  display: none;
 }
 
 .sliderTrack {
@@ -805,31 +820,33 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 5: INTERACTIVE BEFORE/AFTER HUD COCKPIT (NO REPETITIVE CARDS)
+   SECTION 5: AUDITED COMMERCIAL DELTAS — ELEVATED VELOCITY COCKPIT
    ───────────────────────────────────────────────────────────── */
 .transformSection {
   padding: 88px 0;
 }
 
-.hudCockpit {
+.velocityCockpit {
   background: var(--bg-card);
   border-radius: var(--radius-2xl);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-skeuo-card);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.hudTabs {
+.velocityTabsRow {
   display: flex;
   background: var(--bg-surface);
   border-bottom: 1px solid var(--border);
   overflow-x: auto;
 }
 
-.hudTabBtn {
+.velocityTabBtn {
   flex: 1;
-  min-width: 180px;
-  padding: 16px 20px;
+  min-width: 200px;
+  padding: 18px 24px;
   font-family: var(--font-display);
   font-size: 13px;
   font-weight: 700;
@@ -842,113 +859,136 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
 }
 
-.hudTabBtn:hover {
+.velocityTabBtn:hover {
   color: var(--accent-blue);
   background: rgba(11, 32, 147, 0.03);
 }
 
-.hudTabBtnActive {
+.velocityTabBtnActive {
   color: var(--accent-blue) !important;
   background: #FFFFFF !important;
   border-bottom-color: var(--accent-blue) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-.hudContent {
+.velocityDisplayArea {
   padding: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.velocityComparisonGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 36px;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 24px;
   align-items: center;
 }
 
-.hudComparisonBox {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.hudGaugeBefore {
+.velocityCardBefore {
   background: #FEF2F2;
-  border: 1px solid #FCA5A5;
-  border-radius: var(--radius-lg);
-  padding: 24px;
+  border: 1px solid #FECACA;
+  border-radius: var(--radius-xl);
+  padding: 28px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
+  box-shadow: var(--shadow-xs);
 }
 
-.hudGaugeAfter {
+.velocityCardAfter {
   background: #F0FDF4;
-  border: 1px solid #86EFAC;
-  border-radius: var(--radius-lg);
-  padding: 24px;
+  border: 1px solid #BBF7D0;
+  border-radius: var(--radius-xl);
+  padding: 28px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
+  box-shadow: var(--shadow-xs);
 }
 
-.hudTagRed {
+.velocityTagBefore {
   font-size: 11px;
   font-weight: 800;
   color: #DC2626;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
 }
 
-.hudTagGreen {
+.velocityTagAfter {
   font-size: 11px;
   font-weight: 800;
   color: #16A34A;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
 }
 
-.hudBigVal {
+.velocityBigNum {
   font-family: var(--font-display);
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 800;
   color: var(--text-primary);
+  line-height: 1.1;
 }
 
-.hudExplanation {
+.velocityStateDesc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.velocityCenterBadge {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-}
-
-.hudGainPill {
-  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 18px;
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  color: #10B981;
-  border-radius: var(--radius-full);
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 800;
-  width: fit-content;
+  gap: 6px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #0B2093 0%, #0D007F 100%);
+  color: #FFFFFF;
+  border-radius: var(--radius-xl);
+  box-shadow: 0 8px 24px rgba(11, 32, 147, 0.3);
+  text-align: center;
 }
 
-.hudMetricHeading {
+.velocityGainText {
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 800;
-  color: var(--text-primary);
+  color: #FFB800;
+  line-height: 1;
 }
 
-.hudDetailText {
-  font-size: 15px;
-  line-height: 1.7;
+.velocityTimeText {
+  font-size: 11px;
+  color: #E2E8F0;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.velocityLeverStrip {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.velocityLeverText {
+  font-size: 14px;
   color: var(--text-secondary);
+  line-height: 1.6;
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 6: CONNECTED METHODOLOGY PIPELINE (NO REPETITIVE CARDS)
+   SECTION 6: CONNECTED METHODOLOGY PIPELINE
    ───────────────────────────────────────────────────────────── */
 .processSection {
   padding: 88px 0;
@@ -1032,23 +1072,23 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 7: REGIONAL RADAR & TERRITORY COMMAND CENTER (NO PLAIN CARDS)
+   SECTION 7: REGIONAL FOOTPRINT — TERRITORY COMMAND MATRIX (NO RADAR)
    ───────────────────────────────────────────────────────────── */
 .geoSection {
   padding: 88px 0;
 }
 
-.radarCockpit {
+.commandCockpit {
   background: var(--bg-card);
   border-radius: var(--radius-2xl);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-skeuo-card);
   overflow: hidden;
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1fr 1fr;
 }
 
-.radarLeft {
+.commandLeft {
   padding: 44px;
   display: flex;
   flex-direction: column;
@@ -1056,13 +1096,13 @@
   justify-content: center;
 }
 
-.radarAreaSelector {
+.commandAreaSelector {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
 }
 
-.radarAreaChip {
+.commandAreaChip {
   padding: 8px 16px;
   border-radius: var(--radius-full);
   font-family: var(--font-display);
@@ -1075,114 +1115,158 @@
   transition: all var(--transition-fast);
 }
 
-.radarAreaChip:hover,
-.radarAreaChipActive {
+.commandAreaChip:hover,
+.commandAreaChipActive {
   background: var(--accent-blue);
   color: #FFFFFF !important;
   border-color: var(--accent-blue);
   box-shadow: 0 4px 12px rgba(11, 32, 147, 0.25);
 }
 
-.radarLiveStats {
+.commandDataRows {
   background: var(--bg-surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
-.radarStatRow {
+.commandDataRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
-.radarStatLabel {
+.commandDataRow:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.commandDataLabel {
   font-size: 12px;
   font-weight: 600;
   color: var(--text-muted);
 }
 
-.radarStatVal {
+.commandDataVal {
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 800;
-  color: #10B981;
+  color: var(--text-primary);
 }
 
-.radarRight {
-  position: relative;
-  background: #0F172A;
-  min-height: 380px;
+/* Right Side: High-Tech Territory Terminal Card */
+.commandRightTerminal {
+  background: linear-gradient(145deg, #0F172A 0%, #0A1128 100%);
+  padding: 40px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #FFFFFF;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
   overflow: hidden;
 }
 
-.radarGraphic {
-  position: relative;
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  border: 2px solid rgba(16, 185, 129, 0.3);
+.terminalTopHeader {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.radarInnerCircle {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  border: 1px dashed rgba(16, 185, 129, 0.4);
+.terminalSignalBadge {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #10B981;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
-.radarCenterDot {
-  width: 14px;
-  height: 14px;
+.terminalSignalDot {
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: #10B981;
-  box-shadow: 0 0 16px #10B981;
+  box-shadow: 0 0 10px #10B981;
   animation: pulseGlow 1.8s infinite;
 }
 
-.radarSweep {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: conic-gradient(from 0deg, rgba(16, 185, 129, 0.25) 0deg, transparent 60deg);
-  animation: radarSweep 4s linear infinite;
-  pointer-events: none;
+.terminalCoords {
+  font-family: monospace;
+  font-size: 11px;
+  color: #94A3B8;
 }
 
-.radarOverlayBadge {
-  position: absolute;
-  bottom: 24px;
-  left: 24px;
-  right: 24px;
-  background: rgba(15, 23, 42, 0.88);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: var(--radius-md);
-  padding: 10px 16px;
+.terminalMainInfo {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 12px;
+  flex-direction: column;
+  gap: 18px;
+  padding: 24px 0;
+}
+
+.terminalAreaTitle {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.terminalGridStats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.terminalStatBox {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.terminalStatVal {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  color: #FFB800;
+}
+
+.terminalStatLabel {
+  font-size: 11px;
+  color: #94A3B8;
+  font-weight: 600;
+}
+
+.terminalLandmarksList {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding-top: 12px;
+}
+
+.terminalLandmarkTag {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
   color: #E2E8F0;
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 8: INDUSTRY VERTICALS BREAKDOWN
+   SECTION 8: TAILORED VERTICAL PLAYBOOKS — 3-COLUMN BENTO STYLE
    ───────────────────────────────────────────────────────────── */
 .industrySection {
   padding: 88px 0;
@@ -1224,53 +1308,116 @@
   box-shadow: 0 4px 14px rgba(11, 32, 147, 0.35);
 }
 
-.industryDetailCard {
+/* 3-Column Bento Layout */
+.industryBentoGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 20px;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.bentoCard {
   background: var(--bg-card);
   border-radius: var(--radius-2xl);
   border: 1px solid var(--border);
-  padding: 44px;
+  padding: 32px;
   box-shadow: var(--shadow-skeuo-card);
-  max-width: 860px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
+  transition: all var(--transition-fast);
 }
 
-.industryDetailHeader {
+.bentoCard:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-skeuo-hover);
+  border-color: rgba(11, 32, 147, 0.25);
+}
+
+.bentoCardHeader {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--accent-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.industryHeadline {
+.bentoTitle {
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 800;
   color: var(--text-primary);
+  line-height: 1.3;
 }
 
-.industryMetricBadge {
-  padding: 8px 18px;
-  background: rgba(245, 158, 11, 0.12);
-  border: 1px solid rgba(245, 158, 11, 0.3);
-  color: #B45309;
-  border-radius: var(--radius-full);
-  font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 800;
-}
-
-.industryFocusText {
-  font-size: 15px;
-  line-height: 1.7;
+.bentoText {
+  font-size: 13px;
+  line-height: 1.65;
   color: var(--text-secondary);
 }
 
+.bentoChannelsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.bentoChannelItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.bentoBenchmarkList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bentoBenchmarkRow {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bentoBenchLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.bentoBenchVal {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 800;
+  color: #10B981;
+}
+
+.bentoProofBox {
+  background: linear-gradient(135deg, rgba(11, 32, 147, 0.05) 0%, rgba(245, 158, 11, 0.05) 100%);
+  border: 1px solid rgba(11, 32, 147, 0.15);
+  border-radius: var(--radius-xl);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 /* ─────────────────────────────────────────────────────────────
-   SECTION 9: FOUNDER TESTIMONIALS
+   SECTION 9: FOUNDER TESTIMONIALS — EQUAL-HEIGHT & BOTTOM-ALIGNED
    ───────────────────────────────────────────────────────────── */
 .testimonialSection {
   padding: 88px 0;
@@ -1280,6 +1427,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+  align-items: stretch;
 }
 
 .testimonialCard {
@@ -1290,7 +1438,9 @@
   box-shadow: var(--shadow-skeuo-card);
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  justify-content: space-between;
+  height: 100%;
+  gap: 20px;
   transition: all var(--transition-fast);
 }
 
@@ -1301,29 +1451,45 @@
 }
 
 .starsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.starsText {
   color: #F59E0B;
   font-size: 16px;
   letter-spacing: 2px;
+}
+
+.verifiedReviewBadge {
+  font-size: 11px;
+  font-weight: 700;
+  color: #10B981;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
 }
 
 .quoteText {
   font-size: 14px;
   line-height: 1.65;
   color: var(--text-secondary);
-  flex: 1;
 }
 
+/* Bottom aligned author row */
 .authorRow {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding-top: 14px;
+  padding-top: 16px;
   border-top: 1px solid var(--border-subtle);
+  margin-top: auto;
 }
 
 .avatarIcon {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: var(--bg-surface);
   border: 1px solid var(--border);
@@ -1411,7 +1577,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 11: TRANSPARENT ENGAGEMENT MODELS
+   SECTION 11: ELEVATED PARTNERSHIP STRUCTURE
    ───────────────────────────────────────────────────────────── */
 .engagementSection {
   padding: 88px 0;
@@ -1421,7 +1587,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 28px;
-  max-width: 960px;
+  max-width: 980px;
   margin: 0 auto;
 }
 
@@ -1429,12 +1595,18 @@
   background: var(--bg-card);
   border-radius: var(--radius-2xl);
   border: 1px solid var(--border);
-  padding: 36px;
+  padding: 38px;
   box-shadow: var(--shadow-skeuo-card);
   display: flex;
   flex-direction: column;
   gap: 20px;
   transition: all var(--transition-fast);
+  position: relative;
+}
+
+.engagementCardHighlight {
+  border-color: rgba(245, 158, 11, 0.5);
+  box-shadow: 0 16px 40px -8px rgba(245, 158, 11, 0.18), inset 0 2px 0 #FFFFFF;
 }
 
 .engagementCard:hover {
@@ -1445,7 +1617,7 @@
 
 .engagementBadge {
   display: inline-flex;
-  padding: 4px 12px;
+  padding: 5px 14px;
   border-radius: var(--radius-full);
   background: rgba(11, 32, 147, 0.08);
   color: #0B2093;
@@ -1455,6 +1627,11 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   width: fit-content;
+}
+
+.engagementBadgeGold {
+  background: rgba(245, 158, 11, 0.12);
+  color: #B45309;
 }
 
 .engagementTitle {
@@ -1488,86 +1665,113 @@
   color: var(--text-secondary);
 }
 
-/* ─────────────────────────────────────────────────────────────
-   SECTION 12: BESPOKE GROWTH AUDIT CONSULTATION (PORTFOLIO CTA)
-   ───────────────────────────────────────────────────────────── */
-.bespokeCtaSection {
-  padding: 96px 0;
-  background: radial-gradient(ellipse 90% 70% at 50% 120%, rgba(11, 32, 147, 0.08) 0%, transparent 80%),
-              radial-gradient(ellipse 60% 40% at 10% 20%, rgba(245, 158, 11, 0.06) 0%, transparent 60%);
-  border-top: 1px solid var(--border);
+.partnershipTrustStrip {
+  max-width: 980px;
+  margin: 36px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 18px 24px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
-.bespokeCtaCard {
+.trustItemPill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   SECTION 12: BESPOKE BOTTOM CTA CARD (CENTERED & POLISHED)
+   ───────────────────────────────────────────────────────────── */
+.bespokeCtaSection {
+  padding: 80px 0 100px;
+  background: radial-gradient(ellipse 90% 70% at 50% 120%, rgba(11, 32, 147, 0.08) 0%, transparent 80%),
+              radial-gradient(ellipse 60% 40% at 10% 20%, rgba(245, 158, 11, 0.06) 0%, transparent 60%);
+}
+
+.bespokeCtaCardCentered {
   background: linear-gradient(135deg, #0F172A 0%, #0A1128 100%);
   border-radius: var(--radius-2xl);
-  padding: clamp(36px, 6vw, 64px);
+  padding: clamp(40px, 6vw, 72px);
   color: #FFFFFF;
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 48px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
+  gap: 28px;
   box-shadow: 0 30px 70px -15px rgba(11, 32, 147, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   position: relative;
   overflow: hidden;
+  max-width: 1040px;
+  margin: 0 auto;
 }
 
 .ctaGlowCircle {
   position: absolute;
   top: -100px;
   right: -100px;
-  width: 320px;
-  height: 320px;
+  width: 340px;
+  height: 340px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.22) 0%, transparent 70%);
   pointer-events: none;
 }
 
-.bespokeCtaLeft {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.bespokeCtaTitle {
+.bespokeCtaTitleCentered {
   font-family: var(--font-display);
-  font-size: clamp(28px, 3.5vw, 44px);
+  font-size: clamp(28px, 3.6vw, 46px);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.02em;
   color: #FFFFFF;
+  max-width: 820px;
 }
 
-.bespokeCtaDesc {
+.bespokeCtaDescCentered {
   font-size: 16px;
   line-height: 1.65;
   color: #94A3B8;
+  max-width: 680px;
 }
 
-.bespokeCtaRight {
+.ctaPerksRow {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 16px 24px;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px);
-  padding: 32px;
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-full);
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.ctaPerk {
+.ctaPerkItem {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font-size: 13px;
   font-weight: 600;
   color: #E2E8F0;
 }
 
-.ctaPerkCheck {
-  color: #10B981;
-  font-weight: 800;
+.ctaCenteredActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-top: 8px;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -1581,11 +1785,6 @@
 @keyframes pulseGlow {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.55; transform: scale(0.85); }
-}
-
-@keyframes radarSweep {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
 
 @keyframes fadeIn {
@@ -1615,22 +1814,24 @@
   .pipelineRoadmap {
     grid-template-columns: repeat(2, 1fr);
   }
-  .radarCockpit {
+  .commandCockpit {
     grid-template-columns: 1fr;
   }
-  .bespokeCtaCard {
+  .industryBentoGrid {
     grid-template-columns: 1fr;
-    gap: 32px;
+  }
+  .velocityComparisonGrid {
+    grid-template-columns: 1fr;
+  }
+  .velocityCenterBadge {
+    flex-direction: row;
+    justify-content: center;
   }
 }
 
 @media (max-width: 768px) {
   .proofGrid {
     grid-template-columns: repeat(2, 1fr);
-  }
-  .hudContent {
-    grid-template-columns: 1fr;
-    padding: 24px;
   }
   .testimonialGrid {
     grid-template-columns: 1fr;
@@ -1641,6 +1842,11 @@
   .filterBar {
     flex-direction: column;
     align-items: stretch;
+  }
+  .ctaPerksRow {
+    flex-direction: column;
+    border-radius: var(--radius-xl);
+    align-items: flex-start;
   }
 }
 
@@ -1664,10 +1870,13 @@
   .spotlightContent {
     padding: 24px;
   }
-  .radarLeft {
+  .commandLeft {
     padding: 24px;
   }
-  .industryDetailCard {
+  .commandRightTerminal {
+    padding: 24px;
+  }
+  .velocityDisplayArea {
     padding: 24px;
   }
   .auditBox {
@@ -1676,5 +1885,13 @@
   .drawerModal {
     max-width: 100%;
     padding: 24px;
+  }
+  .ctaCenteredActions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .ctaCenteredActions > * {
+    width: 100%;
+    justify-content: center;
   }
 }
