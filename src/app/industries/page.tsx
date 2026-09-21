@@ -489,48 +489,46 @@ export default function IndustriesPage() {
 
             {/* Right Pane: Clean Real Photography Showcase (Exact same as Home Hero) */}
             <div className={styles.visual}>
-              <ScrollReveal delay={120}>
-                <div className={styles.imageCard}>
-                  <div className={styles.imageViewport}>
-                    {heroSlides.map((slide, idx) => (
-                      <div
-                        key={slide.id}
-                        className={`${styles.slideItem} ${idx === currentSlide ? styles.slideActive : ''}`}
-                      >
-                        <Image
-                          src={slide.src}
-                          alt={slide.alt}
-                          fill
-                          priority={idx === 0}
-                          sizes="(max-width: 900px) 100vw, 680px"
-                          quality={95}
-                          className={styles.slideImage}
-                        />
-                        <div className={styles.slideOverlay} />
-                      </div>
+              <div className={styles.imageCard}>
+                <div className={styles.imageViewport}>
+                  {heroSlides.map((slide, idx) => (
+                    <div
+                      key={slide.id}
+                      className={`${styles.slideItem} ${idx === currentSlide ? styles.slideActive : ''}`}
+                    >
+                      <Image
+                        src={slide.src}
+                        alt={slide.alt}
+                        fill
+                        priority={idx === 0}
+                        sizes="(max-width: 900px) 100vw, 680px"
+                        quality={95}
+                        className={styles.slideImage}
+                      />
+                      <div className={styles.slideOverlay} />
+                    </div>
+                  ))}
+
+                  {/* Minimalist Floating Status Badge */}
+                  <div className={styles.floatingBadge}>
+                    <span className={styles.badgePulse} />
+                    <span className={styles.badgeText}>12 Specialized Sectors</span>
+                  </div>
+
+                  {/* Minimalist Tactile Dot Indicators */}
+                  <div className={styles.dotsWrap}>
+                    {heroSlides.map((_, idx) => (
+                      <button
+                        key={idx}
+                        type="button"
+                        className={`${styles.dot} ${idx === currentSlide ? styles.dotActive : ''}`}
+                        onClick={() => setCurrentSlide(idx)}
+                        aria-label={`Switch to slide ${idx + 1}`}
+                      />
                     ))}
-
-                    {/* Minimalist Floating Status Badge */}
-                    <div className={styles.floatingBadge}>
-                      <span className={styles.badgePulse} />
-                      <span className={styles.badgeText}>12 Specialized Sectors</span>
-                    </div>
-
-                    {/* Minimalist Tactile Dot Indicators */}
-                    <div className={styles.dotsWrap}>
-                      {heroSlides.map((_, idx) => (
-                        <button
-                          key={idx}
-                          type="button"
-                          className={`${styles.dot} ${idx === currentSlide ? styles.dotActive : ''}`}
-                          onClick={() => setCurrentSlide(idx)}
-                          aria-label={`Switch to slide ${idx + 1}`}
-                        />
-                      ))}
-                    </div>
                   </div>
                 </div>
-              </ScrollReveal>
+              </div>
             </div>
           </div>
         </div>

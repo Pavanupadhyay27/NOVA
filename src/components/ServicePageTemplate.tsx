@@ -387,89 +387,89 @@ export default function ServicePageTemplate({
             </div>
 
             <div className={styles.heroVisual}>
-              <ScrollReveal delay={150}>
-                <div className={styles.heroVisualStage}>
-                  {/* Ambient Radiant Backdrop Glow */}
-                  <div className={styles.visualBackdropGlow} />
+              <div className={styles.heroVisualStage}>
+                {/* Ambient Radiant Backdrop Glow */}
+                <div className={styles.visualBackdropGlow} />
 
-                  {/* Skeuomorphic Glass Card with Real Photography or Auto-Slider */}
-                  <div className={styles.heroVisualCard}>
-                    {heroSlides && heroSlides.length > 0 ? (
-                      <div className={styles.sliderViewport}>
-                        {heroSlides.map((slide, idx) => (
-                          <div
-                            key={slide.id}
-                            className={`${styles.slideItem} ${idx === currentSlide ? styles.slideActive : ''}`}
-                          >
-                            <Image
-                              src={slide.src}
-                              alt={slide.alt}
-                              fill
-                              priority={idx === 0}
-                              sizes="(max-width: 768px) 100vw, 480px"
-                              className={styles.heroPhoto}
-                            />
-                          </div>
-                        ))}
-
-                        {/* Minimal Clean Status Badge */}
-                        <div className={styles.floatingTopBadge}>
-                          <span className={styles.badgeEmeraldDot} />
-                          <span>#1 Ranked on Google</span>
-                        </div>
-
-                        {/* Dot Indicators */}
-                        <div className={styles.dotsWrap}>
-                          {heroSlides.map((_, idx) => (
-                            <button
-                              key={idx}
-                              type="button"
-                              className={`${styles.dot} ${idx === currentSlide ? styles.dotActive : ''}`}
-                              onClick={() => setCurrentSlide(idx)}
-                              aria-label={`Slide ${idx + 1}`}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                    ) : (
-                      <div className={styles.heroImageContainer}>
-                        <Image
-                          src={heroImage}
-                          alt={`${eyebrow} in Bhubaneswar — Marketing Copilot`}
-                          fill
-                          priority
-                          sizes="(max-width: 768px) 100vw, 480px"
-                          className={styles.heroPhoto}
-                        />
-                        <div className={styles.heroPhotoOverlay} />
-
-                        {/* Floating Glass 3D Badges */}
-                        <div className={styles.floatingTopBadge}>
-                          <span className={styles.badgeEmeraldDot} />
-                          <span>Live Rank: #1 Google 3-Pack</span>
-                        </div>
-
-                        <div className={styles.floatingBottomBadge}>
-                          <span className={styles.badgeEmeraldDot} />
-                          <span>Marketing Copilot · Bhubaneswar</span>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Tactile Extruded Metric Tiles */}
-                    <div className={styles.visualMetricsGrid}>
-                      {metrics.map((m) => (
-                        <div key={m.label} className={styles.vMetric}>
-                          <span className={styles.vVal} style={{ color }}>
-                            {m.val}
-                          </span>
-                          <span className={styles.vLabel}>{m.label}</span>
+                {/* Skeuomorphic Glass Card with Real Photography or Auto-Slider */}
+                <div className={styles.heroVisualCard}>
+                  {heroSlides && heroSlides.length > 0 ? (
+                    <div className={styles.sliderViewport}>
+                      {heroSlides.map((slide, idx) => (
+                        <div
+                          key={slide.id}
+                          className={`${styles.slideItem} ${idx === currentSlide ? styles.slideActive : ''}`}
+                        >
+                          <Image
+                            src={slide.src}
+                            alt={slide.alt}
+                            fill
+                            priority={idx === 0}
+                            sizes="(max-width: 768px) 100vw, 480px"
+                            className={styles.heroPhoto}
+                            unoptimized={slide.src?.startsWith('http')}
+                          />
                         </div>
                       ))}
+
+                      {/* Minimal Clean Status Badge */}
+                      <div className={styles.floatingTopBadge}>
+                        <span className={styles.badgeEmeraldDot} />
+                        <span>#1 Ranked on Google</span>
+                      </div>
+
+                      {/* Dot Indicators */}
+                      <div className={styles.dotsWrap}>
+                        {heroSlides.map((_, idx) => (
+                          <button
+                            key={idx}
+                            type="button"
+                            className={`${styles.dot} ${idx === currentSlide ? styles.dotActive : ''}`}
+                            onClick={() => setCurrentSlide(idx)}
+                            aria-label={`Slide ${idx + 1}`}
+                          />
+                        ))}
+                      </div>
                     </div>
+                  ) : (
+                    <div className={styles.heroImageContainer}>
+                      <Image
+                        src={heroImage}
+                        alt={`${eyebrow} in Bhubaneswar — Marketing Copilot`}
+                        fill
+                        priority
+                        sizes="(max-width: 768px) 100vw, 480px"
+                        className={styles.heroPhoto}
+                        unoptimized={heroImage?.startsWith('http')}
+                      />
+                      <div className={styles.heroPhotoOverlay} />
+
+                      {/* Floating Glass 3D Badges */}
+                      <div className={styles.floatingTopBadge}>
+                        <span className={styles.badgeEmeraldDot} />
+                        <span>Live Rank: #1 Google 3-Pack</span>
+                      </div>
+
+                      <div className={styles.floatingBottomBadge}>
+                        <span className={styles.badgeEmeraldDot} />
+                        <span>Marketing Copilot · Bhubaneswar</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Tactile Extruded Metric Tiles */}
+                  <div className={styles.visualMetricsGrid}>
+                    {metrics.map((m) => (
+                      <div key={m.label} className={styles.vMetric}>
+                        <span className={styles.vVal} style={{ color }}>
+                          {m.val}
+                        </span>
+                        <span className={styles.vLabel}>{m.label}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              </ScrollReveal>
+              </div>
             </div>
           </div>
         </div>

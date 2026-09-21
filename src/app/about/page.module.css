@@ -229,6 +229,22 @@
   box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
+.slideItem {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease-in-out, transform 8s ease-out;
+  transform: scale(1.04);
+  will-change: opacity, transform;
+}
+
+.slideActive {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
 .slideImage {
   object-fit: cover !important;
   object-position: center 20% !important;
@@ -275,6 +291,44 @@
 
 .badgeText {
   color: #FFFFFF;
+}
+
+.dotsWrap {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 6px 18px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.dotActive {
+  width: 24px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #FFB800 0%, #F59E0B 100%);
+  box-shadow: 0 0 12px rgba(255, 184, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 /* ═══════════════════════════════════════════════════════════

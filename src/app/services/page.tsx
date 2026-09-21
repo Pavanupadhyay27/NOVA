@@ -191,24 +191,21 @@ const serviceCatalog: ServiceItem[] = [
 const heroSlides = [
   {
     id: 'slide-1',
-    src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1600&auto=format&fit=crop',
-    alt: 'Marketing Copilot organic search analytics and Google keyword rankings dashboard',
-    badge: 'Live Revenue & SERP Telemetry',
-    caption: 'Algorithmic Growth Telemetry & Search Moats in Bhubaneswar',
+    src: '/images/Slide 1.jpg',
+    alt: 'Marketing Copilot digital marketing company strategy and campaigns in Bhubaneswar',
+    caption: 'Strategic Growth & Execution',
   },
   {
     id: 'slide-2',
-    src: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1600&auto=format&fit=crop',
-    alt: 'Sub-second Next.js web engineering and high-conversion UI design display',
-    badge: 'Sub-Second Web & Design Systems',
-    caption: 'Next.js 15 Sub-Second Web Architecture & Conversion Systems',
+    src: '/images/slide 3.webp',
+    alt: 'Marketing Copilot marketing performance data and digital solutions',
+    caption: 'Performance & 10x ROI',
   },
   {
     id: 'slide-3',
-    src: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1600&auto=format&fit=crop',
-    alt: 'Senior digital marketing strategy sprint team at Kharvela Nagar studio',
-    badge: 'Senior Strategy Sprint Studio',
-    caption: 'Executive Strategy Reviews at Kharvela Nagar Studio',
+    src: '/images/Slide 2.jpg',
+    alt: 'Creative marketing professionals planning growth strategies and digital solutions',
+    caption: 'Creative & Performance Marketing',
   },
 ];
 
@@ -709,48 +706,46 @@ export default function ServicesPage() {
 
               {/* Right Pane: Clean Photography Showcase (Exact same as Home Hero) */}
               <div className={styles.visual}>
-                <ScrollReveal delay={120}>
-                  <div className={styles.imageCard}>
-                    <div className={styles.imageViewport}>
-                      {heroSlides.map((slide, idx) => (
-                        <div
-                          key={slide.id}
-                          className={`${styles.slideItem} ${idx === currentHeroSlide ? styles.slideActive : ''}`}
-                        >
-                          <Image
-                            src={slide.src}
-                            alt={slide.alt}
-                            fill
-                            priority={idx === 0}
-                            sizes="(max-width: 900px) 100vw, 680px"
-                            quality={95}
-                            className={styles.slideImage}
-                          />
-                          <div className={styles.slideOverlay} />
-                        </div>
+                <div className={styles.imageCard}>
+                  <div className={styles.imageViewport}>
+                    {heroSlides.map((slide, idx) => (
+                      <div
+                        key={slide.id}
+                        className={`${styles.slideItem} ${idx === currentHeroSlide ? styles.slideActive : ''}`}
+                      >
+                        <Image
+                          src={slide.src}
+                          alt={slide.alt}
+                          fill
+                          priority={idx === 0}
+                          sizes="(max-width: 900px) 100vw, 680px"
+                          quality={95}
+                          className={styles.slideImage}
+                        />
+                        <div className={styles.slideOverlay} />
+                      </div>
+                    ))}
+
+                    {/* Minimalist Floating Status Badge */}
+                    <div className={styles.floatingBadge}>
+                      <span className={styles.badgePulse} />
+                      <span className={styles.badgeText}>Live Studio Feed • Bhubaneswar</span>
+                    </div>
+
+                    {/* Minimalist Tactile Dot Indicators */}
+                    <div className={styles.dotsWrap}>
+                      {heroSlides.map((_, idx) => (
+                        <button
+                          key={idx}
+                          type="button"
+                          className={`${styles.dot} ${idx === currentHeroSlide ? styles.dotActive : ''}`}
+                          onClick={() => setCurrentHeroSlide(idx)}
+                          aria-label={`Switch to slide ${idx + 1}`}
+                        />
                       ))}
-
-                      {/* Minimalist Floating Status Badge */}
-                      <div className={styles.floatingBadge}>
-                        <span className={styles.badgePulse} />
-                        <span className={styles.badgeText}>Live Studio Feed • Bhubaneswar</span>
-                      </div>
-
-                      {/* Minimalist Tactile Dot Indicators */}
-                      <div className={styles.dotsWrap}>
-                        {heroSlides.map((_, idx) => (
-                          <button
-                            key={idx}
-                            type="button"
-                            className={`${styles.dot} ${idx === currentHeroSlide ? styles.dotActive : ''}`}
-                            onClick={() => setCurrentHeroSlide(idx)}
-                            aria-label={`Switch to slide ${idx + 1}`}
-                          />
-                        ))}
-                      </div>
                     </div>
                   </div>
-                </ScrollReveal>
+                </div>
               </div>
             </div>
           </div>
