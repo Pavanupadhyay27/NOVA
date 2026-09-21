@@ -235,20 +235,14 @@ export default function IndustriesPage() {
       <section className={styles.heroSection}>
         <div className={styles.heroGlowOverlay} />
         <div className="container">
-          {/* Centered Eyebrow */}
-          <div className={styles.heroEyebrowCenter}>
-            <ScrollReveal>
-              <div className="eyebrow eyebrow-center">
-                <span className="eyebrow-dot" />
-                12 SPECIALIZED SECTORS IN BHUBANESWAR & ODISHA
-              </div>
-            </ScrollReveal>
-          </div>
-
           <div className={styles.heroDualPane}>
             {/* Left Pane: Strategic Positioning & Sector Launcher */}
             <div className={styles.heroLeftPane}>
               <ScrollReveal>
+                <div className="eyebrow" style={{ marginBottom: 12 }}>
+                  <span className="eyebrow-dot" />
+                  SPECIALIZED INDUSTRY ARCHITECTURES &bull; BHUBANESWAR &amp; ODISHA
+                </div>
                 <h1 className={`display-xl ${styles.heroTitle}`}>
                   Bhubaneswar Digital Marketing<br />
                   <span className="accent-gradient">Built for Your Specific Industry.</span>
@@ -268,11 +262,11 @@ export default function IndustriesPage() {
                   </Link>
                 </div>
 
-                {/* Direct Access Quick Sector Chips */}
+                {/* Priority Direct Sector Access — Only 4 Visible + See All Button */}
                 <div className={styles.heroTagsStrip}>
-                  <span className={styles.heroTagsLabel}>DIRECT SECTOR ACCESS:</span>
+                  <span className={styles.heroTagsLabel}>PRIORITY SECTORS:</span>
                   <div className={styles.heroTagsList}>
-                    {industryCatalog.map(ind => {
+                    {industryCatalog.slice(0, 4).map(ind => {
                       const isSelected = ind.id === selectedIndustryId;
                       return (
                         <button
@@ -281,12 +275,8 @@ export default function IndustriesPage() {
                           className={`${styles.heroTagBtn} ${isSelected ? styles.heroTagBtnActive : ''}`}
                           onClick={() => {
                             setSelectedIndustryId(ind.id);
-                            const el = document.getElementById(`sector-card-${ind.id}`);
+                            const el = document.getElementById(`sector-card-${ind.id}`) || document.getElementById('sector-showcase');
                             if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                            else {
-                              const s = document.getElementById('sector-showcase');
-                              if (s) s.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            }
                           }}
                         >
                           <span style={{ marginRight: 4 }}>{sectorIcons[ind.id] || '⚡'}</span>
@@ -294,12 +284,19 @@ export default function IndustriesPage() {
                         </button>
                       );
                     })}
+
+                    <a
+                      href="#sector-showcase"
+                      className={styles.heroSeeMoreBtn}
+                    >
+                      See All 12 Sectors ↓
+                    </a>
                   </div>
                 </div>
               </ScrollReveal>
             </div>
 
-            {/* Right Pane: Visual Operations Cockpit */}
+            {/* Right Pane: Clean Visual Operations Cockpit (No numbers/overlapping badges) */}
             <div className={styles.heroRightPane}>
               <ScrollReveal delay={120}>
                 <div className={styles.heroVisualCockpit}>
@@ -314,29 +311,6 @@ export default function IndustriesPage() {
                     <div className={styles.heroImgOverlay} />
                     <div className={styles.heroCornerTL} />
                     <div className={styles.heroCornerBR} />
-
-                    {/* Floating Frosted Glass KPI Badges - Non-colliding */}
-                    <div className={`${styles.floatingKpiBadge} ${styles.kpiTopLeft}`}>
-                      <span className={styles.kpiIcon}>🏢</span>
-                      <div className={styles.kpiContent}>
-                        <div className={styles.kpiValue}>90+ Inbound Buyers / Mo</div>
-                        <div className={styles.kpiSub}>Real Estate • Patia Corridor</div>
-                      </div>
-                    </div>
-
-                    <div className={`${styles.floatingKpiBadge} ${styles.kpiBottomRight}`}>
-                      <span className={styles.kpiIcon}>🏥</span>
-                      <div className={styles.kpiContent}>
-                        <div className={styles.kpiValue}>+190% Patient Calls</div>
-                        <div className={styles.kpiSub}>Healthcare • Saheed Nagar 3-Pack</div>
-                      </div>
-                    </div>
-
-                    {/* Center Bottom Live Intelligence Pill */}
-                    <div className={styles.heroLiveCenterPill}>
-                      <span className={styles.pulseDotGreen} />
-                      <span>LIVE ODISHA SECTOR INTELLIGENCE • 12 VERTICALS MONITORED</span>
-                    </div>
                   </div>
                 </div>
               </ScrollReveal>
@@ -385,9 +359,11 @@ export default function IndustriesPage() {
       <section className={styles.sectorShowcaseSection} id="sector-showcase">
         <div className="container">
           <ScrollReveal>
-            <div className="eyebrow" style={{ margin: '0 auto 16px', textAlign: 'center' }}>
-              <span className="eyebrow-dot" />
-              THE 12 SPECIALIZED SECTOR ARCHITECTURES
+            <div className={styles.sectionEyebrowCenter}>
+              <div className="eyebrow eyebrow-center">
+                <span className="eyebrow-dot" />
+                THE 12 SPECIALIZED SECTOR ARCHITECTURES
+              </div>
             </div>
             <h2 className={`display-md ${styles.sectionHeading}`}>
               Bespoke Industry Acquisition Engines.<br />
@@ -493,14 +469,16 @@ export default function IndustriesPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════
-          SECTION 4: CROSS-SECTOR COMMERCIAL BENCHMARK MATRIX TABLE
+          SECTION 4: CROSS-SECTOR COMMERCIAL BENCHMARK MATRIX (NO HORIZONTAL SCROLL)
          ══════════════════════════════════════════════════════════ */}
       <section className={styles.tableSection} id="sector-matrix">
         <div className="container">
           <ScrollReveal>
-            <div className="eyebrow" style={{ margin: '0 auto 16px', textAlign: 'center' }}>
-              <span className="eyebrow-dot" />
-              EXECUTIVE COMPARISON MATRIX
+            <div className={styles.sectionEyebrowCenter}>
+              <div className="eyebrow eyebrow-center">
+                <span className="eyebrow-dot" />
+                EXECUTIVE COMPARISON MATRIX
+              </div>
             </div>
             <h2 className={`display-md ${styles.sectionHeading}`}>
               Cross-Sector Performance Benchmarks<br />
@@ -512,48 +490,96 @@ export default function IndustriesPage() {
           </ScrollReveal>
 
           <ScrollReveal delay={80}>
-            <div className={styles.tableContainer}>
-              <table className={styles.matrixTable}>
-                <thead>
-                  <tr>
-                    <th>SECTOR VERTICAL</th>
-                    <th>TYPICAL CPL (BHUBANESWAR)</th>
-                    <th>PRIMARY ACQUISITION ENGINE</th>
-                    <th>TARGET ROAS / YIELD</th>
-                    <th>CONVERSION VELOCITY</th>
-                    <th>CLIENT ANCHOR</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {industryCatalog.map((ind) => (
-                    <tr key={ind.id} onClick={() => {
+            <div className={styles.matrixDeckCard}>
+              {/* Matrix Card Header Strip with Category Filter */}
+              <div className={styles.matrixCardTopBar}>
+                <div className={styles.matrixCardHeaderInfo}>
+                  <span className={styles.matrixCardTitle}>ALL 12 COMMERCIAL VERTICALS</span>
+                  <span className={styles.matrixCardSub}>Audited CPL, Yield & Acquisition Velocity in Odisha</span>
+                </div>
+                <div className={styles.matrixFilterPills}>
+                  {sectorGroups.map(grp => (
+                    <button
+                      key={grp.id}
+                      type="button"
+                      className={`${styles.matrixFilterPillBtn} ${activeSectorGroup === grp.id ? styles.matrixFilterPillActive : ''}`}
+                      onClick={() => setActiveSectorGroup(grp.id)}
+                    >
+                      {grp.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Desktop Grid Header (Hidden on Mobile/Tablet) */}
+              <div className={styles.matrixGridHeader}>
+                <div>SECTOR VERTICAL</div>
+                <div>TYPICAL CPL</div>
+                <div>PRIMARY ENGINE</div>
+                <div>TARGET YIELD</div>
+                <div>CONVERSION SPEED</div>
+                <div>CLIENT ANCHOR</div>
+              </div>
+
+              {/* Matrix Rows List — 100% visible inside the card without horizontal scroll */}
+              <div className={styles.matrixRowsList}>
+                {filteredIndustries.map((ind) => (
+                  <div
+                    key={ind.id}
+                    className={styles.matrixRowItem}
+                    onClick={() => {
                       setSelectedIndustryId(ind.id);
                       const el = document.getElementById(`sector-card-${ind.id}`) || document.getElementById('sector-showcase');
                       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }}>
-                      <td className={styles.tableSectorCell}>
-                        <span className={styles.tableSectorIcon}>{sectorIcons[ind.id] || '⚡'}</span>
-                        <span className={styles.tableSectorTitle}>{ind.title}</span>
-                      </td>
-                      <td className={styles.tableMetricCell}>
-                        <span className={styles.metricPill}>{ind.metric}</span>
-                      </td>
-                      <td className={styles.tableChannelCell}>
+                    }}
+                  >
+                    {/* Column 1: Sector Info */}
+                    <div className={styles.matrixSectorCell}>
+                      <span className={styles.matrixSectorIcon}>{sectorIcons[ind.id] || '⚡'}</span>
+                      <div className={styles.matrixSectorMeta}>
+                        <span className={styles.matrixSectorName}>{ind.title}</span>
+                        <span className={styles.matrixSectorCategory}>{ind.category}</span>
+                      </div>
+                    </div>
+
+                    {/* Column 2: Typical CPL */}
+                    <div className={styles.matrixCplCell}>
+                      <span className={styles.mobileColLabel}>TYPICAL CPL</span>
+                      <span className={styles.matrixCplBadge}>{ind.metric}</span>
+                    </div>
+
+                    {/* Column 3: Primary Engine */}
+                    <div className={styles.matrixEngineCell}>
+                      <span className={styles.mobileColLabel}>PRIMARY ENGINE</span>
+                      <span className={styles.matrixEngineText}>
                         {ind.services[0]} &bull; {ind.services[1]}
-                      </td>
-                      <td className={styles.tableBadgeCell}>
-                        <span className={styles.badgePill}>{ind.badge}</span>
-                      </td>
-                      <td className={styles.tableVelocityCell}>
-                        {ind.playbook.benchmarks[0]?.val || 'Verified'}
-                      </td>
-                      <td className={styles.tableAnchorCell}>
-                        {ind.playbook.clientAnchor.split('&')[0]}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+                      </span>
+                    </div>
+
+                    {/* Column 4: Target Yield */}
+                    <div className={styles.matrixYieldCell}>
+                      <span className={styles.mobileColLabel}>TARGET YIELD</span>
+                      <span className={styles.matrixYieldBadge}>{ind.badge}</span>
+                    </div>
+
+                    {/* Column 5: Velocity */}
+                    <div className={styles.matrixVelocityCell}>
+                      <span className={styles.mobileColLabel}>VELOCITY</span>
+                      <span className={styles.matrixVelocityText}>
+                        ⏱️ {ind.playbook.benchmarks[0]?.val || 'Verified'}
+                      </span>
+                    </div>
+
+                    {/* Column 6: Client Anchor */}
+                    <div className={styles.matrixAnchorCell}>
+                      <span className={styles.mobileColLabel}>CLIENT ANCHOR</span>
+                      <span className={styles.matrixAnchorText}>
+                        📍 {ind.playbook.clientAnchor.split('&')[0]}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </ScrollReveal>
         </div>
@@ -565,9 +591,11 @@ export default function IndustriesPage() {
       <section className={styles.corridorSection} id="sector-corridors">
         <div className="container">
           <ScrollReveal>
-            <div className="eyebrow" style={{ margin: '0 auto 16px', textAlign: 'center' }}>
-              <span className="eyebrow-dot" />
-              GEOGRAPHIC FOOTPRINT
+            <div className={styles.sectionEyebrowCenter}>
+              <div className="eyebrow eyebrow-center">
+                <span className="eyebrow-dot" />
+                GEOGRAPHIC FOOTPRINT
+              </div>
             </div>
             <h2 className={`display-md ${styles.sectionHeading}`}>
               Bhubaneswar Commercial Corridors<br />
@@ -691,9 +719,11 @@ export default function IndustriesPage() {
       <section className={styles.diagnosticSection} id="sector-diagnostic">
         <div className="container">
           <ScrollReveal>
-            <div className="eyebrow" style={{ margin: '0 auto 16px', textAlign: 'center' }}>
-              <span className="eyebrow-dot" />
-              INTERACTIVE REVENUE DIAGNOSTIC
+            <div className={styles.sectionEyebrowCenter}>
+              <div className="eyebrow eyebrow-center">
+                <span className="eyebrow-dot" />
+                INTERACTIVE REVENUE DIAGNOSTIC
+              </div>
             </div>
             <h2 className={`display-md ${styles.sectionHeading}`}>
               Find the Exact Growth Engine<br />
@@ -902,9 +932,11 @@ export default function IndustriesPage() {
       <section className={styles.tierTerminalSection} id="sector-tiers">
         <div className="container">
           <ScrollReveal>
-            <div className="eyebrow" style={{ margin: '0 auto 16px', textAlign: 'center' }}>
-              <span className="eyebrow-dot" />
-              PARTNERSHIP ARCHITECTURE
+            <div className={styles.sectionEyebrowCenter}>
+              <div className="eyebrow eyebrow-center">
+                <span className="eyebrow-dot" />
+                PARTNERSHIP ARCHITECTURE
+              </div>
             </div>
             <h2 className={`display-md ${styles.sectionHeading}`}>
               Outcome-Oriented Engagement Models<br />

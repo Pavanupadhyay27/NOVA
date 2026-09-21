@@ -31,19 +31,17 @@
   pointer-events: none;
 }
 
-/* Centered Eyebrow Text */
-.heroEyebrowCenter {
+/* Section Eyebrow Centered (For All Non-Hero Sections) */
+.sectionEyebrowCenter {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin-bottom: 16px;
   text-align: center;
-  margin-bottom: 12px;
-  position: relative;
-  z-index: 2;
 }
 
-.heroEyebrowCenter :global(.reveal) {
+.sectionEyebrowCenter :global(.reveal) {
   display: flex;
   justify-content: center;
   width: 100%;
@@ -171,6 +169,32 @@
   border-color: #0B2093 !important;
   color: #FFFFFF !important;
   box-shadow: 0 4px 12px rgba(11, 32, 147, 0.25);
+}
+
+.heroSeeMoreBtn {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(11, 32, 147, 0.08);
+  border: 1.5px dashed rgba(11, 32, 147, 0.35);
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  color: #0B2093;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.heroSeeMoreBtn:hover {
+  background: #0B2093;
+  color: #FFFFFF;
+  border-style: solid;
+  border-color: #0B2093;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(11, 32, 147, 0.2);
 }
 
 /* Right Pane: Visual Operations Cockpit */
@@ -735,108 +759,219 @@
    SECTION 4: CROSS-SECTOR BENCHMARK MATRIX TABLE
    ───────────────────────────────────────────────────────────── */
 .tableSection {
-  padding: 110px 0 96px;
+  padding: 100px 0 96px;
   background: #FFFFFF;
   border-bottom: 1px solid var(--border-subtle);
   scroll-margin-top: calc(var(--nav-height, 78px) + 36px);
 }
 
-.tableContainer {
+.matrixDeckCard {
   background: #FFFFFF;
   border-radius: var(--radius-2xl);
   border: 1.5px solid rgba(11, 32, 147, 0.12);
   box-shadow: 0 24px 64px -12px rgba(11, 32, 147, 0.1), 0 4px 16px rgba(0, 0, 0, 0.04);
-  overflow-x: auto;
-}
-
-.matrixTable {
+  overflow: hidden;
   width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-  font-size: 13px;
 }
 
-.matrixTable thead tr {
-  background: #0B2093;
-  color: #FFFFFF;
+.matrixCardTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 24px;
+  background: #F8FAFC;
+  border-bottom: 1.5px solid var(--border);
+  flex-wrap: wrap;
 }
 
-.matrixTable th {
-  padding: 16px 20px;
+.matrixCardHeaderInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.matrixCardTitle {
   font-family: var(--font-display);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.06em;
-  color: #FFFFFF;
-  white-space: nowrap;
+  color: #0B2093;
 }
 
-.matrixTable tbody tr {
-  border-bottom: 1px solid var(--border-subtle);
+.matrixCardSub {
+  font-size: 11px;
+  color: #64748B;
+  font-weight: 600;
+}
+
+.matrixFilterPills {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.matrixFilterPillBtn {
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  color: #334155;
   cursor: pointer;
   transition: all var(--transition-fast);
 }
 
-.matrixTable tbody tr:hover {
-  background: rgba(11, 32, 147, 0.03);
+.matrixFilterPillBtn:hover {
+  border-color: #0B2093;
+  color: #0B2093;
 }
 
-.matrixTable td {
-  padding: 16px 20px;
-  color: #334155;
-  white-space: nowrap;
+.matrixFilterPillActive {
+  background: #0B2093 !important;
+  border-color: #0B2093 !important;
+  color: #FFFFFF !important;
 }
 
-.tableSectorCell {
+.matrixGridHeader {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.6fr 1fr 1fr 1.4fr;
+  padding: 14px 24px;
+  background: #0B2093;
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  align-items: center;
+}
+
+.matrixRowsList {
+  display: flex;
+  flex-direction: column;
+}
+
+.matrixRowItem {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.6fr 1fr 1fr 1.4fr;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border-subtle);
+  align-items: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  background: #FFFFFF;
+}
+
+.matrixRowItem:last-child {
+  border-bottom: none;
+}
+
+.matrixRowItem:hover {
+  background: rgba(11, 32, 147, 0.035);
+  transform: translateX(2px);
+}
+
+.matrixSectorCell {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.matrixSectorIcon {
+  font-size: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.matrixSectorMeta {
+  display: flex;
+  flex-direction: column;
+}
+
+.matrixSectorName {
   font-family: var(--font-display);
+  font-size: 14px;
   font-weight: 800;
   color: #000000;
+  line-height: 1.25;
 }
 
-.tableSectorIcon {
-  font-size: 18px;
+.matrixSectorCategory {
+  font-size: 10px;
+  color: #64748B;
+  font-weight: 600;
 }
 
-.tableSectorTitle {
-  color: #000000;
+.mobileColLabel {
+  display: none;
 }
 
-.tableMetricCell {
-  font-family: var(--font-display);
-  font-weight: 800;
+.matrixCplCell {
+  display: flex;
+  align-items: center;
 }
 
-.metricPill {
+.matrixCplBadge {
+  display: inline-flex;
   padding: 4px 10px;
   border-radius: var(--radius-full);
   background: rgba(11, 32, 147, 0.08);
   color: #0B2093;
-}
-
-.tableChannelCell {
+  font-family: var(--font-display);
   font-size: 12px;
-  color: #64748B;
-}
-
-.badgePill {
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  background: rgba(245, 158, 11, 0.1);
-  border: 1px solid rgba(245, 158, 11, 0.3);
-  color: #D97706;
-  font-size: 10px;
   font-weight: 800;
 }
 
-.tableVelocityCell {
-  font-weight: 700;
-  color: #059669;
+.matrixEngineCell {
+  display: flex;
+  align-items: center;
 }
 
-.tableAnchorCell {
+.matrixEngineText {
+  font-size: 12px;
+  color: #334155;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.matrixYieldCell {
+  display: flex;
+  align-items: center;
+}
+
+.matrixYieldBadge {
+  display: inline-flex;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  color: #047857;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.matrixVelocityCell {
+  display: flex;
+  align-items: center;
+}
+
+.matrixVelocityText {
+  font-size: 12px;
+  font-weight: 700;
+  color: #475569;
+}
+
+.matrixAnchorCell {
+  display: flex;
+  align-items: center;
+}
+
+.matrixAnchorText {
+  font-size: 12px;
   color: #64748B;
   font-weight: 600;
 }
@@ -1902,6 +2037,33 @@
   .diagBudgetGrid {
     grid-template-columns: 1fr;
   }
+  .matrixGridHeader {
+    display: none;
+  }
+  .matrixRowItem {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 16px 20px;
+  }
+  .matrixSectorCell {
+    grid-column: 1 / -1;
+  }
+  .mobileColLabel {
+    display: block;
+    font-size: 9px;
+    font-weight: 800;
+    color: #64748B;
+    margin-bottom: 2px;
+    letter-spacing: 0.04em;
+  }
+  .matrixCplCell,
+  .matrixEngineCell,
+  .matrixYieldCell,
+  .matrixVelocityCell,
+  .matrixAnchorCell {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 @media (max-width: 768px) {
@@ -2036,6 +2198,31 @@
   }
   .tableSection {
     padding: 64px 0 56px;
+  }
+  .matrixCardTopBar {
+    padding: 14px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .matrixFilterPills {
+    overflow-x: auto;
+    width: 100%;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+  .matrixFilterPills::-webkit-scrollbar {
+    display: none;
+  }
+  .matrixRowItem {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 14px 16px;
+  }
+  .matrixEngineCell,
+  .matrixAnchorCell {
+    grid-column: 1 / -1;
   }
   .corridorSection {
     padding: 64px 0 56px;
