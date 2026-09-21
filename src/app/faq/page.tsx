@@ -408,14 +408,6 @@ export default function FAQPage() {
                     </div>
                   </div>
 
-                  {/* Tactical KPI Tag */}
-                  <div className={styles.heroTactileKpiBadge}>
-                    <span className={styles.kpiBadgeIcon}>🔒</span>
-                    <div className={styles.kpiBadgeMeta}>
-                      <strong>100% Written Attribution SLA</strong>
-                      <span>Direct CPL ceilings &amp; zero long-term lock-in</span>
-                    </div>
-                  </div>
                 </div>
               </ScrollReveal>
             </div>
