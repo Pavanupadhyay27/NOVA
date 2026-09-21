@@ -26,8 +26,12 @@ const filterCategories = ['All', 'SEO', 'Paid Ads', 'Web Development', 'E-commer
 export default function PortfolioPage() {
   const [activeFilter, setActiveFilter] = useState('All');
   const [selectedCase, setSelectedCase] = useState<CaseStudyItem | null>(null);
+  const [activeRibbonIndex, setActiveRibbonIndex] = useState(0);
+  const [isRibbonPaused, setIsRibbonPaused] = useState(false);
   const [activeHudIndex, setActiveHudIndex] = useState(0);
+  const [isHudPaused, setIsHudPaused] = useState(false);
   const [activeGeoIndex, setActiveGeoIndex] = useState(0);
+  const [isGeoPaused, setIsGeoPaused] = useState(false);
   const [activeIndustry, setActiveIndustry] = useState(industryVerticals[0].id);
   const [activeRoiIndex, setActiveRoiIndex] = useState(1); // Default to Growth tier
   const [isPaused, setIsPaused] = useState(false);
@@ -56,6 +60,33 @@ export default function PortfolioPage() {
 
     return () => clearInterval(interval);
   }, [isPaused]);
+
+  // Auto-cycling stats ribbon (every 2.5s)
+  useEffect(() => {
+    if (isRibbonPaused) return;
+    const interval = setInterval(() => {
+      setActiveRibbonIndex((prev) => (prev + 1) % proofMetrics.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, [isRibbonPaused]);
+
+  // Auto-cycling Audited Commercial Deltas (every 3.5s)
+  useEffect(() => {
+    if (isHudPaused) return;
+    const interval = setInterval(() => {
+      setActiveHudIndex((prev) => (prev + 1) % transformationData.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [isHudPaused]);
+
+  // Auto-cycling Regional Footprint (every 3.5s)
+  useEffect(() => {
+    if (isGeoPaused) return;
+    const interval = setInterval(() => {
+      setActiveGeoIndex((prev) => (prev + 1) % geoImpactLocations.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [isGeoPaused]);
 
   const slideManual = (direction: 'left' | 'right') => {
     if (!sliderRef.current) return;
@@ -150,14 +181,27 @@ export default function PortfolioPage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 2: PANORAMIC STATS RIBBON (NO BOXY CARDS)
+          SECTION 2: INTERACTIVE AUTO-CYCLING PANORAMIC STATS RIBBON
           ───────────────────────────────────────────────────────────── */}
       <section className={styles.proofSection}>
         <div className="container">
           <ScrollReveal>
-            <div className={styles.panoramicRibbon}>
-              {proofMetrics.map((m) => (
-                <div key={m.label} className={styles.ribbonItem}>
+            <div
+              className={styles.panoramicRibbon}
+              onMouseEnter={() => setIsRibbonPaused(true)}
+              onMouseLeave={() => setIsRibbonPaused(false)}
+            >
+              {proofMetrics.map((m, idx) => (
+                <div
+                  key={m.label}
+                  className={`${styles.ribbonItem} ${activeRibbonIndex === idx ? styles.ribbonItemActive : ''}`}
+                  onClick={() => setActiveRibbonIndex(idx)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') setActiveRibbonIndex(idx);
+                  }}
+                >
                   <span className={styles.ribbonVal}>{m.val}</span>
                   <span className={styles.ribbonLabel}>{m.label}</span>
                   <span className={styles.ribbonSub}>{m.sub}</span>
@@ -169,7 +213,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 3: FEATURED COMMERCIAL MILESTONE
+          SECTION 3: FEATURED COMMERCIAL MILESTONE (UNZOOMED & UNOBSTRUCTED IMAGE)
           ───────────────────────────────────────────────────────────── */}
       <section className={styles.spotlightSection}>
         <div className="container">
@@ -190,8 +234,8 @@ export default function PortfolioPage() {
 
           <ScrollReveal delay={100}>
             <div className={styles.spotlightCard}>
-              {/* Visual Side */}
-              <div className={styles.spotlightVisual}>
+              {/* Unobstructed, natural framing photo container - Zero text/stats overlapping */}
+              <div className={styles.spotlightVisualFrame}>
                 <Image
                   src={spotlightProject.image}
                   alt={spotlightProject.client}
@@ -199,28 +243,26 @@ export default function PortfolioPage() {
                   sizes="(max-width: 900px) 100vw, 600px"
                   className={styles.spotlightVisualImg}
                 />
-                <div className={styles.spotlightOverlay} />
-
-                <div className={styles.spotlightPillRow}>
-                  <span className={styles.spotlightTag}>{spotlightProject.service}</span>
-                  <span className={styles.spotlightLocation}>{spotlightProject.location}</span>
-                </div>
-
-                <div className={styles.spotlightVisualStats}>
-                  {spotlightProject.stats.map((s) => (
-                    <div key={s.label} className={styles.spotlightStatBox}>
-                      <div className={styles.spotlightStatVal}>{s.val}</div>
-                      <div className={styles.spotlightStatLabel}>{s.label}</div>
-                    </div>
-                  ))}
+                <div className={styles.spotlightLocationBadge}>
+                  <span>{spotlightProject.service} • {spotlightProject.location}</span>
                 </div>
               </div>
 
-              {/* Content Side */}
+              {/* Content Side with Clean Debossed Metrics Row */}
               <div className={styles.spotlightContent}>
                 <span className={styles.spotlightClient}>{spotlightProject.client}</span>
                 <h3 className={styles.spotlightHeadline}>{spotlightProject.headline}</h3>
                 <p className={styles.spotlightDesc}>{spotlightProject.desc}</p>
+
+                {/* Clean metrics row inside content side - NOT on top of image */}
+                <div className={styles.spotlightStatsRowClean}>
+                  {spotlightProject.stats.map((s) => (
+                    <div key={s.label} className={styles.spotlightStatPillClean}>
+                      <div className={styles.spotlightStatValClean}>{s.val}</div>
+                      <div className={styles.spotlightStatLabelClean}>{s.label}</div>
+                    </div>
+                  ))}
+                </div>
 
                 <div className={styles.spotlightDeliverables}>
                   <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase' }}>
@@ -440,7 +482,7 @@ export default function PortfolioPage() {
       )}
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 5: AUDITED COMMERCIAL DELTAS (ELEVATED VELOCITY COCKPIT)
+          SECTION 5: AUDITED COMMERCIAL DELTAS (AUTO-ANIMATED VELOCITY COCKPIT)
           ───────────────────────────────────────────────────────────── */}
       <section className={styles.transformSection}>
         <div className="container">
@@ -454,13 +496,17 @@ export default function PortfolioPage() {
                 Before vs. After <span className="accent-gradient">Marketing Copilot</span>
               </h2>
               <p className={styles.sectionSub}>
-                Select any benchmark to inspect the tangible shift from legacy agency retainers to revenue engineering.
+                Select any benchmark to inspect the tangible shift from legacy agency retainers to revenue engineering. Auto-advances every 3.5 seconds.
               </p>
             </ScrollReveal>
           </div>
 
           <ScrollReveal>
-            <div className={styles.velocityCockpit}>
+            <div
+              className={styles.velocityCockpit}
+              onMouseEnter={() => setIsHudPaused(true)}
+              onMouseLeave={() => setIsHudPaused(false)}
+            >
               {/* Metric Selector Tabs */}
               <div className={styles.velocityTabsRow}>
                 {transformationData.map((t, idx) => (
@@ -474,8 +520,8 @@ export default function PortfolioPage() {
                 ))}
               </div>
 
-              {/* Velocity Display Area */}
-              <div className={styles.velocityDisplayArea}>
+              {/* Velocity Display Area with Smooth Animation */}
+              <div key={activeHudIndex} className={styles.velocityDisplayArea}>
                 <div className={styles.velocityComparisonGrid}>
                   {/* Left: Before Card */}
                   <div className={styles.velocityCardBefore}>
@@ -556,7 +602,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 7: REGIONAL FOOTPRINT — NON-CARD TRANSIT BLUEPRINT
+          SECTION 7: REGIONAL FOOTPRINT — AUTO-ANIMATED TRANSIT BLUEPRINT
           ───────────────────────────────────────────────────────────── */}
       <section className={styles.geoSection}>
         <div className="container">
@@ -570,13 +616,17 @@ export default function PortfolioPage() {
                 Hyperlocal Dominance Across <span className="accent-gradient">Bhubaneswar &amp; Odisha</span>
               </h2>
               <p className={styles.sectionSub}>
-                Explore our live search dominance and lead generation metrics across major commercial corridors.
+                Explore our live search dominance and lead generation metrics across major commercial corridors. Auto-advances across transit stations.
               </p>
             </ScrollReveal>
           </div>
 
           <ScrollReveal>
-            <div className={styles.transitBlueprintContainer}>
+            <div
+              className={styles.transitBlueprintContainer}
+              onMouseEnter={() => setIsGeoPaused(true)}
+              onMouseLeave={() => setIsGeoPaused(false)}
+            >
               {/* Interconnected Horizontal Corridor Route */}
               <div className={styles.routeTrack}>
                 {geoImpactLocations.map((geo, idx) => (
@@ -591,8 +641,8 @@ export default function PortfolioPage() {
                 ))}
               </div>
 
-              {/* Panoramic Territory Blueprint Pane (Non-Card) */}
-              <div className={styles.blueprintPane}>
+              {/* Panoramic Territory Blueprint Pane with Smooth Transition */}
+              <div key={activeGeoIndex} className={styles.blueprintPane}>
                 <div className={styles.blueprintHeaderRow}>
                   <div className={styles.blueprintCodeArea}>
                     <span className={styles.blueprintCodeBadge}>{currentGeo.code}</span>
@@ -648,7 +698,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 8: TAILORED VERTICAL PLAYBOOKS (3-COLUMN BENTO STYLE)
+          SECTION 8: TAILORED VERTICAL PLAYBOOKS (ENHANCED SKEUOMORPHIC BENTO)
           ───────────────────────────────────────────────────────────── */}
       <section className={styles.industrySection}>
         <div className="container">
@@ -750,7 +800,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 9: FOUNDER TESTIMONIALS (EQUAL-HEIGHT & BOTTOM-ALIGNED)
+          SECTION 9: FOUNDER TESTIMONIALS (REAL IMAGES & BOTTOM-ALIGNED)
           ───────────────────────────────────────────────────────────── */}
       <section className={styles.testimonialSection}>
         <div className="container">
@@ -781,11 +831,20 @@ export default function PortfolioPage() {
                     <p className={styles.quoteText} style={{ marginTop: 14 }}>&ldquo;{t.quote}&rdquo;</p>
                   </div>
 
-                  {/* Bottom-Aligned Author Row */}
+                  {/* Bottom-Aligned Author Row with Real Founder Avatar */}
                   <div className={styles.authorRow}>
+                    <div className={styles.avatarImgWrap}>
+                      <Image
+                        src={t.image}
+                        alt={t.author}
+                        fill
+                        sizes="48px"
+                        className={styles.authorAvatarImg}
+                      />
+                    </div>
                     <div className={styles.authorMeta}>
                       <span className={styles.authorName}>{t.author}</span>
-                      <span className={styles.authorRole}>{t.role} • {t.location}</span>
+                      <span className={styles.authorRole}>{t.role} • {t.company}</span>
                       <span style={{ fontSize: 11, color: '#10B981', fontWeight: 700, marginTop: 2 }}>{t.stat}</span>
                     </div>
                   </div>
@@ -803,7 +862,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 10: INTERACTIVE ROI GROWTH CALCULATOR (REPLACING SELF-CHECK)
+          SECTION 10: INTERACTIVE ROI GROWTH CALCULATOR (3D SKEUOMORPHIC DIALS)
           ───────────────────────────────────────────────────────────── */}
       <section className={styles.calculatorSection}>
         <div className="container">
@@ -837,23 +896,47 @@ export default function PortfolioPage() {
                 ))}
               </div>
 
-              {/* Results Grid */}
+              {/* Results Grid - 3D Tactile Skeuomorphic Dials */}
               <div className={styles.roiResultsGrid}>
-                <div className={styles.roiResultCard}>
-                  <span className={styles.roiBigNumber}>{currentRoi.projectedLeads}</span>
+                <div className={styles.roiResultDial}>
                   <span className={styles.roiCardLabel}>Estimated Qualified Leads</span>
+                  <span className={styles.roiBigNumber}>{currentRoi.projectedLeads}</span>
+                  <div className={styles.roiDialMeter}>
+                    <div
+                      className={styles.roiDialFill}
+                      style={{ width: `${Math.min(100, 32 + (activeRoiIndex + 1) * 17)}%` }}
+                    />
+                  </div>
                   <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>Verified buyer inquiries</span>
                 </div>
 
-                <div className={styles.roiResultCard}>
-                  <span className={styles.roiBigNumber} style={{ color: '#10B981' }}>{currentRoi.projectedRevenue}</span>
+                <div className={styles.roiResultDial}>
                   <span className={styles.roiCardLabel}>Projected Revenue Output</span>
+                  <span className={styles.roiBigNumber} style={{ color: '#10B981' }}>{currentRoi.projectedRevenue}</span>
+                  <div className={styles.roiDialMeter}>
+                    <div
+                      className={styles.roiDialFill}
+                      style={{
+                        width: `${Math.min(100, 36 + (activeRoiIndex + 1) * 16)}%`,
+                        background: 'linear-gradient(90deg, #10B981 0%, #059669 100%)',
+                      }}
+                    />
+                  </div>
                   <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>Compounding return estimate</span>
                 </div>
 
-                <div className={styles.roiResultCard}>
-                  <span className={styles.roiBigNumber} style={{ color: '#D97706' }}>{currentRoi.roas}</span>
+                <div className={styles.roiResultDial}>
                   <span className={styles.roiCardLabel}>Expected Return on Ad Spend</span>
+                  <span className={styles.roiBigNumber} style={{ color: '#D97706' }}>{currentRoi.roas}</span>
+                  <div className={styles.roiDialMeter}>
+                    <div
+                      className={styles.roiDialFill}
+                      style={{
+                        width: `${Math.min(100, 42 + (activeRoiIndex + 1) * 14)}%`,
+                        background: 'linear-gradient(90deg, #F59E0B 0%, #D97706 100%)',
+                      }}
+                    />
+                  </div>
                   <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>Blended search + social</span>
                 </div>
               </div>
@@ -955,7 +1038,7 @@ export default function PortfolioPage() {
       <FAQSection />
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 12: BESPOKE BOTTOM CTA CARD (GLOBAL PALETTE BLUE #0B2093)
+          SECTION 12: BESPOKE BOTTOM CTA CARD (PUNCHY TEXT & GLOBAL BLUE)
           ───────────────────────────────────────────────────────────── */}
       <section className={styles.bespokeCtaSection}>
         <div className="container">
@@ -967,36 +1050,31 @@ export default function PortfolioPage() {
             </div>
 
             <h2 className={styles.bespokeCtaTitleCentered}>
-              Ready to Turn Your Marketing into a{' '}
-              <span style={{ color: '#FFB800' }}>Predictable Revenue Engine?</span>
+              Ready to Scale Your <span style={{ color: '#FFB800' }}>Revenue?</span>
             </h2>
 
             <p className={styles.bespokeCtaDescCentered}>
-              Book a complimentary 30-minute growth roadmap session. We will audit your current search visibility, ad funnels, and conversion bottlenecks with actionable steps.
+              Claim a free 30-minute growth audit. We will analyze your search rankings, ad funnels, and conversion bottlenecks.
             </p>
 
             <div className={styles.ctaPerksRow}>
               <div className={styles.ctaPerkItem}>
                 <span style={{ color: '#10B981', fontWeight: 800 }}>✓</span>
-                <span>SEO &amp; Google Maps Audit</span>
+                <span>SEO &amp; Local Maps Audit</span>
               </div>
               <div className={styles.ctaPerkItem}>
                 <span style={{ color: '#10B981', fontWeight: 800 }}>✓</span>
-                <span>Meta &amp; Google Ads Account Review</span>
+                <span>Ads &amp; Funnel Diagnostic</span>
               </div>
               <div className={styles.ctaPerkItem}>
                 <span style={{ color: '#10B981', fontWeight: 800 }}>✓</span>
-                <span>Conversion Rate Diagnostic</span>
-              </div>
-              <div className={styles.ctaPerkItem}>
-                <span style={{ color: '#10B981', fontWeight: 800 }}>✓</span>
-                <span>90-Day Custom Revenue Blueprint</span>
+                <span>90-Day Execution Roadmap</span>
               </div>
             </div>
 
             {/* Centered Action Buttons */}
             <div className={styles.ctaCenteredActions}>
-              <BeamButton href="/contact" label="Claim Free 30-Min Growth Audit" size="lg" />
+              <BeamButton href="/contact" label="Claim Free 30-Min Audit" size="lg" />
               <a
                 href="https://wa.me/918260709689?text=Hi%20Marketing%20Copilot,%20I%20would%20like%20to%20audit%20my%20business%20growth."
                 target="_blank"
@@ -1004,12 +1082,12 @@ export default function PortfolioPage() {
                 className={styles.secondaryBtn}
                 style={{ background: 'rgba(255,255,255,0.12)', color: '#FFFFFF', borderColor: 'rgba(255,255,255,0.25)' }}
               >
-                <span>Direct WhatsApp Connect</span>
+                <span>WhatsApp Direct →</span>
               </a>
             </div>
 
-            <div style={{ fontSize: 12, color: '#CBD5E1', marginTop: 4 }}>
-              No obligation • Direct strategy session with senior lead • 100% confidential
+            <div style={{ fontSize: 12, color: '#CBD5E1', marginTop: 2 }}>
+              Zero cost • Direct senior strategy session • 100% confidential
             </div>
           </div>
         </div>

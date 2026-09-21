@@ -429,23 +429,29 @@ export const clientTestimonials = [
   {
     quote: 'Marketing Copilot transformed our property sales in Patia. Within 90 days, we were ranking #1 for high-ticket apartment searches and generating 90+ verified buyer leads every month without relying on expensive aggregators.',
     author: 'Rajesh Mohapatra',
-    role: 'Director of Marketing, Utkal Heights',
+    role: 'Director of Marketing',
+    company: 'Utkal Heights Real Estate',
     location: 'Patia, Bhubaneswar',
     stat: '3X Inbound Buyers',
+    image: '/images/team/exec_4.jpg',
   },
   {
     quote: 'Our clinic went from page 2 on Google Maps to #1 in Saheed Nagar. The phone calls from patients looking for specialized treatments nearly doubled in our first 6 weeks of partnering with them.',
     author: 'Dr. S. K. Patnaik',
-    role: 'Medical Director, CareFirst Clinic',
+    role: 'Medical Director',
+    company: 'CareFirst Multi-Speciality Clinic',
     location: 'Saheed Nagar, Bhubaneswar',
     stat: '+190% Direct Calls',
+    image: '/images/team/exec_2.png',
   },
   {
     quote: 'We enrolled over 400 students for our competitive batches at an unheard-of ₹140 CPL. Their WhatsApp counselor automation ensured no parent inquiry was left waiting.',
     author: 'Anita Das',
-    role: 'Academic Head, Apex Academy',
+    role: 'Academic Head',
+    company: 'Apex National Academy',
     location: 'Acharya Vihar, Bhubaneswar',
     stat: '400+ Admissions',
+    image: '/images/coo_priya.jpg',
   },
 ];
 
