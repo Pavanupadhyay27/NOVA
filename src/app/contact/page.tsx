@@ -74,14 +74,14 @@ export default function ContactPage() {
              ══════════════════════════════════════════════════ */}
           <div className={styles.left}>
             <ScrollReveal>
-              <div className={styles.eyebrowBadge}>
-                <span className={styles.eyebrowDot} />
-                <span>START A PROJECT</span>
+              <div className={styles.heroEyebrow}>
+                <span className={styles.heroEyebrowDot} />
+                <span>START A PROJECT &bull; BHUBANESWAR</span>
               </div>
 
               <h1 className={`display-hero ${styles.title}`}>
                 Build a Stronger Digital{' '}
-                <span className="accent-gradient">Presence in Bhubaneswar</span>
+                <span className={`accent-gradient ${styles.heroAccent}`}>Presence in Bhubaneswar</span>
               </h1>
 
               <div className={styles.sub}>
@@ -89,7 +89,7 @@ export default function ContactPage() {
                   Have a business goal, a marketing challenge, or a new idea? Tell us about it.
                 </p>
                 <p className={styles.subBody}>
-                  Marketing Copilot is a Digital Marketing Company in Bhubaneswar helping brands grow through strategic SEO, performance marketing, social media, web development, and AI-driven digital solutions.
+                  Marketing Copilot is a results-driven digital marketing company in Bhubaneswar helping brands overcome low visibility, reach the right audience, and generate qualified leads.
                 </p>
               </div>
 
@@ -155,8 +155,12 @@ export default function ContactPage() {
               {!isSubmitted ? (
                 <form className={styles.form} onSubmit={handleSubmit}>
                   <div className={styles.formHeader}>
+                    <div className={styles.formBadge}>
+                      <span className={styles.formBadgeDot} />
+                      <span>CONFIDENTIAL STRATEGY DISPATCH</span>
+                    </div>
                     <h3 className={styles.formTitle}>Request a Growth Consultation</h3>
-                    <p className={styles.formSubtitle}>Fill in your project targets below. No spam, zero obligation.</p>
+                    <p className={styles.formSubtitle}>Share your targets. Direct strategist response within 4 business hours.</p>
                   </div>
 
                   <div className={styles.formRow}>
@@ -208,7 +212,11 @@ export default function ContactPage() {
                           <option value="₹5L – ₹15L / month">₹5L – ₹15L / month</option>
                           <option value="₹15L+ / month">₹15L+ / month</option>
                         </select>
-                        <div className={styles.selectArrow}>▼</div>
+                        <div className={styles.selectArrow}>
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                          </svg>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -225,8 +233,8 @@ export default function ContactPage() {
                           }`}
                           onClick={() => toggleService(s)}
                         >
-                          {form.services.includes(s) ? '✓ ' : '+ '}
-                          {s}
+                          <span className={styles.serviceIcon}>{form.services.includes(s) ? '✓' : '+'}</span>
+                          <span>{s}</span>
                         </button>
                       ))}
                     </div>
@@ -237,7 +245,7 @@ export default function ContactPage() {
                     <textarea
                       className={`${styles.input} ${styles.textarea}`}
                       placeholder="Share your business targets, monthly revenue goals, key marketing challenges, or timelines..."
-                      rows={3}
+                      rows={2}
                       value={form.message}
                       onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
                     />
@@ -261,6 +269,11 @@ export default function ContactPage() {
                           {isSubmitting ? 'Sending Request...' : 'Start the Conversation →'}
                         </span>
                       </button>
+                    </div>
+
+                    <div className={styles.formTrustNote}>
+                      <span className={styles.trustGreenDot} />
+                      <span>100% Confidential &bull; Direct Strategist Response &bull; No Spam</span>
                     </div>
                   </div>
                 </form>

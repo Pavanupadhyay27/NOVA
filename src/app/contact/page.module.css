@@ -57,56 +57,77 @@
   flex-direction: column;
 }
 
-.eyebrowBadge {
+.heroEyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 7.5px;
+  gap: 7px;
+  width: fit-content;
+  max-width: 100%;
   padding: 5px 14px;
   border-radius: 9999px;
   background: linear-gradient(180deg, #FFFFFF 0%, #FFFBEB 100%);
-  border: 1px solid rgba(245, 158, 11, 0.35);
+  border: 1px solid rgba(245, 158, 11, 0.3);
   box-shadow: 
     inset 0 1.5px 0 #FFFFFF,
     0 2px 8px rgba(245, 158, 11, 0.1),
-    0 1px 2px rgba(15, 23, 42, 0.04);
-  margin-bottom: 10px;
-  width: fit-content;
+    0 1px 2px rgba(0, 0, 0, 0.03);
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #B45309;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  box-sizing: border-box;
+  margin-bottom: 12px;
 }
 
-.eyebrowDot {
+.heroEyebrowDot {
   width: 6.5px;
   height: 6.5px;
   border-radius: 50%;
-  background: #10B981;
-  box-shadow: 0 0 8px #10B981;
+  background: #F59E0B;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.9), 0 0 2px #F59E0B;
+  animation: heroPulseDot 2s infinite ease-in-out;
+  flex-shrink: 0;
 }
 
-.eyebrowBadge span:last-child {
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #B45309;
+@keyframes heroPulseDot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.75;
+  }
 }
 
 .title {
-  font-size: clamp(26px, 2.9vw, 38px) !important;
-  line-height: 1.12;
+  font-size: clamp(28px, 3.2vw, 42px) !important;
+  line-height: 1.1;
   letter-spacing: -0.03em;
   color: #0A1020;
-  margin: 0 0 10px 0;
+  margin: 0 0 12px 0;
   font-weight: 800;
+}
+
+.heroAccent {
+  background: linear-gradient(135deg, #EA580C 0%, #D97706 45%, #B45309 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
 }
 
 .sub {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  margin-bottom: 16px;
+  gap: 6px;
+  margin-bottom: 20px;
 }
 
 .subLead {
-  font-size: 14.5px;
+  font-size: 15px;
   font-weight: 700;
   color: #0F172A;
   line-height: 1.45;
@@ -114,9 +135,9 @@
 }
 
 .subBody {
-  font-size: 13px;
+  font-size: 13.5px;
   color: #475569;
-  line-height: 1.5;
+  line-height: 1.55;
   margin: 0;
 }
 
@@ -246,38 +267,60 @@
 }
 
 .form {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.92) 50%, rgba(240, 246, 255, 0.95) 100%);
-  border: 1.5px solid rgba(255, 255, 255, 0.95);
-  border-radius: 24px;
-  padding: 22px 26px;
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 255, 0.94) 100%);
+  border: 1.5px solid rgba(11, 32, 147, 0.12);
+  border-top: 1.5px solid #FFFFFF;
+  border-radius: 28px;
+  padding: 26px 30px;
   box-shadow: 
-    inset 0 2.5px 0 #FFFFFF,
-    inset 0 1px 1px rgba(255, 255, 255, 0.9),
-    inset 0 -2.5px 4px rgba(0, 0, 0, 0.04),
-    inset 1px 0 0 rgba(255, 255, 255, 0.7),
-    inset -1px 0 0 rgba(255, 255, 255, 0.7),
-    0 20px 50px -8px rgba(11, 32, 147, 0.12),
-    0 3px 10px rgba(15, 23, 42, 0.04);
+    inset 0 2px 0 #FFFFFF,
+    0 24px 64px -12px rgba(11, 32, 147, 0.12),
+    0 4px 16px rgba(15, 23, 42, 0.04);
 }
 
 .formHeader {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+}
+
+.formBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3.5px 11px;
+  border-radius: 9999px;
+  background: rgba(11, 32, 147, 0.05);
+  border: 1px solid rgba(11, 32, 147, 0.14);
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #0B2093;
+  margin-bottom: 8px;
+}
+
+.formBadgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 6px #10B981;
 }
 
 .formTitle {
-  font-size: 1.15rem;
+  font-family: var(--font-display);
+  font-size: clamp(20px, 1.8vw, 23px);
   font-weight: 800;
   color: #0A1020;
-  letter-spacing: -0.02em;
-  margin: 0 0 2px 0;
+  letter-spacing: -0.025em;
+  margin: 0 0 3px 0;
 }
 
 .formSubtitle {
-  font-size: 0.78rem;
+  font-size: 12.5px;
   color: #64748B;
   margin: 0;
+  line-height: 1.45;
 }
 
 .formRow {
@@ -290,37 +333,37 @@
 .field {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
   margin-bottom: 10px;
 }
 
 .label {
-  font-size: 0.72rem;
+  font-size: 11px;
   font-weight: 700;
-  color: #334155;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .input {
   width: 100%;
-  padding: 8.5px 12px;
-  border-radius: 10px;
-  background: #FFFFFF;
-  border: 1px solid #CBD5E1;
-  font-size: 0.84rem;
+  padding: 9.5px 13px;
+  border-radius: 12px;
+  background: #F8FAFC;
+  border: 1px solid rgba(203, 213, 225, 0.85);
+  font-size: 13.5px;
   color: #0F172A;
   box-sizing: border-box;
-  transition: all 0.2s ease;
-  box-shadow: 
-    inset 0 2px 4px rgba(0, 0, 0, 0.03),
-    inset 0 1px 2px rgba(0, 0, 0, 0.05),
-    0 1px 0 #FFFFFF;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.03);
 }
 
 .input:focus {
   outline: none;
+  background: #FFFFFF;
   border-color: #0B2093;
   box-shadow: 
-    inset 0 1px 2px rgba(0, 0, 0, 0.04),
+    inset 0 1px 2px rgba(15, 23, 42, 0.02),
     0 0 0 3px rgba(11, 32, 147, 0.12);
 }
 
@@ -331,39 +374,40 @@
 
 .select {
   width: 100%;
-  padding: 8.5px 12px;
-  padding-right: 28px;
-  border-radius: 10px;
-  background: #FFFFFF;
-  border: 1px solid #CBD5E1;
-  font-size: 0.84rem;
+  padding: 9.5px 13px;
+  padding-right: 32px;
+  border-radius: 12px;
+  background: #F8FAFC;
+  border: 1px solid rgba(203, 213, 225, 0.85);
+  font-size: 13.5px;
   color: #0F172A;
   box-sizing: border-box;
   appearance: none;
+  -webkit-appearance: none;
   cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 
-    inset 0 2px 4px rgba(0, 0, 0, 0.03),
-    inset 0 1px 2px rgba(0, 0, 0, 0.05),
-    0 1px 0 #FFFFFF;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.03);
 }
 
 .select:focus {
   outline: none;
+  background: #FFFFFF;
   border-color: #0B2093;
   box-shadow: 
-    inset 0 1px 2px rgba(0, 0, 0, 0.04),
+    inset 0 1px 2px rgba(15, 23, 42, 0.02),
     0 0 0 3px rgba(11, 32, 147, 0.12);
 }
 
 .selectArrow {
   position: absolute;
-  right: 10px;
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 0.6rem;
-  color: #64748B;
+  color: #0B2093;
   pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .serviceGrid {
@@ -373,42 +417,48 @@
 }
 
 .serviceBtn {
-  padding: 5.5px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 13px;
   border-radius: 9999px;
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
-  border: 1px solid #CBD5E1;
-  color: #334155;
-  font-size: 0.74rem;
+  background: #F1F5F9;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  color: #475569;
+  font-size: 12px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 
-    inset 0 1.5px 0 #FFFFFF,
-    inset 0 -1.5px 2px rgba(0, 0, 0, 0.04),
-    0 2px 6px rgba(0, 0, 0, 0.03);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.02);
 }
 
 .serviceBtn:hover {
-  background: #F1F5F9;
-  border-color: #94A3B8;
+  background: #E2E8F0;
+  border-color: rgba(11, 32, 147, 0.25);
   color: #0B2093;
   transform: translateY(-1px);
 }
 
 .serviceBtnActive {
-  background: linear-gradient(135deg, #122E9E 0%, #0B2093 50%, #0D007F 100%) !important;
+  background: linear-gradient(135deg, #0B2093 0%, #1D4ED8 100%) !important;
   border-color: #0B2093 !important;
   color: #FFFFFF !important;
   box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.45),
-    0 4px 12px rgba(11, 32, 147, 0.35) !important;
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 4px 12px rgba(11, 32, 147, 0.25) !important;
   transform: translateY(-1px);
 }
 
+.serviceIcon {
+  font-size: 11px;
+  font-weight: 800;
+  opacity: 0.9;
+}
+
 .textarea {
-  resize: vertical;
-  min-height: 52px;
-  line-height: 1.4;
+  resize: none;
+  min-height: 56px;
+  line-height: 1.45;
   font-family: inherit;
 }
 
@@ -416,8 +466,32 @@
    REVOLVING GLOWING BORDER BEAM CTA (MATCHES NAVBAR)
    ══════════════════════════════════════════════════ */
 .submitWrapper {
-  margin-top: 12px;
+  margin-top: 14px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.formTrustNote {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748B;
+  letter-spacing: 0.02em;
+}
+
+.trustGreenDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 6px #10B981;
+  flex-shrink: 0;
 }
 
 .borderBeamWrapper {
