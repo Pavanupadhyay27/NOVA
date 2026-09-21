@@ -314,6 +314,7 @@
   position: relative;
   padding: 12px 14px;
   border-radius: var(--radius-lg);
+  border: 1px solid transparent;
   cursor: pointer;
   transition: all var(--transition-fast);
 }
@@ -321,9 +322,8 @@
 .ribbonItem:hover,
 .ribbonItemActive {
   background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
-  border: 1px solid rgba(11, 32, 147, 0.2);
+  border-color: rgba(11, 32, 147, 0.2);
   box-shadow: inset 0 2px 0 #FFFFFF, 0 4px 14px rgba(11, 32, 147, 0.12);
-  transform: translateY(-2px);
 }
 
 .ribbonItem:not(:last-child)::after {
@@ -343,6 +343,7 @@
   color: var(--accent-blue);
   line-height: 1.1;
   letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
 }
 
 .ribbonLabel {
@@ -360,40 +361,40 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 3: FEATURED COMMERCIAL MILESTONE (FULL-BLEED IMAGE CARD)
+   SECTION 3: FEATURED COMMERCIAL MILESTONE (ELEVATED FULL-BLEED CARD)
    ───────────────────────────────────────────────────────────── */
 .spotlightSection {
-  padding: 120px 0 88px;
-  scroll-margin-top: 140px;
+  padding: 110px 0 88px;
+  scroll-margin-top: 150px;
   position: relative;
 }
 
 .spotlightCard {
-  max-width: 1040px;
+  max-width: 1060px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1.15fr;
   border-radius: var(--radius-2xl);
   overflow: hidden;
   background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  box-shadow: inset 0 2.5px 0 #FFFFFF, inset 0 -1.5px 0 rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.04), 0 24px 56px -12px rgba(11, 32, 147, 0.16);
+  border: 1.5px solid #E2E8F0;
+  box-shadow: inset 0 2.5px 0 #FFFFFF, inset 0 -1.5px 0 rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.04), 0 24px 56px -12px rgba(11, 32, 147, 0.14);
   transition: all var(--transition-md);
-  align-items: stretch; /* FULL BLEED: image completely fills the entire left pane edge-to-edge */
+  align-items: stretch;
 }
 
 .spotlightCard:hover {
-  transform: translateY(-3px);
-  box-shadow: inset 0 2.5px 0 #FFFFFF, 0 32px 64px -12px rgba(11, 32, 147, 0.22);
+  transform: translateY(-2px);
+  box-shadow: inset 0 2.5px 0 #FFFFFF, 0 32px 64px -12px rgba(11, 32, 147, 0.2);
   border-color: rgba(11, 32, 147, 0.28);
 }
 
-/* Full-bleed left image pane - completely filled up edge-to-edge with no padding */
+/* Full-bleed left image pane - high-tech HUD styling */
 .spotlightVisualFrame {
   position: relative;
   width: 100%;
   height: 100%;
-  min-height: 440px;
+  min-height: 460px;
   overflow: hidden;
   background: #0F172A;
 }
@@ -411,57 +412,88 @@
 .spotlightVisualOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.2) 0%, transparent 35%, rgba(15, 23, 42, 0.55) 100%);
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.25) 0%, transparent 35%, rgba(15, 23, 42, 0.65) 100%);
   pointer-events: none;
   z-index: 1;
+}
+
+.hudCornerTL {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: 22px;
+  height: 22px;
+  border-top: 2px solid rgba(255, 255, 255, 0.55);
+  border-left: 2px solid rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hudCornerBR {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  width: 22px;
+  height: 22px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.55);
+  border-right: 2px solid rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+  z-index: 2;
 }
 
 .spotlightLocationBadge {
   position: absolute;
   top: 18px;
   left: 18px;
-  padding: 6px 14px;
-  background: rgba(15, 23, 42, 0.88);
-  backdrop-filter: blur(10px);
+  padding: 7px 16px;
+  background: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(12px);
   border-radius: var(--radius-full);
   font-size: 11px;
   font-weight: 700;
   color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
   z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.locationPinIcon {
+  font-size: 12px;
 }
 
 .spotlightVisualBottomPill {
   position: absolute;
   bottom: 18px;
   left: 18px;
-  padding: 6px 14px;
-  background: rgba(15, 23, 42, 0.88);
-  backdrop-filter: blur(10px);
+  padding: 7px 16px;
+  background: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(12px);
   border-radius: var(--radius-full);
   font-size: 11px;
   font-weight: 700;
-  color: #E2E8F0;
+  color: #F8FAFC;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
   z-index: 2;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.spotlightVisualBottomPill::before {
-  content: '';
+.liveDeploymentDot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
   background: #10B981;
-  box-shadow: 0 0 8px #10B981;
+  box-shadow: 0 0 10px #10B981;
+  animation: pulseGlow 1.8s infinite ease-in-out;
 }
 
 .spotlightContent {
-  padding: 40px 44px;
+  padding: 42px 46px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -470,15 +502,29 @@
   border-left: 1px solid #F1F5F9;
 }
 
-.spotlightClient {
-  font-size: 12px;
-  font-weight: 800;
-  color: var(--accent-gold-dark);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  display: flex;
+.spotlightEyebrowBadge {
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(11, 32, 147, 0.06) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #D97706;
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.spotlightEyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #F59E0B;
+  box-shadow: 0 0 8px #F59E0B;
 }
 
 .spotlightHeadline {
@@ -496,7 +542,7 @@
   color: #475569;
 }
 
-/* Debossed 3D metrics row inside content side */
+/* Tactile Skeuomorphic Micro-Stat Dials with Individual Color Accents */
 .spotlightStatsRowClean {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -505,29 +551,68 @@
 }
 
 .spotlightStatPillClean {
-  background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
-  border: 1px solid #E2E8F0;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1.5px solid #E2E8F0;
   border-radius: var(--radius-lg);
   padding: 14px 18px;
-  box-shadow: inset 0 1.5px 0 #FFFFFF, inset 0 -1px 0 rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.03);
+  box-shadow: inset 0 2px 0 #FFFFFF, 0 3px 8px rgba(0, 0, 0, 0.03);
   display: flex;
   flex-direction: column;
   gap: 4px;
+  position: relative;
+  overflow: hidden;
   transition: all var(--transition-fast);
 }
 
 .spotlightStatPillClean:hover {
   transform: translateY(-2px);
-  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 8px 18px rgba(11, 32, 147, 0.1);
+  box-shadow: inset 0 2px 0 #FFFFFF, 0 8px 18px rgba(11, 32, 147, 0.1);
   border-color: rgba(11, 32, 147, 0.25);
+}
+
+.spotlightStatAccentBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.spotlightStatPillClean[data-stat-idx="0"] .spotlightStatAccentBar {
+  background: linear-gradient(90deg, #0B2093 0%, #3B82F6 100%);
+}
+.spotlightStatPillClean[data-stat-idx="0"] .spotlightStatValClean {
+  color: #0B2093;
+}
+
+.spotlightStatPillClean[data-stat-idx="1"] .spotlightStatAccentBar {
+  background: linear-gradient(90deg, #10B981 0%, #059669 100%);
+}
+.spotlightStatPillClean[data-stat-idx="1"] .spotlightStatValClean {
+  color: #059669;
+}
+
+.spotlightStatPillClean[data-stat-idx="2"] .spotlightStatAccentBar {
+  background: linear-gradient(90deg, #6366F1 0%, #4F46E5 100%);
+}
+.spotlightStatPillClean[data-stat-idx="2"] .spotlightStatValClean {
+  color: #4F46E5;
+}
+
+.spotlightStatPillClean[data-stat-idx="3"] .spotlightStatAccentBar {
+  background: linear-gradient(90deg, #F59E0B 0%, #D97706 100%);
+}
+.spotlightStatPillClean[data-stat-idx="3"] .spotlightStatValClean {
+  color: #D97706;
 }
 
 .spotlightStatValClean {
   font-family: var(--font-display);
-  font-size: 19px;
+  font-size: 20px;
   font-weight: 800;
-  color: var(--accent-blue);
   line-height: 1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
 .spotlightStatLabelClean {
@@ -537,9 +622,9 @@
 }
 
 .spotlightDeliverables {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
   padding-top: 10px;
   border-top: 1px solid var(--border-subtle);
 }
@@ -547,22 +632,26 @@
 .deliverableItem {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 13px;
+  gap: 8px;
+  font-size: 12.5px;
   font-weight: 600;
-  color: #475569;
+  color: #334155;
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid rgba(16, 185, 129, 0.18);
+  padding: 7px 12px;
+  border-radius: var(--radius-md);
 }
 
 .checkDot {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  background: rgba(16, 185, 129, 0.14);
-  color: #10B981;
+  background: #10B981;
+  color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 800;
   flex-shrink: 0;
 }
@@ -1834,6 +1923,7 @@
   gap: 20px;
   max-width: 1140px;
   margin: 0 auto;
+  align-items: stretch;
 }
 
 .bentoCard {
@@ -1844,12 +1934,15 @@
   box-shadow: inset 0 2.5px 0 #FFFFFF, inset 0 -1.5px 0 rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.04), 0 12px 28px -6px rgba(11, 32, 147, 0.09);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 18px;
+  min-height: 440px;
   transition: all var(--transition-fast);
+  will-change: transform, box-shadow;
 }
 
 .bentoCard:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   box-shadow: inset 0 2.5px 0 #FFFFFF, 0 20px 40px -6px rgba(11, 32, 147, 0.16);
   border-color: rgba(11, 32, 147, 0.25);
 }
@@ -1868,12 +1961,16 @@
   font-weight: 800;
   color: #0F172A;
   line-height: 1.3;
+  min-height: 54px;
+  display: flex;
+  align-items: center;
 }
 
 .bentoText {
   font-size: 13px;
   line-height: 1.65;
   color: #475569;
+  min-height: 64px;
 }
 
 .bentoChannelsList {
@@ -1882,6 +1979,7 @@
   gap: 8px;
   padding-top: 10px;
   border-top: 1px solid var(--border-subtle);
+  min-height: 110px;
 }
 
 .bentoChannelItem {
@@ -1897,6 +1995,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  min-height: 185px;
 }
 
 .bentoBenchmarkRow {
@@ -1921,6 +2020,8 @@
   font-size: 15px;
   font-weight: 800;
   color: #10B981;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
 .bentoProofBox {
@@ -1932,6 +2033,7 @@
   flex-direction: column;
   gap: 8px;
   box-shadow: inset 0 1.5px 0 #FFFFFF, 0 4px 12px rgba(11, 32, 147, 0.05);
+  min-height: 125px;
 }
 
 /* ─────────────────────────────────────────────────────────────

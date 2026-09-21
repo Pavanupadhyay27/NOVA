@@ -255,24 +255,38 @@ export default function PortfolioPage() {
                   className={styles.spotlightVisualImg}
                 />
                 <div className={styles.spotlightVisualOverlay} />
+
+                {/* High-Tech HUD Corner Accents */}
+                <div className={styles.hudCornerTL} />
+                <div className={styles.hudCornerBR} />
+
                 <div className={styles.spotlightLocationBadge}>
+                  <span className={styles.locationPinIcon}>📍</span>
                   <span>{spotlightProject.service} • {spotlightProject.location}</span>
                 </div>
                 <div className={styles.spotlightVisualBottomPill}>
+                  <span className={styles.liveDeploymentDot} />
                   <span>Audited Strategic Deployment • 90 Days</span>
                 </div>
               </div>
 
-              {/* Content Side with Compact Debossed Metrics Row */}
+              {/* Content Side with Tactile Skeuomorphic Metrics & Gradient Headline */}
               <div className={styles.spotlightContent}>
-                <span className={styles.spotlightClient}>{spotlightProject.client}</span>
-                <h3 className={styles.spotlightHeadline}>{spotlightProject.headline}</h3>
+                <div className={styles.spotlightEyebrowBadge}>
+                  <span className={styles.spotlightEyebrowDot} />
+                  <span>{spotlightProject.client}</span>
+                </div>
+                <h3 className={styles.spotlightHeadline}>
+                  Dominating Luxury Property Search in Bhubaneswar —{' '}
+                  <span className="accent-gradient">3X Qualified Leads in 90 Days</span>
+                </h3>
                 <p className={styles.spotlightDesc}>{spotlightProject.desc}</p>
 
-                {/* Compact metrics row inside content side with SmoothCounter */}
+                {/* Tactile Skeuomorphic Micro-Stat Dials with Individual Color Accents */}
                 <div className={styles.spotlightStatsRowClean}>
-                  {spotlightProject.stats.map((s) => (
-                    <div key={s.label} className={styles.spotlightStatPillClean}>
+                  {spotlightProject.stats.map((s, idx) => (
+                    <div key={s.label} className={styles.spotlightStatPillClean} data-stat-idx={idx}>
+                      <div className={styles.spotlightStatAccentBar} />
                       <div className={styles.spotlightStatValClean}>
                         <SmoothCounter value={s.val} />
                       </div>
@@ -295,7 +309,7 @@ export default function PortfolioPage() {
                   <BeamButton
                     onClick={() => setSelectedCase(spotlightProject)}
                     label="View Full Strategic Breakdown →"
-                    size="sm"
+                    size="md"
                   />
                 </div>
               </div>
