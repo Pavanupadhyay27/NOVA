@@ -518,7 +518,7 @@ export const clientTestimonials = [
     company: 'Utkal Heights Real Estate',
     location: 'Patia, Bhubaneswar',
     stat: '3X Inbound Buyers',
-    image: '/images/team/exec_4.jpg',
+    image: '/images/testimonials/rajesh_mohapatra.jpg',
   },
   {
     quote: 'Our clinic went from page 2 on Google Maps to #1 in Saheed Nagar. The phone calls from patients looking for specialized treatments nearly doubled in our first 6 weeks of partnering with them.',
@@ -527,7 +527,7 @@ export const clientTestimonials = [
     company: 'CareFirst Multi-Speciality Clinic',
     location: 'Saheed Nagar, Bhubaneswar',
     stat: '+190% Direct Calls',
-    image: '/images/team/exec_2.png',
+    image: '/images/testimonials/dr_sk_patnaik.jpg',
   },
   {
     quote: 'We enrolled over 400 students for our competitive batches at an unheard-of ₹140 CPL. Their WhatsApp counselor automation ensured no parent inquiry was left waiting.',
@@ -536,7 +536,7 @@ export const clientTestimonials = [
     company: 'Apex National Academy',
     location: 'Acharya Vihar, Bhubaneswar',
     stat: '400+ Admissions',
-    image: '/images/coo_priya.jpg',
+    image: '/images/testimonials/anita_das.jpg',
   },
 ];
 
