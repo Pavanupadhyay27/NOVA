@@ -835,13 +835,6 @@ export default function FAQPage() {
               <div className={styles.stillQuestionGlow} />
 
               <div className={styles.stillQuestionContentCentered}>
-                <div className={styles.stillQuestionBadgeRow}>
-                  <span className={styles.stillQuestionBadge}>
-                    <span className={styles.badgePulseDot} />
-                    ⚡ 4-HOUR RESPONSE SLA
-                  </span>
-                </div>
-
                 <h3 className={styles.stillQuestionTitle}>
                   {searchQuery.trim() ? (
                     <>Still Have Questions about &ldquo;{searchQuery.trim()}&rdquo;?</>
@@ -930,36 +923,23 @@ export default function FAQPage() {
                   <div className={styles.strategistMeta}>
                     <h3 className={styles.strategistName}>Aarav Sharma</h3>
                     <span className={styles.strategistRole}>Principal Revenue Architect</span>
-                    <span className={styles.strategistCorridor}>📍 Patia IT Corridor &bull; Bhubaneswar</span>
+                    <span className={styles.strategistCorridor}>📍 Patia, Bhubaneswar</span>
                   </div>
                 </div>
 
-                <p className={styles.strategistBioQuote}>
-                  &ldquo;Every business in Odisha has a unique commercial bottleneck. Share your numbers, ad spend, or competitor challenge—I personally audit your setup within 4 hours.&rdquo;
-                </p>
-
-                {/* Tactical Value Grid */}
+                {/* Minimal Tactical Value Badges */}
                 <div className={styles.strategistPillarsList}>
                   <div className={styles.pillarItem}>
                     <span className={styles.pillarIcon}>⚡</span>
-                    <div className={styles.pillarText}>
-                      <strong>4-Hour Written SLA</strong>
-                      <span>Direct WhatsApp or confidential diagnostic breakdown</span>
-                    </div>
+                    <span className={styles.pillarText}>4-Hour Direct Turnaround</span>
                   </div>
                   <div className={styles.pillarItem}>
                     <span className={styles.pillarIcon}>🔒</span>
-                    <div className={styles.pillarText}>
-                      <strong>100% Confidential NDA</strong>
-                      <span>Your revenue, ad budgets &amp; lead data stay protected</span>
-                    </div>
+                    <span className={styles.pillarText}>100% Confidential NDA</span>
                   </div>
                   <div className={styles.pillarItem}>
                     <span className={styles.pillarIcon}>📊</span>
-                    <div className={styles.pillarText}>
-                      <strong>Competitor Tear-Down Included</strong>
-                      <span>We analyze your top 3 Odisha competitors</span>
-                    </div>
+                    <span className={styles.pillarText}>Free Odisha Competitor Audit</span>
                   </div>
                 </div>
 
@@ -974,9 +954,8 @@ export default function FAQPage() {
                     className={styles.deskWhatsappBtn}
                   >
                     <span className={styles.whatsappIcon}>💬</span>
-                    <span>Chat Directly with Aarav on WhatsApp ↗</span>
+                    <span>Chat on WhatsApp (Avg. 18m) ↗</span>
                   </a>
-                  <span className={styles.deskAvgTime}>Typical WhatsApp response: &lt; 20 mins</span>
                 </div>
               </div>
 
@@ -988,23 +967,22 @@ export default function FAQPage() {
                     CONFIDENTIAL STRATEGY DISPATCH &bull; NO PRESSURE
                   </div>
                   <h2 className={styles.intakeTitle}>
-                    Ask Our Revenue Engineers Directly.
+                    Ask Our Strategists Directly.
                   </h2>
                   <p className={styles.intakeSub}>
-                    Select your topic and submit your specific bottleneck. A senior strategist will review your business and reply within 4 hours.
+                    Submit your question below for a free, confidential strategic breakdown.
                   </p>
                 </div>
 
                 {/* Topic Selector Chips */}
                 <div className={styles.topicSelectorWrap}>
-                  <label className={styles.topicSelectLabel}>SELECT INQUIRY TOPIC:</label>
                   <div className={styles.topicChipsGrid}>
                     {[
                       '🎯 Google & Meta Ads',
                       '📍 Local SEO 3-Pack',
                       '⚡ Next.js Web Speed',
                       '💰 Retainer & Pricing',
-                      '❓ Custom Challenge',
+                      '❓ Custom Question',
                     ].map((topic) => (
                       <button
                         key={topic}
@@ -1030,7 +1008,7 @@ export default function FAQPage() {
                     </p>
                     <div className={styles.successMetaStrip}>
                       <span>📱 Callback / WhatsApp: <strong>+91 {formState.phone}</strong></span>
-                      <span>⏱ Guaranteed Turnaround: <strong>Within 4 Hours</strong></span>
+                      <span>⏱ Turnaround: <strong>Within 4 Hours</strong></span>
                     </div>
                     <button
                       type="button"
@@ -1049,7 +1027,7 @@ export default function FAQPage() {
                       {/* Full Name */}
                       <div className={styles.fieldGroup}>
                         <label htmlFor="faq-name" className={styles.fieldLabel}>
-                          YOUR FULL NAME <span className={styles.reqStar}>*</span>
+                          YOUR NAME <span className={styles.reqStar}>*</span>
                         </label>
                         <div className={styles.fieldInputWrap}>
                           <span className={styles.fieldIcon}>👤</span>
@@ -1065,28 +1043,10 @@ export default function FAQPage() {
                         </div>
                       </div>
 
-                      {/* Business Name */}
-                      <div className={styles.fieldGroup}>
-                        <label htmlFor="faq-business" className={styles.fieldLabel}>
-                          BUSINESS NAME &amp; SECTOR
-                        </label>
-                        <div className={styles.fieldInputWrap}>
-                          <span className={styles.fieldIcon}>🏢</span>
-                          <input
-                            id="faq-business"
-                            type="text"
-                            placeholder="e.g. Utkal Dental Clinic (Saheed Nagar)"
-                            value={formState.businessName}
-                            onChange={(e) => setFormState({ ...formState, businessName: e.target.value })}
-                            className={styles.cockpitInput}
-                          />
-                        </div>
-                      </div>
-
                       {/* Phone / WhatsApp */}
-                      <div className={`${styles.fieldGroup} ${styles.fieldFullWidth}`}>
+                      <div className={styles.fieldGroup}>
                         <label htmlFor="faq-phone" className={styles.fieldLabel}>
-                          PHONE / WHATSAPP NUMBER <span className={styles.reqStar}>*</span>
+                          PHONE / WHATSAPP <span className={styles.reqStar}>*</span>
                         </label>
                         <div className={styles.fieldInputWrap}>
                           <span className={styles.countryFlagPill}>🇮🇳 +91</span>
@@ -1105,14 +1065,14 @@ export default function FAQPage() {
                       {/* Question / Bottleneck */}
                       <div className={`${styles.fieldGroup} ${styles.fieldFullWidth}`}>
                         <label htmlFor="faq-question" className={styles.fieldLabel}>
-                          YOUR QUESTION OR AD SPEND BOTTLENECK <span className={styles.reqStar}>*</span>
+                          YOUR QUESTION OR CHALLENGE <span className={styles.reqStar}>*</span>
                         </label>
                         <div className={styles.fieldTextareaWrap}>
                           <textarea
                             id="faq-question"
                             required
                             rows={3}
-                            placeholder={`e.g. We are spending ₹40,000 on ${selectedTopic} in Patia but getting duplicate leads. Can you audit our setup?`}
+                            placeholder="Ask any question about your ads, SEO, website, or marketing in Bhubaneswar..."
                             value={formState.question}
                             onChange={(e) => setFormState({ ...formState, question: e.target.value })}
                             className={styles.cockpitTextarea}
@@ -1129,16 +1089,16 @@ export default function FAQPage() {
                         className={styles.cockpitSubmitBtn}
                       >
                         <span className={styles.submitBtnText}>
-                          {isSubmitting ? 'Transmitting to Desk...' : 'Dispatch Question to Strategists →'}
+                          {isSubmitting ? 'Transmitting...' : 'Send Question to Strategists →'}
                         </span>
                       </button>
 
                       <div className={styles.trustMiniRow}>
                         <span>🔒 100% Confidential</span>
                         <span>&bull;</span>
-                        <span>⚡ 4-Hour Response</span>
+                        <span>⚡ 4-Hour Turnaround</span>
                         <span>&bull;</span>
-                        <span>🚫 Zero Spam or Sales Pressure</span>
+                        <span>🚫 Zero Sales Pressure</span>
                       </div>
                     </div>
                   </form>
