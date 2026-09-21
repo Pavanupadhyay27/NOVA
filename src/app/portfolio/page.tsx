@@ -811,7 +811,7 @@ export default function PortfolioPage() {
 
                 {/* Centered CTA Button */}
                 <div className={styles.centerCtaWrap} style={{ paddingTop: 6 }}>
-                  <BeamButton href="/contact" label={`Dominate ${currentGeo.shortArea} Market →`} size="md" />
+                  <BeamButton href="/contact" label="Dominate Your Commercial Corridor →" size="md" />
                 </div>
               </div>
             </div>

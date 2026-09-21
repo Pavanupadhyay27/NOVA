@@ -1311,7 +1311,6 @@
   background: #FFFFFF !important;
   border: 1px solid rgba(11, 32, 147, 0.18) !important;
   box-shadow: inset 0 2px 0 #FFFFFF, 0 4px 14px rgba(11, 32, 147, 0.14), 0 1px 3px rgba(0, 0, 0, 0.06) !important;
-  transform: translateY(-2px);
 }
 
 .tabBadge {
@@ -1563,25 +1562,28 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 4px;
   text-align: left;
   box-shadow: inset 0 1px 0 #FFFFFF, 0 1px 3px rgba(0, 0, 0, 0.04);
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  min-height: 76px;
+  transform: none !important;
 }
 
 .territoryDockBtn:hover {
-  transform: translateY(-2px);
   background: #FFFFFF;
   border-color: #94A3B8;
-  box-shadow: inset 0 1px 0 #FFFFFF, 0 6px 14px rgba(11, 32, 147, 0.08);
+  box-shadow: inset 0 1px 0 #FFFFFF, 0 4px 12px rgba(11, 32, 147, 0.08);
+  transform: none !important;
 }
 
 .territoryDockBtnActive {
   background: #FFFFFF !important;
   border-top: 3px solid var(--accent-blue) !important;
   border-color: rgba(11, 32, 147, 0.25) !important;
-  box-shadow: inset 0 2px 0 #FFFFFF, 0 8px 24px -4px rgba(11, 32, 147, 0.16) !important;
-  transform: translateY(-2px);
+  box-shadow: inset 0 2px 0 #FFFFFF, 0 4px 16px rgba(11, 32, 147, 0.12) !important;
+  transform: none !important;
 }
 
 .dockHeader {
@@ -1651,22 +1653,28 @@
   border-radius: var(--radius-2xl);
   border: 1px solid #E2E8F0;
   box-shadow: inset 0 2.5px 0 #FFFFFF, inset 0 -1.5px 0 rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.04), 0 24px 56px -12px rgba(11, 32, 147, 0.14);
-  padding: 38px 44px;
+  padding: 34px 44px;
+  height: 480px;
   min-height: 480px;
+  max-height: 480px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 20px;
+  box-sizing: border-box;
 }
 
 .commandHeaderRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  padding-bottom: 18px;
+  padding-bottom: 16px;
   border-bottom: 1px solid #F1F5F9;
+  height: 64px;
+  min-height: 64px;
+  max-height: 64px;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .commandAreaIdentity {
@@ -1750,24 +1758,28 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
+  height: 94px;
+  min-height: 94px;
+  max-height: 94px;
+  box-sizing: border-box;
 }
 
 .commandMetricWell {
   background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
   border: 1px solid #E2E8F0;
   border-radius: var(--radius-xl);
-  padding: 18px 20px;
+  padding: 14px 20px;
   box-shadow: inset 0 1.5px 0 #FFFFFF, inset 0 -1px 0 rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.03);
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 4px;
-  transition: all var(--transition-fast);
-}
-
-.commandMetricWell:hover {
-  transform: translateY(-2px);
-  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 6px 16px rgba(11, 32, 147, 0.08);
-  border-color: rgba(11, 32, 147, 0.2);
+  height: 94px;
+  min-height: 94px;
+  max-height: 94px;
+  overflow: hidden;
+  box-sizing: border-box;
+  transform: none !important;
 }
 
 .commandMetricNum {
@@ -1778,6 +1790,10 @@
   line-height: 1;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
+  height: 28px;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
 }
 
 .commandMetricLabel {
@@ -1786,7 +1802,14 @@
   color: #64748B;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  margin-top: 4px;
+  height: 24px;
+  min-height: 24px;
+  max-height: 24px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Corridor Commercial Landmarks Strip */
@@ -1794,12 +1817,16 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   background: #F8FAFC;
   border: 1px solid #E2E8F0;
   border-radius: var(--radius-lg);
-  padding: 10px 18px;
-  min-height: 46px;
+  padding: 0 18px;
+  height: 48px;
+  min-height: 48px;
+  max-height: 48px;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .landmarksHeading {
@@ -1808,13 +1835,16 @@
   color: #475569;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .landmarkPillsWrap {
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 
 .commandLandmarkPill {
@@ -1823,9 +1853,11 @@
   color: #0F172A;
   background: #FFFFFF;
   border: 1px solid #CBD5E1;
-  padding: 3px 10px;
+  padding: 4px 10px;
   border-radius: var(--radius-md);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* Footer Intelligence Strip & Centered CTA */
@@ -1833,17 +1865,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 14px;
   padding-top: 14px;
   border-top: 1px solid #F1F5F9;
+  height: 48px;
+  min-height: 48px;
+  max-height: 48px;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .commandKeywordsWrap {
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 
 .keywordsLabel {
