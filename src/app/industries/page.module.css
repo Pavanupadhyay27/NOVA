@@ -1,7 +1,8 @@
 /* ═══════════════════════════════════════════════════════════
-   MARKETING COPILOT — 12-SECTION INDUSTRIES MASTERCLASS STYLES
-   Global Palette: White, Deep Blue (#0B2093), Golden Spark (#F59E0B)
-   Tactile Skeuomorphism, Zero Vibration, Full Mobile Responsiveness
+   MARKETING COPILOT — REDESIGNED INDUSTRIES PAGE
+   Anti-Card-Fatigue Architecture: Split Hero, Workstation, Matrix Table,
+   Corridor Console, Strategy Diagnostic, and Tier Terminal
+   Strict Global Palette: White, Deep Blue (#0B2093), Golden Spark (#F59E0B)
    ═══════════════════════════════════════════════════════════ */
 
 .page {
@@ -12,52 +13,56 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 1: HERO COMMAND CENTER
+   SECTION 1: ASYMMETRIC SPLIT HERO WITH TERMINAL HUD
    ───────────────────────────────────────────────────────────── */
 .heroSection {
   position: relative;
-  padding: 80px 0 64px;
-  background: radial-gradient(circle at 50% -20%, rgba(245, 158, 11, 0.1) 0%, rgba(11, 32, 147, 0.04) 50%, transparent 80%), #FFFFFF;
-  overflow: hidden;
+  padding: 72px 0 64px;
+  background: radial-gradient(circle at 80% -20%, rgba(245, 158, 11, 0.1) 0%, rgba(11, 32, 147, 0.04) 50%, transparent 80%), #FFFFFF;
   border-bottom: 1px solid var(--border-subtle);
+  overflow: hidden;
 }
 
 .heroGlowOverlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 70% 40% at 50% 0%, rgba(11, 32, 147, 0.06) 0%, transparent 70%);
+  background: radial-gradient(ellipse 70% 40% at 50% 0%, rgba(11, 32, 147, 0.05) 0%, transparent 70%);
   pointer-events: none;
 }
 
-.heroContent {
-  max-width: 920px;
-  margin: 0 auto;
-  text-align: center;
+.heroSplitGrid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 48px;
   position: relative;
   z-index: 1;
 }
 
+.heroLeftCol {
+  display: flex;
+  flex-direction: column;
+}
+
 .heroTitle {
-  margin: 20px 0 24px;
+  margin: 16px 0 20px;
   line-height: 1.15;
   color: #000000;
   font-weight: 800;
 }
 
 .heroSub {
-  max-width: 740px;
-  margin: 0 auto 36px;
   color: #334155;
   line-height: 1.7;
+  margin-bottom: 32px;
 }
 
 .heroCtaRow {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 }
 
 .heroSecondaryBtn {
@@ -83,22 +88,14 @@
   transform: translateY(-2px);
 }
 
-/* Quick Sector Navigator Strip */
-.sectorNavStrip {
+.heroTagsStrip {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: 40px;
-  padding: 12px 20px;
-  background: #F8FAFC;
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-full);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
-.sectorNavLabel {
+.heroTagsLabel {
   font-family: var(--font-display);
   font-size: 11px;
   font-weight: 800;
@@ -106,156 +103,236 @@
   color: #64748B;
 }
 
-.sectorNavChips {
+.heroTagsList {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
-.sectorNavChip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
+.heroTagBtn {
+  padding: 4px 12px;
   border-radius: var(--radius-full);
-  background: #FFFFFF;
+  background: #F8FAFC;
   border: 1px solid var(--border);
   font-family: var(--font-display);
   font-size: 12px;
   font-weight: 700;
   color: #334155;
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   transition: all var(--transition-fast);
 }
 
-.sectorNavChip:hover {
+.heroTagBtn:hover {
   border-color: #0B2093;
   color: #0B2093;
-  box-shadow: 0 4px 12px rgba(11, 32, 147, 0.1);
-  transform: translateY(-1px);
+  background: #FFFFFF;
 }
 
-.chipDot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  flex-shrink: 0;
+.heroMoreTag {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  color: #D97706;
 }
 
-/* Hero Trust Banner */
-.heroTrustBanner {
+/* Terminal HUD (Right Column) */
+.terminalContainer {
+  background: #0B2093;
+  border-radius: var(--radius-xl);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 24px 60px -12px rgba(11, 32, 147, 0.4), inset 0 1.5px 0 rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  color: #FFFFFF;
+}
+
+.terminalHeader {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  padding: 24px 32px;
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-skeuo-card);
-  gap: 20px;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background: rgba(13, 0, 127, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.heroTrustItem {
+.terminalControls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.terminalDotRed { width: 10px; height: 10px; border-radius: 50%; background: #EF4444; }
+.terminalDotYellow { width: 10px; height: 10px; border-radius: 50%; background: #F59E0B; }
+.terminalDotGreen { width: 10px; height: 10px; border-radius: 50%; background: #10B981; }
+
+.terminalTitle {
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: #CBD5E1;
+  letter-spacing: 0.05em;
+}
+
+.terminalLiveBadge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 800;
+  color: #10B981;
+}
+
+.pulseDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 8px #10B981;
+}
+
+.terminalBody {
+  padding: 24px;
+}
+
+.terminalRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: monospace;
+  font-size: 12px;
+  margin-bottom: 20px;
+  color: #E2E8F0;
+}
+
+.terminalPrompt {
+  color: #FFB800;
+  font-weight: 800;
+}
+
+.terminalTagSuccess {
+  margin-left: auto;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #34D399;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.terminalStatsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.terminalStatBox {
+  padding: 14px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  text-align: center;
 }
 
-.trustVal {
+.terminalStatNum {
   font-family: var(--font-display);
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 900;
-  color: #0B2093;
-  font-variant-numeric: tabular-nums;
+  color: #FFB800;
   line-height: 1.1;
+  margin-bottom: 2px;
 }
 
-.trustLabel {
-  font-size: 12px;
-  font-weight: 600;
-  color: #64748B;
-}
-
-.trustDivider {
-  width: 1px;
-  height: 38px;
-  background: var(--border);
-}
-
-/* ─────────────────────────────────────────────────────────────
-   SECTION 2: PANORAMIC SECTOR PERFORMANCE RIBBON
-   ───────────────────────────────────────────────────────────── */
-.ribbonSection {
-  background: #0D007F;
-  padding: 16px 0;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(13, 0, 127, 0.2);
-}
-
-.ribbonContainer {
-  display: flex;
-  width: 100%;
-  overflow: hidden;
-}
-
-.ribbonTrack {
-  display: flex;
-  gap: 16px;
-  white-space: nowrap;
-  animation: ribbonScroll 32s linear infinite;
-}
-
-.ribbonTrack:hover {
-  animation-play-state: paused;
-}
-
-@keyframes ribbonScroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.ribbonCard {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 18px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: var(--radius-full);
-  backdrop-filter: blur(8px);
-}
-
-.ribbonDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  box-shadow: 0 0 8px currentColor;
-}
-
-.ribbonSector {
-  font-family: var(--font-display);
-  font-size: 13px;
+.terminalStatLabel {
+  font-size: 11px;
   font-weight: 700;
   color: #FFFFFF;
 }
 
-.ribbonMetric {
-  font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 800;
-  color: #FFB800;
+.terminalStatSub {
+  font-size: 10px;
+  color: #94A3B8;
+  margin-top: 2px;
+}
+
+.terminalTerminalBar {
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.terminalBarTrack {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.terminalBarFill {
+  height: 100%;
+  width: 92%;
+  background: linear-gradient(90deg, #FFB800, #F59E0B);
+  border-radius: 3px;
+}
+
+.terminalBarLabels {
+  display: flex;
+  justify-content: space-between;
+  font-family: monospace;
+  font-size: 11px;
+  color: #94A3B8;
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 3: FEATURED INDUSTRY SPOTLIGHT
+   SECTION 2: BORDERLESS MINIMALIST DATA STRIP
    ───────────────────────────────────────────────────────────── */
-.spotlightSection {
-  padding: 96px 0 80px;
+.dataStripSection {
+  background: #F8FAFC;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.dataStripContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.dataStripItem {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.dataStripVal {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 900;
+  color: #0B2093;
+  line-height: 1;
+}
+
+.dataStripLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748B;
+}
+
+.dataStripDot {
+  color: #CBD5E1;
+  font-size: 14px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   SECTION 3: THE MASTER-DETAIL SECTOR WORKSTATION (REPLACES 12 CARDS)
+   ───────────────────────────────────────────────────────────── */
+.workstationSection {
+  padding: 96px 0;
   background: #FFFFFF;
 }
 
@@ -273,480 +350,183 @@
   line-height: 1.7;
 }
 
-.spotlightCard {
+.workstationConsole {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 320px 1fr;
   border-radius: var(--radius-2xl);
-  background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFE 100%);
+  background: #FFFFFF;
   border: 1.5px solid var(--border);
   box-shadow: var(--shadow-skeuo-card);
   overflow: hidden;
-  align-items: stretch;
+  min-height: 720px;
 }
 
-.spotlightVisualFrame {
-  position: relative;
-  min-height: 480px;
-  height: 100%;
-}
-
-.spotlightImg {
-  object-fit: cover;
-}
-
-.spotlightVisualOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.2) 0%, rgba(15, 23, 42, 0.75) 100%);
-}
-
-.spotlightLocationBadge {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  padding: 8px 16px;
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--radius-full);
-  font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 700;
-  color: #FFFFFF;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-}
-
-.spotlightStatusBadge {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  background: rgba(5, 150, 105, 0.9);
-  backdrop-filter: blur(12px);
-  border-radius: var(--radius-full);
-  font-family: var(--font-display);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  color: #FFFFFF;
-  box-shadow: 0 4px 16px rgba(5, 150, 105, 0.4);
-}
-
-.liveBeacon {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #34D399;
-  box-shadow: 0 0 10px #34D399;
-  animation: beaconPulse 2s infinite;
-}
-
-@keyframes beaconPulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.3); }
-}
-
-.spotlightContentPane {
-  padding: 48px;
+/* Workstation Left Column: Vertical Nav */
+.workstationNav {
+  background: #F8FAFC;
+  border-right: 1.5px solid var(--border);
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
-.spotlightEyebrowBadge {
-  display: inline-block;
-  padding: 4px 12px;
-  background: rgba(245, 158, 11, 0.1);
-  border: 1px solid rgba(245, 158, 11, 0.3);
-  border-radius: var(--radius-full);
+.workstationNavHeader {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-family: var(--font-display);
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.08em;
-  color: #D97706;
-  margin-bottom: 14px;
-  width: fit-content;
+  color: #64748B;
+  border-bottom: 1px solid var(--border);
 }
 
-.spotlightHeadline {
-  font-family: var(--font-display);
-  font-size: 24px;
-  font-weight: 800;
-  color: #000000;
-  line-height: 1.3;
-  margin-bottom: 14px;
+.navCountBadge {
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  background: rgba(11, 32, 147, 0.08);
+  color: #0B2093;
+  font-size: 10px;
 }
 
-.spotlightDesc {
-  font-size: 14px;
-  line-height: 1.65;
-  color: #475569;
-  margin-bottom: 28px;
-}
-
-.spotlightStatsGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
-.spotlightStatBox {
-  padding: 16px;
-  border-radius: var(--radius-lg);
-  background: #F8FAFC;
-  border: 1px solid var(--border);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
+.workstationNavList {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  overflow-y: auto;
+  max-height: 680px;
 }
 
-.spotlightStatVal {
-  font-family: var(--font-display);
-  font-size: 24px;
-  font-weight: 900;
-  color: #0B2093;
-  line-height: 1.1;
-}
-
-.spotlightStatLabel {
-  font-size: 12px;
-  font-weight: 600;
-  color: #64748B;
-}
-
-.spotlightDeliverables {
+.workstationNavItem {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 8px;
-}
-
-.spotlightDelivTag {
-  padding: 6px 12px;
-  border-radius: var(--radius-full);
-  background: rgba(16, 185, 129, 0.08);
-  border: 1px solid rgba(16, 185, 129, 0.25);
-  font-family: var(--font-display);
-  font-size: 12px;
-  font-weight: 700;
-  color: #059669;
-}
-
-/* ─────────────────────────────────────────────────────────────
-   SECTION 4: THE 12-INDUSTRY INTERACTIVE MATRIX
-   ───────────────────────────────────────────────────────────── */
-.matrixSection {
-  padding: 80px 0 96px;
-  background: #F8FAFC;
-  border-top: 1px solid var(--border-subtle);
+  align-items: center;
+  padding: 14px 18px;
+  background: transparent;
+  border: none;
   border-bottom: 1px solid var(--border-subtle);
-}
-
-.filterTabsRow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 48px;
-}
-
-.filterTab {
-  padding: 10px 22px;
-  border-radius: var(--radius-full);
-  background: #FFFFFF;
-  border: 1.5px solid var(--border);
-  font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 700;
-  color: #475569;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  text-align: left;
+  position: relative;
   transition: all var(--transition-fast);
-}
-
-.filterTab:hover {
-  border-color: #0B2093;
-  color: #0B2093;
-  transform: translateY(-2px);
-}
-
-.filterTabActive {
-  background: #0B2093 !important;
-  border-color: #0B2093 !important;
-  color: #FFFFFF !important;
-  box-shadow: 0 8px 20px rgba(11, 32, 147, 0.25) !important;
-  transform: none !important;
-}
-
-.matrixGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-}
-
-.industryCard {
-  border-radius: var(--radius-xl);
-  background: #FFFFFF;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-skeuo-card);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: all var(--transition-md);
-}
-
-.industryCard:hover {
-  border-color: rgba(11, 32, 147, 0.35);
-  box-shadow: 0 24px 54px -12px rgba(11, 32, 147, 0.16);
-  transform: translateY(-4px);
-}
-
-.cardImgContainer {
-  position: relative;
   width: 100%;
-  height: 200px;
-  overflow: hidden;
 }
 
-.cardImg {
-  object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+.workstationNavItem:hover {
+  background: rgba(11, 32, 147, 0.03);
 }
 
-.industryCard:hover .cardImg {
-  transform: scale(1.05);
+.workstationNavItemActive {
+  background: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
-.cardImgOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.15) 0%, rgba(15, 23, 42, 0.85) 100%);
-}
-
-.cardNumPill {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  padding: 4px 10px;
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--radius-full);
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  color: #FFB800;
-}
-
-.cardCategoryPill {
-  position: absolute;
-  bottom: 14px;
-  left: 14px;
-  padding: 4px 10px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: var(--radius-full);
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  color: #FFFFFF;
-}
-
-.cardBody {
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.cardTitle {
-  font-family: var(--font-display);
-  font-size: 19px;
-  font-weight: 800;
-  color: #000000;
-  line-height: 1.25;
-  margin-bottom: 10px;
-}
-
-.cardDesc {
-  font-size: 14px;
-  line-height: 1.6;
-  color: #475569;
-  margin-bottom: 16px;
-  min-height: 66px;
-}
-
-.cardTagsRow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 20px;
-}
-
-.cardTag {
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  background: #F1F5F9;
-  border: 1px solid var(--border-subtle);
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 700;
-  color: #475569;
-}
-
-.cardMetricWell {
-  padding: 14px 16px;
-  border-radius: var(--radius-md);
-  background: #F8FAFC;
-  border: 1px solid var(--border);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 18px;
-}
-
-.cardMetricVal {
-  font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 900;
-  font-variant-numeric: tabular-nums;
-  line-height: 1;
-}
-
-.cardMetricLabel {
-  font-size: 12px;
-  font-weight: 700;
-  color: #64748B;
-  text-align: right;
-}
-
-.cardPlaybookBtn {
-  width: 100%;
-  padding: 12px 18px;
-  border-radius: var(--radius-md);
-  background: #FFFFFF;
-  border: 1.5px solid var(--border);
-  font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 800;
-  color: #0B2093;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-  transition: all var(--transition-fast);
-}
-
-.cardPlaybookBtn:hover {
-  background: #0B2093;
-  border-color: #0B2093;
-  color: #FFFFFF;
-  box-shadow: 0 6px 18px rgba(11, 32, 147, 0.2);
-}
-
-.btnArrow {
-  transition: transform var(--transition-fast);
-}
-
-.cardPlaybookBtn:hover .btnArrow {
-  transform: translateX(4px);
-}
-
-/* ─────────────────────────────────────────────────────────────
-   SECTION 5: INTERACTIVE INDUSTRY PLAYBOOK DRAWER
-   ───────────────────────────────────────────────────────────── */
-.drawerOverlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(8px);
-  z-index: 9999;
-  display: flex;
-  justify-content: flex-end;
-  animation: fadeIn 0.2s ease-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.drawerContent {
-  width: 100%;
-  max-width: 580px;
-  height: 100vh;
-  background: #FFFFFF;
-  box-shadow: -12px 0 48px rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow: hidden;
-  animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes slideInRight {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
-}
-
-.drawerDragHandle {
-  display: none;
-}
-
-.drawerHeroBanner {
-  position: relative;
-  width: 100%;
-  height: 220px;
+.navItemIndicator {
+  width: 3px;
+  height: 32px;
+  border-radius: 2px;
+  margin-right: 12px;
   flex-shrink: 0;
 }
 
-.drawerHeroImg {
+.navItemText {
+  flex: 1;
+}
+
+.navItemNum {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #D97706;
+}
+
+.navItemTitle {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: #000000;
+  line-height: 1.25;
+}
+
+.navItemMetricBadge {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Workstation Right Column: Cockpit Plane */
+.workstationCockpit {
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+}
+
+.cockpitVisualBar {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+}
+
+.cockpitImg {
   object-fit: cover;
 }
 
-.drawerHeroOverlay {
+.cockpitOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.3) 0%, rgba(15, 23, 42, 0.9) 100%);
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.2) 0%, rgba(15, 23, 42, 0.88) 100%);
 }
 
-.drawerCloseBtn {
+.cockpitBadgeRow {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #FFFFFF;
-  font-size: 16px;
+  top: 18px;
+  left: 24px;
+  right: 24px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  z-index: 2;
+  justify-content: space-between;
+  z-index: 1;
 }
 
-.drawerCloseBtn:hover {
-  background: rgba(239, 68, 68, 0.85);
-  transform: scale(1.1);
+.cockpitCategoryPill {
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #FFFFFF;
 }
 
-.drawerHeroText {
+.cockpitLiveBadge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(5, 150, 105, 0.85);
+  backdrop-filter: blur(8px);
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #FFFFFF;
+}
+
+.pulseDotGreen {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34D399;
+  box-shadow: 0 0 6px #34D399;
+}
+
+.cockpitTitleWrap {
   position: absolute;
   bottom: 20px;
   left: 24px;
@@ -754,109 +534,132 @@
   z-index: 1;
 }
 
-.drawerTitle {
+.cockpitTitle {
   font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 800;
+  font-size: 26px;
+  font-weight: 900;
   color: #FFFFFF;
-  line-height: 1.25;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
-.drawerSubtitle {
+.cockpitTagline {
   font-size: 13px;
   color: #E2E8F0;
   line-height: 1.5;
-  margin-bottom: 6px;
 }
 
-.drawerClientAnchor {
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 700;
-  color: #FFB800;
-}
-
-.drawerBody {
-  padding: 24px;
-  overflow-y: auto;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+.cockpitGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
+  padding: 24px;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
-.drawerSectionCard {
+.cockpitColBad {
   padding: 20px;
   border-radius: var(--radius-lg);
-  background: #FFFFFF;
-  border: 1px solid var(--border);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  background: rgba(239, 68, 68, 0.02);
+  border: 1px solid rgba(239, 68, 68, 0.18);
 }
 
-.drawerSectionHeader {
+.cockpitColHeaderBad {
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.06em;
+  color: #DC2626;
+  margin-bottom: 12px;
+}
+
+.cockpitColGood {
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  background: rgba(16, 185, 129, 0.02);
+  border: 1px solid rgba(16, 185, 129, 0.18);
+}
+
+.cockpitColHeaderGood {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #059669;
+  margin-bottom: 12px;
+}
+
+.cockpitList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cockpitListItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.badCross {
+  color: #DC2626;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.goodCheck {
+  color: #059669;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.cockpitJourneyBox {
+  padding: 24px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.journeyHeader {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
   color: #0B2093;
   margin-bottom: 14px;
 }
 
-.drawerList {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.journeyStepsRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
 }
 
-.drawerListItem {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 13px;
-  line-height: 1.55;
-  color: #334155;
-}
-
-.bulletBad {
-  color: #DC2626;
-  font-weight: 800;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-
-.bulletGood {
-  color: #059669;
-  font-weight: 800;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-
-.drawerFunnelSteps {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.drawerFunnelStep {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 12px;
-  background: #F8FAFC;
-  border: 1px solid var(--border-subtle);
+.journeyStepCard {
+  padding: 14px;
   border-radius: var(--radius-md);
+  background: #F8FAFC;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
 }
 
-.funnelStepNum {
-  width: 28px;
-  height: 28px;
+.journeyStepTop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.stepNumCircle {
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: #0B2093;
   color: #FFFFFF;
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
   display: flex;
   align-items: center;
@@ -864,480 +667,385 @@
   flex-shrink: 0;
 }
 
-.funnelStepTitle {
+.stepTitle {
   font-family: var(--font-display);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
   color: #000000;
-  margin-bottom: 2px;
 }
 
-.funnelStepDesc {
-  font-size: 12px;
+.stepDesc {
+  font-size: 11px;
   color: #64748B;
-  line-height: 1.5;
+  line-height: 1.45;
 }
 
-.drawerBenchmarksGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+.cockpitFooterBar {
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: #FAFCFE;
 }
 
-.drawerBenchmarkWell {
-  padding: 12px;
+.cockpitBenchmarks {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cockpitBenchmarkWell {
+  padding: 10px 14px;
   border-radius: var(--radius-md);
-  background: #F8FAFC;
+  background: #FFFFFF;
   border: 1px solid var(--border);
-  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
 }
 
-.drawerBenchmarkVal {
+.benchmarkVal {
   font-family: var(--font-display);
   font-size: 16px;
   font-weight: 900;
   color: #0B2093;
-  margin-bottom: 2px;
 }
 
-.drawerBenchmarkLabel {
+.benchmarkLabel {
   font-size: 10px;
   font-weight: 700;
   color: #64748B;
-  line-height: 1.3;
 }
 
-.drawerStickyFooter {
-  padding: 18px 24px;
-  background: #FFFFFF;
-  border-top: 1px solid var(--border);
-  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.05);
+.cockpitActionWrap {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-}
-
-.drawerFooterNote {
-  font-size: 11px;
-  font-weight: 600;
-  color: #64748B;
-  text-align: center;
-}
-
-/* ─────────────────────────────────────────────────────────────
-   SECTION 6: SECTOR REVENUE ARCHITECTURE
-   ───────────────────────────────────────────────────────────── */
-.methodologySection {
-  padding: 96px 0;
-  background: #FFFFFF;
-}
-
-.methodologyGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-
-.methodologyCard {
-  padding: 32px 24px;
-  border-radius: var(--radius-xl);
-  background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFE 100%);
-  border: 1.5px solid var(--border);
-  box-shadow: var(--shadow-skeuo-card);
-  display: flex;
-  flex-direction: column;
-  transition: all var(--transition-md);
-}
-
-.methodologyCard:hover {
-  border-color: #0B2093;
-  transform: translateY(-4px);
-  box-shadow: 0 20px 48px -8px rgba(11, 32, 147, 0.14);
-}
-
-.methodologyCardTop {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 18px;
-}
-
-.methodologyNum {
-  font-family: var(--font-display);
-  font-size: 32px;
-  font-weight: 900;
-  color: #FFB800;
-  line-height: 1;
-}
-
-.methodologyPhase {
-  font-family: var(--font-display);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  color: #64748B;
-  padding: 4px 8px;
-  background: #F1F5F9;
-  border-radius: var(--radius-sm);
-}
-
-.methodologyTitle {
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 800;
-  color: #000000;
-  margin-bottom: 10px;
-  line-height: 1.3;
-}
-
-.methodologyDesc {
-  font-size: 13px;
-  color: #475569;
-  line-height: 1.6;
-  margin-bottom: 18px;
-}
-
-.methodologyTags {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 24px;
-}
-
-.methodologyTag {
-  font-size: 12px;
-  font-weight: 600;
-  color: #0B2093;
-  display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 6px;
 }
 
-.methodologyTag::before {
-  content: '•';
-  color: #FFB800;
-  font-size: 16px;
-}
-
-.methodologyMetricWell {
-  margin-top: auto;
-  padding: 12px 14px;
-  border-radius: var(--radius-md);
-  background: #F8FAFC;
-  border: 1px solid var(--border);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.methodologyMetricVal {
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 900;
-  color: #0B2093;
-}
-
-.methodologyMetricLabel {
+.cockpitAnchorText {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
   color: #64748B;
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 7: AUDITED COMMERCIAL DELTAS
+   SECTION 4: CROSS-SECTOR BENCHMARK MATRIX TABLE
    ───────────────────────────────────────────────────────────── */
-.deltasSection {
+.tableSection {
   padding: 96px 0;
   background: #F8FAFC;
   border-top: 1px solid var(--border-subtle);
   border-bottom: 1px solid var(--border-subtle);
 }
 
-.deltaTabsRow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 40px;
-}
-
-.deltaTab {
-  padding: 10px 22px;
-  border-radius: var(--radius-full);
+.tableContainer {
   background: #FFFFFF;
-  border: 1.5px solid var(--border);
-  font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 700;
-  color: #334155;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
-  transition: all var(--transition-fast);
-}
-
-.deltaTab:hover {
-  border-color: #0B2093;
-  color: #0B2093;
-}
-
-.deltaTabActive {
-  background: #0B2093 !important;
-  border-color: #0B2093 !important;
-  color: #FFFFFF !important;
-  box-shadow: 0 8px 20px rgba(11, 32, 147, 0.25) !important;
-}
-
-.deltaConsole {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 24px;
-  max-width: 1040px;
-  margin: 0 auto;
-}
-
-.deltaColBefore, .deltaColAfter {
-  padding: 32px;
-  border-radius: var(--radius-2xl);
-  background: #FFFFFF;
+  border-radius: var(--radius-xl);
   border: 1.5px solid var(--border);
   box-shadow: var(--shadow-skeuo-card);
+  overflow-x: auto;
 }
 
-.deltaBadgeBefore {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 800;
-  color: #DC2626;
-  margin-bottom: 8px;
-}
-
-.deltaBadgeAfter {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 800;
-  color: #059669;
-  margin-bottom: 8px;
-}
-
-.deltaColTitle {
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 800;
-  color: #000000;
-  margin-bottom: 20px;
-}
-
-.deltaWellBefore {
-  padding: 20px;
-  border-radius: var(--radius-lg);
-  background: rgba(239, 68, 68, 0.03);
-  border: 1px solid rgba(239, 68, 68, 0.15);
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.deltaWellAfter {
-  padding: 20px;
-  border-radius: var(--radius-lg);
-  background: rgba(16, 185, 129, 0.03);
-  border: 1px solid rgba(16, 185, 129, 0.15);
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.deltaRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.matrixTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
   font-size: 13px;
 }
 
-.deltaLabel {
+.matrixTable thead tr {
+  background: #F1F5F9;
+  border-bottom: 1.5px solid var(--border);
+}
+
+.matrixTable th {
+  padding: 16px 20px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #475569;
+  white-space: nowrap;
+}
+
+.matrixTable tbody tr {
+  border-bottom: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.matrixTable tbody tr:hover {
+  background: rgba(11, 32, 147, 0.02);
+}
+
+.matrixTable td {
+  padding: 16px 20px;
+  color: #334155;
+  white-space: nowrap;
+}
+
+.tableSectorCell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: #000000;
+}
+
+.tableColorDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tableSectorTitle {
+  color: #000000;
+}
+
+.tableMetricCell {
+  font-family: var(--font-display);
+  font-weight: 800;
+}
+
+.metricPill {
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(11, 32, 147, 0.08);
+  color: #0B2093;
+}
+
+.tableChannelCell {
+  font-size: 12px;
+  color: #64748B;
+}
+
+.badgePill {
+  padding: 4px 8px;
+  border-radius: var(--radius-full);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  color: #D97706;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.tableVelocityCell {
+  font-weight: 700;
+  color: #059669;
+}
+
+.tableAnchorCell {
   color: #64748B;
   font-weight: 600;
 }
 
-.deltaValBad {
-  color: #DC2626;
-  font-weight: 800;
-  font-family: var(--font-display);
-}
-
-.deltaValGood {
-  color: #059669;
-  font-weight: 800;
-  font-family: var(--font-display);
-}
-
-.deltaCenterMedallion {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.medallionRing {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #0B2093 0%, #0D007F 100%);
-  border: 3px solid #FFB800;
-  box-shadow: 0 12px 32px rgba(11, 32, 147, 0.35);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 12px;
-}
-
-.medallionLift {
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 900;
-  color: #FFB800;
-  line-height: 1.1;
-  margin-bottom: 4px;
-}
-
-.medallionLabel {
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  color: #E2E8F0;
-}
-
 /* ─────────────────────────────────────────────────────────────
-   SECTION 8: HYPERLOCAL ODISHA CORRIDOR DOMINANCE
+   SECTION 5: HYPERLOCAL CORRIDOR DISTRIBUTION CONSOLE
    ───────────────────────────────────────────────────────────── */
 .corridorSection {
   padding: 96px 0;
   background: #FFFFFF;
 }
 
-.corridorGrid {
+.corridorConsole {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: 360px 1fr;
+  border-radius: var(--radius-2xl);
+  background: #FFFFFF;
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow-skeuo-card);
+  overflow: hidden;
 }
 
-.corridorCard {
-  padding: 28px;
-  border-radius: var(--radius-xl);
-  background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFE 100%);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-skeuo-card);
+.corridorListPane {
+  background: #F8FAFC;
+  border-right: 1.5px solid var(--border);
   display: flex;
   flex-direction: column;
-  transition: all var(--transition-md);
 }
 
-.corridorCard:hover {
-  border-color: #0B2093;
-  transform: translateY(-4px);
-  box-shadow: 0 20px 48px -8px rgba(11, 32, 147, 0.12);
-}
-
-.corridorTop {
+.corridorListHeader {
+  padding: 16px 20px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  margin-bottom: 14px;
-}
-
-.corridorBadge {
   font-family: var(--font-display);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.08em;
-  color: #D97706;
-  background: rgba(245, 158, 11, 0.1);
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
+  color: #64748B;
+  border-bottom: 1px solid var(--border);
 }
 
-.corridorBeacon {
+.corridorItemBtn {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-subtle);
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--transition-fast);
+}
+
+.corridorItemBtn:hover {
+  background: rgba(11, 32, 147, 0.03);
+}
+
+.corridorItemBtnActive {
+  background: #FFFFFF !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.corridorRadioDot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1.5px solid #CBD5E1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.corridorItemBtnActive .corridorRadioDot {
+  border-color: #0B2093;
+}
+
+.radioInner {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #10B981;
-  box-shadow: 0 0 8px #10B981;
+  background: #0B2093;
 }
 
-.corridorTitle {
+.corridorItemInfo {
+  flex: 1;
+}
+
+.corridorItemName {
   font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 800;
+  font-size: 14px;
+  font-weight: 700;
   color: #000000;
-  margin-bottom: 8px;
+  margin-bottom: 2px;
 }
 
-.corridorFocus {
-  font-size: 13px;
-  color: #475569;
-  line-height: 1.55;
-  margin-bottom: 18px;
+.corridorItemBadge {
+  font-size: 10px;
+  font-weight: 800;
+  color: #D97706;
 }
 
-.corridorMetricWell {
-  padding: 12px 14px;
-  border-radius: var(--radius-md);
-  background: #F8FAFC;
-  border: 1px solid var(--border);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
-  margin-bottom: 16px;
-}
-
-.corridorMetricVal {
+.corridorItemMetric {
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 800;
   color: #0B2093;
 }
 
-.corridorAnchor {
-  margin-top: auto;
-  font-size: 12px;
+.corridorDetailPane {
+  padding: 44px;
   display: flex;
-  align-items: center;
-  gap: 6px;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.anchorLabel {
-  color: #64748B;
-  font-weight: 600;
+.corridorDetailBadge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(11, 32, 147, 0.08);
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #0B2093;
+  margin-bottom: 12px;
+  width: fit-content;
 }
 
-.anchorVal {
+.corridorDetailTitle {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 900;
   color: #000000;
+  margin-bottom: 6px;
+}
+
+.corridorDetailSub {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.corridorMetricsRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.corridorStatWell {
+  padding: 16px 20px;
+  border-radius: var(--radius-lg);
+  background: #F8FAFC;
+  border: 1px solid var(--border);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
+}
+
+.corridorStatVal {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 900;
+  color: #0B2093;
+  margin-bottom: 4px;
+}
+
+.corridorStatLabel {
+  font-size: 11px;
   font-weight: 700;
+  color: #64748B;
+}
+
+.corridorStrategyBox {
+  padding: 18px 20px;
+  border-radius: var(--radius-lg);
+  background: rgba(245, 158, 11, 0.04);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.strategyBoxTitle {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  color: #D97706;
+  margin-bottom: 6px;
+}
+
+.strategyBoxDesc {
+  font-size: 13px;
+  color: #334155;
+  line-height: 1.6;
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 9: INTERACTIVE SECTOR ROI CALCULATOR
+   SECTION 6: INTERACTIVE GROWTH DIAGNOSTIC
    ───────────────────────────────────────────────────────────── */
-.calculatorSection {
+.diagnosticSection {
   padding: 96px 0;
   background: #F8FAFC;
   border-top: 1px solid var(--border-subtle);
   border-bottom: 1px solid var(--border-subtle);
 }
 
-.calculatorConsole {
+.diagnosticConsole {
   max-width: 900px;
   margin: 0 auto;
   padding: 44px;
@@ -1347,384 +1055,489 @@
   box-shadow: var(--shadow-skeuo-card);
 }
 
-.calcSectorSelectRow {
-  margin-bottom: 32px;
+.diagStep {
+  margin-bottom: 28px;
 }
 
-.calcLabel {
+.diagStepHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.diagStepNum {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #0B2093;
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.diagStepTitle {
   font-family: var(--font-display);
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: #64748B;
-  display: block;
-  margin-bottom: 12px;
 }
 
-.calcSectorButtons {
-  display: flex;
+.diagOptionsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  flex-wrap: wrap;
 }
 
-.calcSectorBtn {
-  padding: 8px 18px;
-  border-radius: var(--radius-full);
+.diagBudgetGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.diagOptionBtn {
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
   background: #F8FAFC;
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--border);
   font-family: var(--font-display);
   font-size: 13px;
   font-weight: 700;
   color: #334155;
   cursor: pointer;
   transition: all var(--transition-fast);
+  text-align: center;
 }
 
-.calcSectorBtn:hover {
+.diagOptionBtn:hover {
   border-color: #0B2093;
   color: #0B2093;
 }
 
-.calcSectorBtnActive {
+.diagOptionBtnActive {
   background: #0B2093 !important;
   border-color: #0B2093 !important;
   color: #FFFFFF !important;
   box-shadow: 0 4px 14px rgba(11, 32, 147, 0.25) !important;
 }
 
-.calcSliderRow {
-  margin-bottom: 36px;
-  padding: 24px;
+.diagOutputPlane {
+  margin-top: 36px;
+  padding: 28px;
   border-radius: var(--radius-xl);
-  background: #F8FAFC;
-  border: 1px solid var(--border);
+  background: linear-gradient(180deg, #FAFCFE 0%, #F1F5F9 100%);
+  border: 1.5px solid var(--border);
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
-.calcSliderHeader {
+.diagOutputTop {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.outputBadge {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #D97706;
+  background: rgba(245, 158, 11, 0.1);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+.outputTimeline {
+  font-size: 12px;
+  font-weight: 700;
+  color: #059669;
+}
+
+.diagOutputHeadline {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  color: #000000;
   margin-bottom: 16px;
 }
 
-.calcBudgetValue {
+.diagStackBox {
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  margin-bottom: 20px;
+}
+
+.stackLabel {
   font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 900;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
   color: #0B2093;
-  font-variant-numeric: tabular-nums;
+  display: block;
+  margin-bottom: 4px;
 }
 
-.calcSlider {
-  width: 100%;
-  height: 8px;
-  border-radius: 4px;
-  background: #E2E8F0;
-  outline: none;
-  accent-color: #0B2093;
-  cursor: pointer;
-  margin-bottom: 8px;
+.stackDesc {
+  font-size: 13px;
+  color: #334155;
+  line-height: 1.5;
+  font-weight: 600;
 }
 
-.calcSliderLimits {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  font-weight: 700;
-  color: #64748B;
-}
-
-.calcResultsGrid {
+.diagMetricsRow {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 28px;
+  gap: 12px;
 }
 
-.calcResultDial {
-  padding: 20px;
-  border-radius: var(--radius-lg);
-  background: #F8FAFC;
+.diagMetricWell {
+  padding: 14px;
+  border-radius: var(--radius-md);
+  background: #FFFFFF;
   border: 1px solid var(--border);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
   text-align: center;
 }
 
-.calcResultLabel {
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  color: #64748B;
-}
-
-.calcResultNumber {
+.diagMetricVal {
+  display: block;
   font-family: var(--font-display);
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 900;
   color: #0B2093;
-  font-variant-numeric: tabular-nums;
-  line-height: 1.1;
+  margin-bottom: 2px;
 }
 
-.calcResultSub {
+.diagMetricLabel {
   font-size: 11px;
-  font-weight: 600;
   color: #64748B;
-}
-
-.calcChannelSplit {
-  padding: 14px 20px;
-  border-radius: var(--radius-md);
-  background: rgba(11, 32, 147, 0.04);
-  border: 1px solid rgba(11, 32, 147, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.channelSplitLabel {
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  color: #0B2093;
-}
-
-.channelSplitVal {
-  font-size: 13px;
-  font-weight: 700;
-  color: #334155;
+  font-weight: 600;
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 10: VERIFIED ODISHA FOUNDERS
+   SECTION 7: EDITORIAL-GRADE FLAGSHIP TRANSFORMATION
    ───────────────────────────────────────────────────────────── */
-.endorsementsSection {
+.editorialSection {
   padding: 96px 0;
   background: #FFFFFF;
 }
 
-.endorsementsGrid {
+.editorialSpread {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-}
-
-.endorsementCard {
-  padding: 32px;
-  border-radius: var(--radius-xl);
-  background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFE 100%);
-  border: 1.5px solid var(--border);
-  box-shadow: var(--shadow-skeuo-card);
-  display: flex;
-  flex-direction: column;
-  transition: all var(--transition-md);
-}
-
-.endorsementCard:hover {
-  border-color: #0B2093;
-  transform: translateY(-4px);
-  box-shadow: 0 20px 48px -8px rgba(11, 32, 147, 0.14);
-}
-
-.endorsementTop {
-  display: flex;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 48px;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
 }
 
-.starRow {
-  color: #F59E0B;
-  font-size: 16px;
-  letter-spacing: 2px;
-}
-
-.googleReviewPill {
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.25);
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 800;
-  color: #059669;
-}
-
-.endorsementQuote {
-  font-size: 14px;
-  line-height: 1.65;
-  color: #334155;
-  margin-bottom: 24px;
-  flex: 1;
-}
-
-.endorsementAuthorRow {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  border-top: 1px solid var(--border-subtle);
-  padding-top: 18px;
-}
-
-.authorAvatarWrap {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+.editorialImagePane {
+  position: relative;
+  height: 480px;
+  border-radius: var(--radius-2xl);
   overflow: hidden;
-  border: 2px solid #0B2093;
-  flex-shrink: 0;
+  box-shadow: var(--shadow-skeuo-card);
+  border: 1.5px solid var(--border);
 }
 
-.authorAvatar {
+.editorialImg {
   object-fit: cover;
 }
 
-.authorName {
+.editorialImgOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.1) 0%, rgba(15, 23, 42, 0.75) 100%);
+}
+
+.hudCornerTL {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 24px;
+  height: 24px;
+  border-top: 2.5px solid #FFB800;
+  border-left: 2.5px solid #FFB800;
+}
+
+.hudCornerBR {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  border-bottom: 2.5px solid #FFB800;
+  border-right: 2.5px solid #FFB800;
+}
+
+.editorialPillLocation {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(8px);
+  color: #FFFFFF;
   font-family: var(--font-display);
-  font-size: 15px;
-  font-weight: 800;
-  color: #000000;
-}
-
-.authorRole {
   font-size: 12px;
-  color: #64748B;
-  line-height: 1.3;
+  font-weight: 700;
 }
 
-.authorStat {
+.editorialPillAudit {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: rgba(5, 150, 105, 0.9);
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.editorialNarrativePane {
+  display: flex;
+  flex-direction: column;
+}
+
+.editorialEyebrow {
   font-family: var(--font-display);
   font-size: 11px;
   font-weight: 800;
-  color: #059669;
-  margin-top: 2px;
+  letter-spacing: 0.08em;
+  color: #D97706;
+  margin-bottom: 12px;
+}
+
+.editorialHeadline {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 800;
+  color: #000000;
+  line-height: 1.35;
+  margin-bottom: 12px;
+}
+
+.editorialAuthor {
+  font-size: 14px;
+  color: #64748B;
+  margin-bottom: 20px;
+}
+
+.editorialDivider {
+  width: 60px;
+  height: 3px;
+  background: #FFB800;
+  margin-bottom: 20px;
+}
+
+.editorialStory {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #334155;
+  margin-bottom: 28px;
+}
+
+.editorialMetricsStrip {
+  display: flex;
+  gap: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.editorialMetricItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.edMetricVal {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 900;
+  color: #0B2093;
+}
+
+.edMetricLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748B;
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 11: SECTOR PARTNERSHIP ENGAGEMENT TIERS
+   SECTION 8: SEGMENTED PARTNERSHIP TIER TERMINAL
    ───────────────────────────────────────────────────────────── */
-.engagementSection {
+.tierTerminalSection {
   padding: 96px 0;
   background: #F8FAFC;
   border-top: 1px solid var(--border-subtle);
   border-bottom: 1px solid var(--border-subtle);
 }
 
-.engagementGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-}
-
-.engagementCard {
-  padding: 36px 30px;
+.tierConsole {
+  max-width: 960px;
+  margin: 0 auto;
   border-radius: var(--radius-2xl);
   background: #FFFFFF;
   border: 1.5px solid var(--border);
   box-shadow: var(--shadow-skeuo-card);
+  overflow: hidden;
+}
+
+.tierTabBar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: #F1F5F9;
+  border-bottom: 1.5px solid var(--border);
+}
+
+.tierTabBtn {
+  padding: 18px 20px;
+  background: transparent;
+  border: none;
+  border-right: 1px solid var(--border);
+  cursor: pointer;
   display: flex;
   flex-direction: column;
-  transition: all var(--transition-md);
-  position: relative;
+  align-items: center;
+  gap: 4px;
+  transition: all var(--transition-fast);
 }
 
-.engagementCardPrimary {
-  border-color: #0B2093 !important;
-  box-shadow: 0 24px 60px -12px rgba(11, 32, 147, 0.2) !important;
-  transform: translateY(-6px);
+.tierTabBtn:last-child {
+  border-right: none;
 }
 
-.engagementCardPrimary::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 6px;
-  background: linear-gradient(90deg, #FFB800, #F59E0B);
-  border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+.tierTabBtn:hover {
+  background: rgba(11, 32, 147, 0.04);
 }
 
-.engagementBadge {
-  display: inline-block;
-  padding: 4px 12px;
-  border-radius: var(--radius-full);
-  background: rgba(11, 32, 147, 0.08);
+.tierTabBtnActive {
+  background: #FFFFFF !important;
+  border-bottom: 3px solid #0B2093;
+}
+
+.tierTabBadge {
   font-family: var(--font-display);
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.08em;
-  color: #0B2093;
-  margin-bottom: 14px;
+  color: #D97706;
 }
 
-.engagementTitle {
+.tierTabName {
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 15px;
+  font-weight: 800;
+  color: #000000;
+}
+
+.tierDetailPlane {
+  padding: 44px;
+}
+
+.tierDetailHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 24px;
+  margin-bottom: 32px;
+}
+
+.tierDetailTitle {
+  font-family: var(--font-display);
+  font-size: 24px;
   font-weight: 800;
   color: #000000;
   margin-bottom: 4px;
 }
 
-.engagementDuration {
-  font-size: 12px;
-  font-weight: 700;
-  color: #64748B;
-  margin-bottom: 14px;
+.tierDetailTagline {
+  font-size: 14px;
+  color: #475569;
+  max-width: 520px;
 }
 
-.engagementPrice {
+.tierPriceBox {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.tierPriceVal {
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 900;
   color: #0B2093;
-  margin-bottom: 14px;
 }
 
-.engagementTagline {
-  font-size: 13px;
-  color: #475569;
-  line-height: 1.55;
-  margin-bottom: 24px;
-  min-height: 42px;
+.tierPricePeriod {
+  font-size: 14px;
+  font-weight: 700;
+  color: #64748B;
 }
 
-.engagementFeaturesList {
+.tierBodyGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+}
+
+.tierColTitle {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #64748B;
+  margin-bottom: 16px;
+}
+
+.tierCheckList {
+  list-style: none;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-bottom: 28px;
 }
 
-.engagementFeatureItem {
+.tierCheckItem {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  font-size: 13px;
-  line-height: 1.45;
+  font-size: 14px;
+  line-height: 1.5;
   color: #334155;
 }
 
-.featureCheck {
+.greenCheckMedallion {
   color: #059669;
   font-weight: 800;
   flex-shrink: 0;
 }
 
-.engagementFooter {
-  margin-top: auto;
-  border-top: 1px solid var(--border-subtle);
-  padding-top: 18px;
+.tierCommitmentsCol {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-.recommendedForLabel {
+.tierCommitmentBox {
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  background: #F8FAFC;
+  border: 1px solid var(--border);
+}
+
+.commitmentLabel {
   font-family: var(--font-display);
   font-size: 10px;
   font-weight: 800;
@@ -1733,21 +1546,21 @@
   margin-bottom: 4px;
 }
 
-.recommendedForText {
-  font-size: 12px;
-  color: #334155;
-  line-height: 1.4;
+.commitmentVal {
+  font-size: 13px;
+  font-weight: 700;
+  color: #000000;
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 12: EXECUTIVE BESPOKE BOTTOM CTA SECTION
+   SECTION 9: EXECUTIVE BESPOKE BOTTOM CONSULTATION BANNER
    ───────────────────────────────────────────────────────────── */
-.bottomCtaSection {
+.bottomBannerSection {
   padding: 96px 0 110px;
   background: #FFFFFF;
 }
 
-.bespokeCtaCard {
+.bespokeBannerCard {
   position: relative;
   border-radius: var(--radius-2xl);
   background: linear-gradient(135deg, #0B2093 0%, #0D007F 100%);
@@ -1758,7 +1571,7 @@
   overflow: hidden;
 }
 
-.ctaCardGlow {
+.bannerGlow {
   position: absolute;
   top: -50%;
   left: 50%;
@@ -1769,7 +1582,7 @@
   pointer-events: none;
 }
 
-.ctaCardBadge {
+.bannerBadge {
   display: inline-block;
   padding: 6px 16px;
   border-radius: var(--radius-full);
@@ -1784,7 +1597,7 @@
   margin-bottom: 20px;
 }
 
-.ctaCardTitle {
+.bannerTitle {
   font-family: var(--font-display);
   font-size: 36px;
   font-weight: 900;
@@ -1793,7 +1606,7 @@
   color: #FFFFFF;
 }
 
-.ctaCardSub {
+.bannerSub {
   max-width: 660px;
   margin: 0 auto 36px;
   font-size: 15px;
@@ -1801,7 +1614,7 @@
   color: #CBD5E1;
 }
 
-.ctaCardButtonsRow {
+.bannerButtonsRow {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1810,7 +1623,7 @@
   margin-bottom: 32px;
 }
 
-.ctaCardCallBtn {
+.bannerCallBtn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -1827,12 +1640,12 @@
   transition: all var(--transition-fast);
 }
 
-.ctaCardCallBtn:hover {
+.bannerCallBtn:hover {
   background: rgba(255, 255, 255, 0.2);
   border-color: #FFFFFF;
 }
 
-.ctaCardFooterTrust {
+.bannerFooterTrust {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1847,96 +1660,108 @@
    MOBILE RESPONSIVE BREAKPOINTS (STRICT MOBILE OPTIMIZATION)
    ───────────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .matrixGrid {
-    grid-template-columns: repeat(2, 1fr);
+  .heroSplitGrid {
+    grid-template-columns: 1fr;
+    gap: 36px;
   }
-  .spotlightCard {
+  .workstationConsole {
     grid-template-columns: 1fr;
   }
-  .methodologyGrid {
-    grid-template-columns: repeat(2, 1fr);
+  .workstationNav {
+    border-right: none;
+    border-bottom: 1.5px solid var(--border);
   }
-  .corridorGrid {
-    grid-template-columns: repeat(2, 1fr);
+  .workstationNavList {
+    flex-direction: row;
+    overflow-x: auto;
+    max-height: none;
   }
-  .endorsementsGrid {
-    grid-template-columns: repeat(2, 1fr);
+  .workstationNavItem {
+    width: auto;
+    white-space: nowrap;
+    border-bottom: none;
+    border-right: 1px solid var(--border-subtle);
   }
-  .engagementGrid {
+  .corridorConsole {
     grid-template-columns: 1fr;
   }
-  .deltaConsole {
+  .corridorListPane {
+    border-right: none;
+    border-bottom: 1.5px solid var(--border);
+  }
+  .editorialSpread {
+    grid-template-columns: 1fr;
+  }
+  .tierBodyGrid {
+    grid-template-columns: 1fr;
+  }
+  .diagOptionsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .diagBudgetGrid {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 768px) {
   .heroSection {
-    padding: 48px 0 40px;
+    padding: 48px 0 36px;
   }
-  .heroTrustBanner {
+  .cockpitGrid {
+    grid-template-columns: 1fr;
+  }
+  .journeyStepsRow {
+    grid-template-columns: 1fr;
+  }
+  .cockpitFooterBar {
     flex-direction: column;
-    gap: 16px;
-    padding: 20px;
+    align-items: stretch;
   }
-  .trustDivider {
-    width: 80%;
-    height: 1px;
+  .cockpitActionWrap {
+    align-items: stretch;
   }
-  .matrixGrid {
-    grid-template-columns: 1fr;
-  }
-  .methodologyGrid {
-    grid-template-columns: 1fr;
-  }
-  .corridorGrid {
-    grid-template-columns: 1fr;
-  }
-  .endorsementsGrid {
-    grid-template-columns: 1fr;
-  }
-  .calcResultsGrid {
-    grid-template-columns: 1fr;
-  }
-  .spotlightContentPane {
+  .corridorDetailPane {
     padding: 24px;
   }
-  .spotlightStatsGrid {
+  .corridorMetricsRow {
     grid-template-columns: 1fr;
   }
-  .calculatorConsole {
-    padding: 24px 18px;
+  .diagnosticConsole {
+    padding: 24px 16px;
   }
-  .bespokeCtaCard {
+  .diagOptionsGrid {
+    grid-template-columns: 1fr;
+  }
+  .diagMetricsRow {
+    grid-template-columns: 1fr;
+  }
+  .editorialImagePane {
+    height: 320px;
+  }
+  .editorialMetricsStrip {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .tierDetailPlane {
+    padding: 24px 16px;
+  }
+  .tierDetailHeader {
+    flex-direction: column;
+  }
+  .tierPriceBox {
+    text-align: left;
+  }
+  .tierTabBar {
+    grid-template-columns: 1fr;
+  }
+  .tierTabBtn {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .bespokeBannerCard {
     padding: 40px 20px;
   }
-  .ctaCardTitle {
+  .bannerTitle {
     font-size: 26px;
-  }
-
-  /* Native Mobile Bottom Sheet Drawer */
-  .drawerOverlay {
-    align-items: flex-end;
-  }
-  .drawerContent {
-    max-width: 100%;
-    height: 90vh;
-    border-radius: 28px 28px 0 0;
-    animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  @keyframes slideUp {
-    from { transform: translateY(100%); }
-    to { transform: translateY(0); }
-  }
-  .drawerDragHandle {
-    display: block;
-    width: 48px;
-    height: 5px;
-    background: #CBD5E1;
-    border-radius: 3px;
-    margin: 10px auto 4px;
-  }
-  .drawerHeroBanner {
-    height: 170px;
   }
 }
