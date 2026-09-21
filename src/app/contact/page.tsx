@@ -139,9 +139,10 @@ export default function ContactPage() {
               </div>
 
               <div className={styles.socials}>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className={styles.social}>LinkedIn</a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className={styles.social}>Instagram</a>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className={styles.social}>YouTube</a>
+                <a href="https://www.linkedin.com/company/nova-spark-digital-marketing-agency/" target="_blank" rel="noopener noreferrer" className={styles.social}>LinkedIn</a>
+                <a href="https://www.instagram.com/nsdigitalmarketing.agency?stkn=aWZpOWwzZWdzcG1j" target="_blank" rel="noopener noreferrer" className={styles.social}>Instagram</a>
+                <a href="https://www.facebook.com/share/19cD1qU1cV/" target="_blank" rel="noopener noreferrer" className={styles.social}>Facebook</a>
+                <a href="https://youtube.com/@ns-digitalmarketingagency?si=E5vtm6XamnVtQ-tB" target="_blank" rel="noopener noreferrer" className={styles.social}>YouTube</a>
               </div>
             </ScrollReveal>
           </div>

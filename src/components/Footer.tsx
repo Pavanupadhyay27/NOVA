@@ -178,7 +178,7 @@ export default function Footer() {
               {/* Social Media Icons Strip */}
               <div className={styles.socialRow}>
                 <a
-                  href="https://facebook.com"
+                  href="https://www.facebook.com/share/19cD1qU1cV/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.socialBtn}
@@ -191,20 +191,7 @@ export default function Footer() {
                 </a>
 
                 <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.socialBtn}
-                  aria-label="Twitter / X"
-                  title="Follow Marketing Copilot on X (Twitter)"
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                  </svg>
-                </a>
-
-                <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/nsdigitalmarketing.agency?stkn=aWZpOWwzZWdzcG1j"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.socialBtn}
@@ -219,7 +206,20 @@ export default function Footer() {
                 </a>
 
                 <a
-                  href="https://youtube.com"
+                  href="https://www.linkedin.com/company/nova-spark-digital-marketing-agency/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.socialBtn}
+                  aria-label="LinkedIn"
+                  title="Connect with Marketing Copilot on LinkedIn"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.6a1.66 1.66 0 1 0 0 3.32 1.66 1.66 0 0 0 0-3.32z"/>
+                  </svg>
+                </a>
+
+                <a
+                  href="https://youtube.com/@ns-digitalmarketingagency?si=E5vtm6XamnVtQ-tB"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.socialBtn}
@@ -229,19 +229,6 @@ export default function Footer() {
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-1.96C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.4 19.54C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
                     <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/>
-                  </svg>
-                </a>
-
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.socialBtn}
-                  aria-label="LinkedIn"
-                  title="Connect with Marketing Copilot on LinkedIn"
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.6a1.66 1.66 0 1 0 0 3.32 1.66 1.66 0 0 0 0-3.32z"/>
                   </svg>
                 </a>
               </div>
