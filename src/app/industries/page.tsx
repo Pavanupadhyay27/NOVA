@@ -1183,16 +1183,36 @@ export default function IndustriesPage() {
             <div className={styles.sectionEyebrowCenter}>
               <div className="eyebrow eyebrow-center">
                 <span className="eyebrow-dot" />
-                PARTNERSHIP ARCHITECTURE
+                PARTNERSHIP ARCHITECTURE &bull; COMMERCIAL ENGAGEMENT MODELS
               </div>
             </div>
             <h2 className={`display-md ${styles.sectionHeading}`}>
-              Outcome-Oriented Engagement Models<br />
-              <span className="accent-gradient">Transparent. Measurable. Guaranteed.</span>
+              Commercial Partnership Architectures<br />
+              <span className="accent-gradient">Calibrated for Guaranteed ROI in Odisha.</span>
             </h2>
             <p className={styles.sectionSub}>
-              Select an engagement model below to inspect its deliverables, turnaround timelines, and commercial SLA commitments.
+              Choose the exact engagement model calibrated to your business scale and commercial ambitions. Every tier includes guaranteed CPL ceilings, audited attribution, and dedicated revenue pods in Bhubaneswar.
             </p>
+
+            {/* Executive Trust Badges in Section Header */}
+            <div className={styles.tierHeaderTrustStrip}>
+              <span className={styles.tierTrustPill}>
+                <span className={styles.tierTrustDot} />
+                🔒 Written CPL Ceiling Guarantee
+              </span>
+              <span className={styles.tierTrustPill}>
+                <span className={styles.tierTrustDot} />
+                ⚡ Live in 72 Hours
+              </span>
+              <span className={styles.tierTrustPill}>
+                <span className={styles.tierTrustDot} />
+                📊 Weekly Audited Attribution
+              </span>
+              <span className={styles.tierTrustPill}>
+                <span className={styles.tierTrustDot} />
+                🚫 Zero Long-Term Lock-in
+              </span>
+            </div>
           </ScrollReveal>
 
           <ScrollReveal delay={80}>

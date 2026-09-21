@@ -56,8 +56,8 @@
 .heroDualPane {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
-  gap: 36px;
-  align-items: center;
+  gap: 40px;
+  align-items: stretch;
   position: relative;
   z-index: 2;
   width: 100%;
@@ -66,36 +66,38 @@
 .heroLeftPane {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: flex-start;
   text-align: left;
+  height: 100%;
 }
 
 .heroTitle {
-  margin: 0 0 12px;
+  margin: 0 0 16px;
   text-align: left;
   color: #000000;
   font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  font-size: clamp(26px, 2.4vw, 36px);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  font-size: clamp(34px, 3.8vw, 48px);
 }
 
 .heroSub {
   color: #334155;
-  line-height: 1.55;
-  margin: 0 0 18px;
-  max-width: 530px;
+  line-height: 1.62;
+  margin: 0 0 24px;
+  max-width: 550px;
   text-align: left;
-  font-size: 14.5px;
+  font-size: 16px;
 }
 
 .heroCtaRow {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .heroSecondaryBtn {
@@ -205,11 +207,19 @@
 .heroRightPane {
   position: relative;
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .heroVisualCockpit {
   position: relative;
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-radius: var(--radius-2xl);
   padding: 8px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(241, 245, 249, 0.85));
@@ -221,7 +231,8 @@
 .heroVisualInner {
   position: relative;
   width: 100%;
-  height: clamp(380px, 48vh, 500px);
+  height: 100%;
+  min-height: 440px;
   border-radius: 14px;
   overflow: hidden;
   background: #0B2093;
@@ -428,22 +439,22 @@
 
 /* Skeuomorphic Tactile Bento Card */
 .sectorBentoCard {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFF 100%);
   border-radius: 20px;
-  border: 1.5px solid rgba(11, 32, 147, 0.12);
-  box-shadow: inset 0 2px 0 #FFFFFF, inset 0 -1.5px 0 rgba(0, 0, 0, 0.04), 0 10px 30px -4px rgba(11, 32, 147, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1.5px solid rgba(11, 32, 147, 0.13);
+  box-shadow: inset 0 2px 0 #FFFFFF, inset 0 -2px 0 rgba(11, 32, 147, 0.03), 0 14px 40px -8px rgba(11, 32, 147, 0.1), 0 4px 14px rgba(0, 0, 0, 0.03);
   padding: 24px;
   display: flex;
   flex-direction: column;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
 }
 
 .sectorBentoCard:hover {
-  transform: translateY(-5px);
-  border-color: #F59E0B;
-  box-shadow: inset 0 2px 0 #FFFFFF, 0 24px 50px -10px rgba(11, 32, 147, 0.16), 0 8px 20px rgba(245, 158, 11, 0.12);
+  transform: translateY(-6px);
+  border-color: rgba(245, 158, 11, 0.5);
+  box-shadow: inset 0 2px 0 #FFFFFF, 0 28px 60px -10px rgba(11, 32, 147, 0.2), 0 10px 28px rgba(245, 158, 11, 0.12);
 }
 
 .cardTopRow {
@@ -1368,8 +1379,8 @@
   grid-template-columns: 360px 1fr;
   border-radius: var(--radius-2xl);
   background: #FFFFFF;
-  border: 1.5px solid rgba(11, 32, 147, 0.12);
-  box-shadow: 0 24px 64px -12px rgba(11, 32, 147, 0.1), 0 4px 16px rgba(0, 0, 0, 0.04);
+  border: 1.5px solid rgba(11, 32, 147, 0.14);
+  box-shadow: inset 0 2px 0 #FFFFFF, 0 28px 72px -12px rgba(11, 32, 147, 0.12), 0 4px 16px rgba(0, 0, 0, 0.04);
   overflow: hidden;
 }
 
@@ -1506,9 +1517,9 @@
 .corridorStatWell {
   padding: 16px;
   border-radius: var(--radius-lg);
-  background: #F8FAFC;
-  border: 1.5px solid var(--border);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1.5px solid rgba(11, 32, 147, 0.1);
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 3px 10px rgba(11, 32, 147, 0.04);
 }
 
 .corridorStatVal {
@@ -1534,10 +1545,11 @@
 }
 
 .corridorInfoCard {
-  padding: 18px;
+  padding: 20px;
   border-radius: var(--radius-lg);
-  background: #FAFCFE;
-  border: 1.5px solid var(--border);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1.5px solid rgba(11, 32, 147, 0.1);
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 4px 14px rgba(0, 0, 0, 0.04);
 }
 
 .infoCardLabel {
@@ -1585,10 +1597,11 @@
 }
 
 .corridorClientRow {
-  padding: 12px 16px;
+  padding: 14px 18px;
   border-radius: var(--radius-md);
-  background: rgba(245, 158, 11, 0.08);
-  border: 1.5px solid rgba(245, 158, 11, 0.25);
+  background: linear-gradient(180deg, #FFFBEB 0%, #FEF3C7 100%);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 3px 10px rgba(245, 158, 11, 0.12);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1705,10 +1718,11 @@
 }
 
 .diagBottleneckBtn {
-  padding: 14px 18px;
+  padding: 16px 20px;
   border-radius: var(--radius-lg);
-  background: #F8FAFC;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
   border: 1.5px solid var(--border);
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 2px 6px rgba(0, 0, 0, 0.03);
   cursor: pointer;
   text-align: left;
   transition: all var(--transition-fast);
@@ -1730,12 +1744,14 @@
 
 .diagBottleneckBtn:hover {
   border-color: #0B2093;
+  transform: translateY(-2px);
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 6px 16px rgba(11, 32, 147, 0.1);
 }
 
 .diagBottleneckBtnActive {
-  background: #FFFFFF !important;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F0F4FF 100%) !important;
   border-color: #0B2093 !important;
-  box-shadow: 0 4px 16px rgba(11, 32, 147, 0.15) !important;
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 8px 20px rgba(11, 32, 147, 0.16) !important;
 }
 
 .diagBottleneckBtnActive .bottleneckLabel {
@@ -1749,10 +1765,11 @@
 }
 
 .diagBudgetBtn {
-  padding: 14px;
+  padding: 16px;
   border-radius: var(--radius-lg);
-  background: #F8FAFC;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
   border: 1.5px solid var(--border);
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 2px 6px rgba(0, 0, 0, 0.03);
   cursor: pointer;
   text-align: center;
   transition: all var(--transition-fast);
@@ -1774,12 +1791,14 @@
 
 .diagBudgetBtn:hover {
   border-color: #0B2093;
+  transform: translateY(-2px);
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 6px 16px rgba(11, 32, 147, 0.1);
 }
 
 .diagBudgetBtnActive {
-  background: #0B2093 !important;
+  background: linear-gradient(180deg, #0B2093 0%, #081666 100%) !important;
   border-color: #0B2093 !important;
-  box-shadow: 0 4px 14px rgba(11, 32, 147, 0.25) !important;
+  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.35), 0 6px 18px rgba(11, 32, 147, 0.3) !important;
 }
 
 .diagBudgetBtnActive .budgetAmount {
@@ -1794,9 +1813,9 @@
   margin-top: 36px;
   padding: 32px;
   border-radius: var(--radius-xl);
-  background: linear-gradient(180deg, #FAFCFE 0%, #F1F5F9 100%);
-  border: 1.5px solid var(--border);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFF 100%);
+  border: 1.5px solid rgba(11, 32, 147, 0.14);
+  box-shadow: inset 0 2px 0 #FFFFFF, 0 16px 48px -8px rgba(11, 32, 147, 0.12);
 }
 
 .diagOutputTop {
@@ -1829,6 +1848,15 @@
   font-weight: 900;
   color: #000000;
   margin-bottom: 16px;
+}
+
+.tierCommitmentBox {
+  padding: 16px 18px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1.5px solid rgba(11, 32, 147, 0.1);
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 3px 10px rgba(11, 32, 147, 0.04);
+  margin-bottom: 12px;
 }
 
 .diagStackBox {
@@ -2073,13 +2101,54 @@
   scroll-margin-top: calc(var(--nav-height, 78px) + 36px);
 }
 
+/* Executive Trust Badges in Section Header */
+.tierHeaderTrustStrip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  margin-bottom: 36px;
+}
+
+.tierTrustPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 16px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1.5px solid rgba(11, 32, 147, 0.12);
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 2px 8px rgba(0, 0, 0, 0.04);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  color: #0B2093;
+  transition: all var(--transition-fast);
+}
+
+.tierTrustPill:hover {
+  transform: translateY(-1px);
+  border-color: #0B2093;
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 4px 12px rgba(11, 32, 147, 0.12);
+}
+
+.tierTrustDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 6px #10B981;
+}
+
 .tierConsole {
   max-width: 980px;
   margin: 0 auto;
   border-radius: var(--radius-2xl);
   background: #FFFFFF;
   border: 1.5px solid rgba(11, 32, 147, 0.15);
-  box-shadow: 0 28px 72px -12px rgba(11, 32, 147, 0.12), 0 4px 16px rgba(0, 0, 0, 0.04);
+  box-shadow: inset 0 2px 0 #FFFFFF, 0 28px 72px -12px rgba(11, 32, 147, 0.14), 0 4px 16px rgba(0, 0, 0, 0.04);
   overflow: hidden;
 }
 
@@ -2112,9 +2181,9 @@
 }
 
 .tierTabBtnActive {
-  background: #FFFFFF !important;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFF 100%) !important;
   border-bottom: 3.5px solid #0B2093;
-  box-shadow: inset 0 2px 0 #FFB800;
+  box-shadow: inset 0 2px 0 #FFB800, 0 4px 14px rgba(11, 32, 147, 0.08);
 }
 
 .tierTabBadge {
@@ -2163,6 +2232,11 @@
 .tierPriceBox {
   text-align: right;
   flex-shrink: 0;
+  padding: 14px 22px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1.5px solid rgba(11, 32, 147, 0.13);
+  box-shadow: inset 0 2px 0 #FFFFFF, 0 6px 18px rgba(11, 32, 147, 0.08);
 }
 
 .tierPriceVal {
