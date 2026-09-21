@@ -837,16 +837,16 @@
   border-color: var(--accent-blue);
 }
 
-/* Slide-Over Quick Detail Drawer */
+/* Slide-Over Quick Detail Drawer / Native Mobile Bottom Sheet */
 .drawerBackdrop {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.55);
-  backdrop-filter: blur(5px);
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(8px);
   z-index: 1000;
   display: flex;
   justify-content: flex-end;
-  animation: fadeIn 0.2s ease-out;
+  animation: fadeIn 0.25s ease-out;
 }
 
 .drawerModal {
@@ -854,46 +854,312 @@
   max-width: 580px;
   height: 100vh;
   background: #FFFFFF;
-  box-shadow: -12px 0 36px rgba(0, 0, 0, 0.2);
-  padding: 36px;
+  box-shadow: -16px 0 48px rgba(0, 0, 0, 0.25);
+  padding: 0;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 24px;
   position: relative;
-  animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: slideInRight 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.drawerClose {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid #CBD5E1;
-  background: #F8FAFC;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  color: #475569;
-  transition: all var(--transition-fast);
+.drawerDragHandle {
+  display: none;
 }
 
-.drawerClose:hover {
-  background: #000000;
-  color: #FFFFFF;
-}
-
-.drawerImgWrap {
+.drawerHeroBanner {
   position: relative;
   width: 100%;
   height: 240px;
-  border-radius: var(--radius-lg);
+  min-height: 240px;
   overflow: hidden;
+  background: #0F172A;
+  flex-shrink: 0;
+}
+
+.drawerBannerImg {
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+
+.drawerBannerOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.35) 0%, transparent 40%, rgba(15, 23, 42, 0.9) 100%);
+  z-index: 1;
+}
+
+.drawerBannerTopRow {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+.drawerCategoryPill {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-blue);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.drawerCloseBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.drawerCloseBtn:hover {
+  background: #000000;
+  transform: scale(1.08);
+}
+
+.drawerBannerBottom {
+  position: absolute;
+  bottom: 18px;
+  left: 20px;
+  right: 20px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.drawerClientName {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  color: #FFFFFF;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  line-height: 1.2;
+}
+
+.drawerLocationRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: #E2E8F0;
+  font-weight: 600;
+}
+
+.drawerVerifiedBadge {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #10B981;
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.drawerBodyContent {
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+.drawerHeadlineBox {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.drawerHeadlineText {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  color: #0F172A;
+  line-height: 1.35;
+}
+
+.drawerHeadlineDesc {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #475569;
+}
+
+.drawerStatsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.drawerStatCard {
+  background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
   border: 1px solid #E2E8F0;
+  border-radius: var(--radius-xl);
+  padding: 16px 18px;
+  box-shadow: inset 0 1.5px 0 #FFFFFF, inset 0 -1px 0 rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.drawerStatNum {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.drawerStatLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.drawerChallengeCard {
+  background: linear-gradient(180deg, #FFF5F5 0%, #FEF2F2 100%);
+  border: 1px solid #FECACA;
+  border-radius: var(--radius-xl);
+  padding: 18px 20px;
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 4px 12px rgba(220, 38, 38, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.drawerSolutionCard {
+  background: linear-gradient(180deg, #F0FDF4 0%, #ECFDF5 100%);
+  border: 1px solid #BBF7D0;
+  border-radius: var(--radius-xl);
+  padding: 18px 20px;
+  box-shadow: inset 0 1.5px 0 #FFFFFF, 0 4px 12px rgba(16, 185, 129, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.drawerSectionHeaderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.challengeBadge {
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #DC2626;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.solutionBadge {
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #16A34A;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.phaseTag {
+  font-size: 10.5px;
+  color: #64748B;
+  font-weight: 600;
+}
+
+.drawerSectionText {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #334155;
+}
+
+.drawerDeliverablesSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.deliverablesTitle {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 800;
+  color: #0F172A;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.drawerDeliverablesGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.drawerDeliverablePill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  padding: 10px 14px;
+  border-radius: var(--radius-lg);
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.drawerCheckDot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.14);
+  color: #10B981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.drawerStickyFooter {
+  position: sticky;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, #FFFFFF 100%);
+  backdrop-filter: blur(14px);
+  padding: 16px 28px 20px;
+  border-top: 1px solid #E2E8F0;
+  z-index: 10;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.drawerReassurance {
+  font-size: 11px;
+  color: #64748B;
+  font-weight: 600;
+  text-align: center;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -2170,7 +2436,125 @@
   }
 }
 
+@keyframes slideInUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   MOBILE RESPONSIVENESS
+   ───────────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .panoramicRibbon {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .ribbonItem:not(:last-child)::after {
+    display: none;
+  }
+  .spotlightCard {
+    grid-template-columns: 1fr;
+  }
+  .spotlightVisualFrame {
+    height: 300px;
+    min-height: 280px;
+  }
+  .pipelineRoadmap {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .territoryDock {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .commandMetricsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .industryBentoGrid {
+    grid-template-columns: 1fr;
+  }
+  .velocityComparisonGrid {
+    grid-template-columns: 1fr;
+  }
+  .velocityCenterBadge {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
 @media (max-width: 768px) {
+  /* Native Mobile Bottom Sheet for Case Study Drawer */
+  .drawerBackdrop {
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .drawerModal {
+    max-width: 100%;
+    height: 90vh;
+    border-radius: 28px 28px 0 0;
+    animation: slideInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 0;
+  }
+  .drawerDragHandle {
+    display: block;
+  }
+  .drawerHeroBanner {
+    height: 200px;
+    min-height: 200px;
+  }
+  .drawerClientName {
+    font-size: 20px;
+  }
+  .drawerBodyContent {
+    padding: 20px 18px;
+    gap: 16px;
+  }
+  .drawerStatsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .drawerStatCard {
+    padding: 12px 14px;
+  }
+  .drawerStatNum {
+    font-size: 20px;
+  }
+  .drawerStickyFooter {
+    padding: 12px 18px 24px;
+  }
+
+  /* Page Sections Mobile Polish */
+  .heroTrustStrip {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 14px 10px;
+    gap: 8px;
+  }
+  .heroTrustDivider {
+    display: none;
+  }
+  .heroTrustItem {
+    align-items: center;
+    text-align: center;
+  }
+  .heroTrustVal {
+    font-size: 19px;
+  }
+  .heroTrustLabel {
+    font-size: 10px;
+  }
+  .heroActions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .heroActions > * {
+    width: 100%;
+    justify-content: center;
+  }
   .panoramicRibbon {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -2178,7 +2562,7 @@
     grid-template-columns: repeat(2, 1fr);
   }
   .territoryCommandCenter {
-    padding: 24px;
+    padding: 22px 18px;
     min-height: auto;
   }
   .commandMetricsGrid {
@@ -2202,15 +2586,22 @@
     border-radius: var(--radius-xl);
     align-items: flex-start;
   }
+  .sliderTrackContainer {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 20px;
+  }
+  .slidingCard {
+    width: 82vw;
+    max-width: 330px;
+    scroll-snap-align: center;
+  }
 }
 
 @media (max-width: 640px) {
-  .heroTrustStrip {
-    gap: 16px;
-  }
   .heroVisualFrame {
-    height: 300px;
-    min-height: 280px;
+    height: 280px;
+    min-height: 260px;
   }
   .panoramicRibbon {
     grid-template-columns: 1fr;
@@ -2219,25 +2610,21 @@
   .pipelineRoadmap {
     grid-template-columns: 1fr;
   }
-  .slidingCard {
-    width: 300px;
-  }
   .spotlightContent {
-    padding: 24px 20px;
+    padding: 22px 18px;
   }
   .spotlightVisualFrame {
-    height: 240px;
-    min-height: 220px;
+    height: 220px;
+    min-height: 200px;
   }
   .velocityDisplayArea {
-    padding: 20px;
+    padding: 20px 16px;
   }
   .roiCalculatorBox {
-    padding: 20px;
+    padding: 22px 16px;
   }
-  .drawerModal {
-    max-width: 100%;
-    padding: 20px;
+  .bespokeCtaCardCentered {
+    padding: 40px 20px;
   }
   .ctaCenteredActions {
     flex-direction: column;

@@ -423,76 +423,113 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* Slide-over Quick Detail Drawer */}
+      {/* Slide-over Quick Detail Drawer / Native Mobile Bottom Sheet */}
       {selectedCase && (
         <div className={styles.drawerBackdrop} onClick={() => setSelectedCase(null)}>
           <div className={styles.drawerModal} onClick={(e) => e.stopPropagation()}>
-            <button
-              className={styles.drawerClose}
-              onClick={() => setSelectedCase(null)}
-              aria-label="Close details"
-            >
-              ✕
-            </button>
+            {/* Mobile Touch Drag Handle */}
+            <div className={styles.drawerDragHandle} />
 
-            <div className={styles.drawerImgWrap}>
+            {/* Visual Cover Banner with Overlay & Integrated Badges */}
+            <div className={styles.drawerHeroBanner}>
               <Image
                 src={selectedCase.image}
                 alt={selectedCase.client}
                 fill
-                sizes="(max-width: 600px) 100vw, 550px"
-                style={{ objectFit: 'cover' }}
+                priority
+                sizes="(max-width: 640px) 100vw, 580px"
+                className={styles.drawerBannerImg}
               />
+              <div className={styles.drawerBannerOverlay} />
+
+              {/* Floating Header Actions */}
+              <div className={styles.drawerBannerTopRow}>
+                <span className={styles.drawerCategoryPill}>
+                  {selectedCase.service}
+                </span>
+                <button
+                  className={styles.drawerCloseBtn}
+                  onClick={() => setSelectedCase(null)}
+                  aria-label="Close case study details"
+                  type="button"
+                >
+                  ✕
+                </button>
+              </div>
+
+              {/* Banner Bottom Details */}
+              <div className={styles.drawerBannerBottom}>
+                <span className={styles.drawerClientName}>{selectedCase.client}</span>
+                <div className={styles.drawerLocationRow}>
+                  <span>📍 {selectedCase.location} • {selectedCase.industry}</span>
+                  <span className={styles.drawerVerifiedBadge}>✓ 100% Attribution Verified</span>
+                </div>
+              </div>
             </div>
 
-            <div>
-              <span className={styles.cardTag} style={{ background: `${selectedCase.tagColor}15`, color: selectedCase.tagColor }}>
-                {selectedCase.service}
-              </span>
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 800, margin: '10px 0 6px' }}>
-                {selectedCase.client}
-              </h3>
-              <p style={{ fontSize: 13, color: 'var(--text-muted)' }}>{selectedCase.location} • {selectedCase.industry}</p>
-            </div>
+            {/* Drawer Body Content */}
+            <div className={styles.drawerBodyContent}>
+              {/* Campaign Outcome Headline */}
+              <div className={styles.drawerHeadlineBox}>
+                <h3 className={styles.drawerHeadlineText}>{selectedCase.headline}</h3>
+                <p className={styles.drawerHeadlineDesc}>{selectedCase.desc}</p>
+              </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12 }}>
-              {selectedCase.stats.map((s) => (
-                <div key={s.label} style={{ background: 'var(--bg-surface)', padding: '12px 16px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border)' }}>
-                  <div style={{ fontFamily: 'var(--font-display)', fontSize: 20, fontWeight: 800, color: selectedCase.color }}>
-                    <SmoothCounter value={s.val} />
+              {/* 2 Audited Commercial Stat Wells */}
+              <div className={styles.drawerStatsGrid}>
+                {selectedCase.stats.map((s) => (
+                  <div key={s.label} className={styles.drawerStatCard}>
+                    <div className={styles.drawerStatNum} style={{ color: selectedCase.color }}>
+                      <SmoothCounter value={s.val} />
+                    </div>
+                    <div className={styles.drawerStatLabel}>{s.label}</div>
                   </div>
-                  <div style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 600 }}>{s.label}</div>
+                ))}
+              </div>
+
+              {/* The Challenge Card (Before) */}
+              <div className={styles.drawerChallengeCard}>
+                <div className={styles.drawerSectionHeaderRow}>
+                  <span className={styles.challengeBadge}>⚠️ THE GROWTH BOTTLENECK</span>
+                  <span className={styles.phaseTag}>Before Marketing Copilot</span>
                 </div>
-              ))}
-            </div>
+                <p className={styles.drawerSectionText}>{selectedCase.challenge}</p>
+              </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: 15, fontWeight: 800 }}>The Challenge</h4>
-              <p style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--text-secondary)' }}>{selectedCase.challenge}</p>
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: 15, fontWeight: 800 }}>Marketing Copilot Solution</h4>
-              <p style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--text-secondary)' }}>{selectedCase.solution}</p>
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: 15, fontWeight: 800 }}>Deliverables Executed</h4>
-              {selectedCase.deliverables.map((d) => (
-                <div key={d} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--text-secondary)' }}>
-                  <span style={{ color: '#10B981', fontWeight: 800 }}>✓</span>
-                  <span>{d}</span>
+              {/* Marketing Copilot Solution Card (After) */}
+              <div className={styles.drawerSolutionCard}>
+                <div className={styles.drawerSectionHeaderRow}>
+                  <span className={styles.solutionBadge}>⚡ STRATEGIC EXECUTION</span>
+                  <span className={styles.phaseTag}>Revenue Architecture</span>
                 </div>
-              ))}
+                <p className={styles.drawerSectionText}>{selectedCase.solution}</p>
+              </div>
+
+              {/* Deliverables Executed Strip */}
+              <div className={styles.drawerDeliverablesSection}>
+                <h4 className={styles.deliverablesTitle}>Deliverables &amp; Assets Engineered</h4>
+                <div className={styles.drawerDeliverablesGrid}>
+                  {selectedCase.deliverables.map((d) => (
+                    <div key={d} className={styles.drawerDeliverablePill}>
+                      <span className={styles.drawerCheckDot}>✓</span>
+                      <span>{d}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
-            <div style={{ marginTop: 'auto', paddingTop: 16 }}>
+            {/* Sticky Bottom Action Bar with Reassurance */}
+            <div className={styles.drawerStickyFooter}>
               <BeamButton
                 href="/contact"
-                label="Get Similar Results for Your Business"
+                label="Claim Similar Results for Your Business →"
                 size="md"
                 fullWidth
               />
+              <span className={styles.drawerReassurance}>
+                Zero obligation • Direct senior strategy session • 100% confidential
+              </span>
             </div>
           </div>
         </div>
