@@ -247,7 +247,7 @@
 
 .slideImage {
   object-fit: cover !important;
-  object-position: center 20% !important;
+  object-position: center center !important;
   transition: transform 7s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
