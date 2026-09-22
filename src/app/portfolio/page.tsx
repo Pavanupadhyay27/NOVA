@@ -182,7 +182,7 @@ export default function PortfolioPage() {
               </div>
             </div>
 
-            {/* Right Pane: High-Impact Visual Showcase */}
+            {/* Right Pane: High-Impact Visual Showcase (Zero Text Overlaid on Images) */}
             <div className={styles.heroVisualPane}>
               <div
                 className={styles.heroVisualFrame}
@@ -199,28 +199,13 @@ export default function PortfolioPage() {
                       alt={slide.alt}
                       fill
                       priority={idx === 0}
-                      sizes="(max-width: 900px) 100vw, 550px"
+                      sizes="(max-width: 900px) 100vw, 680px"
                       className={styles.heroVisualImg}
                     />
                   </div>
                 ))}
-                <div className={styles.heroVisualOverlay} />
 
-                {/* Floating Micro-Badges */}
-                <div className={styles.heroVisualBadgeTop}>
-                  <span>Patia &amp; Saheed Nagar — #1 SERP Dominated</span>
-                </div>
-
-                <div className={styles.heroVisualBadgeBottom}>
-                  <span className={styles.floatingVal}>
-                    {heroPortfolioSlides[heroSlideIndex].metric}
-                  </span>
-                  <span className={styles.floatingLabel}>
-                    {heroPortfolioSlides[heroSlideIndex].sub}
-                  </span>
-                </div>
-
-                {/* Slide Indicator Dots */}
+                {/* Minimalist Slide Indicator Dots */}
                 <div className={styles.heroSlideDots}>
                   {heroPortfolioSlides.map((_, idx) => (
                     <button
