@@ -61,8 +61,9 @@ const ekatraaSlides: CarouselSlide[] = [
 export default function BrandSpotlightSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isControlsVisible, setIsControlsVisible] = useState(true);
+  const controlsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [imgErrors, setImgErrors] = useState<Record<string, boolean>>({});
@@ -78,27 +79,50 @@ export default function BrandSpotlightSection() {
 
     if (video.paused) {
       video.muted = false;
-      video.volume = 0.85;
+      video.volume = 0.9;
       video.play().then(() => {
         setIsPlaying(true);
-        setIsMuted(false);
+        setIsControlsVisible(false); // Disappears immediately on click!
       }).catch(() => {
         video.muted = true;
         video.play().catch(() => {});
         setIsPlaying(true);
+        setIsControlsVisible(false);
       });
     } else {
-      if (isMuted) {
-        video.muted = false;
-        video.volume = 0.85;
-        setIsMuted(false);
-        setIsPlaying(true);
-      } else {
-        video.pause();
-        setIsPlaying(false);
-      }
+      video.pause();
+      setIsPlaying(false);
+      setIsControlsVisible(true); // Reappears immediately when paused!
     }
-  }, [isMuted]);
+  }, []);
+
+  // Show button on hover/move when playing; auto-hide after 2.2s of inactivity
+  const handleVideoMouseMove = () => {
+    if (!isPlaying) {
+      setIsControlsVisible(true);
+      return;
+    }
+    setIsControlsVisible(true);
+    if (controlsTimeoutRef.current) {
+      clearTimeout(controlsTimeoutRef.current);
+    }
+    controlsTimeoutRef.current = setTimeout(() => {
+      if (isPlaying) {
+        setIsControlsVisible(false);
+      }
+    }, 2200);
+  };
+
+  const handleVideoMouseLeave = () => {
+    if (controlsTimeoutRef.current) {
+      clearTimeout(controlsTimeoutRef.current);
+    }
+    if (isPlaying) {
+      setIsControlsVisible(false);
+    } else {
+      setIsControlsVisible(true);
+    }
+  };
 
   // Pause video when out of viewport
   useEffect(() => {
@@ -111,6 +135,7 @@ export default function BrandSpotlightSection() {
         if (!entry.isIntersecting && !video.paused) {
           video.pause();
           setIsPlaying(false);
+          setIsControlsVisible(true);
         }
       },
       { threshold: 0.15 }
@@ -215,10 +240,13 @@ export default function BrandSpotlightSection() {
                 </div>
               </div>
 
-              {/* Media Viewport — Identical Height to Right Card Viewport */}
+              {/* Media Viewport — Identical Height to Right Card Viewport (Zero Text on Video) */}
               <div
                 className={styles.mediaViewport}
                 onClick={handlePlayToggle}
+                onMouseMove={handleVideoMouseMove}
+                onMouseEnter={handleVideoMouseMove}
+                onMouseLeave={handleVideoMouseLeave}
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => {
@@ -227,7 +255,7 @@ export default function BrandSpotlightSection() {
                     handlePlayToggle();
                   }
                 }}
-                aria-label={isPlaying && !isMuted ? 'Pause Ekatraa film' : 'Play Ekatraa film with sound'}
+                aria-label={isPlaying ? 'Pause Ekatraa film' : 'Play Ekatraa film with sound'}
               >
                 {/* Blurred Video Backdrop for Rich Ambient Atmosphere */}
                 <div className={styles.videoAmbientBackdrop}>
@@ -247,29 +275,22 @@ export default function BrandSpotlightSection() {
                   ref={videoRef}
                   className={styles.videoPlayer}
                   src="/videos/VID20260910130432_9.mp4"
-                  autoPlay
                   loop
-                  muted={isMuted}
+                  muted={!isPlaying}
                   playsInline
                   preload="auto"
                   onPlay={() => setIsPlaying(true)}
                   onPause={() => setIsPlaying(false)}
                 />
 
-                {/* Floating Top Badge */}
-                <div className={styles.mediaFloatingBadge}>
-                  <span className={styles.badgeDot} />
-                  <span>Ekatraa &bull; Viral Reel</span>
-                </div>
-
-                {/* 3D Tactile Orange Play / Pause Controller */}
+                {/* 3D Tactile Orange Play / Pause Controller (Zero Text — Disappears on Click, Appears on Hover) */}
                 <div
                   className={`${styles.playOverlay3D} ${
-                    isPlaying && !isMuted ? styles.overlayPlaying : styles.overlayVisible
+                    isControlsVisible ? styles.overlayVisible : styles.overlayHidden
                   }`}
                 >
-                  {/* Concentric Orange Acoustic Radar Waves */}
-                  {(!isPlaying || isMuted) && (
+                  {/* Concentric Orange Acoustic Radar Waves when paused */}
+                  {!isPlaying && (
                     <div className={styles.radarWavesWrapper}>
                       <span className={styles.radarRing1} />
                       <span className={styles.radarRing2} />
@@ -277,7 +298,7 @@ export default function BrandSpotlightSection() {
                     </div>
                   )}
 
-                  <div className={styles.buttonAndPillWrap}>
+                  <div className={styles.buttonOnlyWrap}>
                     <button
                       type="button"
                       onClick={(e) => {
@@ -285,15 +306,15 @@ export default function BrandSpotlightSection() {
                         handlePlayToggle();
                       }}
                       className={`${styles.playBtn3D} ${
-                        isPlaying && !isMuted ? styles.playBtn3DActive : ''
+                        isPlaying ? styles.playBtn3DActive : ''
                       }`}
-                      aria-label={isPlaying && !isMuted ? 'Pause Ekatraa film' : 'Play film with audio'}
-                      title={isPlaying && !isMuted ? 'Click to pause film' : 'Click to play film with sound'}
+                      aria-label={isPlaying ? 'Pause Ekatraa film' : 'Play film with audio'}
+                      title={isPlaying ? 'Click to pause film' : 'Click to play film with sound'}
                     >
                       <span className={styles.specularGlareArc} />
                       <span className={styles.bevelRimGlow} />
 
-                      {isPlaying && !isMuted ? (
+                      {isPlaying ? (
                         <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
                           <rect x="6" y="4" width="4" height="16" rx="1.5" />
                           <rect x="14" y="4" width="4" height="16" rx="1.5" />
@@ -304,18 +325,6 @@ export default function BrandSpotlightSection() {
                         </svg>
                       )}
                     </button>
-
-                    {/* Audio Status Pill */}
-                    <div className={styles.soundPill}>
-                      <div className={styles.equalizerBars}>
-                        <span className={`${styles.eqBar} ${isPlaying && !isMuted ? styles.eqBarActive : ''}`} />
-                        <span className={`${styles.eqBar} ${isPlaying && !isMuted ? styles.eqBarActive : ''}`} />
-                        <span className={`${styles.eqBar} ${isPlaying && !isMuted ? styles.eqBarActive : ''}`} />
-                      </div>
-                      <span className={styles.soundPillText}>
-                        {isPlaying && !isMuted ? 'Audio Active' : 'Click for Sound'}
-                      </span>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -333,7 +342,7 @@ export default function BrandSpotlightSection() {
                     onClick={handlePlayToggle}
                     className={styles.footerActionBtn}
                   >
-                    <span>{isPlaying && !isMuted ? 'Pause' : 'Play With Sound'}</span>
+                    <span>{isPlaying ? 'Pause Video' : 'Play With Sound'}</span>
                   </button>
                 </div>
               </div>

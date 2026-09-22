@@ -24,9 +24,35 @@ import styles from './page.module.css';
 
 const filterCategories = ['All', 'SEO', 'Paid Ads', 'Web Development', 'E-commerce', 'Social Media'];
 
+const heroPortfolioSlides = [
+  {
+    id: 'portfolio-hero-1',
+    src: '/images/Portfolio_page_slide1.png',
+    alt: 'Marketing Copilot Verified Client Campaign Showcase - Slide 1',
+    metric: '+320% Inbound Leads',
+    sub: 'Verified Commercial Return • 6.2X ROAS',
+  },
+  {
+    id: 'portfolio-hero-2',
+    src: '/images/Portfolio_page_slide2.png',
+    alt: 'Marketing Copilot Verified Client Campaign Showcase - Slide 2',
+    metric: '₹65Cr+ Attributed Revenue',
+    sub: 'Full-Funnel Paid & Organic Scaling',
+  },
+  {
+    id: 'portfolio-hero-3',
+    src: '/images/Portfolio_page_slide3.png',
+    alt: 'Marketing Copilot Verified Client Campaign Showcase - Slide 3',
+    metric: '85+ #1 Google Rankings',
+    sub: 'Dominant High-Intent Search Visibility',
+  },
+];
+
 export default function PortfolioPage() {
   const [activeFilter, setActiveFilter] = useState('All');
   const [selectedCase, setSelectedCase] = useState<CaseStudyItem | null>(null);
+  const [heroSlideIndex, setHeroSlideIndex] = useState(0);
+  const [isHeroSlidePaused, setIsHeroSlidePaused] = useState(false);
   const [activeRibbonIndex, setActiveRibbonIndex] = useState(0);
   const [isRibbonPaused, setIsRibbonPaused] = useState(false);
   const [activeHudIndex, setActiveHudIndex] = useState(0);
@@ -36,6 +62,15 @@ export default function PortfolioPage() {
   const [isPaused, setIsPaused] = useState(false);
 
   const sliderRef = useRef<HTMLDivElement>(null);
+
+  // Auto-cycling portfolio hero slides (every 3.8s, pauses on hover)
+  useEffect(() => {
+    if (isHeroSlidePaused) return;
+    const interval = setInterval(() => {
+      setHeroSlideIndex((prev) => (prev + 1) % heroPortfolioSlides.length);
+    }, 3800);
+    return () => clearInterval(interval);
+  }, [isHeroSlidePaused]);
 
   // Filtered case studies
   const filteredCases = caseStudiesList.filter((item) => {
@@ -149,15 +184,26 @@ export default function PortfolioPage() {
 
             {/* Right Pane: High-Impact Visual Showcase */}
             <div className={styles.heroVisualPane}>
-              <div className={styles.heroVisualFrame}>
-                <Image
-                  src="/images/hero_growth_mastery.jpg"
-                  alt="Marketing Copilot Verified Campaign Analytics Dashboard"
-                  fill
-                  priority
-                  sizes="(max-width: 900px) 100vw, 550px"
-                  className={styles.heroVisualImg}
-                />
+              <div
+                className={styles.heroVisualFrame}
+                onMouseEnter={() => setIsHeroSlidePaused(true)}
+                onMouseLeave={() => setIsHeroSlidePaused(false)}
+              >
+                {heroPortfolioSlides.map((slide, idx) => (
+                  <div
+                    key={slide.id}
+                    className={`${styles.heroSlideItem} ${idx === heroSlideIndex ? styles.heroSlideActive : ''}`}
+                  >
+                    <Image
+                      src={slide.src}
+                      alt={slide.alt}
+                      fill
+                      priority={idx === 0}
+                      sizes="(max-width: 900px) 100vw, 550px"
+                      className={styles.heroVisualImg}
+                    />
+                  </div>
+                ))}
                 <div className={styles.heroVisualOverlay} />
 
                 {/* Floating Micro-Badges */}
@@ -166,8 +212,25 @@ export default function PortfolioPage() {
                 </div>
 
                 <div className={styles.heroVisualBadgeBottom}>
-                  <span className={styles.floatingVal}>+320% Inbound Leads</span>
-                  <span className={styles.floatingLabel}>Verified Commercial Return • 6.2X ROAS</span>
+                  <span className={styles.floatingVal}>
+                    {heroPortfolioSlides[heroSlideIndex].metric}
+                  </span>
+                  <span className={styles.floatingLabel}>
+                    {heroPortfolioSlides[heroSlideIndex].sub}
+                  </span>
+                </div>
+
+                {/* Slide Indicator Dots */}
+                <div className={styles.heroSlideDots}>
+                  {heroPortfolioSlides.map((_, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      className={`${styles.heroSlideDot} ${idx === heroSlideIndex ? styles.heroSlideDotActive : ''}`}
+                      onClick={() => setHeroSlideIndex(idx)}
+                      aria-label={`Go to portfolio slide ${idx + 1}`}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
