@@ -72,12 +72,32 @@ export default function BrandSpotlightSection() {
   const touchStartX = useRef<number>(0);
   const touchEndX = useRef<number>(0);
 
+  // Ensure initial video frame is offset past black opening fade if poster or data loads
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const handleLoaded = () => {
+      if (video.paused && video.currentTime < 0.5) {
+        try {
+          video.currentTime = 0.5;
+        } catch {
+          // Ignore if seeking restricted before user gesture
+        }
+      }
+    };
+    video.addEventListener('loadeddata', handleLoaded);
+    return () => video.removeEventListener('loadeddata', handleLoaded);
+  }, []);
+
   // Video play/pause & audio toggle
   const handlePlayToggle = useCallback(() => {
     const video = videoRef.current;
     if (!video) return;
 
     if (video.paused) {
+      if (video.currentTime <= 0.8) {
+        video.currentTime = 0;
+      }
       video.muted = false;
       video.volume = 0.9;
       video.play().then(() => {
@@ -256,6 +276,7 @@ export default function BrandSpotlightSection() {
                   ref={videoRef}
                   className={styles.videoPlayer}
                   src="/videos/VID20260910130432_9.mp4"
+                  poster="/images/ekatraa_poster.jpg"
                   loop
                   muted={!isPlaying}
                   playsInline

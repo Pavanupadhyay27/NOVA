@@ -14,7 +14,7 @@ const services = [
   { href: '/services/social-media', label: 'Social Media Marketing', shortLabel: 'Social Media', icon: '📱', desc: 'Build community & brand presence' },
   { href: '/services/web-development', label: 'Website Development', shortLabel: 'Web Platform', icon: '💻', desc: 'Conversion-engineered websites' },
   { href: '/services/creative-branding', label: 'Branding & Creative Services', shortLabel: 'Creative Brand', icon: '🎨', desc: 'Make your brand unforgettable' },
-  { href: '/services/local-seo', label: 'Local SEO', shortLabel: 'Local SEO', icon: '📍', desc: 'Dominate Bhubaneswar local search' },
+  { href: '/services/amazon-marketing', label: 'Amazon Marketing & PPC', shortLabel: 'Amazon PPC', icon: '📦', desc: 'Scale Amazon sales & sponsored ads' },
   { href: '/services/ecommerce-marketing', label: 'E-commerce Marketing', shortLabel: 'E-Commerce', icon: '🛍️', desc: 'Scale your online store revenue' },
   { href: '/services/performance-marketing', label: 'Performance Marketing', shortLabel: 'Performance', icon: '📈', desc: 'Turn ad spend into predictable revenue' },
   { href: '/services/ai-automation', label: 'Content Marketing', shortLabel: 'Content Copy', icon: '✍️', desc: 'Content that ranks and converts' },
@@ -36,6 +36,7 @@ export default function Header() {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const dropdownTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const navItemRef = useRef<HTMLDivElement | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -43,6 +44,28 @@ export default function Header() {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Close dropdown on outside click or Escape key
+  useEffect(() => {
+    const handleDocumentClick = (e: MouseEvent | TouchEvent) => {
+      if (navItemRef.current && !navItemRef.current.contains(e.target as Node)) {
+        setServicesOpen(false);
+      }
+    };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setServicesOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleDocumentClick);
+    document.addEventListener('touchstart', handleDocumentClick);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleDocumentClick);
+      document.removeEventListener('touchstart', handleDocumentClick);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
 
   useEffect(() => {
@@ -70,9 +93,10 @@ export default function Header() {
   };
 
   const handleMouseLeave = () => {
+    if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
     dropdownTimerRef.current = setTimeout(() => {
       setServicesOpen(false);
-    }, 200);
+    }, 380);
   };
 
   return (
@@ -107,21 +131,44 @@ export default function Header() {
             Home
           </Link>
 
-          {/* Services with dropdown */}
+          {/* Services with persistent dropdown & click-toggle */}
           <div
+            ref={navItemRef}
             className={styles.navItem}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <Link
-              href="/services"
-              className={`${styles.navLink} ${pathname.startsWith('/services') || pathname.toLowerCase().includes('digital-marketing-company-services') ? styles.engravedActive : ''}`}
+            <button
+              type="button"
+              className={`${styles.navLink} ${styles.navButton} ${
+                servicesOpen || pathname.startsWith('/services') || pathname.toLowerCase().includes('digital-marketing-company-services')
+                  ? styles.engravedActive
+                  : ''
+              }`}
+              onClick={(e) => {
+                e.stopPropagation();
+                if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
+                setServicesOpen((prev) => !prev);
+              }}
+              aria-expanded={servicesOpen}
+              aria-haspopup="true"
+              aria-label="Toggle Services dropdown menu"
             >
               Services
-              <svg width="9" height="9" viewBox="0 0 12 12" fill="currentColor" style={{ marginLeft: 4 }}>
+              <svg
+                width="9"
+                height="9"
+                viewBox="0 0 12 12"
+                fill="currentColor"
+                style={{
+                  marginLeft: 5,
+                  transform: servicesOpen ? 'rotate(180deg)' : 'none',
+                  transition: 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+                }}
+              >
                 <path d="M6 8L2 4h8L6 8z" />
               </svg>
-            </Link>
+            </button>
 
             {servicesOpen && (
               <div
@@ -130,15 +177,24 @@ export default function Header() {
                 onMouseLeave={handleMouseLeave}
               >
                 <div className={styles.dropdownGrid}>
-                  {services.map(s => (
-                    <Link key={s.href} href={s.href} className={styles.dropdownItem}>
+                  {services.map((s) => (
+                    <Link
+                      key={s.href}
+                      href={s.href}
+                      className={styles.dropdownItem}
+                      onClick={() => setServicesOpen(false)}
+                    >
                       <span className={styles.dropdownLabel}>{s.label}</span>
                       <span className={styles.dropdownDesc}>{s.desc}</span>
                     </Link>
                   ))}
                 </div>
                 <div className={styles.dropdownFooter}>
-                  <Link href="/services" className={styles.dropdownAll}>
+                  <Link
+                    href="/services"
+                    className={styles.dropdownAll}
+                    onClick={() => setServicesOpen(false)}
+                  >
                     Explore all 10 growth services <span>→</span>
                   </Link>
                 </div>
