@@ -194,23 +194,30 @@ export default function BrandSpotlightSection() {
           </ScrollReveal>
         </div>
 
-        {/* Dual-Pane Showcase: 9:16 Reel Video + 1:1 Carousel */}
+        {/* Symmetrical Dual-Card Showcase: Equal Height & Aligned Viewports */}
         <div className={styles.showcaseGrid}>
           {/* ══════════════════════════════════════════════════
-              LEFT PANE: 9:16 SMARTPHONE REEL PLAYER (NO CROPPING)
+              CARD 1 (LEFT): 9:16 FEATURED VIDEO REEL
              ══════════════════════════════════════════════════ */}
-          <ScrollReveal direction="up" className={styles.videoCol}>
-            <div className={styles.videoDeviceCard}>
-              <div className={styles.videoDeviceGlow} />
+          <ScrollReveal direction="up" className={styles.showcaseCol}>
+            <div className={styles.showcaseCard}>
+              <div className={styles.cardBackdrop} />
 
-              {/* Top Smartphone Speaker & Camera Notch */}
-              <div className={styles.deviceNotch}>
-                <span className={styles.cameraDot} />
-                <span className={styles.speakerPill} />
+              {/* Card Header (Matches Right Card Header Height & Baseline) */}
+              <div className={styles.cardHeader}>
+                <div className={styles.cardTagWrap}>
+                  <span className={styles.cardTagDot} />
+                  <span className={styles.cardTag}>9:16 CAMPAIGN REEL</span>
+                </div>
+                <div className={styles.cardMetaBadge}>
+                  <span className={styles.livePulseDot} />
+                  <span>4K Cinema Production</span>
+                </div>
               </div>
 
+              {/* Media Viewport — Identical Height to Right Card Viewport */}
               <div
-                className={styles.videoWrapper}
+                className={styles.mediaViewport}
                 onClick={handlePlayToggle}
                 role="button"
                 tabIndex={0}
@@ -222,6 +229,20 @@ export default function BrandSpotlightSection() {
                 }}
                 aria-label={isPlaying && !isMuted ? 'Pause Ekatraa film' : 'Play Ekatraa film with sound'}
               >
+                {/* Blurred Video Backdrop for Rich Ambient Atmosphere */}
+                <div className={styles.videoAmbientBackdrop}>
+                  <video
+                    className={styles.videoAmbientBlur}
+                    src="/videos/VID20260910130432_9.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="auto"
+                  />
+                </div>
+
+                {/* Main 9:16 Video (Contained, Zero Cropping, Centered) */}
                 <video
                   ref={videoRef}
                   className={styles.videoPlayer}
@@ -235,8 +256,8 @@ export default function BrandSpotlightSection() {
                   onPause={() => setIsPlaying(false)}
                 />
 
-                {/* Floating Live Badge */}
-                <div className={styles.videoBadge}>
+                {/* Floating Top Badge */}
+                <div className={styles.mediaFloatingBadge}>
                   <span className={styles.badgeDot} />
                   <span>Ekatraa &bull; Viral Reel</span>
                 </div>
@@ -299,46 +320,53 @@ export default function BrandSpotlightSection() {
                 </div>
               </div>
 
-              {/* Video Info Footer */}
-              <div className={styles.videoFooter}>
-                <div>
-                  <span className={styles.footerLabel}>Campaign Reel</span>
-                  <h4 className={styles.footerTitle}>Ekatraa Cinematic Story</h4>
+              {/* Card Footer (Matches Right Card Footer Height & Layout) */}
+              <div className={styles.cardFooter}>
+                <div className={styles.footerTextWrap}>
+                  <span className={styles.footerTag}>Cinematic Production</span>
+                  <h4 className={styles.footerTitle}>Ekatraa Wedding &amp; Event Reel</h4>
                 </div>
-                <span className={styles.liveIndicator}>
-                  <span className={styles.liveDot} /> 9:16 Reel
-                </span>
+
+                <div className={styles.videoControlsRow}>
+                  <button
+                    type="button"
+                    onClick={handlePlayToggle}
+                    className={styles.footerActionBtn}
+                  >
+                    <span>{isPlaying && !isMuted ? 'Pause' : 'Play With Sound'}</span>
+                  </button>
+                </div>
               </div>
             </div>
           </ScrollReveal>
 
           {/* ══════════════════════════════════════════════════
-              RIGHT PANE: 1:1 SQUARE CAROUSEL (NO CROPPING)
+              CARD 2 (RIGHT): 1:1 SQUARE CAROUSEL SHOWCASE
              ══════════════════════════════════════════════════ */}
-          <ScrollReveal direction="up" delay={0.1} className={styles.carouselCol}>
+          <ScrollReveal direction="up" delay={0.1} className={styles.showcaseCol}>
             <div
-              className={styles.carouselCard}
+              className={styles.showcaseCard}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
-              <div className={styles.carouselBackdrop} />
+              <div className={styles.cardBackdrop} />
 
-              {/* Carousel Header Bar */}
-              <div className={styles.carouselHeader}>
-                <div className={styles.carouselTagWrap}>
-                  <span className={styles.carouselTagDot} />
-                  <span className={styles.carouselTag}>CAMPAIGN SLIDESHOW</span>
+              {/* Card Header (Matches Left Card Header Height & Baseline) */}
+              <div className={styles.cardHeader}>
+                <div className={styles.cardTagWrap}>
+                  <span className={styles.cardTagDot} />
+                  <span className={styles.cardTag}>1:1 SOCIAL CREATIVE</span>
                 </div>
                 <div className={styles.counterBadge}>
-                  <span>{String(currentSlide + 1).padStart(2, '0')}</span>
+                  <span>Slide {String(currentSlide + 1).padStart(2, '0')}</span>
                   <span className={styles.counterDivider}>/</span>
                   <span>{String(ekatraaSlides.length).padStart(2, '0')}</span>
                 </div>
               </div>
 
-              {/* 1:1 Square Viewport — Zero Image Cropping */}
+              {/* Media Viewport — Identical Height to Left Card Viewport */}
               <div
-                className={styles.carouselViewport}
+                className={styles.mediaViewport}
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
@@ -367,7 +395,7 @@ export default function BrandSpotlightSection() {
                   );
                 })}
 
-                {/* Left & Right Nav Buttons */}
+                {/* Left & Right Nav Arrow Buttons */}
                 <button
                   type="button"
                   onClick={handlePrevSlide}
@@ -391,38 +419,53 @@ export default function BrandSpotlightSection() {
                     <polyline points="9 18 15 12 9 6" />
                   </svg>
                 </button>
-              </div>
 
-              {/* Clean Slide Caption Below Image (Does Not Obscure Artwork) */}
-              <div className={styles.captionBar}>
-                <span className={styles.slideTag}>{ekatraaSlides[currentSlide]?.tag}</span>
-                <h4 className={styles.slideTitle}>{ekatraaSlides[currentSlide]?.title}</h4>
-              </div>
-
-              {/* 6 Thumbnail Selector Strip */}
-              <div className={styles.thumbStrip}>
-                {ekatraaSlides.map((slide, idx) => {
-                  const thumbSrc = imgErrors[slide.id] ? slide.fallback : slide.src;
-                  return (
+                {/* Slide Indicators Dots */}
+                <div className={styles.slideDotsWrap}>
+                  {ekatraaSlides.map((_, idx) => (
                     <button
-                      key={slide.id}
+                      key={idx}
                       type="button"
                       onClick={() => setCurrentSlide(idx)}
-                      className={`${styles.thumbBtn} ${
-                        idx === currentSlide ? styles.thumbBtnActive : ''
-                      }`}
+                      className={`${styles.slideDot} ${idx === currentSlide ? styles.slideDotActive : ''}`}
                       aria-label={`Go to slide ${idx + 1}`}
-                    >
-                      <Image
-                        src={thumbSrc}
-                        alt={`Thumbnail ${idx + 1}`}
-                        fill
-                        sizes="90px"
-                        className={styles.thumbImage}
-                      />
-                    </button>
-                  );
-                })}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Card Footer (Matches Left Card Footer Height & Layout) */}
+              <div className={styles.cardFooter}>
+                <div className={styles.footerTextWrap}>
+                  <span className={styles.footerTag}>{ekatraaSlides[currentSlide]?.tag}</span>
+                  <h4 className={styles.footerTitle}>{ekatraaSlides[currentSlide]?.title}</h4>
+                </div>
+
+                {/* 6 Thumbnail Selector Buttons */}
+                <div className={styles.thumbStrip}>
+                  {ekatraaSlides.map((slide, idx) => {
+                    const thumbSrc = imgErrors[slide.id] ? slide.fallback : slide.src;
+                    return (
+                      <button
+                        key={slide.id}
+                        type="button"
+                        onClick={() => setCurrentSlide(idx)}
+                        className={`${styles.thumbBtn} ${
+                          idx === currentSlide ? styles.thumbBtnActive : ''
+                        }`}
+                        aria-label={`Go to slide ${idx + 1}`}
+                      >
+                        <Image
+                          src={thumbSrc}
+                          alt={`Thumbnail ${idx + 1}`}
+                          fill
+                          sizes="60px"
+                          className={styles.thumbImage}
+                        />
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </ScrollReveal>
