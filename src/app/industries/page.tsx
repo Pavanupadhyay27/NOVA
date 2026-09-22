@@ -16,21 +16,21 @@ import styles from './page.module.css';
 const heroSlides = [
   {
     id: 'slide-1',
-    src: '/images/Slide 1.jpg',
-    alt: 'Marketing Copilot digital marketing company strategy and campaigns in Bhubaneswar',
-    caption: 'Strategic Growth & Execution',
+    src: '/images/Industries_slide1.png',
+    alt: 'Specialized digital marketing architectures for real estate, builders, and urban construction in Bhubaneswar',
+    caption: 'Real Estate & Infrastructure',
   },
   {
     id: 'slide-2',
-    src: '/images/slide 3.webp',
-    alt: 'Marketing Copilot marketing performance data and digital solutions',
-    caption: 'Performance & 10x ROI',
+    src: '/images/Industries_slide2.png',
+    alt: 'Healthcare clinics, hospitals, coaching academies, and higher education digital marketing',
+    caption: 'Healthcare & Education',
   },
   {
     id: 'slide-3',
-    src: '/images/Slide 2.jpg',
-    alt: 'Creative marketing professionals planning growth strategies and digital solutions',
-    caption: 'Creative & Performance Marketing',
+    src: '/images/Industries_slide3.png',
+    alt: 'Retail brands, D2C e-commerce, luxury resorts, and hospitality marketing in Odisha',
+    caption: 'Retail, E-Commerce & Hospitality',
   },
 ];
 
@@ -512,7 +512,7 @@ export default function IndustriesPage() {
                   {/* Minimalist Floating Status Badge */}
                   <div className={styles.floatingBadge}>
                     <span className={styles.badgePulse} />
-                    <span className={styles.badgeText}>12 Specialized Sectors</span>
+                    <span className={styles.badgeText}>{heroSlides[currentSlide].caption}</span>
                   </div>
 
                   {/* Minimalist Tactile Dot Indicators */}
