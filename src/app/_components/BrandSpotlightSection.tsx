@@ -194,14 +194,20 @@ export default function BrandSpotlightSection() {
           </ScrollReveal>
         </div>
 
-        {/* Dual-Pane Showcase: 1 Video + 6-Slide Carousel */}
-        <div className={styles.dualGrid}>
+        {/* Dual-Pane Showcase: 9:16 Reel Video + 1:1 Carousel */}
+        <div className={styles.showcaseGrid}>
           {/* ══════════════════════════════════════════════════
-              LEFT PANE: 16:9 FEATURED VIDEO WITH ORANGE 3D PLAY BUTTON
+              LEFT PANE: 9:16 SMARTPHONE REEL PLAYER (NO CROPPING)
              ══════════════════════════════════════════════════ */}
-          <ScrollReveal direction="up" className={styles.col}>
-            <div className={styles.videoCard}>
-              <div className={styles.videoBackdrop} />
+          <ScrollReveal direction="up" className={styles.videoCol}>
+            <div className={styles.videoDeviceCard}>
+              <div className={styles.videoDeviceGlow} />
+
+              {/* Top Smartphone Speaker & Camera Notch */}
+              <div className={styles.deviceNotch}>
+                <span className={styles.cameraDot} />
+                <span className={styles.speakerPill} />
+              </div>
 
               <div
                 className={styles.videoWrapper}
@@ -229,10 +235,10 @@ export default function BrandSpotlightSection() {
                   onPause={() => setIsPlaying(false)}
                 />
 
-                {/* Floating Top Badge */}
+                {/* Floating Live Badge */}
                 <div className={styles.videoBadge}>
                   <span className={styles.badgeDot} />
-                  <span>Ekatraa &bull; Commercial Production</span>
+                  <span>Ekatraa &bull; Viral Reel</span>
                 </div>
 
                 {/* 3D Tactile Orange Play / Pause Controller */}
@@ -267,12 +273,12 @@ export default function BrandSpotlightSection() {
                       <span className={styles.bevelRimGlow} />
 
                       {isPlaying && !isMuted ? (
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
                           <rect x="6" y="4" width="4" height="16" rx="1.5" />
                           <rect x="14" y="4" width="4" height="16" rx="1.5" />
                         </svg>
                       ) : (
-                        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" style={{ marginLeft: '4px' }}>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" style={{ marginLeft: '4px' }}>
                           <path d="M5 3l14 9-14 9V3z" />
                         </svg>
                       )}
@@ -294,22 +300,22 @@ export default function BrandSpotlightSection() {
               </div>
 
               {/* Video Info Footer */}
-              <div className={styles.mediaFooter}>
+              <div className={styles.videoFooter}>
                 <div>
-                  <span className={styles.footerLabel}>Campaign Film</span>
-                  <h4 className={styles.footerTitle}>Ekatraa Visual Story &amp; Commercial Reel</h4>
+                  <span className={styles.footerLabel}>Campaign Reel</span>
+                  <h4 className={styles.footerTitle}>Ekatraa Cinematic Story</h4>
                 </div>
                 <span className={styles.liveIndicator}>
-                  <span className={styles.liveDot} /> 4K Cinema
+                  <span className={styles.liveDot} /> 9:16 Reel
                 </span>
               </div>
             </div>
           </ScrollReveal>
 
           {/* ══════════════════════════════════════════════════
-              RIGHT PANE: 6-IMAGE INTERACTIVE CAROUSEL
+              RIGHT PANE: 1:1 SQUARE CAROUSEL (NO CROPPING)
              ══════════════════════════════════════════════════ */}
-          <ScrollReveal direction="up" delay={0.1} className={styles.col}>
+          <ScrollReveal direction="up" delay={0.1} className={styles.carouselCol}>
             <div
               className={styles.carouselCard}
               onMouseEnter={() => setIsHovered(true)}
@@ -317,6 +323,20 @@ export default function BrandSpotlightSection() {
             >
               <div className={styles.carouselBackdrop} />
 
+              {/* Carousel Header Bar */}
+              <div className={styles.carouselHeader}>
+                <div className={styles.carouselTagWrap}>
+                  <span className={styles.carouselTagDot} />
+                  <span className={styles.carouselTag}>CAMPAIGN SLIDESHOW</span>
+                </div>
+                <div className={styles.counterBadge}>
+                  <span>{String(currentSlide + 1).padStart(2, '0')}</span>
+                  <span className={styles.counterDivider}>/</span>
+                  <span>{String(ekatraaSlides.length).padStart(2, '0')}</span>
+                </div>
+              </div>
+
+              {/* 1:1 Square Viewport — Zero Image Cropping */}
               <div
                 className={styles.carouselViewport}
                 onTouchStart={handleTouchStart}
@@ -336,60 +356,50 @@ export default function BrandSpotlightSection() {
                         src={imageSrc}
                         alt={`Ekatraa Showcase - ${slide.title}`}
                         fill
-                        sizes="(max-width: 960px) 100vw, 600px"
-                        quality={90}
+                        sizes="(max-width: 960px) 100vw, 560px"
+                        quality={95}
                         className={styles.carouselImage}
                         onError={() => {
                           setImgErrors((prev) => ({ ...prev, [slide.id]: true }));
                         }}
                       />
-                      <div className={styles.slideGradient} />
-
-                      {/* Slide Caption Overlay */}
-                      <div className={styles.slideCaption}>
-                        <span className={styles.slideTag}>{slide.tag}</span>
-                        <h4 className={styles.slideTitle}>{slide.title}</h4>
-                      </div>
                     </div>
                   );
                 })}
 
-                {/* Top Slide Counter */}
-                <div className={styles.counterBadge}>
-                  <span>{String(currentSlide + 1).padStart(2, '0')}</span>
-                  <span className={styles.counterDivider}>/</span>
-                  <span>{String(ekatraaSlides.length).padStart(2, '0')}</span>
-                </div>
+                {/* Left & Right Nav Buttons */}
+                <button
+                  type="button"
+                  onClick={handlePrevSlide}
+                  className={`${styles.navBtn} ${styles.navBtnPrev}`}
+                  aria-label="Previous slide"
+                  title="Previous slide"
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="15 18 9 12 15 6" />
+                  </svg>
+                </button>
 
-                {/* Carousel Arrow Controls */}
-                <div className={styles.carouselControls}>
-                  <button
-                    type="button"
-                    onClick={handlePrevSlide}
-                    className={styles.navBtn}
-                    aria-label="Previous slide"
-                    title="Previous slide"
-                  >
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="15 18 9 12 15 6" />
-                    </svg>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={handleNextSlide}
-                    className={styles.navBtn}
-                    aria-label="Next slide"
-                    title="Next slide"
-                  >
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="9 18 15 12 9 6" />
-                    </svg>
-                  </button>
-                </div>
+                <button
+                  type="button"
+                  onClick={handleNextSlide}
+                  className={`${styles.navBtn} ${styles.navBtnNext}`}
+                  aria-label="Next slide"
+                  title="Next slide"
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="9 18 15 12 9 6" />
+                  </svg>
+                </button>
               </div>
 
-              {/* 6 Thumbnail Selector Bar */}
+              {/* Clean Slide Caption Below Image (Does Not Obscure Artwork) */}
+              <div className={styles.captionBar}>
+                <span className={styles.slideTag}>{ekatraaSlides[currentSlide]?.tag}</span>
+                <h4 className={styles.slideTitle}>{ekatraaSlides[currentSlide]?.title}</h4>
+              </div>
+
+              {/* 6 Thumbnail Selector Strip */}
               <div className={styles.thumbStrip}>
                 {ekatraaSlides.map((slide, idx) => {
                   const thumbSrc = imgErrors[slide.id] ? slide.fallback : slide.src;
@@ -424,11 +434,11 @@ export default function BrandSpotlightSection() {
             <div className={styles.deliverables}>
               <span className={styles.deliverableLabel}>Executed for Ekatraa:</span>
               <div className={styles.tagsWrap}>
-                <span className={styles.tag}>Brand Identity</span>
+                <span className={styles.tag}>Brand Visual Architecture</span>
                 <span className={styles.tag}>Cinema Videography</span>
-                <span className={styles.tag}>Meta Ad Funnels</span>
-                <span className={styles.tag}>Patia &amp; Bhubaneswar Geo-Grid</span>
-                <span className={styles.tag}>Conversion Rate CRO</span>
+                <span className={styles.tag}>High-Intent Social Funnels</span>
+                <span className={styles.tag}>Wedding &amp; Event Geo-Grid</span>
+                <span className={styles.tag}>Conversion Optimization</span>
               </div>
             </div>
 
