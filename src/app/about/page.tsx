@@ -1504,14 +1504,14 @@ export default function AboutPage() {
           <ScrollReveal className="text-center">
             <div className={styles.telemetryEyebrow}>
               <span className={styles.telemetryLiveDot} />
-              <span>QUANTIFIED MILESTONES · LIVE AUDIT DATA</span>
+              <span>Built Around Real Results</span>
             </div>
             <h2 className={styles.telemetryTitle}>
-              Precision Performance.{' '}
-              <span className="accent-gradient">Proven in Revenue.</span>
+              Data-Driven Digital Marketing for{' '}
+              <span className="accent-gradient">Growing Brands</span>
             </h2>
             <p className={styles.telemetrySub}>
-              Real commercial results delivered for ambitious brands that chose compounding scalability over guesswork.
+              Every campaign is measured against clear business goals, giving you a transparent view of performance, growth, leads, advertising returns, and marketing progress.
             </p>
           </ScrollReveal>
 
