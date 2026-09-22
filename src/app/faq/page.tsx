@@ -11,21 +11,21 @@ import styles from './page.module.css';
 const heroSlides = [
   {
     id: 'slide-1',
-    src: '/images/Slide 1.jpg',
-    alt: 'Marketing Copilot digital marketing company strategy and campaigns in Bhubaneswar',
-    caption: 'Strategic Growth & Execution',
+    src: '/images/Faq_slide1.png',
+    alt: 'Growth Questions & Marketing Strategy Solutions for Odisha Businesses',
+    caption: 'Strategic Questions & Answers',
   },
   {
     id: 'slide-2',
-    src: '/images/slide 3.webp',
-    alt: 'Marketing Copilot marketing performance data and digital solutions',
-    caption: 'Performance & 10x ROI',
+    src: '/images/Faq_slide2.png',
+    alt: 'Executive strategy, question flows, and growth decisions in Bhubaneswar',
+    caption: 'Executive Strategy & Decision Maps',
   },
   {
     id: 'slide-3',
-    src: '/images/Slide 2.jpg',
-    alt: 'Creative marketing professionals planning growth strategies and digital solutions',
-    caption: 'Creative & Performance Marketing',
+    src: '/images/Faq_slide3.png',
+    alt: 'Step-by-step roadmap from questions to verified market execution',
+    caption: 'Verified Commercial Roadmaps',
   },
 ];
 
@@ -758,7 +758,7 @@ export default function FAQPage() {
                   {/* Minimalist Floating Status Badge */}
                   <div className={styles.floatingBadge}>
                     <span className={styles.badgePulse} />
-                    <span className={styles.badgeText}>Verified Growth Intelligence</span>
+                    <span className={styles.badgeText}>{heroSlides[currentSlide].caption}</span>
                   </div>
 
                   {/* Minimalist Tactile Dot Indicators */}
