@@ -1034,11 +1034,11 @@ export default function AboutPage() {
           <span>THE COPILOT MANIFESTO</span>
         </div>
         <h2 className={`display-lg ${styles.sectionHeadline}`}>
-          Four Bedrock Principles That{' '}
-          <span className="accent-gradient">Rule Every Decision.</span>
+          Four Principles Behind{' '}
+          <span className="accent-gradient">Everything We Do</span>
         </h2>
         <p className={`body-lg ${styles.sectionSub}`}>
-          We don&apos;t compromise on standards. These four core convictions govern every ad campaign, line of code, and creative storyboard we produce.
+          We believe good digital marketing should be simple, transparent, and focused on business growth. These four principles guide every strategy, campaign, piece of content, and decision we make.
         </p>
       </ScrollReveal>
 
