@@ -996,19 +996,19 @@ export default function AboutPage() {
         <div className={styles.transitionalCtaCard}>
           <div className={styles.transCtaGlow} />
           <div className={styles.transCtaLeft}>
-            <span className={styles.transCtaBadge}>⚡ FAST-TRACK YOUR REVENUE</span>
+            <span className={styles.transCtaBadge}>⚡ LET’S FIND YOUR GROWTH GAPS</span>
             <h3 className={styles.transCtaTitle}>
-              Tired of Agency Excuses &amp; Vanity Impressions?
+              From Digital Reach to Real Business Results
             </h3>
             <p className={styles.transCtaSub}>
-              Get a complimentary 30-minute forensic audit of your ad accounts, search rankings, and conversion funnels.
+              Let our team review your current marketing efforts and uncover practical opportunities to improve visibility, leads, conversions, and overall online performance.
             </p>
           </div>
 
           <div className={styles.transCtaRight}>
             <div className={styles.transCtaButtons}>
               <BeamButton href="/contact" label="Claim Free Growth Audit" size="md" />
-              <BeamButton href="#principles-section" label="Read Our Principles" size="md" variant="outline" />
+              <BeamButton href="#principles-section" label="Our Marketing Principles" size="md" variant="outline" />
             </div>
             <div className={styles.transCtaTrust}>
               <span>✓ 48-Hour Turnaround</span>
