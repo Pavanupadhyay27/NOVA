@@ -1564,14 +1564,14 @@ export default function AboutPage() {
       <ScrollReveal className="text-center">
         <div className="eyebrow" style={{ margin: '0 auto 12px' }}>
           <span className="eyebrow-dot" />
-          <span>EXECUTIVE ARCHITECTS</span>
+          <span>MEET THE TEAM</span>
         </div>
         <h2 className={`display-lg ${styles.sectionHeadline}`}>
-          The Minds Behind Your{' '}
-          <span className="accent-gradient">Commercial Velocity</span>
+          Your Growth Is{' '}
+          <span className="accent-gradient">Our Shared Goal</span>
         </h2>
         <p className={`body-lg ${styles.sectionSub}`}>
-          No junior interns handling your ad spend. Meet the senior strategists and technical leaders who personally engineer your growth.
+          Get direct support from experienced digital marketing professionals who understand your goals and turn them into clear, practical marketing strategies.
         </p>
       </ScrollReveal>
 
