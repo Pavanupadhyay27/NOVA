@@ -4,6 +4,7 @@ import ClientsSection from './_components/ClientsSection';
 import StoryVideoSection from './_components/StoryVideoSection';
 import QuickConnectMapSection from './_components/QuickConnectMapSection';
 import MetricsSection from './_components/MetricsSection';
+import BrandSpotlightSection from './_components/BrandSpotlightSection';
 import ServicesSection from './_components/ServicesSection';
 import StrategySection from './_components/StrategySection';
 import QuotesSection from './_components/QuotesSection';
@@ -29,6 +30,7 @@ export default function HomePage() {
       <QuickConnectMapSection />
       <StoryVideoSection />
       <MetricsSection />
+      <BrandSpotlightSection />
       <ServicesSection />
       <StrategySection />
       <QuotesSection />
