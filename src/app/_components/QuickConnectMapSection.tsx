@@ -5,7 +5,24 @@ import BeamButton from '@/components/BeamButton';
 import ScrollReveal from '@/components/ScrollReveal';
 import styles from './QuickConnectMapSection.module.css';
 
-export default function QuickConnectMapSection({ id = 'direct-connect' }: { id?: string } = {}) {
+interface QuickConnectMapSectionProps {
+  id?: string;
+  eyebrow?: string;
+  title?: React.ReactNode;
+  subtitle?: string;
+}
+
+export default function QuickConnectMapSection({
+  id = 'direct-connect',
+  eyebrow = 'Driving Business Growth With Digital Marketing in Bhubaneswar',
+  title = (
+    <>
+      Smart Digital Marketing for<br />
+      <span className={styles.titleAccent}>Growing Businesses</span>
+    </>
+  ),
+  subtitle = 'As a digital marketing company in Bhubaneswar, we combine SEO, social media, content, and performance marketing to help brands grow online.',
+}: QuickConnectMapSectionProps = {}) {
   const [copiedField, setCopiedField] = useState<string | null>(null);
 
   const phone = '+91 82807 88689';
@@ -39,17 +56,12 @@ export default function QuickConnectMapSection({ id = 'direct-connect' }: { id?:
           <div className={styles.header}>
             <div className={styles.eyebrowBadge}>
               <span className={styles.pulseDot} />
-              <span className={styles.eyebrowText}>Your Trusted Digital Marketing Company in Bhubaneswar</span>
+              <span className={styles.eyebrowText}>{eyebrow}</span>
             </div>
 
-            <h3 className={styles.title}>
-              Grow Your Business with<br />
-              <span className={styles.titleAccent}>Tailored Digital Marketing Solutions</span>
-            </h3>
+            <h3 className={styles.title}>{title}</h3>
 
-            <p className={styles.subtitle}>
-              Reach our senior growth partners directly or visit our studio in Kharvela Nagar. No automated switchboards or gatekeepers.
-            </p>
+            <p className={styles.subtitle}>{subtitle}</p>
           </div>
         </ScrollReveal>
 
