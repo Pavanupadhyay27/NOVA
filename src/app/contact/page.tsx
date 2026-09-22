@@ -70,13 +70,13 @@ export default function ContactPage() {
       <div className="container">
         <div className={styles.grid}>
           {/* ══════════════════════════════════════════════════
-              LEFT INFO PANE — SKEUOMORPHIC & CLEAN
+              LEFT INFO PANE — MINIMALIST & PROFESSIONAL
              ══════════════════════════════════════════════════ */}
           <div className={styles.left}>
             <ScrollReveal>
               <div className={styles.heroEyebrow}>
                 <span className={styles.heroEyebrowDot} />
-                <span>START A PROJECT &bull; BHUBANESWAR</span>
+                <span>GET IN TOUCH &bull; BHUBANESWAR</span>
               </div>
 
               <h1 className={`display-hero ${styles.title}`}>
@@ -86,14 +86,11 @@ export default function ContactPage() {
 
               <div className={styles.sub}>
                 <p className={styles.subLead}>
-                  Have a business goal, a marketing challenge, or a new idea? Tell us about it.
-                </p>
-                <p className={styles.subBody}>
-                  Marketing Copilot is a results-driven digital marketing company in Bhubaneswar helping brands overcome low visibility, reach the right audience, and generate qualified leads.
+                  Partner with Bhubaneswar&apos;s results-driven growth team to scale your brand&apos;s visibility, leads, and revenue.
                 </p>
               </div>
 
-              {/* Skeuomorphic Tactile Contact Cards */}
+              {/* Minimalist Contact Detail Cards */}
               <div className={styles.contactDetails}>
                 <div className={styles.detailCard}>
                   <div className={styles.detailIcon}>
@@ -103,7 +100,7 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <div className={styles.detailContent}>
-                    <span className={styles.detailLabel}>Direct Email</span>
+                    <span className={styles.detailLabel}>Email</span>
                     <a href="mailto:connect@novasparkdigitalmarketingagency.com" className={styles.detailVal}>
                       connect@novasparkdigitalmarketingagency.com
                     </a>
@@ -118,7 +115,7 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <div className={styles.detailContent}>
-                    <span className={styles.detailLabel}>Growth Lab Location</span>
+                    <span className={styles.detailLabel}>Office</span>
                     <span className={styles.detailVal}>Mallick Complex, Unit 3, Kharvela Nagar, Bhubaneswar</span>
                   </div>
                 </div>
@@ -130,7 +127,7 @@ export default function ContactPage() {
                     </svg>
                   </div>
                   <div className={styles.detailContent}>
-                    <span className={styles.detailLabel}>Direct Phone</span>
+                    <span className={styles.detailLabel}>Phone</span>
                     <a href="tel:+918280788689" className={styles.detailVal}>
                       +91 82807 88689 <span className={styles.slaPill}>Contact Now</span>
                     </a>
@@ -148,7 +145,7 @@ export default function ContactPage() {
           </div>
 
           {/* ══════════════════════════════════════════════════
-              RIGHT PANE: SKEUOMORPHIC FORM WITH BEAM BUTTON
+              RIGHT PANE: MINIMALIST & PROFESSIONAL FORM CARD
              ══════════════════════════════════════════════════ */}
           <div className={styles.right}>
             <ScrollReveal delay={100}>
@@ -157,10 +154,10 @@ export default function ContactPage() {
                   <div className={styles.formHeader}>
                     <div className={styles.formBadge}>
                       <span className={styles.formBadgeDot} />
-                      <span>CONFIDENTIAL STRATEGY DISPATCH</span>
+                      <span>STRATEGY CONSULTATION</span>
                     </div>
-                    <h3 className={styles.formTitle}>Request a Growth Consultation</h3>
-                    <p className={styles.formSubtitle}>Share your targets. Direct strategist response within 4 business hours.</p>
+                    <h3 className={styles.formTitle}>Request a Consultation</h3>
+                    <p className={styles.formSubtitle}>Direct strategist response within 4 hours.</p>
                   </div>
 
                   <div className={styles.formRow}>
@@ -169,7 +166,7 @@ export default function ContactPage() {
                       <input
                         type="text"
                         className={styles.input}
-                        placeholder="e.g. Rahul Sharma"
+                        placeholder="Rahul Sharma"
                         required
                         value={form.name}
                         onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
@@ -180,7 +177,7 @@ export default function ContactPage() {
                       <input
                         type="email"
                         className={styles.input}
-                        placeholder="e.g. rahul@brand.com"
+                        placeholder="rahul@brand.com"
                         required
                         value={form.email}
                         onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
@@ -194,23 +191,23 @@ export default function ContactPage() {
                       <input
                         type="text"
                         className={styles.input}
-                        placeholder="e.g. Acme Brands"
+                        placeholder="Company name"
                         value={form.company}
                         onChange={(e) => setForm((f) => ({ ...f, company: e.target.value }))}
                       />
                     </div>
                     <div className={styles.field}>
-                      <label className={styles.label}>Monthly Growth Budget</label>
+                      <label className={styles.label}>Monthly Budget</label>
                       <div className={styles.selectWrapper}>
                         <select
                           className={styles.select}
                           value={form.budget}
                           onChange={(e) => setForm((f) => ({ ...f, budget: e.target.value }))}
                         >
-                          <option value="₹50K – ₹1.5L / month">₹50K – ₹1.5L / month</option>
-                          <option value="₹1.5L – ₹5L / month">₹1.5L – ₹5L / month</option>
-                          <option value="₹5L – ₹15L / month">₹5L – ₹15L / month</option>
-                          <option value="₹15L+ / month">₹15L+ / month</option>
+                          <option value="₹50K – ₹1.5L / mo">₹50K – ₹1.5L / mo</option>
+                          <option value="₹1.5L – ₹5L / mo">₹1.5L – ₹5L / mo</option>
+                          <option value="₹5L – ₹15L / mo">₹5L – ₹15L / mo</option>
+                          <option value="₹15L+ / mo">₹15L+ / mo</option>
                         </select>
                         <div className={styles.selectArrow}>
                           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -222,7 +219,7 @@ export default function ContactPage() {
                   </div>
 
                   <div className={styles.field}>
-                    <label className={styles.label}>What services do you need?</label>
+                    <label className={styles.label}>Services Required</label>
                     <div className={styles.serviceGrid}>
                       {services.map((s) => (
                         <button
@@ -241,10 +238,10 @@ export default function ContactPage() {
                   </div>
 
                   <div className={styles.field}>
-                    <label className={styles.label}>Tell us about your project &amp; goals</label>
+                    <label className={styles.label}>Project Goals &amp; Details</label>
                     <textarea
                       className={`${styles.input} ${styles.textarea}`}
-                      placeholder="Share your business targets, monthly revenue goals, key marketing challenges, or timelines..."
+                      placeholder="Briefly describe your goals, challenges, or timeline..."
                       rows={2}
                       value={form.message}
                       onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
@@ -273,7 +270,7 @@ export default function ContactPage() {
 
                     <div className={styles.formTrustNote}>
                       <span className={styles.trustGreenDot} />
-                      <span>100% Confidential &bull; Direct Strategist Response &bull; No Spam</span>
+                      <span>100% Confidential &bull; Response within 4 hrs &bull; No Spam</span>
                     </div>
                   </div>
                 </form>
