@@ -562,24 +562,24 @@ const telemetryNumbers = [
 // ─── Data: About Us FAQs ───
 const aboutFaqs = [
   {
-    q: 'How is Marketing Copilot different from traditional advertising agencies in Bhubaneswar?',
-    a: 'Traditional agencies sell disconnected deliverables—a few social media posts, generic flyers, or vanity impressions that do not translate into cash flow. Marketing Copilot operates as an embedded quantitative growth partner. We combine technical SEO, high-ROAS paid media, cinematic video production, and high-performance Next.js engineering into a single automated revenue engine with 100% transparent reporting.',
+    q: 'How is your digital marketing company in Bhubaneswar different from traditional agencies?',
+    a: 'We aim to provide businesses in Bhubaneswar with practical solutions, measurable outcomes, and clear visibility, rather than a one-size-fits-all approach, and help them achieve leads and online growth.',
   },
   {
-    q: 'Do you require long-term binding contracts?',
-    a: 'No. We believe locking clients into restrictive 6-to-12-month contracts is a sign of agency insecurity. We operate on flexible, performance-backed rolling agreements. Our 94% retention rate is built on delivering profitable commercial results every single month, not legal handcuffs.',
+    q: 'Do you require a long-term contract for digital marketing services in Bhubaneswar?',
+    a: 'Our digital marketing services in Bhubaneswar are based on your business requirements. Clear scope, goals, timelines, and deliverables are discussed beforehand and are flexible.',
   },
   {
-    q: 'What industries do you have proven case studies in?',
-    a: 'We have proven case studies across Real Estate & Luxury Living, Healthcare & Specialty Clinics, Direct-to-Consumer (D2C) & E-Commerce, Hospitality & Fine Dining, Retail Flagships, and B2B Professional Services throughout Bhubaneswar, Cuttack, and Eastern India.',
+    q: 'What industries does your digital marketing company in Bhubaneswar work with?',
+    a: 'We work with businesses across different industries, creating customized SEO, social media, content marketing, and performance marketing strategies based on their audience, goals, and market.',
   },
   {
-    q: 'Can we meet the team in person at your Bhubaneswar studio?',
-    a: 'Absolutely. We encourage in-person strategy sessions at our Bhubaneswar Studio & Growth Lab located in Kharvela Nagar, Unit 3. You can review live client case studies, examine our production equipment, and speak directly with our senior strategists.',
+    q: 'Can we meet your digital marketing team in Bhubaneswar?',
+    a: 'Yes, you can reach out to our team in Bhubaneswar to discuss your business vision, marketing needs, existing pain points, and possible digital marketing strategies for your brand.',
   },
   {
-    q: 'How quickly will we see measurable traction after onboarding?',
-    a: 'Our 14-day sprint protocol deploys diagnostic audits and tracking infrastructure within the first 7 days, followed by live creative testing in days 8–14. Many clients see initial qualified inbound inquiries and conversion rate lifts within the first 2 to 3 weeks.',
+    q: 'How soon can we expect results from digital marketing in Bhubaneswar?',
+    a: 'The results you receive are based on your objectives, industry, competition, and services selected. Generally, SEO takes longer to deliver results and build traction, but paid campaigns can deliver earlier.',
   },
 ];
 
@@ -1675,11 +1675,10 @@ export default function AboutPage() {
                 COMMON QUESTIONS
               </div>
               <h2 className="display-lg" style={{ marginTop: 16 }}>
-                Frequently Asked{' '}
-                <span className="accent-gradient">Questions</span>
+                Digital Marketing <span className="accent-gradient">FAQs</span>
               </h2>
               <p className={`body-lg ${styles.sectionSub}`}>
-                Everything you need to know about our partnership framework, pricing methodology, and sprint cadence.
+                Your Guide to Smarter Digital Marketing
               </p>
             </ScrollReveal>
 
@@ -1715,7 +1714,7 @@ export default function AboutPage() {
 
             {/* Center Bottom FAQ Action */}
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, marginTop: 44 }}>
-              <p style={{ color: '#64748B', fontSize: 15, margin: 0 }}>Still have questions about our partnership framework?</p>
+              <p style={{ color: '#64748B', fontSize: 15, margin: 0 }}>Still have questions about our digital marketing services?</p>
               <BeamButton href="/contact" label="Talk to Our Growth Team" size="md" />
             </div>
           </div>
