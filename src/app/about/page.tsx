@@ -419,87 +419,87 @@ const executiveArchitects = [
   },
 ];
 
-// ─── Data: 5-Phase Growth Operating System Roadmap ───
+// ─── Data: 5-Phase Nova Spark Growth Process Roadmap ───
 const operatingPhases = [
   {
     num: '01',
-    name: 'Forensic Audit',
-    time: 'Days 1–7',
-    focus: 'Diagnostic Moat',
-    desc: 'Deep-dive audit of historical ad spend, Google Search Console telemetry, competitor SERP positioning, and conversion leakages.',
+    name: 'Understanding Your Bhubaneswar Market',
+    time: '',
+    focus: 'Local Market & Marketing Audit',
+    desc: 'We study your business, local audience, competitors, website, and existing marketing to find opportunities to reach more customers across Bhubaneswar and Odisha.',
     color: '#0B2093',
     deliverables: [
-      'Historical Ad Account Forensic Audit',
-      'Funnel Leakage & Blended CAC Analysis',
-      'Competitor SERP & Keyword Mapping',
-      'Unit Economics Benchmark Model',
+      'Business Model & Growth Objective Study',
+      'Bhubaneswar & Odisha Target Audience Analysis',
+      'Competitor Digital Footprint & SERP Audit',
+      'Website, Funnel & Conversion Review',
     ],
-    tools: ['Google Search Console', 'Meta Ads Library', 'SEMrush', 'GA4 Analytics'],
-    outcomeMetric: '100% Attribution & Waste Identification',
+    tools: ['Google Search Console', 'Meta Ads Library', 'Google Analytics', 'Local Market Insights'],
+    outcomeMetric: 'Clear Local Market & Competitive Roadmap',
   },
   {
     num: '02',
-    name: 'Infrastructure Setup',
-    time: 'Days 8–14',
-    focus: 'Attribution Tracking',
-    desc: 'Server-side Meta Conversions API (CAPI), Google Enhanced Conversions, call tracking routing, and real-time Looker dashboards.',
+    name: 'Building Your Digital Foundation',
+    time: '',
+    focus: 'Digital Marketing Setup',
+    desc: 'We set up the right foundation across SEO, analytics, conversion tracking, Google Business Profile, social media, and reporting to make your marketing easier to measure.',
     color: '#0284C7',
     deliverables: [
-      'Server-Side Meta CAPI Deployment',
-      'Google Enhanced Conversions Integration',
-      'Next.js High-Conversion Landing Pages',
-      'Real-Time Looker Telemetry Dashboard',
+      'Google Business Profile Full Optimization',
+      'Google Analytics 4 & Conversion Event Tracking',
+      'On-Page SEO & Structured Data Architecture',
+      'Multi-Channel Performance Reporting Hub',
     ],
-    tools: ['Meta CAPI', 'Google Tag Manager', 'Vercel Edge', 'Looker Studio'],
-    outcomeMetric: 'Zero Cookie Loss Data Fidelity',
+    tools: ['Google Tag Manager', 'Google Analytics 4', 'Google Business Profile', 'Meta Pixel'],
+    outcomeMetric: '100% Transparent & Measurable Infrastructure',
   },
   {
     num: '03',
-    name: 'Creative Testing Lab',
-    time: 'Days 15–30',
-    focus: 'Offer Packaging',
-    desc: 'Deployment of high-intent hooks, 4K cinematic commercial video assets, localized copy variations, and friction-free landing pages.',
+    name: 'Creating Content That Connects',
+    time: '',
+    focus: 'Local Content & Campaign Testing',
+    desc: 'We create SEO content, social media creatives, ad campaigns, and local messaging designed to connect with your target customers and strengthen your brand presence in Bhubaneswar.',
     color: '#EC4899',
     deliverables: [
-      '4K In-House Soundstage Production',
-      '15+ Multivariate Video & Static Hooks',
-      'High-Converting Offer & Copy Synthesis',
-      'Friction-Free WhatsApp Inbound Flow',
+      'Targeted SEO Articles & High-Intent Copy',
+      'High-Impact Social Media Visuals & Video Reels',
+      'Multi-Channel Paid Ad Campaigns & Testing',
+      'Local Bhubaneswar Trust & Credibility Messaging',
     ],
-    tools: ['Sony Cinema 4K', 'Premiere Pro', 'After Effects', 'Figma Lab'],
-    outcomeMetric: '40+ Creative Hooks Deployed Monthly',
+    tools: ['Creative Design Lab', 'Meta Ads Manager', 'Short-Form Video', 'Search Intent Engine'],
+    outcomeMetric: 'Compelling Brand Presence & High Customer Enquiries',
   },
   {
     num: '04',
-    name: 'Algorithmic Scale',
-    time: 'Month 2',
-    focus: 'Omnichannel Expansion',
-    desc: 'Systematic scaling of winning cohorts across Meta Advantage+ and Google Performance Max, maintaining strict target CAC thresholds.',
+    name: 'Scaling What Works',
+    time: '',
+    focus: 'Performance Optimisation',
+    desc: 'We analyse campaign and SEO performance, refine targeting, improve content, and focus on strategies that bring stronger visibility, engagement, enquiries, and customers for your business.',
     color: '#F59E0B',
     deliverables: [
-      'Meta Advantage+ Cohort Scaling',
-      'Google Search & PMax Bid Rebalancing',
-      'Automated Dayparting & Budget Allocation',
-      'Strict ROAS Threshold Guardrails',
+      'Campaign Telemetry & Cost Per Acquisition Review',
+      'Audience Segmentation & Ad Budget Rebalancing',
+      'High-Performing Creative & Keyword Scaling',
+      'Lead Quality & Conversion Rate Maximization',
     ],
-    tools: ['Meta Business Suite', 'Google Ads API', 'Looker Studio', 'Bid Rules'],
-    outcomeMetric: '4.8X Target Blended ROAS Reached',
+    tools: ['Ad Analytics', 'Google Ads', 'Meta Ads Manager', 'Conversion Funnel Optimizers'],
+    outcomeMetric: 'Maximized Enquiries & Lower Customer Acquisition Cost',
   },
   {
     num: '05',
-    name: 'Compounding Hegemony',
-    time: 'Ongoing',
-    focus: 'Organic Displaced CPC',
-    desc: 'Continuous technical SEO velocity and local map pack dominance, systematically reducing dependency on paid ad auctions.',
+    name: 'Building Long-Term Digital Growth',
+    time: '',
+    focus: 'Continuous Growth & Optimisation',
+    desc: 'We continuously improve your SEO, local search presence, content, social media, and paid campaigns to help your Bhubaneswar business build sustainable online growth.',
     color: '#10B981',
     deliverables: [
-      'Programmatic Technical SEO Architecture',
-      'Google Local 3-Pack Map Domination',
-      'Authoritative Backlink Asset Creation',
-      'Systematic Blended CAC Reduction',
+      'Long-Term Technical & Local Search Dominance',
+      'Ongoing High-Value Content & Social Expansion',
+      'Systematic Paid Channel Refinement',
+      'Sustained Brand Equity & Market Leadership',
     ],
-    tools: ['Schema Pro', 'Next.js Edge CDN', 'Ahrefs Enterprise', 'GMB Suite'],
-    outcomeMetric: '-42% Blended CAC Reduction over 12 Months',
+    tools: ['SEO Intelligence', 'Local Map Pack Suite', 'Growth Dashboard', 'Continuous Optimization'],
+    outcomeMetric: 'Compounding Visibility & Long-Term Revenue Growth',
   },
 ];
 
@@ -1261,14 +1261,14 @@ export default function AboutPage() {
       <ScrollReveal className="text-center">
         <div className="eyebrow" style={{ margin: '0 auto 12px' }}>
           <span className="eyebrow-dot" />
-          <span>THE GROWTH OPERATING SYSTEM</span>
+          <span>THE NOVA SPARK GROWTH PROCESS</span>
         </div>
         <h2 className={`display-lg ${styles.sectionHeadline}`}>
-          How We Take Brands From Forensic Audit to{' '}
-          <span className="accent-gradient">Compounding Scale</span>
+          How We Help Bhubaneswar Brands{' '}
+          <span className="accent-gradient">Grow Online</span>
         </h2>
         <p className={`body-lg ${styles.sectionSub}`}>
-          Our battle-tested 5-phase framework designed for rapid execution, mathematical validation, and compounding scale.
+          As a digital marketing company in Bhubaneswar, we understand the local market, customer behaviour, and competitive landscape. Our five-step process turns your digital presence into a focused growth channel.
         </p>
       </ScrollReveal>
 
@@ -1355,9 +1355,9 @@ export default function AboutPage() {
                             background: `${phase.color}12`,
                           }}
                         >
-                          Phase {phase.num}
+                          PHASE {phase.num}
                         </span>
-                        <span className={styles.phaseTime}>⏱ {phase.time}</span>
+                        {phase.time ? <span className={styles.phaseTime}>⏱ {phase.time}</span> : null}
                       </div>
 
                       <h4 className={styles.phaseName}>{phase.name}</h4>
@@ -1405,9 +1405,9 @@ export default function AboutPage() {
                             background: `${phase.color}12`,
                           }}
                         >
-                          Phase {phase.num}
+                          PHASE {phase.num}
                         </span>
-                        <span className={styles.phaseTime}>⏱ {phase.time}</span>
+                        {phase.time ? <span className={styles.phaseTime}>⏱ {phase.time}</span> : null}
                       </div>
 
                       <h4 className={styles.phaseName}>{phase.name}</h4>
