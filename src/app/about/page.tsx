@@ -503,50 +503,50 @@ const operatingPhases = [
   },
 ];
 
-// ─── Data: Real-Time Revenue & Attribution Pipeline (Replaces Static Tooling) ───
+// ─── Data: The Future We’re Building (Mission, Vision, Values & Commitment) ───
 const revenuePipelineStages = [
   {
-    id: 'stage-1',
+    id: 'future-mission',
     num: '01',
-    title: 'Omnichannel Data Ingestion & CAPI',
-    category: 'DATA LAYER',
-    badge: '100% SERVER-SIDE',
-    desc: 'Bypasses iOS 14.5+ cookie blocking using direct server-to-server Meta Conversions API (CAPI) and Google Offline Conversion APIs.',
-    metrics: '<12ms Latency · 0% Cookie Loss',
-    tech: ['Meta CAPI Direct', 'Google Ads API', 'Stripe Webhooks', 'Next.js Server API'],
+    title: 'Our Mission',
+    category: 'PURPOSE & DRIVE',
+    badge: 'SMART DIGITAL MARKETING',
+    desc: 'Our mission is to help businesses grow through smart and practical digital marketing. We concentrate on establishing robust brands, enhancing online visibility, targeting the right viewers, and developing marketing plans that provide real outcomes and long-term business growth.',
+    metrics: 'Real Outcomes · Long-Term Business Growth',
+    tech: ['Robust Brands', 'Online Visibility', 'Targeted Audience', 'Practical Marketing'],
     color: '#0B2093',
   },
   {
-    id: 'stage-2',
+    id: 'future-vision',
     num: '02',
-    title: 'Algorithmic Attribution & Rebalancing',
-    category: 'INTELLIGENCE LAYER',
-    badge: 'REAL-TIME OPTIMIZATION',
-    desc: 'Automated 15-minute budget rebalancer systematically siphons ad spend from underperforming creatives to winning high-ROAS cohorts.',
-    metrics: '15-Min Budget Loop · Unit Economics First',
-    tech: ['Neural Attribution Engine', 'Looker Data Pipeline', 'BigQuery Warehousing'],
+    title: 'Our Vision',
+    category: 'FUTURE HORIZON',
+    badge: 'BHUBANESWAR & BEYOND',
+    desc: 'Our vision is to become a trusted digital marketing partner for growing businesses in Bhubaneswar and beyond. Our goal is to develop compelling digital moments that enable brands to engage customers, earn trust, remain competitive, and be confident in a changing digital landscape.',
+    metrics: 'Trusted Growth Partner · Compelling Digital Moments',
+    tech: ['Customer Engagement', 'Brand Trust', 'Market Confidence', 'Digital Excellence'],
     color: '#0284C7',
   },
   {
-    id: 'stage-3',
+    id: 'future-values',
     num: '03',
-    title: 'Creative Velocity & Soundstage Synthesis',
-    category: 'CREATIVE LAB',
-    badge: '4K CINEMA ASSETS',
-    desc: 'Continuous sprint creation of 4K cinematic commercial reels, localized Odia/English variants, and high-CTR static proof modules.',
-    metrics: '40+ Multivariate Variants / Mo',
-    tech: ['Kharvela Soundstage Studio', 'Cinema 4K Rig', 'After Effects Kinetic'],
+    title: 'Our Values',
+    category: 'CORE PRINCIPLES',
+    badge: 'ETHICAL & TRANSPARENT',
+    desc: 'Our values inform our thinking, our working, and our relationship with our clients. We believe in honest communication, creative thinking, transparency, consistent improvement, and meaningful results. Each strategy and campaign we develop is designed to provide our client with true value.',
+    metrics: 'Honest Communication · Meaningful Results',
+    tech: ['Honest Communication', 'Creative Thinking', '100% Transparency', 'True Client Value'],
     color: '#EC4899',
   },
   {
-    id: 'stage-4',
+    id: 'future-commitment',
     num: '04',
-    title: 'Zero-Leakage Lead Dispatch & Telemetry',
-    category: 'CONVERSION LAYER',
-    badge: '<60S RESPONSE TIME',
-    desc: 'Instant lead handoff to sales reps via automated WhatsApp business APIs, paired with a 24/7 executive revenue telemetry portal.',
-    metrics: '<60s Lead Handoff · 24/7 Live Telemetry',
-    tech: ['Official WhatsApp API', 'HubSpot Enterprise', 'Looker 24/7 Console'],
+    title: 'Our Commitment',
+    category: 'PARTNERSHIP PLEDGE',
+    badge: 'GENUINE ACCOUNTABILITY',
+    desc: 'Our commitment is to treat your business with the care and focus of a true growth partner. We align our strategies with your genuine revenue goals, delivering honest communication, zero vanity metrics, and compounding digital growth that moves your business forward.',
+    metrics: 'Zero Vanity Metrics · Compounding Business ROI',
+    tech: ['True Partnership', 'Goal Alignment', 'Continuous Execution', 'Measurable ROI'],
     color: '#10B981',
   },
 ];
@@ -1439,14 +1439,14 @@ export default function AboutPage() {
       <ScrollReveal className="text-center">
         <div className="eyebrow" style={{ margin: '0 auto 12px' }}>
           <span className="eyebrow-dot" />
-          <span>THE COPILOT AUTOMATION ENGINE</span>
+          <span>The Future We’re Building</span>
         </div>
         <h2 className={`display-lg ${styles.sectionHeadline}`}>
-          Real-Time Intelligence &amp;{' '}
-          <span className="accent-gradient">Attribution Pipeline</span>
+          Better Marketing for{' '}
+          <span className="accent-gradient">Growing Businesses</span>
         </h2>
         <p className={`body-lg ${styles.sectionSub}`}>
-          How data travels from customer intent to ad platforms to bank deposit. Zero data leakage, sub-second latency, and algorithmic allocation.
+          We help businesses navigate digital marketing with simple strategies, clear communication, and consistent execution focused on meaningful growth.
         </p>
       </ScrollReveal>
 
@@ -1489,7 +1489,7 @@ export default function AboutPage() {
       </div>
 
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}>
-        <BeamButton href="/contact" label="Integrate Your Revenue Pipeline" size="md" />
+        <BeamButton href="/contact" label="Start Growing With Nova Spark" size="md" />
       </div>
     </div>
       </section >
