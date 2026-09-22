@@ -18,6 +18,9 @@ interface EpochMetric {
 interface FoundingStoryEpoch {
   epoch: string;
   year: string;
+  pillText?: string;
+  watermarkYear?: string;
+  medallionText?: string;
   title: string;
   shortTitle: string;
   codename: string;
@@ -40,143 +43,159 @@ interface FoundingStoryEpoch {
   metricLabel: string;
 }
 
-// ─── Data: Chrono-Chamber: The Founding Saga (Interactive First-Principles Evolution) ───
+// ─── Data: Chrono-Chamber: The Nova Spark Story (Chronological Evolution) ───
 const foundingStoryEpochs: FoundingStoryEpoch[] = [
   {
     epoch: '01',
-    year: '2021',
-    title: 'The Broken Agency Model',
-    shortTitle: 'The 2021 Realization',
-    codename: 'WHY WE STARTED',
-    tagline: 'Scrapped lock-in contracts to focus 100% on client revenue, not vanity clicks.',
+    year: '2025',
+    pillText: '01 · In 2025',
+    watermarkYear: '2025',
+    medallionText: '2025',
+    title: 'The Idea Took Shape',
+    shortTitle: 'The Idea Took Shape',
+    codename: 'THE MISSION',
+    tagline:
+      'Nova Spark was founded with the mission of being a digital marketing agency that really learns about a business before crafting marketing strategies around the business\'s goals.',
     quote:
-      'We watched ambitious Odisha businesses pay lakhs every month for generic flyers, fake followers, and delayed PDF reports—while their phones never rang with real customers.',
+      'We founded Nova Spark on a simple premise: deeply understand each business first, then architect strategies around real commercial objectives rather than vanity numbers.',
     author: 'Shankarsan Nayak',
     authorRole: 'Founder & CEO',
     authorAvatar: '/images/team/exec_1.png',
     color: '#0B2093',
     glow: 'rgba(11, 32, 147, 0.22)',
     accentBg: 'rgba(11, 32, 147, 0.08)',
-    badgeLabel: 'THE TURNING POINT',
+    badgeLabel: 'THE FOUNDATION',
     artifactType: 'autopsy',
-    artifactTitle: 'Legacy Agency Invoice vs Real Results',
-    artifactSubtitle: 'Exhibit: What Odisha businesses were paying for vs what they received',
+    artifactTitle: 'Goal-Aligned Strategy Architecture',
+    artifactSubtitle: 'Exhibit: Crafting marketing around genuine business objectives',
     artifactMetrics: [
-      { label: 'Monthly Retainer Billed', val: '₹4,50,000 / mo', bad: true },
-      { label: 'Genuine Customer Leads', val: '0 Leads', bad: true },
-      { label: 'Vanity Social Impressions', val: '1.4M Clicks', bad: true },
-      { label: 'Agency Guarantee', val: '0% Liability', bad: true },
+      { label: 'Business Model Discovery', val: '100% Deep Dive', good: true },
+      { label: 'Custom Growth Strategy', val: 'Goal-Aligned', good: true },
+      { label: 'Vanity Metrics Focus', val: '0% Allowed', good: true },
+      { label: 'Strategic Clarity', val: '100% Transparent', good: true },
     ],
     resolution:
-      'We took a strict pledge: Never bill a single rupee for vanity clicks or empty promises. Every marketing rupee must generate genuine business inquiries and trackable sales.',
+      'Nova Spark took root to replace empty reports and vanity impressions with digital marketing engineered entirely around business success.',
     turningPoints: [
-      'Zero Lock-In Contracts',
-      'Live 24/7 Telemetry Dashboards',
+      'Deep Business Discovery',
+      'Goal-Aligned Strategy',
     ],
-    metricHero: '0%',
-    metricLabel: 'Vanity Metrics',
+    metricHero: '100%',
+    metricLabel: 'Goal-Driven Strategy',
   },
   {
     epoch: '02',
-    year: '2022',
-    title: 'Sub-Second Web & Direct Leads',
-    shortTitle: 'Speed & Conversion Stack',
-    codename: 'PERFORMANCE TECH',
-    tagline: 'Sub-second Next.js web pages with instant direct WhatsApp lead delivery.',
+    year: '2025',
+    pillText: '02 · Late 2025',
+    watermarkYear: '2025',
+    medallionText: '2025',
+    title: 'Nova Spark Came to Life',
+    shortTitle: 'Nova Spark Came to Life',
+    codename: 'SERVICES & EXECUTION',
+    tagline:
+      'We began engaging with businesses and building out our services in SEO, social media marketing, content, paid advertising, and digital strategy, learning from each project.',
     quote:
-      'If your website takes 5 seconds to load, half your ad money is wasted before the customer even reads your offer. We started building fast Next.js websites and direct WhatsApp lead routing so no customer is lost.',
+      'Engaging directly with businesses helped us refine multi-channel acquisition funnels where SEO, content, social media, and paid ads work together seamlessly.',
     author: 'Pranjal Sharma',
     authorRole: 'Founding Team Member & COO',
     authorAvatar: '/images/team/exec_2.png',
     color: '#0284C7',
     glow: 'rgba(2, 132, 199, 0.22)',
     accentBg: 'rgba(2, 132, 199, 0.08)',
-    badgeLabel: 'TECH UPGRADE',
+    badgeLabel: 'FULL-STACK SERVICES',
     artifactType: 'terminal',
-    artifactTitle: 'Sub-Second Web & Live Lead Delivery Engine',
-    artifactSubtitle: 'High-speed Next.js landing pages + Instant WhatsApp lead routing',
+    artifactTitle: 'Multi-Channel Growth Engine',
+    artifactSubtitle: 'SEO, Content, Social Media & Paid Performance Marketing',
     artifactMetrics: [
-      { label: 'Google PageSpeed Score', val: '99 / 100', good: true },
-      { label: 'Mobile Page Load Speed', val: '0.74s SLA', good: true },
-      { label: 'WhatsApp Lead Delivery', val: '<60 Seconds', good: true },
-      { label: 'Ad Tracking Accuracy', val: '100% (0% Loss)', good: true },
+      { label: 'Search Engine Optimization', val: 'High-Intent SEO', good: true },
+      { label: 'Content & Social Strategy', val: 'Brand Recall', good: true },
+      { label: 'Paid Ad Campaigns', val: 'Targeted ROI', good: true },
+      { label: 'Project-Based Learning', val: 'Continuous', good: true },
     ],
     resolution:
-      'Clients experienced an immediate 2.4X increase in qualified customer inquiries simply by switching to our high-speed mobile web pages and instant lead routing.',
+      'By combining SEO, content, social media, and paid performance marketing, we engineered tailored acquisition funnels for each partner.',
     turningPoints: [
-      '<0.8s Next.js Load SLA',
-      'Instant WhatsApp Routing',
+      'SEO & Social Media Marketing',
+      'Content & Paid Advertising',
     ],
-    metricHero: '<0.8s',
-    metricLabel: 'Load Speed SLA',
+    metricHero: '360°',
+    metricLabel: 'Full-Service Marketing',
   },
   {
     epoch: '03',
-    year: '2023',
-    title: 'In-House 4K Cinema Studio',
-    shortTitle: 'Bhubaneswar Studio',
-    codename: 'KHARVELA PRODUCTION LAB',
-    tagline: 'In-house Kharvela soundstage producing high-converting Odia commercials.',
+    year: '2026',
+    pillText: '03 · 2026',
+    watermarkYear: '2026',
+    medallionText: '2026',
+    title: 'We Opened Our Office',
+    shortTitle: 'We Opened Our Office',
+    codename: 'BHUBANESWAR HQ',
+    tagline:
+      'As our work grew, we brought the team together with our own office in Bhubaneswar. It gave us a dedicated space to collaborate, create, and work closely with clients.',
     quote:
-      'People in Odisha can easily tell the difference between generic stock photos and real, authentic videos. We opened our physical 4K studio in Kharvela Nagar to create genuine commercials and high-converting video reels that build instant trust.',
+      'Opening our Bhubaneswar office brought our strategists, creators, and media buyers under one roof for close collaboration and high-speed execution.',
     author: 'Praveen Kumar',
     authorRole: 'Founding Team Member & CGO',
     authorAvatar: '/images/team/exec_3.png',
     color: '#EC4899',
     glow: 'rgba(236, 72, 153, 0.22)',
     accentBg: 'rgba(236, 72, 153, 0.08)',
-    badgeLabel: 'PHYSICAL STUDIO',
+    badgeLabel: 'BHUBANESWAR HQ',
     artifactType: 'soundstage',
-    artifactTitle: '4K Commercial Soundstage Bay 01',
-    artifactSubtitle: 'Kharvela Nagar, Unit 3 · Professional Studio & Cinema Equipment',
+    artifactTitle: 'Dedicated Collaborative Hub',
+    artifactSubtitle: 'Mallick Complex, Unit 3, Kharvela Nagar, Bhubaneswar',
     artifactMetrics: [
       { label: 'Dedicated Bhubaneswar Studio', val: 'Unit 3 Hub', good: true },
-      { label: 'Cinema Camera Standard', val: 'Sony 4K / 8K', good: true },
-      { label: 'Video Hooks Tested Monthly', val: '40+ Reels', good: true },
-      { label: 'Local Customer Trust Multiplier', val: '3.2X Lift', good: true },
+      { label: 'Direct Client Collaboration', val: 'In-Person & Live', good: true },
+      { label: 'Creative Content Production', val: 'In-House Team', good: true },
+      { label: 'Speed of Iteration', val: 'High Velocity', good: true },
     ],
     resolution:
-      'No stock footage or copied graphics. Our clients receive high-end cinematic commercials and viral social reels that command premium customer pricing across Odisha.',
+      'Our physical hub in Kharvela Nagar gave us a collaborative space to strategize, create high-converting marketing campaigns, and work shoulder-to-shoulder with clients.',
     turningPoints: [
-      '4K Kharvela Soundstage',
-      'In-House Cinema Team',
+      'Dedicated Creative Hub',
+      'Close Client Collaboration',
     ],
-    metricHero: '3.2X',
-    metricLabel: 'Conversion Lift',
+    metricHero: 'HQ',
+    metricLabel: 'Bhubaneswar Office',
   },
   {
     epoch: '04',
-    year: '2024+',
-    title: 'Scaling ₹25Cr+ on Mutual Trust',
-    shortTitle: '₹25Cr+ Scaled',
-    codename: 'PROVEN PERFORMANCE',
-    tagline: 'Managing ₹25Cr+ in client budgets with 94% retention and zero lock-in.',
+    year: '2026',
+    pillText: '04 · TODAY · 2026',
+    watermarkYear: '2026',
+    medallionText: '2026',
+    title: 'Growing With Bhubaneswar Businesses',
+    shortTitle: 'Growing With Bhubaneswar',
+    codename: 'SUSTAINED GROWTH',
+    tagline:
+      'Nova Spark remains a leading digital marketing agency in Bhubaneswar, empowering businesses with targeted strategies, innovative marketing solutions, and sustained digital growth.',
     quote:
-      'We manage over ₹25 Crore in verified client ad budgets with a 94% retention rate on simple month-to-month terms. We work as true growth partners: if we do not generate real profit for your business, you can pause or cancel anytime with zero penalty.',
+      'Today, we partner with leading businesses across Bhubaneswar, delivering data-driven strategies and innovative marketing solutions that produce real business growth.',
     author: 'Shankarsan Nayak',
     authorRole: 'Founder & CEO',
     authorAvatar: '/images/team/exec_1.png',
     color: '#10B981',
     glow: 'rgba(16, 185, 129, 0.22)',
     accentBg: 'rgba(16, 185, 129, 0.08)',
-    badgeLabel: 'PROVEN SCALE',
+    badgeLabel: 'LEADING AGENCY',
     artifactType: 'ledger',
-    artifactTitle: 'Audited Ad Spend & Client Retention Ledger',
-    artifactSubtitle: 'Verified commercial results across 50+ businesses in Eastern India',
+    artifactTitle: 'Commercial Impact & Client Retention',
+    artifactSubtitle: 'Empowering Bhubaneswar businesses with innovative marketing solutions',
     artifactMetrics: [
-      { label: 'Odisha Brands Scaled', val: '50+ Brands', good: true },
-      { label: 'Average Blended ROAS', val: '4.8X Target', good: true },
-      { label: 'Voluntary Client Retention', val: '94% MoM', good: true },
-      { label: 'Binding Lock-In Contracts', val: '0 Days', good: true },
+      { label: 'Bhubaneswar Brands Scaled', val: '50+ Businesses', good: true },
+      { label: 'Growth Strategies', val: '100% Targeted', good: true },
+      { label: 'Client Retention Rate', val: '94% MoM', good: true },
+      { label: 'Transparent Partnership', val: 'Zero Lock-In', good: true },
     ],
     resolution:
-      'Today, Marketing Copilot is Eastern India’s premier performance marketing partner, trusted by 50+ top brands in luxury real estate, healthcare, retail, and e-commerce.',
+      'Nova Spark continues to lead digital marketing in Bhubaneswar, driving predictable revenue, sustained growth, and enduring brand equity for businesses.',
     turningPoints: [
-      '₹25Cr+ Capital Scaled',
-      '94% MoM Client Retention',
+      'Targeted Growth Strategies',
+      'Sustained Digital Growth',
     ],
-    metricHero: '₹25Cr+',
-    metricLabel: 'Ad Spend Managed',
+    metricHero: '50+',
+    metricLabel: 'Brands Scaled',
   },
 ];
 
@@ -821,14 +840,14 @@ export default function AboutPage() {
           <ScrollReveal className="text-center">
             <div className="eyebrow" style={{ margin: '0 auto 12px' }}>
               <span className="eyebrow-dot" />
-              <span>THE FOUNDING STORY · DOCUMENTARY CHRONICLE</span>
+              <span>THE NOVA SPARK STORY · OUR BEGINNING</span>
             </div>
             <h2 className={`display-lg ${styles.cleanStoryHeadline}`}>
-              Why We Built Marketing Copilot:{' '}
-              <span className="accent-gradient">From Broken Retainers to Sovereign Growth</span>
+              Why We Started Nova Spark:{' '}
+              <span className="accent-gradient">A Better Way to Do Digital Marketing</span>
             </h2>
             <p className={`body-lg ${styles.cleanStorySub}`}>
-              The 4-year chronological journey of how three operators rejected vanity agency retainers to engineer Eastern India’s premier quantitative growth copilot.
+              Nova Spark began in late 2025 with a simple idea: businesses deserve digital marketing that is practical, transparent, and focused on real growth, not just reports, reach, and vanity numbers.
             </p>
           </ScrollReveal>
 
@@ -851,7 +870,7 @@ export default function AboutPage() {
         <div className={styles.chaptersFlowList}>
           {foundingStoryEpochs.map((item, idx) => {
             const isEven = idx % 2 === 1;
-            const chapterId = `chapter-${item.year}`;
+            const chapterId = `chapter-${item.epoch}-${item.year}`;
             return (
               <div
                 key={item.epoch}
@@ -861,7 +880,7 @@ export default function AboutPage() {
               >
                 {/* Giant Ghost Watermark Year */}
                 <div className={styles.ghostYearWatermark}>
-                  {item.year}
+                  {item.watermarkYear || item.year}
                 </div>
 
                 {/* Colorful 3D Skeuomorphic Year Medallion on Spine */}
@@ -869,7 +888,7 @@ export default function AboutPage() {
                   <div className={styles.skeuoYearMedallion} style={{ '--medallion-color': item.color, '--medallion-glow': item.glow } as React.CSSProperties}>
                     <span className={styles.medallionChromeRing} />
                     <span className={styles.medallionInnerBevel}>
-                      <span className={styles.medallionYearDigit}>{item.year}</span>
+                      <span className={styles.medallionYearDigit}>{item.medallionText || item.year}</span>
                     </span>
                   </div>
                 </div>
@@ -888,9 +907,7 @@ export default function AboutPage() {
                       <div className={styles.skeuoCardTopRow}>
                         <div className={styles.skeuoCardYearPill}>
                           <span className={styles.skeuoPillDot} style={{ background: item.color }} />
-                          <span className={styles.skeuoPillYear}>{item.year}</span>
-                          <span className={styles.skeuoPillDivider}>•</span>
-                          <span className={styles.skeuoPillAct}>ACT 0{idx + 1}</span>
+                          <span className={styles.skeuoPillYear}>{item.pillText || `${item.year} • ACT 0${idx + 1}`}</span>
                         </div>
                         <span className={styles.skeuoBadgeTag} style={{ borderColor: `${item.color}40`, color: item.color, background: `${item.color}0D` }}>
                           {item.badgeLabel}
@@ -932,9 +949,7 @@ export default function AboutPage() {
                       <div className={styles.skeuoCardTopRow}>
                         <div className={styles.skeuoCardYearPill}>
                           <span className={styles.skeuoPillDot} style={{ background: item.color }} />
-                          <span className={styles.skeuoPillYear}>{item.year}</span>
-                          <span className={styles.skeuoPillDivider}>•</span>
-                          <span className={styles.skeuoPillAct}>ACT 0{idx + 1}</span>
+                          <span className={styles.skeuoPillYear}>{item.pillText || `${item.year} • ACT 0${idx + 1}`}</span>
                         </div>
                         <span className={styles.skeuoBadgeTag} style={{ borderColor: `${item.color}40`, color: item.color, background: `${item.color}0D` }}>
                           {item.badgeLabel}
@@ -967,10 +982,10 @@ export default function AboutPage() {
               </div>
             );
           })}
-            </div>
-          </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </section>
 
 {/* ══════════════════════════════════════════════════════
           TRANSITIONAL HIGH-CONVERTING CTA ABOVE MANIFESTO
