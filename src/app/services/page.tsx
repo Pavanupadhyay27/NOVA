@@ -191,20 +191,20 @@ const serviceCatalog: ServiceItem[] = [
 const heroSlides = [
   {
     id: 'slide-1',
-    src: '/images/Slide 1.jpg',
-    alt: 'Marketing Copilot digital marketing company strategy and campaigns in Bhubaneswar',
+    src: '/images/ns_services_graphic.png',
+    alt: 'Marketing Copilot digital marketing strategy and revenue growth architecture in Bhubaneswar',
     caption: 'Strategic Growth & Execution',
   },
   {
     id: 'slide-2',
-    src: '/images/slide 3.webp',
-    alt: 'Marketing Copilot marketing performance data and digital solutions',
+    src: '/images/ns_services_graphic_slide_2.png',
+    alt: 'Marketing Copilot performance marketing data and full-funnel digital solutions',
     caption: 'Performance & 10x ROI',
   },
   {
     id: 'slide-3',
-    src: '/images/Slide 2.jpg',
-    alt: 'Creative marketing professionals planning growth strategies and digital solutions',
+    src: '/images/ns_services_graphic_slide_3.png',
+    alt: 'Marketing Copilot creative branding, web development, and digital marketing execution',
     caption: 'Creative & Performance Marketing',
   },
 ];
