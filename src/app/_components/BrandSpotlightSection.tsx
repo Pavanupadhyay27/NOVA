@@ -219,30 +219,24 @@ export default function BrandSpotlightSection() {
           </ScrollReveal>
         </div>
 
-        {/* Symmetrical Dual-Card Showcase: Equal Height & Aligned Viewports */}
+        {/* Symmetrical Dual-Card Showcase: Mobile Phone Format + Smooth Sliding Carousel */}
         <div className={styles.showcaseGrid}>
           {/* ══════════════════════════════════════════════════
-              CARD 1 (LEFT): 9:16 FEATURED VIDEO REEL
+              CARD 1 (LEFT): 9:16 SMARTPHONE REEL SHOWCASE
              ══════════════════════════════════════════════════ */}
-          <ScrollReveal direction="up" className={styles.showcaseCol}>
-            <div className={styles.showcaseCard}>
-              <div className={styles.cardBackdrop} />
+          <ScrollReveal direction="up" className={styles.videoCol}>
+            <div className={styles.videoDeviceCard}>
+              <div className={styles.videoDeviceGlow} />
 
-              {/* Card Header (Matches Right Card Header Height & Baseline) */}
-              <div className={styles.cardHeader}>
-                <div className={styles.cardTagWrap}>
-                  <span className={styles.cardTagDot} />
-                  <span className={styles.cardTag}>9:16 CAMPAIGN REEL</span>
-                </div>
-                <div className={styles.cardMetaBadge}>
-                  <span className={styles.livePulseDot} />
-                  <span>4K Cinema Production</span>
-                </div>
+              {/* Smartphone Top Notch: Speaker & Camera */}
+              <div className={styles.deviceNotch}>
+                <span className={styles.speakerPill} />
+                <span className={styles.cameraDot} />
               </div>
 
-              {/* Media Viewport — Identical Height to Right Card Viewport (Zero Text on Video) */}
+              {/* 9:16 Mobile Viewport (Zero Text on Video) */}
               <div
-                className={styles.mediaViewport}
+                className={styles.videoWrapper}
                 onClick={handlePlayToggle}
                 onMouseMove={handleVideoMouseMove}
                 onMouseEnter={handleVideoMouseMove}
@@ -255,22 +249,9 @@ export default function BrandSpotlightSection() {
                     handlePlayToggle();
                   }
                 }}
-                aria-label={isPlaying ? 'Pause Ekatraa film' : 'Play Ekatraa film with sound'}
+                aria-label={isPlaying ? 'Pause Ekatraa reel' : 'Play Ekatraa reel with sound'}
               >
-                {/* Blurred Video Backdrop for Rich Ambient Atmosphere */}
-                <div className={styles.videoAmbientBackdrop}>
-                  <video
-                    className={styles.videoAmbientBlur}
-                    src="/videos/VID20260910130432_9.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    preload="auto"
-                  />
-                </div>
-
-                {/* Main 9:16 Video (Contained, Zero Cropping, Centered) */}
+                {/* Main 9:16 Video inside Phone Frame */}
                 <video
                   ref={videoRef}
                   className={styles.videoPlayer}
@@ -329,42 +310,40 @@ export default function BrandSpotlightSection() {
                 </div>
               </div>
 
-              {/* Card Footer (Matches Right Card Footer Height & Layout) */}
-              <div className={styles.cardFooter}>
-                <div className={styles.footerTextWrap}>
-                  <span className={styles.footerTag}>Cinematic Production</span>
-                  <h4 className={styles.footerTitle}>Ekatraa Wedding &amp; Event Reel</h4>
+              {/* Mobile Phone Bottom Device Footer */}
+              <div className={styles.deviceFooter}>
+                <div className={styles.deviceFooterText}>
+                  <span className={styles.deviceTag}>9:16 CINEMA REEL</span>
+                  <h4 className={styles.deviceTitle}>Ekatraa Wedding &amp; Event Reel</h4>
                 </div>
 
-                <div className={styles.videoControlsRow}>
-                  <button
-                    type="button"
-                    onClick={handlePlayToggle}
-                    className={styles.footerActionBtn}
-                  >
-                    <span>{isPlaying ? 'Pause Video' : 'Play With Sound'}</span>
-                  </button>
-                </div>
+                <button
+                  type="button"
+                  onClick={handlePlayToggle}
+                  className={styles.deviceActionBtn}
+                >
+                  <span>{isPlaying ? 'Pause' : 'Play Audio'}</span>
+                </button>
               </div>
             </div>
           </ScrollReveal>
 
           {/* ══════════════════════════════════════════════════
-              CARD 2 (RIGHT): 1:1 SQUARE CAROUSEL SHOWCASE
+              CARD 2 (RIGHT): 1:1 CAROUSEL SHOWCASE (SMOOTH SLIDING)
              ══════════════════════════════════════════════════ */}
-          <ScrollReveal direction="up" delay={0.1} className={styles.showcaseCol}>
+          <ScrollReveal direction="up" delay={0.1} className={styles.carouselCol}>
             <div
-              className={styles.showcaseCard}
+              className={styles.carouselCard}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
               <div className={styles.cardBackdrop} />
 
-              {/* Card Header (Matches Left Card Header Height & Baseline) */}
-              <div className={styles.cardHeader}>
+              {/* Card Header */}
+              <div className={styles.carouselHeader}>
                 <div className={styles.cardTagWrap}>
                   <span className={styles.cardTagDot} />
-                  <span className={styles.cardTag}>1:1 SOCIAL CREATIVE</span>
+                  <span className={styles.cardTag}>1:1 BRAND CREATIVES</span>
                 </div>
                 <div className={styles.counterBadge}>
                   <span>Slide {String(currentSlide + 1).padStart(2, '0')}</span>
@@ -373,36 +352,37 @@ export default function BrandSpotlightSection() {
                 </div>
               </div>
 
-              {/* Media Viewport — Identical Height to Left Card Viewport */}
+              {/* Media Viewport with Silky Smooth Sliding Track — Clean, Zero Text inside Image Boundaries */}
               <div
-                className={styles.mediaViewport}
+                className={styles.carouselViewport}
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
               >
-                {ekatraaSlides.map((slide, idx) => {
-                  const imageSrc = imgErrors[slide.id] ? slide.fallback : slide.src;
-                  return (
-                    <div
-                      key={slide.id}
-                      className={`${styles.carouselSlide} ${
-                        idx === currentSlide ? styles.slideActive : ''
-                      }`}
-                    >
-                      <Image
-                        src={imageSrc}
-                        alt={`Ekatraa Showcase - ${slide.title}`}
-                        fill
-                        sizes="(max-width: 960px) 100vw, 560px"
-                        quality={95}
-                        className={styles.carouselImage}
-                        onError={() => {
-                          setImgErrors((prev) => ({ ...prev, [slide.id]: true }));
-                        }}
-                      />
-                    </div>
-                  );
-                })}
+                <div
+                  className={styles.sliderTrack}
+                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                >
+                  {ekatraaSlides.map((slide) => {
+                    const imageSrc = imgErrors[slide.id] ? slide.fallback : slide.src;
+                    return (
+                      <div key={slide.id} className={styles.sliderSlide}>
+                        <Image
+                          src={imageSrc}
+                          alt="Ekatraa Creative Slide"
+                          fill
+                          sizes="(max-width: 960px) 100vw, 680px"
+                          quality={100}
+                          priority
+                          className={styles.carouselImage}
+                          onError={() => {
+                            setImgErrors((prev) => ({ ...prev, [slide.id]: true }));
+                          }}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
 
                 {/* Left & Right Nav Arrow Buttons */}
                 <button
@@ -443,8 +423,8 @@ export default function BrandSpotlightSection() {
                 </div>
               </div>
 
-              {/* Card Footer (Matches Left Card Footer Height & Layout) */}
-              <div className={styles.cardFooter}>
+              {/* Card Footer with Thumbnails (Outside Image Boundaries) */}
+              <div className={styles.carouselFooter}>
                 <div className={styles.footerTextWrap}>
                   <span className={styles.footerTag}>{ekatraaSlides[currentSlide]?.tag}</span>
                   <h4 className={styles.footerTitle}>{ekatraaSlides[currentSlide]?.title}</h4>
