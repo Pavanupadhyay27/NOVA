@@ -715,25 +715,25 @@ export default function AboutPage() {
               <ScrollReveal direction="up">
                 <div className={styles.heroEyebrow}>
                   <span className={styles.heroEyebrowDot} />
-                  <span>ABOUT MARKETING COPILOT &bull; BHUBANESWAR</span>
+                  <span>BHUBANESWAR’S DIGITAL GROWTH PARTNER</span>
                 </div>
 
                 <h1 className={`display-hero ${styles.heroTitle}`}>
-                  Engineering Compounding Growth for{' '}
-                  <span className={`accent-gradient ${styles.heroAccent}`}>Odisha’s Ambitious Brands.</span>
+                  Your Growth Partner for{' '}
+                  <span className={`accent-gradient ${styles.heroAccent}`}>Digital Marketing in Bhubaneswar.</span>
                 </h1>
 
                 <div className={styles.heroSub}>
                   <p>
-                    We founded Marketing Copilot with one mission: to replace sluggish legacy marketing retainers with high-velocity, quantitative growth engineering. We build automated client acquisition systems that turn attention into predictable revenue.
+                    We help brands in Bhubaneswar grow with practical, data-driven digital marketing strategies that turn online attention into real leads, customers, and high revenue.
                   </p>
                 </div>
 
                 <div className={styles.heroActionsRow}>
-                  <BeamButton href="/contact" label="Claim Free Growth Audit" size="lg" />
+                  <BeamButton href="/contact" label="Get Your Free Growth Audit" size="lg" />
                   <BeamButton
                     href="#war-room-section"
-                    label="Visit Our War Room"
+                    label="Explore Our Approach"
                     size="lg"
                     variant="outline"
                   />
