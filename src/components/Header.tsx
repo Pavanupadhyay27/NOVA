@@ -138,21 +138,20 @@ export default function Header() {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <button
-              type="button"
-              className={`${styles.navLink} ${styles.navButton} ${
-                servicesOpen || pathname.startsWith('/services') || pathname.toLowerCase().includes('digital-marketing-company-services')
+            <Link
+              href="/services"
+              className={`${styles.navLink} ${
+                pathname.startsWith('/services') || pathname.toLowerCase().includes('digital-marketing-company-services')
                   ? styles.engravedActive
                   : ''
               }`}
-              onClick={(e) => {
-                e.stopPropagation();
+              onClick={() => {
                 if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
-                setServicesOpen((prev) => !prev);
+                setServicesOpen(false);
               }}
               aria-expanded={servicesOpen}
               aria-haspopup="true"
-              aria-label="Toggle Services dropdown menu"
+              aria-label="Navigate to Services overview or hover to view practices"
             >
               Services
               <svg
@@ -168,7 +167,7 @@ export default function Header() {
               >
                 <path d="M6 8L2 4h8L6 8z" />
               </svg>
-            </button>
+            </Link>
 
             {servicesOpen && (
               <div
