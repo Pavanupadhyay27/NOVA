@@ -1640,23 +1640,23 @@ export default function AboutPage() {
           <div className={styles.leaderCtaMesh} />
 
           <div className={styles.leaderCtaLeft}>
-            <span className={styles.leaderCtaBadge}>⚡ DIRECT SENIOR ACCESS</span>
+            <span className={styles.leaderCtaBadge}>⚡ WORK DIRECTLY WITH OUR TEAM</span>
             <h3 className={styles.leaderCtaTitle}>
-              Want These Senior Strategists Personally Leading Your Account?
+              Get Experienced Digital Marketers Working on Your Growth
             </h3>
             <p className={styles.leaderCtaSub}>
-              We strictly cap partner onboarding so our executive architects directly steer your campaigns—never handed off to junior interns.
+              We keep our client list focused so our senior team stays involved in your strategy, campaigns, and marketing decisions from start to finish.
             </p>
           </div>
 
           <div className={styles.leaderCtaRight}>
             <div className={styles.leaderCtaBtnGroup}>
-              <BeamButton href="/contact" label="Book Executive Strategy Session" size="md" />
-              <BeamButton href="/about/team" label="View 25+ Specialist Roster" size="md" variant="outline" />
+              <BeamButton href="/contact" label="Book a Strategy Call →" size="md" />
+              <BeamButton href="/about/team" label="Meet Our Team →" size="md" variant="outline" />
             </div>
             <div className={styles.leaderCtaMeta}>
               <span className={styles.leaderCtaBeacon} />
-              <span>Strictly 3 Partner Cohorts Accepted Per Quarter</span>
+              <span>Direct Strategic Partnership &amp; Focused Execution</span>
             </div>
           </div>
         </div>
