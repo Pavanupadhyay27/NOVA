@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import BeamButton from '@/components/BeamButton';
 import ScrollReveal from '@/components/ScrollReveal';
+import QuickConnectMapSection from '@/app/_components/QuickConnectMapSection';
 import CTASection from '../_components/CTASection';
 import styles from './page.module.css';
 
@@ -779,6 +780,11 @@ export default function FAQPage() {
           </div>
         </div>
       </section>
+
+      {/* ══════════════════════════════════════════════════════════
+          DRIVING BUSINESS GROWTH WITH DIGITAL MARKETING IN BHUBANESWAR
+         ══════════════════════════════════════════════════════════ */}
+      <QuickConnectMapSection />
 
       {/* ══════════════════════════════════════════════════════════
           SECTION 2: STORYTELLING ARCHITECTURE (WITHOUT ANY CARD)

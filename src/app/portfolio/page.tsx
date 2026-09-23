@@ -6,6 +6,7 @@ import Image from 'next/image';
 import BeamButton from '@/components/BeamButton';
 import ScrollReveal from '@/components/ScrollReveal';
 import FAQSection from '@/app/_components/FAQSection';
+import QuickConnectMapSection from '@/app/_components/QuickConnectMapSection';
 import SmoothCounter from '@/components/SmoothCounter';
 import {
   spotlightProject,
@@ -258,7 +259,12 @@ export default function PortfolioPage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 3: FEATURED COMMERCIAL MILESTONE (COMPACT SKEUOMORPHIC CARD)
+          SECTION 3: DRIVING BUSINESS GROWTH WITH DIGITAL MARKETING IN BHUBANESWAR
+          ───────────────────────────────────────────────────────────── */}
+      <QuickConnectMapSection />
+
+      {/* ─────────────────────────────────────────────────────────────
+          SECTION 4: FEATURED COMMERCIAL MILESTONE (COMPACT SKEUOMORPHIC CARD)
           ───────────────────────────────────────────────────────────── */}
       <section className={styles.spotlightSection}>
         <div className="container">
