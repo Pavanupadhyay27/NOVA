@@ -180,28 +180,48 @@ export default function Header() {
                   ? styles.engravedActive
                   : ''
               }`}
-              onClick={() => {
+              onClick={(e) => {
                 if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
-                setServicesOpen(false);
+                // When on a services page or clicking the toggle, toggle dropdown
+                if (pathname.startsWith('/services')) {
+                  e.preventDefault();
+                  setServicesOpen((prev) => !prev);
+                } else {
+                  // On other pages, if user clicked directly on chevron or wants menu, toggle
+                  setServicesOpen((prev) => !prev);
+                }
               }}
               aria-expanded={servicesOpen}
               aria-haspopup="true"
-              aria-label="Navigate to Services overview or hover to view practices"
+              aria-label="Toggle Services menu or navigate to overview"
             >
               Services
-              <svg
-                width="9"
-                height="9"
-                viewBox="0 0 12 12"
-                fill="currentColor"
-                style={{
-                  marginLeft: 5,
-                  transform: servicesOpen ? 'rotate(180deg)' : 'none',
-                  transition: 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+              <span
+                role="button"
+                tabIndex={0}
+                className={styles.chevronWrapper}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
+                  setServicesOpen((prev) => !prev);
                 }}
+                aria-label="Toggle services dropdown list"
               >
-                <path d="M6 8L2 4h8L6 8z" />
-              </svg>
+                <svg
+                  width="9"
+                  height="9"
+                  viewBox="0 0 12 12"
+                  fill="currentColor"
+                  style={{
+                    marginLeft: 5,
+                    transform: servicesOpen ? 'rotate(180deg)' : 'none',
+                    transition: 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+                  }}
+                >
+                  <path d="M6 8L2 4h8L6 8z" />
+                </svg>
+              </span>
             </Link>
 
             <div
@@ -420,7 +440,14 @@ export default function Header() {
                         <Link
                           href="/services"
                           className={styles.mobileServicesDirectLink}
-                          onClick={() => setMenuOpen(false)}
+                          onClick={(e) => {
+                            if (pathname.startsWith('/services')) {
+                              e.preventDefault();
+                              setMobileServicesOpen((prev) => !prev);
+                            } else {
+                              setMenuOpen(false);
+                            }
+                          }}
                         >
                           <span className={styles.mobileLinkLabel}>Services</span>
                         </Link>

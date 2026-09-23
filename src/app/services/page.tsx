@@ -651,100 +651,67 @@ export default function ServicesPage() {
         <div className={styles.ambientGlowMid} />
 
         {/* ══════════════════════════════════════════════════
-            SECTION 1: HERO (DUAL-PANE WITH 3-SLIDE CAROUSEL)
+            SECTION 1: HERO (CENTERED CINEMATIC WITH TELEMETRY RIBBON)
            ══════════════════════════════════════════════════ */}
         <section className={styles.heroSection}>
           <div className="container">
-            <div className={styles.heroDualGrid}>
-              {/* Left Pane: Headline, Subtitle, CTA & Trust Strip */}
-              <div className={styles.heroLeftCol}>
-                <ScrollReveal>
-                  <div className={styles.heroEyebrow}>
-                    <span className={styles.heroEyebrowDot} />
-                    <span>INTEGRATED REVENUE ENGINE &bull; BHUBANESWAR GROWTH ARCHITECTURE</span>
+            <div className={styles.heroCenter}>
+              <ScrollReveal>
+                <div className={styles.heroEyebrowPill}>
+                  <span className={styles.emeraldPulseDot} />
+                  <span>INTEGRATED REVENUE ENGINE • BHUBANESWAR GROWTH ARCHITECTURE</span>
+                </div>
+
+                <h1 className={`display-hero ${styles.heroTitle}`}>
+                  Every Discipline Connected.{' '}
+                  <span className={`accent-gradient ${styles.heroAccent}`}>Compounding Every Rupee.</span>
+                </h1>
+
+                <div className={styles.heroSub}>
+                  <p>
+                    Most agencies sell disconnected tactics. We combine search dominance, sub-second web engineering, commercial videography, and paid media into an automated growth system that multiplies your pipeline across Bhubaneswar and Odisha.
+                  </p>
+                </div>
+
+                {/* Revolving Glowing Border Beam CTA Buttons */}
+                <div className={styles.heroCtaWrapper}>
+                  <BeamButton href="/contact" label="Schedule Studio Session" size="lg" />
+                  <a href="#growth-architecture" className={styles.heroSecondaryBtn}>
+                    <span>Explore 10 Disciplines</span>
+                    <span>↓</span>
+                  </a>
+                </div>
+
+                {/* Trust Proof Strip with Avatars & 4.9/5 Rating */}
+                <div className={styles.trustStrip}>
+                  <div className={styles.trustAvatars}>
+                    <span className={styles.trustAvatar}>MC</span>
+                    <span className={styles.trustAvatar}>BB</span>
+                    <span className={styles.trustAvatar}>OD</span>
+                    <span className={`${styles.trustAvatar} ${styles.trustAvatarGold}`}>+50</span>
                   </div>
+                  <div className={styles.trustStars}>★★★★★</div>
+                  <div className={styles.trustLabel}>Rated 4.9/5 by 50+ Bhubaneswar &amp; Odisha Brands</div>
+                </div>
+              </ScrollReveal>
 
-                  <h1 className={`display-hero ${styles.heroTitle}`}>
-                    Every Discipline Connected.{' '}
-                    <span className={`accent-gradient ${styles.heroAccent}`}>Compounding Every Rupee.</span>
-                  </h1>
-
-                  <div className={styles.heroSub}>
-                    <p>
-                      Most agencies sell disconnected tactics. We combine search dominance, sub-second web engineering, commercial videography, and paid media into an automated growth system that multiplies your pipeline.
-                    </p>
-                  </div>
-
-                  {/* Revolving Glowing Border Beam CTA Buttons */}
-                  <div className={styles.heroCtaWrapper}>
-                    <BeamButton href="/contact" label="Schedule Studio Session" size="lg" />
-                    <BeamButton
-                      href="#growth-architecture"
-                      label="Explore 10 Disciplines"
-                      size="lg"
-                      variant="outline"
-                      arrow={false}
-                      icon={<span style={{ marginRight: '6px' }}>↓</span>}
-                    />
-                  </div>
-
-                  {/* Trust Proof Strip with Avatars & 4.9/5 Rating */}
-                  <div className={styles.heroTrustStrip}>
-                    <div className={styles.trustAvatars}>
-                      <span className={styles.trustAvatar}>MC</span>
-                      <span className={styles.trustAvatar}>BB</span>
-                      <span className={styles.trustAvatar}>OD</span>
-                      <span className={styles.trustAvatar}>+50</span>
-                    </div>
-                    <div className={styles.trustText}>
-                      <div className={styles.trustStars}>★★★★★</div>
-                      <div className={styles.trustLabel}>Rated 4.9/5 by 50+ Bhubaneswar &amp; Odisha Brands</div>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              </div>
-
-              {/* Right Pane: Clean Photography Showcase (Exact same as Home Hero) */}
-              <div className={styles.visual}>
-                <div className={styles.imageCard}>
-                  <div className={styles.imageViewport}>
-                    {heroSlides.map((slide, idx) => (
-                      <div
-                        key={slide.id}
-                        className={`${styles.slideItem} ${idx === currentHeroSlide ? styles.slideActive : ''}`}
-                      >
-                        <Image
-                          src={slide.src}
-                          alt={slide.alt}
-                          fill
-                          priority={idx === 0}
-                          sizes="(max-width: 900px) 100vw, 680px"
-                          quality={95}
-                          className={styles.slideImage}
-                        />
-                        <div className={styles.slideOverlay} />
-                      </div>
-                    ))}
-
-                    {/* Minimalist Floating Status Badge */}
-                    <div className={styles.floatingBadge}>
-                      <span className={styles.badgePulse} />
-                      <span className={styles.badgeText}>Live Studio Feed • Bhubaneswar</span>
-                    </div>
-
-                    {/* Minimalist Tactile Dot Indicators */}
-                    <div className={styles.dotsWrap}>
-                      {heroSlides.map((_, idx) => (
-                        <button
-                          key={idx}
-                          type="button"
-                          className={`${styles.dot} ${idx === currentHeroSlide ? styles.dotActive : ''}`}
-                          onClick={() => setCurrentHeroSlide(idx)}
-                          aria-label={`Switch to slide ${idx + 1}`}
-                        />
-                      ))}
-                    </div>
-                  </div>
+              {/* Horizontal Telemetry Ribbon */}
+              <div className={styles.telemetryRibbon}>
+                <div className={styles.telemetryCell}>
+                  <span className={styles.tVal}>10 Practices</span>
+                  <span className={styles.tLabel}>Full Stack Mastery</span>
+                </div>
+                <div className={styles.telemetryCell}>
+                  <span className={styles.tVal}>6.8X</span>
+                  <span className={styles.tLabel}>Peak Commercial ROAS</span>
+                </div>
+                <div className={styles.telemetryCell}>
+                  <span className={styles.tVal}>&lt; 0.9s</span>
+                  <span className={styles.tLabel}>Web Engineering SLA</span>
+                </div>
+                <div className={styles.telemetryCell}>
+                  <span className={styles.tVal}>50+ Brands</span>
+                  <span className={styles.tLabel}>Bhubaneswar Scaled</span>
                 </div>
               </div>
             </div>

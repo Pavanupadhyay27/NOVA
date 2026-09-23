@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import BeamButton from '@/components/BeamButton';
+import QuickConnectMapSection from '@/app/_components/QuickConnectMapSection';
 import CTASection from '@/app/_components/CTASection';
 import styles from './ServicePage.module.css';
 
@@ -17,6 +18,7 @@ export interface ServiceAdvantage {
 export interface ServiceFAQ {
   q: string;
   a: string;
+  takeaway?: string;
 }
 
 export interface ServiceCaseHighlight {
@@ -352,124 +354,56 @@ export default function ServicePageTemplate({
         <div className={styles.heroBg} />
         <div className={styles.heroMeshGrid} />
         <div className="container">
-          <div className={styles.heroGrid}>
-            <div className={styles.heroContent}>
-              <ScrollReveal>
-                <div className="eyebrow">
-                  <span className="eyebrow-dot" />
-                  {eyebrow}
-                </div>
-                <h1
-                  className={`display-xl ${styles.heroTitle}`}
-                  dangerouslySetInnerHTML={{ __html: title }}
-                />
-                <p className={`body-lg ${styles.heroSub}`}>{description}</p>
-                
-                {/* Animated Revolving Border Beam CTA Button */}
-                <div className={styles.heroActions}>
-                  <BeamButton href="/contact" label="Claim Free Growth Audit" size="lg" />
-                </div>
-
-                {/* Trust Strip with Avatars and Ratings */}
-                <div className={styles.heroTrustStrip}>
-                  <div className={styles.trustAvatars}>
-                    <span className={styles.trustAvatar}>MC</span>
-                    <span className={styles.trustAvatar}>BB</span>
-                    <span className={styles.trustAvatar}>OD</span>
-                    <span className={styles.trustAvatar}>+50</span>
-                  </div>
-                  <div className={styles.trustText}>
-                    <div className={styles.trustStars}>★★★★★</div>
-                    <div className={styles.trustLabel}>Rated 4.9/5 by 50+ Bhubaneswar &amp; Odisha Brands</div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            </div>
-
-            <div className={styles.heroVisual}>
-              <div className={styles.heroVisualStage}>
-                {/* Ambient Radiant Backdrop Glow */}
-                <div className={styles.visualBackdropGlow} />
-
-                {/* Skeuomorphic Glass Card with Real Photography or Auto-Slider */}
-                <div className={styles.heroVisualCard}>
-                  {heroSlides && heroSlides.length > 0 ? (
-                    <div className={styles.sliderViewport}>
-                      {heroSlides.map((slide, idx) => (
-                        <div
-                          key={slide.id}
-                          className={`${styles.slideItem} ${idx === currentSlide ? styles.slideActive : ''}`}
-                        >
-                          <Image
-                            src={slide.src}
-                            alt={slide.alt}
-                            fill
-                            priority={idx === 0}
-                            sizes="(max-width: 768px) 100vw, 480px"
-                            className={styles.heroPhoto}
-                            unoptimized={slide.src?.startsWith('http')}
-                          />
-                        </div>
-                      ))}
-
-                      {/* Minimal Clean Status Badge */}
-                      <div className={styles.floatingTopBadge}>
-                        <span className={styles.badgeEmeraldDot} />
-                        <span>#1 Ranked on Google</span>
-                      </div>
-
-                      {/* Dot Indicators */}
-                      <div className={styles.dotsWrap}>
-                        {heroSlides.map((_, idx) => (
-                          <button
-                            key={idx}
-                            type="button"
-                            className={`${styles.dot} ${idx === currentSlide ? styles.dotActive : ''}`}
-                            onClick={() => setCurrentSlide(idx)}
-                            aria-label={`Slide ${idx + 1}`}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  ) : (
-                    <div className={styles.heroImageContainer}>
-                      <Image
-                        src={heroImage}
-                        alt={`${eyebrow} in Bhubaneswar — Marketing Copilot`}
-                        fill
-                        priority
-                        sizes="(max-width: 768px) 100vw, 480px"
-                        className={styles.heroPhoto}
-                        unoptimized={heroImage?.startsWith('http')}
-                      />
-                      <div className={styles.heroPhotoOverlay} />
-
-                      {/* Floating Glass 3D Badges */}
-                      <div className={styles.floatingTopBadge}>
-                        <span className={styles.badgeEmeraldDot} />
-                        <span>Live Rank: #1 Google 3-Pack</span>
-                      </div>
-
-                      <div className={styles.floatingBottomBadge}>
-                        <span className={styles.badgeEmeraldDot} />
-                        <span>Marketing Copilot · Bhubaneswar</span>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Tactile Extruded Metric Tiles */}
-                  <div className={styles.visualMetricsGrid}>
-                    {metrics.map((m) => (
-                      <div key={m.label} className={styles.vMetric}>
-                        <span className={styles.vVal} style={{ color }}>
-                          {m.val}
-                        </span>
-                        <span className={styles.vLabel}>{m.label}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+          <div className={styles.heroCenter}>
+            <ScrollReveal>
+              <div className={styles.heroEyebrowPill}>
+                <span className={styles.emeraldPulseDot} />
+                <span>{eyebrow}</span>
               </div>
+
+              <h1
+                className={styles.heroTitle}
+                dangerouslySetInnerHTML={{ __html: title }}
+              />
+
+              <p className={styles.heroSub}>{description}</p>
+
+              <div className={styles.heroActions}>
+                <BeamButton href="/contact" label="Claim Free Growth Audit" size="lg" />
+                <a href="#deliverables" className={styles.heroSecondaryBtn}>
+                  <span>Explore Deliverables &amp; Roadmap</span>
+                  <span>↓</span>
+                </a>
+              </div>
+
+              <div className={styles.trustStrip}>
+                <div className={styles.trustAvatars}>
+                  <span className={styles.trustAvatar}>MC</span>
+                  <span className={styles.trustAvatar}>BB</span>
+                  <span className={styles.trustAvatar}>OD</span>
+                  <span className={`${styles.trustAvatar} ${styles.trustAvatarGold}`}>+50</span>
+                </div>
+                <div className={styles.trustStars}>★★★★★</div>
+                <span className={styles.trustLabel}>
+                  Rated 4.9/5 by 50+ Bhubaneswar &amp; Odisha Brands
+                </span>
+              </div>
+            </ScrollReveal>
+
+            {/* Horizontal Telemetry Ribbon */}
+            <div className={styles.telemetryRibbon}>
+              {metrics.map((m) => (
+                <div key={m.label} className={styles.telemetryCell}>
+                  <span className={styles.tVal} style={{ color }}>{m.val}</span>
+                  <span className={styles.tLabel}>{m.label}</span>
+                </div>
+              ))}
+              {metrics.length < 4 && (
+                <div className={styles.telemetryCell}>
+                  <span className={styles.tVal} style={{ color }}>Bhubaneswar</span>
+                  <span className={styles.tLabel}>Regional Growth Hub</span>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -510,12 +444,12 @@ export default function ServicePageTemplate({
       {/* ══════════════════════════════════════════════════
           3. THIRD SECTION (OPTIONAL e.g. QUICK CONNECT MAP)
          ══════════════════════════════════════════════════ */}
-      {thirdSection}
+      {thirdSection || <QuickConnectMapSection />}
 
       {/* ══════════════════════════════════════════════════
           4. CORE SERVICES DELIVERABLES (Skeuomorphic Cards)
          ══════════════════════════════════════════════════ */}
-      <section className={styles.servicesSection}>
+      <section className={styles.servicesSection} id="deliverables">
         <div className="container">
           <ScrollReveal>
             <div className="eyebrow">
@@ -993,6 +927,10 @@ export default function ServicePageTemplate({
                   {isOpen && (
                     <div className={styles.faqAnswer}>
                       <p>{faq.a}</p>
+                      <div className={styles.faqTakeaway}>
+                        <span>💡 Strategic Takeaway:</span>
+                        <span>{faq.takeaway || 'Engineered for measurable commercial outcomes, predictable customer acquisition, and durable search dominance.'}</span>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -1003,9 +941,50 @@ export default function ServicePageTemplate({
       </section>
 
       {/* ══════════════════════════════════════════════════
-          9. GLOBAL CTA SECTION
+          12. EXECUTIVE BOTTOM CONVERSION TERMINAL
          ══════════════════════════════════════════════════ */}
-      <CTASection />
+      <section className={styles.conversionSection}>
+        <div className="container">
+          <ScrollReveal>
+            <div className={styles.executiveTerminal}>
+              <div className={styles.termGlow} />
+              <div>
+                <span className={styles.termPill}>SCHEDULE EXECUTIVE AUDIT</span>
+                <h3 className={styles.termTitle}>
+                  Ready to Capture #1 Market Share in Bhubaneswar?
+                </h3>
+                <p className={styles.termSub}>
+                  Claim your free 30-minute forensic growth audit. We will crawl your Core Web Vitals, analyze competitor acquisition gaps, and model your ROI roadmap across Odisha.
+                </p>
+                <div className={styles.termContact}>
+                  <span>📞 Direct Hotline:</span>
+                  <a href="tel:+919437168434" className={styles.termPhone}>
+                    +91 94371 68434
+                  </a>
+                  <span>·</span>
+                  <span>HQ: Kharvela Nagar, Unit 3, Bhubaneswar</span>
+                </div>
+              </div>
+
+              <div className={styles.termActions}>
+                <Link href="/contact" className={styles.termAuditBtn}>
+                  <span>Claim Free Growth Audit</span>
+                  <span>→</span>
+                </Link>
+
+                <a
+                  href="https://wa.me/919437168434?text=Hi%20Marketing%20Copilot%2C%20I%20want%20to%20audit%20my%20business%20growth"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.termWhatsAppBtn}
+                >
+                  <span>💬 WhatsApp Our Principal Strategist</span>
+                </a>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
     </div>
   );
 }

@@ -38,6 +38,178 @@
   z-index: 2;
 }
 
+.heroCenter {
+  max-width: 920px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.heroEyebrowPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #0B2093;
+  margin-bottom: 22px;
+  box-shadow: 0 2px 8px rgba(11, 32, 147, 0.04);
+}
+
+.emeraldPulseDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+  animation: pulseEmerald 2s infinite ease-in-out;
+}
+
+@keyframes pulseEmerald {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.heroSecondaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  color: #0F172A;
+  font-family: var(--font-display);
+  font-size: 14.5px;
+  font-weight: 700;
+  padding: 13px 26px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.heroSecondaryBtn:hover {
+  background: #F8FAFC;
+  border-color: #0B2093;
+  color: #0B2093;
+  transform: translateY(-1px);
+}
+
+.trustStrip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.trustAvatars {
+  display: flex;
+  align-items: center;
+}
+
+.trustAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #0B2093;
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #FFFFFF;
+  margin-left: -8px;
+}
+
+.trustAvatar:first-child {
+  margin-left: 0;
+}
+
+.trustAvatarGold {
+  background: #F59E0B;
+}
+
+.trustStars {
+  color: #F59E0B;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+.trustLabel {
+  font-size: 12.5px;
+  color: #475569;
+  font-weight: 600;
+}
+
+.telemetryRibbon {
+  width: 100%;
+  max-width: 1040px;
+  margin: 44px auto 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px -10px rgba(11, 32, 147, 0.06);
+  position: relative;
+  z-index: 2;
+}
+
+.telemetryCell {
+  padding: 22px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-right: 1px solid #E2E8F0;
+}
+
+.telemetryCell:last-child {
+  border-right: none;
+}
+
+.tVal {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.5vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #0B2093;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.tLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 640px) {
+  .telemetryRibbon {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .telemetryCell:nth-child(2) {
+    border-right: none;
+  }
+  .telemetryCell:nth-child(1),
+  .telemetryCell:nth-child(2) {
+    border-bottom: 1px solid #E2E8F0;
+  }
+}
+
 .heroDualGrid {
   display: grid;
   grid-template-columns: 1.08fr 0.95fr;
