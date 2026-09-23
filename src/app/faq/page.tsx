@@ -117,8 +117,8 @@ const faqGroups: FAQGroup[] = [
     badge: 'ORGANIC DOMINANCE',
     highlight: 'Rank #1 in Google Maps Across Bhubaneswar & High-Intent Search Corridors',
     collage: {
-      mainImage: 'https://images.unsplash.com/photo-1572021335469-31706a17aaef?auto=format&fit=crop&w=800&q=80',
-      subImage: '/images/work_realestate.jpg',
+      mainImage: '/images/faq_seo_local_search.png',
+      subImage: '',
       caption: 'Local 3-Pack Dominance • Patia & Saheed Nagar',
       tag: '📍 GEO-FENCED SEO ENGINE',
     },
@@ -166,8 +166,8 @@ const faqGroups: FAQGroup[] = [
     badge: 'PAID PERFORMANCE',
     highlight: 'Performance Ads Engineered for Predictable Return on Investment',
     collage: {
-      mainImage: '/images/dashboard_hero.jpg',
-      subImage: '/images/hero_performance_scale.jpg',
+      mainImage: '/images/faq_google_meta_ads.png',
+      subImage: '',
       caption: 'Live CPL & Revenue Attribution Terminal',
       tag: '⚡ PRECISION TARGETING ENGINE',
     },
@@ -215,8 +215,8 @@ const faqGroups: FAQGroup[] = [
     badge: 'WEBSITE INFRASTRUCTURE',
     highlight: 'Clean Code, Fast Load Speeds & Seamless Conversion Paths',
     collage: {
-      mainImage: '/images/hero_growth_mastery.jpg',
-      subImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
+      mainImage: '/images/faq_website_development.png',
+      subImage: '',
       caption: 'Sub-Second Next.js Web Architecture',
       tag: '💻 HIGH-PERFORMANCE WEB',
     },
@@ -259,8 +259,8 @@ const faqGroups: FAQGroup[] = [
     badge: 'BRAND & SOCIAL MEDIA',
     highlight: 'Audience-Centric Content, Brand Authority & Integrated Multi-Channel Growth',
     collage: {
-      mainImage: '/images/soundstage_studio.jpg',
-      subImage: '/images/work_fashion.jpg',
+      mainImage: '/images/faq_social_media_marketing.png',
+      subImage: '',
       caption: 'Creative Content Production & Distribution Pod',
       tag: '🎬 SOCIAL CONTENT & ENGAGEMENT',
     },
@@ -308,8 +308,8 @@ const faqGroups: FAQGroup[] = [
     badge: 'PRICING & HOW WE WORK',
     highlight: 'Know What You’re Paying For. Know What We’re Working Toward',
     collage: {
-      mainImage: '/images/about_hero.jpg',
-      subImage: '/images/ceo_aarav.jpg',
+      mainImage: '/images/faq_pricing_engagement.png',
+      subImage: '',
       caption: 'SEO, Google Ads, Meta Ads, Social Media & Web Solutions for Bhubaneswar Businesses',
       tag: '💼 TRANSPARENT PRICING & SCOPE',
     },
@@ -1164,16 +1164,18 @@ export default function FAQPage() {
                             {group.collage.tag}
                           </div>
                         </div>
-                        <div className={styles.collageBannerSub}>
-                          <Image
-                            src={group.collage.subImage}
-                            alt={`${group.title} preview`}
-                            fill
-                            className={styles.collageImgCover}
-                            sizes="(max-width: 768px) 40vw, 200px"
-                          />
-                          <div className={styles.collageImgOverlaySubtle} />
-                        </div>
+                        {group.collage.subImage ? (
+                          <div className={styles.collageBannerSub}>
+                            <Image
+                              src={group.collage.subImage}
+                              alt={`${group.title} preview`}
+                              fill
+                              className={styles.collageImgCover}
+                              sizes="(max-width: 768px) 40vw, 200px"
+                            />
+                            <div className={styles.collageImgOverlaySubtle} />
+                          </div>
+                        ) : null}
                       </div>
 
                       {/* Collage Text & Details */}
