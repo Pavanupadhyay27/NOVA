@@ -58,8 +58,8 @@ const faqGroups: FAQGroup[] = [
     badge: 'AGENCY & SCOPE',
     highlight: 'Hyperlocal Bhubaneswar Intelligence + Tailored Digital Growth Strategies',
     collage: {
-      mainImage: '/images/team_office.jpg',
-      subImage: '/images/about_hero.jpg',
+      mainImage: '/images/ns_about_us_graphic.png',
+      subImage: '',
       caption: 'Strategy Command Center • Kharvela Nagar, Unit 3',
       tag: '🏢 LOCAL EXECUTIVE TEAM',
     },

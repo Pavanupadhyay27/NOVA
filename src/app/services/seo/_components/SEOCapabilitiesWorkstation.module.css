@@ -1,0 +1,316 @@
+.section {
+  padding: 84px 0;
+  background: #FFFFFF;
+  position: relative;
+}
+
+.headline {
+  color: #0F172A;
+  margin-top: 10px;
+  margin-bottom: 12px;
+}
+
+.subhead {
+  color: #64748B;
+  max-width: 660px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.workstationWrapper {
+  margin-top: 48px;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 20px;
+  background: #FFFFFF;
+  box-shadow: 
+    0 24px 60px -15px rgba(15, 23, 42, 0.08),
+    0 4px 16px rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+}
+
+/* Tabs */
+.tabNav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: #F8FAFC;
+  border-bottom: 1.5px solid #E2E8F0;
+  padding: 6px;
+  gap: 6px;
+}
+
+.tabBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #64748B;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tabBtn:hover {
+  background: #FFFFFF;
+  color: #0B2093;
+}
+
+.tabBtnActive {
+  background: #FFFFFF !important;
+  color: #0B2093 !important;
+  box-shadow: 0 4px 14px rgba(11, 32, 147, 0.1) !important;
+}
+
+.tabIcon {
+  font-size: 15px;
+}
+
+.tabLabel {
+  white-space: nowrap;
+}
+
+/* Stage Grid */
+.stageGrid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 36px;
+  padding: 40px;
+  align-items: center;
+}
+
+.stageContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.badgeRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.categoryPill {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #7C3AED;
+  background: #F5F3FF;
+  border: 1px solid #DDD6FE;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.slaBadge {
+  font-size: 11px;
+  font-weight: 700;
+  color: #047857;
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.capabilityHeadline {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  color: #0F172A;
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+.capabilitySubhead {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #475569;
+  margin-bottom: 24px;
+}
+
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.checklistHeading {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #94A3B8;
+  margin-bottom: 4px;
+}
+
+.checkItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13.5px;
+  color: #1E293B;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.checkIcon {
+  color: #10B981;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.metricsRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 16px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  margin-bottom: 24px;
+}
+
+.metricBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.metricValue {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  color: #0B2093;
+  line-height: 1.2;
+}
+
+.metricLabel {
+  font-size: 12px;
+  font-weight: 700;
+  color: #334155;
+  margin-top: 2px;
+}
+
+.metricNote {
+  font-size: 10.5px;
+  color: #64748B;
+  margin-top: 1px;
+}
+
+.actionRow {
+  display: flex;
+}
+
+.actionBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0B2093;
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(11, 32, 147, 0.25);
+  transition: all 0.2s ease;
+}
+
+.actionBtn:hover {
+  background: #0D007F;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(11, 32, 147, 0.35);
+  gap: 12px;
+}
+
+/* Right Stage Console */
+.stageConsole {
+  background: #0B1120;
+  border-radius: 16px;
+  border: 1px solid #1E293B;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.consoleHeader {
+  background: #0F172A;
+  border-bottom: 1px solid #1E293B;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.consoleDots {
+  display: flex;
+  gap: 5px;
+}
+
+.consoleDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #334155;
+}
+
+.consoleTitle {
+  font-family: var(--font-mono, monospace);
+  font-size: 11.5px;
+  color: #94A3B8;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.liveTag {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(16, 185, 129, 0.15);
+  color: #34D399;
+}
+
+.codeBlock {
+  padding: 20px;
+  margin: 0;
+  background: #0B1120;
+  color: #38BDF8;
+  font-family: var(--font-mono, monospace);
+  font-size: 12px;
+  line-height: 1.65;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.consoleFooter {
+  background: #0F172A;
+  border-top: 1px solid #1E293B;
+  padding: 8px 16px;
+}
+
+.validStatus {
+  font-size: 11px;
+  color: #34D399;
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .stageGrid {
+    grid-template-columns: 1fr;
+    padding: 24px;
+  }
+  .tabNav {
+    grid-template-columns: 1fr 1fr;
+  }
+}

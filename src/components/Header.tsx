@@ -7,18 +7,53 @@ import Image from 'next/image';
 import BeamButton from '@/components/BeamButton';
 import styles from './Header.module.css';
 
-const services = [
-  { href: '/services/seo', label: 'SEO Services', shortLabel: 'SEO', icon: '⚡', desc: 'Rank #1 on Google in Bhubaneswar' },
-  { href: '/services/google-ads', label: 'Google Ads / PPC', shortLabel: 'Google Ads', icon: '🎯', desc: 'High-ROI paid search campaigns' },
-  { href: '/services/meta-ads', label: 'Meta Ads', shortLabel: 'Meta Ads', icon: '🚀', desc: 'Facebook & Instagram growth ads' },
-  { href: '/services/social-media', label: 'Social Media Marketing', shortLabel: 'Social Media', icon: '📱', desc: 'Build community & brand presence' },
-  { href: '/services/web-development', label: 'Website Development', shortLabel: 'Web Platform', icon: '💻', desc: 'Conversion-engineered websites' },
-  { href: '/services/creative-branding', label: 'Branding & Creative Services', shortLabel: 'Creative Brand', icon: '🎨', desc: 'Make your brand unforgettable' },
-  { href: '/services/amazon-marketing', label: 'Amazon Marketing & PPC', shortLabel: 'Amazon PPC', icon: '📦', desc: 'Scale Amazon sales & sponsored ads' },
-  { href: '/services/ecommerce-marketing', label: 'E-commerce Marketing', shortLabel: 'E-Commerce', icon: '🛍️', desc: 'Scale your online store revenue' },
-  { href: '/services/performance-marketing', label: 'Performance Marketing', shortLabel: 'Performance', icon: '📈', desc: 'Turn ad spend into predictable revenue' },
-  { href: '/services/ai-automation', label: 'Content Marketing', shortLabel: 'Content Copy', icon: '✍️', desc: 'Content that ranks and converts' },
+export interface HeaderServiceItem {
+  href: string;
+  label: string;
+  shortLabel: string;
+  icon: string;
+  desc: string;
+  badge?: string;
+}
+
+export interface HeaderServiceCluster {
+  category: string;
+  tag: string;
+  services: HeaderServiceItem[];
+}
+
+const serviceClusters: HeaderServiceCluster[] = [
+  {
+    category: 'Search & Performance',
+    tag: 'DEMAND CAPTURE',
+    services: [
+      { href: '/services/seo', label: 'SEO Services', shortLabel: 'SEO', icon: '⚡', desc: 'Rank #1 on Google in Bhubaneswar', badge: 'High Intent' },
+      { href: '/services/google-ads', label: 'Google Ads / PPC', shortLabel: 'Google Ads', icon: '🎯', desc: 'High-ROI paid search campaigns', badge: 'Top ROAS' },
+      { href: '/services/meta-ads', label: 'Meta Ads', shortLabel: 'Meta Ads', icon: '🚀', desc: 'Facebook, Instagram & WhatsApp ads', badge: 'CAPI Ready' },
+      { href: '/services/performance-marketing', label: 'Performance Marketing', shortLabel: 'Performance', icon: '📈', desc: 'Revenue attribution & unit economics', badge: 'Full-Funnel' },
+    ],
+  },
+  {
+    category: 'Brand & Experience',
+    tag: 'CONVERSION & CODE',
+    services: [
+      { href: '/services/web-development', label: 'Website Development', shortLabel: 'Web Platform', icon: '💻', desc: 'Sub-second speed Next.js websites', badge: 'Next.js 15' },
+      { href: '/services/creative-branding', label: 'Creative & Branding', shortLabel: 'Creative Brand', icon: '🎨', desc: 'Distinct visual identities & guidelines', badge: 'Identity' },
+      { href: '/services/social-media', label: 'Social Media Marketing', shortLabel: 'Social Media', icon: '📱', desc: 'Thumb-stopping Reels & community', badge: 'Reels' },
+      { href: '/services/ai-automation', label: 'Content Marketing', shortLabel: 'Content Copy', icon: '✍️', desc: 'Authoritative content that converts', badge: 'Authority' },
+    ],
+  },
+  {
+    category: 'Commerce & Scale',
+    tag: 'D2C & RETAIL',
+    services: [
+      { href: '/services/ecommerce-marketing', label: 'E-commerce Marketing', shortLabel: 'E-Commerce', icon: '🛍️', desc: 'Scale online store GMV & checkout', badge: 'D2C Scale' },
+      { href: '/services/amazon-marketing', label: 'Amazon Marketing & PPC', shortLabel: 'Amazon PPC', icon: '📦', desc: 'Dominate Buy Box & Sponsored Ads', badge: 'Lower ACOS' },
+    ],
+  },
 ];
+
+const services: HeaderServiceItem[] = serviceClusters.flatMap((c) => c.services);
 
 const mobileLinks = [
   { href: '/', label: 'Home' },
@@ -175,26 +210,88 @@ export default function Header() {
               onMouseLeave={handleMouseLeave}
               aria-hidden={!servicesOpen}
             >
-              <div className={styles.dropdownGrid}>
-                {services.map((s) => (
-                  <Link
-                    key={s.href}
-                    href={s.href}
-                    className={styles.dropdownItem}
-                    onClick={() => {
-                      if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
-                      setServicesOpen(false);
-                    }}
-                    tabIndex={servicesOpen ? 0 : -1}
-                  >
-                    <div className={styles.dropdownItemHeader}>
-                      <span className={styles.dropdownItemIcon}>{s.icon}</span>
-                      <span className={styles.dropdownLabel}>{s.label}</span>
+              <div className={styles.megaMenuContainer}>
+                {/* Left Area: Categorized Practice Clusters */}
+                <div className={styles.megaMenuClusters}>
+                  {serviceClusters.map((cluster) => (
+                    <div key={cluster.category} className={styles.clusterCol}>
+                      <div className={styles.clusterHeader}>
+                        <span className={styles.clusterCategory}>{cluster.category}</span>
+                        <span className={styles.clusterTag}>{cluster.tag}</span>
+                      </div>
+                      <div className={styles.clusterList}>
+                        {cluster.services.map((s) => (
+                          <Link
+                            key={s.href}
+                            href={s.href}
+                            className={styles.megaMenuItem}
+                            onClick={() => {
+                              if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
+                              setServicesOpen(false);
+                            }}
+                            tabIndex={servicesOpen ? 0 : -1}
+                          >
+                            <span className={styles.megaMenuIcon}>{s.icon}</span>
+                            <div className={styles.megaMenuContent}>
+                              <div className={styles.megaMenuTitleRow}>
+                                <span className={styles.megaMenuLabel}>{s.label}</span>
+                                {s.badge && <span className={styles.megaMenuBadge}>{s.badge}</span>}
+                              </div>
+                              <span className={styles.megaMenuDesc}>{s.desc}</span>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
                     </div>
-                    <span className={styles.dropdownDesc}>{s.desc}</span>
-                  </Link>
-                ))}
+                  ))}
+                </div>
+
+                {/* Right Area: Interactive Growth Spotlight Card */}
+                <div className={styles.megaMenuSpotlight}>
+                  <div className={styles.spotlightCard}>
+                    <div className={styles.spotlightTopRow}>
+                      <span className={styles.spotlightPulseDot} />
+                      <span className={styles.spotlightHqText}>Bhubaneswar HQ</span>
+                      <span className={styles.spotlightRating}>★ 4.9/5</span>
+                    </div>
+
+                    <h4 className={styles.spotlightHeadline}>
+                      Need a Tailored Growth Architecture?
+                    </h4>
+                    <p className={styles.spotlightSubtext}>
+                      Get a free 30-min forensic audit of your Google rankings, Meta ROAS, and conversion funnel.
+                    </p>
+
+                    <Link
+                      href="/contact"
+                      className={styles.spotlightAuditBtn}
+                      onClick={() => {
+                        if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
+                        setServicesOpen(false);
+                      }}
+                      tabIndex={servicesOpen ? 0 : -1}
+                    >
+                      <span>Claim Free Growth Audit</span>
+                      <span>→</span>
+                    </Link>
+
+                    <div className={styles.spotlightDivider} />
+
+                    <a
+                      href="https://wa.me/919437168434?text=Hi%20Marketing%20Copilot%2C%20I%20want%20to%20discuss%20a%20digital%20marketing%20growth%20strategy"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.spotlightWhatsAppBtn}
+                      tabIndex={servicesOpen ? 0 : -1}
+                    >
+                      <span className={styles.waOnlineDot} />
+                      <span>WhatsApp a Strategist</span>
+                    </a>
+                  </div>
+                </div>
               </div>
+
+              {/* Bottom Bar Footer */}
               <div className={styles.dropdownFooter}>
                 <Link
                   href="/services"
@@ -205,8 +302,13 @@ export default function Header() {
                   }}
                   tabIndex={servicesOpen ? 0 : -1}
                 >
-                  Explore all 10 growth services <span>→</span>
+                  <span>Explore all 10 specialized growth practices</span>
+                  <span>→</span>
                 </Link>
+                <div className={styles.dropdownGuarantee}>
+                  <span className={styles.guaranteeDot}>✓</span>
+                  <span>100% Attribution &amp; Zero Black-Hat Assurance</span>
+                </div>
               </div>
             </div>
           </div>

@@ -1,0 +1,321 @@
+.section {
+  padding: 84px 0;
+  background: #FFFFFF;
+  position: relative;
+}
+
+.headline {
+  color: #0F172A;
+  margin-top: 10px;
+  margin-bottom: 12px;
+}
+
+.subhead {
+  color: #64748B;
+  max-width: 660px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.radarWrapper {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  background: #FFFFFF;
+  border: 1.5px solid #F1F5F9;
+  border-radius: 20px;
+  box-shadow: 
+    0 24px 60px -15px rgba(236, 72, 153, 0.1),
+    0 4px 16px rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+}
+
+/* Sidebar Nav */
+.cohortNav {
+  background: #FDF2F8;
+  border-right: 1.5px solid #FCE7F3;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cohortNavTitle {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #94A3B8;
+  padding: 8px 12px;
+}
+
+.cohortBtn {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  background: #FFFFFF;
+  border: 1px solid #FCE7F3;
+  border-radius: 12px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cohortBtn:hover {
+  background: #FDF2F8;
+  border-color: #FBCFE8;
+  transform: translateX(2px);
+}
+
+.cohortBtnActive {
+  background: linear-gradient(135deg, #EC4899 0%, #BE185D 100%) !important;
+  border-color: #BE185D !important;
+  box-shadow: 0 6px 18px rgba(236, 72, 153, 0.25) !important;
+}
+
+.cohortBtnRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cohortName {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.cohortBtnActive .cohortName {
+  color: #FFFFFF;
+}
+
+.cohortAge {
+  font-size: 10px;
+  font-weight: 700;
+  color: #64748B;
+  background: #F1F5F9;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.cohortBtnActive .cohortAge {
+  background: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+}
+
+.cohortReach {
+  font-size: 11px;
+  color: #DB2777;
+  font-weight: 600;
+}
+
+.cohortBtnActive .cohortReach {
+  color: #FCE7F3;
+}
+
+/* Detail Pane */
+.cohortDetailPane {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.detailHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.detailBadge {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #DB2777;
+  background: #FDF2F8;
+  border: 1px solid #FBCFE8;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 6px;
+}
+
+.detailName {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  color: #0F172A;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.detailChannel {
+  font-size: 13.5px;
+  color: #64748B;
+  font-weight: 600;
+}
+
+.reachStatBadge {
+  background: #FDF2F8;
+  border: 1px solid #FCE7F3;
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+.reachVal {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  color: #DB2777;
+}
+
+.reachLbl {
+  font-size: 10.5px;
+  color: #64748B;
+  margin-top: 2px;
+}
+
+.detailDivider {
+  height: 1px;
+  background: #F1F5F9;
+  margin: 24px 0;
+}
+
+.interestSection {
+  margin-bottom: 24px;
+}
+
+.sectionLabel {
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748B;
+  margin-bottom: 10px;
+}
+
+.interestsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.interestPill {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #1E293B;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.creativeStyleBox {
+  background: #FFF1F2;
+  border-left: 4px solid #E11D48;
+  border-radius: 0 10px 10px 0;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+}
+
+.funnelBox {
+  background: #F0FDF4;
+  border-left: 4px solid #10B981;
+  border-radius: 0 10px 10px 0;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+}
+
+.boxHeader {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 4px;
+}
+
+.boxDesc {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #334155;
+}
+
+.caseBox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #F8FAFC;
+  border: 1px dashed #CBD5E1;
+  padding: 12px 18px;
+  border-radius: 10px;
+  margin-bottom: 28px;
+}
+
+.caseBadge {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #047857;
+  background: #D1FAE5;
+  padding: 3px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.caseText {
+  font-size: 12.5px;
+  color: #475569;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.paneCtaWrapper {
+  display: flex;
+}
+
+.paneActionBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0B2093;
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 22px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(11, 32, 147, 0.2);
+}
+
+.paneActionBtn:hover {
+  background: #0D007F;
+  transform: translateY(-1px);
+  gap: 12px;
+}
+
+@media (max-width: 900px) {
+  .radarWrapper {
+    grid-template-columns: 1fr;
+  }
+  .cohortNav {
+    border-right: none;
+    border-bottom: 1.5px solid #FCE7F3;
+  }
+  .detailHeader {
+    flex-direction: column;
+  }
+  .reachStatBadge {
+    align-items: flex-start;
+  }
+}
