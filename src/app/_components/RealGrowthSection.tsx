@@ -68,7 +68,7 @@ const caseStudies: CaseStudy[] = [
       'Accelerated organic weekly engagement from 200+ to over 1,000+ views',
     ],
     image: '/images/Ekatraa.jpg',
-    color: '#EC4899',
+    color: '#F59E0B',
     statBadge: '5X View Velocity',
     pdfUrl: '/docs/ekatraa_case_study.pdf',
   },

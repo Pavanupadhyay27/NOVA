@@ -66,44 +66,44 @@ const spotlightBrands: BrandSpotlightData[] = [
       {
         id: 'ekatraa-1',
         src: '/images/Carousel4_01.jpg.jpeg',
-        fallback: '/images/Ekatraa.jpg',
+        fallback: '/images/Carousel4_01.jpg.jpeg',
         title: 'Brand Identity & Visual Architecture',
-        tag: 'Creative Direction',
+        tag: '',
       },
       {
         id: 'ekatraa-2',
         src: '/images/Carousel4_02.jpg.jpeg',
-        fallback: '/images/work_ecommerce.jpg',
+        fallback: '/images/Carousel4_02.jpg.jpeg',
         title: 'Commercial Campaign Production',
-        tag: 'Cinematic Videography',
+        tag: '',
       },
       {
         id: 'ekatraa-3',
         src: '/images/Carousel4_03.jpg.jpeg',
-        fallback: '/images/work_fashion.jpg',
+        fallback: '/images/Carousel4_03.jpg.jpeg',
         title: 'High-Converting Social Creatives',
-        tag: 'Meta & Instagram Ads',
+        tag: '',
       },
       {
         id: 'ekatraa-4',
         src: '/images/Carousel4_04.jpg.jpeg',
-        fallback: '/images/work_edtech.jpg',
+        fallback: '/images/Carousel4_04.jpg.jpeg',
         title: 'Omnichannel Digital Presence',
-        tag: 'Web & Growth Engine',
+        tag: '',
       },
       {
         id: 'ekatraa-5',
         src: '/images/Carousel4_05.jpg.jpeg',
-        fallback: '/images/work_realestate.jpg',
+        fallback: '/images/Carousel4_05.jpg.jpeg',
         title: 'Hyperlocal Search Dominance',
-        tag: 'Local SEO & Maps',
+        tag: '',
       },
       {
         id: 'ekatraa-6',
         src: '/images/Carousel4_06.jpg.jpeg',
-        fallback: '/images/work_healthcare.jpg',
+        fallback: '/images/Carousel4_06.jpg.jpeg',
         title: 'Predictable Revenue Scale',
-        tag: 'Full-Funnel Acquisition',
+        tag: '',
       },
     ],
     deliverables: [
@@ -468,13 +468,29 @@ export default function BrandSpotlightSection() {
     return () => clearInterval(interval);
   }, [isHovered, activeBrand.slides.length]);
 
-  const handlePrevSlide = () => {
+  const handlePrevSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev - 1 + activeBrand.slides.length) % activeBrand.slides.length);
-  };
+  }, [activeBrand.slides.length]);
 
-  const handleNextSlide = () => {
+  const handleNextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % activeBrand.slides.length);
-  };
+  }, [activeBrand.slides.length]);
+
+  // Keyboard arrow keys when hovering over the carousel showcase
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!isHovered) return;
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        handlePrevSlide();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        handleNextSlide();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isHovered, handlePrevSlide, handleNextSlide]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.targetTouches[0].clientX;
@@ -901,7 +917,7 @@ export default function BrandSpotlightSection() {
                     <span>{activeBrand.name}</span>
                   </div>
                   <div className={styles.counterBadge}>
-                    <span>Slide {String(currentSlide + 1).padStart(2, '0')}</span>
+                    <span>{String(currentSlide + 1).padStart(2, '0')}</span>
                     <span className={styles.counterDivider}>/</span>
                     <span>{String(activeBrand.slides.length).padStart(2, '0')}</span>
                   </div>
