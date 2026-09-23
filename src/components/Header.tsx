@@ -206,108 +206,125 @@ export default function Header() {
 
             <div
               className={`${styles.dropdown} ${servicesOpen ? styles.dropdownOpen : ''}`}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
               aria-hidden={!servicesOpen}
             >
-              <div className={styles.megaMenuContainer}>
-                {/* Left Area: Categorized Practice Clusters */}
-                <div className={styles.megaMenuClusters}>
-                  {serviceClusters.map((cluster) => (
-                    <div key={cluster.category} className={styles.clusterCol}>
-                      <div className={styles.clusterHeader}>
-                        <span className={styles.clusterCategory}>{cluster.category}</span>
-                        <span className={styles.clusterTag}>{cluster.tag}</span>
-                      </div>
-                      <div className={styles.clusterList}>
-                        {cluster.services.map((s) => (
-                          <Link
-                            key={s.href}
-                            href={s.href}
-                            className={styles.megaMenuItem}
-                            onClick={() => {
-                              if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
-                              setServicesOpen(false);
-                            }}
-                            tabIndex={servicesOpen ? 0 : -1}
-                          >
-                            <span className={styles.megaMenuIcon}>{s.icon}</span>
-                            <div className={styles.megaMenuContent}>
-                              <div className={styles.megaMenuTitleRow}>
-                                <span className={styles.megaMenuLabel}>{s.label}</span>
-                                {s.badge && <span className={styles.megaMenuBadge}>{s.badge}</span>}
+              <div className={styles.dropdownCard}>
+                <div className={styles.megaMenuContainer}>
+                  {/* Left Area: Categorized Practice Clusters */}
+                  <div className={styles.megaMenuClusters}>
+                    {serviceClusters.map((cluster) => (
+                      <div key={cluster.category} className={styles.clusterCol}>
+                        <div className={styles.clusterHeader}>
+                          <span className={styles.clusterCategory}>{cluster.category}</span>
+                          <span className={styles.clusterTag}>{cluster.tag}</span>
+                        </div>
+                        <div className={styles.clusterList}>
+                          {cluster.services.map((s) => (
+                            <Link
+                              key={s.href}
+                              href={s.href}
+                              className={styles.megaMenuItem}
+                              onClick={() => {
+                                if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
+                                setServicesOpen(false);
+                              }}
+                              tabIndex={servicesOpen ? 0 : -1}
+                            >
+                              <span className={styles.megaMenuIcon}>{s.icon}</span>
+                              <div className={styles.megaMenuContent}>
+                                <div className={styles.megaMenuTitleRow}>
+                                  <span className={styles.megaMenuLabel}>{s.label}</span>
+                                  {s.badge && <span className={styles.megaMenuBadge}>{s.badge}</span>}
+                                </div>
+                                <span className={styles.megaMenuDesc}>{s.desc}</span>
                               </div>
-                              <span className={styles.megaMenuDesc}>{s.desc}</span>
-                            </div>
-                          </Link>
-                        ))}
+                            </Link>
+                          ))}
+                        </div>
                       </div>
+                    ))}
+                  </div>
+
+                  {/* Right Area: Interactive Growth Spotlight Card */}
+                  <div className={styles.megaMenuSpotlight}>
+                    <div className={styles.spotlightCard}>
+                      <div className={styles.spotlightTopRow}>
+                        <span className={styles.spotlightPulseDot} />
+                        <span className={styles.spotlightHqText}>Bhubaneswar HQ</span>
+                        <span className={styles.spotlightRating}>★ 4.9/5</span>
+                      </div>
+
+                      {/* Sample Graphics Visual Frame */}
+                      <div className={styles.spotlightGraphicBox}>
+                        <Image
+                          src="/images/ns_services_graphic.png"
+                          alt="Bhubaneswar Digital Growth System Architecture"
+                          width={240}
+                          height={100}
+                          className={styles.spotlightGraphicImg}
+                          priority
+                        />
+                        <div className={styles.graphicOverlayGlow} />
+                        <div className={styles.graphicBadge}>
+                          <span className={styles.graphicBadgeDot} />
+                          <span>GROWTH ENGINE</span>
+                        </div>
+                      </div>
+
+                      <h4 className={styles.spotlightHeadline}>
+                        Need a Tailored Growth Architecture?
+                      </h4>
+                      <p className={styles.spotlightSubtext}>
+                        Get a free 30-min forensic audit of your Google rankings, Meta ROAS, and conversion funnel.
+                      </p>
+
+                      <Link
+                        href="/contact"
+                        className={styles.spotlightAuditBtn}
+                        onClick={() => {
+                          if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
+                          setServicesOpen(false);
+                        }}
+                        tabIndex={servicesOpen ? 0 : -1}
+                      >
+                        <span>Claim Free Growth Audit</span>
+                        <span>→</span>
+                      </Link>
+
+                      <div className={styles.spotlightDivider} />
+
+                      <a
+                        href="https://wa.me/919437168434?text=Hi%20Marketing%20Copilot%2C%20I%20want%20to%20discuss%20a%20digital%20marketing%20growth%20strategy"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.spotlightWhatsAppBtn}
+                        tabIndex={servicesOpen ? 0 : -1}
+                      >
+                        <span className={styles.waOnlineDot} />
+                        <span>WhatsApp a Strategist</span>
+                      </a>
                     </div>
-                  ))}
-                </div>
-
-                {/* Right Area: Interactive Growth Spotlight Card */}
-                <div className={styles.megaMenuSpotlight}>
-                  <div className={styles.spotlightCard}>
-                    <div className={styles.spotlightTopRow}>
-                      <span className={styles.spotlightPulseDot} />
-                      <span className={styles.spotlightHqText}>Bhubaneswar HQ</span>
-                      <span className={styles.spotlightRating}>★ 4.9/5</span>
-                    </div>
-
-                    <h4 className={styles.spotlightHeadline}>
-                      Need a Tailored Growth Architecture?
-                    </h4>
-                    <p className={styles.spotlightSubtext}>
-                      Get a free 30-min forensic audit of your Google rankings, Meta ROAS, and conversion funnel.
-                    </p>
-
-                    <Link
-                      href="/contact"
-                      className={styles.spotlightAuditBtn}
-                      onClick={() => {
-                        if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
-                        setServicesOpen(false);
-                      }}
-                      tabIndex={servicesOpen ? 0 : -1}
-                    >
-                      <span>Claim Free Growth Audit</span>
-                      <span>→</span>
-                    </Link>
-
-                    <div className={styles.spotlightDivider} />
-
-                    <a
-                      href="https://wa.me/919437168434?text=Hi%20Marketing%20Copilot%2C%20I%20want%20to%20discuss%20a%20digital%20marketing%20growth%20strategy"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.spotlightWhatsAppBtn}
-                      tabIndex={servicesOpen ? 0 : -1}
-                    >
-                      <span className={styles.waOnlineDot} />
-                      <span>WhatsApp a Strategist</span>
-                    </a>
                   </div>
                 </div>
-              </div>
 
-              {/* Bottom Bar Footer */}
-              <div className={styles.dropdownFooter}>
-                <Link
-                  href="/services"
-                  className={styles.dropdownAll}
-                  onClick={() => {
-                    if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
-                    setServicesOpen(false);
-                  }}
-                  tabIndex={servicesOpen ? 0 : -1}
-                >
-                  <span>Explore all 10 specialized growth practices</span>
-                  <span>→</span>
-                </Link>
-                <div className={styles.dropdownGuarantee}>
-                  <span className={styles.guaranteeDot}>✓</span>
-                  <span>100% Attribution &amp; Zero Black-Hat Assurance</span>
+                {/* Bottom Bar Footer */}
+                <div className={styles.dropdownFooter}>
+                  <Link
+                    href="/services"
+                    className={styles.dropdownAll}
+                    onClick={() => {
+                      if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
+                      setServicesOpen(false);
+                    }}
+                    tabIndex={servicesOpen ? 0 : -1}
+                  >
+                    <span>Explore all 10 specialized growth practices</span>
+                    <span>→</span>
+                  </Link>
+                  <div className={styles.dropdownGuarantee}>
+                    <span className={styles.guaranteeDot}>✓</span>
+                    <span>100% Attribution &amp; Zero Black-Hat Assurance</span>
+                  </div>
                 </div>
               </div>
             </div>
