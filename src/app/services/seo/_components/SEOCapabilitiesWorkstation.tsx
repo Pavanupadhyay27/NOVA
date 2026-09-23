@@ -12,139 +12,88 @@ interface CapabilityTab {
   subhead: string;
   deliverables: string[];
   metrics: { label: string; value: string; note: string }[];
-  codeSnippetTitle: string;
-  codeSnippet: string;
 }
 
 const capabilities: CapabilityTab[] = [
   {
     id: 'vitals',
-    tabLabel: 'Core Web Vitals & Speed',
+    tabLabel: 'Lightning-Fast Speed',
     tabIcon: '⚡',
-    headline: 'Sub-Second Edge Rendering & Zero Crawl Bloat',
-    subhead: 'Google strictly favors websites that load under 1.2 seconds on mobile networks in Odisha. We optimize Next.js rendering paths, server-side caching, and eliminate technical crawl debt.',
+    headline: 'Loads in Under 1 Second on Mobile Phones Across Bhubaneswar',
+    subhead:
+      'Google ranks fast websites higher. We make your website load instantly on any mobile phone or network across Odisha so visitors never leave and Google gives you top priority.',
     deliverables: [
-      'Largest Contentful Paint (LCP) optimized under 0.8s',
-      'Cumulative Layout Shift (CLS) stabilized to 0.00',
-      'First Input Delay (FID / INP) compressed under 50ms',
-      'Automated Next-Gen WebP/AVIF image compression pipeline',
-      'Crawl budget optimization & 404/redirect loop eradication',
+      'Instant page loading under 0.8s on Jio 5G & Airtel 4G networks',
+      'Zero screen jumping or layout shifts while customers are reading',
+      'Instant button clicks and ultra-smooth mobile navigation',
+      'Optimized lightweight images that load in a fraction of a second',
+      'Guaranteed 95+ Google PageSpeed score on mobile phones',
     ],
     metrics: [
-      { label: 'Mobile PageSpeed', value: '98/100', note: 'Google Lighthouse SLA' },
-      { label: 'Average LCP', value: '0.74s', note: 'Bhubaneswar 4G/5G' },
-      { label: 'Index Coverage', value: '100%', note: '0 Crawl Errors' },
+      { label: 'Mobile PageSpeed', value: '99/100', note: 'Google Lighthouse Score' },
+      { label: 'Average Load Time', value: '0.74s', note: 'Tested in Bhubaneswar' },
+      { label: 'Customer Retention', value: '98%', note: 'Zero Loading Drop-offs' },
     ],
-    codeSnippetTitle: 'Next.js 15 Edge Cache & Meta Header Architecture',
-    codeSnippet: `// next.config.mjs - Sub-second Cache & Core Web Vitals
-export default {
-  compress: true,
-  images: {
-    formats: ['image/avif', 'image/webp'],
-    minimumCacheTTL: 31536000,
-  },
-  headers: async () => [{
-    source: '/:path*',
-    headers: [
-      { key: 'X-Robots-Tag', value: 'index, follow, max-snippet:-1' },
-      { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-    ],
-  }],
-};`,
   },
   {
     id: 'schema',
-    tabLabel: 'Hyperlocal Geo-Schema & GBP',
+    tabLabel: 'Google Maps #1 Ranking',
     tabIcon: '📍',
-    headline: 'Structured JSON-LD Data & Google 3-Pack Authority',
-    subhead: 'We inject structured microdata directly into your site, connecting your business to Patia, Saheed Nagar, and Bhubaneswar geolocations so Google knows exactly who to show first.',
+    headline: 'Dominate Google Maps & the Top 3 Map Pack in Bhubaneswar',
+    subhead:
+      'When customers nearby search for your service on Google Maps, your business appears right at the very top with 5-star ratings, 1-tap calling, and instant directions.',
     deliverables: [
-      'Schema.org LocalBusiness & Organization JSON-LD markup',
-      'Google Business Profile complete taxonomy & category mapping',
-      'Hyperlocal review collection system with automated SMS triggers',
-      'Geo-tagged image EXIF metadata and Bhubaneswar NAP citations',
-      'Map pack proximity radius expansion across Cuttack & Khordha',
+      'Top 3 ranking guarantee on Google Maps for local searches',
+      'Complete Google Business Profile optimization & verification',
+      'Local area targeting for Patia, Saheed Nagar, Nayapalli & Cuttack',
+      'Automated 5-star customer review collection system',
+      'Direct Click-to-Call and WhatsApp chat routing for immediate leads',
     ],
     metrics: [
-      { label: 'Map 3-Pack Rank', value: 'Top 3', note: '14 Target Keywords' },
-      { label: 'Verified Reviews', value: '100% 5★', note: 'Sentiment Optimized' },
-      { label: 'Proximity Reach', value: '15 km', note: 'Across Twin Cities' },
+      { label: 'Google Maps Position', value: '#1 Rank', note: 'Target Local Searches' },
+      { label: 'Customer Rating', value: '★ 5.0', note: '184 Verified Reviews' },
+      { label: 'Service Coverage', value: '15 km', note: 'Across Bhubaneswar' },
     ],
-    codeSnippetTitle: 'Schema.org JSON-LD LocalBusiness Geo Injection',
-    codeSnippet: `{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Nova Spark Client Bhubaneswar",
-  "telephone": "+91-9437168434",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Infocity Road, Patia",
-    "addressLocality": "Bhubaneswar",
-    "postalCode": "751024",
-    "addressRegion": "Odisha",
-    "addressCountry": "IN"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 20.2961,
-    "longitude": 85.8245
-  },
-  "areaServed": ["Patia", "Saheed Nagar", "Nayapalli", "Cuttack"]
-}`,
   },
   {
     id: 'clusters',
-    tabLabel: 'Commercial Topic Clusters',
+    tabLabel: 'Ready-to-Buy Keywords',
     tabIcon: '🎯',
-    headline: 'High-Intent Search Architecture That Captures Buyers',
-    subhead: 'Instead of vanity blog posts that drive zero revenue, we engineer authoritative pillar pages and topic clusters around transactional searches that commercial buyers make before purchasing.',
+    headline: 'Target High-Intent Searches From Customers Ready to Buy',
+    subhead:
+      'We focus exclusively on searches made by people who are ready to book, visit, or buy in Bhubaneswar. No useless clicks—only customers actively searching for your service.',
     deliverables: [
-      'High-intent commercial keyword mapping across Bhubaneswar',
-      'Search intent classification (Commercial, Transactional, Navigational)',
-      'Entity-based internal linking architecture (Pillar & Cluster model)',
-      'Conversion-engineered landing copy designed to turn clicks into calls',
-      'Continuous rank tracking with automated competitor delta alerts',
+      'In-depth research of top customer buying searches in Bhubaneswar',
+      'Target high-intent keywords that bring paying clients, not casual browsers',
+      'Sales-focused landing pages designed to convert visits into calls',
+      'Weekly ranking tracking reports showing your position climb',
+      'Competitor displacement strategy to capture market share in Odisha',
     ],
     metrics: [
-      { label: 'Target Search Volume', value: '45,000+', note: 'Monthly High-Intent' },
-      { label: 'First Page Share', value: '78%', note: 'Within 90 Days' },
-      { label: 'Est. Google CPC Saved', value: '₹1.8L/mo', note: 'Organic Value' },
+      { label: 'Monthly Search Volume', value: '45,000+', note: 'Local Buyers Targeted' },
+      { label: 'Google Top 3 Share', value: '84%', note: 'Key Service Searches' },
+      { label: 'Google Ads Saved', value: '₹1.8L/mo', note: 'Free Organic Leads' },
     ],
-    codeSnippetTitle: 'Commercial Keyword Mapping Matrix Sample',
-    codeSnippet: `// High-Yield Bhubaneswar Search Intent Clusters
-const clusterMapping = [
-  { keyword: "best luxury apartments in patia", intent: "Commercial", cpcValue: "₹185" },
-  { keyword: "interior designer in saheed nagar", intent: "Transactional", cpcValue: "₹140" },
-  { keyword: "top business marketing company odisha", intent: "Decision", cpcValue: "₹210" },
-  { keyword: "implant dentist near me bhubaneswar", intent: "Emergency", cpcValue: "₹165" },
-];`,
   },
   {
     id: 'backlinks',
-    tabLabel: 'Authoritative Regional PR & Links',
-    tabIcon: '🔗',
-    headline: 'Ethical, High-Domain Authority Editorial Mentions',
-    subhead: 'Zero spam, zero automated link farms. We earn legitimate contextual backlinks from prominent Odisha news publications, trade journals, and high-DA industry authorities.',
+    tabLabel: 'Trusted Press & Authority',
+    tabIcon: '🛡️',
+    headline: 'Build Strong Local Authority With Verified Regional Press',
+    subhead:
+      'Google favors businesses that are trusted by the community. We get your brand featured in reputable Odisha news portals and local directories, building authority that competitors cannot beat.',
     deliverables: [
-      'Odisha regional press release syndication and editorial coverage',
-      'Contextual backlinks on DR 50+ business and media portals',
-      'Competitor backlink gap analysis to siphon top ranking juice',
-      'Disavow tool auditing to protect against negative SEO attacks',
-      '100% white-hat Google Penguin & SpamBrain compliant link velocity',
+      'Feature mentions on respected Odisha business and news websites',
+      'Verified local directory citations across Bhubaneswar & Cuttack',
+      'Complete safety from search engine penalties using 100% white-hat methods',
+      'Competitor link analysis to capture top ranking authority',
+      'Long-term sustainable rankings that compound month after month',
     ],
     metrics: [
-      { label: 'Avg Domain Rating', value: 'DR 45–70', note: 'Verified Real Sites' },
-      { label: 'Spam Score', value: '0% Spam', note: 'Strictly Safe Links' },
-      { label: 'Referral Pipeline', value: '+35%', note: 'Direct Referral Traffic' },
+      { label: 'Domain Authority', value: 'DR 65+', note: 'High Trust Websites' },
+      { label: 'Safety Standard', value: '100%', note: 'Google Penalty-Proof' },
+      { label: 'Inbound Growth', value: '+48%', note: 'Direct Referral Enquiries' },
     ],
-    codeSnippetTitle: 'Authority Link Distribution Telemetry',
-    codeSnippet: `// Verified Backlink Distribution Profile
-const linkProfile = {
-  anchorTextProfile: "70% Branded / 20% Partial Keyword / 10% Natural",
-  referringDomains: ["Odisha Media Portals", "Industry Publications", "Regional Tech Portals"],
-  spamScoreThreshold: "< 1% on Moz and Ahrefs index",
-  growthTrajectory: "Compounding white-hat velocity",
-};`,
   },
 ];
 
@@ -153,46 +102,51 @@ export default function SEOCapabilitiesWorkstation() {
   const currentCapability = capabilities.find((c) => c.id === activeTabId) || capabilities[0];
 
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id="seo-capabilities">
       <div className="container">
         {/* Header */}
         <ScrollReveal className="text-center">
           <div className="eyebrow" style={{ margin: '0 auto 12px' }}>
             <span className="eyebrow-dot" />
-            <span>Engineering Capabilities</span>
+            <span>SEO GROWTH SUITE • BUILT FOR BHUBANESWAR</span>
           </div>
           <h2 className={`display-md ${styles.headline}`}>
-            The Technical Architecture Behind <span className="accent-gradient">#1 Rankings</span>
+            How We Rank Your Business #1 on <span className="accent-gradient">Google in Bhubaneswar</span>
           </h2>
           <p className={styles.subhead}>
-            Explore our four core algorithmic engineering disciplines. We don&apos;t just tweak meta tags; we engineer high-performance search systems.
+            We replace technical guesswork with a 4-pillar Google growth system. Fast loading speeds, Google Maps #1 rank, and high-buyer search traffic that converts into paying customers.
           </p>
         </ScrollReveal>
 
         {/* Workstation Console */}
         <div className={styles.workstationWrapper}>
           {/* Tab Selector Buttons */}
-          <div className={styles.tabNav}>
-            {capabilities.map((c) => (
-              <button
-                key={c.id}
-                type="button"
-                className={`${styles.tabBtn} ${activeTabId === c.id ? styles.tabBtnActive : ''}`}
-                onClick={() => setActiveTabId(c.id)}
-              >
-                <span className={styles.tabIcon}>{c.tabIcon}</span>
-                <span className={styles.tabLabel}>{c.tabLabel}</span>
-              </button>
-            ))}
+          <div className={styles.tabNav} role="tablist">
+            {capabilities.map((c) => {
+              const isActive = activeTabId === c.id;
+              return (
+                <button
+                  key={c.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  className={`${styles.tabBtn} ${isActive ? styles.tabBtnActive : ''}`}
+                  onClick={() => setActiveTabId(c.id)}
+                >
+                  <span className={styles.tabIcon}>{c.tabIcon}</span>
+                  <span className={styles.tabLabel}>{c.tabLabel}</span>
+                </button>
+              );
+            })}
           </div>
 
           {/* Active Workstation Stage */}
           <div className={styles.stageGrid}>
-            {/* Left: Deep Explanation & Deliverables */}
+            {/* Left: Clear Explanation & Deliverables */}
             <div className={styles.stageContent}>
               <div className={styles.badgeRow}>
                 <span className={styles.categoryPill}>{currentCapability.tabLabel}</span>
-                <span className={styles.slaBadge}>Enterprise SLA Guaranteed</span>
+                <span className={styles.slaBadge}>Guaranteed Business Results</span>
               </div>
 
               <h3 className={styles.capabilityHeadline}>
@@ -205,7 +159,7 @@ export default function SEOCapabilitiesWorkstation() {
 
               {/* Deliverable Checklist */}
               <div className={styles.checklist}>
-                <span className={styles.checklistHeading}>Core Engineering Deliverables:</span>
+                <span className={styles.checklistHeading}>What You Get:</span>
                 {currentCapability.deliverables.map((item) => (
                   <div key={item} className={styles.checkItem}>
                     <span className={styles.checkIcon}>✓</span>
@@ -227,29 +181,236 @@ export default function SEOCapabilitiesWorkstation() {
 
               <div className={styles.actionRow}>
                 <Link href="/contact" className={styles.actionBtn}>
-                  <span>Schedule Technical Audit</span>
+                  <span>Get Free Bhubaneswar SEO Audit</span>
                   <span>→</span>
                 </Link>
               </div>
             </div>
 
-            {/* Right: Technical Code & Schema Telemetry Display */}
-            <div className={styles.stageConsole}>
-              <div className={styles.consoleHeader}>
-                <div className={styles.consoleDots}>
-                  <span className={styles.consoleDot} />
-                  <span className={styles.consoleDot} />
-                  <span className={styles.consoleDot} />
+            {/* Right: High-Converting Visual Results Display (Zero Raw Code) */}
+            <div className={styles.stageVisualPanel}>
+              {activeTabId === 'vitals' && (
+                <div className={styles.vitalsCard}>
+                  <div className={styles.panelTopBar}>
+                    <div className={styles.panelTitleGroup}>
+                      <span className={styles.liveStatusDot} />
+                      <span className={styles.panelTitle}>Google PageSpeed Diagnostic · Live Audit</span>
+                    </div>
+                    <span className={styles.panelBadge}>PASSED</span>
+                  </div>
+
+                  <div className={styles.scoreRow}>
+                    <div className={styles.scoreDial}>
+                      <span className={styles.scoreNum}>99</span>
+                      <span className={styles.scoreTotal}>/ 100</span>
+                      <span className={styles.scoreSub}>Mobile Speed</span>
+                    </div>
+
+                    <div className={styles.speedPills}>
+                      <div className={styles.speedPill}>
+                        <span className={styles.speedPillLabel}>First Visual Paint</span>
+                        <span className={styles.speedPillVal}>0.4s · Instant</span>
+                      </div>
+                      <div className={styles.speedPill}>
+                        <span className={styles.speedPillLabel}>Page Ready Time</span>
+                        <span className={styles.speedPillVal}>0.7s · Optimal</span>
+                      </div>
+                      <div className={styles.speedPill}>
+                        <span className={styles.speedPillLabel}>Click Response</span>
+                        <span className={styles.speedPillVal}>0ms · Zero Delay</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Benchmark Bar */}
+                  <div className={styles.benchmarkBox}>
+                    <div className={styles.benchmarkRow}>
+                      <span className={styles.benchLabel}>Your Website (Nova Spark Optimized)</span>
+                      <span className={styles.benchValGreen}>0.7s</span>
+                    </div>
+                    <div className={styles.barTrack}>
+                      <div className={styles.barFillGreen} style={{ width: '18%' }} />
+                    </div>
+
+                    <div className={styles.benchmarkRow} style={{ marginTop: 10 }}>
+                      <span className={styles.benchLabel}>Average Competitor in Bhubaneswar</span>
+                      <span className={styles.benchValRed}>4.8s (Slow)</span>
+                    </div>
+                    <div className={styles.barTrack}>
+                      <div className={styles.barFillRed} style={{ width: '85%' }} />
+                    </div>
+                  </div>
+
+                  <div className={styles.panelFooter}>
+                    <span>✓ Verified on Jio 5G &amp; Airtel 4G networks across Bhubaneswar</span>
+                  </div>
                 </div>
-                <span className={styles.consoleTitle}>{currentCapability.codeSnippetTitle}</span>
-                <span className={styles.liveTag}>LIVE PROTOCOL</span>
-              </div>
-              <pre className={styles.codeBlock}>
-                <code>{currentCapability.codeSnippet}</code>
-              </pre>
-              <div className={styles.consoleFooter}>
-                <span className={styles.validStatus}>● Validated by Google Schema Markup Linter &amp; Search Console</span>
-              </div>
+              )}
+
+              {activeTabId === 'schema' && (
+                <div className={styles.mapsCard}>
+                  <div className={styles.panelTopBar}>
+                    <div className={styles.panelTitleGroup}>
+                      <span className={styles.liveStatusDot} />
+                      <span className={styles.panelTitle}>Google Maps Search Result Preview</span>
+                    </div>
+                    <span className={styles.panelBadge}>#1 RANK</span>
+                  </div>
+
+                  <div className={styles.searchBarSim}>
+                    <span className={styles.searchIcon}>🔍</span>
+                    <span className={styles.searchQuery}>top rated business in bhubaneswar</span>
+                  </div>
+
+                  <div className={styles.mapResultItem}>
+                    <div className={styles.mapResultTop}>
+                      <div className={styles.rankBadge}>#1 on Google Maps</div>
+                      <div className={styles.ratingStars}>★★★★★ 5.0 (184 reviews)</div>
+                    </div>
+
+                    <h4 className={styles.businessName}>Your Business Name</h4>
+                    <p className={styles.businessCategory}>Top Rated Service Provider · Infocity Road, Patia</p>
+                    <p className={styles.businessTiming}>🟢 Open now · Closes 8:30 PM · Bhubaneswar, Odisha</p>
+
+                    <div className={styles.mapActionButtons}>
+                      <button type="button" className={styles.mapBtnCall}>
+                        📞 Call Now
+                      </button>
+                      <button type="button" className={styles.mapBtnDirections}>
+                        🗺️ Directions
+                      </button>
+                      <button type="button" className={styles.mapBtnWhatsapp}>
+                        💬 WhatsApp
+                      </button>
+                    </div>
+
+                    <div className={styles.geoCoverageTag}>
+                      📍 #1 Proximity Rank across Patia, Saheed Nagar, Nayapalli, Cuttack
+                    </div>
+                  </div>
+
+                  <div className={styles.panelFooter}>
+                    <span>✓ Direct Google Business Profile 3-Pack Optimization</span>
+                  </div>
+                </div>
+              )}
+
+              {activeTabId === 'clusters' && (
+                <div className={styles.keywordsCard}>
+                  <div className={styles.panelTopBar}>
+                    <div className={styles.panelTitleGroup}>
+                      <span className={styles.liveStatusDot} />
+                      <span className={styles.panelTitle}>Bhubaneswar Buyer Search Ranking Matrix</span>
+                    </div>
+                    <span className={styles.panelBadge}>HIGH BUYER INTENT</span>
+                  </div>
+
+                  <div className={styles.keywordList}>
+                    <div className={styles.keywordRow}>
+                      <div className={styles.kwColText}>
+                        <span className={styles.kwPhrase}>&ldquo;best luxury service in patia bhubaneswar&rdquo;</span>
+                        <span className={styles.kwSub}>2,400 monthly searches · 92% Buyer Intent</span>
+                      </div>
+                      <div className={styles.kwColRank}>
+                        <span className={styles.rankPillGreen}>#1 Rank</span>
+                        <span className={styles.cpcSaved}>Saved ₹185/click</span>
+                      </div>
+                    </div>
+
+                    <div className={styles.keywordRow}>
+                      <div className={styles.kwColText}>
+                        <span className={styles.kwPhrase}>&ldquo;top rated service near me bhubaneswar&rdquo;</span>
+                        <span className={styles.kwSub}>3,800 monthly searches · Urgent Call Intent</span>
+                      </div>
+                      <div className={styles.kwColRank}>
+                        <span className={styles.rankPillGreen}>#1 Rank</span>
+                        <span className={styles.cpcSaved}>Saved ₹160/click</span>
+                      </div>
+                    </div>
+
+                    <div className={styles.keywordRow}>
+                      <div className={styles.kwColText}>
+                        <span className={styles.kwPhrase}>&ldquo;best service company in saheed nagar&rdquo;</span>
+                        <span className={styles.kwSub}>1,900 monthly searches · Commercial Lead</span>
+                      </div>
+                      <div className={styles.kwColRank}>
+                        <span className={styles.rankPillGreen}>#2 Rank</span>
+                        <span className={styles.cpcSaved}>Saved ₹140/click</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={styles.kwSummaryRow}>
+                    <div className={styles.kwSumStat}>
+                      <span className={styles.kwSumNum}>₹1,85,000 / mo</span>
+                      <span className={styles.kwSumLbl}>Free Google Ad Value</span>
+                    </div>
+                    <div className={styles.kwSumStat}>
+                      <span className={styles.kwSumNum}>+340%</span>
+                      <span className={styles.kwSumLbl}>Monthly Phone Calls</span>
+                    </div>
+                  </div>
+
+                  <div className={styles.panelFooter}>
+                    <span>✓ Live ranking telemetry verified via Google Search Console</span>
+                  </div>
+                </div>
+              )}
+
+              {activeTabId === 'backlinks' && (
+                <div className={styles.authorityCard}>
+                  <div className={styles.panelTopBar}>
+                    <div className={styles.panelTitleGroup}>
+                      <span className={styles.liveStatusDot} />
+                      <span className={styles.panelTitle}>Verified Press &amp; Regional Media Citations</span>
+                    </div>
+                    <span className={styles.panelBadge}>100% WHITE-HAT</span>
+                  </div>
+
+                  <div className={styles.mediaList}>
+                    <div className={styles.mediaItem}>
+                      <div className={styles.mediaIconWrap}>📰</div>
+                      <div className={styles.mediaInfo}>
+                        <div className={styles.mediaName}>Odisha Business Standard</div>
+                        <div className={styles.mediaCoverage}>Featured Article: Top Growing Enterprises in Bhubaneswar</div>
+                      </div>
+                      <span className={styles.daBadge}>DR 74</span>
+                    </div>
+
+                    <div className={styles.mediaItem}>
+                      <div className={styles.mediaIconWrap}>⭐</div>
+                      <div className={styles.mediaInfo}>
+                        <div className={styles.mediaName}>Sambad Regional Network</div>
+                        <div className={styles.mediaCoverage}>Industry Spotlight: Leaders Transforming the Local Market</div>
+                      </div>
+                      <span className={styles.daBadge}>DR 68</span>
+                    </div>
+
+                    <div className={styles.mediaItem}>
+                      <div className={styles.mediaIconWrap}>🏢</div>
+                      <div className={styles.mediaInfo}>
+                        <div className={styles.mediaName}>Bhubaneswar Chamber of Commerce</div>
+                        <div className={styles.mediaCoverage}>Official Enterprise Directory Listing &amp; Authority Badge</div>
+                      </div>
+                      <span className={styles.daBadge}>DR 62</span>
+                    </div>
+                  </div>
+
+                  <div className={styles.trustBanner}>
+                    <span className={styles.shieldIcon}>🛡️</span>
+                    <div>
+                      <div className={styles.trustBannerTitle}>100% Google Penalty-Proof Guarantee</div>
+                      <div className={styles.trustBannerSub}>
+                        Zero automated link farms or spam. Only authentic, permanent editorial links that keep you ranking.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={styles.panelFooter}>
+                    <span>✓ +24 Domain Trust Points compounded over 90 days</span>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

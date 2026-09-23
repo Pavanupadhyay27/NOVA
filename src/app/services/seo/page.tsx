@@ -20,44 +20,44 @@ import styles from './seo-page.module.css';
 const algorithmicArsenal = [
   {
     name: 'Google Search Console',
-    category: 'SERP Indexing & Crawl Diagnostics',
-    desc: 'Live telemetry tracking indexing status, Core Web Vitals mobile metrics, and exact Bhubaneswar keyword impressions.',
-    status: 'ACTIVE TELEMETRY',
+    category: 'Keyword Rankings & Search Performance',
+    desc: 'Tracks exact Google keyword positions, daily customer clicks, and search impressions from people in Bhubaneswar.',
+    status: 'LIVE TRACKING',
     icon: '📊',
   },
   {
     name: 'Google Business Profile',
-    category: 'Local 3-Pack Proximity API',
-    desc: 'Micro-market optimization managing geo-citations, review velocity, and Google Maps pin positioning across Patia and Saheed Nagar.',
-    status: 'GEO-FENCED',
+    category: 'Google Maps Top 3 Optimization',
+    desc: 'Optimizes your map location, customer reviews, and local pin visibility across Patia, Saheed Nagar, Nayapalli, and Cuttack.',
+    status: 'MAP PACK TOP 3',
     icon: '📍',
   },
   {
-    name: 'Ahrefs & SEMrush Intelligence',
-    category: 'Keyword & Authority Intelligence',
-    desc: 'Deep forensic tracking of competitor backlinks, regional content gaps, and high-converting commercial search queries in Odisha.',
-    status: 'DATA ENGINE',
+    name: 'Ahrefs & SEMrush Market Intel',
+    category: 'Competitor Intelligence',
+    desc: 'Analyzes what your top competitors in Bhubaneswar are doing and identifies high-converting searches to target.',
+    status: 'MARKET INTEL',
     icon: '🔍',
   },
   {
-    name: 'Screaming Frog Spider',
-    category: 'Technical Crawl Diagnostics',
-    desc: 'Automated 1,000+ page scans finding 404s, broken canonicals, redirect loops, and schema JSON-LD discrepancies.',
-    status: 'DEEP CRAWL',
-    icon: '🕷️',
-  },
-  {
-    name: 'Next.js 15 Speed Architecture',
-    category: 'Sub-Second Edge Rendering',
-    desc: 'Static site generation with Edge CDN caching delivering 98+ PageSpeed scores that Google algorithms prioritize permanently.',
-    status: 'LIGHTHOUSE 98+',
+    name: 'Website Health Auditor',
+    category: 'Site Speed & Health Audit',
+    desc: 'Scans your entire website to fix broken links, slow loading pages, and missing Google tags immediately.',
+    status: 'HEALTH CHECK',
     icon: '⚡',
   },
   {
-    name: 'Looker Studio Executive Suite',
-    category: 'Real-Time Pipeline Attribution',
-    desc: 'Transparent live client dashboards directly measuring phone calls, WhatsApp leads, and commercial inquiries.',
-    status: 'LIVE CLIENT SYNC',
+    name: 'High-Speed Mobile Platform',
+    category: 'Under 1-Second Loading Speed',
+    desc: 'Delivers lightning-fast 98+ PageSpeed loading on 4G and 5G networks so visitors never bounce.',
+    status: 'SPEED 99/100',
+    icon: '🚀',
+  },
+  {
+    name: 'Live Client Growth Dashboard',
+    category: 'Transparent Reporting',
+    desc: '24/7 transparent dashboard showing your incoming phone calls, WhatsApp inquiries, and keyword rankings.',
+    status: 'LIVE REPORTS',
     icon: '📈',
   },
 ];
@@ -65,28 +65,28 @@ const algorithmicArsenal = [
 const seoFaqs = [
   {
     q: 'How long does it realistically take to rank #1 on Google in Bhubaneswar?',
-    a: 'For local Google 3-Pack map rankings and localized long-tail searches (e.g. in Patia, Saheed Nagar, or Infocity), our clients typically see top 3 positions within 45 to 75 days. Broad, high-competition industry keywords compound sustainably over 3 to 6 months of disciplined Next.js technical optimization and regional link building.',
-    takeaway: 'Map 3-Pack traction in 45–75 days; high-competition search terms compound over 3–6 months.',
+    a: 'For local Google Maps 3-Pack rankings and localized searches (such as in Patia, Saheed Nagar, or Infocity), our clients typically see top 3 positions within 45 to 75 days. Competitive industry-wide keywords build steadily over 3 to 6 months of disciplined optimization and high-authority local mentions.',
+    takeaway: 'Google Maps top 3 in 45–75 days; competitive search terms compound over 3–6 months.',
   },
   {
     q: 'What is the concrete difference between Local SEO and Standard National SEO?',
-    a: 'National SEO targets broad search queries across all regions where physical location is irrelevant. Hyperlocal SEO targets Google Maps and proximity-based searches ("best interior designer in Patia", "dental clinic near me Saheed Nagar"). Local SEO drives direct phone calls, Google Maps directions, and immediate high-intent foot traffic.',
-    takeaway: 'Local SEO captures buyers within your exact geographic service radius.',
+    a: 'National SEO targets broad search queries across the country where physical location does not matter. Local SEO targets Google Maps and nearby searches in Bhubaneswar ("best interior designer in Patia", "dental clinic near me Saheed Nagar"). Local SEO drives direct phone calls, map directions, and immediate customer visits.',
+    takeaway: 'Local SEO captures buyers within your exact geographic service radius in Bhubaneswar.',
   },
   {
     q: 'Do you guarantee #1 rankings on Google?',
-    a: 'Google’s official webmaster guidelines strictly forbid anyone from guaranteeing a permanent #1 spot because search algorithms update continuously. However, Marketing Copilot guarantees 100% white-hat engineering, transparent weekly ranking velocity, PageSpeed scores above 95, and a proven track record of placing dozens of Bhubaneswar businesses in the top 3.',
-    takeaway: 'Zero risky black-hat shortcuts; measurable ranking velocity and PageSpeed guaranteed.',
+    a: 'Google’s official guidelines forbid anyone from guaranteeing a permanent #1 spot because search algorithms update constantly. However, Marketing Copilot guarantees transparent weekly ranking progress, mobile load speeds under 1 second, and a proven track record of ranking dozens of Bhubaneswar businesses in the top 3.',
+    takeaway: 'Zero risky shortcuts; measurable ranking velocity and guaranteed mobile speed.',
   },
   {
     q: 'Will ranking on Google actually generate revenue, or just vanity clicks?',
-    a: 'We strictly ignore vanity traffic. Our topic cluster methodology focuses exclusively on commercial and transactional intent searches—queries made by buyers who are ready to book, visit, or buy. Furthermore, we optimize on-page conversion rate optimization (CRO) so visitors convert into phone calls and WhatsApp inquiries.',
+    a: 'We strictly ignore vanity traffic. We focus exclusively on commercial and transactional searches—searches made by buyers in Bhubaneswar who are ready to book, visit, or buy. We also optimize your website pages so visitors easily convert into phone calls and WhatsApp inquiries.',
     takeaway: 'Targeting commercial intent queries that convert directly into qualified customer revenue.',
   },
   {
     q: 'What reporting and transparency do we receive during the campaign?',
-    a: 'You receive a 24/7 live Google Looker Studio dashboard connected directly to Google Search Console and CallRail. You can inspect exact keyword position changes, organic impressions, click-through rates, and verified lead form submissions in real time.',
-    takeaway: '24/7 live Looker Studio dashboard with verified call and lead attribution.',
+    a: 'You receive a 24/7 live dashboard showing exact keyword positions, organic visitors, phone calls, and verified customer leads in real time. No confusing spreadsheets—only clear metrics that matter to your business.',
+    takeaway: '24/7 live dashboard with verified call and customer lead tracking.',
   },
 ];
 
@@ -109,22 +109,22 @@ export default function SEOPage() {
             <ScrollReveal>
               <div className={styles.heroEyebrowPill}>
                 <span className={styles.emeraldPulseDot} />
-                <span>Real-Time Google 3-Pack Telemetry · Bhubaneswar</span>
+                <span>#1 SEO &amp; Google Growth Agency in Bhubaneswar</span>
               </div>
 
               <h1 className={styles.heroTitle}>
                 Rank #1 on Google in Bhubaneswar.{' '}
-                <span className="accent-gradient">Get Chosen First.</span>
+                <span className="accent-gradient">Turn Searches Into Customers.</span>
               </h1>
 
               <p className={styles.heroSub}>
-                We make Bhubaneswar businesses impossible to ignore on Google. Technical Next.js SEO, Google Maps 3-pack dominance, and hyperlocal search architectures that drive compounding phone calls and customer revenue.
+                When customers in Bhubaneswar search for your services on Google and Google Maps, do they find you or your competitors? We get your business to the top of Google, driving daily phone calls, store visits, and revenue across Bhubaneswar and Odisha.
               </p>
 
               <div className={styles.heroActions}>
-                <BeamButton href="/contact" label="Claim Free Technical Audit" size="lg" />
+                <BeamButton href="/contact" label="Get Free Bhubaneswar SEO Audit" size="lg" />
                 <a href="#serp-simulator" className={styles.heroSecondaryBtn}>
-                  <span>Inspect Live SERP Telemetry</span>
+                  <span>See Live Google Rankings</span>
                   <span>↓</span>
                 </a>
               </div>
@@ -147,19 +147,19 @@ export default function SEOPage() {
             <div className={styles.telemetryRibbon}>
               <div className={styles.telemetryCell}>
                 <span className={styles.tVal}>#1</span>
-                <span className={styles.tLabel}>Organic Ranking</span>
+                <span className={styles.tLabel}>Google Ranking</span>
               </div>
               <div className={styles.telemetryCell}>
                 <span className={styles.tVal}>+280%</span>
-                <span className={styles.tLabel}>Inbound Phone Calls</span>
+                <span className={styles.tLabel}>More Customer Calls</span>
               </div>
               <div className={styles.telemetryCell}>
-                <span className={styles.tVal}>98+</span>
-                <span className={styles.tLabel}>Core Web Vitals</span>
+                <span className={styles.tVal}>&lt; 1s</span>
+                <span className={styles.tLabel}>Mobile Load Speed</span>
               </div>
               <div className={styles.telemetryCell}>
                 <span className={styles.tVal}>45 Days</span>
-                <span className={styles.tLabel}>3-Pack Traction</span>
+                <span className={styles.tLabel}>To Google Top 3</span>
               </div>
             </div>
           </div>
@@ -283,13 +283,13 @@ export default function SEOPage() {
           <ScrollReveal className="text-center">
             <div className="eyebrow" style={{ margin: '0 auto 12px' }}>
               <span className="eyebrow-dot" />
-              <span>Algorithmic Toolchain</span>
+              <span>PROVEN SEO PLATFORMS</span>
             </div>
             <h3 className="display-md" style={{ color: '#0F172A', marginBottom: 10 }}>
-              Search Tech Arsenal &amp; <span className="accent-gradient">Data Infrastructure</span>
+              The Professional Search Tools We Use to <span className="accent-gradient">Grow Your Business</span>
             </h3>
-            <p className="body-md" style={{ color: '#64748B', maxWidth: 600, margin: '0 auto' }}>
-              Enterprise-grade search software toolchains deployed across all Bhubaneswar SEO campaigns.
+            <p className="body-md" style={{ color: '#64748B', maxWidth: 640, margin: '0 auto' }}>
+              We track your rankings, analyze competitors, and measure incoming phone calls using the world&apos;s most trusted search platforms.
             </p>
 
             <div className={styles.arsenalSpecGrid}>
