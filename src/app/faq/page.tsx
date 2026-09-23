@@ -56,39 +56,58 @@ const faqGroups: FAQGroup[] = [
     id: 'general',
     title: 'General Questions',
     badge: 'AGENCY & SCOPE',
-    highlight: 'Hyperlocal Bhubaneswar Intelligence + Silicon Valley Technical Architecture',
+    highlight: 'Hyperlocal Bhubaneswar Intelligence + Tailored Digital Growth Strategies',
     collage: {
       mainImage: '/images/team_office.jpg',
       subImage: '/images/about_hero.jpg',
-      caption: 'Strategy Command Center • DLF Cybercity & Patia',
+      caption: 'Strategy Command Center • Kharvela Nagar, Unit 3',
       tag: '🏢 LOCAL EXECUTIVE TEAM',
     },
     faqs: [
       {
-        q: 'What digital marketing services does Marketing Copilot offer in Bhubaneswar?',
-        a: 'Marketing Copilot is Bhubaneswar\'s full-funnel revenue and digital marketing agency. We engineer complete growth engines: technical SEO, Google Search & PMax Ads, Meta (Instagram & Facebook) performance campaigns, high-speed Next.js web applications, hyperlocal Google Maps 3-Pack rank dominance, automated WhatsApp CRM lead bridges, and board-level revenue attribution auditing.',
-        takeaway: 'Full-funnel execution from first search query to closed revenue.',
-        bullets: [
-          'Google Search, Display & Performance Max Ads',
-          'Meta Video Ads & Advantage+ Catalog Retargeting',
-          'Google Maps 3-Pack & Hyperlocal Pin Code SEO',
-          'Sub-second Next.js Web & Interactive App Engineering',
-        ],
+        q: 'What digital marketing services are provided by Nova Spark in Bhubaneswar?',
+        a: 'Nova Spark provides SEO, local SEO, Google Ads, Meta Ads, social media marketing, content marketing, website development, and tailored digital growth services for businesses in Bhubaneswar and Odisha.',
+        takeaway: 'Comprehensive full-service digital growth tailored for Odisha businesses.',
       },
       {
-        q: 'Why should I choose a Bhubaneswar-based digital marketing agency?',
-        a: 'A local agency possesses ground-level geographic intelligence: understanding buyer purchasing power differences between Patia IT corridors versus legacy Saheed Nagar commercial belts, festival consumer surges during Durga Puja and Ratha Yatra, and local Odia search psychology. We combine this hyperlocal intelligence with Tier-1 Silicon Valley technical architecture.',
-        takeaway: 'Hyperlocal market psychology married to Tier-1 technical infrastructure.',
+        q: 'Why work with a Bhubaneswar-based digital marketing agency?',
+        a: 'A local team will have a better grasp of the market, customer behavior, neighborhoods, competition, and business environment in Bhubaneswar. This enables the development of campaigns and content that are more relevant to local audiences.',
+        takeaway: 'Hyperlocal market intelligence combined with strategic digital execution.',
       },
       {
-        q: 'How quickly can I expect to see verified results from digital marketing?',
-        a: 'Paid channels (Google Search & Meta Ads) go live and typically begin generating verified OTP inquiries within 48 to 72 hours. Google Maps 3-Pack rankings generally materialize in 4 to 8 weeks. Compounding organic SEO authority compounds solidly over 3 to 6 months. We commit to strict written milestone SLAs before onboarding.',
-        takeaway: 'Paid leads live in 72 hours; compounding organic dominance in 90 days.',
+        q: 'Does Nova Spark work with small and local businesses?',
+        a: 'Yes. We collaborate with businesses of various sizes, including single-location businesses. Our approach and scope are flexible and can be tailored to your objectives, target group, budget, and current growth phase.',
+        takeaway: 'Flexible scope and strategies tailored to your specific growth stage.',
       },
       {
-        q: 'Do you work with single-location small businesses in Bhubaneswar?',
-        a: 'Yes. Over 40% of our active roster comprises single-location clinics, coaching hubs, boutique builders, and specialized retail stores across Bhubaneswar and Cuttack. We offer dedicated 30-Day Sprint packages engineered specifically for single-unit businesses to dominate their immediate 15km commercial radius.',
-        takeaway: 'Tailored 30-day market entry sprints built specifically for single-unit hubs.',
+        q: 'How quickly can I expect results from digital marketing?',
+        a: 'The time frame will vary with the service and your starting point. Paid campaigns can generate data quickly, while SEO, local SEO, and organic social growth generally require consistent effort over time.',
+        takeaway: 'Fast feedback from paid ads; compounding authority through SEO.',
+      },
+      {
+        q: 'How does Nova Spark create a strategy for a new client?',
+        a: 'We first learn your business, audience, competition, existing digital footprint, objectives, and budget. Next, we determine which channels are most relevant and develop a viable strategy based on your priorities.',
+        takeaway: 'Custom discovery and channel selection tailored to your business priorities.',
+      },
+      {
+        q: 'Do you provide digital marketing services outside Bhubaneswar?',
+        a: 'Yes. Nova Spark is based in Bhubaneswar, but we can collaborate remotely and communicate via digital methods with businesses located in Odisha and clients from other areas.',
+        takeaway: 'Seamless digital collaboration across Odisha and nationwide.',
+      },
+      {
+        q: 'Can Nova Spark manage all our digital marketing under one team?',
+        a: 'Yes. All of these can be brought together in one strategy and simplified so that we can keep our messaging consistent and coordinated across various marketing activities.',
+        takeaway: 'Unified multi-channel execution with consistent brand messaging.',
+      },
+      {
+        q: 'Will we receive regular updates about our campaigns?',
+        a: 'Yes. Regular performance updates are sent on services you choose. Reports may include details about the performance of the campaign, site traffic, SEO improvements, leads, inquiries, and additional agreed-to business metrics.',
+        takeaway: 'Transparent regular updates covering traffic, leads, and business metrics.',
+      },
+      {
+        q: 'Can you work with our existing marketing team?',
+        a: 'Yes. Nova Spark can collaborate with your existing staff, freelance personnel, or other experts. Take responsibility for specific channels or work together on parts of your overall digital strategy.',
+        takeaway: 'Collaborative partnership supporting your in-house talent.',
       },
     ],
   },
@@ -96,7 +115,7 @@ const faqGroups: FAQGroup[] = [
     id: 'seo',
     title: 'SEO & Local Search',
     badge: 'ORGANIC DOMINANCE',
-    highlight: 'Rank #1 in Bhubaneswar Maps Across 12 Geo-Fenced Pin Codes',
+    highlight: 'Rank #1 in Google Maps Across Bhubaneswar & High-Intent Search Corridors',
     collage: {
       mainImage: 'https://images.unsplash.com/photo-1572021335469-31706a17aaef?auto=format&fit=crop&w=800&q=80',
       subImage: '/images/work_realestate.jpg',
@@ -105,29 +124,39 @@ const faqGroups: FAQGroup[] = [
     },
     faqs: [
       {
-        q: 'How long does SEO take to work for a Bhubaneswar business?',
-        a: 'For most local commercial searches in Bhubaneswar, technical improvements and localized keyword shielding show noticeable Google rank acceleration within 60 to 90 days. High-volume competitive keywords (such as real estate or healthcare) reach top 3 positions within 4 to 6 months, delivering compounding organic inbound pipelines with zero ongoing ad spend.',
-        takeaway: 'First ranking acceleration in 60 days; compounding lead generation by month 4.',
-        bullets: [
-          'Immediate technical crawlability and sub-second Core Web Vitals audit',
-          'Hyperlocal geo-tagged authority citation building across Odisha directories',
-          'Targeted commercial intent keyword mapping for Bhubaneswar pin codes',
-        ],
+        q: 'What is the advantage of SEO for my business in Bhubaneswar?',
+        a: 'SEO can make your business visible when potential customers look around for the products/services that you offer. We enhance your website, content, technical SEO, and local visibility to boost visibility for relevant organic traffic.',
+        takeaway: 'Compounds long-term organic visibility and qualified inbound traffic.',
       },
       {
-        q: 'What is Local SEO and why is it important for Bhubaneswar businesses?',
-        a: 'Local SEO positions your business in Google\'s Local 3-Pack—the premier map listings that capture 68% of all commercial clicks when customers search "near me" or "in Bhubaneswar". When a buyer in Infocity searches "dentist near me" or "3 BHK flat in Patia", Local SEO ensures your phone number, reviews, and address dominate the screen.',
-        takeaway: 'Captures the 68% of high-intent mobile searchers looking for immediate local solutions.',
+        q: 'What is local SEO, and why does my business need it?',
+        a: "Local SEO is all about improving your business's visibility in local search results and Google Maps. This is especially relevant for businesses that cater to customers in certain neighborhoods in Bhubaneswar or a nearby area.",
+        takeaway: 'Captures customers searching near your physical location or service area.',
       },
       {
-        q: 'Can you help us rank #1 on Google Maps in Bhubaneswar?',
-        a: 'Yes. Google Business Profile (GBP) optimization is one of our flagship capabilities. We manage geo-fencing, review velocity systems, local citation syndication, and localized schema markup to establish your clinic, showroom, or office as the verified top authority in your specific pin code.',
-        takeaway: 'Proven track record of ranking clients #1 in Bhubaneswar Google Maps 3-Pack.',
+        q: 'What does Nova Spark do to make Google Business Profile more visible?',
+        a: 'We work on important local search factors, including business information, categories, services, content, reviews, local relevance, and profile optimization, to strengthen your presence in relevant Google Search and Maps results.',
+        takeaway: 'Comprehensive GBP optimization driving calls, directions, and visits.',
       },
       {
-        q: 'What does a comprehensive SEO audit include?',
-        a: 'Our audits inspect 140+ ranking factors: Core Web Vitals performance, JavaScript rendering latency, mobile indexing bottlenecks, competitor keyword gap analysis, toxic backlink footprints, local citation accuracy, and an actionable 90-day technical remediation blueprint.',
-        takeaway: 'A complete 140-point technical, on-page, and competitive gap roadmap.',
+        q: 'How long does it take to see SEO results?',
+        a: 'SEO is a long-term effort, and timelines can differ based on industry, competition, website health, location, and starting visibility. We monitor progress in rankings, organic traffic, inquiries, and other mutually agreed KPIs.',
+        takeaway: 'Progress monitored across rankings, organic traffic, and qualified inquiries.',
+      },
+      {
+        q: 'Can Nova Spark handle both technical SEO and content SEO?',
+        a: 'Yes. Our SEO work can cover technical improvements, keyword research, on-page optimization, content planning, internal linking, website structure, local SEO, and other areas relevant to your search growth strategy.',
+        takeaway: 'End-to-end SEO execution covering code, content, structure, and maps.',
+      },
+      {
+        q: 'Is it possible to target a specific area in Bhubaneswar and Odisha for SEO?',
+        a: 'Yes. We can build location-focused SEO strategies around relevant service areas, neighborhoods, and cities while avoiding unnecessary location pages that provide little value to users or search engines.',
+        takeaway: 'High-value localized targeting without keyword-stuffed duplicate pages.',
+      },
+      {
+        q: 'How do you measure the success of an SEO campaign?',
+        a: 'We look at more than keyword rankings. We monitor organic visitors, search visibility, valuable keyword gains, Google Business Profile engagement, inquiries, conversions, and lead quality based on your goals.',
+        takeaway: 'Multi-dimensional reporting tied to real business inquiries and revenue.',
       },
     ],
   },
@@ -135,120 +164,185 @@ const faqGroups: FAQGroup[] = [
     id: 'ads',
     title: 'Google Ads & Meta Ads',
     badge: 'PAID PERFORMANCE',
-    highlight: '6X–8X Average ROAS with Negative Keyword Ad Shielding',
+    highlight: 'Performance Ads Engineered for Predictable Return on Investment',
     collage: {
       mainImage: '/images/dashboard_hero.jpg',
       subImage: '/images/hero_performance_scale.jpg',
       caption: 'Live CPL & Revenue Attribution Terminal',
-      tag: '⚡ NEGATIVE KEYWORD SHIELD',
+      tag: '⚡ PRECISION TARGETING ENGINE',
     },
     faqs: [
       {
-        q: 'What monthly ad spend is required to start Google Ads in Bhubaneswar?',
-        a: 'We generally recommend a minimum monthly media budget of ₹25,000 to ₹45,000 for single-location businesses in Bhubaneswar. This budget provides statistically significant click volume to train Google\'s smart bidding algorithms and generate verified leads within week one. High-ticket sectors like luxury villas or tertiary hospitals scale between ₹75,000 to ₹3,00,000+.',
-        takeaway: 'Starter media budgets from ₹25K/mo; scalable growth models up to ₹3L+/mo.',
+        q: 'What budget should we start with for Google Ads or Meta Ads in Bhubaneswar?',
+        a: 'There is no fixed starting budget for every business. We consider your industry, target audience, competition, location, goals, and average customer value before recommending an appropriate testing budget.',
+        takeaway: 'Custom testing budget determined by your sector and customer value.',
       },
       {
-        q: 'What is ROAS and what benchmarks can we realistically achieve?',
-        a: 'Return on Ad Spend (ROAS) calculates gross revenue generated per rupee invested in ads. Across our Odisha client portfolio, e-commerce and retail brands average 4.5X to 7.8X direct ROAS, while high-ticket B2B, healthcare, and real estate clients generate 12X to 24X pipeline multiplier yield.',
-        takeaway: '4.5X–7.8X for direct retail; 12X–24X pipeline yield for high-ticket verticals.',
+        q: 'How do Google Ads and Meta Ads differ?',
+        a: 'Google Ads mainly targets actual demand when someone is actively looking for a product or service. Meta Ads can build and shape demand via audience targeting, creative content, offers, and remarketing.',
+        takeaway: 'Google captures active intent; Meta creates demand and retargets prospects.',
       },
       {
-        q: 'What is the strategic difference between Google Ads and Meta Ads?',
-        a: 'Google Search Ads harvest active high-intent demand—capturing users who are typing "emergency dental clinic Bhubaneswar" right now. Meta Ads (Instagram/Facebook) manufacture interest—interrupting qualified buyers with high-converting video creative and 3D product tours based on their demographic profile and interests. The most resilient pipelines orchestrate both.',
-        takeaway: 'Google captures active buyers; Meta generates brand desire and retargets visitors.',
+        q: 'How does Nova Spark determine which platform is best for our business?',
+        a: 'We analyze your customer journey, search demand, industry, competition, location, offer, and conversion path. Depending on these, we can suggest Google Ads, Meta Ads, or both.',
+        takeaway: 'Data-driven channel allocation aligned with your target audience behavior.',
       },
       {
-        q: 'Do you handle creative video production and ad copywriting?',
-        a: 'Yes. Every engagement includes full-service creative production: high-converting direct-response ad copy in English and Odia, motion graphic designs, dynamic product catalog feeds, and on-location 4K video shoots for Bhubaneswar businesses.',
-        takeaway: 'Complete in-house creative studio—zero need for third-party designers or copywriters.',
-      },
-    ],
-  },
-  {
-    id: 'social',
-    title: 'Social Media Marketing',
-    badge: 'BRAND REPUTATION',
-    highlight: 'On-Location 4K Video Production for Real Bhubaneswar Audiences',
-    collage: {
-      mainImage: '/images/soundstage_studio.jpg',
-      subImage: '/images/work_fashion.jpg',
-      caption: 'Creative Soundstage & Reels Production Pod',
-      tag: '🎬 4K CREATIVE PRODUCTION',
-    },
-    faqs: [
-      {
-        q: 'Which social media platforms should my Bhubaneswar business prioritize?',
-        a: 'For consumer-facing brands (cafes, healthcare clinics, jewelry showrooms, real estate): Instagram Reels and Meta Ads generate the fastest conversion. For B2B industrial fabricators, technology companies, and commercial contractors: LinkedIn and Google Search yield higher deal value. We focus resources on the 2 channels where your buyers actually spend attention.',
-        takeaway: 'Laser focus on 2 high-conversion channels rather than spreading thin everywhere.',
+        q: 'What is ROAS, and how do you measure advertising performance?',
+        a: 'ROAS is the acronym for Return on Ad Spend. Revenue from advertising is compared to expenditure on advertising. The conversion rate, margin, customer value, and the right benchmark all differ depending on the industry.',
+        takeaway: 'ROAS benchmarked against your actual business margins and customer value.',
       },
       {
-        q: 'How frequently should our business publish content?',
-        a: 'Strategic consistency outperforms vanity volume. We typically engineer 3 to 4 high-production Reels/posts per week, backed by daily conversational Stories and hyper-targeted paid distribution to ensure content reaches real decision-makers in Odisha rather than ghost accounts.',
-        takeaway: '3–4 high-impact weekly assets with guaranteed local reach, not spammy daily fluff.',
+        q: 'How quickly can Google or Meta Ads generate leads?',
+        a: 'While campaigns can start to deliver traffic and inquiries almost immediately, meaningful performance will take some time to test and optimize. This is contingent on targeting, creativity, offer, landing page, budget, and competition.',
+        takeaway: 'Immediate traffic deployment followed by systematic optimization.',
       },
       {
-        q: 'Can you grow genuine, local Bhubaneswar followers on Instagram?',
-        a: 'Yes. We strictly reject fake follower bots. We build organic following through localized trending audio, collaborations with verified Bhubaneswar creators, geo-tagged educational carousels, and location-targeted engagement campaigns that attract genuine buyers living in the city.',
-        takeaway: '100% genuine local audience growth that translates into showroom footfall and inquiries.',
+        q: 'Does Nova Spark make ads and copy?',
+        a: 'Yes. For your engagement, we can build concepts, headlines, primary copy, static creatives, and even short-form video concepts around your goal and target audience.',
+        takeaway: 'Complete creative production covering copy, visuals, and video concepts.',
+      },
+      {
+        q: 'How does Nova Spark optimize campaigns after they go live?',
+        a: 'Campaign data is reviewed regularly, and the targeting, keywords, audiences, placements, creatives, bidding, budgets, landing pages, and conversion tracking are adjusted based on performance and agreed business goals.',
+        takeaway: 'Continuous iterative testing of bidding, targeting, and landing pages.',
       },
     ],
   },
   {
     id: 'web',
     title: 'Website Development',
-    badge: 'INFRASTRUCTURE',
-    highlight: '< 0.8s Load Speeds to Double Ad Visitor Conversion',
+    badge: 'WEBSITE INFRASTRUCTURE',
+    highlight: 'Clean Code, Fast Load Speeds & Seamless Conversion Paths',
     collage: {
       mainImage: '/images/hero_growth_mastery.jpg',
       subImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
-      caption: 'Sub-Second Next.js 15 Web Architecture',
-      tag: '💻 NEXT.JS 15 ENGINE',
+      caption: 'Sub-Second Next.js Web Architecture',
+      tag: '💻 HIGH-PERFORMANCE WEB',
     },
     faqs: [
       {
-        q: 'How much does a commercial business website cost in Bhubaneswar?',
-        a: 'High-speed Next.js landing page funnels start at ₹25,000. Comprehensive corporate websites engineered on Next.js 15 with headless CMS range from ₹45,000 to ₹95,000. Enterprise multi-location platforms and custom e-commerce web applications are quoted transparently based on architecture requirements.',
-        takeaway: 'High-speed performance landing pages from ₹25K; enterprise web platforms from ₹45K.',
+        q: 'How much does a business website from Nova Spark cost in Bhubaneswar?',
+        a: 'Website pricing is dependent on different pages, design, features, integrations, technology, and project scope. Nova Spark gives a clear quotation as per the actual needs of the business.',
+        takeaway: 'Transparent quotations tailored to your exact scope and functionality needs.',
       },
       {
-        q: 'Why do you build on Next.js instead of generic WordPress templates?',
-        a: 'Generic WordPress websites with 30+ plugins load in 4 to 7 seconds on Indian mobile networks, causing 53% of paid visitors to bounce before the page even renders. Our Next.js 15 architectures load in under 0.8 seconds, achieve perfect 95+ Google Lighthouse scores, and convert ad traffic at 2.5X the industry standard.',
-        takeaway: 'Sub-second page speeds prevent wasted ad clicks and double visitor-to-lead conversion.',
+        q: 'Why does Nova Spark use Next.js for business websites?',
+        a: 'Next.js is used when there is a project that demands performance, scalability, technical SEO, and a custom user experience. For simpler requirements, we suggest the best technology for the project.',
+        takeaway: 'Next.js delivers sub-second speed, scalability, and built-in technical SEO advantages.',
       },
       {
-        q: 'How long does it take to design, code, and launch our website?',
-        a: 'Single-page high-converting landing pages launch within 7 to 10 business days. Full corporate multi-page architectures typically deploy in 3 to 4 weeks with weekly live staging links, interactive reviews, and complete mobile optimization.',
-        takeaway: '7–10 days for focused ad funnels; 3–4 weeks for comprehensive corporate platforms.',
+        q: 'How long will it take Nova Spark to create and deploy a website?',
+        a: 'Most business websites require a few weeks to be operational. This depends on the design, content, number of pages, custom development, revisions, and integrations required.',
+        takeaway: 'Structured development sprints with clear milestones from wireframe to launch.',
+      },
+      {
+        q: 'Will Nova Spark optimize my website for Google?',
+        a: 'Yes. We create with SEO basics in mind: site structure, page speed, metadata, mobile responsiveness, clean URLs, content organization, and technical elements that enhance searchability.',
+        takeaway: 'Built-in technical SEO, clean code, and fast Core Web Vitals.',
+      },
+      {
+        q: 'Can Nova Spark update my current business website?',
+        a: 'Yes. We can completely reengineer your current site to enhance its visual appeal, speed, mobile usability, content organization, search engine optimization, and conversion path while preserving valuable business information.',
+        takeaway: 'Modern re-engineering that improves speed and conversion while preserving rankings.',
+      },
+      {
+        q: 'Can Nova Spark link my website to WhatsApp and to lead tracking?',
+        a: 'Yes. We can customize WhatsApp, inquiry forms, analytics, tracking, booking, CRM, and more to manage and track leads based on your requirements.',
+        takeaway: 'Direct WhatsApp integration and automated lead routing into your workflow.',
+      },
+    ],
+  },
+  {
+    id: 'social',
+    title: 'Social Media Marketing',
+    badge: 'BRAND & SOCIAL MEDIA',
+    highlight: 'Audience-Centric Content, Brand Authority & Integrated Multi-Channel Growth',
+    collage: {
+      mainImage: '/images/soundstage_studio.jpg',
+      subImage: '/images/work_fashion.jpg',
+      caption: 'Creative Content Production & Distribution Pod',
+      tag: '🎬 SOCIAL CONTENT & ENGAGEMENT',
+    },
+    faqs: [
+      {
+        q: 'How does Nova Spark build a social media strategy for a business?',
+        a: 'We begin with your business objectives, audience, competition, positioning, and what you have. We then develop a platform-specific strategy, including content pillars, formats, campaigns, posting frequency, and growth goals.',
+        takeaway: 'Custom platform-specific roadmap built around clear content pillars.',
+      },
+      {
+        q: 'How does Nova Spark decide what content our brand should publish?',
+        a: 'We use audience research, industry trends, competitor analysis, search behavior, and your business know-how to find out what topics are relevant. It has a goal of awareness, trust, engagement, consideration, and conversion that is planned for in content.',
+        takeaway: 'Full-funnel content planned for awareness, trust, and conversion.',
+      },
+      {
+        q: 'Can Nova Spark manage both organic social media and paid campaigns?',
+        a: 'Yes. Meta ads can be paired with organic content so your brand can become visible consistently, while your ads are directed to specific audiences, offers, products, services, or lead generation targets.',
+        takeaway: 'Organic brand presence paired synchronously with hyper-targeted paid ads.',
+      },
+      {
+        q: 'How do you make social media content specific to our target audience?',
+        a: 'Audience segments are based on location, interests, demographics, needs, and buying behavior. Content and campaigns then are tailored to their problems and motivations.',
+        takeaway: 'Audience segmentation addressing real buyer pain points and motivations.',
+      },
+      {
+        q: 'How does Nova Spark measure whether social media is generating business value?',
+        a: "We don't just consider followers and likes. We measure reach, engagement, profile actions, website traffic, inquiries, leads, campaign performance, and other agreed business KPIs, depending on the objectives.",
+        takeaway: 'Real business impact tracked via website clicks, inquiries, and conversions.',
+      },
+      {
+        q: 'Can social media content support our SEO and overall digital marketing strategy?',
+        a: 'Yes. Social content can play a complementary role to SEO, paid ads, website campaigns, and content marketing. The topic, message, landing page, and campaigns can all be synced to different digital channels supporting the same business goals.',
+        takeaway: 'Cross-channel synchronization amplifying message reach and SEO signals.',
+      },
+      {
+        q: 'How does Nova Spark handle negative comments and customer responses?',
+        a: 'We build a response approach according to your brand style and industry. Common comments and queries can be dealt with systematically, and sensitive complaints and issues are referred to your team as needed.',
+        takeaway: 'Structured brand voice guidelines ensuring swift, professional community management.',
       },
     ],
   },
   {
     id: 'pricing',
-    title: 'Pricing & Engagement Process',
-    badge: 'COMMERCIAL SLA',
-    highlight: 'Zero Long-Term Lock-Ins. 100% Attribution Verified Every Week',
+    title: 'Pricing & How We Work',
+    badge: 'PRICING & HOW WE WORK',
+    highlight: 'Know What You’re Paying For. Know What We’re Working Toward',
     collage: {
       mainImage: '/images/about_hero.jpg',
       subImage: '/images/ceo_aarav.jpg',
-      caption: 'Executive Boardroom Strategy & Reporting',
-      tag: '🔒 AUDITED REVENUE SLA',
+      caption: 'SEO, Google Ads, Meta Ads, Social Media & Web Solutions for Bhubaneswar Businesses',
+      tag: '💼 TRANSPARENT PRICING & SCOPE',
     },
     faqs: [
       {
-        q: 'How do we get started with Marketing Copilot in Bhubaneswar?',
-        a: 'The engagement starts with a confidential 45-minute growth diagnostic session. We audit your current digital footprint, analyze your top 3 competitors in Odisha, and present a custom 90-day acquisition roadmap with guaranteed CPL ceilings and clear milestones before any contract is signed.',
-        takeaway: 'Zero-pressure 45-minute technical audit with transparent competitive analysis.',
+        q: 'How does Nova Spark determine the pricing for its digital marketing services?',
+        a: 'The cost of pricing varies based on various business objectives, services required, audience, competition, and scope of work. We tailor our plan to your specific needs, not a set one.',
+        takeaway: 'Custom pricing built around your specific objectives and scope of work.',
       },
       {
-        q: 'Do you require long-term contracts or lock-in commitments?',
-        a: 'No. We operate on transparent outcome-based monthly retainers and 30-day fixed sprints. We earn client retention every single month through audited revenue attribution and verified pipeline delivery—not restrictive legal lock-ins.',
-        takeaway: 'Zero long-term lock-ins. Month-to-month accountability tied directly to performance.',
+        q: 'Can you provide personalized digital marketing strategies?',
+        a: 'Yes. Every business has its own objectives and struggles, and we can tailor the scope to your goals, be it SEO, pay-per-click, social media, content, or web development.',
+        takeaway: 'Tailored strategy focusing on high-impact channels for your business.',
       },
       {
-        q: 'How do you report on monthly results and pipeline progression?',
-        a: 'Every client receives access to a 24/7 live Looker Studio executive dashboard tracking real-time ad spend, verified phone leads, cost-per-lead, and pipeline value. Additionally, we conduct bi-weekly executive strategy reviews with your leadership team to optimize close rates.',
-        takeaway: '24/7 live executive dashboard + bi-weekly strategic pipeline reviews.',
+        q: 'Is there a minimum contract period?',
+        a: 'Our engagement terms depend on the services and project scope. The timeline and deliverables are clearly discussed before starting the work; thus, there are no surprises in the commercial terms.',
+        takeaway: 'Clear timelines and deliverables agreed upon upfront with zero surprises.',
+      },
+      {
+        q: 'Can we start with a smaller marketing budget?',
+        a: 'Yes. We can develop a plan that fits within your budget and focus on the channels that are relevant to your current goals, and then expand your strategy as you grow your business.',
+        takeaway: 'Budget-aligned execution that scales as your business revenue expands.',
+      },
+      {
+        q: 'What is included in your digital marketing service?',
+        a: 'Services can range from strategy, campaign management, SEO, content, social media, creative, reporting, optimization, and performance tracking depending on your plan.',
+        takeaway: 'End-to-end management from creative and strategy to tracking and reporting.',
+      },
+      {
+        q: 'Do you charge separately for Google and Meta Ads?',
+        a: 'The amount spent on advertising and agency management fees is usually kept separate. This way, your real media investment remains visible, and it is easier to see where your money in marketing goes.',
+        takeaway: '100% media spend transparency with clearly separated management fees.',
       },
     ],
   },
@@ -284,7 +378,7 @@ const CATEGORY_ALIASES: Record<string, string[]> = {
   ads: ['ads', 'ad', 'google ads', 'meta ads', 'facebook', 'fb', 'ppc', 'cpl', 'leads', 'paid', 'instagram ads'],
   social: ['social', 'social media', 'instagram', 'insta', 'reels', 'content', 'followers', 'branding'],
   web: ['web', 'website', 'development', 'nextjs', 'next.js', 'site', 'speed', 'code', 'pages', 'developer'],
-  pricing: ['pricing', 'price', 'cost', 'retainer', 'budget', 'fees', 'charges', 'packages', 'sla', 'contract'],
+  pricing: ['pricing', 'price', 'cost', 'retainer', 'budget', 'fees', 'charges', 'packages', 'terms', 'contract'],
 };
 
 function matchesFuzzy(text: string, query: string): boolean {
@@ -717,7 +811,7 @@ export default function FAQPage() {
                       className={`${styles.categoryPill} ${selectedCategory === 'all' ? styles.categoryPillActive : ''}`}
                       onClick={() => setSelectedCategory('all')}
                     >
-                      All Questions (24)
+                      All Questions ({faqGroups.reduce((acc, g) => acc + g.faqs.length, 0)})
                     </button>
                     {faqGroups.map((g) => (
                       <button
@@ -995,7 +1089,9 @@ export default function FAQPage() {
                     onClick={() => setSelectedCategory('all')}
                   >
                     <span>All Disciplines</span>
-                    <span className={styles.sideLinkCount}>24</span>
+                    <span className={styles.sideLinkCount}>
+                      {faqGroups.reduce((acc, g) => acc + g.faqs.length, 0)}
+                    </span>
                   </button>
                   {faqGroups.map((g) => (
                     <button
@@ -1154,7 +1250,7 @@ export default function FAQPage() {
                                   <a href="#ask-question" className={styles.answerActionBtn}>
                                     <span>Have a question about this? Ask Strategist →</span>
                                   </a>
-                                  <span className={styles.answerVerifiedBadge}>✓ Verified Odisha SLA</span>
+                                  <span className={styles.answerVerifiedBadge}>✓ Verified Growth Standards</span>
                                 </div>
                               </div>
                             )}
