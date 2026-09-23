@@ -481,7 +481,16 @@ export default function BrandSpotlightSection() {
               CLIENT SPOTLIGHT &bull; CASE STUDY IN ACTION
             </div>
 
-            {/* Interactive Multi-Brand Filter Tabs */}
+            <h2 className={`display-lg ${styles.headline}`}>
+              Engineering Compounding Scale for{' '}
+              <span className="accent-gradient">{activeBrand.headlineHighlight}</span>
+            </h2>
+
+            <p className={`body-lg ${styles.subText}`}>
+              {activeBrand.narrative}
+            </p>
+
+            {/* Interactive Multi-Brand Filter Tabs (Placed Down Below Subheading) */}
             <div className={styles.brandFilterWrapper}>
               <div className={styles.brandFilterTrack}>
                 {spotlightBrands.map((brand) => {
@@ -500,29 +509,17 @@ export default function BrandSpotlightSection() {
                         <Image
                           src={brand.logo}
                           alt={`${brand.name} logo`}
-                          width={20}
-                          height={20}
+                          width={24}
+                          height={24}
                           className={styles.brandFilterLogo}
                         />
                       </div>
-                      <span>{brand.shortName}</span>
-                      <span className={styles.brandBadgePill}>
-                        {brand.hasVideo ? '🎬 Reel' : '📸 Case Study'}
-                      </span>
+                      <span className={styles.brandFilterName}>{brand.shortName}</span>
                     </button>
                   );
                 })}
               </div>
             </div>
-
-            <h2 className={`display-lg ${styles.headline}`}>
-              Engineering Compounding Scale for{' '}
-              <span className="accent-gradient">{activeBrand.headlineHighlight}</span>
-            </h2>
-
-            <p className={`body-lg ${styles.subText}`}>
-              {activeBrand.narrative}
-            </p>
 
             {/* Impact Metric Pills */}
             <div className={styles.headerPills}>
