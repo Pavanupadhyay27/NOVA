@@ -412,7 +412,7 @@ function matchesFuzzy(text: string, query: string): boolean {
 }
 
 export default function FAQPage() {
-  const [openItem, setOpenItem] = useState<string | null>('general-0');
+  const [openItem, setOpenItem] = useState<string | null>(null);
   const [highlightedItem, setHighlightedItem] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [showSuggestions, setShowSuggestions] = useState<boolean>(false);
@@ -1064,8 +1064,8 @@ export default function FAQPage() {
                 DETAILED KNOWLEDGE ARCHIVE
               </div>
               <h2 className={`display-md ${styles.faqSectionTitle}`}>
-                Have Questions About Digital Marketing? Start Here!<br />
-                <span className="accent-gradient">Insights, Strategies and Answers from the Nova Spark Team</span>
+                Have Questions About Digital Marketing?{' '}
+                <span className="accent-gradient">Start Here!</span>
               </h2>
               <p className={styles.faqSectionSub}>
                 Digital marketing can get complicated quickly. We break down SEO, Google Ads, Meta Ads, websites, social media, and lead generation into practical information you can actually use for your business.
