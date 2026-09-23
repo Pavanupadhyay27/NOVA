@@ -137,30 +137,23 @@ const spotlightBrands: BrandSpotlightData[] = [
       {
         id: 'zue-1',
         src: '/images/zue1.png',
-        fallback: '/images/zue_studio_interior.jpg',
-        title: 'Brand Identity & Creative Visual Architecture',
-        tag: 'Creative Direction',
+        fallback: '/images/zue1.png',
+        title: 'Zue Studio Visual Production',
+        tag: '',
       },
       {
         id: 'zue-2',
         src: '/images/zue3.webp',
-        fallback: '/images/zue_fashion_shoot.jpg',
-        title: 'Editorial Photography & Production',
-        tag: 'Visual Production',
+        fallback: '/images/zue3.webp',
+        title: 'Zue Studio Editorial Production',
+        tag: '',
       },
       {
         id: 'zue-3',
-        src: '/images/zue_studio_interior.jpg',
-        fallback: '/images/zue1.png',
-        title: 'Creative Studio Set & Cinema Lighting',
-        tag: 'Studio Architecture',
-      },
-      {
-        id: 'zue-4',
-        src: '/images/zue_fashion_shoot.jpg',
-        fallback: '/images/zue3.webp',
-        title: 'High-Fashion Editorial Production',
-        tag: 'Commercial Campaigns',
+        src: '/images/zue_3.png',
+        fallback: '/images/zue_3.png',
+        title: 'Zue Studio Brand Production',
+        tag: '',
       },
     ],
     deliverables: [
@@ -206,31 +199,45 @@ const spotlightBrands: BrandSpotlightData[] = [
     slides: [
       {
         id: 'heed-1',
-        src: '/images/work_healthcare.jpg',
-        fallback: '/images/work_healthcare.jpg',
-        title: 'Modern Clinic Digital Patient Experience',
-        tag: 'Technical UX & Platform',
+        src: '/images/heed_1.png',
+        fallback: '/images/heed_1.png',
+        title: 'Heed Creative 1',
+        tag: '',
       },
       {
         id: 'heed-2',
-        src: '/images/Carousel4_04.jpg.jpeg',
-        fallback: '/images/work_edtech.jpg',
-        title: 'Local Google 3-Pack & Maps Domination',
-        tag: 'Hyperlocal SEO',
+        src: '/images/heed_2.png',
+        fallback: '/images/heed_2.png',
+        title: 'Heed Creative 2',
+        tag: '',
       },
       {
         id: 'heed-3',
-        src: '/images/Carousel4_05.jpg.jpeg',
-        fallback: '/images/work_realestate.jpg',
-        title: 'Patient Conversion Architecture & CRO',
-        tag: 'Conversion Funnel',
+        src: '/images/heed_3.png',
+        fallback: '/images/heed_3.png',
+        title: 'Heed Creative 3',
+        tag: '',
       },
       {
         id: 'heed-4',
-        src: '/images/Carousel4_06.jpg.jpeg',
-        fallback: '/images/work_healthcare.jpg',
-        title: '24/7 Verified Inbound Lead Telemetry',
-        tag: 'Growth Engine',
+        src: '/images/heed_4.png',
+        fallback: '/images/heed_4.png',
+        title: 'Heed Creative 4',
+        tag: '',
+      },
+      {
+        id: 'heed-5',
+        src: '/images/heed_5.png',
+        fallback: '/images/heed_5.png',
+        title: 'Heed Creative 5',
+        tag: '',
+      },
+      {
+        id: 'heed-6',
+        src: '/images/heed_6.png',
+        fallback: '/images/heed_6.png',
+        title: 'Heed Creative 6',
+        tag: '',
       },
     ],
     deliverables: [
@@ -276,31 +283,52 @@ const spotlightBrands: BrandSpotlightData[] = [
     slides: [
       {
         id: 'pnd-1',
-        src: '/images/sri_pandurangan_divine_fresh.webp',
-        fallback: '/images/Sri Pandurangan Divine Fresh.png',
-        title: 'Farm-Fresh D2C Digital Storefront',
-        tag: 'Visual Branding',
+        src: '/images/panduranga_1.jpeg',
+        fallback: '/images/panduranga_1.jpeg',
+        title: 'Panduranga Creative 1',
+        tag: '',
       },
       {
         id: 'pnd-2',
-        src: '/images/Sri Pandurangan Divine Fresh.png',
-        fallback: '/images/sri_pandurangan_divine_fresh.webp',
-        title: 'Click-to-WhatsApp Direct Ordering Flow',
-        tag: 'Conversion Funnel',
+        src: '/images/panduranga_2.jpeg',
+        fallback: '/images/panduranga_2.jpeg',
+        title: 'Panduranga Creative 2',
+        tag: '',
       },
       {
         id: 'pnd-3',
-        src: '/images/Carousel4_01.jpg.jpeg',
-        fallback: '/images/work_ecommerce.jpg',
-        title: 'Household Subscription Campaigns',
-        tag: 'Retention Ads',
+        src: '/images/panduranga_3.jpeg',
+        fallback: '/images/panduranga_3.jpeg',
+        title: 'Panduranga Creative 3',
+        tag: '',
       },
       {
         id: 'pnd-4',
-        src: '/images/Carousel4_03.jpg.jpeg',
-        fallback: '/images/work_fashion.jpg',
-        title: 'Twin-City Fast Dispatch Geo-Grid',
-        tag: 'Regional Scale',
+        src: '/images/panduranga_4.jpeg',
+        fallback: '/images/panduranga_4.jpeg',
+        title: 'Panduranga Creative 4',
+        tag: '',
+      },
+      {
+        id: 'pnd-5',
+        src: '/images/panduranga_5.jpeg',
+        fallback: '/images/panduranga_5.jpeg',
+        title: 'Panduranga Creative 5',
+        tag: '',
+      },
+      {
+        id: 'pnd-6',
+        src: '/images/panduranga_6.jpeg',
+        fallback: '/images/panduranga_6.jpeg',
+        title: 'Panduranga Creative 6',
+        tag: '',
+      },
+      {
+        id: 'pnd-7',
+        src: '/images/panduranga_7.jpeg',
+        fallback: '/images/panduranga_7.jpeg',
+        title: 'Panduranga Creative 7',
+        tag: '',
       },
     ],
     deliverables: [
@@ -663,12 +691,12 @@ export default function BrandSpotlightSection() {
 
                 {/* Card Header */}
                 <div className={styles.carouselHeader}>
-                  <div className={styles.cardTagWrap}>
-                    <span className={styles.cardTagDot} />
-                    <span className={styles.cardTag}>1:1 BRAND CREATIVES</span>
+                  <div className={styles.brandBadgePill}>
+                    <span className={styles.brandBadgeDot} />
+                    <span>{activeBrand.name}</span>
                   </div>
                   <div className={styles.counterBadge}>
-                    <span>Slide {String(currentSlide + 1).padStart(2, '0')}</span>
+                    <span>{String(currentSlide + 1).padStart(2, '0')}</span>
                     <span className={styles.counterDivider}>/</span>
                     <span>{String(activeBrand.slides.length).padStart(2, '0')}</span>
                   </div>
@@ -691,7 +719,7 @@ export default function BrandSpotlightSection() {
                         <div key={slide.id} className={styles.sliderSlide}>
                           <Image
                             src={imageSrc}
-                            alt={slide.title}
+                            alt={`${activeBrand.name} showcase creative`}
                             fill
                             sizes="(max-width: 960px) 100vw, 680px"
                             quality={100}
@@ -763,13 +791,8 @@ export default function BrandSpotlightSection() {
                   </div>
                 </div>
 
-                {/* Card Footer with Thumbnails */}
+                {/* Clean Centered Thumbnail Gallery (No Text Overlays) */}
                 <div className={styles.carouselFooter}>
-                  <div className={styles.footerTextWrap}>
-                    <span className={styles.footerTag}>{activeBrand.slides[currentSlide]?.tag}</span>
-                    <h4 className={styles.footerTitle}>{activeBrand.slides[currentSlide]?.title}</h4>
-                  </div>
-
                   <div className={styles.thumbStrip}>
                     {activeBrand.slides.map((slide, idx) => {
                       const thumbSrc = imgErrors[slide.id] ? slide.fallback : slide.src;
@@ -873,9 +896,9 @@ export default function BrandSpotlightSection() {
 
                 {/* Card Header */}
                 <div className={styles.carouselHeader}>
-                  <div className={styles.cardTagWrap}>
-                    <span className={styles.cardTagDot} />
-                    <span className={styles.cardTag}>BRAND CREATIVES</span>
+                  <div className={styles.brandBadgePill}>
+                    <span className={styles.brandBadgeDot} />
+                    <span>{activeBrand.name}</span>
                   </div>
                   <div className={styles.counterBadge}>
                     <span>Slide {String(currentSlide + 1).padStart(2, '0')}</span>
@@ -901,7 +924,7 @@ export default function BrandSpotlightSection() {
                         <div key={slide.id} className={styles.sliderSlide}>
                           <Image
                             src={imageSrc}
-                            alt={slide.title}
+                            alt={`${activeBrand.name} showcase creative`}
                             fill
                             sizes="(max-width: 960px) 100vw, 680px"
                             quality={100}
@@ -973,13 +996,8 @@ export default function BrandSpotlightSection() {
                   </div>
                 </div>
 
-                {/* Card Footer with Thumbnails */}
+                {/* Clean Centered Thumbnail Gallery (No Text Overlays) */}
                 <div className={styles.carouselFooter}>
-                  <div className={styles.footerTextWrap}>
-                    <span className={styles.footerTag}>{activeBrand.slides[currentSlide]?.tag}</span>
-                    <h4 className={styles.footerTitle}>{activeBrand.slides[currentSlide]?.title}</h4>
-                  </div>
-
                   <div className={styles.thumbStrip}>
                     {activeBrand.slides.map((slide, idx) => {
                       const thumbSrc = imgErrors[slide.id] ? slide.fallback : slide.src;
