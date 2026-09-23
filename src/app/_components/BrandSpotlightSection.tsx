@@ -481,17 +481,19 @@ export default function BrandSpotlightSection() {
               CLIENT SPOTLIGHT &bull; CASE STUDY IN ACTION
             </div>
 
-            <h2 className={`display-lg ${styles.headline}`}>
-              Engineering Compounding Scale for{' '}
-              <span className="accent-gradient">{activeBrand.headlineHighlight}</span>
-            </h2>
+            <div key={`header-text-${activeBrand.id}`} className={styles.dynamicHeaderContent}>
+              <h2 className={`display-lg ${styles.headline}`}>
+                Engineering Compounding Scale for{' '}
+                <span className="accent-gradient">{activeBrand.headlineHighlight}</span>
+              </h2>
 
-            <p className={`body-lg ${styles.subText}`}>
-              {activeBrand.narrative}
-            </p>
+              <p className={`body-lg ${styles.subText}`}>
+                {activeBrand.narrative}
+              </p>
+            </div>
 
             {/* Interactive Multi-Brand Filter Tabs (Placed Down Below Subheading) */}
-            <div className={styles.brandFilterWrapper}>
+            <div className={styles.brandFilterWrapper} role="tablist" aria-label="Select Client Case Study">
               <div className={styles.brandFilterTrack}>
                 {spotlightBrands.map((brand) => {
                   const isActive = brand.id === activeBrandId;
@@ -499,18 +501,19 @@ export default function BrandSpotlightSection() {
                     <button
                       key={brand.id}
                       type="button"
+                      role="tab"
+                      aria-selected={isActive}
                       onClick={() => handleSelectBrand(brand.id)}
                       className={`${styles.brandFilterBtn} ${
                         isActive ? styles.brandFilterBtnActive : ''
                       }`}
-                      aria-pressed={isActive}
                     >
                       <div className={styles.brandFilterLogoWrap}>
                         <Image
                           src={brand.logo}
                           alt={`${brand.name} logo`}
-                          width={24}
-                          height={24}
+                          width={28}
+                          height={28}
                           className={styles.brandFilterLogo}
                         />
                       </div>
@@ -522,7 +525,7 @@ export default function BrandSpotlightSection() {
             </div>
 
             {/* Impact Metric Pills */}
-            <div className={styles.headerPills}>
+            <div key={`pills-${activeBrand.id}`} className={styles.headerPills}>
               {activeBrand.metrics.map((m) => (
                 <span key={m.label} className={styles.headerPill}>
                   <span className={styles.pillDot} /> {m.value} {m.label}
@@ -537,7 +540,7 @@ export default function BrandSpotlightSection() {
            ══════════════════════════════════════════════════ */}
         {activeBrand.hasVideo ? (
           /* MODE A: 9:16 SMARTPHONE VIDEO + 1:1 SLIDING CAROUSEL */
-          <div className={styles.showcaseGrid}>
+          <div key={`showcase-video-${activeBrand.id}`} className={styles.showcaseGrid}>
             {/* Card 1: Mobile Phone Reel Mockup */}
             <ScrollReveal direction="up" className={styles.videoCol}>
               <div className={styles.videoDeviceCard}>
@@ -797,7 +800,7 @@ export default function BrandSpotlightSection() {
           </div>
         ) : (
           /* MODE B: DUAL-PANE (EDITORIAL NARRATIVE ON LEFT, 1:1 SLIDER ON RIGHT) */
-          <div className={styles.dualPaneEditorialGrid}>
+          <div key={`showcase-editorial-${activeBrand.id}`} className={styles.dualPaneEditorialGrid}>
             {/* Left Pane: Editorial Impact Card */}
             <ScrollReveal direction="up" className={styles.editorialCol}>
               <div className={styles.editorialCard}>

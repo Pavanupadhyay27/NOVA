@@ -45,7 +45,7 @@
 .brandFilterWrapper {
   display: flex;
   justify-content: center;
-  margin: 24px auto 24px;
+  margin: 28px auto 22px;
   width: 100%;
 }
 
@@ -53,41 +53,42 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 8px;
   padding: 6px 8px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1.5px solid #E2E8F0;
   border-radius: 9999px;
   box-shadow: 
     inset 0 1.5px 0 #FFFFFF,
-    0 6px 20px -4px rgba(11, 32, 147, 0.08),
+    0 10px 28px -4px rgba(11, 32, 147, 0.08),
     0 2px 6px rgba(0, 0, 0, 0.02);
-  flex-wrap: wrap;
   max-width: 100%;
 }
 
 .brandFilterBtn {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 9px 20px;
+  padding: 6px 18px 6px 8px;
   border-radius: 9999px;
   background: transparent;
-  border: 1px solid transparent;
+  border: 1.5px solid transparent;
   color: #334155;
   font-family: var(--font-display);
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
+  user-select: none;
 }
 
 .brandFilterBtn:hover {
   color: #0B2093;
-  background: #F8FAFC;
+  background: rgba(241, 245, 249, 0.85);
   border-color: #E2E8F0;
   transform: translateY(-1px);
 }
@@ -98,44 +99,66 @@
   border-color: #0B2093 !important;
   box-shadow: 
     inset 0 1px 0 rgba(255, 255, 255, 0.35),
-    0 6px 18px rgba(11, 32, 147, 0.35) !important;
+    0 8px 22px rgba(11, 32, 147, 0.32) !important;
   transform: translateY(-1px);
 }
 
 .brandFilterLogoWrap {
-  width: 22px;
-  height: 22px;
-  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  background: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 4px;
   flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border: 1px solid #E2E8F0;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
 }
 
 .brandFilterLogo {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: grayscale(100%);
-  opacity: 0.8;
-  transition: filter 0.2s, opacity 0.2s;
+  transition: transform 0.22s ease;
 }
 
-.brandFilterBtn:hover .brandFilterLogo {
-  filter: none;
-  opacity: 1;
+.brandFilterBtn:hover .brandFilterLogoWrap {
+  transform: scale(1.06);
+  border-color: #CBD5E1;
 }
 
-.brandFilterBtnActive .brandFilterLogo {
-  filter: brightness(0) invert(1);
-  opacity: 1;
+.brandFilterBtnActive .brandFilterLogoWrap {
+  background: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+  transform: scale(1.04);
 }
 
 .brandFilterName {
   font-family: var(--font-display);
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   font-weight: 700;
   letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.dynamicHeaderContent {
+  animation: fadeContent 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fadeContent {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .headline {
@@ -1052,14 +1075,33 @@
     padding: 60px 0 40px;
     scroll-margin-top: 80px;
   }
+  .brandFilterWrapper {
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 4px 16px 14px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin: 20px 0 14px;
+  }
+  .brandFilterWrapper::-webkit-scrollbar {
+    display: none;
+  }
   .brandFilterTrack {
-    border-radius: 16px;
+    border-radius: 9999px;
     gap: 6px;
-    padding: 6px;
+    padding: 5px 6px;
+    margin: 0 auto;
+    white-space: nowrap;
   }
   .brandFilterBtn {
-    padding: 6px 12px;
-    font-size: 0.75rem;
+    padding: 5px 14px 5px 6px;
+    font-size: 0.82rem;
+    gap: 8px;
+  }
+  .brandFilterLogoWrap {
+    width: 26px;
+    height: 26px;
+    padding: 3px;
   }
   .headline {
     font-size: clamp(24px, 6.5vw, 32px) !important;
