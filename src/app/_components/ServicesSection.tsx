@@ -60,7 +60,7 @@ const services: ServiceItem[] = [
       'Campaign Optimization',
     ],
     href: '/services/performance-marketing',
-    color: '#EC4899',
+    color: '#0B2093',
     stat: '+142%',
     statLabel: 'Revenue Lift',
     iconSrc: '/images/icons/meta-ads.svg',

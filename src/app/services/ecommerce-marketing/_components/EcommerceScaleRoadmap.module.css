@@ -1,0 +1,120 @@
+.roadmapContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+}
+
+.phaseCard {
+  background: #ffffff;
+  border: 1px solid rgba(11, 32, 147, 0.1);
+  border-radius: 20px;
+  padding: 32px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(11, 32, 147, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.phaseCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 45px rgba(11, 32, 147, 0.1);
+  border-color: rgba(11, 32, 147, 0.25);
+}
+
+.phaseHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.phaseMeta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.phaseNumber {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #0B2093;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.phaseTimeline {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0B2093;
+  background: rgba(11, 32, 147, 0.08);
+  padding: 4px 12px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.deliverableBadge {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #059669;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 4px 12px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.phaseTitle {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.phaseDescription {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.bulletGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.bulletItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: #334155;
+}
+
+.bulletCheck {
+  color: #10B981;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+@media (max-width: 768px) {
+  .phaseCard {
+    padding: 24px 20px;
+  }
+
+  .phaseTitle {
+    font-size: 1.15rem;
+  }
+}

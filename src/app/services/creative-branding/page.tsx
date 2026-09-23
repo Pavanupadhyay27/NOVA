@@ -14,7 +14,7 @@ export default function CreativeBrandingPage() {
       subtitle="Complete brand identity systems, packaging design & conversion-focused ad creatives."
       description="We craft brand identities for Bhubaneswar businesses that command premium positioning and instant market trust. From memorable logo marks and bespoke typography to tactile physical packaging and scroll-stopping digital campaigns — every visual asset engineered to make your business the first name customers choose."
       emoji="🎨"
-      color="#EC4899"
+      color="#0B2093"
       heroImage="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1000&q=80"
       spotlightImage="https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1000&q=80"
       metrics={[

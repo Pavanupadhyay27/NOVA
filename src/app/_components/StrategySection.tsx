@@ -36,7 +36,7 @@ const stages: StrategyStage[] = [
     tagline: 'High-converting video hooks, copy & interactive landers.',
     timeframe: 'Days 15–21',
     focus: 'Creative Sprints',
-    color: '#EC4899',
+    color: '#0B2093',
   },
   {
     num: '04',
@@ -312,9 +312,8 @@ export default function StrategySection() {
               <defs>
                 <linearGradient id="mobWaveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="#0D007F" />
-                  <stop offset="25%" stopColor="#0B2093" />
-                  <stop offset="50%" stopColor="#EC4899" />
-                  <stop offset="75%" stopColor="#F59E0B" />
+                  <stop offset="35%" stopColor="#0B2093" />
+                  <stop offset="70%" stopColor="#F59E0B" />
                   <stop offset="100%" stopColor="#10B981" />
                 </linearGradient>
               </defs>

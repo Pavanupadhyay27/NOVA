@@ -1,0 +1,113 @@
+.tableWrapper {
+  overflow-x: auto;
+  border-radius: 20px;
+  background: #ffffff;
+  border: 1px solid rgba(11, 32, 147, 0.1);
+  box-shadow: 0 16px 40px rgba(11, 32, 147, 0.06);
+}
+
+.comparisonTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  min-width: 680px;
+}
+
+.comparisonTable th {
+  padding: 22px 28px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.thMetric {
+  width: 32%;
+  color: #0F172A;
+  background: #f8fafc;
+}
+
+.thTraditional {
+  width: 34%;
+  color: #64748b;
+  background: #f1f5f9;
+}
+
+.thCopilot {
+  width: 34%;
+  color: #0B2093;
+  background: rgba(11, 32, 147, 0.05);
+  position: relative;
+}
+
+.copilotBadge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #0B2093;
+  background: #FBBF24;
+  padding: 3px 8px;
+  border-radius: 999px;
+  margin-left: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.comparisonTable td {
+  padding: 20px 28px;
+  font-size: 0.92rem;
+  border-bottom: 1px solid #e2e8f0;
+  vertical-align: middle;
+}
+
+.comparisonTable tr:last-child td {
+  border-bottom: none;
+}
+
+.metricCell {
+  font-weight: 600;
+  color: #1e293b;
+  background: #f8fafc;
+}
+
+.metricSubtext {
+  font-size: 0.78rem;
+  color: #64748b;
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+.traditionalCell {
+  color: #64748b;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.crossIcon {
+  color: #94a3b8;
+  flex-shrink: 0;
+}
+
+.copilotCell {
+  color: #0F172A;
+  font-weight: 600;
+  background: rgba(11, 32, 147, 0.02);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.checkIcon {
+  color: #10B981;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .comparisonTable th,
+  .comparisonTable td {
+    padding: 16px 18px;
+  }
+}

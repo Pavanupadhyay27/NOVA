@@ -40,7 +40,7 @@ const testimonials = [
     stat: '200K+ Community',
     subStat: '+320% Social Reach',
     avatarInitials: 'TA',
-    color: '#EC4899',
+    color: '#F59E0B',
     stars: 5,
     tag: 'D2C Brand Velocity'
   },

@@ -38,7 +38,7 @@ const leaders = [
     imagePosition: '50% 12%',
     bio: 'Spearheading commercial growth, strategic enterprise acquisitions, and high-value brand partnerships to expand Marketing Copilot\'s market footprint.',
     quote: 'Building high-leverage growth partnerships that unlock compounding market valuation.',
-    color: '#EC4899',
+    color: '#F59E0B',
     linkedin: 'https://linkedin.com',
   },
   {

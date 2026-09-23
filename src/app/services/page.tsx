@@ -103,7 +103,7 @@ const serviceCatalog: ServiceItem[] = [
     deliverables: ['3D Visual Design Systems', 'Commercial Motion Graphics', 'Premium Brand Toolkits'],
     metric: '120+',
     metricLabel: 'Brand Identities Built',
-    color: '#EC4899',
+    color: '#0B2093',
     href: '/services/creative-branding',
   },
   {
@@ -1293,7 +1293,7 @@ export default function ServicesPage() {
             {/* Zone Cards Grid */}
             <div className={styles.cityZoneGrid}>
               {corridors.map((corridor, idx) => {
-                const zoneColors = ['#3B82F6', '#10B981', '#8B5CF6', '#F59E0B', '#EC4899', '#06B6D4'];
+                const zoneColors = ['#3B82F6', '#10B981', '#8B5CF6', '#F59E0B', '#0D007F', '#06B6D4'];
                 const color = zoneColors[idx];
                 return (
                   <div
