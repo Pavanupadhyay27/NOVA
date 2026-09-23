@@ -1,6 +1,6 @@
 .section {
   padding: 84px 0;
-  background: #FDF2F8;
+  background: #F8FAFC;
   position: relative;
 }
 
@@ -9,8 +9,8 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #EC4899;
-  box-shadow: 0 0 8px #EC4899;
+  background: #F59E0B;
+  box-shadow: 0 0 8px #F59E0B;
   margin-right: 6px;
 }
 
@@ -22,58 +22,55 @@
 
 .subhead {
   color: #64748B;
-  max-width: 660px;
+  max-width: 640px;
   margin: 0 auto;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.6;
 }
 
-.calcCard {
+.simulatorGrid {
   margin-top: 48px;
   background: #FFFFFF;
-  border: 1.5px solid #FBCFE8;
-  border-radius: 24px;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 20px;
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
-  box-shadow: 
-    0 24px 60px -15px rgba(236, 72, 153, 0.15),
-    0 4px 18px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.05);
   overflow: hidden;
 }
 
-/* Left Input Column */
-.inputCol {
-  padding: 44px;
+.controlsCol {
+  padding: 40px;
   display: flex;
   flex-direction: column;
 }
 
-.inputGroup {
-  margin-bottom: 32px;
+.group {
+  margin-bottom: 28px;
 }
 
-.inputLabel {
+.label {
   display: block;
   font-family: var(--font-display);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
   color: #0F172A;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 12px;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
 }
 
-.sectorButtonsRow {
+.sectorChips {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
 }
 
 .sectorBtn {
-  padding: 10px 14px;
+  padding: 9px 12px;
   background: #F8FAFC;
   border: 1px solid #E2E8F0;
-  border-radius: 10px;
+  border-radius: 8px;
   font-family: var(--font-display);
   font-size: 12px;
   font-weight: 700;
@@ -84,48 +81,48 @@
 }
 
 .sectorBtn:hover {
-  background: #FDF2F8;
-  border-color: #FBCFE8;
-  color: #DB2777;
+  background: #EEF2FF;
+  border-color: #C7D2FE;
+  color: #0B2093;
 }
 
 .sectorBtnActive {
-  background: #DB2777 !important;
+  background: #0B2093 !important;
   color: #FFFFFF !important;
-  border-color: #DB2777 !important;
-  box-shadow: 0 4px 12px rgba(219, 39, 119, 0.25) !important;
+  border-color: #0B2093 !important;
+  box-shadow: 0 4px 12px rgba(11, 32, 147, 0.2) !important;
 }
 
 .sliderGroup {
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
-.sliderLabelRow {
+.sliderRow {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .sliderTitle {
   font-family: var(--font-display);
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 700;
   color: #334155;
 }
 
-.sliderValueHighlight {
+.sliderVal {
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 800;
-  color: #DB2777;
-  background: #FDF2F8;
-  border: 1px solid #FBCFE8;
-  padding: 4px 12px;
+  color: #0B2093;
+  background: #EEF2FF;
+  border: 1px solid #C7D2FE;
+  padding: 3px 10px;
   border-radius: 999px;
 }
 
-.rangeInput {
+.sliderInput {
   width: 100%;
   -webkit-appearance: none;
   height: 6px;
@@ -135,195 +132,191 @@
   cursor: pointer;
 }
 
-.rangeInput::-webkit-slider-thumb {
+.sliderInput::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: #DB2777;
+  background: #0B2093;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(219, 39, 119, 0.4);
+  box-shadow: 0 2px 6px rgba(11, 32, 147, 0.4);
   transition: transform 0.15s ease;
 }
 
-.rangeInput::-webkit-slider-thumb:hover {
+.sliderInput::-webkit-slider-thumb:hover {
   transform: scale(1.15);
 }
 
-.sliderTicks {
+.ticks {
   display: flex;
   justify-content: space-between;
-  font-size: 11px;
+  font-size: 10.5px;
   color: #94A3B8;
-  margin-top: 6px;
+  margin-top: 5px;
 }
 
-.calcDisclaimer {
+.dataNotice {
   margin-top: auto;
-  font-size: 11.5px;
+  font-size: 11px;
   color: #64748B;
   background: #F8FAFC;
-  padding: 10px 14px;
+  padding: 10px 12px;
   border-radius: 8px;
   border: 1px dashed #CBD5E1;
 }
 
-/* Right Output Column */
-.resultCol {
-  background: linear-gradient(145deg, #0F172A 0%, #1E1B4B 100%);
-  padding: 44px;
+/* Output Column */
+.outputCol {
+  background: linear-gradient(145deg, #0B2093 0%, #071355 100%);
+  padding: 40px;
   color: #FFFFFF;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.resultHeader {
+.outputHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
-.resultPill {
-  font-size: 10.5px;
+.outputPill {
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.08em;
-  color: #F472B6;
+  color: #93C5FD;
   text-transform: uppercase;
 }
 
-.benchmarkTag {
-  font-size: 11px;
+.cplBenchmark {
+  font-size: 10.5px;
   font-weight: 700;
   color: #A7F3D0;
   background: rgba(16, 185, 129, 0.15);
-  padding: 3px 8px;
-  border-radius: 6px;
+  padding: 2px 8px;
+  border-radius: 4px;
 }
 
-.bigRoasBox {
+.heroRoasDisplay {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
-  padding: 20px;
-  margin-bottom: 24px;
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 20px;
 }
 
-.roasMultipleRow {
+.roasValRow {
   display: flex;
   align-items: baseline;
-  gap: 12px;
+  gap: 10px;
 }
 
-.roasNumber {
+.bigRoasNumber {
   font-family: var(--font-display);
-  font-size: 46px;
+  font-size: 44px;
   font-weight: 800;
-  color: #F472B6;
+  color: #FCD34D;
   line-height: 1;
 }
 
-.roasLabel {
+.roasTag {
   font-family: var(--font-display);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
-  color: #CBD5E1;
+  color: #E2E8F0;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 .roasSub {
-  font-size: 12.5px;
+  font-size: 12px;
   line-height: 1.45;
   color: #CBD5E1;
   margin-top: 6px;
 }
 
-.metricsBreakdownGrid {
+.kpiTilesGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 28px;
+  gap: 10px;
+  margin-bottom: 24px;
 }
 
-.statTile {
-  background: rgba(255, 255, 255, 0.04);
+.kpiTile {
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 12px 14px;
+  border-radius: 10px;
+  padding: 10px 12px;
   display: flex;
   flex-direction: column;
 }
 
-.statTileLabel {
-  font-size: 11px;
+.tileLbl {
+  font-size: 10.5px;
   color: #94A3B8;
   font-weight: 600;
 }
 
-.statTileValHighlight {
+.tileValHighlight {
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 800;
   color: #38BDF8;
-  line-height: 1.2;
   margin-top: 2px;
 }
 
-.statTileVal {
+.tileVal {
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 800;
   color: #FFFFFF;
-  line-height: 1.2;
   margin-top: 2px;
 }
 
-.statTileValGreen {
+.tileValGreen {
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 800;
   color: #34D399;
-  line-height: 1.2;
   margin-top: 2px;
 }
 
-.statTileSub {
-  font-size: 10px;
-  color: #64748B;
-  margin-top: 2px;
+.tileSub {
+  font-size: 9.5px;
+  color: #94A3B8;
+  margin-top: 1px;
 }
 
-.calcCtaBtn {
+.calcActionBtn {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: linear-gradient(135deg, #EC4899 0%, #BE185D 100%);
-  color: #FFFFFF;
+  background: #FFFFFF;
+  color: #0B2093;
   font-family: var(--font-display);
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 800;
-  padding: 14px;
-  border-radius: 12px;
+  padding: 12px;
+  border-radius: 10px;
   text-decoration: none;
-  box-shadow: 0 4px 16px rgba(236, 72, 153, 0.4);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease;
 }
 
-.calcCtaBtn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 22px rgba(236, 72, 153, 0.5);
+.calcActionBtn:hover {
+  background: #F8FAFC;
+  transform: translateY(-1px);
   gap: 12px;
 }
 
 @media (max-width: 900px) {
-  .calcCard {
+  .simulatorGrid {
     grid-template-columns: 1fr;
   }
-  .inputCol, .resultCol {
+  .controlsCol, .outputCol {
     padding: 24px;
   }
 }

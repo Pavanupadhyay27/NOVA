@@ -1,161 +1,119 @@
 'use client';
-import { useState } from 'react';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import styles from './MetaComparisonMatrix.module.css';
 
-export default function MetaComparisonMatrix() {
-  const [activeModel, setActiveModel] = useState<'copilot' | 'boosted'>('copilot');
+interface ComparisonRow {
+  feature: string;
+  boosted: string;
+  copilot: string;
+  takeaway: string;
+}
 
+const comparisonRows: ComparisonRow[] = [
+  {
+    feature: 'Creative Strategy',
+    boosted: '1 static flyer used for months until audience ignores it',
+    copilot: '6–8 weekly video reels tested with 3-sec psychological hooks',
+    takeaway: 'Zero creative fatigue; CPA stays low',
+  },
+  {
+    feature: 'Targeting Depth',
+    boosted: 'Generic age & radius; shows ads to non-buyers & bot accounts',
+    copilot: 'Advantage+ AI + lookalikes trained on top 1% Bhubaneswar buyers',
+    takeaway: 'Reaches high-disposable-income cohorts',
+  },
+  {
+    feature: 'Conversion Funnel',
+    boosted: 'Slow Instagram DMs that sit unread for hours',
+    copilot: '1-tap WhatsApp chat with automated qualification in < 30s',
+    takeaway: '28%+ lead-to-conversation conversion',
+  },
+  {
+    feature: 'Data Tracking',
+    boosted: 'Browser pixel losing 35%+ conversions to iOS 18 blocks',
+    copilot: 'Server-side Meta Conversions API (CAPI) with 9.2/10 match score',
+    takeaway: '100% signal capture for AI scaling',
+  },
+  {
+    feature: 'Attribution & ROAS',
+    boosted: 'Vanity likes and comments; negative commercial return',
+    copilot: 'Verified 4.8X average ROAS tied directly to bank deposits',
+    takeaway: 'Predictable profit unit economics',
+  },
+];
+
+export default function MetaComparisonMatrix() {
   return (
     <section className={styles.section}>
       <div className="container">
-        {/* Header */}
+        {/* Header - Punchy & High-Signal */}
         <ScrollReveal className="text-center">
           <div className="eyebrow" style={{ margin: '0 auto 12px' }}>
             <span className="eyebrow-dot" />
-            <span>Commercial Difference</span>
+            <span>Commercial Economics</span>
           </div>
           <h2 className={`display-md ${styles.headline}`}>
             Boosting Instagram Posts vs. <span className="accent-gradient">Full-Funnel Performance</span>
           </h2>
           <p className={styles.subhead}>
-            Why hitting &quot;Boost Post&quot; burns marketing capital in Bhubaneswar, while an algorithmic conversion architecture scales predictable revenue.
+            Why hitting &quot;Boost Post&quot; burns budget in Bhubaneswar, while an algorithmic conversion architecture scales predictable revenue.
           </p>
         </ScrollReveal>
 
-        {/* Toggle Controls */}
-        <div className={styles.toggleRow}>
-          <div className={styles.segmentedToggle}>
-            <button
-              type="button"
-              className={`${styles.segmentBtn} ${activeModel === 'copilot' ? styles.segmentCopilotActive : ''}`}
-              onClick={() => setActiveModel('copilot')}
-            >
-              <span className={styles.greenDot} />
-              <span>Marketing Copilot Performance Engine</span>
-            </button>
-            <button
-              type="button"
-              className={`${styles.segmentBtn} ${activeModel === 'boosted' ? styles.segmentBoostedActive : ''}`}
-              onClick={() => setActiveModel('boosted')}
-            >
-              <span className={styles.redDot} />
-              <span>Hitting &quot;Boost Post&quot; (DIY Trap)</span>
-            </button>
-          </div>
+        {/* Tabular Specification Matrix (NO CARDS) */}
+        <div className={styles.tableWrapper}>
+          <table className={styles.comparisonTable}>
+            <thead>
+              <tr>
+                <th className={styles.colFeature}>Capabilities</th>
+                <th className={styles.colBoosted}>
+                  <div className={styles.headerLoss}>
+                    <span className={styles.lossDot} />
+                    <span>Hitting &quot;Boost Post&quot;</span>
+                  </div>
+                </th>
+                <th className={styles.colCopilot}>
+                  <div className={styles.headerWin}>
+                    <span className={styles.winBadge}>RECOMMENDED</span>
+                    <span className={styles.winTitle}>Marketing Copilot Engine</span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonRows.map((row) => (
+                <tr key={row.feature} className={styles.tableRow}>
+                  <td className={styles.cellFeature}>
+                    <span className={styles.featureName}>{row.feature}</span>
+                    <span className={styles.featureTakeaway}>{row.takeaway}</span>
+                  </td>
+                  <td className={styles.cellBoosted}>
+                    <div className={styles.statusRow}>
+                      <span className={styles.crossIcon}>✕</span>
+                      <span>{row.boosted}</span>
+                    </div>
+                  </td>
+                  <td className={styles.cellCopilot}>
+                    <div className={styles.statusRow}>
+                      <span className={styles.checkIcon}>✓</span>
+                      <span>{row.copilot}</span>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
 
-        {/* Specification Cards Grid */}
-        <div className={styles.comparisonGrid}>
-          {/* Tile 1: Creative Production */}
-          <div className={`${styles.specCard} ${activeModel === 'copilot' ? styles.specWin : styles.specLoss}`}>
-            <div className={styles.specHeader}>
-              <span className={styles.specIcon}>🎬</span>
-              <span className={styles.specLabel}>Creative Velocity</span>
-            </div>
-            {activeModel === 'copilot' ? (
-              <div className={styles.specContent}>
-                <div className={styles.specMetricBadge}>6–8 NEW ANGLES / WEEK</div>
-                <h4 className={styles.specTitle}>Weekly Video &amp; Reel Sprints</h4>
-                <p className={styles.specDesc}>
-                  We test 8 vertical video variations weekly with unique 3-second psychological hooks, eliminating ad fatigue and driving down acquisition costs.
-                </p>
-              </div>
-            ) : (
-              <div className={styles.specContent}>
-                <div className={styles.specMetricLoss}>1 STATIC IMAGE FOR MONTHS</div>
-                <h4 className={styles.specTitle}>Severe Creative Fatigue</h4>
-                <p className={styles.specDesc}>
-                  Audiences see the same graphic 15+ times. Cost per click doubles every week while engagement drops to zero.
-                </p>
-              </div>
-            )}
+        {/* Minimalist Bottom Ribbon */}
+        <div className={styles.bottomRibbon}>
+          <div className={styles.ribbonText}>
+            <span className={styles.lockIcon}>🔒</span>
+            <span>100% Ad Account Ownership: All pixels, data, and creatives remain your company&apos;s intellectual property.</span>
           </div>
-
-          {/* Tile 2: Targeting Architecture */}
-          <div className={`${styles.specCard} ${activeModel === 'copilot' ? styles.specWin : styles.specLoss}`}>
-            <div className={styles.specHeader}>
-              <span className={styles.specIcon}>🎯</span>
-              <span className={styles.specLabel}>Audience Modeling</span>
-            </div>
-            {activeModel === 'copilot' ? (
-              <div className={styles.specContent}>
-                <div className={styles.specMetricBadge}>ADVANTAGE+ &amp; LOOKALIKES</div>
-                <h4 className={styles.specTitle}>HNI &amp; High-Intent Cohorts</h4>
-                <p className={styles.specDesc}>
-                  Trained on your top 1% highest-spending Bhubaneswar buyers, targeting high-disposable-income neighborhoods like Patia and Saheed Nagar.
-                </p>
-              </div>
-            ) : (
-              <div className={styles.specContent}>
-                <div className={styles.specMetricLoss}>GENERIC RADIUS BOOST</div>
-                <h4 className={styles.specTitle}>Wasted Broad Impressions</h4>
-                <p className={styles.specDesc}>
-                  Shows ads to non-buyers, fake profiles, and accidental scrollers who never intend to purchase your product or service.
-                </p>
-              </div>
-            )}
-          </div>
-
-          {/* Tile 3: Conversion Path */}
-          <div className={`${styles.specCard} ${activeModel === 'copilot' ? styles.specWin : styles.specLoss}`}>
-            <div className={styles.specHeader}>
-              <span className={styles.specIcon}>💬</span>
-              <span className={styles.specLabel}>Lead Conversion</span>
-            </div>
-            {activeModel === 'copilot' ? (
-              <div className={styles.specContent}>
-                <div className={styles.specMetricBadge}>WHATSAPP IN 1 TAP</div>
-                <h4 className={styles.specTitle}>Instant Human Closing</h4>
-                <p className={styles.specDesc}>
-                  Pre-filled WhatsApp inquiries land directly in your team&apos;s chat with automated qualification, achieving 28%+ closing velocity.
-                </p>
-              </div>
-            ) : (
-              <div className={styles.specContent}>
-                <div className={styles.specMetricLoss}>UNMONITORED DM INBOX</div>
-                <h4 className={styles.specTitle}>Slow &amp; Lost Inquiries</h4>
-                <p className={styles.specDesc}>
-                  Potential buyers send messages into an unmanaged Instagram DM folder, going cold within 20 minutes before anyone responds.
-                </p>
-              </div>
-            )}
-          </div>
-
-          {/* Tile 4: Tracking & CAPI */}
-          <div className={`${styles.specCard} ${activeModel === 'copilot' ? styles.specWin : styles.specLoss}`}>
-            <div className={styles.specHeader}>
-              <span className={styles.specIcon}>⚡</span>
-              <span className={styles.specLabel}>Signal Tracking</span>
-            </div>
-            {activeModel === 'copilot' ? (
-              <div className={styles.specContent}>
-                <div className={styles.specMetricBadge}>SERVER-SIDE CAPI 9.2/10</div>
-                <h4 className={styles.specTitle}>iOS 18 Proof Attribution</h4>
-                <p className={styles.specDesc}>
-                  Every phone inquiry, WhatsApp lead, and online order is fed back to Meta&apos;s neural bidding engine for continuous ROAS optimization.
-                </p>
-              </div>
-            ) : (
-              <div className={styles.specContent}>
-                <div className={styles.specMetricLoss}>35% SIGNAL BLIND SPOT</div>
-                <h4 className={styles.specTitle}>Broken Attribution</h4>
-                <p className={styles.specDesc}>
-                  Ad blockers and Apple privacy protocols block conversion reporting, forcing Meta algorithms to bid completely in the dark.
-                </p>
-              </div>
-            )}
-          </div>
-        </div>
-
-        <div className={styles.matrixFooter}>
-          <div className={styles.guaranteeBox}>
-            <span className={styles.guaranteeIcon}>🛡️</span>
-            <span>All Meta ad accounts, creatives, and custom audience assets remain 100% owned by your company.</span>
-          </div>
-          <Link href="/contact" className={styles.matrixCtaBtn}>
-            <span>Switch to the Performance Model</span>
+          <Link href="/contact" className={styles.ribbonBtn}>
+            <span>Deploy Performance Engine</span>
             <span>→</span>
           </Link>
         </div>

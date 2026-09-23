@@ -22,7 +22,7 @@ export default function MetaAdStudioSimulator() {
   };
 
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id="ad-studio">
       <div className="container">
         {/* Header */}
         <ScrollReveal className="text-center">
@@ -38,16 +38,15 @@ export default function MetaAdStudioSimulator() {
           </p>
         </ScrollReveal>
 
-        {/* Format Switcher Tabs */}
+        {/* Format Switcher Tabs (Brand Blue & Gold) */}
         <div className={styles.formatSwitcher}>
           <button
             type="button"
             className={`${styles.formatBtn} ${activeFormat === 'reel' ? styles.formatBtnActive : ''}`}
             onClick={() => setActiveFormat('reel')}
           >
-            <span className={styles.btnIcon}>🎬</span>
-            <span>9:16 Instagram Reel Ad</span>
-            <span className={styles.formatBadge}>High Viral ROAS</span>
+            <span>🎬 9:16 Instagram Reel Ad</span>
+            <span className={styles.formatBadge}>Viral ROAS</span>
           </button>
 
           <button
@@ -55,9 +54,8 @@ export default function MetaAdStudioSimulator() {
             className={`${styles.formatBtn} ${activeFormat === 'whatsapp' ? styles.formatBtnActive : ''}`}
             onClick={() => setActiveFormat('whatsapp')}
           >
-            <span className={styles.btnIcon}>💬</span>
-            <span>Click-to-WhatsApp Chat</span>
-            <span className={styles.formatBadge}>Lowest CPA in Odisha</span>
+            <span>💬 Click-to-WhatsApp Chat</span>
+            <span className={styles.formatBadge}>Lowest CPA</span>
           </button>
 
           <button
@@ -65,20 +63,18 @@ export default function MetaAdStudioSimulator() {
             className={`${styles.formatBtn} ${activeFormat === 'leadform' ? styles.formatBtnActive : ''}`}
             onClick={() => setActiveFormat('leadform')}
           >
-            <span className={styles.btnIcon}>📋</span>
-            <span>Instant Lead Capture</span>
-            <span className={styles.formatBadge}>Pre-Filled Forms</span>
+            <span>📋 Instant Lead Capture</span>
+            <span className={styles.formatBadge}>Pre-Filled</span>
           </button>
         </div>
 
-        {/* Studio Canvas Showcase */}
-        <div className={styles.canvasWrapper}>
-          {/* Left: Interactive Simulated Smartphone Device */}
+        {/* Integrated Studio Canvas (Clean, No Card In Card!) */}
+        <div className={styles.studioStage}>
+          {/* Simulated Smartphone Device */}
           <div className={styles.deviceCol}>
             <div className={styles.phoneFrame}>
               <div className={styles.phoneSpeaker} />
               
-              {/* Phone Screen Screen Content */}
               <div className={styles.phoneScreen}>
                 {/* Top Status Bar */}
                 <div className={styles.phoneTopBar}>
@@ -94,41 +90,37 @@ export default function MetaAdStudioSimulator() {
                   <div className={styles.reelView}>
                     <div className={styles.reelBackgroundMockup}>
                       <div className={styles.reelHookBadge}>
-                        <span>⚡ 3-SECOND VISUAL HOOK</span>
+                        <span>⚡ 3-SEC HOOK</span>
                       </div>
                       <div className={styles.reelVideoCenterText}>
-                        &quot;How This Bhubaneswar Brand Made ₹42 Lakhs in 72 Hours With Meta Reels&quot;
+                        &quot;How This Bhubaneswar Brand Made ₹42 Lakhs in 72 Hours&quot;
                       </div>
-                      <div className={styles.reelPlayIndicator}>▶ Video Playing (Reels Audio)</div>
+                      <div className={styles.reelPlayIndicator}>▶ Video Playing</div>
                     </div>
 
-                    {/* Right Engagement Floating Buttons */}
                     <div className={styles.reelSidebar}>
                       <button 
                         type="button" 
                         className={styles.reelActionBtn}
                         onClick={handleLike}
                       >
-                        <span style={{ color: hasLiked ? '#EF4444' : '#FFFFFF', fontSize: 20 }}>
+                        <span style={{ color: hasLiked ? '#EF4444' : '#FFFFFF', fontSize: 18 }}>
                           {hasLiked ? '❤️' : '🤍'}
                         </span>
                         <span>{likesCount}</span>
                       </button>
 
                       <div className={styles.reelActionBtn}>
-                        <span style={{ fontSize: 20 }}>💬</span>
+                        <span style={{ fontSize: 18 }}>💬</span>
                         <span>184</span>
                       </div>
 
                       <div className={styles.reelActionBtn}>
-                        <span style={{ fontSize: 20 }}>↗️</span>
+                        <span style={{ fontSize: 18 }}>↗️</span>
                         <span>342</span>
                       </div>
-
-                      <div className={styles.reelAudioDisc}>🎵</div>
                     </div>
 
-                    {/* Bottom Reel Details */}
                     <div className={styles.reelBottomMeta}>
                       <div className={styles.reelProfileRow}>
                         <div className={styles.sponsorAvatar}>MC</div>
@@ -136,12 +128,11 @@ export default function MetaAdStudioSimulator() {
                         <span className={styles.sponsoredTag}>Sponsored</span>
                       </div>
                       <p className={styles.reelCaption}>
-                        Stop burning budget on boosted posts. We engineer performance Reels ads tailored for Odisha buyers... <strong>more</strong>
+                        Stop burning budget on boosted posts. Performance Reels tailored for Odisha...
                       </p>
                       
-                      {/* Swipe CTA Button */}
                       <Link href="/contact" className={styles.reelCtaButton}>
-                        <span>Claim Growth Blueprint</span>
+                        <span>Claim Free Growth Audit</span>
                         <span>→</span>
                       </Link>
                     </div>
@@ -164,38 +155,32 @@ export default function MetaAdStudioSimulator() {
                       <div className={styles.chatBubbleAdContext}>
                         <span className={styles.chatAdSource}>Meta Ad · Bhubaneswar Campaign</span>
                         <p className={styles.chatAdHeadline}>
-                          &quot;Book a 1-on-1 Meta Ads Strategy Session with Marketing Copilot&quot;
+                          &quot;Schedule 1-on-1 Meta Ads Strategy Session&quot;
                         </p>
                       </div>
 
                       <div className={styles.chatBubbleIncoming}>
-                        <p>
-                          Namaskar! 👋 Welcome to Marketing Copilot Bhubaneswar. Which growth practice are you looking to scale?
-                        </p>
+                        <p>Namaskar! 👋 Welcome to Marketing Copilot. Ready to scale your sales in Odisha?</p>
                         <span className={styles.chatTime}>09:41 AM</span>
                       </div>
 
                       <div className={styles.chatBubbleOutgoing}>
-                        <p>
-                          Hi! I want to generate qualified leads and high-ROAS sales for my Bhubaneswar business via Instagram &amp; Facebook.
-                        </p>
+                        <p>Hi! We want qualified leads &amp; high ROAS via Instagram &amp; Facebook.</p>
                         <span className={styles.chatTime}>09:42 AM ✓✓</span>
                       </div>
 
                       <div className={styles.chatBubbleIncoming}>
-                        <p>
-                          Fantastic! We have an ongoing sprint for Odisha brands. Here is our direct strategy scheduler:
-                        </p>
+                        <p>Perfect! Here is our direct 30-min strategy scheduler:</p>
                         <div className={styles.chatBookingCard}>
-                          <span>📅 Select Strategy Slot</span>
-                          <span className={styles.chatBookingSub}>30-min Zoom or Kharvela Nagar Office</span>
+                          <span>📅 Select Free Strategy Slot</span>
+                          <span className={styles.chatBookingSub}>Zoom or Kharvela Nagar Office</span>
                         </div>
                         <span className={styles.chatTime}>09:42 AM</span>
                       </div>
                     </div>
 
                     <div className={styles.waInputBar}>
-                      <span className={styles.waInputPlaceholder}>Type a message to our strategist...</span>
+                      <span className={styles.waInputPlaceholder}>Message our strategist...</span>
                       <span className={styles.waSendIcon}>➤</span>
                     </div>
                   </div>
@@ -211,18 +196,13 @@ export default function MetaAdStudioSimulator() {
                     </div>
 
                     <div className={styles.formBody}>
-                      <div className={styles.formProgressRow}>
-                        <span className={styles.stepActive}>Step 1: Contact Details</span>
-                        <span className={styles.stepMuted}>Step 2: Business Info</span>
-                      </div>
-
                       <div className={styles.inputGroup}>
                         <label className={styles.inputLabel}>Full Name</label>
                         <div className={styles.inputMock}>Priyadarshi Mohapatra</div>
                       </div>
 
                       <div className={styles.inputGroup}>
-                        <label className={styles.inputLabel}>WhatsApp Phone Number</label>
+                        <label className={styles.inputLabel}>WhatsApp Number</label>
                         <div className={styles.inputMock}>+91 94371 XXXXX</div>
                       </div>
 
@@ -232,7 +212,7 @@ export default function MetaAdStudioSimulator() {
                       </div>
 
                       <div className={styles.formGuaranteePill}>
-                        <span>🔒 100% Privacy · No Spam Guarantee</span>
+                        <span>🔒 100% Privacy · Verified Phone Lead</span>
                       </div>
 
                       <Link href="/contact" className={styles.formSubmitBtn}>
@@ -245,170 +225,137 @@ export default function MetaAdStudioSimulator() {
             </div>
           </div>
 
-          {/* Right: Technical Explanation & Conversion Metrics */}
+          {/* Right: Punchy Strategy Bullet Points & KPIs (Short text!) */}
           <div className={styles.detailsCol}>
             {activeFormat === 'reel' && (
-              <div className={styles.formatDetailCard}>
+              <div className={styles.formatDetailPane}>
                 <span className={styles.detailPill}>VIRAL ATTENTION ENGINE</span>
                 <h3 className={styles.detailTitle}>
                   9:16 Vertical Video Reels That Stop the Thumb in 3 Seconds
                 </h3>
                 <p className={styles.detailLead}>
-                  In Bhubaneswar, consumers scroll through 300+ feet of social content daily. Generic stock banners get ignored instantly. We script, shoot, and edit high-velocity Reels with psychological pattern interrupts that compel viewers to stop, watch, and take action.
+                  In Bhubaneswar, generic stock banners get skipped. We script, edit, and sound-engineer high-velocity Reels with psychological pattern interrupts that compel viewers to take action.
                 </p>
 
-                <div className={styles.featureGrid}>
-                  <div className={styles.featureItem}>
-                    <span className={styles.featureIcon}>⚡</span>
-                    <div>
-                      <h4 className={styles.featureName}>First 3-Second Hook Architecture</h4>
-                      <p className={styles.featureDesc}>Pattern interrupts, text overlays, and regional Odia/English relatable hooks that prevent drop-offs.</p>
-                    </div>
+                <div className={styles.bulletsList}>
+                  <div className={styles.bulletItem}>
+                    <span className={styles.bulletDot}>✓</span>
+                    <span><strong>3-Second Visual Hook:</strong> High-energy pattern interrupts and Odia/English relatable hooks that prevent drop-offs.</span>
                   </div>
-
-                  <div className={styles.featureItem}>
-                    <span className={styles.featureIcon}>🎬</span>
-                    <div>
-                      <h4 className={styles.featureName}>Weekly Creative Sprint Rotations</h4>
-                      <p className={styles.featureDesc}>We test 6–8 new creative angles every week to eliminate ad fatigue and sustain low CPA.</p>
-                    </div>
+                  <div className={styles.bulletItem}>
+                    <span className={styles.bulletDot}>✓</span>
+                    <span><strong>Weekly Creative Sprints:</strong> Testing 6–8 new video variations weekly to permanently eliminate ad fatigue.</span>
                   </div>
-
-                  <div className={styles.featureItem}>
-                    <span className={styles.featureIcon}>📈</span>
-                    <div>
-                      <h4 className={styles.featureName}>Advantage+ AI Algorithmic Scaling</h4>
-                      <p className={styles.featureDesc}>Leveraging Meta’s neural budget optimization to find buyers across Instagram Explore &amp; Reels.</p>
-                    </div>
+                  <div className={styles.bulletItem}>
+                    <span className={styles.bulletDot}>✓</span>
+                    <span><strong>Advantage+ AI Scaling:</strong> Neural budget optimization matching winning cuts to active buyers.</span>
                   </div>
                 </div>
 
-                <div className={styles.statBoxRow}>
-                  <div className={styles.studioStat}>
-                    <span className={styles.studioStatVal}>4.8X</span>
-                    <span className={styles.studioStatLabel}>Average ROAS</span>
+                <div className={styles.kpiStrip}>
+                  <div className={styles.kpiTile}>
+                    <span className={styles.kpiNum}>4.8X</span>
+                    <span className={styles.kpiLabel}>Average ROAS</span>
                   </div>
-                  <div className={styles.studioStat}>
-                    <span className={styles.studioStatVal}>72 Hours</span>
-                    <span className={styles.studioStatLabel}>Creative Turnaround</span>
+                  <div className={styles.kpiTile}>
+                    <span className={styles.kpiNum}>72 Hrs</span>
+                    <span className={styles.kpiLabel}>Creative Turnaround</span>
                   </div>
-                  <div className={styles.studioStat}>
-                    <span className={styles.studioStatVal}>-45%</span>
-                    <span className={styles.studioStatLabel}>Lower CPA vs Static</span>
+                  <div className={styles.kpiTile}>
+                    <span className={styles.kpiNum}>-45%</span>
+                    <span className={styles.kpiLabel}>Lower CPA vs Static</span>
                   </div>
                 </div>
               </div>
             )}
 
             {activeFormat === 'whatsapp' && (
-              <div className={styles.formatDetailCard}>
-                <span className={styles.detailPill}>HIGHEST CONVERSION RATE IN ODISHA</span>
+              <div className={styles.formatDetailPane}>
+                <span className={styles.detailPill}>HIGHEST CONVERSION IN ODISHA</span>
                 <h3 className={styles.detailTitle}>
                   Click-to-WhatsApp Funnels That Bypass Slow Form Fills
                 </h3>
                 <p className={styles.detailLead}>
-                  Odisha consumers prefer direct, human communication. Rather than making prospective clients fill out intimidating 10-field web forms, our ads route targeted buyers directly into WhatsApp with automated welcoming flows and instant appointment booking.
+                  Odisha buyers prefer direct messaging. Rather than making prospects fill out long forms, our ads launch WhatsApp with automated qualification and immediate appointment booking.
                 </p>
 
-                <div className={styles.featureGrid}>
-                  <div className={styles.featureItem}>
-                    <span className={styles.featureIcon}>💬</span>
-                    <div>
-                      <h4 className={styles.featureName}>Zero Friction Conversion</h4>
-                      <p className={styles.featureDesc}>One tap launches the user&apos;s native WhatsApp app with pre-filled message prompts.</p>
-                    </div>
+                <div className={styles.bulletsList}>
+                  <div className={styles.bulletItem}>
+                    <span className={styles.bulletDot}>✓</span>
+                    <span><strong>Zero Form Friction:</strong> 1-tap opens WhatsApp with pre-filled message prompts.</span>
                   </div>
-
-                  <div className={styles.featureItem}>
-                    <span className={styles.featureIcon}>🤖</span>
-                    <div>
-                      <h4 className={styles.featureName}>Automated Qualification &amp; Routing</h4>
-                      <p className={styles.featureDesc}>Smart chatbot flows pre-qualify budget and service requirements before alerting your sales rep.</p>
-                    </div>
+                  <div className={styles.bulletItem}>
+                    <span className={styles.bulletDot}>✓</span>
+                    <span><strong>Automated Qualification:</strong> Chatbot flows filter budget and intent before alerting your sales rep.</span>
                   </div>
-
-                  <div className={styles.featureItem}>
-                    <span className={styles.featureIcon}>🎯</span>
-                    <div>
-                      <h4 className={styles.featureName}>Verified Phone Number Retention</h4>
-                      <p className={styles.featureDesc}>Every conversation captures an authentic WhatsApp contact for ongoing remarketing and nurture.</p>
-                    </div>
+                  <div className={styles.bulletItem}>
+                    <span className={styles.bulletDot}>✓</span>
+                    <span><strong>Verified Contact Capture:</strong> 100% authentic mobile numbers saved directly into your CRM.</span>
                   </div>
                 </div>
 
-                <div className={styles.statBoxRow}>
-                  <div className={styles.studioStat}>
-                    <span className={styles.studioStatVal}>₹14</span>
-                    <span className={styles.studioStatLabel}>Lowest Cost Per Lead</span>
+                <div className={styles.kpiStrip}>
+                  <div className={styles.kpiTile}>
+                    <span className={styles.kpiNum}>₹14</span>
+                    <span className={styles.kpiLabel}>Lowest Cost Per Lead</span>
                   </div>
-                  <div className={styles.studioStat}>
-                    <span className={styles.studioStatVal}>84%</span>
-                    <span className={styles.studioStatLabel}>Open / Reply Rate</span>
+                  <div className={styles.kpiTile}>
+                    <span className={styles.kpiNum}>84%</span>
+                    <span className={styles.kpiLabel}>Chat Open Rate</span>
                   </div>
-                  <div className={styles.studioStat}>
-                    <span className={styles.studioStatVal}>3.2X</span>
-                    <span className={styles.studioStatLabel}>Faster Sales Close</span>
+                  <div className={styles.kpiTile}>
+                    <span className={styles.kpiNum}>3.2X</span>
+                    <span className={styles.kpiLabel}>Faster Sales Close</span>
                   </div>
                 </div>
               </div>
             )}
 
             {activeFormat === 'leadform' && (
-              <div className={styles.formatDetailCard}>
-                <span className={styles.detailPill}>ENTERPRISE LEAD GENERATION</span>
+              <div className={styles.formatDetailPane}>
+                <span className={styles.detailPill}>HIGH-TICKET PIPELINE</span>
                 <h3 className={styles.detailTitle}>
                   Native In-App Instant Forms Pre-Filled by Meta AI
                 </h3>
                 <p className={styles.detailLead}>
-                  Ideal for real estate developers, educational institutions, and luxury healthcare in Bhubaneswar. The form loads in 0.1 seconds inside Facebook/Instagram with the user&apos;s verified name, phone, and email pre-populated.
+                  Ideal for real estate, healthcare, and higher education. Forms load in 0.1 seconds inside Facebook/Instagram with verified user details pre-populated.
                 </p>
 
-                <div className={styles.featureGrid}>
-                  <div className={styles.featureItem}>
-                    <span className={styles.featureIcon}>⚡</span>
-                    <div>
-                      <h4 className={styles.featureName}>Instant Sub-Second Loading</h4>
-                      <p className={styles.featureDesc}>Zero website loading lag; forms open instantly within the native social app.</p>
-                    </div>
+                <div className={styles.bulletsList}>
+                  <div className={styles.bulletItem}>
+                    <span className={styles.bulletDot}>✓</span>
+                    <span><strong>Instant Load:</strong> Zero web page load lag; native in-app opening.</span>
                   </div>
-
-                  <div className={styles.featureItem}>
-                    <span className={styles.featureIcon}>🔒</span>
-                    <div>
-                      <h4 className={styles.featureName}>Conditional Logic &amp; Filtering</h4>
-                      <p className={styles.featureDesc}>Disqualifies low-budget tire-kickers with conditional questions (e.g. 3BHK budget &gt; ₹1.2 Cr).</p>
-                    </div>
+                  <div className={styles.bulletItem}>
+                    <span className={styles.bulletDot}>✓</span>
+                    <span><strong>Conditional Logic:</strong> Automatically filters out low-budget prospects.</span>
                   </div>
-
-                  <div className={styles.featureItem}>
-                    <span className={styles.featureIcon}>🔄</span>
-                    <div>
-                      <h4 className={styles.featureName}>Direct CRM &amp; Telephony Sync</h4>
-                      <p className={styles.featureDesc}>Instant webhook synchronization delivering lead alerts to your sales team in under 60 seconds.</p>
-                    </div>
+                  <div className={styles.bulletItem}>
+                    <span className={styles.bulletDot}>✓</span>
+                    <span><strong>Instant Sales Dispatch:</strong> Webhook delivers lead details to your sales team in under 60 seconds.</span>
                   </div>
                 </div>
 
-                <div className={styles.statBoxRow}>
-                  <div className={styles.studioStat}>
-                    <span className={styles.studioStatVal}>38%</span>
-                    <span className={styles.studioStatLabel}>Form Completion Rate</span>
+                <div className={styles.kpiStrip}>
+                  <div className={styles.kpiTile}>
+                    <span className={styles.kpiNum}>38%</span>
+                    <span className={styles.kpiLabel}>Completion Rate</span>
                   </div>
-                  <div className={styles.studioStat}>
-                    <span className={styles.studioStatVal}>&lt; 60s</span>
-                    <span className={styles.studioStatLabel}>Sales Lead Dispatch</span>
+                  <div className={styles.kpiTile}>
+                    <span className={styles.kpiNum}>&lt; 60s</span>
+                    <span className={styles.kpiLabel}>Lead Dispatch</span>
                   </div>
-                  <div className={styles.studioStat}>
-                    <span className={styles.studioStatVal}>+220%</span>
-                    <span className={styles.studioStatLabel}>Qualified Pipeline</span>
+                  <div className={styles.kpiTile}>
+                    <span className={styles.kpiNum}>+220%</span>
+                    <span className={styles.kpiLabel}>Qualified Pipeline</span>
                   </div>
                 </div>
               </div>
             )}
 
             <div className={styles.ctaRow}>
-              <Link href="/contact" className={styles.studioLaunchBtn}>
-                <span>Deploy This Ad System for Your Business</span>
+              <Link href="/contact" className={styles.studioActionBtn}>
+                <span>Deploy This Ad System</span>
                 <span>→</span>
               </Link>
             </div>

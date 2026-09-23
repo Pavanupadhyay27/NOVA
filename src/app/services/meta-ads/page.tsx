@@ -1,7 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import type { Metadata } from 'next';
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -18,27 +17,6 @@ import MetaDemographicRadar from './_components/MetaDemographicRadar';
 
 import styles from './meta-ads-page.module.css';
 
-const metaHeroSlides = [
-  {
-    id: 'meta-slide-1',
-    src: 'https://images.unsplash.com/photo-1533750516457-a7f992034fec?q=80&w=1200&auto=format&fit=crop',
-    alt: 'High-converting vertical Instagram Reels ad creative production studio in Bhubaneswar',
-    caption: 'Dynamic 9:16 Vertical Reel Production',
-  },
-  {
-    id: 'meta-slide-2',
-    src: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=1200&auto=format&fit=crop',
-    alt: 'Social media growth analytics and Meta Conversions API real-time ROAS dashboard',
-    caption: 'Full-Funnel Attribution & Meta CAPI',
-  },
-  {
-    id: 'meta-slide-3',
-    src: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1200&auto=format&fit=crop',
-    alt: 'Creative strategy team analyzing Bhubaneswar buyer cohorts and ad fatigue cycles',
-    caption: 'Weekly Creative Testing & Rotation Sprints',
-  },
-];
-
 const metaAdTechArsenal = [
   {
     name: 'Meta Conversions API (CAPI)',
@@ -49,14 +27,14 @@ const metaAdTechArsenal = [
   },
   {
     name: 'Meta Advantage+ AI Engine',
-    category: 'Neural Budget & Creative Distribution',
+    category: 'Neural Distribution',
     desc: 'Algorithmic machine learning matching dynamic creative angles to high-probability buyers across Instagram Explore and Reels.',
     status: 'ALGORITHMIC',
     icon: '🤖',
   },
   {
     name: 'WhatsApp Business API',
-    category: 'Click-to-Chat Lead Pipeline',
+    category: 'Click-to-Chat Funnels',
     desc: 'Instant human closing funnels routing Instagram and Facebook ad clicks directly into automated WhatsApp qualification chats.',
     status: 'SUB-60S DISPATCH',
     icon: '💬',
@@ -70,7 +48,7 @@ const metaAdTechArsenal = [
   },
   {
     name: 'Meta Pixel & Offline Events',
-    category: 'Omnichannel Conversion Tracking',
+    category: 'Omnichannel Tracking',
     desc: 'Syncing in-store Bhubaneswar showroom walk-ins and offline phone closings back into ad accounts to train bidding algorithms.',
     status: 'OMNICHANNEL',
     icon: '📍',
@@ -87,17 +65,17 @@ const metaAdTechArsenal = [
 const metaFaqs = [
   {
     q: 'Should my Bhubaneswar business invest in Google Ads or Meta Ads?',
-    a: 'Both channels serve complementary functions in a complete growth architecture. Google Ads captures active demand from people searching for your service right now. Meta Ads creates new demand and builds massive brand authority by introducing your visual story into people’s daily Instagram and Facebook feeds.',
+    a: 'Both channels serve complementary functions. Google Ads captures active search intent from people looking for your service right now. Meta Ads creates new demand and builds massive brand authority by introducing your visual story into people’s daily Instagram and Facebook feeds.',
     takeaway: 'Google captures active intent; Meta creates new demand and drives direct WhatsApp sales.',
   },
   {
     q: 'Why are Click-to-WhatsApp ads so effective for Odisha businesses?',
-    a: 'Odisha consumers strongly prefer instant, human communication over filling out tedious web forms or waiting hours for an email response. Click-to-WhatsApp ads eliminate friction, allowing your sales team to answer questions, share photos, and close transactions in real time.',
+    a: 'Odisha consumers strongly prefer instant, human communication over filling out tedious web forms. Click-to-WhatsApp ads eliminate friction, allowing your sales team to answer questions, share photos, and close transactions in real time.',
     takeaway: 'WhatsApp ads eliminate form friction and achieve 28%+ lead-to-conversation conversion rates.',
   },
   {
     q: 'How does Marketing Copilot prevent ad fatigue from increasing our costs?',
-    a: 'When audiences in Bhubaneswar see the same ad creative multiple times, cost per click increases dramatically. We run 7-day creative sprints, producing 6 to 8 new vertical video cuts, static carousels, and fresh psychological hooks weekly so your campaigns never fatigue.',
+    a: 'When audiences in Bhubaneswar see the same ad creative multiple times, cost per click increases dramatically. We run 7-day creative sprints, producing 6 to 8 new vertical video cuts, static carousels, and fresh psychological hooks weekly.',
     takeaway: 'Weekly creative sprint rotations test fresh hooks before audience fatigue sets in.',
   },
   {
@@ -113,15 +91,7 @@ const metaFaqs = [
 ];
 
 export default function MetaAdsPage() {
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % metaHeroSlides.length);
-    }, 4500);
-    return () => clearInterval(timer);
-  }, []);
 
   const toggleFaq = (idx: number) => {
     setOpenFaqIndex(openFaqIndex === idx ? null : idx);
@@ -130,116 +100,66 @@ export default function MetaAdsPage() {
   return (
     <div className={styles.pageWrapper}>
       {/* ══════════════════════════════════════════════════
-          1. HERO STUDIO CANVAS
+          1. CENTERED CINEMATIC HERO
          ══════════════════════════════════════════════════ */}
       <section className={styles.hero}>
         <div className={styles.heroMeshGrid} />
         <div className="container">
-          <div className={styles.heroGrid}>
-            <div className={styles.heroContent}>
-              <ScrollReveal>
-                <div className={styles.heroEyebrowPill}>
-                  <span className={styles.pinkPulseDot} />
-                  <span>Verified 4.8X Blended ROAS · Bhubaneswar &amp; Odisha</span>
+          <div className={styles.heroCenter}>
+            <ScrollReveal>
+              <div className={styles.heroEyebrowPill}>
+                <span className={styles.bluePulseDot} />
+                <span>Meta Verified Performance · Bhubaneswar &amp; Odisha</span>
+              </div>
+
+              <h1 className={styles.heroTitle}>
+                Stop the Scroll. Start the Sale.{' '}
+                <span className="accent-gradient">In Bhubaneswar.</span>
+              </h1>
+
+              <p className={styles.heroSub}>
+                From thumb-stopping 9:16 Instagram Reels to Click-to-WhatsApp direct closing funnels and Server-Side CAPI tracking, we turn social attention into predictable customer revenue across Odisha.
+              </p>
+
+              <div className={styles.heroActions}>
+                <BeamButton href="/contact" label="Launch Meta Growth Sprint" size="lg" />
+                <a href="#ad-studio" className={styles.heroSecondaryBtn}>
+                  <span>Inspect Live Ad Formats</span>
+                  <span>↓</span>
+                </a>
+              </div>
+
+              <div className={styles.trustStrip}>
+                <div className={styles.trustAvatars}>
+                  <span className={styles.trustAvatar}>VH</span>
+                  <span className={styles.trustAvatar}>ED</span>
+                  <span className={styles.trustAvatar}>SM</span>
+                  <span className={`${styles.trustAvatar} ${styles.trustAvatarGold}`}>+45</span>
                 </div>
+                <div className={styles.trustStars}>★★★★★</div>
+                <span className={styles.trustLabel}>
+                  4.8X Avg ROAS across 45+ Bhubaneswar &amp; Odisha Brands
+                </span>
+              </div>
+            </ScrollReveal>
 
-                <h1 className={styles.heroTitle}>
-                  Stop the Scroll. Start the Sale.{' '}
-                  <span className="accent-gradient">In Bhubaneswar.</span>
-                </h1>
-
-                <p className={styles.heroSub}>
-                  We engineer high-converting Meta ad campaigns tailored for Odisha consumers. From Reels hooks that stop the thumb to Click-to-WhatsApp direct sales funnels and Server-Side CAPI tracking, we turn social attention into predictable revenue.
-                </p>
-
-                <div className={styles.heroActions}>
-                  <BeamButton href="/contact" label="Launch Meta Growth Sprint" size="lg" />
-                  <a href="#ad-studio" className={styles.heroSecondaryBtn}>
-                    <span>Inspect Live Ad Formats</span>
-                    <span>↓</span>
-                  </a>
-                </div>
-
-                <div className={styles.trustStrip}>
-                  <div className={styles.trustAvatars}>
-                    <span className={styles.trustAvatar}>VH</span>
-                    <span className={styles.trustAvatar}>ED</span>
-                    <span className={styles.trustAvatar}>SM</span>
-                    <span className={`${styles.trustAvatar} ${styles.trustAvatarPink}`}>+45</span>
-                  </div>
-                  <div className={styles.trustTextCol}>
-                    <div className={styles.trustStars}>★★★★★</div>
-                    <div className={styles.trustLabel}>4.8X Avg ROAS across 45+ Bhubaneswar &amp; Odisha Brands</div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            </div>
-
-            <div className={styles.heroVisualStage}>
-              <div className={styles.visualGlowBackdrop} />
-              <div className={styles.heroCardContainer}>
-                <div className={styles.heroSliderViewport}>
-                  {metaHeroSlides.map((slide, idx) => (
-                    <div
-                      key={slide.id}
-                      style={{
-                        position: 'absolute',
-                        inset: 0,
-                        opacity: idx === currentSlide ? 1 : 0,
-                        transition: 'opacity 0.6s ease-in-out',
-                      }}
-                    >
-                      <Image
-                        src={slide.src}
-                        alt={slide.alt}
-                        fill
-                        priority={idx === 0}
-                        sizes="(max-width: 768px) 100vw, 480px"
-                        className={styles.heroSlideImg}
-                      />
-                      <div className={styles.slideOverlayGradient} />
-                    </div>
-                  ))}
-
-                  <div className={styles.floatingTopPill}>
-                    <span className={styles.pinkPulseDot} />
-                    <span>Average ROAS: 4.8X Verified Return</span>
-                  </div>
-
-                  <div className={styles.floatingBottomCaption}>
-                    <span>{metaHeroSlides[currentSlide]?.caption}</span>
-                    <div className={styles.dotsWrapper}>
-                      {metaHeroSlides.map((_, idx) => (
-                        <button
-                          key={idx}
-                          type="button"
-                          className={`${styles.dotBtn} ${idx === currentSlide ? styles.dotBtnActive : ''}`}
-                          onClick={() => setCurrentSlide(idx)}
-                          aria-label={`Slide ${idx + 1}`}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                <div className={styles.telemetryGrid}>
-                  <div className={styles.telemetryCard}>
-                    <span className={styles.tVal}>4.8X</span>
-                    <span className={styles.tLabel}>Average ROAS</span>
-                  </div>
-                  <div className={styles.telemetryCard}>
-                    <span className={styles.tVal}>+340%</span>
-                    <span className={styles.tLabel}>Qualified Leads</span>
-                  </div>
-                  <div className={styles.telemetryCard}>
-                    <span className={styles.tVal}>₹14</span>
-                    <span className={styles.tLabel}>Lowest CPL</span>
-                  </div>
-                  <div className={styles.telemetryCard}>
-                    <span className={styles.tVal}>72 Hrs</span>
-                    <span className={styles.tLabel}>Creative Sprint</span>
-                  </div>
-                </div>
+            {/* Horizontal Telemetry Ribbon */}
+            <div className={styles.telemetryRibbon}>
+              <div className={styles.telemetryCell}>
+                <span className={styles.tVal}>4.8X</span>
+                <span className={styles.tLabel}>Average ROAS</span>
+              </div>
+              <div className={styles.telemetryCell}>
+                <span className={styles.tVal}>+340%</span>
+                <span className={styles.tLabel}>Qualified Leads</span>
+              </div>
+              <div className={styles.telemetryCell}>
+                <span className={styles.tVal}>₹14</span>
+                <span className={styles.tLabel}>Lowest CPL</span>
+              </div>
+              <div className={styles.telemetryCell}>
+                <span className={styles.tVal}>72 Hrs</span>
+                <span className={styles.tLabel}>Creative Sprint</span>
               </div>
             </div>
           </div>
@@ -279,85 +199,69 @@ export default function MetaAdsPage() {
       <MetaSprintRoadmap />
 
       {/* ══════════════════════════════════════════════════
-          8. FLAGSHIP D2C TRANSFORMATION SHOWCASE (CASE STUDY)
+          8. EDITORIAL CASE STUDY SHOWCASE
          ══════════════════════════════════════════════════ */}
       <section className={styles.caseSection}>
         <div className="container">
           <ScrollReveal>
-            <div className={styles.caseSkeuoCard}>
-              <div className={styles.caseAtmosphereGlow} />
-
-              <div className={styles.caseTopBar}>
-                <div className={styles.caseStatusBadge}>
-                  <span className={styles.caseStatusPulse} />
-                  <span>VERIFIED BHUBANESWAR D2C CASE STUDY</span>
+            <div className={styles.editorialContainer}>
+              <div className={styles.editorialContent}>
+                <div className={styles.editorialBadge}>
+                  <span className={styles.badgeDot} />
+                  <span>Verified D2C Case Study · Chandrasekharpur</span>
                 </div>
-                <div className={styles.caseSectorPill}>
-                  <span>Chandrasekharpur &amp; Pan-Odisha Dispatch</span>
+
+                <h3 className={styles.editorialTitle}>
+                  Velour Handcrafted D2C Fashion
+                </h3>
+                <div className={styles.editorialLocation}>
+                  📍 Chandrasekharpur, Bhubaneswar &amp; Pan-Odisha Dispatch
+                </div>
+
+                <p className={styles.editorialDesc}>
+                  Velour was stuck with boosted posts yielding zero attributable revenue. Marketing Copilot engineered a high-velocity 9:16 vertical Reels system with WhatsApp checkout funnels and Server-Side CAPI tracking.
+                </p>
+
+                <div className={styles.editorialQuoteBlock}>
+                  <p className={styles.editorialQuoteText}>
+                    &quot;Marketing Copilot transformed our brand economics. We sold out our entire seasonal collection in 72 hours with sub-₹250 customer acquisition costs.&quot;
+                  </p>
+                  <span className={styles.editorialQuoteAuthor}>
+                    — Founder &amp; Creative Director, Velour Fashion
+                  </span>
+                </div>
+
+                <div>
+                  <BeamButton href="/portfolio" label="Explore All Verified Case Studies" size="md" />
                 </div>
               </div>
 
-              <div className={styles.caseSplitGrid}>
-                <div className={styles.caseInfoCol}>
-                  <h3 className={styles.caseClientTitle}>
-                    Velour Handcrafted D2C Fashion
-                  </h3>
-                  <div className={styles.caseLocBadge}>
-                    <span>📍 Chandrasekharpur, Bhubaneswar</span>
+              <div className={styles.editorialVisual}>
+                <div className={styles.editorialImgWrapper}>
+                  <Image
+                    src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80"
+                    alt="Velour Handcrafted D2C Fashion Bhubaneswar"
+                    fill
+                    sizes="(max-width: 900px) 100vw, 480px"
+                    className={styles.editorialImg}
+                  />
+                  <div className={styles.editorialImgBadge}>
+                    <span>4.8X Verified ROAS · Meta CAPI Validated</span>
                   </div>
-
-                  <p className={styles.caseExecSummary}>
-                    Velour Handcrafted was struggling with boosted posts that yielded zero attributable revenue. Marketing Copilot engineered a high-velocity 9:16 vertical video Reels strategy coupled with instant WhatsApp checkout funnels and Meta Conversions API (CAPI) tracking.
-                  </p>
-
-                  <div className={styles.caseStrategyChips}>
-                    <span className={styles.stratChip}>✓ 9:16 Vertical Video Reels</span>
-                    <span className={styles.stratChip}>✓ Click-to-WhatsApp Direct Checkout</span>
-                    <span className={styles.stratChip}>✓ Server-Side CAPI Event Attribution</span>
-                  </div>
-
-                  <div className={styles.caseQuoteCallout}>
-                    <p className={styles.caseQuoteText}>
-                      &quot;Marketing Copilot transformed our brand economics. We sold out our entire seasonal collection in 72 hours with sub-₹250 customer acquisition costs. Their Reels creative testing system is light years ahead of any agency in Odisha.&quot;
-                    </p>
-                    <div className={styles.caseQuoteAuthor}>
-                      — Founder &amp; Creative Director, Velour Fashion
-                    </div>
-                  </div>
-
-                  <BeamButton href="/portfolio" label="Explore All Verified Case Studies" size="md" />
                 </div>
 
-                <div className={styles.caseVisualCol}>
-                  <div className={styles.caseVisualWindow}>
-                    <Image
-                      src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80"
-                      alt="Velour Handcrafted D2C Fashion Bhubaneswar"
-                      fill
-                      sizes="(max-width: 768px) 100vw, 440px"
-                      className={styles.caseWindowImg}
-                    />
-                    <div className={styles.caseWindowBadge}>
-                      <span>4.8X Verified ROAS · Meta CAPI Validated</span>
-                    </div>
+                <div className={styles.kpiStrip}>
+                  <div className={styles.kpiItem}>
+                    <span className={styles.kpiNum}>4.8X</span>
+                    <span className={styles.kpiLbl}>Blended ROAS</span>
                   </div>
-
-                  <div className={styles.caseKpiRow}>
-                    <div className={styles.caseKpiTile}>
-                      <span className={styles.kpiNumber}>4.8X</span>
-                      <span className={styles.kpiTitle}>Blended ROAS</span>
-                      <span className={styles.kpiSub}>High Profitability</span>
-                    </div>
-                    <div className={styles.caseKpiTile}>
-                      <span className={styles.kpiNumber}>₹42L</span>
-                      <span className={styles.kpiTitle}>Gross Revenue</span>
-                      <span className={styles.kpiSub}>In 30 Days</span>
-                    </div>
-                    <div className={styles.caseKpiTile}>
-                      <span className={styles.kpiNumber}>72 Hrs</span>
-                      <span className={styles.kpiTitle}>Collection Sold</span>
-                      <span className={styles.kpiSub}>Sub-₹250 CAC</span>
-                    </div>
+                  <div className={styles.kpiItem}>
+                    <span className={styles.kpiNum}>₹42L</span>
+                    <span className={styles.kpiLbl}>Gross Revenue</span>
+                  </div>
+                  <div className={styles.kpiItem}>
+                    <span className={styles.kpiNum}>72 Hrs</span>
+                    <span className={styles.kpiLbl}>Collection Sold</span>
                   </div>
                 </div>
               </div>
@@ -372,7 +276,7 @@ export default function MetaAdsPage() {
       <MetaDemographicRadar />
 
       {/* ══════════════════════════════════════════════════
-          10. AD TECH & ATTRIBUTION ARSENAL
+          10. ARCHITECTURAL AD TECH ARSENAL
          ══════════════════════════════════════════════════ */}
       <section className={styles.arsenalSection}>
         <div className="container">
@@ -384,20 +288,20 @@ export default function MetaAdsPage() {
             <h3 className="display-md" style={{ color: '#0F172A', marginBottom: 10 }}>
               Ad Tech Arsenal &amp; <span className="accent-gradient">Data Infrastructure</span>
             </h3>
-            <p className="body-md" style={{ color: '#64748B', maxWidth: 640, margin: '0 auto' }}>
+            <p className="body-md" style={{ color: '#64748B', maxWidth: 600, margin: '0 auto' }}>
               Advanced server-to-server tracking toolchains deployed across all Meta campaigns.
             </p>
 
-            <div className={styles.arsenalGrid}>
+            <div className={styles.arsenalSpecGrid}>
               {metaAdTechArsenal.map((t) => (
-                <div key={t.name} className={styles.toolCard}>
-                  <div className={styles.toolHeader}>
-                    <div className={styles.toolIconBox}>{t.icon}</div>
-                    <span className={styles.toolStatusPill}>{t.status}</span>
+                <div key={t.name} className={styles.specRow}>
+                  <div className={styles.specTopBar}>
+                    <span className={styles.specIcon}>{t.icon}</span>
+                    <span className={styles.specStatus}>{t.status}</span>
                   </div>
-                  <h4 className={styles.toolName}>{t.name}</h4>
-                  <span className={styles.toolCategory}>{t.category}</span>
-                  <p className={styles.toolDesc}>{t.desc}</p>
+                  <h4 className={styles.specTitle}>{t.name}</h4>
+                  <span className={styles.specCategory}>{t.category}</span>
+                  <p className={styles.specDesc}>{t.desc}</p>
                 </div>
               ))}
             </div>
@@ -406,7 +310,7 @@ export default function MetaAdsPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════
-          11. TACTICAL META ADS FAQ VAULT
+          11. MINIMALIST HAIRLINE FAQ LIST
          ══════════════════════════════════════════════════ */}
       <section className={styles.faqSection}>
         <div className="container">
@@ -418,34 +322,34 @@ export default function MetaAdsPage() {
             <h3 className="display-md" style={{ color: '#0F172A', marginBottom: 10 }}>
               Frequently Asked <span className="accent-gradient">Meta Ads Questions</span>
             </h3>
-            <p className="body-md" style={{ color: '#64748B', maxWidth: 620, margin: '0 auto' }}>
+            <p className="body-md" style={{ color: '#64748B', maxWidth: 580, margin: '0 auto' }}>
               Everything Bhubaneswar founders need to know about Instagram Reels, Facebook Ads, WhatsApp funnels, and ROAS.
             </p>
           </ScrollReveal>
 
-          <div className={styles.faqAccordion}>
+          <div className={styles.faqContainer}>
             {metaFaqs.map((faq, idx) => {
               const isOpen = openFaqIndex === idx;
               return (
                 <div
                   key={faq.q}
-                  className={`${styles.faqItem} ${isOpen ? styles.faqItemOpen : ''}`}
+                  className={`${styles.faqRow} ${isOpen ? styles.faqRowOpen : ''}`}
                 >
                   <button
                     type="button"
-                    className={styles.faqQuestionBtn}
+                    className={styles.faqBtn}
                     onClick={() => toggleFaq(idx)}
                     aria-expanded={isOpen}
                   >
-                    <span className={styles.faqQText}>{faq.q}</span>
-                    <span className={`${styles.faqChevron} ${isOpen ? styles.faqChevronRotated : ''}`}>
-                      ↓
+                    <span className={styles.faqQuestion}>{faq.q}</span>
+                    <span className={styles.faqIcon}>
+                      {isOpen ? '−' : '+'}
                     </span>
                   </button>
 
                   {isOpen && (
-                    <div className={styles.faqAnswerPane}>
-                      <p className={styles.faqAText}>{faq.a}</p>
+                    <div className={styles.faqPane}>
+                      <p className={styles.faqAnswer}>{faq.a}</p>
                       <div className={styles.faqTakeaway}>
                         <span>💡 Strategic Takeaway:</span>
                         <span>{faq.takeaway}</span>
@@ -460,32 +364,33 @@ export default function MetaAdsPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════
-          12. EXECUTIVE AD ACCOUNT AUDIT & CONVERSION STATION
+          12. EXECUTIVE AD ACCOUNT AUDIT TERMINAL
          ══════════════════════════════════════════════════ */}
       <section className={styles.conversionSection}>
         <div className="container">
           <ScrollReveal>
-            <div className={styles.conversionConsole}>
-              <div className={styles.consoleLeft}>
-                <span className={styles.consolePill}>SCHEDULE AD ACCOUNT AUDIT</span>
-                <h3 className={styles.consoleTitle}>
+            <div className={styles.executiveTerminal}>
+              <div className={styles.termGlow} />
+              <div>
+                <span className={styles.termPill}>SCHEDULE AD ACCOUNT AUDIT</span>
+                <h3 className={styles.termTitle}>
                   Ready to Turn Social Feeds into a Predictable Revenue Engine?
                 </h3>
-                <p className={styles.consoleSub}>
+                <p className={styles.termSub}>
                   Claim your free 30-minute forensic Meta ad account audit. We will analyze your past ROAS, creative fatigue rate, and WhatsApp conversion path across Bhubaneswar and Odisha.
                 </p>
-                <div className={styles.consoleContactRow}>
-                  <a href="tel:+919437168434" className={styles.phoneHotline}>
-                    <span>📞 Direct Line:</span>
-                    <span>+91 94371 68434</span>
+                <div className={styles.termContact}>
+                  <span>📞 Direct Hotline:</span>
+                  <a href="tel:+919437168434" className={styles.termPhone}>
+                    +91 94371 68434
                   </a>
-                  <span style={{ color: '#F472B6' }}>·</span>
-                  <span style={{ fontSize: 13, color: '#FCE7F3' }}>HQ: Kharvela Nagar, Unit 3, Bhubaneswar</span>
+                  <span>·</span>
+                  <span>HQ: Kharvela Nagar, Unit 3, Bhubaneswar</span>
                 </div>
               </div>
 
-              <div className={styles.consoleActionsCol}>
-                <Link href="/contact" className={styles.consoleAuditBtn}>
+              <div className={styles.termActions}>
+                <Link href="/contact" className={styles.termAuditBtn}>
                   <span>Claim Free Meta Account Audit</span>
                   <span>→</span>
                 </Link>
@@ -494,7 +399,7 @@ export default function MetaAdsPage() {
                   href="https://wa.me/919437168434?text=Hi%20Marketing%20Copilot%2C%20I%20want%20to%20audit%20my%20business%20Meta%20Ads"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={styles.consoleWhatsAppBtn}
+                  className={styles.termWhatsAppBtn}
                 >
                   <span>💬 WhatsApp Our Senior Media Buyer</span>
                 </a>

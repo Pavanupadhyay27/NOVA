@@ -1,6 +1,6 @@
 .section {
   padding: 84px 0;
-  background: #F8FAFC;
+  background: #FFFFFF;
   position: relative;
 }
 
@@ -12,94 +12,84 @@
 
 .subhead {
   color: #64748B;
-  max-width: 660px;
+  max-width: 640px;
   margin: 0 auto;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.6;
 }
 
-.roadmapCard {
-  margin-top: 48px;
-  background: #FFFFFF;
-  border: 1.5px solid #E2E8F0;
-  border-radius: 20px;
-  box-shadow: 
-    0 24px 60px -15px rgba(15, 23, 42, 0.08),
-    0 4px 16px rgba(0, 0, 0, 0.03);
-  overflow: hidden;
-}
-
-/* Timeline Top Bar */
-.timelineBar {
+/* Linear Timeline Ribbon */
+.timelineRibbon {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  background: #F1F5F9;
-  border-bottom: 1.5px solid #E2E8F0;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
   padding: 6px;
   gap: 6px;
+  margin-top: 40px;
+  margin-bottom: 36px;
 }
 
-.timelineStepBtn {
+.stepPillBtn {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 14px 18px;
+  padding: 12px 16px;
   background: transparent;
   border: none;
-  border-radius: 12px;
+  border-radius: 10px;
   cursor: pointer;
   text-align: left;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.timelineStepBtn:hover {
+.stepPillBtn:hover {
   background: #FFFFFF;
 }
 
-.timelineStepActive {
+.stepPillActive {
   background: #FFFFFF !important;
-  box-shadow: 0 4px 14px rgba(11, 32, 147, 0.1) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
 }
 
-.stepCircle {
+.stepNumBadge {
   width: 28px;
   height: 28px;
   border-radius: 50%;
   background: #E2E8F0;
   color: #475569;
   font-family: var(--font-display);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: all 0.2s ease;
 }
 
-.timelineStepActive .stepCircle {
-  background: #EC4899;
+.stepPillActive .stepNumBadge {
+  background: #0B2093;
   color: #FFFFFF;
-  box-shadow: 0 0 10px rgba(236, 72, 153, 0.4);
 }
 
-.stepMetaCol {
+.stepTextCol {
   display: flex;
   flex-direction: column;
 }
 
-.stepWeek {
+.stepWkTitle {
   font-family: var(--font-display);
   font-size: 13px;
   font-weight: 800;
   color: #0F172A;
 }
 
-.timelineStepActive .stepWeek {
-  color: #DB2777;
+.stepPillActive .stepWkTitle {
+  color: #0B2093;
 }
 
-.stepPhase {
+.stepPhaseSub {
   font-size: 11px;
   color: #64748B;
   white-space: nowrap;
@@ -108,21 +98,20 @@
   max-width: 140px;
 }
 
-/* Step Content Stage */
-.stepContentGrid {
+/* Stage Grid */
+.roadmapStageGrid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1.15fr 0.85fr;
   gap: 40px;
-  padding: 44px;
   align-items: center;
 }
 
-.stepInfoCol {
+.detailsCol {
   display: flex;
   flex-direction: column;
 }
 
-.stepPillRow {
+.badgeRow {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -130,18 +119,19 @@
   flex-wrap: wrap;
 }
 
-.stepBadgePill {
+.categoryBadge {
   font-size: 10.5px;
   font-weight: 800;
   letter-spacing: 0.06em;
-  color: #DB2777;
-  background: #FDF2F8;
-  border: 1px solid #FBCFE8;
+  text-transform: uppercase;
+  color: #0B2093;
+  background: #EEF2FF;
+  border: 1px solid #C7D2FE;
   padding: 3px 10px;
   border-radius: 999px;
 }
 
-.stepSlaTag {
+.slaBadge {
   font-size: 10.5px;
   font-weight: 700;
   color: #047857;
@@ -151,7 +141,7 @@
   border-radius: 999px;
 }
 
-.stepHeadline {
+.stepTitle {
   font-family: var(--font-display);
   font-size: 24px;
   font-weight: 800;
@@ -160,50 +150,54 @@
   margin-bottom: 10px;
 }
 
-.stepDesc {
+.stepLead {
   font-size: 14.5px;
   line-height: 1.6;
   color: #475569;
+  margin-bottom: 20px;
+}
+
+.deliverablesBox {
   margin-bottom: 24px;
 }
 
-.deliverablesList {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 28px;
-}
-
 .deliverablesLabel {
+  display: block;
   font-size: 11.5px;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: #94A3B8;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
-.deliverableItem {
+.deliverablesGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dItem {
   display: flex;
   align-items: flex-start;
   gap: 8px;
   font-size: 13.5px;
   color: #1E293B;
-  font-weight: 500;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
-.checkMark {
-  color: #DB2777;
+.dCheck {
+  color: #10B981;
   font-weight: 800;
   flex-shrink: 0;
+  margin-top: 1px;
 }
 
-.ctaWrapper {
+.actionRow {
   display: flex;
 }
 
-.launchSprintBtn {
+.sprintBtn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -212,105 +206,109 @@
   font-family: var(--font-display);
   font-size: 13px;
   font-weight: 700;
-  padding: 10px 22px;
-  border-radius: 10px;
+  padding: 10px 20px;
+  border-radius: 8px;
   text-decoration: none;
-  box-shadow: 0 4px 14px rgba(11, 32, 147, 0.25);
   transition: all 0.2s ease;
 }
 
-.launchSprintBtn:hover {
+.sprintBtn:hover {
   background: #0D007F;
-  transform: translateY(-1px);
   gap: 12px;
 }
 
-/* Specimen Card */
-.stepSpecimenCol {
+/* Specimen Console */
+.specimenCol {
   display: flex;
 }
 
-.specimenCard {
+.specimenConsole {
   width: 100%;
-  background: linear-gradient(145deg, #0F172A 0%, #1E1B4B 100%);
-  border-radius: 16px;
+  background: #0F172A;
   border: 1px solid #1E293B;
-  padding: 28px;
+  border-radius: 16px;
+  padding: 24px;
   color: #FFFFFF;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.2);
 }
 
 .specimenHeader {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
+  gap: 8px;
+  margin-bottom: 18px;
   padding-bottom: 12px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.specimenBadge {
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  color: #34D399;
-  background: rgba(16, 185, 129, 0.15);
-  padding: 2px 8px;
-  border-radius: 4px;
+.specimenDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10B981;
 }
 
-.specimenTitle {
+.specimenConsoleTitle {
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 700;
-  color: #CBD5E1;
+  color: #E2E8F0;
+  flex: 1;
+}
+
+.specimenPill {
+  font-size: 9px;
+  font-weight: 800;
+  color: #34D399;
+  background: rgba(16, 185, 129, 0.15);
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 
 .specimenMetricsRow {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-bottom: 20px;
+  gap: 10px;
+  margin-bottom: 16px;
 }
 
-.metricItem {
+.specimenTile {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-  padding: 12px 10px;
+  border-radius: 8px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
 }
 
-.metricVal {
+.specimenVal {
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
-  color: #F472B6;
-  line-height: 1.2;
+  color: #38BDF8;
 }
 
-.metricLbl {
-  font-size: 10.5px;
+.specimenLbl {
+  font-size: 10px;
   color: #94A3B8;
   margin-top: 2px;
 }
 
 .specimenFooter {
-  font-size: 11.5px;
+  font-size: 11px;
   color: #CBD5E1;
   background: rgba(0, 0, 0, 0.2);
-  padding: 10px 14px;
-  border-radius: 8px;
-  line-height: 1.45;
+  padding: 8px 12px;
+  border-radius: 6px;
+  line-height: 1.4;
 }
 
 @media (max-width: 900px) {
-  .stepContentGrid {
+  .roadmapStageGrid {
     grid-template-columns: 1fr;
-    padding: 24px;
+    gap: 28px;
   }
-  .timelineBar {
+  .timelineRibbon {
     grid-template-columns: 1fr 1fr;
   }
 }

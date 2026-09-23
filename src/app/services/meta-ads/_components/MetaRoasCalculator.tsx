@@ -9,14 +9,13 @@ interface IndustryBenchmark {
   name: string;
   typicalCpl: number;
   typicalRoas: number;
-  convRate: number;
 }
 
 const industries: IndustryBenchmark[] = [
-  { id: 'd2c', name: 'D2C Ecommerce & Fashion', typicalCpl: 220, typicalRoas: 4.8, convRate: 2.8 },
-  { id: 'realestate', name: 'Real Estate & Luxury Housing', typicalCpl: 380, typicalRoas: 6.2, convRate: 4.5 },
-  { id: 'clinic', name: 'Healthcare & Dental Clinics', typicalCpl: 160, typicalRoas: 5.1, convRate: 6.0 },
-  { id: 'education', name: 'Higher Education & Coaching', typicalCpl: 120, typicalRoas: 4.2, convRate: 5.2 },
+  { id: 'd2c', name: 'D2C Ecommerce & Fashion', typicalCpl: 220, typicalRoas: 4.8 },
+  { id: 'realestate', name: 'Real Estate & Luxury Housing', typicalCpl: 380, typicalRoas: 6.2 },
+  { id: 'clinic', name: 'Healthcare & Dental Clinics', typicalCpl: 160, typicalRoas: 5.1 },
+  { id: 'education', name: 'Higher Education & Coaching', typicalCpl: 120, typicalRoas: 4.2 },
 ];
 
 export default function MetaRoasCalculator() {
@@ -30,7 +29,6 @@ export default function MetaRoasCalculator() {
   const estimatedLeadsOrOrders = Math.round(spend / industry.typicalCpl);
   const projectedRevenue = Math.round(estimatedLeadsOrOrders * dealValue * (industry.id === 'd2c' ? 1 : 0.28));
   const estimatedRoas = spend > 0 ? (projectedRevenue / spend).toFixed(1) : '0';
-  const profitMargin = projectedRevenue - spend;
 
   return (
     <section className={styles.section}>
@@ -49,14 +47,14 @@ export default function MetaRoasCalculator() {
           </p>
         </ScrollReveal>
 
-        {/* Calculator Card */}
-        <div className={styles.calcCard}>
-          {/* Left: Interactive Input Sliders */}
-          <div className={styles.inputCol}>
+        {/* Simulator Grid */}
+        <div className={styles.simulatorGrid}>
+          {/* Controls Column */}
+          <div className={styles.controlsCol}>
             {/* Sector Selector */}
-            <div className={styles.inputGroup}>
-              <label className={styles.inputLabel}>Select Your Industry Sector:</label>
-              <div className={styles.sectorButtonsRow}>
+            <div className={styles.group}>
+              <label className={styles.label}>Select Industry Sector:</label>
+              <div className={styles.sectorChips}>
                 {industries.map((ind) => (
                   <button
                     key={ind.id}
@@ -72,11 +70,9 @@ export default function MetaRoasCalculator() {
 
             {/* Slider 1: Monthly Ad Budget */}
             <div className={styles.sliderGroup}>
-              <div className={styles.sliderLabelRow}>
-                <span className={styles.sliderTitle}>Monthly Meta Ad Budget:</span>
-                <span className={styles.sliderValueHighlight}>
-                  ₹{spend.toLocaleString('en-IN')} / mo
-                </span>
+              <div className={styles.sliderRow}>
+                <span className={styles.sliderTitle}>Monthly Meta Ad Spend:</span>
+                <span className={styles.sliderVal}>₹{spend.toLocaleString('en-IN')} / mo</span>
               </div>
               <input
                 type="range"
@@ -85,24 +81,22 @@ export default function MetaRoasCalculator() {
                 step="10000"
                 value={spend}
                 onChange={(e) => setSpend(Number(e.target.value))}
-                className={styles.rangeInput}
+                className={styles.sliderInput}
               />
-              <div className={styles.sliderTicks}>
+              <div className={styles.ticks}>
                 <span>₹20,000 (Testing)</span>
-                <span>₹2,50,000 (Scaling)</span>
-                <span>₹5,00,000 (Market Leader)</span>
+                <span>₹2,50,000</span>
+                <span>₹5,00,000 (Scale)</span>
               </div>
             </div>
 
-            {/* Slider 2: Average Customer Value */}
+            {/* Slider 2: Average Deal / Order Value */}
             <div className={styles.sliderGroup}>
-              <div className={styles.sliderLabelRow}>
+              <div className={styles.sliderRow}>
                 <span className={styles.sliderTitle}>
-                  {activeIndustryId === 'd2c' ? 'Average Order Value (AOV):' : 'Average Customer Lifetime Value:'}
+                  {activeIndustryId === 'd2c' ? 'Average Order Value (AOV):' : 'Average Customer Value:'}
                 </span>
-                <span className={styles.sliderValueHighlight}>
-                  ₹{dealValue.toLocaleString('en-IN')}
-                </span>
+                <span className={styles.sliderVal}>₹{dealValue.toLocaleString('en-IN')}</span>
               </div>
               <input
                 type="range"
@@ -111,76 +105,65 @@ export default function MetaRoasCalculator() {
                 step="500"
                 value={dealValue}
                 onChange={(e) => setDealValue(Number(e.target.value))}
-                className={styles.rangeInput}
+                className={styles.sliderInput}
               />
-              <div className={styles.sliderTicks}>
+              <div className={styles.ticks}>
                 <span>₹500</span>
                 <span>₹25,000</span>
                 <span>₹50,000+</span>
               </div>
             </div>
 
-            <div className={styles.calcDisclaimer}>
-              <span>ℹ️ Projections calibrated against verified Meta Conversions API client metrics in Odisha.</span>
+            <div className={styles.dataNotice}>
+              <span>ℹ️ Calibrated against verified client Meta Conversions API (CAPI) metrics in Odisha.</span>
             </div>
           </div>
 
-          {/* Right: Projected Commercial Return Output Pane */}
-          <div className={styles.resultCol}>
-            <div className={styles.resultHeader}>
-              <span className={styles.resultPill}>PROJECTED 30-DAY IMPACT</span>
-              <span className={styles.benchmarkTag}>Benchmark CPL: ₹{industry.typicalCpl}</span>
+          {/* Results Output Column */}
+          <div className={styles.outputCol}>
+            <div className={styles.outputHeader}>
+              <span className={styles.outputPill}>PROJECTED 30-DAY OUTCOME</span>
+              <span className={styles.cplBenchmark}>Est. CPL: ₹{industry.typicalCpl}</span>
             </div>
 
-            {/* Big ROAS Display */}
-            <div className={styles.bigRoasBox}>
-              <div className={styles.roasMultipleRow}>
-                <span className={styles.roasNumber}>{estimatedRoas}X</span>
-                <span className={styles.roasLabel}>Projected ROAS</span>
+            <div className={styles.heroRoasDisplay}>
+              <div className={styles.roasValRow}>
+                <span className={styles.bigRoasNumber}>{estimatedRoas}X</span>
+                <span className={styles.roasTag}>Projected ROAS</span>
               </div>
               <p className={styles.roasSub}>
                 Every ₹1 invested in Meta Ads returns approximately ₹{estimatedRoas} in gross sales pipeline.
               </p>
             </div>
 
-            {/* Metrics Breakdown Grid */}
-            <div className={styles.metricsBreakdownGrid}>
-              <div className={styles.statTile}>
-                <span className={styles.statTileLabel}>Projected Revenue</span>
-                <span className={styles.statTileValHighlight}>
-                  ₹{projectedRevenue.toLocaleString('en-IN')}
-                </span>
-                <span className={styles.statTileSub}>Gross Sales Volume</span>
+            <div className={styles.kpiTilesGrid}>
+              <div className={styles.kpiTile}>
+                <span className={styles.tileLbl}>Projected Revenue</span>
+                <span className={styles.tileValHighlight}>₹{projectedRevenue.toLocaleString('en-IN')}</span>
+                <span className={styles.tileSub}>Gross Pipeline Volume</span>
               </div>
 
-              <div className={styles.statTile}>
-                <span className={styles.statTileLabel}>Estimated Inquiries / Orders</span>
-                <span className={styles.statTileVal}>
-                  {estimatedLeadsOrOrders.toLocaleString('en-IN')}
-                </span>
-                <span className={styles.statTileSub}>Qualified Customers</span>
+              <div className={styles.kpiTile}>
+                <span className={styles.tileLbl}>Estimated Customers / Leads</span>
+                <span className={styles.tileVal}>{estimatedLeadsOrOrders.toLocaleString('en-IN')}</span>
+                <span className={styles.tileSub}>High-Intent Contacts</span>
               </div>
 
-              <div className={styles.statTile}>
-                <span className={styles.statTileLabel}>Target CPA / Lead Cost</span>
-                <span className={styles.statTileValGreen}>
-                  ₹{industry.typicalCpl}
-                </span>
-                <span className={styles.statTileSub}>CAPI Verified</span>
+              <div className={styles.kpiTile}>
+                <span className={styles.tileLbl}>Target CPA / Lead Cost</span>
+                <span className={styles.tileValGreen}>₹{industry.typicalCpl}</span>
+                <span className={styles.tileSub}>Verified CAPI Cost</span>
               </div>
 
-              <div className={styles.statTile}>
-                <span className={styles.statTileLabel}>Estimated Net Gain</span>
-                <span className={styles.statTileVal}>
-                  ₹{Math.max(0, profitMargin).toLocaleString('en-IN')}
-                </span>
-                <span className={styles.statTileSub}>Over Ad Spend</span>
+              <div className={styles.kpiTile}>
+                <span className={styles.tileLbl}>Net Pipeline Yield</span>
+                <span className={styles.tileVal}>₹{Math.max(0, projectedRevenue - spend).toLocaleString('en-IN')}</span>
+                <span className={styles.tileSub}>Above Ad Expenditure</span>
               </div>
             </div>
 
-            {/* Action Trigger */}
-            <Link href="/contact" className={styles.calcCtaBtn}>
-              <span>Lock In This ROAS Architecture</span>
+            <Link href="/contact" className={styles.calcActionBtn}>
+              <span>Lock In This ROAS Engine</span>
               <span>→</span>
             </Link>
           </div>

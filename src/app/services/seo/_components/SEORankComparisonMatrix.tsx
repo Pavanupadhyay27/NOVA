@@ -99,7 +99,7 @@ export default function SEORankComparisonMatrix() {
                 className={styles.cardBarFill}
                 style={{ 
                   width: activeTab === 'page1' ? '92%' : '8%',
-                  background: activeTab === 'page1' ? '#7C3AED' : '#94A3B8'
+                  background: activeTab === 'page1' ? '#0B2093' : '#94A3B8'
                 }} 
               />
             </div>

@@ -1,7 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import type { Metadata } from 'next';
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -17,27 +16,6 @@ import SEORankingRoadmap from './_components/SEORankingRoadmap';
 import SEOCorridorExplorer from './_components/SEOCorridorExplorer';
 
 import styles from './seo-page.module.css';
-
-const seoHeroSlides = [
-  {
-    id: 'seo-slide-1',
-    src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop',
-    alt: 'Marketing Copilot organic SEO performance analytics and Bhubaneswar Google keyword rankings',
-    caption: 'Algorithmic Organic Search Architecture',
-  },
-  {
-    id: 'seo-slide-2',
-    src: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop',
-    alt: 'Senior SEO search strategists planning Google 3-Pack rankings and local search dominance',
-    caption: 'Local Google 3-Pack & Map Pack Domination',
-  },
-  {
-    id: 'seo-slide-3',
-    src: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=1200&auto=format&fit=crop',
-    alt: 'Core Web Vitals speed optimization and keyword cluster ranking dashboard',
-    caption: 'High-Intent Commercial Keyword Clusters',
-  },
-];
 
 const algorithmicArsenal = [
   {
@@ -56,14 +34,14 @@ const algorithmicArsenal = [
   },
   {
     name: 'Ahrefs & SEMrush Intelligence',
-    category: 'Keyword & Competitor Authority Gaps',
+    category: 'Keyword & Authority Intelligence',
     desc: 'Deep forensic tracking of competitor backlinks, regional content gaps, and high-converting commercial search queries in Odisha.',
     status: 'DATA ENGINE',
     icon: '🔍',
   },
   {
     name: 'Screaming Frog Spider',
-    category: 'Technical Crawl & Error Eradication',
+    category: 'Technical Crawl Diagnostics',
     desc: 'Automated 1,000+ page scans finding 404s, broken canonicals, redirect loops, and schema JSON-LD discrepancies.',
     status: 'DEEP CRAWL',
     icon: '🕷️',
@@ -113,15 +91,7 @@ const seoFaqs = [
 ];
 
 export default function SEOPage() {
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % seoHeroSlides.length);
-    }, 4500);
-    return () => clearInterval(timer);
-  }, []);
 
   const toggleFaq = (idx: number) => {
     setOpenFaqIndex(openFaqIndex === idx ? null : idx);
@@ -130,116 +100,66 @@ export default function SEOPage() {
   return (
     <div className={styles.pageWrapper}>
       {/* ══════════════════════════════════════════════════
-          1. HERO COMMAND CENTER
+          1. CENTERED CINEMATIC HERO
          ══════════════════════════════════════════════════ */}
       <section className={styles.hero}>
         <div className={styles.heroMeshGrid} />
         <div className="container">
-          <div className={styles.heroGrid}>
-            <div className={styles.heroContent}>
-              <ScrollReveal>
-                <div className={styles.heroEyebrowPill}>
-                  <span className={styles.emeraldPulseDot} />
-                  <span>Real-Time Google 3-Pack Telemetry · Bhubaneswar</span>
+          <div className={styles.heroCenter}>
+            <ScrollReveal>
+              <div className={styles.heroEyebrowPill}>
+                <span className={styles.emeraldPulseDot} />
+                <span>Real-Time Google 3-Pack Telemetry · Bhubaneswar</span>
+              </div>
+
+              <h1 className={styles.heroTitle}>
+                Rank #1 on Google in Bhubaneswar.{' '}
+                <span className="accent-gradient">Get Chosen First.</span>
+              </h1>
+
+              <p className={styles.heroSub}>
+                We make Bhubaneswar businesses impossible to ignore on Google. Technical Next.js SEO, Google Maps 3-pack dominance, and hyperlocal search architectures that drive compounding phone calls and customer revenue.
+              </p>
+
+              <div className={styles.heroActions}>
+                <BeamButton href="/contact" label="Claim Free Technical Audit" size="lg" />
+                <a href="#serp-simulator" className={styles.heroSecondaryBtn}>
+                  <span>Inspect Live SERP Telemetry</span>
+                  <span>↓</span>
+                </a>
+              </div>
+
+              <div className={styles.trustStrip}>
+                <div className={styles.trustAvatars}>
+                  <span className={styles.trustAvatar}>UR</span>
+                  <span className={styles.trustAvatar}>ED</span>
+                  <span className={styles.trustAvatar}>NC</span>
+                  <span className={`${styles.trustAvatar} ${styles.trustAvatarGold}`}>+50</span>
                 </div>
+                <div className={styles.trustStars}>★★★★★</div>
+                <span className={styles.trustLabel}>
+                  Rated 4.9/5 by 50+ Bhubaneswar &amp; Odisha Brands
+                </span>
+              </div>
+            </ScrollReveal>
 
-                <h1 className={styles.heroTitle}>
-                  Rank #1 on Google in Bhubaneswar.{' '}
-                  <span className="accent-gradient">Get Chosen First.</span>
-                </h1>
-
-                <p className={styles.heroSub}>
-                  We make Bhubaneswar businesses impossible to ignore on Google. Technical Next.js SEO, Google Maps 3-pack dominance, and hyperlocal search architectures across Patia, Saheed Nagar, Infocity, and Cuttack that drive compounding phone calls and revenue.
-                </p>
-
-                <div className={styles.heroActions}>
-                  <BeamButton href="/contact" label="Claim Free Technical Audit" size="lg" />
-                  <a href="#serp-simulator" className={styles.heroSecondaryBtn}>
-                    <span>Inspect Live SERP Telemetry</span>
-                    <span>↓</span>
-                  </a>
-                </div>
-
-                <div className={styles.trustStrip}>
-                  <div className={styles.trustAvatars}>
-                    <span className={styles.trustAvatar}>UR</span>
-                    <span className={styles.trustAvatar}>ED</span>
-                    <span className={styles.trustAvatar}>NC</span>
-                    <span className={`${styles.trustAvatar} ${styles.trustAvatarLast}`}>+50</span>
-                  </div>
-                  <div className={styles.trustTextCol}>
-                    <div className={styles.trustStars}>★★★★★</div>
-                    <div className={styles.trustLabel}>Rated 4.9/5 by 50+ Bhubaneswar &amp; Odisha Brands</div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            </div>
-
-            <div className={styles.heroVisualStage}>
-              <div className={styles.visualGlowBackdrop} />
-              <div className={styles.heroCardContainer}>
-                <div className={styles.heroSliderViewport}>
-                  {seoHeroSlides.map((slide, idx) => (
-                    <div
-                      key={slide.id}
-                      style={{
-                        position: 'absolute',
-                        inset: 0,
-                        opacity: idx === currentSlide ? 1 : 0,
-                        transition: 'opacity 0.6s ease-in-out',
-                      }}
-                    >
-                      <Image
-                        src={slide.src}
-                        alt={slide.alt}
-                        fill
-                        priority={idx === 0}
-                        sizes="(max-width: 768px) 100vw, 480px"
-                        className={styles.heroSlideImg}
-                      />
-                      <div className={styles.slideOverlayGradient} />
-                    </div>
-                  ))}
-
-                  <div className={styles.floatingTopPill}>
-                    <span className={styles.emeraldPulseDot} />
-                    <span>Live Rank: #1 Google 3-Pack Verified</span>
-                  </div>
-
-                  <div className={styles.floatingBottomCaption}>
-                    <span>{seoHeroSlides[currentSlide]?.caption}</span>
-                    <div className={styles.dotsWrapper}>
-                      {seoHeroSlides.map((_, idx) => (
-                        <button
-                          key={idx}
-                          type="button"
-                          className={`${styles.dotBtn} ${idx === currentSlide ? styles.dotBtnActive : ''}`}
-                          onClick={() => setCurrentSlide(idx)}
-                          aria-label={`Slide ${idx + 1}`}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                <div className={styles.telemetryGrid}>
-                  <div className={styles.telemetryCard}>
-                    <span className={styles.tVal}>+240%</span>
-                    <span className={styles.tLabel}>Organic Inquiries</span>
-                  </div>
-                  <div className={styles.telemetryCard}>
-                    <span className={styles.tVal}>Top 3</span>
-                    <span className={styles.tLabel}>Map 3-Pack Rank</span>
-                  </div>
-                  <div className={styles.telemetryCard}>
-                    <span className={styles.tVal}>90 Days</span>
-                    <span className={styles.tLabel}>Avg Page 1 Traction</span>
-                  </div>
-                  <div className={styles.telemetryCard}>
-                    <span className={styles.tVal}>0 Spam</span>
-                    <span className={styles.tLabel}>White-Hat SLA</span>
-                  </div>
-                </div>
+            {/* Horizontal Telemetry Ribbon */}
+            <div className={styles.telemetryRibbon}>
+              <div className={styles.telemetryCell}>
+                <span className={styles.tVal}>#1</span>
+                <span className={styles.tLabel}>Organic Ranking</span>
+              </div>
+              <div className={styles.telemetryCell}>
+                <span className={styles.tVal}>+280%</span>
+                <span className={styles.tLabel}>Inbound Phone Calls</span>
+              </div>
+              <div className={styles.telemetryCell}>
+                <span className={styles.tVal}>98+</span>
+                <span className={styles.tLabel}>Core Web Vitals</span>
+              </div>
+              <div className={styles.telemetryCell}>
+                <span className={styles.tVal}>45 Days</span>
+                <span className={styles.tLabel}>3-Pack Traction</span>
               </div>
             </div>
           </div>
@@ -264,7 +184,7 @@ export default function SEOPage() {
       <SEOCapabilitiesWorkstation />
 
       {/* ══════════════════════════════════════════════════
-          5. INTERACTIVE TRAFFIC & REVENUE ROI YIELD ENGINE
+          5. INTERACTIVE TRAFFIC & REVENUE ROI ENGINE
          ══════════════════════════════════════════════════ */}
       <SEORoiCalculator />
 
@@ -274,90 +194,74 @@ export default function SEOPage() {
       <SEORankComparisonMatrix />
 
       {/* ══════════════════════════════════════════════════
-          7. 4-PHASE GROWTH ENGINEERING ROADMAP
+          7. 4-PHASE GROWTH ROADMAP
          ══════════════════════════════════════════════════ */}
       <SEORankingRoadmap />
 
       {/* ══════════════════════════════════════════════════
-          8. FLAGSHIP TRANSFORMATION SHOWCASE (CASE STUDY)
+          8. EDITORIAL CASE STUDY SHOWCASE
          ══════════════════════════════════════════════════ */}
       <section className={styles.caseSection}>
         <div className="container">
           <ScrollReveal>
-            <div className={styles.caseSkeuoCard}>
-              <div className={styles.caseAtmosphereGlow} />
-
-              <div className={styles.caseTopBar}>
-                <div className={styles.caseStatusBadge}>
-                  <span className={styles.caseStatusPulse} />
-                  <span>VERIFIED BHUBANESWAR SEARCH CASE STUDY</span>
+            <div className={styles.editorialContainer}>
+              <div className={styles.editorialContent}>
+                <div className={styles.editorialBadge}>
+                  <span className={styles.badgeDot} />
+                  <span>Verified SEO Case Study · Luxury Real Estate</span>
                 </div>
-                <div className={styles.caseSectorPill}>
-                  <span>Patia &amp; Chandrasekharpur Corridor</span>
+
+                <h3 className={styles.editorialTitle}>
+                  Utkal Royal Prestige Real Estate
+                </h3>
+                <div className={styles.editorialLocation}>
+                  📍 Patia &amp; Chandrasekharpur, Bhubaneswar
+                </div>
+
+                <p className={styles.editorialDesc}>
+                  Utkal Royal was invisible on Google Maps and losing high-net-worth villa buyers to aggregators. Marketing Copilot deployed Next.js schema architecture, local 3-pack geo-grids, and high-intent commercial keyword clusters.
+                </p>
+
+                <div className={styles.editorialQuoteBlock}>
+                  <p className={styles.editorialQuoteText}>
+                    &quot;Marketing Copilot took us from nowhere on Google to the #1 spot on Google Maps for luxury apartments in Bhubaneswar within 60 days. Our inbound buyer inquiries tripled.&quot;
+                  </p>
+                  <span className={styles.editorialQuoteAuthor}>
+                    — Marketing Director, Utkal Royal Prestige
+                  </span>
+                </div>
+
+                <div>
+                  <BeamButton href="/portfolio" label="Explore All Verified Case Studies" size="md" />
                 </div>
               </div>
 
-              <div className={styles.caseSplitGrid}>
-                <div className={styles.caseInfoCol}>
-                  <h3 className={styles.caseClientTitle}>
-                    Utkal Royal Living &amp; Residences
-                  </h3>
-                  <div className={styles.caseLocBadge}>
-                    <span>📍 Near KIIT Square, Patia, Bhubaneswar</span>
+              <div className={styles.editorialVisual}>
+                <div className={styles.editorialImgWrapper}>
+                  <Image
+                    src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+                    alt="Utkal Royal Luxury Real Estate Bhubaneswar"
+                    fill
+                    sizes="(max-width: 900px) 100vw, 480px"
+                    className={styles.editorialImg}
+                  />
+                  <div className={styles.editorialImgBadge}>
+                    <span>#1 Google 3-Pack Verified · Patia Hub</span>
                   </div>
-
-                  <p className={styles.caseExecSummary}>
-                    Utkal Royal Living had zero organic search visibility, relying entirely on expensive offline hoardings. Marketing Copilot engineered a high-intent topic cluster architecture, localized schema JSON-LD, and Next.js Core Web Vitals optimization.
-                  </p>
-
-                  <div className={styles.caseStrategyChips}>
-                    <span className={styles.stratChip}>✓ Local Business Geo-Schema</span>
-                    <span className={styles.stratChip}>✓ Patia Micro-Market Authority</span>
-                    <span className={styles.stratChip}>✓ High-Intent Buyer Intent Clusters</span>
-                  </div>
-
-                  <div className={styles.caseQuoteCallout}>
-                    <p className={styles.caseQuoteText}>
-                      &quot;Marketing Copilot transformed our digital pipeline. We went from completely unranked to owning the top spot across all luxury real estate queries in Bhubaneswar. We now generate 90+ verified HNI inquiries every month.&quot;
-                    </p>
-                    <div className={styles.caseQuoteAuthor}>
-                      — Commercial Sales Directorate, Utkal Royal Residences
-                    </div>
-                  </div>
-
-                  <BeamButton href="/portfolio" label="Explore All Verified Case Studies" size="md" />
                 </div>
 
-                <div className={styles.caseVisualCol}>
-                  <div className={styles.caseVisualWindow}>
-                    <Image
-                      src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80"
-                      alt="Utkal Royal Living Luxury Architecture Bhubaneswar"
-                      fill
-                      sizes="(max-width: 768px) 100vw, 440px"
-                      className={styles.caseWindowImg}
-                    />
-                    <div className={styles.caseWindowBadge}>
-                      <span>G #1 Rank on Google Search &amp; Maps</span>
-                    </div>
+                <div className={styles.kpiStrip}>
+                  <div className={styles.kpiItem}>
+                    <span className={styles.kpiNum}>+340%</span>
+                    <span className={styles.kpiLbl}>Organic Traffic</span>
                   </div>
-
-                  <div className={styles.caseKpiRow}>
-                    <div className={styles.caseKpiTile}>
-                      <span className={styles.kpiNumber}>#1 Rank</span>
-                      <span className={styles.kpiTitle}>18 Keywords</span>
-                      <span className={styles.kpiSub}>High-Ticket Commercial</span>
-                    </div>
-                    <div className={styles.caseKpiTile}>
-                      <span className={styles.kpiNumber}>+340%</span>
-                      <span className={styles.kpiTitle}>Buyer Inquiries</span>
-                      <span className={styles.kpiSub}>90+ HNI Leads/Mo</span>
-                    </div>
-                    <div className={styles.caseKpiTile}>
-                      <span className={styles.kpiNumber}>90 Days</span>
-                      <span className={styles.kpiTitle}>To Page 1</span>
-                      <span className={styles.kpiSub}>Zero Penalties</span>
-                    </div>
+                  <div className={styles.kpiItem}>
+                    <span className={styles.kpiNum}>18</span>
+                    <span className={styles.kpiLbl}>Top #1 Keywords</span>
+                  </div>
+                  <div className={styles.kpiItem}>
+                    <span className={styles.kpiNum}>45 Days</span>
+                    <span className={styles.kpiLbl}>To Google 3-Pack</span>
                   </div>
                 </div>
               </div>
@@ -367,37 +271,37 @@ export default function SEOPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════
-          9. BHUBANESWAR COMMERCIAL HUBS & GEO-CORRIDORS
+          9. BHUBANESWAR REGIONAL SEARCH CORRIDORS
          ══════════════════════════════════════════════════ */}
       <SEOCorridorExplorer />
 
       {/* ══════════════════════════════════════════════════
-          10. ALGORITHMIC ARSENAL & TOOL TELEMETRY
+          10. ARCHITECTURAL ALGORITHMIC ARSENAL
          ══════════════════════════════════════════════════ */}
       <section className={styles.arsenalSection}>
         <div className="container">
           <ScrollReveal className="text-center">
             <div className="eyebrow" style={{ margin: '0 auto 12px' }}>
               <span className="eyebrow-dot" />
-              <span>Enterprise Toolchains</span>
+              <span>Algorithmic Toolchain</span>
             </div>
             <h3 className="display-md" style={{ color: '#0F172A', marginBottom: 10 }}>
-              Algorithmic Arsenal &amp; <span className="accent-gradient">Search Infrastructure</span>
+              Search Tech Arsenal &amp; <span className="accent-gradient">Data Infrastructure</span>
             </h3>
-            <p className="body-md" style={{ color: '#64748B', maxWidth: 640, margin: '0 auto' }}>
-              Enterprise-grade telemetry platforms deployed across all Bhubaneswar client search campaigns.
+            <p className="body-md" style={{ color: '#64748B', maxWidth: 600, margin: '0 auto' }}>
+              Enterprise-grade search software toolchains deployed across all Bhubaneswar SEO campaigns.
             </p>
 
-            <div className={styles.arsenalGrid}>
+            <div className={styles.arsenalSpecGrid}>
               {algorithmicArsenal.map((t) => (
-                <div key={t.name} className={styles.toolCard}>
-                  <div className={styles.toolHeader}>
-                    <div className={styles.toolIconBox}>{t.icon}</div>
-                    <span className={styles.toolStatusPill}>{t.status}</span>
+                <div key={t.name} className={styles.specRow}>
+                  <div className={styles.specTopBar}>
+                    <span className={styles.specIcon}>{t.icon}</span>
+                    <span className={styles.specStatus}>{t.status}</span>
                   </div>
-                  <h4 className={styles.toolName}>{t.name}</h4>
-                  <span className={styles.toolCategory}>{t.category}</span>
-                  <p className={styles.toolDesc}>{t.desc}</p>
+                  <h4 className={styles.specTitle}>{t.name}</h4>
+                  <span className={styles.specCategory}>{t.category}</span>
+                  <p className={styles.specDesc}>{t.desc}</p>
                 </div>
               ))}
             </div>
@@ -406,7 +310,7 @@ export default function SEOPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════
-          11. DEEP KNOWLEDGE & SEARCH FAQ VAULT
+          11. MINIMALIST HAIRLINE FAQ LIST
          ══════════════════════════════════════════════════ */}
       <section className={styles.faqSection}>
         <div className="container">
@@ -418,34 +322,34 @@ export default function SEOPage() {
             <h3 className="display-md" style={{ color: '#0F172A', marginBottom: 10 }}>
               Frequently Asked <span className="accent-gradient">SEO Questions</span>
             </h3>
-            <p className="body-md" style={{ color: '#64748B', maxWidth: 620, margin: '0 auto' }}>
-              Everything Bhubaneswar founders need to know about organic search rankings, timelines, and commercial ROI.
+            <p className="body-md" style={{ color: '#64748B', maxWidth: 580, margin: '0 auto' }}>
+              Clear, transparent answers on timeline, guarantees, ranking velocity, and ROI for Bhubaneswar business owners.
             </p>
           </ScrollReveal>
 
-          <div className={styles.faqAccordion}>
+          <div className={styles.faqContainer}>
             {seoFaqs.map((faq, idx) => {
               const isOpen = openFaqIndex === idx;
               return (
                 <div
                   key={faq.q}
-                  className={`${styles.faqItem} ${isOpen ? styles.faqItemOpen : ''}`}
+                  className={`${styles.faqRow} ${isOpen ? styles.faqRowOpen : ''}`}
                 >
                   <button
                     type="button"
-                    className={styles.faqQuestionBtn}
+                    className={styles.faqBtn}
                     onClick={() => toggleFaq(idx)}
                     aria-expanded={isOpen}
                   >
-                    <span className={styles.faqQText}>{faq.q}</span>
-                    <span className={`${styles.faqChevron} ${isOpen ? styles.faqChevronRotated : ''}`}>
-                      ↓
+                    <span className={styles.faqQuestion}>{faq.q}</span>
+                    <span className={styles.faqIcon}>
+                      {isOpen ? '−' : '+'}
                     </span>
                   </button>
 
                   {isOpen && (
-                    <div className={styles.faqAnswerPane}>
-                      <p className={styles.faqAText}>{faq.a}</p>
+                    <div className={styles.faqPane}>
+                      <p className={styles.faqAnswer}>{faq.a}</p>
                       <div className={styles.faqTakeaway}>
                         <span>💡 Strategic Takeaway:</span>
                         <span>{faq.takeaway}</span>
@@ -460,33 +364,34 @@ export default function SEOPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════
-          12. EXECUTIVE BOTTOM CONVERSION STATION
+          12. EXECUTIVE BOTTOM CONVERSION TERMINAL
          ══════════════════════════════════════════════════ */}
       <section className={styles.conversionSection}>
         <div className="container">
           <ScrollReveal>
-            <div className={styles.conversionConsole}>
-              <div className={styles.consoleLeft}>
-                <span className={styles.consolePill}>SCHEDULE STRATEGY AUDIT</span>
-                <h3 className={styles.consoleTitle}>
-                  Ready to Monopolize Google Search in Bhubaneswar?
+            <div className={styles.executiveTerminal}>
+              <div className={styles.termGlow} />
+              <div>
+                <span className={styles.termPill}>SCHEDULE EXECUTIVE AUDIT</span>
+                <h3 className={styles.termTitle}>
+                  Ready to Capture #1 Market Share on Google in Bhubaneswar?
                 </h3>
-                <p className={styles.consoleSub}>
-                  Claim your free 30-minute forensic search audit. We will analyze your current rankings, crawl health, and keyword opportunities across Patia, Saheed Nagar, and Cuttack.
+                <p className={styles.termSub}>
+                  Claim your free 30-minute forensic search audit. We will crawl your Core Web Vitals, analyze competitor backlink gaps, and model your Google Maps 3-Pack growth path across Odisha.
                 </p>
-                <div className={styles.consoleContactRow}>
-                  <a href="tel:+919437168434" className={styles.phoneHotline}>
-                    <span>📞 Direct Line:</span>
-                    <span>+91 94371 68434</span>
+                <div className={styles.termContact}>
+                  <span>📞 Direct Hotline:</span>
+                  <a href="tel:+919437168434" className={styles.termPhone}>
+                    +91 94371 68434
                   </a>
-                  <span style={{ color: '#6366F1' }}>·</span>
-                  <span style={{ fontSize: 13, color: '#A5B4FC' }}>HQ: Kharvela Nagar, Unit 3, Bhubaneswar</span>
+                  <span>·</span>
+                  <span>HQ: Kharvela Nagar, Unit 3, Bhubaneswar</span>
                 </div>
               </div>
 
-              <div className={styles.consoleActionsCol}>
-                <Link href="/contact" className={styles.consoleAuditBtn}>
-                  <span>Claim Free Forensic SEO Audit</span>
+              <div className={styles.termActions}>
+                <Link href="/contact" className={styles.termAuditBtn}>
+                  <span>Claim Free Technical SEO Audit</span>
                   <span>→</span>
                 </Link>
 
@@ -494,9 +399,9 @@ export default function SEOPage() {
                   href="https://wa.me/919437168434?text=Hi%20Marketing%20Copilot%2C%20I%20want%20to%20audit%20my%20business%20Google%20rankings"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={styles.consoleWhatsAppBtn}
+                  className={styles.termWhatsAppBtn}
                 >
-                  <span>💬 WhatsApp Our Senior Strategist</span>
+                  <span>💬 WhatsApp Our Principal Strategist</span>
                 </a>
               </div>
             </div>

@@ -12,28 +12,28 @@ interface FunnelStage {
   subhead: string;
   objective: string;
   tactics: string[];
-  kpis: { label: string; value: string; note: string }[];
+  kpis: { label: string; value: string }[];
   attributionSpec: string;
 }
 
 const funnelStages: FunnelStage[] = [
   {
     id: 'tof',
-    stageName: '01. Top of Funnel (TOF)',
-    stagePill: 'DEMAND GENERATION & HOOKS',
-    headline: 'Capturing Broad Bhubaneswar Attention with 3-Second Hooks',
-    subhead: 'We don&apos;t wait for customers to search; we introduce your offer directly into their daily Instagram Reels and Facebook feeds using bold visual pattern interrupts.',
-    objective: 'Generate low-cost, high-retention video views and build massive retargeting pools across Bhubaneswar.',
+    stageName: '01. Top of Funnel',
+    stagePill: 'DEMAND CAPTURE',
+    headline: 'Stop the Scroll with 3-Second Visual Hooks',
+    subhead: 'We introduce your brand directly into Bhubaneswar Instagram Reels & Facebook feeds using high-energy pattern interrupts.',
+    objective: 'Generate low-cost, high-retention video views and build massive retargeting pools across Odisha.',
     tactics: [
-      'Visual pattern interrupt: fast cuts, dynamic text animations, and motion graphics',
-      'Hyperlocal cultural hooks: Odia colloquialisms, Bhubaneswar landmarks, and seasonal resonance',
-      'Broad Advantage+ audience modeling combined with pin code radius geo-fences',
-      '3-second and 15-second video retention tracking to isolate high-intent prospects',
+      'Visual pattern interrupt: fast cuts, dynamic text overlays, and sound design',
+      'Hyperlocal hooks: Odia & English colloquialisms and Bhubaneswar landmark resonance',
+      'Advantage+ broad audience modeling combined with pin code radius geo-fences',
+      '15-second video retention tracking isolating high-intent prospective buyers',
     ],
     kpis: [
-      { label: '3-Sec Hook Rate', value: '38%+', note: 'Industry Avg is 18%' },
-      { label: 'Cost Per 1,000 Impressions (CPM)', value: '₹45–₹90', note: 'Optimized Bidding' },
-      { label: 'Video ThruPlays', value: '250,000+', note: 'Monthly Reach' },
+      { label: '3-Sec Hook Rate', value: '38%+' },
+      { label: 'Average CPM', value: '₹45–₹90' },
+      { label: 'Monthly ThruPlays', value: '250K+' },
     ],
     attributionSpec: `// Meta Advantage+ TOF Event Configuration
 const tofCampaign = {
@@ -45,21 +45,21 @@ const tofCampaign = {
   },
   {
     id: 'mof',
-    stageName: '02. Mid Funnel (MOF)',
-    stagePill: 'CONSIDERATION & SOCIAL PROOF',
-    headline: 'Eliminating Skepticism with UGC & Verified Transformations',
-    subhead: 'Once prospects watch your videos, our automated retargeting system immediately shows them real customer reviews, before/after case studies, and transparent pricing demos.',
-    objective: 'Transform casual video viewers into warm, qualified prospects ready to evaluate your offer.',
+    stageName: '02. Mid Funnel',
+    stagePill: 'SOCIAL PROOF',
+    headline: 'Eliminate Skepticism with Verified Transformations',
+    subhead: 'Once prospects watch your videos, automated retargeting presents genuine reviews, video case studies, and transparent pricing demos.',
+    objective: 'Transform casual viewers into warm, qualified prospects ready to evaluate your offer.',
     tactics: [
-      'Dynamic product carousels tailored to products the user previously viewed',
-      'User-Generated Content (UGC) creator style reviews with authentic Odisha customer reactions',
-      'Founder story and behind-the-scenes production videos establishing trust',
-      'Frequency capping (maximum 3 impressions per week) to prevent ad fatigue',
+      'Dynamic product carousels based on specific collections viewed by the user',
+      'UGC creator style reviews featuring authentic Odisha customer reactions',
+      'Behind-the-scenes founder explainers establishing uncompromising brand trust',
+      'Strict frequency capping (max 3 impressions/wk) preventing audience fatigue',
     ],
     kpis: [
-      { label: 'Click-Through Rate (CTR)', value: '3.4%', note: '2.5x Above Benchmark' },
-      { label: 'Engagement Rate', value: '8.2%', note: 'Shares & Saves' },
-      { label: 'Retargeting Pool Size', value: '45,000+', note: 'Warm Prospects' },
+      { label: 'Click-Through Rate', value: '3.4%' },
+      { label: 'Engagement Rate', value: '8.2%' },
+      { label: 'Retargeting Pool', value: '45K+' },
     ],
     attributionSpec: `// Custom Audience Retention Rules
 const mofAudience = {
@@ -71,21 +71,21 @@ const mofAudience = {
   },
   {
     id: 'bof',
-    stageName: '03. Bottom of Funnel (BOF)',
-    stagePill: 'CONVERSION & WHATSAPP CLOSING',
-    headline: 'Closing High-Value Sales with Direct WhatsApp Checkout',
-    subhead: 'The final nudge. We route high-intent warm prospects into automated WhatsApp Business conversations, limited-time inventory drops, or native instant quote forms.',
-    objective: 'Turn warm prospects into paying clients, booked showroom visits, and immediate orders.',
+    stageName: '03. Bottom Funnel',
+    stagePill: 'CONVERSION & CLOSING',
+    headline: 'Close Sales Fast via Click-to-WhatsApp Checkout',
+    subhead: 'Direct warm prospects into automated WhatsApp Business conversations or native instant forms for immediate closing.',
+    objective: 'Convert warm prospects into paying clients, booked visits, and high-margin transactions.',
     tactics: [
-      'Click-to-WhatsApp direct routing with pre-filled buyer inquiry prompts',
-      'Urgency and scarcity triggers: limited seasonal batches, early-bird incentives',
-      'Automated sales notifications to your team within 30 seconds of lead arrival',
-      'Seamless 1-click UPI and payment link integration within WhatsApp chat',
+      '1-tap Click-to-WhatsApp direct routing with pre-filled buyer inquiry prompts',
+      'Urgency triggers: limited seasonal batches, early-bird incentives',
+      'Instant SMS/Slack lead dispatch alerting your sales team in under 30 seconds',
+      '1-click UPI and payment link integration within WhatsApp chat',
     ],
     kpis: [
-      { label: 'Lead-to-Chat Conversion', value: '28.4%', note: 'Instant WhatsApp Entry' },
-      { label: 'Cost Per Qualified Lead (CPL)', value: '₹14–₹45', note: 'Depends on Sector' },
-      { label: 'Average ROAS', value: '4.8X', note: 'Verified Return' },
+      { label: 'Chat Conversion', value: '28.4%' },
+      { label: 'Lowest CPL', value: '₹14–₹45' },
+      { label: 'Blended ROAS', value: '4.8X' },
     ],
     attributionSpec: `// BOF Conversion Telemetry
 const bofFunnel = {
@@ -97,21 +97,21 @@ const bofFunnel = {
   },
   {
     id: 'capi',
-    stageName: '04. Server-Side Tracking (CAPI)',
-    stagePill: 'DATA RESILIENCE & ATTRIBUTION',
-    headline: 'Meta Conversions API: 100% Signal Capture Despite iOS 18 Privacy',
-    subhead: 'Browser pixels miss up to 35% of conversions due to ad-blockers and Apple privacy protections. We connect Meta Conversions API (CAPI) server-to-server for full-funnel attribution.',
-    objective: 'Provide Meta’s AI machine learning algorithms with complete, unblocked conversion data for aggressive scaling.',
+    stageName: '04. CAPI Attribution',
+    stagePill: 'DATA RESILIENCE',
+    headline: 'Server-Side Conversions API (iOS 18 Proof)',
+    subhead: 'Browser pixels miss 35% of data. We connect Meta Conversions API (CAPI) server-to-server for complete attribution.',
+    objective: 'Feed Meta’s neural bidding algorithms with 100% unblocked conversion data for aggressive scaling.',
     tactics: [
-      'Server-to-server event streaming directly from Next.js server to Meta Graph API',
-      'Event Quality Match Score maintained above 8.5/10 for top-tier ad auction pricing',
-      'Offline conversion tracking: syncing in-store cash sales and phone closings back into Meta',
+      'Server-to-server event streaming from Next.js server directly to Meta Graph API',
+      'Event Quality Match Score maintained above 8.5/10 for lower auction CPMs',
+      'Offline conversion tracking syncing in-store cash sales and phone orders',
       'Zero reliance on vulnerable third-party browser cookies',
     ],
     kpis: [
-      { label: 'Event Match Quality', value: '9.2 / 10', note: 'Top 5% Globally' },
-      { label: 'Attribution Recovery', value: '+34%', note: 'Unreported Sales Found' },
-      { label: 'Algorithm Learning Speed', value: '3x Faster', note: 'Quicker Bid Calibration' },
+      { label: 'Event Match Score', value: '9.2 / 10' },
+      { label: 'Signal Recovery', value: '+34%' },
+      { label: 'Learning Speed', value: '3x Faster' },
     ],
     attributionSpec: `// Next.js Server-Side Meta CAPI Event Dispatcher
 import { EventRequest, UserData, ServerEvent } from 'facebook-nodejs-business-sdk';
@@ -148,87 +148,80 @@ export default function MetaFunnelWorkstation() {
           </p>
         </ScrollReveal>
 
-        {/* Workstation Container */}
-        <div className={styles.workstationWrapper}>
-          {/* Stage Step Tabs */}
-          <div className={styles.stageTabsNav}>
-            {funnelStages.map((stage) => (
-              <button
-                key={stage.id}
-                type="button"
-                className={`${styles.stageTabBtn} ${activeStageId === stage.id ? styles.stageTabActive : ''}`}
-                onClick={() => setActiveStageId(stage.id)}
-              >
-                <span className={styles.stageTabTitle}>{stage.stageName}</span>
-                <span className={styles.stageTabSub}>{stage.stagePill}</span>
-              </button>
-            ))}
-          </div>
+        {/* Funnel Pipeline Ribbon (NO CARDS!) */}
+        <div className={styles.funnelNavRibbon}>
+          {funnelStages.map((stage) => (
+            <button
+              key={stage.id}
+              type="button"
+              className={`${styles.funnelStepBtn} ${activeStageId === stage.id ? styles.funnelStepActive : ''}`}
+              onClick={() => setActiveStageId(stage.id)}
+            >
+              <span className={styles.stageTitleText}>{stage.stageName}</span>
+              <span className={styles.stageTagText}>{stage.stagePill}</span>
+            </button>
+          ))}
+        </div>
 
-          {/* Active Workstation Stage Grid */}
-          <div className={styles.stageStageGrid}>
-            {/* Left: Strategy & Tactics */}
-            <div className={styles.strategyCol}>
-              <div className={styles.stageBadgeRow}>
-                <span className={styles.stagePillBadge}>{activeStage.stagePill}</span>
-                <span className={styles.slaBadge}>CAPI Verified Pipeline</span>
-              </div>
-
-              <h3 className={styles.stageHeadline}>{activeStage.headline}</h3>
-              <p className={styles.stageSubhead}>{activeStage.subhead}</p>
-
-              <div className={styles.objectiveBox}>
-                <span className={styles.objectiveLabel}>🎯 Primary Commercial Objective:</span>
-                <p className={styles.objectiveText}>{activeStage.objective}</p>
-              </div>
-
-              {/* Execution Tactics */}
-              <div className={styles.tacticsList}>
-                <span className={styles.tacticsTitle}>Core Campaign Deliverables:</span>
-                {activeStage.tactics.map((tactic) => (
-                  <div key={tactic} className={styles.tacticItem}>
-                    <span className={styles.tacticIcon}>✓</span>
-                    <span className={styles.tacticText}>{tactic}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* 3 Metric KPI Blocks */}
-              <div className={styles.kpiRow}>
-                {activeStage.kpis.map((kpi) => (
-                  <div key={kpi.label} className={styles.kpiCard}>
-                    <span className={styles.kpiValue}>{kpi.value}</span>
-                    <span className={styles.kpiLabel}>{kpi.label}</span>
-                    <span className={styles.kpiNote}>{kpi.note}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className={styles.actionRow}>
-                <Link href="/contact" className={styles.actionBtn}>
-                  <span>Audit Your Current Meta Funnel</span>
-                  <span>→</span>
-                </Link>
-              </div>
+        {/* Integrated Stage Detail View */}
+        <div className={styles.stageDetailGrid}>
+          {/* Strategy Details */}
+          <div className={styles.strategyDetailsCol}>
+            <div className={styles.badgeRow}>
+              <span className={styles.categoryPill}>{activeStage.stagePill}</span>
+              <span className={styles.verifiedTag}>● CAPI Signal Verified</span>
             </div>
 
-            {/* Right: Technical Spec & Code Terminal */}
-            <div className={styles.terminalCol}>
-              <div className={styles.terminalHeader}>
-                <div className={styles.terminalDots}>
-                  <span className={styles.dot} />
-                  <span className={styles.dot} />
-                  <span className={styles.dot} />
+            <h3 className={styles.stageTitle}>{activeStage.headline}</h3>
+            <p className={styles.stageLead}>{activeStage.subhead}</p>
+
+            <div className={styles.objectiveBar}>
+              <span className={styles.objectiveBold}>Primary Objective:</span>
+              <span className={styles.objectiveValue}>{activeStage.objective}</span>
+            </div>
+
+            <div className={styles.tacticsGrid}>
+              {activeStage.tactics.map((tactic) => (
+                <div key={tactic} className={styles.tacticRow}>
+                  <span className={styles.tacticCheck}>✓</span>
+                  <span>{tactic}</span>
                 </div>
-                <span className={styles.terminalTitle}>Meta Ads Engine · Configuration Spec</span>
-                <span className={styles.liveBadge}>ACTIVE</span>
+              ))}
+            </div>
+
+            <div className={styles.kpiRow}>
+              {activeStage.kpis.map((kpi) => (
+                <div key={kpi.label} className={styles.kpiBlock}>
+                  <span className={styles.kpiVal}>{kpi.value}</span>
+                  <span className={styles.kpiLbl}>{kpi.label}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className={styles.ctaRow}>
+              <Link href="/contact" className={styles.funnelAuditBtn}>
+                <span>Audit Your Funnel Architecture</span>
+                <span>→</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Code Spec Console */}
+          <div className={styles.codeConsoleCol}>
+            <div className={styles.consoleBar}>
+              <div className={styles.dotsGroup}>
+                <span className={styles.cDot} />
+                <span className={styles.cDot} />
+                <span className={styles.cDot} />
               </div>
-              <pre className={styles.terminalCode}>
-                <code>{activeStage.attributionSpec}</code>
-              </pre>
-              <div className={styles.terminalFooter}>
-                <span className={styles.footerStatus}>● Event Quality Score: 9.2/10 · Direct Meta Conversions API</span>
-              </div>
+              <span className={styles.consoleTitle}>Meta Ads Engine · Pipeline Configuration</span>
+              <span className={styles.statusPill}>ACTIVE</span>
+            </div>
+            <pre className={styles.codeView}>
+              <code>{activeStage.attributionSpec}</code>
+            </pre>
+            <div className={styles.consoleFooter}>
+              <span>● Match Quality: 9.2/10 · Meta Conversions API Graph Engine</span>
             </div>
           </div>
         </div>
