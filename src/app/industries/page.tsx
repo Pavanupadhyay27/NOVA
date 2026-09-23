@@ -9,7 +9,6 @@ import SmoothCounter from '@/components/SmoothCounter';
 import QuickConnectMapSection from '@/app/_components/QuickConnectMapSection';
 import {
   industryCatalog,
-  sectorCorridorMatrix,
   IndustryItem,
 } from './data';
 import styles from './page.module.css';
@@ -37,85 +36,39 @@ const heroSlides = [
 
 // Industry Icons Map
 const sectorIcons: Record<string, string> = {
-  'real-estate': '🏢',
   'healthcare': '🏥',
+  'real-estate': '🏢',
   'education': '🎓',
-  'retail-ecom': '🛍️',
-  'hospitality': '🍽️',
-  'construction': '🏗️',
-  'professional-services': '⚖️',
-  'manufacturing': '🏭',
-  'automotive': '🏎️',
-  'tech-saas': '💻',
-  'agriculture-food': '🌾',
-  'logistics-supply': '🚚',
+  'restaurants': '🍽️',
+  'hospitality': '🏨',
+  'ecommerce': '🛍️',
+  'beauty-wellness': '✨',
+  'finance-fintech': '💼',
+  'retail-local': '🏪',
+  'travel-tourism': '✈️',
 };
 
-// Corridor Deep Dive Intelligence Data
-const corridorDetails: Record<string, {
-  pinCodes: string[];
-  hotspots: string[];
-  queries: string[];
-  purchasingPower: string;
-  conversionSpeed: string;
-  demographics: string;
-}> = {
-  'Patia & Infocity': {
-    pinCodes: ['751024', '751016'],
-    hotspots: ['Infocity Tech Park', 'KIIT Road', 'DLF Cybercity', 'Silicon Hills', 'Magnetic Square'],
-    queries: ['3 BHK Luxury Flats in Patia', 'Best Cafes near Infocity', 'IT Company Office Space Bhubaneswar'],
-    purchasingPower: 'High (IT Executives, Tech Founders, Doctors)',
-    conversionSpeed: '< 72 Hours (High Digital Adoption)',
-    demographics: 'Tech Workforce, High-Net-Worth Young Families, University Students',
-  },
-  'Saheed Nagar': {
-    pinCodes: ['751007'],
-    hotspots: ['Bhawani Mall', 'RD Women’s College Road', 'Metro House', 'Janpath Commercial Strip'],
-    queries: ['Specialist Dental Clinic Saheed Nagar', 'Best CA Firm Bhubaneswar', 'Diagnostics Centre Saheed Nagar'],
-    purchasingPower: 'High (Established Business Families, Senior Professionals)',
-    conversionSpeed: '< 24 Hours (Immediate Medical & Legal Need)',
-    demographics: 'Business Owners, Senior Doctors, Legacy Residents',
-  },
-  'Chandrasekharpur': {
-    pinCodes: ['751016', '751023'],
-    hotspots: ['Damana Square', 'Sailashree Vihar', 'Kanan Vihar', 'BDA Colony'],
-    queries: ['NEET Coaching Institute Bhubaneswar', 'PEB Industrial Contractors Odisha', 'CBSE School Admissions'],
-    purchasingPower: 'Upper Middle Class (Corporate Officers, Edu Founders)',
-    conversionSpeed: '3 - 7 Days (Evaluation Cycle)',
-    demographics: 'Aspirant Families, Corporate Engineers, Academic Leaders',
-  },
-  'Khandagiri & Nayapalli': {
-    pinCodes: ['751030', '751012'],
-    hotspots: ['IRC Village', 'Baramunda Bus Terminal Node', 'Khandagiri Square', 'National Highway Belt'],
-    queries: ['Electric Scooter Showroom Bhubaneswar', 'Luxury Villa Projects Nayapalli', 'Car Service Center'],
-    purchasingPower: 'Upper Middle to High (Commercial Traders, Contractors)',
-    conversionSpeed: '2 - 4 Days (Test Drive to Booking)',
-    demographics: 'Showroom Shoppers, Commuters, Property Investors',
-  },
-  'Mancheswar & Rasulgarh': {
-    pinCodes: ['751010'],
-    hotspots: ['Mancheswar Industrial Estate Sector A & B', 'Rasulgarh Flyover Hub', 'NH-16 Logistics Spine'],
-    queries: ['Warehouse for Lease Bhubaneswar', 'CNC Precision Machining Odisha', 'Industrial Steel Fabricators'],
-    purchasingPower: 'Enterprise B2B (Factory Owners, Export Procurement Heads)',
-    conversionSpeed: '7 - 14 Days (Commercial Tender / RFQ)',
-    demographics: 'Industrialists, Freight Operators, Supply Chain Directors',
-  },
-  'Puri Circuit & Cuttack Road': {
-    pinCodes: ['751006', '752002'],
-    hotspots: ['Cuttack-Puri Bypass', 'Samantarapur', 'Old Town Heritage Hub', 'NH-316 Gateway'],
-    queries: ['Heritage Boutique Resort near Puri', 'Fresh Dairy Milk Delivery Bhubaneswar', 'Odisha Seafood Restaurant'],
-    purchasingPower: 'High Weekend & Tourism Spend',
-    conversionSpeed: '< 4 Hours (Dining & Tourism Reservations)',
-    demographics: 'Pilgrims, Weekend Travelers, Regional Food Lovers',
-  },
-};
+// 10 Industry Filters
+const sectorFilters = [
+  { id: 'all', label: 'All Industries' },
+  { id: 'healthcare', label: '🏥 Healthcare & Hospitals' },
+  { id: 'real-estate', label: '🏢 Real Estate & Property' },
+  { id: 'education', label: '🎓 Education & EdTech' },
+  { id: 'restaurants', label: '🍽️ Restaurants & Food Businesses' },
+  { id: 'hospitality', label: '🏨 Hotels & Hospitality' },
+  { id: 'ecommerce', label: '🛍️ E-commerce & D2C Brands' },
+  { id: 'beauty-wellness', label: '✨ Beauty, Wellness & Fitness' },
+  { id: 'finance-fintech', label: '💼 Finance, Insurance & FinTech' },
+  { id: 'retail-local', label: '🏪 Retail & Local Businesses' },
+  { id: 'travel-tourism', label: '✈️ Travel & Tourism' },
+];
 
 // Diagnostic Tool Options
 const diagnosticSectors = [
   { id: 'real-estate', icon: '🏢', name: 'Real Estate & Builders', defaultStack: 'Sub-second 3D Virtual Tour Portal + Google Search Ads with Negative Shield + WhatsApp Lead Routing', sampleLead: '4 BHK Villa Buyer in Patia (Verified OTP)' },
   { id: 'healthcare', icon: '🏥', name: 'Healthcare & Clinics', defaultStack: 'Google Maps 3-Pack SEO + Verified Doctor Schema + Automated WhatsApp Appointment Bot', sampleLead: 'Specialist Consultation in Saheed Nagar' },
   { id: 'education', icon: '🎓', name: 'Education & Coaching', defaultStack: 'Scholarship Aptitude Test Lead Magnet + Meta Video Ads + Automated Counselor CRM', sampleLead: 'NEET Batch Enrollment from Cuttack' },
-  { id: 'retail-ecom', icon: '🛍️', name: 'Retail & E-commerce', defaultStack: 'Google Shopping / PMax Feeds + Meta Advantage+ Catalog + WhatsApp 3-Stage Cart Recovery', sampleLead: 'D2C Handloom Repeat Order (UPI Paid)' },
+  { id: 'ecommerce', icon: '🛍️', name: 'Retail & E-commerce', defaultStack: 'Google Shopping / PMax Feeds + Meta Advantage+ Catalog + WhatsApp 3-Stage Cart Recovery', sampleLead: 'D2C Handloom Repeat Order (UPI Paid)' },
   { id: 'b2b-industrial', icon: '🏗️', name: 'B2B & Industrial Infra', defaultStack: 'B2B Technical SEO Schema + LinkedIn Account-Based Marketing + Interactive RFQ Estimator', sampleLead: '₹1.2Cr Industrial PEB Structure RFQ' },
   { id: 'tech-saas', icon: '💻', name: 'Tech, IT & SaaS', defaultStack: 'SaaS Interactive Product Tour + Technical Topic Cluster SEO + Automated Trial Activation Engine', sampleLead: 'Enterprise Software Demo Booking' },
 ];
@@ -131,66 +84,6 @@ const diagnosticBudgets = [
   { id: 'starter', label: '₹30,000 – ₹50,000 / mo', leadsRange: '45 – 70 Leads', targetCpl: '₹350 – ₹450', timeline: 'First Leads in 72 Hours' },
   { id: 'growth', label: '₹50,000 – ₹1,00,000 / mo', leadsRange: '110 – 190 Leads', targetCpl: '₹220 – ₹320', timeline: 'Full-Funnel Scale in 14 Days' },
   { id: 'scale', label: '₹1,00,000+ / mo', leadsRange: '250+ Verified Leads', targetCpl: '₹140 – ₹240', timeline: 'Multi-Location Market Dominance' },
-];
-
-// Engagement Models (Tabbed Console)
-const engagementTiers = [
-  {
-    id: 'sprint',
-    badge: '30-DAY FIXED SPRINT',
-    name: 'Sector Launch Sprint',
-    price: '₹35,000',
-    period: '/ month',
-    tagline: 'Rapid market entry for single-location businesses ready to capture immediate demand in Bhubaneswar.',
-    deliverables: [
-      'Complete Google Maps 3-Pack Dominance & Pin Verification',
-      'Hyperlocal Google Search Campaign (15km radius around clinic/store)',
-      'Sub-second Next.js Lead Landing Page with WhatsApp Bot',
-      'Negative Keyword Shielding to eliminate wasted ad clicks',
-      'Weekly Audited Lead & Cost-Per-Acquisition Reports',
-    ],
-    timeline: 'Live in 72 Hours',
-    guarantee: '100% Attribution Verified Leads',
-    targetSectors: 'Local clinics, cafes, boutique builders, single-location retail',
-  },
-  {
-    id: 'retainer',
-    badge: 'COMPOUNDING DOMINANCE',
-    name: 'Growth Dominance Retainer',
-    price: '₹75,000',
-    period: '/ month',
-    tagline: 'Comprehensive multi-channel scaling for ambitious market leaders aiming to monopolize their sector in Odisha.',
-    deliverables: [
-      'Full-Funnel Google Search, Display & Performance Max Ads',
-      'Meta Video Ads & Advantage+ Catalog Retargeting',
-      'Technical On-Page SEO & Hyperlocal Authority Backlinks',
-      'Interactive 3D Virtual Tour / Price Estimator Web Modules',
-      'Multi-Stage WhatsApp Cart & Appointment Automation Sequences',
-      'Bi-Weekly Executive Strategy & Pipeline Reviews',
-    ],
-    timeline: 'Continuous Compounding Scale',
-    guarantee: 'Guaranteed Cost-Per-Lead Ceilings',
-    targetSectors: 'Real estate builders, universities, diagnostic chains, high-volume retail',
-  },
-  {
-    id: 'enterprise',
-    badge: 'BESPOKE ANNUAL SLA',
-    name: 'Enterprise Commercial Partner',
-    price: 'Custom Commercial SLA',
-    period: '',
-    tagline: 'Custom revenue engineering, enterprise web infrastructure, and omni-channel acquisition across Eastern India.',
-    deliverables: [
-      'Multi-Location Pan-Odisha Regional Campaign Architecture',
-      'Full Custom Web / App Engineering (Next.js 15 + Headless CMS)',
-      'Dedicated 4K Video Production & Food/Industrial Creative Shoots',
-      'Custom CRM & ERP Bi-Directional Pipeline Integration',
-      'Executive Account-Based Marketing (ABM) for High-Value B2B RFQs',
-      '24/7 Dedicated Revenue Pod & Priority Executive SLA Support',
-    ],
-    timeline: 'Annual Strategic Retainer',
-    guarantee: 'Dedicated Revenue Share / Performance SLA',
-    targetSectors: 'Enterprise builders, hospital chains, industrial exporters, mega retail brands',
-  },
 ];
 
 // Interactive Sector Revenue & ROI Simulator Models
@@ -329,7 +222,7 @@ function formatInr(val: number): string {
 }
 
 export default function IndustriesPage() {
-  // Hero slide carousel state (matching Home hero)
+  // Hero slide carousel state
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideTimerRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -343,68 +236,39 @@ export default function IndustriesPage() {
     };
   }, []);
 
-  // Master-Detail Sector Workstation State
-  const [selectedIndustryId, setSelectedIndustryId] = useState<string>('real-estate');
+  // Selected Sector ID for navigation
+  const [selectedIndustryId, setSelectedIndustryId] = useState<string>('healthcare');
 
-  // Corridor Console State
-  const [activeCorridorIdx, setActiveCorridorIdx] = useState<number>(0);
+  // Category filter for the 10-Sector Bento Grid
+  const [activeSectorGroup, setActiveSectorGroup] = useState<string>('all');
+  const [showAllCards, setShowAllCards] = useState<boolean>(false);
+
+  const filteredIndustries = useMemo(() => {
+    if (activeSectorGroup === 'all') return industryCatalog;
+    return industryCatalog.filter(i => i.id === activeSectorGroup);
+  }, [activeSectorGroup]);
+
+  const visibleIndustries = useMemo(() => {
+    if (activeSectorGroup !== 'all' || showAllCards) return filteredIndustries;
+    return filteredIndustries.slice(0, 4);
+  }, [filteredIndustries, showAllCards, activeSectorGroup]);
 
   // Diagnostic Tool State
   const [diagSector, setDiagSector] = useState<string>('real-estate');
   const [diagBottleneck, setDiagBottleneck] = useState<string>('high-cpl');
   const [diagBudget, setDiagBudget] = useState<string>('growth');
 
-  // Engagement Tier State
-  const [activeTierId, setActiveTierId] = useState<string>('retainer');
-
-  // Category filter for the 12-Sector Bento Grid
-  const [activeSectorGroup, setActiveSectorGroup] = useState<string>('all');
-
-  const sectorGroups = [
-    { id: 'all', label: 'All 12 Sectors' },
-    { id: 'property', label: '🏢 Property & Living' },
-    { id: 'health_edu', label: '🏥 Healthcare & Education' },
-    { id: 'retail_food', label: '🛍️ Retail & Food' },
-    { id: 'b2b_industrial', label: '🏗️ B2B & Industrial' },
-    { id: 'tech_logistics', label: '💻 Tech & Professional' },
-  ];
-
-  const filteredIndustries = useMemo(() => {
-    if (activeSectorGroup === 'all') return industryCatalog;
-    return industryCatalog.filter(i => i.group === activeSectorGroup);
-  }, [activeSectorGroup]);
-
-  // Controls 4 cards vs all 12 cards in Section 3
-  const [showAllCards, setShowAllCards] = useState<boolean>(false);
-
-  const visibleIndustries = useMemo(() => {
-    if (showAllCards) return filteredIndustries;
-    return filteredIndustries.slice(0, 4);
-  }, [filteredIndustries, showAllCards]);
-
-  // Selected Diagnostic Sector Item
   const activeDiagSector = useMemo(() => {
     return diagnosticSectors.find(s => s.id === diagSector) || diagnosticSectors[0];
   }, [diagSector]);
 
-  // Selected Diagnostic Bottleneck Item
   const activeDiagBottleneck = useMemo(() => {
     return diagnosticBottlenecks.find(b => b.id === diagBottleneck) || diagnosticBottlenecks[0];
   }, [diagBottleneck]);
 
-  // Selected Diagnostic Budget Item
   const activeDiagBudget = useMemo(() => {
     return diagnosticBudgets.find(b => b.id === diagBudget) || diagnosticBudgets[0];
   }, [diagBudget]);
-
-  // Active Engagement Tier
-  const activeTier = useMemo(() => {
-    return engagementTiers.find(t => t.id === activeTierId) || engagementTiers[1];
-  }, [activeTierId]);
-
-  // Active Corridor Details
-  const activeCorridorName = sectorCorridorMatrix[activeCorridorIdx].corridor;
-  const currentCorridorInfo = corridorDetails[activeCorridorName] || corridorDetails['Patia & Infocity'];
 
   // Simulator State
   const [simSector, setSimSector] = useState<string>('real-estate');
@@ -420,7 +284,7 @@ export default function IndustriesPage() {
   return (
     <div className={styles.page}>
       {/* ══════════════════════════════════════════════════════════
-          SECTION 1: HERO COMMAND CENTER (FITS SINGLE WINDOW, CENTERED EYEBROW)
+          SECTION 1: HERO COMMAND CENTER
          ══════════════════════════════════════════════════════════ */}
       <section className={styles.heroSection}>
         <div className={styles.heroGlowOverlay} />
@@ -431,30 +295,29 @@ export default function IndustriesPage() {
               <ScrollReveal>
                 <div className={styles.heroEyebrow}>
                   <span className={styles.heroEyebrowDot} />
-                  <span>SPECIALIZED INDUSTRY ARCHITECTURES &bull; BHUBANESWAR &amp; ODISHA</span>
+                  <span>BHUBANESWAR DIGITAL GROWTH</span>
                 </div>
                 <h1 className={`display-hero ${styles.heroTitle}`}>
-                  Bhubaneswar Digital Marketing{' '}
-                  <span className={`accent-gradient ${styles.heroAccent}`}>Built for Your Specific Industry.</span>
+                  Marketing Strategies Built Around How Your Industry Grows
                 </h1>
                 <div className={styles.heroSub}>
                   <p>
-                    Generic marketing fails because every industry has unique customer psychology, sales cycles, and pricing dynamics. We build bespoke acquisition engines tailored specifically to your sector in Bhubaneswar.
+                    Every industry has different customers, sales cycles, challenges, and opportunities. At Nova Spark, we build tailored digital marketing campaigns designed around your industry and focused on measurable business growth.
                   </p>
                 </div>
 
                 <div className={styles.heroCtaRow}>
                   <BeamButton
                     href="#sector-showcase"
-                    label="Explore Sector Playbooks ↓"
+                    label="Explore Our Industry Playbooks →"
                     size="lg"
                   />
                   <Link href="/contact" className={styles.heroSecondaryBtn}>
-                    Claim Sector Growth Blueprint <span>→</span>
+                    Get a Custom Growth Plan <span>→</span>
                   </Link>
                 </div>
 
-                {/* Priority Direct Sector Access — Only 4 Visible + See All Button */}
+                {/* Priority Direct Sector Access */}
                 <div className={styles.heroTagsStrip}>
                   <span className={styles.heroTagsLabel}>PRIORITY SECTORS:</span>
                   <div className={styles.heroTagsList}>
@@ -467,6 +330,7 @@ export default function IndustriesPage() {
                           className={`${styles.heroTagBtn} ${isSelected ? styles.heroTagBtnActive : ''}`}
                           onClick={() => {
                             setSelectedIndustryId(ind.id);
+                            setActiveSectorGroup(ind.id);
                             const el = document.getElementById(`sector-card-${ind.id}`) || document.getElementById('sector-showcase');
                             if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
                           }}
@@ -481,14 +345,14 @@ export default function IndustriesPage() {
                       href="#sector-showcase"
                       className={styles.heroSeeMoreBtn}
                     >
-                      See All 12 Sectors ↓
+                      See All 10 Sectors ↓
                     </a>
                   </div>
                 </div>
               </ScrollReveal>
             </div>
 
-            {/* Right Pane: Clean Real Photography Showcase (Exact same as Home Hero) */}
+            {/* Right Pane: Photography Showcase */}
             <div className={styles.visual}>
               <div className={styles.imageCard}>
                 <div className={styles.imageViewport}>
@@ -516,7 +380,7 @@ export default function IndustriesPage() {
                     <span className={styles.badgeText}>{heroSlides[currentSlide].caption}</span>
                   </div>
 
-                  {/* Minimalist Tactile Dot Indicators */}
+                  {/* Tactile Dot Indicators */}
                   <div className={styles.dotsWrap}>
                     {heroSlides.map((_, idx) => (
                       <button
@@ -536,7 +400,7 @@ export default function IndustriesPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════
-          SECTION 2: THE 12-SECTOR BENTO SHOWCASE (4 VISIBLE + SEE MORE)
+          SECTION 2: SECTOR SHOWCASE (4 VISIBLE + SEE MORE)
          ══════════════════════════════════════════════════════════ */}
       <section className={styles.sectorShowcaseSection} id="sector-showcase">
         <div className="container">
@@ -544,25 +408,28 @@ export default function IndustriesPage() {
             <div className={styles.sectionEyebrowCenter}>
               <div className="eyebrow eyebrow-center">
                 <span className="eyebrow-dot" />
-                THE 12 SPECIALIZED SECTOR ARCHITECTURES
+                BUILT FOR BHUBANESWAR BUSINESSES
               </div>
             </div>
             <h2 className={`display-md ${styles.sectionHeading}`}>
-              Bespoke Industry Acquisition Engines.<br />
-              <span className="accent-gradient">Engineered for Bhubaneswar Commercial Growth.</span>
+              Industry-Specific Marketing for{' '}
+              <span className="accent-gradient">Bhubaneswar&apos;s Growing Businesses</span>
             </h2>
             <p className={styles.sectionSub}>
-              Generic marketing burns budgets because every industry has distinct customer psychology, sales velocity, and pricing dynamics in Odisha. Explore our audited playbooks below.
+              Different industries need different digital strategies. Nova Spark understands the local market and builds customised marketing systems around your audience, services, competition, and commercial goals.
             </p>
 
             {/* Interactive Category Filter Pills */}
             <div className={styles.sectorFilterRow}>
-              {sectorGroups.map(grp => (
+              {sectorFilters.map(grp => (
                 <button
                   key={grp.id}
                   type="button"
                   className={`${styles.sectorFilterBtn} ${activeSectorGroup === grp.id ? styles.sectorFilterBtnActive : ''}`}
-                  onClick={() => setActiveSectorGroup(grp.id)}
+                  onClick={() => {
+                    setActiveSectorGroup(grp.id);
+                    setShowAllCards(false);
+                  }}
                 >
                   {grp.label}
                 </button>
@@ -570,7 +437,7 @@ export default function IndustriesPage() {
             </div>
           </ScrollReveal>
 
-          {/* Sector Bento Grid (4 Visible by Default) */}
+          {/* Sector Bento Grid */}
           <div className={styles.sectorBentoGrid}>
             {visibleIndustries.map((ind) => (
               <div key={ind.id} id={`sector-card-${ind.id}`} className={styles.sectorBentoCard}>
@@ -613,21 +480,25 @@ export default function IndustriesPage() {
                   </div>
                 </div>
 
-                {/* Strategic Comparison: Problem vs Solution */}
+                {/* Strategic Intent, Bottleneck & Approach */}
                 <div className={styles.cardStrategyBox}>
+                  <div className={styles.cardIntentPill}>
+                    <span className={styles.intentTag}>{ind.intentLabel}</span>
+                    <p className={styles.intentText}>{ind.intentText}</p>
+                  </div>
                   <div className={styles.cardProblemPill}>
-                    <span className={styles.problemTag}>⚠️ BOTTLENECK</span>
-                    <p className={styles.problemText}>{ind.playbook.bottlenecks[0]}</p>
+                    <span className={styles.problemTag}>{ind.bottleneckLabel}</span>
+                    <p className={styles.problemText}>{ind.bottleneckText}</p>
                   </div>
                   <div className={styles.cardSolutionPill}>
-                    <span className={styles.solutionTag}>⚡ OUR MOAT</span>
-                    <p className={styles.solutionText}>{ind.playbook.solutions[0]}</p>
+                    <span className={styles.solutionTag}>{ind.approachLabel}</span>
+                    <p className={styles.solutionText}>{ind.approachText}</p>
                   </div>
                 </div>
 
-                {/* Channels Micro Badges */}
+                {/* Channels / Services Micro Badges */}
                 <div className={styles.cardServicesStrip}>
-                  {ind.services.slice(0, 3).map((srv, idx) => (
+                  {ind.services.map((srv, idx) => (
                     <span key={idx} className={styles.serviceMicroTag}>
                       {srv}
                     </span>
@@ -649,14 +520,14 @@ export default function IndustriesPage() {
           </div>
 
           {/* Load More / Show Less Sectors Toggle Button */}
-          {filteredIndustries.length > 4 && (
+          {activeSectorGroup === 'all' && (
             <div className={styles.bentoShowMoreWrap}>
               <button
                 type="button"
                 className={styles.bentoShowMoreBtn}
                 onClick={() => setShowAllCards(prev => !prev)}
               >
-                <span>{showAllCards ? 'Show Less Sectors ↑' : `Explore All 12 Sectors (+${filteredIndustries.length - 4} More) ↓`}</span>
+                <span>{showAllCards ? 'Show Less Industries ↑' : `Explore All 10 Industries (+${filteredIndustries.length - 4} More) ↓`}</span>
               </button>
             </div>
           )}
@@ -728,7 +599,7 @@ export default function IndustriesPage() {
                       </span>
                     </div>
 
-                    {/* Tactile Skeuomorphic Range Slider */}
+                    {/* Range Slider */}
                     <div className={styles.simSliderWrap}>
                       <input
                         type="range"
@@ -794,7 +665,7 @@ export default function IndustriesPage() {
                     </div>
                   </div>
 
-                  {/* Commercial SLA Guarantee Pill */}
+                  {/* Performance Guarantee Pill */}
                   <div className={styles.simGuaranteeBox}>
                     <div className={styles.simGuaranteeIcon}>🔒</div>
                     <div className={styles.simGuaranteeMeta}>
@@ -822,7 +693,6 @@ export default function IndustriesPage() {
 
                   {/* 4-Stat Live Metrics Grid */}
                   <div className={styles.simStatGrid}>
-                    {/* Stat 1: Verified Leads */}
                     <div className={styles.simStatCard}>
                       <span className={styles.simStatLabel}>ESTIMATED INBOUND LEADS</span>
                       <div className={styles.simStatValWrap}>
@@ -832,7 +702,6 @@ export default function IndustriesPage() {
                       <span className={styles.simStatMicro}>OTP &amp; Phone Verified</span>
                     </div>
 
-                    {/* Stat 2: Target CPL Ceiling */}
                     <div className={styles.simStatCard}>
                       <span className={styles.simStatLabel}>TARGET CPL CEILING</span>
                       <div className={styles.simStatValWrap}>
@@ -842,7 +711,6 @@ export default function IndustriesPage() {
                       <span className={styles.simStatMicroPositive}>↓ 48% vs Agency Avg</span>
                     </div>
 
-                    {/* Stat 3: Pipeline Gross Yield */}
                     <div className={styles.simStatCard}>
                       <span className={styles.simStatLabel}>PROJECTED PIPELINE VALUE</span>
                       <div className={styles.simStatValWrap}>
@@ -851,7 +719,6 @@ export default function IndustriesPage() {
                       <span className={styles.simStatMicro}>Based on {activeSim.avgDealValue} AOV</span>
                     </div>
 
-                    {/* Stat 4: Acquisition Multiplier */}
                     <div className={styles.simStatCard}>
                       <span className={styles.simStatLabel}>PROJECTED ACQUISITION YIELD</span>
                       <div className={styles.simStatValWrap}>
@@ -899,137 +766,8 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-
       {/* ══════════════════════════════════════════════════════════
-          SECTION 5: HYPERLOCAL CORRIDOR DISTRIBUTION CONSOLE
-         ══════════════════════════════════════════════════════════ */}
-      <section className={styles.corridorSection} id="sector-corridors">
-        <div className="container">
-          <ScrollReveal>
-            <div className={styles.sectionEyebrowCenter}>
-              <div className="eyebrow eyebrow-center">
-                <span className="eyebrow-dot" />
-                GEOGRAPHIC FOOTPRINT
-              </div>
-            </div>
-            <h2 className={`display-md ${styles.sectionHeading}`}>
-              Bhubaneswar Commercial Corridors<br />
-              <span className="accent-gradient">Sector Density & Intent Mapping.</span>
-            </h2>
-            <p className={styles.sectionSub}>
-              How we tailor campaigns to the demographic density, buyer purchasing power, and local traffic patterns of each commercial node in Odisha.
-            </p>
-          </ScrollReveal>
-
-          <ScrollReveal delay={100}>
-            <div className={styles.corridorConsole}>
-              {/* Left Column: Corridor Selector List */}
-              <div className={styles.corridorListPane}>
-                <div className={styles.corridorListHeader}>
-                  <span>COMMERCIAL CORRIDORS</span>
-                  <span>SEARCH VOL</span>
-                </div>
-                {sectorCorridorMatrix.map((c, idx) => {
-                  const isSelected = activeCorridorIdx === idx;
-                  return (
-                    <button
-                      key={c.corridor}
-                      type="button"
-                      className={`${styles.corridorItemBtn} ${isSelected ? styles.corridorItemBtnActive : ''}`}
-                      onClick={() => setActiveCorridorIdx(idx)}
-                    >
-                      <div className={styles.corridorRadioDot}>
-                        {isSelected && <span className={styles.radioInner} />}
-                      </div>
-                      <div className={styles.corridorItemInfo}>
-                        <div className={styles.corridorItemName}>{c.corridor}</div>
-                        <div className={styles.corridorItemBadge}>{c.badge}</div>
-                      </div>
-                      <div className={styles.corridorItemMetric}>{c.metric.split(' ')[0]}</div>
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Right Column: Corridor Deep-Dive Intelligence Display */}
-              <div className={styles.corridorDetailPane}>
-                <div className={styles.corridorDetailHeader}>
-                  <div className={styles.corridorDetailBadge}>
-                    📍 ACTIVE CORRIDOR NODE
-                  </div>
-                  <h3 className={styles.corridorDetailTitle}>
-                    {activeCorridorName}
-                  </h3>
-                  <p className={styles.corridorDetailSub}>
-                    <strong>Dominant Focus:</strong> {sectorCorridorMatrix[activeCorridorIdx].focus}
-                  </p>
-                </div>
-
-                <div className={styles.corridorMetricsRow}>
-                  <div className={styles.corridorStatWell}>
-                    <span className={styles.corridorStatVal}>
-                      {sectorCorridorMatrix[activeCorridorIdx].metric}
-                    </span>
-                    <span className={styles.corridorStatLabel}>Monthly In-Market Search Queries</span>
-                  </div>
-                  <div className={styles.corridorStatWell}>
-                    <span className={styles.corridorStatVal}>
-                      {currentCorridorInfo.purchasingPower.split('(')[0]}
-                    </span>
-                    <span className={styles.corridorStatLabel}>Buyer Purchasing Power</span>
-                  </div>
-                  <div className={styles.corridorStatWell}>
-                    <span className={styles.corridorStatVal}>
-                      {currentCorridorInfo.conversionSpeed.split('(')[0]}
-                    </span>
-                    <span className={styles.corridorStatLabel}>Decision Turnaround Speed</span>
-                  </div>
-                </div>
-
-                {/* Hotspots & Target Pin-Codes */}
-                <div className={styles.corridorInfoGrid}>
-                  <div className={styles.corridorInfoCard}>
-                    <span className={styles.infoCardLabel}>TARGET PIN CODES & NODES:</span>
-                    <div className={styles.pinCodeTags}>
-                      {currentCorridorInfo.pinCodes.map(pin => (
-                        <span key={pin} className={styles.pinTag}>PIN: {pin}</span>
-                      ))}
-                      {currentCorridorInfo.hotspots.slice(0, 3).map(h => (
-                        <span key={h} className={styles.hotspotTag}>• {h}</span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className={styles.corridorInfoCard}>
-                    <span className={styles.infoCardLabel}>TOP COMMERCIAL SEARCH QUERIES:</span>
-                    <div className={styles.queryList}>
-                      {currentCorridorInfo.queries.map(q => (
-                        <span key={q} className={styles.queryTag}>&ldquo;{q}&rdquo;</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                <div className={styles.corridorClientRow}>
-                  <span className={styles.corridorClientLabel}>VERIFIED CLIENT ANCHOR:</span>
-                  <span className={styles.corridorClientVal}>{sectorCorridorMatrix[activeCorridorIdx].anchor}</span>
-                </div>
-
-                <div style={{ marginTop: 24 }}>
-                  <BeamButton
-                    href="/contact"
-                    label={`Dominate ${activeCorridorName} Market →`}
-                    size="md"
-                  />
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════
-          SECTION 6: INTERACTIVE GROWTH DIAGNOSTIC (STRATEGY FINDER)
+          SECTION 5: INTERACTIVE GROWTH DIAGNOSTIC (STRATEGY FINDER)
          ══════════════════════════════════════════════════════════ */}
       <section className={styles.diagnosticSection} id="sector-diagnostic">
         <div className="container">
@@ -1175,7 +913,7 @@ export default function IndustriesPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════
-          SECTION 7: EDITORIAL-GRADE FLAGSHIP TRANSFORMATION SHOWCASE
+          SECTION 6: EDITORIAL-GRADE FLAGSHIP TRANSFORMATION SHOWCASE
          ══════════════════════════════════════════════════════════ */}
       <section className={styles.editorialSection}>
         <div className="container">
@@ -1242,126 +980,7 @@ export default function IndustriesPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════
-          SECTION 8: SEGMENTED PARTNERSHIP TIER TERMINAL (MINIMAL & ATTRACTIVE)
-         ══════════════════════════════════════════════════════════ */}
-      <section className={styles.tierTerminalSection} id="sector-tiers">
-        <div className="container">
-          <ScrollReveal>
-            <div className={styles.sectionEyebrowCenter}>
-              <div className="eyebrow eyebrow-center">
-                <span className="eyebrow-dot" />
-                PARTNERSHIP ARCHITECTURE
-              </div>
-            </div>
-            <h2 className={`display-md ${styles.sectionHeading}`}>
-              Outcome-Oriented Engagement Models<br />
-              <span className="accent-gradient">Transparent. Measurable. Guaranteed.</span>
-            </h2>
-            <p className={styles.sectionSub}>
-              Select an engagement model below to inspect its deliverables, turnaround timelines, and commercial SLA commitments in Bhubaneswar.
-            </p>
-          </ScrollReveal>
-
-          <ScrollReveal delay={80}>
-            <div className={styles.tierConsole}>
-              {/* Minimal Tactile Segmented Bar */}
-              <div className={styles.tierSegmentedBar}>
-                {engagementTiers.map(t => {
-                  const isActive = t.id === activeTierId;
-                  return (
-                    <button
-                      key={t.id}
-                      type="button"
-                      className={`${styles.tierSegmentBtn} ${isActive ? styles.tierSegmentBtnActive : ''}`}
-                      onClick={() => setActiveTierId(t.id)}
-                    >
-                      <span className={styles.segmentBadge}>{t.badge}</span>
-                      <span className={styles.segmentTitle}>{t.name}</span>
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Tier Comprehensive Detail Plane */}
-              <div className={styles.tierDetailPlane}>
-                {/* Elevated Minimal Card Header */}
-                <div className={styles.tierCardHeader}>
-                  <div className={styles.tierHeaderMeta}>
-                    <div className={styles.tierHeaderBadgeRow}>
-                      <span className={styles.tierHeaderBadge}>
-                        <span className={styles.tierBadgeDot} />
-                        {activeTier.badge}
-                      </span>
-                      {activeTier.id === 'retainer' && (
-                        <span className={styles.tierPopularBadge}>⭐ MOST POPULAR</span>
-                      )}
-                    </div>
-                    <h3 className={styles.tierDetailTitle}>{activeTier.name}</h3>
-                    <p className={styles.tierDetailTagline}>{activeTier.tagline}</p>
-                  </div>
-
-                  <div className={styles.tierPriceDisplay}>
-                    <div className={styles.priceRow}>
-                      <span className={styles.tierPriceVal}>{activeTier.price}</span>
-                      {activeTier.period && <span className={styles.tierPricePeriod}>{activeTier.period}</span>}
-                    </div>
-                    <span className={styles.priceGuaranteePill}>
-                      🔒 {activeTier.guarantee}
-                    </span>
-                  </div>
-                </div>
-
-                <div className={styles.tierBodyGrid}>
-                  {/* Left Column: Deliverables */}
-                  <div className={styles.tierDeliverablesCol}>
-                    <div className={styles.tierColTitle}>INCLUDED REVENUE DELIVERABLES:</div>
-                    <ul className={styles.tierCheckList}>
-                      {activeTier.deliverables.map(d => (
-                        <li key={d} className={styles.tierCheckItem}>
-                          <span className={styles.greenCheckMedallion}>✓</span>
-                          <span>{d}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Right Column: SLA Specs & Action */}
-                  <div className={styles.tierCommitmentsCol}>
-                    <div className={styles.tierSpecsBox}>
-                      <div className={styles.tierSpecRow}>
-                        <span className={styles.specLabel}>DEPLOYMENT TIMELINE</span>
-                        <span className={styles.specVal}>⚡ {activeTier.timeline}</span>
-                      </div>
-                      <div className={styles.tierSpecRow}>
-                        <span className={styles.specLabel}>COMMERCIAL GUARANTEE</span>
-                        <span className={styles.specVal}>🔒 {activeTier.guarantee}</span>
-                      </div>
-                      <div className={styles.tierSpecRow}>
-                        <span className={styles.specLabel}>RECOMMENDED SECTOR FIT</span>
-                        <span className={styles.specVal}>{activeTier.targetSectors}</span>
-                      </div>
-                    </div>
-
-                    <div className={styles.tierActionWrap}>
-                      <BeamButton
-                        href="/contact"
-                        label={activeTier.id === 'enterprise' ? 'Request Bespoke Proposal →' : `Deploy ${activeTier.name} →`}
-                        size="lg"
-                      />
-                      <span className={styles.tierAssuranceText}>
-                        ⚡ Rapid 72h Onboarding &bull; Strict NDA Protected
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════
-          SECTION 9: EXECUTIVE BESPOKE BOTTOM CONSULTATION BANNER
+          SECTION 7: EXECUTIVE BESPOKE BOTTOM CONSULTATION BANNER
          ══════════════════════════════════════════════════════════ */}
       <section className={styles.bottomBannerSection}>
         <div className="container">

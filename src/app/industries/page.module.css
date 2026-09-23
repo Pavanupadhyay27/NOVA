@@ -782,6 +782,35 @@
   margin-bottom: 14px;
 }
 
+.cardIntentPill {
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #F0F7FF 0%, #E0F2FE 100%);
+  border: 1.5px solid #BAE6FD;
+  border-top: 1.5px solid #E0F2FE;
+  box-shadow: 
+    inset 0 1.5px 2px rgba(255, 255, 255, 0.9), 
+    inset 0 -1px 2px rgba(2, 132, 199, 0.06), 
+    0 2px 6px rgba(2, 132, 199, 0.08);
+  font-size: 11.5px;
+  line-height: 1.45;
+}
+
+.intentTag {
+  font-family: var(--font-display);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #0284C7;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.intentText {
+  color: #0369A1;
+  margin: 0;
+}
+
 .cardProblemPill {
   padding: 10px 14px;
   border-radius: 12px;
