@@ -545,12 +545,12 @@ export default function FAQPage() {
                   <span>FREQUENTLY ASKED QUESTIONS &bull; ODISHA GROWTH INTELLIGENCE</span>
                 </div>
                 <h1 className={`display-hero ${styles.heroTitle}`}>
-                  Everything You Need to Know About{' '}
-                  <span className={`accent-gradient ${styles.heroAccent}`}>Scaling in Bhubaneswar.</span>
+                  The Complete Digital Growth Guide for{' '}
+                  <span className={`accent-gradient ${styles.heroAccent}`}>Bhubaneswar Businesses</span>
                 </h1>
                 <div className={styles.heroSub}>
                   <p>
-                    Clear, transparent answers to commercial, technical, and strategic questions about digital marketing, Google &amp; Meta Ads, Local SEO, and Next.js web infrastructure in Odisha.
+                    From Google &amp; Meta Ads to Local SEO and high-performance web infrastructure, discover the strategies, costs, technology, and decisions that shape digital growth in Odisha.
                   </p>
                 </div>
 
@@ -795,14 +795,14 @@ export default function FAQPage() {
             <div className={styles.storyHeader}>
               <div className="eyebrow" style={{ marginBottom: 12 }}>
                 <span className="eyebrow-dot" />
-                THE ACQUISITION MANIFESTO &bull; BHUBANESWAR &amp; ODISHA
+                FROM VISIBILITY TO REVENUE &bull; BHUBANESWAR &amp; ODISHA
               </div>
               <h2 className={`display-md ${styles.storyMainTitle}`}>
-                The Anatomy of Market Dominance:<br />
-                <span className="accent-gradient">How Bhubaneswar Brands Break Out of the Commodity Trap.</span>
+                From Visibility to Revenue:<br />
+                <span className="accent-gradient">How Odisha Businesses Can Build Digital Growth That Actually Scales?</span>
               </h2>
               <p className={styles.storyLeadText}>
-                Most businesses in Odisha spend years burning ad budgets with generic agencies because they treat marketing as a cosmetic expense rather than an engineered revenue assembly line. Here is the true story of how market leaders are built in this city.
+                Your customers are already searching, comparing, and discovering brands online. The opportunity is to build a digital presence that captures that demand through SEO, paid advertising, content, social media, and high-performing websites.
               </p>
             </div>
           </ScrollReveal>
@@ -820,23 +820,29 @@ export default function FAQPage() {
               <div className={styles.chapterRungLine} />
               <div className={styles.chapterCardPlate}>
                 <div className={styles.chapterMeta}>
-                  <span className={styles.chapterPhaseBadge}>PHASE 01: THE BLIND SPOT</span>
-                  <span className={styles.chapterAnchorTag}>📍 Patia, Saheed Nagar &amp; Nayapalli Corridors</span>
+                  <span className={styles.chapterPhaseBadge}>PHASE 01: FINDING THE GAP</span>
+                  <span className={styles.chapterAnchorTag}>📍 Patia, Saheed Nagar, Nayapalli &amp; Beyond</span>
                 </div>
                 <h3 className={styles.chapterHeading}>
-                  The Invisible Bleed: Why 65% of High-Intent Buyers Never Reach Your Store or Clinic
+                  Your Customers Are Searching. Can They Find You?
                 </h3>
                 <div className={styles.chapterNarrative}>
                   <p>
-                    Every morning in Bhubaneswar, over 40,000 residents pull out their smartphones to find commercial solutions: a specialist doctor in Saheed Nagar, a luxury 3 BHK flat near Infocity, or a structural fabrication contractor in Mancheswar.
+                    People all over Bhubaneswar look for information online before they go to the clinic, contact a business, book a service, or make a purchase. They compare their choices using Google Search, Google Maps, Instagram, and other digital platforms.
                   </p>
                   <p>
-                    Traditional businesses rely on static storefront signs, word-of-mouth, and broker commissions. Meanwhile, modern competitors capture those exact customers at the precise second of intent through Google Maps 3-Pack and negative-shielded Search ads.
+                    But many local businesses still depend mainly on referrals, walk-ins, and traditional advertising.
+                  </p>
+                  <p>
+                    At Nova Spark, we help businesses build a stronger online presence so they can reach customers when they are actively looking for their products or services.
+                  </p>
+                  <p>
+                    From local SEO and Google Business Profile optimization to Google Ads, Meta Ads, and content marketing, we focus on making your business easier to discover and easier to contact.
                   </p>
                 </div>
                 <div className={styles.chapterInlineMetric}>
                   <span className={styles.inlineMetricDot} />
-                  <strong>Hyperlocal Reality:</strong> 68% of Bhubaneswar mobile searches convert to a phone call or site visit within 24 hours. If you are not in the top 3, you do not exist to the market.
+                  <strong>Local Growth Focus:</strong> We build digital strategies around your location, target audience, industry, and business goals, not generic campaigns made for everyone.
                 </div>
               </div>
             </div>
@@ -850,23 +856,29 @@ export default function FAQPage() {
               <div className={styles.chapterRungLine} />
               <div className={styles.chapterCardPlate}>
                 <div className={styles.chapterMeta}>
-                  <span className={styles.chapterPhaseBadge}>PHASE 02: THE ARCHITECTURAL SHIFT</span>
-                  <span className={styles.chapterAnchorTag}>⚡ Sub-Second Next.js Infrastructure</span>
+                  <span className={styles.chapterPhaseBadge}>PHASE 02: BUILDING A BETTER DIGITAL FOUNDATION</span>
+                  <span className={styles.chapterAnchorTag}>⚡ High-Performance Web &amp; UX</span>
                 </div>
                 <h3 className={styles.chapterHeading}>
-                  Speed as a Moat: Replacing Fragile WordPress Templates with High-Velocity Code
+                  A Website Should Do More Than Look Good
                 </h3>
                 <div className={styles.chapterNarrative}>
                   <p>
-                    Most agency websites in Odisha take 4 to 6 seconds to load over local 4G/5G mobile connections. By second 3, over half of the visitors you paid for click away in frustration.
+                    Your website is usually the first serious encounter that will ever come your way from a potential customer.
                   </p>
                   <p>
-                    We replace bloated legacy websites with sub-second Next.js 15 web architecture. Pages load in under 0.8 seconds with interactive 3D tours and dynamic WhatsApp reservation bots, cutting bounce rates by 60% and turning previously wasted clicks into verified conversations.
+                    If it takes a long time to load, is outdated, is hard to use on mobile, or makes it hard to reach you, you risk losing potential customers before they even know what you offer.
+                  </p>
+                  <p>
+                    Nova Spark creates websites that are speedy, mobile responsive, and conversion optimized, built around how your customers really use the site.
+                  </p>
+                  <p>
+                    If you need a business website, landing page website, service website or a scalable Next.js website, we are focused on clean design, performance, SEO and simple user experience.
                   </p>
                 </div>
                 <div className={styles.chapterInlineMetric}>
                   <span className={styles.inlineMetricDot} />
-                  <strong>Infrastructure Edge:</strong> A 1-second reduction in page load speed increases paid traffic conversion by up to 27% in Tier-2 Indian commercial hubs.
+                  <strong>Our Focus:</strong> Better website performance, clearer messaging, stronger user experience and easier ways for visitors to enquire, call or connect with your business.
                 </div>
               </div>
             </div>
@@ -880,23 +892,29 @@ export default function FAQPage() {
               <div className={styles.chapterRungLine} />
               <div className={styles.chapterCardPlate}>
                 <div className={styles.chapterMeta}>
-                  <span className={styles.chapterPhaseBadge}>PHASE 03: THE COMPOUND FLYWHEEL</span>
-                  <span className={styles.chapterAnchorTag}>🔄 Multi-Stage Behavioral Retargeting</span>
+                  <span className={styles.chapterPhaseBadge}>PHASE 03: TURNING INTEREST INTO REAL ENQUIRIES</span>
+                  <span className={styles.chapterAnchorTag}>🔄 Full-Funnel Lead Conversion</span>
                 </div>
                 <h3 className={styles.chapterHeading}>
-                  Beyond Vanity Likes: Automating the 90-Second Lead-to-Conversation Bridge
+                  From Clicks and Visits to Meaningful Conversations
                 </h3>
                 <div className={styles.chapterNarrative}>
                   <p>
-                    Traditional marketing agencies celebrate &ldquo;impressions&rdquo; and &ldquo;likes&rdquo; that never pay salaries or fund business expansion. In the real world, leads decay exponentially with every passing minute.
+                    Digital marketing should not feel like guesswork.
                   </p>
                   <p>
-                    We engineer bi-directional WhatsApp CRM automations. When a prospective home buyer or clinical patient requests information, an automated WhatsApp sequence confirms their booking and delivers an executive dossier within 90 seconds—locking in appointments before competitors even open their email inbox.
+                    You need to be aware of where leads are coming from, what campaigns are working, what you are paying for, and how you can do better.
+                  </p>
+                  <p>
+                    At Nova Spark, we leverage campaign data, website analytics, SEO information and lead data to determine what works and what doesn&apos;t.
+                  </p>
+                  <p>
+                    Our goal is not to chase impressive-looking numbers. It is about creating a marketing system that is continually optimized with the data we learn from.
                   </p>
                 </div>
                 <div className={styles.chapterInlineMetric}>
                   <span className={styles.inlineMetricDot} />
-                  <strong>Speed to Lead:</strong> Contacting an inbound inquiry within 90 seconds increases qualification probability by 391% compared to a 30-minute response delay.
+                  <strong>Our Approach:</strong> Track the customer journey and improve each step instead of treating every marketing channel as a separate activity.
                 </div>
               </div>
             </div>
@@ -910,23 +928,29 @@ export default function FAQPage() {
               <div className={styles.chapterRungLine} />
               <div className={styles.chapterCardPlate}>
                 <div className={styles.chapterMeta}>
-                  <span className={styles.chapterPhaseBadge}>PHASE 04: SECTOR MONOPOLIZATION</span>
-                  <span className={styles.chapterAnchorTag}>🏆 Audited Boardroom Attribution</span>
+                  <span className={styles.chapterPhaseBadge}>PHASE 04: MEASURING WHAT ACTUALLY MATTERS</span>
+                  <span className={styles.chapterAnchorTag}>📊 Clear Reporting &amp; Sustainable Growth</span>
                 </div>
                 <h3 className={styles.chapterHeading}>
-                  Predictable Commercial Dominance: Zero Guesswork, Written Guarantees
+                  Clear Reporting. Better Decisions. Sustainable Growth.
                 </h3>
                 <div className={styles.chapterNarrative}>
                   <p>
-                    When your search shielding, sub-second web funnels, and automated CRM pipelines operate synchronously, marketing transforms from a stressful gamble into a predictable mathematical growth lever.
+                    Digital marketing should not feel like guesswork.
                   </p>
                   <p>
-                    You know your exact cost-per-qualified-lead, your pipeline multiplier in Bhubaneswar, and your true ROAS. No lock-in contracts. No smoke and mirrors. Just weekly audited attribution reports and compounding market dominance across Odisha.
+                    You should know where your leads are coming from, which campaigns are performing, what you are spending, and where there is room to improve.
+                  </p>
+                  <p>
+                    At Nova Spark, we use campaign data, website analytics, SEO insights and lead information to understand what is working and what needs to change.
+                  </p>
+                  <p>
+                    Our goal is not to chase impressive-looking numbers. It is to build a marketing system that becomes more efficient as we learn from the data.
                   </p>
                 </div>
                 <div className={styles.chapterInlineMetric}>
                   <span className={styles.inlineMetricDot} />
-                  <strong>The Outcome:</strong> Consistent client retention rates of 98% because our revenue engines pay for themselves multiple times over every month.
+                  <strong>The Outcome:</strong> A Digital Growth System Built Around Your Business — No one-size-fits-all packages &bull; No confusing reports &bull; No unnecessary marketing jargon.
                 </div>
               </div>
             </div>
