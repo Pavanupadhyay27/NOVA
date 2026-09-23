@@ -96,7 +96,7 @@ export default function Header() {
     if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
     dropdownTimerRef.current = setTimeout(() => {
       setServicesOpen(false);
-    }, 380);
+    }, 200);
   };
 
   return (
@@ -169,36 +169,46 @@ export default function Header() {
               </svg>
             </Link>
 
-            {servicesOpen && (
-              <div
-                className={styles.dropdown}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-              >
-                <div className={styles.dropdownGrid}>
-                  {services.map((s) => (
-                    <Link
-                      key={s.href}
-                      href={s.href}
-                      className={styles.dropdownItem}
-                      onClick={() => setServicesOpen(false)}
-                    >
-                      <span className={styles.dropdownLabel}>{s.label}</span>
-                      <span className={styles.dropdownDesc}>{s.desc}</span>
-                    </Link>
-                  ))}
-                </div>
-                <div className={styles.dropdownFooter}>
+            <div
+              className={`${styles.dropdown} ${servicesOpen ? styles.dropdownOpen : ''}`}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              aria-hidden={!servicesOpen}
+            >
+              <div className={styles.dropdownGrid}>
+                {services.map((s) => (
                   <Link
-                    href="/services"
-                    className={styles.dropdownAll}
-                    onClick={() => setServicesOpen(false)}
+                    key={s.href}
+                    href={s.href}
+                    className={styles.dropdownItem}
+                    onClick={() => {
+                      if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
+                      setServicesOpen(false);
+                    }}
+                    tabIndex={servicesOpen ? 0 : -1}
                   >
-                    Explore all 10 growth services <span>→</span>
+                    <div className={styles.dropdownItemHeader}>
+                      <span className={styles.dropdownItemIcon}>{s.icon}</span>
+                      <span className={styles.dropdownLabel}>{s.label}</span>
+                    </div>
+                    <span className={styles.dropdownDesc}>{s.desc}</span>
                   </Link>
-                </div>
+                ))}
               </div>
-            )}
+              <div className={styles.dropdownFooter}>
+                <Link
+                  href="/services"
+                  className={styles.dropdownAll}
+                  onClick={() => {
+                    if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
+                    setServicesOpen(false);
+                  }}
+                  tabIndex={servicesOpen ? 0 : -1}
+                >
+                  Explore all 10 growth services <span>→</span>
+                </Link>
+              </div>
+            </div>
           </div>
 
           {/* About Us */}
@@ -314,32 +324,34 @@ export default function Header() {
                         </button>
                       </div>
 
-                      {/* Cute 2-Column Compact Services Grid */}
-                      {mobileServicesOpen && (
-                        <div className={styles.mobileServicesSubmenu}>
-                          <div className={styles.mobileServicesGrid}>
-                            {services.map((s) => (
-                              <Link
-                                key={s.href}
-                                href={s.href}
-                                className={`${styles.mobileServiceChip} ${pathname === s.href ? styles.mobileServiceChipActive : ''}`}
-                                onClick={() => setMenuOpen(false)}
-                              >
-                                <span className={styles.chipIcon}>{s.icon}</span>
-                                <span className={styles.chipLabel}>{s.shortLabel}</span>
-                              </Link>
-                            ))}
+                      {/* Smooth 2-Column Compact Services Grid */}
+                      <div className={`${styles.mobileServicesSubmenuWrapper} ${mobileServicesOpen ? styles.mobileServicesSubmenuOpen : ''}`}>
+                        <div className={styles.mobileServicesSubmenuInner}>
+                          <div className={styles.mobileServicesSubmenu}>
+                            <div className={styles.mobileServicesGrid}>
+                              {services.map((s) => (
+                                <Link
+                                  key={s.href}
+                                  href={s.href}
+                                  className={`${styles.mobileServiceChip} ${pathname === s.href ? styles.mobileServiceChipActive : ''}`}
+                                  onClick={() => setMenuOpen(false)}
+                                >
+                                  <span className={styles.chipIcon}>{s.icon}</span>
+                                  <span className={styles.chipLabel}>{s.shortLabel}</span>
+                                </Link>
+                              ))}
+                            </div>
+                            <Link
+                              href="/services"
+                              className={styles.mobileAllServicesBtn}
+                              onClick={() => setMenuOpen(false)}
+                            >
+                              <span>Explore all 10 services</span>
+                              <span>→</span>
+                            </Link>
                           </div>
-                          <Link
-                            href="/services"
-                            className={styles.mobileAllServicesBtn}
-                            onClick={() => setMenuOpen(false)}
-                          >
-                            <span>Explore all 10 services</span>
-                            <span>→</span>
-                          </Link>
                         </div>
-                      )}
+                      </div>
                     </div>
                   );
                 }
