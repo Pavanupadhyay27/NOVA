@@ -259,12 +259,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          SECTION 3: DRIVING BUSINESS GROWTH WITH DIGITAL MARKETING IN BHUBANESWAR
-          ───────────────────────────────────────────────────────────── */}
-      <QuickConnectMapSection />
-
-      {/* ─────────────────────────────────────────────────────────────
-          SECTION 4: FEATURED COMMERCIAL MILESTONE (COMPACT SKEUOMORPHIC CARD)
+          SECTION 3: FEATURED COMMERCIAL MILESTONE (COMPACT SKEUOMORPHIC CARD)
           ───────────────────────────────────────────────────────────── */}
       <section className={styles.spotlightSection}>
         <div className="container">
@@ -359,6 +354,11 @@ export default function PortfolioPage() {
           </ScrollReveal>
         </div>
       </section>
+
+      {/* ─────────────────────────────────────────────────────────────
+          DRIVING BUSINESS GROWTH WITH DIGITAL MARKETING IN BHUBANESWAR
+          ───────────────────────────────────────────────────────────── */}
+      <QuickConnectMapSection />
 
       {/* ─────────────────────────────────────────────────────────────
           SECTION 4: AUTO-SLIDING CASE STUDIES SHOWCASE
