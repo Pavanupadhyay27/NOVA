@@ -970,11 +970,11 @@ export default function FAQPage() {
                 DETAILED KNOWLEDGE ARCHIVE
               </div>
               <h2 className={`display-md ${styles.faqSectionTitle}`}>
-                Frequently Asked Strategic Questions.<br />
-                <span className="accent-gradient">Unfiltered Answers from Our Revenue Engineers.</span>
+                Have Questions About Digital Marketing? Start Here!<br />
+                <span className="accent-gradient">Insights, Strategies and Answers from the Nova Spark Team</span>
               </h2>
               <p className={styles.faqSectionSub}>
-                Browse answers organized by service discipline, complete with verified sector collages and technical takeaways.
+                Digital marketing can get complicated quickly. We break down SEO, Google Ads, Meta Ads, websites, social media, and lead generation into practical information you can actually use for your business.
               </p>
             </div>
           </ScrollReveal>
