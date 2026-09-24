@@ -383,17 +383,27 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   display: block;
   background: #000000;
-  transform: scale(0.96);
+  transform: scale(1.0);
   transform-origin: center center;
-  transition: transform 0.25s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .videoWrapper:hover .videoPlayer {
-  transform: scale(0.97);
+  transform: scale(1.03);
+}
+
+/* Ekatraa reel slightly zoomed in for bold, immersive bridal fashion cinematography */
+.videoPlayerEkatraa {
+  transform: scale(1.14) !important;
+  transform-origin: center center;
+}
+
+.videoWrapper:hover .videoPlayerEkatraa {
+  transform: scale(1.18) !important;
 }
 
 .homeIndicator {

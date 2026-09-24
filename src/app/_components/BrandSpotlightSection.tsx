@@ -122,7 +122,7 @@ const spotlightBrands: BrandSpotlightData[] = [
     logo: '/images/clients/Zue-Studio-Logo-color (1).png',
     hasVideo: true,
     videoSrc: '/videos/zue_studio_reel.mp4',
-    videoPoster: '/images/zue1.png',
+    videoPoster: '/images/zue_poster.jpg',
     videoTitle: 'Zue Studio Visual Production Reel',
     videoTag: '9:16 CINEMA REEL',
     headlineHighlight: 'Zue Studio',
@@ -628,7 +628,9 @@ export default function BrandSpotlightSection() {
                     <video
                       ref={videoRef}
                       key={activeBrand.videoSrc}
-                      className={styles.videoPlayer}
+                      className={`${styles.videoPlayer} ${
+                        activeBrand.id === 'ekatraa' ? styles.videoPlayerEkatraa : ''
+                      }`}
                       src={activeBrand.videoSrc}
                       poster={activeBrand.videoPoster}
                       loop
