@@ -254,7 +254,11 @@ const spotlightBrands: BrandSpotlightData[] = [
     shortName: 'Sree Panduranga',
     category: 'Organic Agrotech & Fresh Groceries',
     logo: '/images/clients/sri-pandurangan-divine-fresh.png',
-    hasVideo: false,
+    hasVideo: true,
+    videoSrc: '/videos/Comp 2.mp4',
+    videoPoster: '/images/panduranga_video_poster.jpg',
+    videoTitle: 'Sree Panduranga Fresh Produce Reel',
+    videoTag: '9:16 CINEMA REEL',
     headlineHighlight: 'Sree Panduranga Divine',
     narrative:
       'Scaling direct-to-consumer farm-fresh deliveries with Click-to-WhatsApp 1-tap ordering, localized micro-geo Meta ad clusters, and automated repeat purchase retention funnels across Bhubaneswar.',
@@ -344,6 +348,7 @@ const spotlightBrands: BrandSpotlightData[] = [
 export default function BrandSpotlightSection() {
   const [activeBrandId, setActiveBrandId] = useState(spotlightBrands[0].id);
   const activeBrand = spotlightBrands.find((b) => b.id === activeBrandId) || spotlightBrands[0];
+  const [viewMode, setViewMode] = useState<'video' | 'editorial'>('video');
 
   const sectionRef = useRef<HTMLElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -370,16 +375,22 @@ export default function BrandSpotlightSection() {
     setIsControlsVisible(true);
     setCurrentSlide(0);
     setActiveBrandId(brandId);
+    setViewMode('video');
   };
 
-  // Video reload when brand changes
+  // Check if we should display video on the left
+  const isVideoMode = (viewMode as string) === 'video';
+  const isEditorialMode = (viewMode as string) === 'editorial';
+  const showVideo = activeBrand.hasVideo && isVideoMode;
+
+  // Video reload when brand or viewMode changes
   useEffect(() => {
-    if (activeBrand.hasVideo && videoRef.current) {
+    if (showVideo && videoRef.current) {
       videoRef.current.load();
       setIsPlaying(false);
       setIsControlsVisible(true);
     }
-  }, [activeBrandId, activeBrand.hasVideo]);
+  }, [activeBrandId, showVideo]);
 
   // Video play/pause toggle
   const handlePlayToggle = useCallback(() => {
@@ -580,469 +591,386 @@ export default function BrandSpotlightSection() {
         </div>
 
         {/* ══════════════════════════════════════════════════
-            DYNAMIC SHOWCASE CONTAINER BASED ON BRAND TYPE
+            DYNAMIC SHOWCASE CONTAINER (SIDE-BY-SIDE EQUAL HEIGHT)
            ══════════════════════════════════════════════════ */}
-        {activeBrand.hasVideo ? (
-          /* MODE A: 9:16 SMARTPHONE VIDEO + 1:1 SLIDING CAROUSEL */
-          <div key={`showcase-video-${activeBrand.id}`} className={styles.showcaseGrid}>
-            {/* Card 1: Mobile Phone Reel Mockup */}
+        <div
+          key={`showcase-${activeBrand.id}-${showVideo ? 'video' : 'editorial'}`}
+          className={showVideo ? styles.showcaseGrid : styles.dualPaneEditorialGrid}
+        >
+          {/* Card 1 (Left Pane): 9:16 Smartphone Video Reel OR Editorial Case Study */}
+          {showVideo ? (
             <ScrollReveal direction="up" className={styles.videoCol}>
-              <div className={styles.videoDeviceCard}>
-                <div className={styles.videoDeviceGlow} />
+              <div className={styles.colInnerWrap}>
+                {activeBrand.hasVideo && activeBrand.editorial && (
+                  <div className={styles.subModeToggleWrap} role="tablist" aria-label="Toggle Showcase View">
+                    <button
+                      type="button"
+                      role="tab"
+                      aria-selected={isVideoMode}
+                      onClick={() => setViewMode('video')}
+                      className={`${styles.subModeBtn} ${isVideoMode ? styles.subModeBtnActive : ''}`}
+                    >
+                      <span className={styles.subModeDot} />
+                      <span>🎬 9:16 Video Reel</span>
+                    </button>
+                    <button
+                      type="button"
+                      role="tab"
+                      aria-selected={isEditorialMode}
+                      onClick={() => setViewMode('editorial')}
+                      className={`${styles.subModeBtn} ${isEditorialMode ? styles.subModeBtnActive : ''}`}
+                    >
+                      <span className={styles.subModeDot} />
+                      <span>📋 Strategic Case Study</span>
+                    </button>
+                  </div>
+                )}
 
-                {/* Smartphone Top Notch */}
-                <div className={styles.deviceNotch}>
-                  <span className={styles.speakerPill} />
-                  <span className={styles.cameraDot} />
-                </div>
+                <div className={styles.videoDeviceCard}>
+                  <div className={styles.videoDeviceGlow} />
 
-                {/* 9:16 Video Wrapper inside Phone Frame */}
-                <div
-                  className={styles.videoWrapper}
-                  onClick={handlePlayToggle}
-                  onMouseMove={handleVideoMouseMove}
-                  onMouseEnter={handleVideoMouseMove}
-                  onMouseLeave={handleVideoMouseLeave}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => {
-                    if (e.key === ' ' || e.key === 'Enter') {
-                      e.preventDefault();
-                      handlePlayToggle();
-                    }
-                  }}
-                  aria-label={isPlaying ? `Pause ${activeBrand.name} reel` : `Play ${activeBrand.name} reel with sound`}
-                >
-                  <video
-                    ref={videoRef}
-                    key={activeBrand.videoSrc}
-                    className={styles.videoPlayer}
-                    src={activeBrand.videoSrc}
-                    poster={activeBrand.videoPoster}
-                    loop
-                    muted={!isPlaying}
-                    playsInline
-                    preload="auto"
-                    onPlay={() => setIsPlaying(true)}
-                    onPause={() => setIsPlaying(false)}
-                  />
+                  {/* Smartphone Top Notch / Dynamic Island */}
+                  <div className={styles.deviceNotch}>
+                    <span className={styles.speakerPill} />
+                    <span className={styles.cameraDot} />
+                  </div>
 
-                  {/* 3D Tactile Orange Play Controller */}
+                  {/* 9:16 Video Wrapper inside Phone Frame */}
                   <div
-                    className={`${styles.playOverlay3D} ${
-                      isControlsVisible ? styles.overlayVisible : styles.overlayHidden
-                    }`}
-                  >
-                    {!isPlaying && (
-                      <div className={styles.radarWavesWrapper}>
-                        <span className={styles.radarRing1} />
-                        <span className={styles.radarRing2} />
-                        <span className={styles.radarRing3} />
-                      </div>
-                    )}
-
-                    <div className={styles.buttonOnlyWrap}>
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handlePlayToggle();
-                        }}
-                        className={`${styles.playBtn3D} ${
-                          isPlaying ? styles.playBtn3DActive : ''
-                        }`}
-                        aria-label={isPlaying ? `Pause film` : `Play film with audio`}
-                        title={isPlaying ? 'Click to pause film' : 'Click to play film with sound'}
-                      >
-                        <span className={styles.specularGlareArc} />
-                        <span className={styles.bevelRimGlow} />
-
-                        {isPlaying ? (
-                          <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
-                            <rect x="6" y="4" width="4" height="16" rx="1.5" />
-                            <rect x="14" y="4" width="4" height="16" rx="1.5" />
-                          </svg>
-                        ) : (
-                          <svg
-                            width="28"
-                            height="28"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                            style={{ marginLeft: '4px' }}
-                          >
-                            <path d="M5 3l14 9-14 9V3z" />
-                          </svg>
-                        )}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Mobile Phone Bottom Device Footer */}
-                <div className={styles.deviceFooter}>
-                  <div className={styles.deviceFooterText}>
-                    <span className={styles.deviceTag}>{activeBrand.videoTag}</span>
-                    <h4 className={styles.deviceTitle}>{activeBrand.videoTitle}</h4>
-                  </div>
-
-                  <button
-                    type="button"
+                    className={styles.videoWrapper}
                     onClick={handlePlayToggle}
-                    className={styles.deviceActionBtn}
+                    onMouseMove={handleVideoMouseMove}
+                    onMouseEnter={handleVideoMouseMove}
+                    onMouseLeave={handleVideoMouseLeave}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === ' ' || e.key === 'Enter') {
+                        e.preventDefault();
+                        handlePlayToggle();
+                      }
+                    }}
+                    aria-label={isPlaying ? `Pause ${activeBrand.name} reel` : `Play ${activeBrand.name} reel with sound`}
                   >
-                    <span>{isPlaying ? 'Pause' : 'Play Audio'}</span>
-                  </button>
-                </div>
-              </div>
-            </ScrollReveal>
+                    {/* Skeuomorphic Glass Specular Glare */}
+                    <div className={styles.screenGlassGlare} />
 
-            {/* Card 2: 1:1 Sliding Carousel Showcase */}
-            <ScrollReveal direction="up" delay={0.1} className={styles.carouselCol}>
-              <div
-                className={styles.carouselCard}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-              >
-                <div className={styles.cardBackdrop} />
+                    <video
+                      ref={videoRef}
+                      key={activeBrand.videoSrc}
+                      className={styles.videoPlayer}
+                      src={activeBrand.videoSrc}
+                      poster={activeBrand.videoPoster}
+                      loop
+                      muted={!isPlaying}
+                      playsInline
+                      preload="auto"
+                      onPlay={() => setIsPlaying(true)}
+                      onPause={() => setIsPlaying(false)}
+                    />
 
-                {/* Card Header */}
-                <div className={styles.carouselHeader}>
-                  <div className={styles.brandBadgePill}>
-                    <span className={styles.brandBadgeDot} />
-                    <span>{activeBrand.name}</span>
-                  </div>
-                  <div className={styles.counterBadge}>
-                    <span>{String(currentSlide + 1).padStart(2, '0')}</span>
-                    <span className={styles.counterDivider}>/</span>
-                    <span>{String(activeBrand.slides.length).padStart(2, '0')}</span>
-                  </div>
-                </div>
-
-                {/* Media Viewport */}
-                <div
-                  className={styles.carouselViewport}
-                  onTouchStart={handleTouchStart}
-                  onTouchMove={handleTouchMove}
-                  onTouchEnd={handleTouchEnd}
-                >
-                  <div
-                    className={styles.sliderTrack}
-                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                  >
-                    {activeBrand.slides.map((slide) => {
-                      const imageSrc = imgErrors[slide.id] ? slide.fallback : slide.src;
-                      return (
-                        <div key={slide.id} className={styles.sliderSlide}>
-                          <Image
-                            src={imageSrc}
-                            alt={`${activeBrand.name} showcase creative`}
-                            fill
-                            sizes="(max-width: 960px) 100vw, 680px"
-                            quality={100}
-                            priority
-                            className={styles.carouselImage}
-                            onError={() => {
-                              setImgErrors((prev) => ({ ...prev, [slide.id]: true }));
-                            }}
-                          />
+                    {/* 3D Tactile Orange Play Controller */}
+                    <div
+                      className={`${styles.playOverlay3D} ${
+                        isControlsVisible ? styles.overlayVisible : styles.overlayHidden
+                      }`}
+                    >
+                      {!isPlaying && (
+                        <div className={styles.radarWavesWrapper}>
+                          <span className={styles.radarRing1} />
+                          <span className={styles.radarRing2} />
+                          <span className={styles.radarRing3} />
                         </div>
-                      );
-                    })}
-                  </div>
+                      )}
 
-                  {/* Nav Arrow Buttons */}
-                  <button
-                    type="button"
-                    onClick={handlePrevSlide}
-                    className={`${styles.navBtn} ${styles.navBtnPrev}`}
-                    aria-label="Previous slide"
-                  >
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <polyline points="15 18 9 12 15 6" />
-                    </svg>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={handleNextSlide}
-                    className={`${styles.navBtn} ${styles.navBtnNext}`}
-                    aria-label="Next slide"
-                  >
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <polyline points="9 18 15 12 9 6" />
-                    </svg>
-                  </button>
-
-                  {/* Slide Indicators Dots */}
-                  <div className={styles.slideDotsWrap}>
-                    {activeBrand.slides.map((_, idx) => (
-                      <button
-                        key={idx}
-                        type="button"
-                        onClick={() => setCurrentSlide(idx)}
-                        className={`${styles.slideDot} ${
-                          idx === currentSlide ? styles.slideDotActive : ''
-                        }`}
-                        aria-label={`Go to slide ${idx + 1}`}
-                      />
-                    ))}
-                  </div>
-                </div>
-
-                {/* Clean Centered Thumbnail Gallery (No Text Overlays) */}
-                <div className={styles.carouselFooter}>
-                  <div className={styles.thumbStrip}>
-                    {activeBrand.slides.map((slide, idx) => {
-                      const thumbSrc = imgErrors[slide.id] ? slide.fallback : slide.src;
-                      return (
+                      <div className={styles.buttonOnlyWrap}>
                         <button
-                          key={slide.id}
                           type="button"
-                          onClick={() => setCurrentSlide(idx)}
-                          className={`${styles.thumbBtn} ${
-                            idx === currentSlide ? styles.thumbBtnActive : ''
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handlePlayToggle();
+                          }}
+                          className={`${styles.playBtn3D} ${
+                            isPlaying ? styles.playBtn3DActive : ''
                           }`}
-                          aria-label={`Go to slide ${idx + 1}`}
+                          aria-label={isPlaying ? `Pause film` : `Play film with audio`}
+                          title={isPlaying ? 'Click to pause film' : 'Click to play film with sound'}
                         >
-                          <Image
-                            src={thumbSrc}
-                            alt={`Thumbnail ${idx + 1}`}
-                            fill
-                            sizes="60px"
-                            className={styles.thumbImage}
-                          />
+                          <span className={styles.specularGlareArc} />
+                          <span className={styles.bevelRimGlow} />
+
+                          {isPlaying ? (
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+                              <rect x="6" y="4" width="4" height="16" rx="1.5" />
+                              <rect x="14" y="4" width="4" height="16" rx="1.5" />
+                            </svg>
+                          ) : (
+                            <svg
+                              width="28"
+                              height="28"
+                              viewBox="0 0 24 24"
+                              fill="currentColor"
+                              style={{ marginLeft: '4px' }}
+                            >
+                              <path d="M5 3l14 9-14 9V3z" />
+                            </svg>
+                          )}
                         </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
-        ) : (
-          /* MODE B: DUAL-PANE (EDITORIAL NARRATIVE ON LEFT, 1:1 SLIDER ON RIGHT) */
-          <div key={`showcase-editorial-${activeBrand.id}`} className={styles.dualPaneEditorialGrid}>
-            {/* Left Pane: Editorial Impact Card */}
-            <ScrollReveal direction="up" className={styles.editorialCol}>
-              <div className={styles.editorialCard}>
-                <div>
-                  <div className={styles.editorialTopBadgeRow}>
-                    <div className={styles.editorialVerifiedBadge}>
-                      <span className={styles.editorialVerifiedDot} />
-                      <span>{activeBrand.editorial?.tag || 'VERIFIED CASE STUDY'}</span>
-                    </div>
-
-                    <div className={styles.editorialClientLogoWrap}>
-                      <Image
-                        src={activeBrand.logo}
-                        alt={`${activeBrand.name} logo`}
-                        width={80}
-                        height={26}
-                        className={styles.editorialClientLogo}
-                      />
-                    </div>
-                  </div>
-
-                  <h3 className={styles.editorialTitle}>{activeBrand.editorial?.title}</h3>
-                  <div className={styles.editorialSubtitle}>
-                    📍 {activeBrand.editorial?.subtitle}
-                  </div>
-
-                  <div className={styles.editorialChallengeSolution}>
-                    <div className={styles.editorialBlock}>
-                      <span className={styles.editorialBlockLabel}>The Strategic Challenge</span>
-                      <p className={styles.editorialBlockText}>{activeBrand.editorial?.challenge}</p>
-                    </div>
-
-                    <div className={`${styles.editorialBlock} ${styles.editorialBlockAmber}`}>
-                      <span className={styles.editorialBlockLabel}>The Copilot Solution</span>
-                      <p className={styles.editorialBlockText}>{activeBrand.editorial?.solution}</p>
-                    </div>
-                  </div>
-
-                  {/* 3-Metric KPI Strip */}
-                  <div className={styles.editorialKpiStrip}>
-                    {activeBrand.editorial?.stats.map((s) => (
-                      <div key={s.label} className={styles.editorialKpiItem}>
-                        <span className={styles.editorialKpiNum}>{s.number}</span>
-                        <span className={styles.editorialKpiLbl}>{s.label}</span>
                       </div>
-                    ))}
+                    </div>
                   </div>
 
-                  {/* Verified Client Quote */}
-                  <div className={styles.editorialQuoteBox}>
-                    <p className={styles.editorialQuoteText}>{activeBrand.editorial?.quote}</p>
-                    <span className={styles.editorialQuoteAuthor}>{activeBrand.editorial?.author}</span>
-                  </div>
-                </div>
+                  {/* Mobile Phone Bottom Device Footer */}
+                  <div className={styles.deviceFooter}>
+                    <div className={styles.deviceFooterText}>
+                      <span className={styles.deviceTag}>{activeBrand.videoTag}</span>
+                      <h4 className={styles.deviceTitle}>{activeBrand.videoTitle}</h4>
+                    </div>
 
-                <div style={{ marginTop: '12px' }}>
-                  <BeamButton href="/portfolio" label={`View Complete ${activeBrand.shortName} Case Study`} size="sm" />
+                    <button
+                      type="button"
+                      onClick={handlePlayToggle}
+                      className={styles.deviceActionBtn}
+                    >
+                      <span>{isPlaying ? 'Pause' : 'Play Audio'}</span>
+                    </button>
+                  </div>
+
+                  {/* Hardware Home Indicator Bar */}
+                  <div className={styles.homeIndicator} />
                 </div>
               </div>
             </ScrollReveal>
-
-            {/* Right Pane: 1:1 Sliding Carousel Showcase */}
-            <ScrollReveal direction="up" delay={0.1} className={styles.carouselCol}>
-              <div
-                className={styles.carouselCard}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-              >
-                <div className={styles.cardBackdrop} />
-
-                {/* Card Header */}
-                <div className={styles.carouselHeader}>
-                  <div className={styles.brandBadgePill}>
-                    <span className={styles.brandBadgeDot} />
-                    <span>{activeBrand.name}</span>
+          ) : (
+            <ScrollReveal direction="up" className={styles.editorialCol}>
+              <div className={styles.colInnerWrap}>
+                {activeBrand.hasVideo && activeBrand.editorial && (
+                  <div className={styles.subModeToggleWrap} role="tablist" aria-label="Toggle Showcase View">
+                    <button
+                      type="button"
+                      role="tab"
+                      aria-selected={isVideoMode}
+                      onClick={() => setViewMode('video')}
+                      className={`${styles.subModeBtn} ${isVideoMode ? styles.subModeBtnActive : ''}`}
+                    >
+                      <span className={styles.subModeDot} />
+                      <span>🎬 9:16 Video Reel</span>
+                    </button>
+                    <button
+                      type="button"
+                      role="tab"
+                      aria-selected={isEditorialMode}
+                      onClick={() => setViewMode('editorial')}
+                      className={`${styles.subModeBtn} ${isEditorialMode ? styles.subModeBtnActive : ''}`}
+                    >
+                      <span className={styles.subModeDot} />
+                      <span>📋 Strategic Case Study</span>
+                    </button>
                   </div>
-                  <div className={styles.counterBadge}>
-                    <span>{String(currentSlide + 1).padStart(2, '0')}</span>
-                    <span className={styles.counterDivider}>/</span>
-                    <span>{String(activeBrand.slides.length).padStart(2, '0')}</span>
+                )}
+
+                <div className={styles.editorialCard}>
+                  <div className={styles.editorialMain}>
+                    <div className={styles.editorialTopBadgeRow}>
+                      <div className={styles.editorialVerifiedBadge}>
+                        <span className={styles.editorialVerifiedDot} />
+                        <span>{activeBrand.editorial?.tag || 'VERIFIED CASE STUDY'}</span>
+                      </div>
+
+                      <div className={styles.editorialClientLogoWrap}>
+                        <Image
+                          src={activeBrand.logo}
+                          alt={`${activeBrand.name} logo`}
+                          width={80}
+                          height={26}
+                          className={styles.editorialClientLogo}
+                        />
+                      </div>
+                    </div>
+
+                    <h3 className={styles.editorialTitle}>{activeBrand.editorial?.title}</h3>
+                    <div className={styles.editorialSubtitle}>
+                      📍 {activeBrand.editorial?.subtitle}
+                    </div>
+
+                    <div className={styles.editorialChallengeSolution}>
+                      <div className={styles.editorialBlock}>
+                        <span className={styles.editorialBlockLabel}>The Strategic Challenge</span>
+                        <p className={styles.editorialBlockText}>{activeBrand.editorial?.challenge}</p>
+                      </div>
+
+                      <div className={`${styles.editorialBlock} ${styles.editorialBlockAmber}`}>
+                        <span className={styles.editorialBlockLabel}>The Copilot Solution</span>
+                        <p className={styles.editorialBlockText}>{activeBrand.editorial?.solution}</p>
+                      </div>
+                    </div>
+
+                    {/* 3-Metric KPI Strip */}
+                    <div className={styles.editorialKpiStrip}>
+                      {activeBrand.editorial?.stats.map((s) => (
+                        <div key={s.label} className={styles.editorialKpiItem}>
+                          <span className={styles.editorialKpiNum}>{s.number}</span>
+                          <span className={styles.editorialKpiLbl}>{s.label}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Verified Client Quote */}
+                    <div className={styles.editorialQuoteBox}>
+                      <p className={styles.editorialQuoteText}>{activeBrand.editorial?.quote}</p>
+                      <span className={styles.editorialQuoteAuthor}>{activeBrand.editorial?.author}</span>
+                    </div>
+                  </div>
+
+                  <div className={styles.editorialFooter}>
+                    <BeamButton href="/portfolio" label={`View Complete ${activeBrand.shortName} Case Study`} size="sm" />
                   </div>
                 </div>
+              </div>
+            </ScrollReveal>
+          )}
 
-                {/* Media Viewport */}
+          {/* Card 2 (Right Pane): 1:1 Sliding Carousel Showcase */}
+          <ScrollReveal direction="up" delay={0.1} className={styles.carouselCol}>
+            <div
+              className={styles.carouselCard}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              <div className={styles.cardBackdrop} />
+
+              {/* Card Header */}
+              <div className={styles.carouselHeader}>
+                <div className={styles.brandBadgePill}>
+                  <span className={styles.brandBadgeDot} />
+                  <span>{activeBrand.name}</span>
+                </div>
+                <div className={styles.counterBadge}>
+                  <span>{String(currentSlide + 1).padStart(2, '0')}</span>
+                  <span className={styles.counterDivider}>/</span>
+                  <span>{String(activeBrand.slides.length).padStart(2, '0')}</span>
+                </div>
+              </div>
+
+              {/* Media Viewport */}
+              <div
+                className={styles.carouselViewport}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              >
                 <div
-                  className={styles.carouselViewport}
-                  onTouchStart={handleTouchStart}
-                  onTouchMove={handleTouchMove}
-                  onTouchEnd={handleTouchEnd}
+                  className={styles.sliderTrack}
+                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
                 >
-                  <div
-                    className={styles.sliderTrack}
-                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                  >
-                    {activeBrand.slides.map((slide) => {
-                      const imageSrc = imgErrors[slide.id] ? slide.fallback : slide.src;
-                      return (
-                        <div key={slide.id} className={styles.sliderSlide}>
-                          <Image
-                            src={imageSrc}
-                            alt={`${activeBrand.name} showcase creative`}
-                            fill
-                            sizes="(max-width: 960px) 100vw, 680px"
-                            quality={100}
-                            priority
-                            className={styles.carouselImage}
-                            onError={() => {
-                              setImgErrors((prev) => ({ ...prev, [slide.id]: true }));
-                            }}
-                          />
-                        </div>
-                      );
-                    })}
-                  </div>
+                  {activeBrand.slides.map((slide) => {
+                    const imageSrc = imgErrors[slide.id] ? slide.fallback : slide.src;
+                    return (
+                      <div key={slide.id} className={styles.sliderSlide}>
+                        <Image
+                          src={imageSrc}
+                          alt={`${activeBrand.name} showcase creative`}
+                          fill
+                          sizes="(max-width: 960px) 100vw, 680px"
+                          quality={100}
+                          priority
+                          className={styles.carouselImage}
+                          onError={() => {
+                            setImgErrors((prev) => ({ ...prev, [slide.id]: true }));
+                          }}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
 
-                  {/* Nav Arrow Buttons */}
-                  <button
-                    type="button"
-                    onClick={handlePrevSlide}
-                    className={`${styles.navBtn} ${styles.navBtnPrev}`}
-                    aria-label="Previous slide"
+                {/* Nav Arrow Buttons */}
+                <button
+                  type="button"
+                  onClick={handlePrevSlide}
+                  className={`${styles.navBtn} ${styles.navBtnPrev}`}
+                  aria-label="Previous slide"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   >
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <polyline points="15 18 9 12 15 6" />
-                    </svg>
-                  </button>
+                    <polyline points="15 18 9 12 15 6" />
+                  </svg>
+                </button>
 
-                  <button
-                    type="button"
-                    onClick={handleNextSlide}
-                    className={`${styles.navBtn} ${styles.navBtnNext}`}
-                    aria-label="Next slide"
+                <button
+                  type="button"
+                  onClick={handleNextSlide}
+                  className={`${styles.navBtn} ${styles.navBtnNext}`}
+                  aria-label="Next slide"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   >
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <polyline points="9 18 15 12 9 6" />
-                    </svg>
-                  </button>
+                    <polyline points="9 18 15 12 9 6" />
+                  </svg>
+                </button>
 
-                  {/* Slide Indicators Dots */}
-                  <div className={styles.slideDotsWrap}>
-                    {activeBrand.slides.map((_, idx) => (
+                {/* Slide Indicators Dots */}
+                <div className={styles.slideDotsWrap}>
+                  {activeBrand.slides.map((_, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => setCurrentSlide(idx)}
+                      className={`${styles.slideDot} ${
+                        idx === currentSlide ? styles.slideDotActive : ''
+                      }`}
+                      aria-label={`Go to slide ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Clean Centered Thumbnail Gallery (No Text Overlays) */}
+              <div className={styles.carouselFooter}>
+                <div className={styles.thumbStrip}>
+                  {activeBrand.slides.map((slide, idx) => {
+                    const thumbSrc = imgErrors[slide.id] ? slide.fallback : slide.src;
+                    return (
                       <button
-                        key={idx}
+                        key={slide.id}
                         type="button"
                         onClick={() => setCurrentSlide(idx)}
-                        className={`${styles.slideDot} ${
-                          idx === currentSlide ? styles.slideDotActive : ''
+                        className={`${styles.thumbBtn} ${
+                          idx === currentSlide ? styles.thumbBtnActive : ''
                         }`}
                         aria-label={`Go to slide ${idx + 1}`}
-                      />
-                    ))}
-                  </div>
-                </div>
-
-                {/* Clean Centered Thumbnail Gallery (No Text Overlays) */}
-                <div className={styles.carouselFooter}>
-                  <div className={styles.thumbStrip}>
-                    {activeBrand.slides.map((slide, idx) => {
-                      const thumbSrc = imgErrors[slide.id] ? slide.fallback : slide.src;
-                      return (
-                        <button
-                          key={slide.id}
-                          type="button"
-                          onClick={() => setCurrentSlide(idx)}
-                          className={`${styles.thumbBtn} ${
-                            idx === currentSlide ? styles.thumbBtnActive : ''
-                          }`}
-                          aria-label={`Go to slide ${idx + 1}`}
-                        >
-                          <Image
-                            src={thumbSrc}
-                            alt={`Thumbnail ${idx + 1}`}
-                            fill
-                            sizes="60px"
-                            className={styles.thumbImage}
-                          />
-                        </button>
-                      );
-                    })}
-                  </div>
+                      >
+                        <Image
+                          src={thumbSrc}
+                          alt={`Thumbnail ${idx + 1}`}
+                          fill
+                          sizes="60px"
+                          className={styles.thumbImage}
+                        />
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
-            </ScrollReveal>
-          </div>
-        )}
+            </div>
+          </ScrollReveal>
+        </div>
 
         {/* Bottom Deliverables & CTA Strip */}
         <ScrollReveal direction="up" delay={0.15}>
