@@ -348,8 +348,6 @@ const spotlightBrands: BrandSpotlightData[] = [
 export default function BrandSpotlightSection() {
   const [activeBrandId, setActiveBrandId] = useState(spotlightBrands[0].id);
   const activeBrand = spotlightBrands.find((b) => b.id === activeBrandId) || spotlightBrands[0];
-  const [viewMode, setViewMode] = useState<'video' | 'editorial'>('video');
-
   const sectionRef = useRef<HTMLElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -375,15 +373,12 @@ export default function BrandSpotlightSection() {
     setIsControlsVisible(true);
     setCurrentSlide(0);
     setActiveBrandId(brandId);
-    setViewMode('video');
   };
 
-  // Check if we should display video on the left
-  const isVideoMode = (viewMode as string) === 'video';
-  const isEditorialMode = (viewMode as string) === 'editorial';
-  const showVideo = activeBrand.hasVideo && isVideoMode;
+  // Brands with video always display their vertical video reel; others display their strategic case study
+  const showVideo = activeBrand.hasVideo;
 
-  // Video reload when brand or viewMode changes
+  // Video reload when brand changes
   useEffect(() => {
     if (showVideo && videoRef.current) {
       videoRef.current.load();
@@ -601,31 +596,6 @@ export default function BrandSpotlightSection() {
           {showVideo ? (
             <ScrollReveal direction="up" className={styles.videoCol}>
               <div className={styles.colInnerWrap}>
-                {activeBrand.hasVideo && activeBrand.editorial && (
-                  <div className={styles.subModeToggleWrap} role="tablist" aria-label="Toggle Showcase View">
-                    <button
-                      type="button"
-                      role="tab"
-                      aria-selected={isVideoMode}
-                      onClick={() => setViewMode('video')}
-                      className={`${styles.subModeBtn} ${isVideoMode ? styles.subModeBtnActive : ''}`}
-                    >
-                      <span className={styles.subModeDot} />
-                      <span>🎬 9:16 Video Reel</span>
-                    </button>
-                    <button
-                      type="button"
-                      role="tab"
-                      aria-selected={isEditorialMode}
-                      onClick={() => setViewMode('editorial')}
-                      className={`${styles.subModeBtn} ${isEditorialMode ? styles.subModeBtnActive : ''}`}
-                    >
-                      <span className={styles.subModeDot} />
-                      <span>📋 Strategic Case Study</span>
-                    </button>
-                  </div>
-                )}
-
                 <div className={styles.videoDeviceCard}>
                   <div className={styles.videoDeviceGlow} />
 
@@ -744,31 +714,6 @@ export default function BrandSpotlightSection() {
           ) : (
             <ScrollReveal direction="up" className={styles.editorialCol}>
               <div className={styles.colInnerWrap}>
-                {activeBrand.hasVideo && activeBrand.editorial && (
-                  <div className={styles.subModeToggleWrap} role="tablist" aria-label="Toggle Showcase View">
-                    <button
-                      type="button"
-                      role="tab"
-                      aria-selected={isVideoMode}
-                      onClick={() => setViewMode('video')}
-                      className={`${styles.subModeBtn} ${isVideoMode ? styles.subModeBtnActive : ''}`}
-                    >
-                      <span className={styles.subModeDot} />
-                      <span>🎬 9:16 Video Reel</span>
-                    </button>
-                    <button
-                      type="button"
-                      role="tab"
-                      aria-selected={isEditorialMode}
-                      onClick={() => setViewMode('editorial')}
-                      className={`${styles.subModeBtn} ${isEditorialMode ? styles.subModeBtnActive : ''}`}
-                    >
-                      <span className={styles.subModeDot} />
-                      <span>📋 Strategic Case Study</span>
-                    </button>
-                  </div>
-                )}
-
                 <div className={styles.editorialCard}>
                   <div className={styles.editorialMain}>
                     <div className={styles.editorialTopBadgeRow}>

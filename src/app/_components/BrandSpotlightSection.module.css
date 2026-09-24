@@ -211,7 +211,7 @@
    ══════════════════════════════════════════════════ */
 .showcaseGrid {
   display: grid;
-  grid-template-columns: minmax(320px, 360px) minmax(320px, 540px);
+  grid-template-columns: minmax(300px, 340px) minmax(320px, 540px);
   gap: clamp(24px, 3.5vw, 44px);
   align-items: stretch !important;
   justify-content: center;
@@ -242,77 +242,19 @@
   height: 100% !important;
   width: 100% !important;
   justify-content: stretch !important;
-}
-
-/* ── Sub-Mode Toggle (Reel vs Strategic Case Study) ── */
-.subModeToggleWrap {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 4px 6px;
-  background: linear-gradient(180deg, #E2E8F0 0%, #EDF2F7 50%, #F1F5F9 100%);
-  border: 1.5px solid #CBD5E1;
-  border-radius: 9999px;
-  box-shadow: 
-    inset 0 2px 4px rgba(0, 0, 0, 0.08),
-    0 1px 0 #FFFFFF;
-  margin: 0 auto 14px;
-}
-
-.subModeBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 14px;
-  border-radius: 9999px;
-  border: 1px solid transparent;
-  background: transparent;
-  font-family: var(--font-display);
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: #475569;
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  user-select: none;
-}
-
-.subModeBtn:hover {
-  color: #0B2093;
-}
-
-.subModeBtnActive {
-  background: linear-gradient(135deg, #0B2093 0%, #08176E 100%) !important;
-  color: #FFFFFF !important;
-  border-color: #0B2093 !important;
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.45),
-    0 4px 12px rgba(11, 32, 147, 0.3) !important;
-}
-
-.subModeDot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #F59E0B;
-  box-shadow: 0 0 5px #F59E0B;
-}
-
-.subModeBtnActive .subModeDot {
-  background: #10B981;
-  box-shadow: 0 0 6px #10B981;
+  flex: 1 1 auto !important;
 }
 
 /* ── Skeuomorphic Smartphone Device Card ── */
 .videoDeviceCard {
   position: relative;
   width: 100%;
-  max-width: 360px;
+  max-width: 340px;
   margin: 0 auto;
   border-radius: 38px;
-  background: linear-gradient(175deg, #1E293B 0%, #0F172A 55%, #020617 100%);
+  background: linear-gradient(175deg, #182234 0%, #0F172A 45%, #020617 100%);
   border: 2px solid #334155;
-  padding: 12px 14px 14px;
+  padding: 12px 14px 12px;
   box-shadow: 
     0 24px 64px -12px rgba(11, 32, 147, 0.35),
     0 8px 24px -4px rgba(0, 0, 0, 0.55),
@@ -384,26 +326,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   padding: 2px 0 10px;
+  flex-shrink: 0;
 }
 
 .speakerPill {
-  width: 44px;
+  width: 48px;
   height: 4px;
   border-radius: 9999px;
   background: #020617;
-  border: 1px solid #1E293B;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.9);
 }
 
 .cameraDot {
-  width: 9px;
-  height: 9px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #2563EB 0%, #0F172A 70%, #020617 100%);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 0 3px rgba(37, 99, 235, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  background: radial-gradient(circle at 35% 35%, #38BDF8 0%, #0284C7 35%, #0B2093 70%, #020617 100%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 4px rgba(56, 189, 248, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.7);
 }
 
 /* 9:16 Video Wrapper inside Phone Frame */
@@ -417,14 +360,20 @@
   background: #000000;
   cursor: pointer;
   user-select: none;
-  border: 1.5px solid rgba(255, 255, 255, 0.12);
-  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 
+    inset 0 3px 12px rgba(0, 0, 0, 0.8),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.6),
+    0 2px 6px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .screenGlassGlare {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.03) 30%, transparent 60%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 28%, transparent 58%);
   pointer-events: none;
   z-index: 4;
 }
@@ -434,17 +383,27 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   display: block;
+  background: #000000;
+  transform: scale(0.96);
+  transform-origin: center center;
+  transition: transform 0.25s ease;
+}
+
+.videoWrapper:hover .videoPlayer {
+  transform: scale(0.97);
 }
 
 .homeIndicator {
-  width: 76px;
+  width: 72px;
   height: 4px;
   background: rgba(255, 255, 255, 0.35);
   border-radius: 9999px;
-  margin: 10px auto 2px;
+  margin: 8px auto 0;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
 }
 
 /* ── 3D Tactile Orange Play Controller ── */
@@ -582,49 +541,59 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  margin-top: 14px;
+  gap: 10px;
+  margin-top: 10px;
   padding: 0 4px;
+  flex-shrink: 0;
 }
 
 .deviceFooterText {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  min-width: 0;
 }
 
 .deviceTag {
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #F59E0B;
 }
 
 .deviceTitle {
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   font-weight: 800;
   color: #FFFFFF;
   margin: 0;
   line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .deviceActionBtn {
   font-family: var(--font-display);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 6px 12px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.08) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 2px 6px rgba(0, 0, 0, 0.3);
+  padding: 5px 12px;
   border-radius: 9999px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .deviceActionBtn:hover {
-  background: rgba(255, 255, 255, 0.22);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.14) 100%);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 /* ══════════════════════════════════════════════════
