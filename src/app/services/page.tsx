@@ -980,8 +980,8 @@ export default function ServicesPage() {
               <div className={styles.phaseCardCol}>
                 <div className={styles.cleanPhaseCard}>
 
-                  {/* Smooth cross-fade body without container remount or translateY jumping */}
-                  <div className={styles.phaseCardBody} key={currentPhase.step}>
+                  {/* Smooth in-place content update with ZERO container remount or vertical jumping */}
+                  <div className={styles.phaseCardBody}>
                     {/* Header Row */}
                     <div className={styles.phaseCardHeader}>
                       <span className={styles.phaseStepPill}>PHASE {currentPhase.num} OF 04</span>
