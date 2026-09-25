@@ -2659,6 +2659,7 @@
    ═══════════════════════════════════════════════════════════ */
 .leadershipSection {
   padding: 84px 0 52px;
+  scroll-margin-top: 96px;
   background: 
     radial-gradient(100% 50% at 50% 0%, rgba(241, 245, 253, 0.7) 0%, rgba(255, 255, 255, 0) 70%),
     #FFFFFF;
@@ -3563,111 +3564,161 @@
     font-size: 13.5px !important;
     line-height: 1.55 !important;
   }
-  /* 3D Transparent Evaluation Matrix: MATCH DESKTOP 3-COLUMN VIEW ON MOBILE */
+  /* 3D Transparent Evaluation Matrix: MATCH DESKTOP 3-COLUMN VIEW ON MOBILE (ZERO HORIZONTAL SCROLL) */
   .matrixContainer {
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    border-radius: 16px !important;
-    margin-top: 20px !important;
+    overflow: hidden !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: auto !important;
+    border-radius: 14px !important;
+    margin-top: 18px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
   .matrixHeader {
     display: grid !important;
-    grid-template-columns: 1.35fr 1fr 1fr !important;
-    min-width: 520px !important;
-    padding: 11px 16px !important;
-    font-size: 10px !important;
-    letter-spacing: 0.05em !important;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr) minmax(0, 1fr) !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    padding: 10px 8px !important;
+    font-size: 8px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.02em !important;
     align-items: center !important;
+    box-sizing: border-box !important;
+    gap: 6px !important;
   }
   .matrixColFeature {
     color: #475569 !important;
+    min-width: 0 !important;
+    word-break: break-word !important;
+    line-height: 1.25 !important;
   }
   .matrixColAgency {
     display: flex !important;
     align-items: center !important;
     color: #991B1B !important;
+    min-width: 0 !important;
+    word-break: break-word !important;
+    line-height: 1.25 !important;
   }
   .matrixColCopilot {
     display: flex !important;
     align-items: center !important;
     color: #0B2093 !important;
+    min-width: 0 !important;
+    word-break: break-word !important;
+    line-height: 1.25 !important;
   }
   .matrixBody {
-    min-width: 520px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
   .matrixRow {
     display: grid !important;
-    grid-template-columns: 1.35fr 1fr 1fr !important;
-    min-width: 520px !important;
-    padding: 12px 16px !important;
-    align-items: center !important;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr) minmax(0, 1fr) !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    padding: 10px 8px !important;
+    gap: 6px !important;
+    align-items: flex-start !important;
     border-bottom: 1px solid rgba(226, 232, 240, 0.85) !important;
+    box-sizing: border-box !important;
   }
   .cellFeature {
     display: flex !important;
     flex-direction: column !important;
     gap: 2px !important;
-    padding-right: 14px !important;
+    padding-right: 2px !important;
     margin-bottom: 0 !important;
     border-bottom: none !important;
+    min-width: 0 !important;
+  }
+  .featureTitleWrap {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+    min-width: 0 !important;
+  }
+  .featureBullet {
+    font-size: 7.5px !important;
+    flex-shrink: 0 !important;
+    margin-top: 2px !important;
   }
   .featureNameText {
-    font-size: 12.5px !important;
+    font-size: 10px !important;
     font-weight: 800 !important;
     color: #0F172A !important;
+    line-height: 1.25 !important;
+    word-break: break-word !important;
   }
   .featureSubText {
-    font-size: 10px !important;
-    line-height: 1.35 !important;
+    font-size: 8px !important;
+    line-height: 1.25 !important;
     color: #64748B !important;
-    padding-left: 14px !important;
-    margin-top: 1px !important;
+    padding-left: 0 !important;
+    margin-top: 2px !important;
+    word-break: break-word !important;
   }
   .cellAgency {
     display: flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-    padding: 0 10px 0 0 !important;
-    border-radius: 0 !important;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    width: auto !important;
-  }
-  .cellCopilot {
-    display: flex !important;
-    align-items: center !important;
-    gap: 8px !important;
+    align-items: flex-start !important;
+    gap: 5px !important;
     padding: 0 !important;
     border-radius: 0 !important;
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
-    width: auto !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .cellCopilot {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 5px !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
   }
   .token3dCross,
   .token3dCheck {
-    width: 22px !important;
-    height: 22px !important;
-    min-width: 22px !important;
+    width: 16px !important;
+    height: 16px !important;
+    min-width: 16px !important;
     flex-shrink: 0 !important;
+    margin-top: 1px !important;
   }
   .token3dCross svg,
   .token3dCheck svg {
-    width: 10px !important;
-    height: 10px !important;
+    width: 8px !important;
+    height: 8px !important;
   }
   .agencyText {
-    font-size: 11px !important;
-    line-height: 1.35 !important;
+    font-size: 9px !important;
+    line-height: 1.25 !important;
     color: #64748B !important;
     font-weight: 500 !important;
+    word-break: break-word !important;
+    min-width: 0 !important;
   }
   .copilotText {
-    font-size: 11px !important;
-    line-height: 1.35 !important;
+    font-size: 9px !important;
+    line-height: 1.25 !important;
     color: #0B2093 !important;
     font-weight: 700 !important;
+    word-break: break-word !important;
+    min-width: 0 !important;
   }
 
   /* Growth Operating System Roadmap: Pure Vertical Chronological Flow (Zero Horizontal Scroll) */
@@ -3874,11 +3925,15 @@
   }
 
   /* Compact Executive Leadership Cards (MEET THE TEAM) */
+  .leadershipSection {
+    scroll-margin-top: 85px !important;
+    padding: 56px 0 36px !important;
+  }
   .leadershipGrid {
     display: flex !important;
     flex-direction: column !important;
     overflow-x: visible !important;
-    gap: 12px !important;
+    gap: 16px !important;
     padding: 0 !important;
     margin: 0 0 24px !important;
     width: 100% !important;
@@ -3888,26 +3943,35 @@
     min-width: 0 !important;
     max-width: 100% !important;
     flex: none !important;
+    scroll-margin-top: 85px !important;
   }
   .leaderCard {
-    border-radius: 14px !important;
+    border-radius: 16px !important;
     overflow: hidden !important;
     width: 100% !important;
+    scroll-margin-top: 85px !important;
   }
   .leaderPhotoWrap {
-    height: 130px !important;
+    height: 220px !important;
+    position: relative !important;
+    width: 100% !important;
+    background: #0B1426 !important;
+    overflow: hidden !important;
+  }
+  .leaderPhoto {
+    object-fit: cover !important;
   }
   .leaderDeptBadge {
-    bottom: 6px !important;
-    left: 6px !important;
-    right: 6px !important;
-    font-size: 7.5px !important;
-    padding: 3px 6px !important;
+    bottom: 8px !important;
+    left: 8px !important;
+    right: 8px !important;
+    font-size: 8px !important;
+    padding: 4px 8px !important;
     border-radius: 6px !important;
   }
   .leaderInfo {
-    padding: 10px 12px 10px !important;
-    gap: 3px !important;
+    padding: 12px 14px 12px !important;
+    gap: 4px !important;
   }
   .leaderHeaderRow {
     min-height: unset !important;
@@ -4077,10 +4141,10 @@
     padding: 1.5px 4px !important;
   }
   .leaderPhotoWrap {
-    height: 120px !important;
+    height: 200px !important;
   }
   .leaderInfo {
-    padding: 8px 10px 8px !important;
+    padding: 10px 12px 10px !important;
   }
   .finaleCard {
     padding: 22px 14px !important;
