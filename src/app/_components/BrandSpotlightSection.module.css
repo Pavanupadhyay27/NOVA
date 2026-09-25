@@ -47,6 +47,8 @@
   justify-content: center;
   margin: 24px auto 0;
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .brandFilterTrack {
@@ -180,6 +182,7 @@
   justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
+  margin: 18px auto 0;
 }
 
 .headerPill {
@@ -1192,55 +1195,100 @@
    STRICT MOBILE RESPONSIVENESS
    ══════════════════════════════════════════════════ */
 /* ══════════════════════════════════════════════════
-   STRICT MOBILE RESPONSIVENESS — DUAL PANE & COMPACT FILTER
+/* ══════════════════════════════════════════════════
+   STRICT MOBILE RESPONSIVENESS — ZERO-BLEED FILTER & PREMIUM MOBILE UX
    ══════════════════════════════════════════════════ */
 @media (max-width: 960px) {
   .brandFilterWrapper {
     width: 100%;
     max-width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     overflow-x: auto;
+    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding: 4px 16px 14px;
-    margin: 20px auto 16px;
+    padding: 6px 16px 14px;
+    margin: 18px 0 14px;
+  }
+  @supports (justify-content: safe center) {
+    .brandFilterWrapper {
+      justify-content: safe center;
+    }
   }
   .brandFilterWrapper::-webkit-scrollbar {
     display: none;
   }
   .brandFilterWrapper::before,
   .brandFilterWrapper::after {
-    content: '';
-    margin: auto;
-    flex: 0 0 0px;
+    display: none !important;
+    content: none !important;
   }
   .brandFilterTrack {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 6px;
+    border-radius: 9999px;
     margin: 0;
+    max-width: none !important;
     flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .brandFilterBtn {
+    padding: 5px 14px 5px 6px;
+    font-size: 0.84rem;
+    gap: 8px;
+  }
+  .brandFilterLogoWrap {
+    width: 26px;
+    height: 26px;
+    padding: 3px;
+  }
+  .brandFilterName {
+    font-size: 0.84rem;
+  }
+  .headerPills {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px 12px;
+    flex-wrap: wrap;
+    margin: 8px auto 22px;
+    padding: 0 8px;
+    box-sizing: border-box;
+  }
+  .headerPill {
+    font-size: 0.76rem;
+    padding: 4px 12px;
+    gap: 6px;
   }
   .showcaseGrid {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-    max-width: 820px;
-    gap: 16px;
+    max-width: 860px;
+    gap: 18px;
     align-items: stretch !important;
   }
   .dualPaneEditorialGrid {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    max-width: 820px;
-    gap: 16px;
+    max-width: 860px;
+    gap: 18px;
     align-items: stretch !important;
   }
   .videoDeviceCard {
     max-width: 100%;
     margin: 0 auto;
     border-radius: 28px;
-    padding: 10px 10px 12px;
+    padding: 10px 10px 14px;
   }
   .videoWrapper {
     width: 100%;
     aspect-ratio: 9 / 16 !important;
     min-height: unset !important;
     height: auto !important;
-    border-radius: 18px;
+    border-radius: 20px;
   }
   .videoPlayer,
   .videoPlayerEkatraa {
@@ -1250,7 +1298,7 @@
   .carouselCard {
     max-width: 100%;
     border-radius: 28px;
-    padding: 10px 10px 14px;
+    padding: 12px 12px 16px;
   }
   .carouselViewport {
     aspect-ratio: 1 / 1 !important;
@@ -1276,115 +1324,44 @@
   }
 }
 
-@media (max-width: 640px) {
-  .section {
-    padding: 56px 0 40px;
-    scroll-margin-top: 80px;
-  }
-  .section :global(.container) {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  .header {
-    margin: 0 auto 24px;
-  }
-  .brandFilterWrapper {
-    width: 100%;
-    max-width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding: 4px 8px 10px;
-    margin: 14px 0 16px;
-  }
-  .brandFilterWrapper::-webkit-scrollbar {
-    display: none;
-  }
-  .brandFilterWrapper::before,
-  .brandFilterWrapper::after {
-    content: '';
-    margin: auto;
-    flex: 0 0 0px;
-  }
-  .brandFilterTrack {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 3px 5px;
-    border-radius: 9999px;
-    margin: 0;
-    flex-shrink: 0;
-    white-space: nowrap;
-  }
-  .brandFilterBtn {
-    padding: 4px 9px 4px 4px;
-    font-size: 0.76rem;
-    gap: 6px;
-  }
-  .brandFilterLogoWrap {
-    width: 22px;
-    height: 22px;
-    padding: 2.5px;
-  }
-  .brandFilterName {
-    font-size: 0.76rem;
-  }
-  .headline {
-    font-size: clamp(22px, 5.8vw, 28px) !important;
-  }
-  .subText {
-    font-size: 13.5px;
-    line-height: 1.5;
-    margin-bottom: 14px;
-  }
-
-  /* Dual Pane Mobile Grid: Side-by-Side Cards */
-  .showcaseGrid {
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr) !important;
-    gap: 8px !important;
-    max-width: 100% !important;
-    width: 100% !important;
-    margin: 0 auto 24px !important;
-    align-items: stretch !important;
-  }
+/* ══════════════════════════════════════════════════
+   MOBILE & TABLET STACKED LAYOUT (<= 768px)
+   ══════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .showcaseGrid,
   .dualPaneEditorialGrid {
     display: grid !important;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
-    gap: 8px !important;
-    max-width: 100% !important;
+    grid-template-columns: 1fr !important;
+    gap: 26px !important;
+    max-width: 480px !important;
     width: 100% !important;
-    margin: 0 auto 24px !important;
+    margin: 0 auto 28px !important;
     align-items: stretch !important;
   }
   .videoCol,
   .carouselCol,
   .editorialCol {
     width: 100% !important;
-    height: 100% !important;
+    height: auto !important;
     min-width: 0 !important;
   }
   .colInnerWrap {
     width: 100% !important;
-    height: 100% !important;
+    height: auto !important;
     min-width: 0 !important;
   }
 
-  /* Left Pane: Smartphone 9:16 Video Card */
+  /* Smartphone Video Card: Focused & Cinematic */
   .videoDeviceCard {
     width: 100% !important;
-    max-width: 100% !important;
+    max-width: 310px !important;
     margin: 0 auto !important;
-    padding: 6px 6px 8px !important;
-    border-radius: 20px !important;
-    border-width: 1.5px !important;
-    height: 100% !important;
+    padding: 10px 10px 14px !important;
+    border-radius: 32px !important;
+    border-width: 2px !important;
+    height: auto !important;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: space-between !important;
     box-sizing: border-box !important;
   }
   .videoDeviceCard::before,
@@ -1392,21 +1369,21 @@
     display: none !important;
   }
   .videoDeviceGlow {
-    border-radius: 24px;
+    border-radius: 32px;
     inset: -3px;
-    filter: blur(10px);
+    filter: blur(12px);
   }
   .deviceNotch {
-    padding: 2px 0 5px !important;
-    gap: 5px !important;
+    padding: 2px 0 6px !important;
+    gap: 6px !important;
   }
   .speakerPill {
-    width: 20px !important;
-    height: 3px !important;
+    width: 28px !important;
+    height: 3.5px !important;
   }
   .cameraDot {
-    width: 5px !important;
-    height: 5px !important;
+    width: 6px !important;
+    height: 6px !important;
   }
   .videoWrapper {
     width: 100% !important;
@@ -1414,8 +1391,9 @@
     min-height: unset !important;
     height: auto !important;
     flex: 1 1 auto !important;
-    border-radius: 14px !important;
+    border-radius: 22px !important;
     overflow: hidden !important;
+    position: relative !important;
   }
   .videoPlayer,
   .videoPlayerEkatraa {
@@ -1432,224 +1410,354 @@
     transform: none !important;
   }
   .playBtn3D {
-    width: 38px !important;
-    height: 38px !important;
+    width: 54px !important;
+    height: 54px !important;
   }
   .playBtn3D svg {
-    width: 16px !important;
-    height: 16px !important;
+    width: 22px !important;
+    height: 22px !important;
   }
   .radarWavesWrapper {
-    width: 46px !important;
-    height: 46px !important;
+    width: 66px !important;
+    height: 66px !important;
   }
   .deviceFooter {
-    margin-top: 5px !important;
-    padding: 0 1px !important;
-    gap: 4px !important;
+    margin-top: 8px !important;
+    padding: 2px 4px !important;
+    gap: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
   }
   .deviceFooterText {
-    gap: 1px !important;
+    gap: 2px !important;
     min-width: 0 !important;
   }
   .deviceTag {
-    font-size: 0.5rem !important;
-    letter-spacing: 0.04em !important;
-    line-height: 1 !important;
+    font-size: 0.65rem !important;
+    letter-spacing: 0.05em !important;
+    line-height: 1.1 !important;
   }
   .deviceTitle {
-    font-size: 0.65rem !important;
-    line-height: 1.15 !important;
+    font-size: 0.82rem !important;
+    line-height: 1.25 !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
   }
   .deviceActionBtn {
-    font-size: 0.56rem !important;
-    padding: 2.5px 6px !important;
+    font-size: 0.72rem !important;
+    padding: 4px 10px !important;
+    border-radius: 9999px !important;
+    white-space: nowrap !important;
   }
   .homeIndicator {
-    width: 28px !important;
-    height: 2.5px !important;
-    margin: 4px auto 0 !important;
+    width: 80px !important;
+    height: 3.5px !important;
+    margin: 8px auto 0 !important;
   }
 
-  /* Right Pane: 1:1 Sliding Carousel Card */
+  /* Creative Carousel Card: High-Res 1:1 Showcase */
   .carouselCard {
     width: 100% !important;
-    max-width: 100% !important;
-    border-radius: 20px !important;
-    padding: 6px 6px 8px !important;
+    max-width: 480px !important;
+    margin: 0 auto !important;
+    border-radius: 24px !important;
+    padding: 12px 12px 14px !important;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: space-between !important;
-    height: 100% !important;
+    height: auto !important;
     box-sizing: border-box !important;
   }
   .carouselHeader {
-    margin-bottom: 5px !important;
-    padding: 0 2px !important;
+    margin-bottom: 8px !important;
+    padding: 0 4px !important;
   }
   .brandBadgePill {
-    font-size: 0.6rem !important;
-    padding: 2px 6px !important;
-    gap: 3px !important;
+    font-size: 0.76rem !important;
+    padding: 3px 10px !important;
+    gap: 5px !important;
   }
   .brandBadgeDot {
-    width: 4.5px !important;
-    height: 4.5px !important;
+    width: 5px !important;
+    height: 5px !important;
   }
   .counterBadge {
-    font-size: 0.6rem !important;
-    padding: 1.5px 6px !important;
-    gap: 2px !important;
+    font-size: 0.76rem !important;
+    padding: 3px 10px !important;
+    gap: 3px !important;
   }
   .carouselViewport {
     width: 100% !important;
     aspect-ratio: 1 / 1 !important;
     min-height: unset !important;
     height: auto !important;
-    border-radius: 14px !important;
-    margin: auto 0 !important;
+    border-radius: 18px !important;
+    margin: 0 !important;
   }
   .navBtn {
-    width: 22px !important;
-    height: 22px !important;
+    width: 34px !important;
+    height: 34px !important;
   }
   .navBtn svg {
-    width: 11px !important;
-    height: 11px !important;
+    width: 15px !important;
+    height: 15px !important;
   }
   .navBtnPrev {
-    left: 4px !important;
+    left: 8px !important;
   }
   .navBtnNext {
-    right: 4px !important;
+    right: 8px !important;
   }
   .slideDotsWrap {
-    bottom: 5px !important;
-    padding: 1.5px 5px !important;
-    gap: 3px !important;
+    bottom: 8px !important;
+    padding: 2px 7px !important;
+    gap: 4px !important;
   }
   .slideDot {
-    width: 3.5px !important;
-    height: 3.5px !important;
+    width: 4.5px !important;
+    height: 4.5px !important;
   }
   .slideDotActive {
-    width: 9px !important;
+    width: 12px !important;
   }
   .carouselFooter {
-    margin-top: 5px !important;
+    margin-top: 10px !important;
     padding: 0 !important;
     width: 100% !important;
   }
   .thumbStrip {
-    padding: 3px 4px !important;
-    border-radius: 10px !important;
-    gap: 3px !important;
+    padding: 4px 6px !important;
+    border-radius: 12px !important;
+    gap: 6px !important;
     width: 100% !important;
     justify-content: flex-start !important;
+    overflow-x: auto !important;
+    scrollbar-width: none !important;
+  }
+  .thumbStrip::-webkit-scrollbar {
+    display: none !important;
   }
   .thumbBtn {
-    width: 24px !important;
-    height: 24px !important;
-    border-radius: 5px !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 8px !important;
     border-width: 1.5px !important;
     flex-shrink: 0 !important;
   }
 
   /* Editorial Card (when Heed is active) */
   .editorialCard {
-    padding: 8px 8px 10px !important;
-    border-radius: 20px !important;
+    width: 100% !important;
+    max-width: 480px !important;
+    margin: 0 auto !important;
+    padding: 16px 14px 18px !important;
+    border-radius: 24px !important;
+    box-sizing: border-box !important;
   }
   .editorialTopBadgeRow {
-    gap: 5px;
-    margin-bottom: 5px;
+    gap: 8px;
+    margin-bottom: 10px;
   }
   .editorialVerifiedBadge {
-    font-size: 0.52rem;
-    padding: 2px 5px;
+    font-size: 0.65rem;
+    padding: 3px 8px;
   }
   .editorialClientLogoWrap {
-    height: 16px;
+    height: 20px;
   }
   .editorialClientLogo {
-    height: 14px;
-    max-width: 45px;
+    height: 18px;
+    max-width: 60px;
   }
   .editorialTitle {
-    font-size: 0.8rem;
-    margin-bottom: 2px;
+    font-size: 1.05rem;
+    margin-bottom: 4px;
+    line-height: 1.3;
   }
   .editorialSubtitle {
-    font-size: 0.62rem;
-    margin-bottom: 6px;
+    font-size: 0.76rem;
+    margin-bottom: 10px;
   }
   .editorialChallengeSolution {
-    gap: 5px;
-    margin-bottom: 6px;
+    gap: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
   }
   .editorialBlock {
-    padding: 5px 6px;
+    padding: 8px 10px;
+    border-radius: 10px;
   }
   .editorialBlockLabel {
-    font-size: 0.52rem;
-    margin-bottom: 1px;
-  }
-  .editorialBlockText {
-    font-size: 0.6rem;
-    line-height: 1.3;
-  }
-  .editorialKpiStrip {
-    margin-bottom: 6px;
-    border-radius: 6px;
-  }
-  .editorialKpiItem {
-    padding: 4px 2px;
-  }
-  .editorialKpiNum {
-    font-size: 0.76rem;
-  }
-  .editorialKpiLbl {
-    font-size: 0.48rem;
-  }
-  .editorialQuoteBox {
-    padding: 5px 6px;
-    margin-bottom: 6px;
-    border-radius: 6px;
-  }
-  .editorialQuoteText {
-    font-size: 0.6rem;
-    line-height: 1.3;
+    font-size: 0.62rem;
     margin-bottom: 2px;
   }
+  .editorialBlockText {
+    font-size: 0.76rem;
+    line-height: 1.4;
+  }
+  .editorialKpiStrip {
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 8px 4px;
+  }
+  .editorialKpiItem {
+    padding: 4px 6px;
+  }
+  .editorialKpiNum {
+    font-size: 0.95rem;
+    font-weight: 800;
+  }
+  .editorialKpiLbl {
+    font-size: 0.6rem;
+  }
+  .editorialQuoteBox {
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+  .editorialQuoteText {
+    font-size: 0.76rem;
+    line-height: 1.4;
+    margin-bottom: 3px;
+  }
   .editorialQuoteAuthor {
-    font-size: 0.52rem;
+    font-size: 0.65rem;
   }
   .editorialFooter {
-    padding-top: 4px;
+    padding-top: 6px;
+  }
+}
+
+/* ══════════════════════════════════════════════════
+   MOBILE PHONES (<= 640px)
+   ══════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .section {
+    padding: 48px 0 36px;
+    scroll-margin-top: 80px;
+  }
+  .section :global(.container) {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .header {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto 16px;
+    box-sizing: border-box;
+  }
+  .headline {
+    font-size: clamp(21px, 5.6vw, 27px) !important;
+  }
+  .subText {
+    font-size: 13.5px;
+    line-height: 1.55;
+    margin-bottom: 12px;
+  }
+
+  /* Ultra-Clean Zero-Bleed Mobile Filter */
+  .brandFilterWrapper {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 4px 14px 10px;
+    margin: 12px 0 14px;
+  }
+  @supports (justify-content: safe center) {
+    .brandFilterWrapper {
+      justify-content: safe center;
+    }
+  }
+  .brandFilterWrapper::-webkit-scrollbar {
+    display: none;
+  }
+  .brandFilterWrapper::before,
+  .brandFilterWrapper::after {
+    display: none !important;
+    content: none !important;
+  }
+  .brandFilterTrack {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 4px;
+    border-radius: 9999px;
+    margin: 0;
+    max-width: none !important;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .brandFilterBtn {
+    padding: 4px 10px 4px 4px;
+    font-size: 0.78rem;
+    gap: 6px;
+    border-radius: 9999px;
+    white-space: nowrap;
+  }
+  .brandFilterLogoWrap {
+    width: 24px;
+    height: 24px;
+    padding: 2.5px;
+    border-radius: 9999px;
+  }
+  .brandFilterName {
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  /* Impact Metric Pills */
+  .headerPills {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px 8px;
+    flex-wrap: wrap;
+    margin: 6px auto 18px;
+    padding: 0 4px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .headerPill {
+    font-size: 0.72rem;
+    padding: 4px 10px;
+    gap: 5px;
+    border-radius: 9999px;
+  }
+  .pillDot {
+    width: 5px;
+    height: 5px;
   }
 
   /* Bottom Deliverables & CTA */
   .bottomBar {
-    padding: 12px 12px;
-    border-radius: 14px;
-    gap: 10px;
+    padding: 14px 12px;
+    border-radius: 16px;
+    gap: 12px;
   }
   .deliverables {
     flex-direction: column;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
   }
   .deliverableLabel {
-    font-size: 0.7rem;
+    font-size: 0.74rem;
   }
   .tagsWrap {
-    gap: 4px;
+    gap: 5px;
+    justify-content: center;
   }
   .tag {
-    font-size: 0.62rem;
-    padding: 2.5px 7px;
+    font-size: 0.68rem;
+    padding: 3px 8px;
   }
 }
+

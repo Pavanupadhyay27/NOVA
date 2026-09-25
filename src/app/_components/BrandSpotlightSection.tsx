@@ -573,6 +573,15 @@ export default function BrandSpotlightSection() {
                 })}
               </div>
             </div>
+
+            {/* Impact Metric Pills */}
+            <div key={`pills-${activeBrand.id}`} className={styles.headerPills}>
+              {activeBrand.metrics.map((m) => (
+                <span key={m.label} className={styles.headerPill}>
+                  <span className={styles.pillDot} /> {m.value} {m.label}
+                </span>
+              ))}
+            </div>
           </ScrollReveal>
         </div>
 
