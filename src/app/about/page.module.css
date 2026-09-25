@@ -3221,7 +3221,18 @@
     gap: 44px;
   }
   .fourAdvantagesGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 14px !important;
+  }
+  .fourAdvantagesGrid > div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .imageViewport {
+    height: clamp(380px, 45vh, 480px) !important;
+    margin: 0 auto;
+    width: 100%;
   }
   .studioDualGrid {
     grid-template-columns: 1fr;
@@ -3263,6 +3274,9 @@
 @media (max-width: 768px) {
   .heroSection {
     padding: 36px 0 32px;
+  }
+  .imageViewport {
+    height: clamp(300px, 45vh, 380px) !important;
   }
   .heroMainTitle {
     font-size: 28px !important;
@@ -3358,104 +3372,300 @@
     justify-content: center !important;
   }
 
-  /* Compact Advantage Luxury Cards */
-  .advantageLuxuryCard {
-    padding: 16px 14px !important;
-    border-radius: 16px !important;
-    gap: 12px !important;
+  /* ── 4 Elevated Unfair Advantages: 2 Consecutive Cards in Horizontal Manner & Compact ── */
+  .fourAdvantagesGrid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
   }
-
-  /* Compact Stream Items */
-  .streamItem {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 16px 14px !important;
-    border-radius: 16px !important;
-  }
-  .streamItem::before {
-    width: 100%;
-    height: 110px;
-    background: radial-gradient(ellipse 100% 120% at 50% 0%, color-mix(in srgb, var(--pillar-accent, #0B2093) 14%, transparent) 0%, transparent 100%);
-  }
-  .streamRightCol {
-    justify-content: flex-start;
-  }
-  .streamStatBox {
-    align-items: flex-start;
-    text-align: left;
-  }
-  /* 3D Transparent Evaluation Matrix: VERTICAL COMPACT ROWS (NO HORIZONTAL CLUTTER) */
-  .matrixHeader {
-    display: none !important;
-  }
-  .matrixRow {
+  .fourAdvantagesGrid > div {
+    height: 100% !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: 7px !important;
-    padding: 14px 12px !important;
-    border-bottom: 1px solid #E2E8F0 !important;
+  }
+  .advantageLuxuryCard {
+    padding: 12px 10px 10px !important;
+    border-radius: 16px !important;
+    gap: 6px !important;
+    height: 100% !important;
+  }
+  .advCardHeader {
+    margin-bottom: 6px !important;
+  }
+  .advIndexNum {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 11px !important;
+    border-radius: 8px !important;
+  }
+  .advBadge {
+    font-size: 8px !important;
+    padding: 2px 5px !important;
+    letter-spacing: 0.02em !important;
+  }
+  .advTitle {
+    font-size: 13.5px !important;
+    line-height: 1.25 !important;
+    margin: 0 0 4px !important;
+  }
+  .advDesc {
+    font-size: 10.5px !important;
+    line-height: 1.35 !important;
+    margin: 0 0 6px !important;
+  }
+  .advDeliverablesList {
+    gap: 3px !important;
+    margin-bottom: 6px !important;
+  }
+  .deliverableItem {
+    font-size: 9.5px !important;
+    gap: 4px !important;
+    line-height: 1.2 !important;
+  }
+  .checkIconBullet {
+    font-size: 9.5px !important;
+  }
+  .advCardFooter {
+    margin-top: auto !important;
+    padding-top: 6px !important;
+    border-top: 1px solid rgba(226, 232, 240, 0.7) !important;
+    gap: 4px !important;
+  }
+  .advMetricVal {
+    font-size: 13px !important;
+    line-height: 1.1 !important;
+  }
+  .advMetricLabel {
+    font-size: 8px !important;
+  }
+  .advAuditLink {
+    font-size: 9px !important;
+    padding: 2.5px 6px !important;
+    gap: 2px !important;
+  }
+
+  /* ── The Copilot Manifesto: Same Design & Animation as Desktop in Mobile View ── */
+  .streamItem {
+    display: grid !important;
+    grid-template-columns: 1fr auto !important;
+    grid-template-rows: auto auto !important;
+    gap: 14px !important;
+    padding: 22px 18px !important;
+    border-radius: 20px !important;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFE 55%, #F4F7FB 100%) !important;
+    border: 1px solid rgba(212, 222, 235, 0.95) !important;
+    box-shadow: 
+      inset 0 1.5px 0 0 #FFFFFF,
+      inset 0 -1.5px 0 0 rgba(200, 212, 226, 0.4),
+      0 2px 4px rgba(15, 23, 42, 0.02),
+      0 8px 24px -4px rgba(15, 23, 42, 0.05) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease !important;
+  }
+  /* Retain exact desktop ambient side-glow */
+  .streamItem::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 220px !important;
+    height: 100% !important;
+    background: radial-gradient(ellipse 130% 115% at 0% 50%, color-mix(in srgb, var(--pillar-accent, #0B2093) 14%, transparent) 0%, color-mix(in srgb, var(--pillar-accent, #0B2093) 4%, transparent) 60%, transparent 100%) !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+    transition: all 0.3s ease !important;
+  }
+  /* Tactile lift and ambient glow expansion animation on hover & active tap */
+  .streamItem:hover,
+  .streamItem:active {
+    transform: translateY(-3px) !important;
+    border-color: rgba(160, 175, 195, 0.95) !important;
+    box-shadow: 
+      inset 0 1.5px 0 0 #FFFFFF,
+      inset 0 -1.5px 0 0 rgba(200, 212, 226, 0.5),
+      0 4px 8px rgba(15, 23, 42, 0.04),
+      0 16px 36px -6px color-mix(in srgb, var(--pillar-accent, #0B2093) 18%, rgba(15, 23, 42, 0.1)) !important;
+  }
+  .streamItem:hover::before,
+  .streamItem:active::before {
+    width: 260px !important;
+    background: radial-gradient(ellipse 140% 125% at 0% 50%, color-mix(in srgb, var(--pillar-accent, #0B2093) 22%, transparent) 0%, color-mix(in srgb, var(--pillar-accent, #0B2093) 7%, transparent) 65%, transparent 100%) !important;
+  }
+  .streamLeftCol {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+  .ambientIndex {
+    font-size: 38px !important;
+    line-height: 1 !important;
+    font-weight: 900 !important;
+    color: color-mix(in srgb, var(--pillar-accent, #0B2093) 36%, #8899AC) !important;
+    text-shadow: 
+      0 1px 0 rgba(255, 255, 255, 0.95),
+      0 4px 14px color-mix(in srgb, var(--pillar-accent, #0B2093) 22%, transparent) !important;
+    transition: all 0.28s ease !important;
+  }
+  .streamItem:hover .ambientIndex,
+  .streamItem:active .ambientIndex {
+    color: var(--pillar-accent, #0B2093) !important;
+    text-shadow: 
+      0 1px 0 rgba(255, 255, 255, 1),
+      0 6px 20px color-mix(in srgb, var(--pillar-accent, #0B2093) 38%, transparent) !important;
+  }
+  .pillarTagline {
+    font-size: 10px !important;
+    letter-spacing: 0.05em !important;
+  }
+  .streamRightCol {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: flex-start !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+  .streamStatBox {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    text-align: right !important;
+    padding: 10px 14px !important;
+    border-radius: 12px !important;
+  }
+  .streamStatNumber {
+    font-size: 22px !important;
+    line-height: 1 !important;
+  }
+  .streamStatLabel {
+    font-size: 9px !important;
+  }
+  .streamMidCol {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+  .pillarTitle {
+    font-size: 18px !important;
+    line-height: 1.25 !important;
+  }
+  .pillarDesc {
+    font-size: 13.5px !important;
+    line-height: 1.55 !important;
+  }
+  /* 3D Transparent Evaluation Matrix: MATCH DESKTOP 3-COLUMN VIEW ON MOBILE */
+  .matrixContainer {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    border-radius: 16px !important;
+    margin-top: 20px !important;
+  }
+  .matrixHeader {
+    display: grid !important;
+    grid-template-columns: 1.35fr 1fr 1fr !important;
+    min-width: 520px !important;
+    padding: 11px 16px !important;
+    font-size: 10px !important;
+    letter-spacing: 0.05em !important;
+    align-items: center !important;
+  }
+  .matrixColFeature {
+    color: #475569 !important;
+  }
+  .matrixColAgency {
+    display: flex !important;
+    align-items: center !important;
+    color: #991B1B !important;
+  }
+  .matrixColCopilot {
+    display: flex !important;
+    align-items: center !important;
+    color: #0B2093 !important;
+  }
+  .matrixBody {
+    min-width: 520px !important;
+  }
+  .matrixRow {
+    display: grid !important;
+    grid-template-columns: 1.35fr 1fr 1fr !important;
+    min-width: 520px !important;
+    padding: 12px 16px !important;
+    align-items: center !important;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.85) !important;
   }
   .cellFeature {
-    padding-bottom: 3px !important;
-    border-bottom: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+    padding-right: 14px !important;
     margin-bottom: 0 !important;
-    padding-right: 0 !important;
+    border-bottom: none !important;
   }
   .featureNameText {
-    font-size: 13.5px !important;
+    font-size: 12.5px !important;
     font-weight: 800 !important;
     color: #0F172A !important;
   }
   .featureSubText {
-    font-size: 10.5px !important;
+    font-size: 10px !important;
     line-height: 1.35 !important;
     color: #64748B !important;
-    padding-left: 16px !important;
+    padding-left: 14px !important;
     margin-top: 1px !important;
   }
   .cellAgency {
     display: flex !important;
     align-items: center !important;
     gap: 8px !important;
-    padding: 8px 10px !important;
-    border-radius: 9px !important;
-    background: rgba(254, 242, 242, 0.85) !important;
-    border: 1px solid rgba(254, 202, 202, 0.9) !important;
-    width: 100% !important;
-    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.02) !important;
+    padding: 0 10px 0 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: auto !important;
   }
   .cellCopilot {
     display: flex !important;
     align-items: center !important;
     gap: 8px !important;
-    padding: 8px 10px !important;
-    border-radius: 9px !important;
-    background: rgba(238, 242, 255, 0.85) !important;
-    border: 1px solid rgba(199, 210, 254, 0.95) !important;
-    width: 100% !important;
-    box-shadow: 0 1px 2px rgba(11, 32, 147, 0.04) !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: auto !important;
   }
   .token3dCross,
   .token3dCheck {
-    width: 20px !important;
-    height: 20px !important;
-    min-width: 20px !important;
+    width: 22px !important;
+    height: 22px !important;
+    min-width: 22px !important;
     flex-shrink: 0 !important;
   }
   .token3dCross svg,
   .token3dCheck svg {
-    width: 9px !important;
-    height: 9px !important;
+    width: 10px !important;
+    height: 10px !important;
   }
   .agencyText {
-    font-size: 11.5px !important;
-    line-height: 1.4 !important;
-    color: #991B1B !important;
-    font-weight: 600 !important;
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+    color: #64748B !important;
+    font-weight: 500 !important;
   }
   .copilotText {
-    font-size: 11.5px !important;
-    line-height: 1.4 !important;
+    font-size: 11px !important;
+    line-height: 1.35 !important;
     color: #0B2093 !important;
     font-weight: 700 !important;
   }
@@ -3584,50 +3794,91 @@
     line-height: 1.3 !important;
   }
 
-  /* Compact Vertical Stack for Pipeline Stages (Zero Horizontal Scroll) */
+  /* The Future We’re Building: Horizontal 2-2 Consecutive Cards */
   .pipelineStagesGrid {
-    display: flex !important;
-    flex-direction: column !important;
-    overflow-x: visible !important;
-    gap: 12px !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    width: 100% !important;
     padding: 0 !important;
     margin: 0 0 24px !important;
-    width: 100% !important;
   }
-  .pipelineRevealWrap {
+  .pipelineRevealWrap,
+  .pipelineStagesGrid > div {
     width: 100% !important;
     min-width: 0 !important;
     max-width: 100% !important;
-    flex: none !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
   .pipelineCard {
-    padding: 14px 14px 12px !important;
+    padding: 12px 10px 10px !important;
     border-radius: 14px !important;
     width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .pipelineCardTop {
+    margin-bottom: 8px !important;
+  }
+  .stageNumBadge {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 11px !important;
+    border-radius: 7px !important;
+  }
+  .stageCategoryTag {
+    font-size: 8px !important;
+    padding: 2px 6px !important;
+    letter-spacing: 0.05em !important;
   }
   .stageTitle {
-    font-size: 14px !important;
-    margin-bottom: 3px !important;
+    font-size: 12px !important;
+    min-height: unset !important;
+    line-height: 1.25 !important;
+    margin-bottom: 4px !important;
+    font-weight: 800 !important;
   }
   .stageDesc {
-    font-size: 11.5px !important;
-    line-height: 1.4 !important;
+    font-size: 10px !important;
+    line-height: 1.35 !important;
+    margin-bottom: 8px !important;
+  }
+  .stageBottomGroup {
+    margin-top: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .stageTechRow {
+    gap: 4px !important;
     margin-bottom: 8px !important;
   }
   .stageTechBadge {
-    font-size: 9px !important;
-    padding: 2px 6px !important;
+    font-size: 8px !important;
+    padding: 2px 5px !important;
+    border-radius: 4px !important;
+  }
+  .stageFooter {
+    padding-top: 8px !important;
+    gap: 5px !important;
   }
   .stageMetricsText {
-    font-size: 10px !important;
+    font-size: 9px !important;
+    font-weight: 750 !important;
+  }
+  .stagePulseBeacon {
+    width: 6px !important;
+    height: 6px !important;
   }
 
-  /* Compact Vertical Stack for Executive Leadership Cards (Zero Horizontal Scroll) */
+  /* Compact Executive Leadership Cards (MEET THE TEAM) */
   .leadershipGrid {
     display: flex !important;
     flex-direction: column !important;
     overflow-x: visible !important;
-    gap: 16px !important;
+    gap: 12px !important;
     padding: 0 !important;
     margin: 0 0 24px !important;
     width: 100% !important;
@@ -3639,32 +3890,55 @@
     flex: none !important;
   }
   .leaderCard {
-    border-radius: 16px !important;
+    border-radius: 14px !important;
     overflow: hidden !important;
     width: 100% !important;
   }
   .leaderPhotoWrap {
-    height: 180px !important;
+    height: 130px !important;
+  }
+  .leaderDeptBadge {
+    bottom: 6px !important;
+    left: 6px !important;
+    right: 6px !important;
+    font-size: 7.5px !important;
+    padding: 3px 6px !important;
+    border-radius: 6px !important;
   }
   .leaderInfo {
-    padding: 14px 14px 12px !important;
-    gap: 4px !important;
+    padding: 10px 12px 10px !important;
+    gap: 3px !important;
+  }
+  .leaderHeaderRow {
+    min-height: unset !important;
+    margin-bottom: 5px !important;
+    gap: 6px !important;
   }
   .leaderName {
-    font-size: 16px !important;
+    font-size: 14px !important;
+    margin: 0 0 1px !important;
+    line-height: 1.2 !important;
   }
   .leaderRole {
-    font-size: 11px !important;
+    font-size: 10px !important;
+    line-height: 1.25 !important;
+  }
+  .leaderSocial {
+    width: 24px !important;
+    height: 24px !important;
+    border-radius: 6px !important;
   }
   .leaderBio {
-    font-size: 11px !important;
-    line-height: 1.45 !important;
-    margin-bottom: 8px !important;
+    font-size: 10px !important;
+    line-height: 1.35 !important;
+    margin-bottom: 6px !important;
   }
   .leaderQuote {
-    font-size: 10.5px !important;
-    padding: 8px 10px !important;
-    line-height: 1.35 !important;
+    font-size: 9.5px !important;
+    padding: 6px 8px !important;
+    line-height: 1.3 !important;
+    border-radius: 7px !important;
+    margin-top: auto !important;
   }
 
   /* Compact Leadership CTA Card */
@@ -3740,6 +4014,33 @@
 }
 
 @media (max-width: 480px) {
+  .imageViewport {
+    height: 240px !important;
+  }
+  .fourAdvantagesGrid {
+    gap: 8px !important;
+  }
+  .advantageLuxuryCard {
+    padding: 10px 8px 8px !important;
+    border-radius: 14px !important;
+    gap: 5px !important;
+  }
+  .streamItem {
+    padding: 16px 14px !important;
+    gap: 10px !important;
+  }
+  .ambientIndex {
+    font-size: 32px !important;
+  }
+  .streamStatNumber {
+    font-size: 18px !important;
+  }
+  .pillarTitle {
+    font-size: 16px !important;
+  }
+  .pillarDesc {
+    font-size: 12.5px !important;
+  }
   .heroMainTitle {
     font-size: 25px !important;
   }
@@ -3747,8 +4048,39 @@
     flex: 0 0 240px;
     padding: 14px 12px;
   }
+  .pipelineStagesGrid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+  .pipelineCard {
+    padding: 10px 8px 8px !important;
+    border-radius: 12px !important;
+  }
+  .stageNumBadge {
+    width: 24px !important;
+    height: 24px !important;
+    font-size: 10px !important;
+  }
+  .stageCategoryTag {
+    font-size: 7.5px !important;
+    padding: 2px 4px !important;
+  }
+  .stageTitle {
+    font-size: 11px !important;
+  }
+  .stageDesc {
+    font-size: 9px !important;
+    line-height: 1.3 !important;
+  }
+  .stageTechBadge {
+    font-size: 7.5px !important;
+    padding: 1.5px 4px !important;
+  }
   .leaderPhotoWrap {
-    height: 160px !important;
+    height: 120px !important;
+  }
+  .leaderInfo {
+    padding: 8px 10px 8px !important;
   }
   .finaleCard {
     padding: 22px 14px !important;

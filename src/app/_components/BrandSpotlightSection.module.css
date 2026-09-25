@@ -45,7 +45,7 @@
 .brandFilterWrapper {
   display: flex;
   justify-content: center;
-  margin: 28px auto 22px;
+  margin: 24px auto 0;
   width: 100%;
 }
 
@@ -1191,23 +1191,71 @@
 /* ══════════════════════════════════════════════════
    STRICT MOBILE RESPONSIVENESS
    ══════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════
+   STRICT MOBILE RESPONSIVENESS — DUAL PANE & COMPACT FILTER
+   ══════════════════════════════════════════════════ */
 @media (max-width: 960px) {
-  .showcaseGrid,
+  .brandFilterWrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 4px 16px 14px;
+    margin: 20px auto 16px;
+  }
+  .brandFilterWrapper::-webkit-scrollbar {
+    display: none;
+  }
+  .brandFilterWrapper::before,
+  .brandFilterWrapper::after {
+    content: '';
+    margin: auto;
+    flex: 0 0 0px;
+  }
+  .brandFilterTrack {
+    margin: 0;
+    flex-shrink: 0;
+  }
+  .showcaseGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    max-width: 820px;
+    gap: 16px;
+    align-items: stretch !important;
+  }
   .dualPaneEditorialGrid {
-    grid-template-columns: 1fr;
-    max-width: 580px;
-    gap: 32px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    max-width: 820px;
+    gap: 16px;
+    align-items: stretch !important;
   }
   .videoDeviceCard {
-    max-width: 330px;
+    max-width: 100%;
     margin: 0 auto;
+    border-radius: 28px;
+    padding: 10px 10px 12px;
   }
   .videoWrapper {
-    min-height: 400px;
+    width: 100%;
+    aspect-ratio: 9 / 16 !important;
+    min-height: unset !important;
+    height: auto !important;
+    border-radius: 18px;
+  }
+  .videoPlayer,
+  .videoPlayerEkatraa {
+    transform: none !important;
+    object-fit: cover !important;
+  }
+  .carouselCard {
+    max-width: 100%;
+    border-radius: 28px;
+    padding: 10px 10px 14px;
   }
   .carouselViewport {
-    aspect-ratio: 1 / 1;
-    min-height: unset;
+    aspect-ratio: 1 / 1 !important;
+    min-height: unset !important;
+    margin: auto 0;
   }
   .bottomBar {
     gap: 16px;
@@ -1230,112 +1278,378 @@
 
 @media (max-width: 640px) {
   .section {
-    padding: 60px 0 40px;
+    padding: 56px 0 40px;
     scroll-margin-top: 80px;
   }
+  .section :global(.container) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .header {
+    margin: 0 auto 24px;
+  }
   .brandFilterWrapper {
-    overflow-x: auto;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
     justify-content: flex-start;
-    padding: 4px 16px 14px;
+    align-items: center;
+    overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    margin: 20px 0 14px;
+    padding: 4px 8px 10px;
+    margin: 14px 0 16px;
   }
   .brandFilterWrapper::-webkit-scrollbar {
     display: none;
   }
+  .brandFilterWrapper::before,
+  .brandFilterWrapper::after {
+    content: '';
+    margin: auto;
+    flex: 0 0 0px;
+  }
   .brandFilterTrack {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 5px;
     border-radius: 9999px;
-    gap: 6px;
-    padding: 5px 6px;
-    margin: 0 auto;
+    margin: 0;
+    flex-shrink: 0;
     white-space: nowrap;
   }
   .brandFilterBtn {
-    padding: 5px 14px 5px 6px;
-    font-size: 0.82rem;
-    gap: 8px;
-  }
-  .brandFilterLogoWrap {
-    width: 26px;
-    height: 26px;
-    padding: 3px;
-  }
-  .headline {
-    font-size: clamp(24px, 6.5vw, 32px) !important;
-  }
-  .subText {
-    font-size: 14px;
-    line-height: 1.5;
-  }
-  .headerPills {
+    padding: 4px 9px 4px 4px;
+    font-size: 0.76rem;
     gap: 6px;
   }
-  .headerPill {
-    font-size: 0.72rem;
-    padding: 4px 11px;
+  .brandFilterLogoWrap {
+    width: 22px;
+    height: 22px;
+    padding: 2.5px;
   }
+  .brandFilterName {
+    font-size: 0.76rem;
+  }
+  .headline {
+    font-size: clamp(22px, 5.8vw, 28px) !important;
+  }
+  .subText {
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  /* Dual Pane Mobile Grid: Side-by-Side Cards */
+  .showcaseGrid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr) !important;
+    gap: 8px !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 auto 24px !important;
+    align-items: stretch !important;
+  }
+  .dualPaneEditorialGrid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: 8px !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 auto 24px !important;
+    align-items: stretch !important;
+  }
+  .videoCol,
+  .carouselCol,
+  .editorialCol {
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+  }
+  .colInnerWrap {
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* Left Pane: Smartphone 9:16 Video Card */
   .videoDeviceCard {
-    max-width: 290px;
-    padding: 10px 10px 14px;
-    border-radius: 30px;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 6px 6px 8px !important;
+    border-radius: 20px !important;
+    border-width: 1.5px !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    box-sizing: border-box !important;
+  }
+  .videoDeviceCard::before,
+  .videoDeviceCard::after {
+    display: none !important;
+  }
+  .videoDeviceGlow {
+    border-radius: 24px;
+    inset: -3px;
+    filter: blur(10px);
+  }
+  .deviceNotch {
+    padding: 2px 0 5px !important;
+    gap: 5px !important;
+  }
+  .speakerPill {
+    width: 20px !important;
+    height: 3px !important;
+  }
+  .cameraDot {
+    width: 5px !important;
+    height: 5px !important;
   }
   .videoWrapper {
-    min-height: 360px;
-    border-radius: 20px;
+    width: 100% !important;
+    aspect-ratio: 9 / 16 !important;
+    min-height: unset !important;
+    height: auto !important;
+    flex: 1 1 auto !important;
+    border-radius: 14px !important;
+    overflow: hidden !important;
   }
-  .carouselCard {
-    padding: 10px 10px 12px;
-    border-radius: 22px;
+  .videoPlayer,
+  .videoPlayerEkatraa {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    transform: none !important;
   }
-  .editorialCard {
-    padding: 16px 16px 20px;
-    border-radius: 24px;
-  }
-  .carouselViewport {
-    aspect-ratio: 1 / 1;
-    min-height: unset;
-    border-radius: 16px;
+  .videoWrapper:hover .videoPlayer,
+  .videoWrapper:hover .videoPlayerEkatraa {
+    transform: none !important;
   }
   .playBtn3D {
-    width: 62px;
-    height: 62px;
+    width: 38px !important;
+    height: 38px !important;
+  }
+  .playBtn3D svg {
+    width: 16px !important;
+    height: 16px !important;
   }
   .radarWavesWrapper {
-    width: 72px;
-    height: 72px;
+    width: 46px !important;
+    height: 46px !important;
   }
-  .carouselFooter {
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+  .deviceFooter {
+    margin-top: 5px !important;
+    padding: 0 1px !important;
+    gap: 4px !important;
   }
-  .thumbStrip {
-    width: 100%;
-    overflow-x: auto;
-    scrollbar-width: none;
-    padding-bottom: 2px;
+  .deviceFooterText {
+    gap: 1px !important;
+    min-width: 0 !important;
   }
-  .thumbStrip::-webkit-scrollbar {
-    display: none;
+  .deviceTag {
+    font-size: 0.5rem !important;
+    letter-spacing: 0.04em !important;
+    line-height: 1 !important;
   }
-  .thumbBtn {
-    width: 42px;
-    height: 42px;
+  .deviceTitle {
+    font-size: 0.65rem !important;
+    line-height: 1.15 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  .deviceActionBtn {
+    font-size: 0.56rem !important;
+    padding: 2.5px 6px !important;
+  }
+  .homeIndicator {
+    width: 28px !important;
+    height: 2.5px !important;
+    margin: 4px auto 0 !important;
+  }
+
+  /* Right Pane: 1:1 Sliding Carousel Card */
+  .carouselCard {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 20px !important;
+    padding: 6px 6px 8px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .carouselHeader {
+    margin-bottom: 5px !important;
+    padding: 0 2px !important;
+  }
+  .brandBadgePill {
+    font-size: 0.6rem !important;
+    padding: 2px 6px !important;
+    gap: 3px !important;
+  }
+  .brandBadgeDot {
+    width: 4.5px !important;
+    height: 4.5px !important;
+  }
+  .counterBadge {
+    font-size: 0.6rem !important;
+    padding: 1.5px 6px !important;
+    gap: 2px !important;
+  }
+  .carouselViewport {
+    width: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    min-height: unset !important;
+    height: auto !important;
+    border-radius: 14px !important;
+    margin: auto 0 !important;
   }
   .navBtn {
-    width: 32px;
-    height: 32px;
+    width: 22px !important;
+    height: 22px !important;
   }
+  .navBtn svg {
+    width: 11px !important;
+    height: 11px !important;
+  }
+  .navBtnPrev {
+    left: 4px !important;
+  }
+  .navBtnNext {
+    right: 4px !important;
+  }
+  .slideDotsWrap {
+    bottom: 5px !important;
+    padding: 1.5px 5px !important;
+    gap: 3px !important;
+  }
+  .slideDot {
+    width: 3.5px !important;
+    height: 3.5px !important;
+  }
+  .slideDotActive {
+    width: 9px !important;
+  }
+  .carouselFooter {
+    margin-top: 5px !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+  .thumbStrip {
+    padding: 3px 4px !important;
+    border-radius: 10px !important;
+    gap: 3px !important;
+    width: 100% !important;
+    justify-content: flex-start !important;
+  }
+  .thumbBtn {
+    width: 24px !important;
+    height: 24px !important;
+    border-radius: 5px !important;
+    border-width: 1.5px !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Editorial Card (when Heed is active) */
+  .editorialCard {
+    padding: 8px 8px 10px !important;
+    border-radius: 20px !important;
+  }
+  .editorialTopBadgeRow {
+    gap: 5px;
+    margin-bottom: 5px;
+  }
+  .editorialVerifiedBadge {
+    font-size: 0.52rem;
+    padding: 2px 5px;
+  }
+  .editorialClientLogoWrap {
+    height: 16px;
+  }
+  .editorialClientLogo {
+    height: 14px;
+    max-width: 45px;
+  }
+  .editorialTitle {
+    font-size: 0.8rem;
+    margin-bottom: 2px;
+  }
+  .editorialSubtitle {
+    font-size: 0.62rem;
+    margin-bottom: 6px;
+  }
+  .editorialChallengeSolution {
+    gap: 5px;
+    margin-bottom: 6px;
+  }
+  .editorialBlock {
+    padding: 5px 6px;
+  }
+  .editorialBlockLabel {
+    font-size: 0.52rem;
+    margin-bottom: 1px;
+  }
+  .editorialBlockText {
+    font-size: 0.6rem;
+    line-height: 1.3;
+  }
+  .editorialKpiStrip {
+    margin-bottom: 6px;
+    border-radius: 6px;
+  }
+  .editorialKpiItem {
+    padding: 4px 2px;
+  }
+  .editorialKpiNum {
+    font-size: 0.76rem;
+  }
+  .editorialKpiLbl {
+    font-size: 0.48rem;
+  }
+  .editorialQuoteBox {
+    padding: 5px 6px;
+    margin-bottom: 6px;
+    border-radius: 6px;
+  }
+  .editorialQuoteText {
+    font-size: 0.6rem;
+    line-height: 1.3;
+    margin-bottom: 2px;
+  }
+  .editorialQuoteAuthor {
+    font-size: 0.52rem;
+  }
+  .editorialFooter {
+    padding-top: 4px;
+  }
+
+  /* Bottom Deliverables & CTA */
   .bottomBar {
-    padding: 14px 16px;
-    border-radius: 16px;
+    padding: 12px 12px;
+    border-radius: 14px;
+    gap: 10px;
+  }
+  .deliverables {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
   }
   .deliverableLabel {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
+  }
+  .tagsWrap {
+    gap: 4px;
   }
   .tag {
-    font-size: 0.68rem;
-    padding: 3px 8px;
+    font-size: 0.62rem;
+    padding: 2.5px 7px;
   }
 }

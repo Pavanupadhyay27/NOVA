@@ -11,7 +11,6 @@ import SmoothCounter from '@/components/SmoothCounter';
 import {
   spotlightProject,
   caseStudiesList,
-  proofMetrics,
   transformationData,
   revenueProcessSteps,
   geoImpactLocations,
@@ -54,8 +53,6 @@ export default function PortfolioPage() {
   const [selectedCase, setSelectedCase] = useState<CaseStudyItem | null>(null);
   const [heroSlideIndex, setHeroSlideIndex] = useState(0);
   const [isHeroSlidePaused, setIsHeroSlidePaused] = useState(false);
-  const [activeRibbonIndex, setActiveRibbonIndex] = useState(0);
-  const [isRibbonPaused, setIsRibbonPaused] = useState(false);
   const [activeHudIndex, setActiveHudIndex] = useState(0);
   const [isHudPaused, setIsHudPaused] = useState(false);
   const [activeIndustry, setActiveIndustry] = useState(industryVerticals[0].id);
@@ -95,15 +92,6 @@ export default function PortfolioPage() {
 
     return () => clearInterval(interval);
   }, [isPaused]);
-
-  // Auto-cycling stats ribbon (every 2.5s)
-  useEffect(() => {
-    if (isRibbonPaused) return;
-    const interval = setInterval(() => {
-      setActiveRibbonIndex((prev) => (prev + 1) % proofMetrics.length);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, [isRibbonPaused]);
 
   // Auto-cycling Audited Commercial Deltas (every 3.5s)
   useEffect(() => {
@@ -224,39 +212,6 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* ─────────────────────────────────────────────────────────────
-          SECTION 2: INTERACTIVE AUTO-CYCLING PANORAMIC STATS RIBBON
-          ───────────────────────────────────────────────────────────── */}
-      <section className={styles.proofSection}>
-        <div className="container">
-          <ScrollReveal>
-            <div
-              className={styles.panoramicRibbon}
-              onMouseEnter={() => setIsRibbonPaused(true)}
-              onMouseLeave={() => setIsRibbonPaused(false)}
-            >
-              {proofMetrics.map((m, idx) => (
-                <div
-                  key={m.label}
-                  className={`${styles.ribbonItem} ${activeRibbonIndex === idx ? styles.ribbonItemActive : ''}`}
-                  onClick={() => setActiveRibbonIndex(idx)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') setActiveRibbonIndex(idx);
-                  }}
-                >
-                  <span className={styles.ribbonVal}>
-                    <SmoothCounter value={m.val} />
-                  </span>
-                  <span className={styles.ribbonLabel}>{m.label}</span>
-                  <span className={styles.ribbonSub}>{m.sub}</span>
-                </div>
-              ))}
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
 
       {/* ─────────────────────────────────────────────────────────────
           SECTION 3: FEATURED COMMERCIAL MILESTONE (COMPACT SKEUOMORPHIC CARD)

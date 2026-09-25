@@ -348,31 +348,75 @@
   background: #CBD5E1;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .section {
-    padding: 36px 0 44px;
+    padding: 24px 0 32px;
   }
   .innerBox {
-    padding: 32px 18px;
+    padding: 22px 16px;
+    border-radius: 18px;
+  }
+  .headline {
+    font-size: clamp(18px, 5.2vw, 23px) !important;
+    line-height: 1.25 !important;
+    margin-top: 6px !important;
+    margin-bottom: 8px !important;
+  }
+  .sub {
+    font-size: 12.5px !important;
+    line-height: 1.45 !important;
+    margin: 0 auto 16px !important;
+    max-width: 100% !important;
   }
   .actions {
-    flex-direction: column;
-    width: 100%;
-    gap: 12px;
+    display: flex !important;
+    flex-direction: row !important; /* COMPACT & HORIZONTAL ON MOBILE */
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 0 !important;
+    box-sizing: border-box !important;
   }
-  .borderBeamWrapper,
-  .borderBeamWrapperSecondary {
-    width: 100%;
+  .actions :global([class*="beamWrapper"]) {
+    flex: 1 1 50% !important;
+    min-width: 0 !important;
+    max-width: 50% !important;
+    width: auto !important;
+    box-sizing: border-box !important;
+    padding: 1.4px !important;
   }
-  .btnStartPrimary,
-  .btnExploreSecondary {
-    width: 100%;
-    justify-content: center;
+  .actions :global([class*="innerBtn"]) {
+    padding: 8px 10px !important;
+    font-size: 11px !important;
+    gap: 4px !important;
+    width: 100% !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    box-sizing: border-box !important;
+  }
+  .actions :global([class*="btnText"]) {
+    font-size: 11px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  .actions :global([class*="arrow"]) {
+    font-size: 11px !important;
   }
   .proof {
-    gap: 16px;
+    gap: 12px;
+    padding-top: 14px;
+    margin-top: 16px;
   }
   .proofNum {
-    font-size: 17px;
+    font-size: 16px;
+  }
+  .proofLabel {
+    font-size: 9px;
   }
 }

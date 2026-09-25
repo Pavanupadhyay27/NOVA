@@ -958,21 +958,6 @@ export default function IndustriesPage() {
                     We engineered a sub-second Next.js 3D virtual tour platform and deployed negative-shielded Google Search campaigns. Within 90 days, direct buyer site visits tripled at a verified cost of just ₹420 per visit.
                   </p>
                 </div>
-
-                <div className={styles.editorialMetricsStrip}>
-                  <div className={styles.editorialMetricItem}>
-                    <span className={styles.edMetricVal}>3X</span>
-                    <span className={styles.edMetricLabel}>Inbound Qualified Buyers</span>
-                  </div>
-                  <div className={styles.editorialMetricItem}>
-                    <span className={styles.edMetricVal}>₹420</span>
-                    <span className={styles.edMetricLabel}>Cost Per Site Visit</span>
-                  </div>
-                  <div className={styles.editorialMetricItem}>
-                    <span className={styles.edMetricVal}>0%</span>
-                    <span className={styles.edMetricLabel}>Brokerage Commissions</span>
-                  </div>
-                </div>
               </div>
             </div>
           </ScrollReveal>
